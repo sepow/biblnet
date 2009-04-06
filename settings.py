@@ -82,6 +82,7 @@ MIDDLEWARE_CLASSES = (
     'misc.middleware.SortOrderMiddleware',
     'djangodblog.middleware.DBLogMiddleware',
     'django.middleware.transaction.TransactionMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware'
 )
 
 ROOT_URLCONF = 'biblnet.urls'
@@ -166,7 +167,7 @@ INSTALLED_APPS = (
     'misc',
     'photos',
     'tag_app',
-    
+    'debug_toolbar',
     'django.contrib.admin',
 
 )
