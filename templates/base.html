@@ -33,14 +33,16 @@
 
 <div id="header">
 	<div class="logo" dir="ltr">{% block logo_link_image %}{% endblock %}</div>
-	<h1>Boblnet</h1>
-	<h2>- mødested for informationsspecialister in spe</h2>
 </div>
 <div id="colmask">
 <div id="colmid">
 <div id="colright">
 <div id="col1wrap">
 <div id="col1pad">
+
+{% block boxtab %}{% endblock %}
+
+
 <div id="col1"><!-- Content column start -->
 	{% if messages %}
 	<ul id="messages">

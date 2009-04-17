@@ -31,7 +31,7 @@
     </form>
 {% endblock %}
 
-{% block logo_link_image %}<a href="{% url home %}"><img src="{{ MEDIA_URL }}pinax/images/logo.png" alt="Pinax"/></a>{% endblock %}
+{% block logo_link_image %}<a href="{% url home %}"><img src="{{ MEDIA_URL }}pinax/images/topbar.gif"/></a>{% endblock %}
 
 {% block tabs %}
 {% comment %}
@@ -41,6 +41,25 @@
         </tr>
     </table>
 {% endcomment %}
+{% endblock %}
+
+{% block boxtab %}
+	{% if 1 %}
+		<div id="boxtab">
+			<ul>
+				<li class="active"><a href="#"><span>{% trans "Update" %}</span></a></li>
+				<li><a href="#"><span>{% trans "Message board" %}</span></a></li>
+				<li><a href="#"><span>{% trans "Wiki" %}</span></a></li>
+				<li><a href="#"><span>{% trans "Docs" %}</span></a></li>
+				<li><a href="#"><span>{% trans "Members" %}</span></a></li>
+			</ul>
+			{% if 1 %}
+			<ul id="admin">
+				<li><a href="#"><span>{% trans "Admin" %}</span></a></li>
+			</ul>
+			{% endif %}
+		</div>
+	{% endif %}
 {% endblock %}
 
 {% block right_tab %}

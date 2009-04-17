@@ -10,13 +10,14 @@ body {
 					/* The min-width property does not work in old versions of Internet Explorer */
 	max-width: 1224px;
 	font-size:90%;
+	font-family: tahoma, comic sans ms, arial, helvetica, trebuchet ms, arial narrow;
 }
 a {
 	color:#369;
 }
 a:hover {
-	color:#fff;
-	background:#369;
+/*	color:#fff;*/
+/*	background:#369;*/
 	text-decoration:underline;
 }
 h1, h2, h3 {
@@ -29,13 +30,14 @@ p {
 }
 img {
 	margin:10px 0 5px;
+	border: none;
 }
 #header {
 	float:left;
 	width:100%;
 	padding:0;
 	margin:0;
-	border-bottom:1px solid #000;
+/*	border-bottom:1px solid #000;*/
 }
 #header p {
 	padding:.5em 15px	.2em 15px;
@@ -55,14 +57,14 @@ img {
 	float:left;
 	width:100%;			/* width of whole page */
 	overflow:hidden;		/* This chops off any overhanging divs */
-	background:#ffd8b7;		/* Left column background colour */
+/*	background:#ffd8b7;*/		/* Left column background colour */
 }
 #colmid {
 	float:left;
 	width:200%;
 	position:relative;
 	left:200px;
-	background:#fff;    	/* Centre column background colour */
+/*	background:#fff;*/    	/* Centre column background colour */
 }
 #colright {
 	float:left;
@@ -70,7 +72,7 @@ img {
 	position:relative;
 	left:50%;
 	margin-left:-400px;
-	background:#ff9;    	/* Right column background colour */
+/*	background:#ff9;*/    	/* Right column background colour */
 }
 #col1wrap {
 	float:right;
@@ -79,10 +81,11 @@ img {
 	right:100%;
 }
 #col1pad {
-	margin:0 15px 0 415px;
+	margin:0 0 0 400px;
 	overflow:hidden;
 }
 #col1 {
+	margin:0 15px 0 15px;
 	width:100%;
 	overflow:hidden;
 }
@@ -107,36 +110,72 @@ img {
 	width:100%;
 	padding:0;
 	margin:0;
-	border-top:1px solid #000;
+/*	border-top:1px solid #000;*/
 }
 #footer p {
 	padding:.5em 15px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* Tabs in content div */
+#boxtab {
+	clear:left;
+	float:left;
+	padding:0;
+	background:#98AAAE url('/site_media/pinax/images/boxtab.gif') bottom repeat-x;
+	width:100%;
+	overflow:hidden;
+	font-family:Verdana, Geneva, sans-serif;
+}
+#boxtab ul {
+	float:left;
+	margin:0;
+	padding:0;
+	list-style:none;
+	position:relative;
+/*	left:50%;*/
+	text-align:center;
+}
+#boxtab ul li {
+	display:block;
+	float:left;
+	list-style:none;
+	margin:20px 0 0 0;
+	padding:0;
+	position:relative;
+	left:5px;
+/*	right:50%;*/
+}
+#boxtab ul#admin {
+	float:right;
+	right:10px;
+}
+#boxtab ul li a {
+	display:block;
+	float:left;
+	margin:0 1px;
+	padding:5px 10px;
+	background:#0E3037;
+	text-decoration:none;
+	color:#fff;
+	border-top:1px solid #0E3037;
+	border-left:1px solid #0E3037;
+	border-right:1px solid #0E3037;
+	position:relative;
+	bottom:1px;
+}
+#boxtab ul li a:hover {
+	background:#98AAAE;
+	color:#fff;
+}
+#boxtab ul li.active {
+	margin-top:10px;
+}
+#boxtab ul li.active a,
+#boxtab ul li.active a:hover {
+	position:relative;
+	bottom:0;
+	padding:10px;
+	background:#98AAAE;
+	color:#000;
+	font-weight:bold;
+}
