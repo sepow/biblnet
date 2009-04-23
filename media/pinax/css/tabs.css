@@ -38,3 +38,70 @@
     padding-right: 0; /* space between tabs */
     padding-bottom: 1px; /* must be same thickness as tab border */
 }
+
+
+/* Tabs in content div */
+#boxtab {
+	clear:left;
+	float:left;
+	padding:0;
+	background:#98AAAE url('/site_media/pinax/images/boxtab.gif') bottom repeat-x;
+	width:100%;
+	overflow:hidden;
+	font-family:Verdana, Geneva, sans-serif;
+}
+#boxtab ul {
+	float:left;
+	margin:0;
+	padding:0;
+	list-style:none;
+	position:relative;
+/*	left:50%;*/
+	text-align:center;
+}
+#boxtab ul li {
+	display:block;
+	float:left;
+	list-style:none;
+	margin:20px 0 0 0;
+	padding:0;
+	position:relative;
+/*	left:5px;*/
+	left:205px;
+/*	right:50%;*/
+}
+#boxtab ul#admin {
+	float:right;
+/*	right:10px;*/
+	right:410px;
+}
+#boxtab ul li a {
+	display:block;
+	float:left;
+	margin:0 1px;
+	padding:5px 10px;
+	background:#98AAAE;
+	text-decoration:none;
+	color:#000;
+	border-top:1px solid #0E3037;
+	border-left:1px solid #0E3037;
+	border-right:1px solid #0E3037;
+	position:relative;
+	bottom:1px;
+}
+#boxtab ul li a:hover {
+	background:#0E3037;
+	color:#fff;
+}
+#boxtab ul li.active {
+	margin-top:10px;
+}
+#boxtab ul li.active a,
+#boxtab ul li.active a:hover {
+	position:relative;
+	bottom:0;
+	padding:10px;
+	background:#98AAAE;
+	color:#000;
+	font-weight:bold;
+}

@@ -4,6 +4,7 @@
 {% load openid_tags %}
 {% load svn_app_version %}
 {% load analytics %}
+{% load avatar_tags %}
 
 {% block extra_head_base %}
     <link rel="stylesheet" href="{{ MEDIA_URL }}css/site_tabs.css" />
@@ -14,7 +15,7 @@
 
 {% block login %}
     {% if user.is_authenticated %}
-        {% openid_icon openid user %}<b>{{ user }}</b> | <a href="{% url acct_email %}">{% trans "Account" %}</a> | {% if user.is_staff %}<a href="/admin/">{% trans "Admin" %}</a> | {% endif %}<a href="/openid/logout/?next={% url acct_logout %}">{% trans "Logout" %}</a>
+        {% openid_icon openid user %}<b><a href="{% url profile_detail user %}">{{ user }}</a></b> | {% if user.is_staff %}<a href="/admin/">{% trans "Admin" %}</a> | {% endif %}<a href="/openid/logout/?next={% url acct_logout %}">{% trans "Logout" %}</a>
     {% else %}
 	<p>Du er ikke logget på</p>
         <a href="{% url acct_login %}">{% trans "Log på" %}</a> / <a href="{% url acct_signup %}"><b>{% trans "Bliv medlem" %}</b></a>
