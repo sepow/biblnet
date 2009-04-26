@@ -24,9 +24,10 @@ from bookmarks.feeds import BookmarkFeed
 bookmarks_feed_dict = {"feed_dict": { '': BookmarkFeed }}
 
 admin.autodiscover()
-
+from profiles.models import Affiliation
 urlpatterns = patterns('',
     url(r'^$', direct_to_template, {"template": "homepage.html"}, name="home"),
+    (r'^affiliations/$', 'django.views.generic.list_detail.object_list', {'queryset': Affiliation.objects.all()}, 'affiliation_list', ),
     
     (r'^about/', include('about.urls')),
     (r'^account/', include('account.urls')),
@@ -47,6 +48,7 @@ urlpatterns = patterns('',
     (r'^robots.txt$', include('robots.urls')),
     (r'^i18n/', include('django.conf.urls.i18n')),
     (r'^bookmarks/', include('bookmarks.urls')),
+    (r'^admin/doc/', include('django.contrib.admindocs.urls')),
     (r'^admin/(.*)', admin.site.root),
     (r'^photos/', include('photos.urls')),
     (r'^avatar/', include('avatar.urls')),

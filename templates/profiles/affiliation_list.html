@@ -1,0 +1,16 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Affiliations" %}{% endblock %}
+
+
+{% block body %}
+<p>
+    {% for object in object_list %}
+      {# <a href="{% url affiliation_list object.slug %}">{{object}}</a> <br> #}
+     <a href="#"> {{ object }} </a> <img scr="{{MEDIA_URL}}{{object.icon}}"> ({{object.profile_set.count}} medlemmer)<br/>
+    {% endfor %}
+</p>
+{% endblock %}
+

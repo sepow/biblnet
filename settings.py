@@ -169,8 +169,11 @@ INSTALLED_APPS = (
     'tag_app',
     'debug_toolbar',
     'django.contrib.admin',
+    'django.contrib.admindocs'
 
 )
+
+DEBUG_TOOLBAR_CONFIG = { 'INTERCEPT_REDIRECTS' : False, } 
 
 ABSOLUTE_URL_OVERRIDES = {
     "auth.user": lambda o: "/profiles/%s/" % o.username,
@@ -222,6 +225,9 @@ BEHIND_PROXY = False
 FORCE_LOWERCASE_TAGS = True
 
 WIKI_REQUIRES_LOGIN = True
+
+AVATAR_DEFAULT_URL = MEDIA_URL + 'images/kristine.jpg'
+AVATAR_GRAVATAR_BACKUP = False
 
 # Uncomment this line after signing up for a Yahoo Maps API key at the
 # following URL: https://developer.yahoo.com/wsregapp/
