@@ -1,5 +1,24 @@
 /* SITE-SPECIFIC TAB STYLING */
 
+#index_tab .index_tab,
+#wiki_tab .wiki_tab,
+#board_tab .board_tab
+{
+	margin-top:10px;
+/*	background-color: #f00;*/
+}
+
+#index_tab ul li.index_tab a, #index_tab ul li.index_tab a:hover,
+#wiki_tab ul li.wiki_tab a, #wiki_tab ul li.wiki_tab a:hover,
+#board_tab ul li.board_tab a, #board_tab ul li.board_tab a:hover
+{
+	position:relative;
+	bottom:0;
+	padding:10px;
+	background:#98AAAE;
+	color:#000;
+	font-weight:bold;
+}
 
 /* selected tabs */
 #home_tab .tab_home,
