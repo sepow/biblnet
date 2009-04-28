@@ -8,6 +8,26 @@
 
 {% block head_title %}{{ topic.title }}{% endblock %}
 
+{% block boxtab_id %}id="board_tab"{% endblock %}
+
+{% block boxtab %}
+	<div id="boxtab">
+		<ul>
+			<li class="index_tab"><a href="{{ topic.tribe.get_absolute_url }}"><span>{% trans "Index" %}</span></a></li>
+			<li class="board_tab"><a href="{{ topic.tribe.get_absolute_url }}topics"><span>{% trans "Message board" %}</span></a></li>
+			<li class="wiki_tab"><a href="{{ topic.tribe.get_absolute_url }}wiki"><span>{% trans "Wiki" %}</span></a></li>
+			<li class="docs_tab"><a href="#"><span>{% trans "Knowledge Bank" %}</span></a></li>
+			<li class="tab members_tab"><a href="#"><span>{% trans "Members" %}</span></a></li>
+		</ul>
+		{% if are_member %}
+		<ul id="admin">
+			<li><a href="#"><span>{% trans "Admin" %}</span></a></li>
+		</ul>
+		{% endif %}
+	</div>
+{% endblock %}
+
+
 {% block body %}
     <p><a href="{% url tribe_topics topic.tribe.slug %}">&larr; {% trans "Back to Topic List for Tribe " %} {{ topic.tribe }}</a></p>
     
