@@ -45,7 +45,7 @@
             {% trans "Slug:" %} <tt>{{ tribe.slug }}</tt><br />
             {% trans "Creator:" %} <a href="{% url profile_detail tribe.creator.username %}">{{ tribe.creator }}</a><br />
             {% trans "Created:" %} {{ tribe.created|date }}
-            <br />
+                <br />
             {% show_tags_for tribe %}
         </p>
         
@@ -152,23 +152,4 @@
             
         {% endif %}
     </div>
-
-{% endblock %}
-
-{% block extra_body %}
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('#edit-tribe').hide();
-            $('#edit-tribe-toggle').click(function() {
-                $('#edit-tribe').toggle();
-                $('#edit-tribe').autoscroll();
-                return false;
-            });
-            if ($('#edit-tribe .error').length) {
-                $('#edit-tribe').show();
-                $('#edit-tribe .error').autoscroll();
-            }
-        });
-    </script>
-    
 {% endblock %}

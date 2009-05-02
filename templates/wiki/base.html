@@ -5,7 +5,7 @@
 
 {% block boxtab_id %}id="wiki_tab"{% endblock %}
 
-{% block admin_tab%}
+{% block admin_tab %}
 
     {% ifequal user.id group.creator.id %}
 	    <ul id="admin">
@@ -14,7 +14,6 @@
     {% endifequal %}
 
 {% endblock %}
-
 
 {% block subnav %}
     <ul>
