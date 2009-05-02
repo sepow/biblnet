@@ -1,12 +1,12 @@
 {% load i18n %}
 {% load extra_tagging_tags %}
 
-<a href="{{ tribe.get_absolute_url }}">{{ tribe.name }} </a> &nbsp&nbsp&nbsp {% show_tags_for tribe %} 
+<a href="{{ tribe.get_absolute_url }}">{{ tribe.name }} </a> &nbsp&nbsp&nbsp&nbsp&nbsp {% show_tags_for tribe %} 
 
 <div class="project_stats">
         {% trans "Members:" %} <b>{{ tribe.members.count }}</b>
         {% trans "Topics:" %} <b>{{ tribe.topics.count }}</b>
         {% trans "Wiki Pages:" %} <b>{{ tribe.wiki_articles.count }}</b>
-    </div>
+</div>
 
 
