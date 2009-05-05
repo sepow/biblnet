@@ -96,16 +96,12 @@
 {% block extra_body %}
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#start-tribe').hide();
-            $('#start-tribe-toggle').click(function() {
-                $('#start-tribe').toggle();
-                $('#start-tribe').autoscroll();
+            $('#about-tribe').hide();
+            $('#tribe-toggle').click(function() {
+                $('#about-tribe').toggle();
+                $('#about-tribe').autoscroll();
                 return false;
             });
-            if ($('#start-tribe .error').length) {
-                $('#start-tribe').show();
-                $('#start-tribe .error').autoscroll();
-            }
         });
     </script>
 {% endblock %}

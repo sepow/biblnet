@@ -47,17 +47,19 @@
 {% block boxtab %}
 	<div id="boxtab">
 		<ul>
-			<li class="index_tab"><a href="{{ tribe.get_absolute_url }}"><span>{% trans "Index" %}</span></a></li>
-			<li class="board_tab"><a href="{{ tribe.get_absolute_url }}topics"><span>{% trans "Forum" %}</span></a></li>
-			<li class="wiki_tab"><a href="{{ tribe.get_absolute_url }}wiki"><span>{% trans "Wiki" %}</span></a></li>
-			<li class="docs_tab"><a href="#"><span>{% trans "Knowledge Bank" %}</span></a></li>
+			<li class="index_tab"><a href="{% firstof tribe.get_absolute_url group.get_absolute_url "#" %}"><span>{% trans "Index" %}</span></a></li>
+			<li class="board_tab"><a href="{% firstof tribe.get_absolute_url group.get_absolute_url "#" %}topics"><span>{% trans "Message board" %}</span></a></li>
+			<li class="wiki_tab"><a href="{% firstof tribe.get_absolute_url group.get_absolute_url "#" %}wiki"><span>{% trans "Wiki" %}</span></a></li>
+			<li class="docs_tab"><a href="{% firstof tribe.get_absolute_url group.get_absolute_url "#" %}"><span>{% trans "Knowledge Bank" %}</span></a></li>
 			{% block group %}<li class="tab members_tab"><a href="{% url tribe_list %}"><span>{% trans "Groups" %}</span></a></li>{% endblock %}
 		</ul>
+		{% block admin_tab%}
 		{% if are_member %}
 		<ul id="admin">
 			<li><a href="#"><span>{% trans "Admin" %}</span></a></li>
 		</ul>
 		{% endif %}
+		{% endblock %}
 	</div>
 {% endblock %}
 
