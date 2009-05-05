@@ -1,5 +1,10 @@
 table.topic, table.topics {
-    width: 100%;
+	width: 100%;
+	border-spacing: 0;
+/*	table-layout: fixed;*/
+}
+table.topic th, table.topics th {
+	text-align:left;
 }
 table.topic td, table.topics td {
     vertical-align: top;
@@ -9,45 +14,53 @@ table.topic td h1, table.topics td h2 {
     margin: 0;
     padding: 0;
 }
+table.topics div.details {
+	padding:0 0 0 1em;
+	float:left;
+}
 .responses .even, .topics .even {
-    background-color: #FAFAFA;
+	color: #DFDFDF;
+	background-color: #0E3037;
 }
 .responses .odd, .topics .odd {
-    background-color: #F3F3F3;
+    background-color: #DFDFDF;
 }
 .responses {
-    margin-left: 0px;
-    padding-left: 0px;
+    margin: 0px;
+    padding: 0px;
 }
-.responses li { 
-    list-style-type: none; 
+.responses li {
+    list-style-type: none;
 }
 td.meta {
     width: 100px;
     margin: 4px;
 }
 div.meta {
-    float: left;
-    width: 100px;
-    margin: 4px;
-    padding: 4px;
+	float: left;
+	width: 200px;
+/*	margin: 4px;*/
+/*	padding: 4px;*/
+	font-size: 80%;
+	overflow:hidden;
+}
+div.avatar {
+	float: left;
+}
+div.created {
+	float: left;
+	padding: .5em;
+}
+div.details {
+	padding: 1em;
 }
 div.bulk {
-    margin-left: 120px;
-    padding: 4px;
+    margin-left: 200px;
+    padding: .5em;
 }
 .hidden { display: none; }
-.thread-0 { margin-left: 0px; }
-.thread-1 { margin-left: 20px; }
-.thread-2 { margin-left: 40px; }
-.thread-3 { margin-left: 60px; }
-.thread-4 { margin-left: 80px; }
-.thread-5 { margin-left: 100px; }
-.thread-6 { margin-left: 120px; }
-.thread-7 { margin-left: 140px; }
-.thread-8 { margin-left: 160px; }
 
-table.topics .created {
+/*table.topics .created {
     color: #999;
     font-size: 90%;
 }
@@ -55,4 +68,4 @@ table.topics .comment_stats {
     color: #999;
     border-top: 1px solid #CCC;
     font-size: 90%;
-}
+}*/

@@ -78,6 +78,17 @@
     {% endif %}
 {% endblock %}
 
+{% block calendar %}
+<div class="calendar">
+	{% trans "Your calendar" %}<br />
+{#	{% for events in calendar %} #}
+		{% trans "Event 1" %}<br />
+		{% trans "Event 2" %}<br />
+{#	{% endfor %} #}
+</div>
+{% endblock %}
+
+
 {% block footer %}
 <div class="legal">
     {% trans "&copy; 2008 &lt;your company here&gt;" %}

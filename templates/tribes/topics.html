@@ -10,19 +10,25 @@
 {% block boxtab_id %}id="board_tab"{% endblock %}
 
 {% block body %}
-    <h1>{% trans "Discussion Topics for Tribe" %} <a href="{% url tribe_detail tribe.slug %}">{{ tribe.name }}</a></h1>
+    <h1>{% trans "Message Board for" %} <a href="{% url tribe_detail tribe.slug %}">{{ tribe.name }}</a></h1>
     
     {% autopaginate tribe.topics.all %}
     
-    {% for topic in tribe.topics.all %}
-        {% show_tribe_topic topic %}
-    {% endfor %}
+<table class="topics clearfix">
+<tr class="even clearfix"><th></th><th>{% trans "Topic" %}</th><th>{% trans "Started by" %}</th><th>{% trans "Replies" %}</th><th>{% trans "Latest reply" %}</th><th>{% trans "Tags" %}</th></tr>
+	{% if tribe.topics.all %}
+	{% for topic in tribe.topics.all %}
+		{% show_tribe_topic topic %}
+	{% endfor %}
+	{% else %}
+		<tr><td colspan=5>{% trans "There are no topics yet..." %}</td></tr>
+	{% endif %}
+</table>
     
     {% paginate %}
     
     {% if are_member %}
         <h2>{% trans "New Topic" %}</h2>
-        
         <form class="uniForm" id="tribe_form" method="POST" action="">
             <fieldset class="inlineLabels">
                 {{ topic_form|as_uni_form }}

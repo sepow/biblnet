@@ -44,6 +44,7 @@
 
 
 <div id="col1"><!-- Content column start -->
+<div id="content">
 	{% if messages %}
 	<ul id="messages">
 		{% for message in messages %}
@@ -54,26 +55,38 @@
 
 	{% block body %}
 	{% endblock %}
+</div><!-- id="content" -->
 </div><!-- id="col1" --><!-- Content column end -->
 </div><!-- id="col1pad" -->
 </div><!-- id="col1wrap" -->
 
 
 <div id="col2"><!-- Left column start -->
-<img src="{{ MEDIA_URL }}images/top.png">
-	<div class="login">{% block login %}{% endblock %}{% block locale_switcher %}{% endblock %}<div style="text-align: right;"></div></div>
+<div id="columntop"></div>
+<div id="columnmid">
+	<div class="login">{% block login %}{% endblock %}{% block locale_switcher %}{% endblock %}</div>
 	<div class="tabs" {% block tab_id %}{% endblock %}>{% block tabs %}{% endblock %}</div>
 	<div class="right_tab" {% block rtab_id %}{% endblock %}>{% block right_tab %}{% endblock %}</div>
-<img src="{{ MEDIA_URL }}images/bottom.png">
+</div>
+<div id="columnbottom"></div>
 </div><!-- Left column end -->
 
 
 <div id="col3"><!-- Right column start -->
-	<div id="footer">{% block footer %}{% endblock %}</div>
-	</div><!-- Right column end -->
+<div id="columntop"></div>
+<div id="columnmid">
+	{% block calendar %}{% endblock %}
+</div>
+<div id="columnbottom"></div>
+
+<div id="columntop"></div>
+<div id="columnmid">
+	{% block footer %}{% endblock %}
+</div>
+<div id="columnbottom"></div>
+</div><!-- Right column end -->
+
 </div><!-- id="colright" -->
-
-
 </div><!-- id="colmid" -->
 </div><!-- id="colmask" -->
 
