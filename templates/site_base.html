@@ -15,22 +15,31 @@
 
 {% block login %}
     {% if user.is_authenticated %}
-        {% openid_icon openid user %}<b><a href="{% url profile_detail user %}">{{ user }}</a></b> | {% if user.is_staff %}<a href="/admin/">{% trans "Admin" %}</a> | {% endif %}<a href="/openid/logout/?next={% url acct_logout %}">{% trans "Logout" %}</a>
+        {% openid_icon openid user %}
+	<b>{% avatar user 40 %}<a href="{% url profile_detail user %}">{{ user }}</a></b> 
+	{# {% if user.is_staff %}<a href="/admin/">{% trans "Admin" %}</a>  | {% endif %} TODO behøver den være her? #}
+	<a href="{% url messages_inbox %}">{% trans "Inbox" %} ({{ combined_inbox_count }})</a>
+	<a href="/openid/logout/?next={% url acct_logout %}">{% trans "Logout" %}</a> <br/><br/>
+	<p>
+	
+    {% if user.tribe_set.all %}
+        {% for tribe in user.tribe_set.all %}
+            <img src="{{ MEDIA_URL }}images/sitegraphics/gruppe.gif"/> <a href="{% url tribe_detail tribe.slug %}">{{ tribe.name }}</a> <br/>
+        {% endfor %}
+    {% else %}
+        {% url tribe_thing_list "" as tribe_url %}
+    <p>{% blocktrans %}You are not yet a member of any <a href="{{ tribe_url }}">tribes</a>.{% endblocktrans %}</p>
+    {% endif %}
+	
+	</p>
+	
     {% else %}
 	<p>Du er ikke logget på</p>
         <a href="{% url acct_login %}">{% trans "Log på" %}</a> / <a href="{% url acct_signup %}"><b>{% trans "Bliv medlem" %}</b></a>
     {% endif %}
 {% endblock %}
 
-{% block locale_switcher %}
-    <form action="{% if request.user.is_authenticated %}{% url acct_language_change %}{% else %}/i18n/setlang/{% endif %}" method="post" id="locale_switcher">
-        <select name="language" onchange="$('#locale_switcher').submit()">
-            {% for lang in LANGUAGES %}
-                <option value="{{ lang.0 }}"{% ifequal lang.0 LANGUAGE_CODE %} selected="selected"{% endifequal %}>{{ lang.1 }}</option>
-            {% endfor %}
-        </select>
-    </form>
-{% endblock %}
+
 
 {% block logo_link_image %}<a href="{% url home %}"><img src="{{ MEDIA_URL }}pinax/images/topbar.gif"/></a>{% endblock %}
 
@@ -54,9 +63,9 @@
 			{% block group %}<li class="tab members_tab"><a href="{% url tribe_list %}"><span>{% trans "Groups" %}</span></a></li>{% endblock %}
 		</ul>
 		{% block admin_tab%}
-		{% if are_member %}
+		{% if user.is_staff %}
 		<ul id="admin">
-			<li><a href="#"><span>{% trans "Admin" %}</span></a></li>
+			<li><a href="/admin/"><span>{% trans "Admin" %}</span></a></li>
 		</ul>
 		{% endif %}
 		{% endblock %}
@@ -66,16 +75,10 @@
 {% block right_tab %}
     {% if user.is_authenticated %}
         <table>
-            <tr><td class="tab rtab_profile"><div><a href="{% url profile_detail user %}">{% trans "Profile" %}</a></div></td></tr>
-                <tr><td class="tab rtab_photos"><div><a href="{% url photos %}">{% trans "Photos" %}</a></div></td></tr>
-                <tr><td class="tab rtab_blogs"><div><a href="{% url blog_list_all %}">{% trans "Blogs" %}</a></div></td></tr>
-                <tr><td class="tab rtab_projects"><div><a href="{% url project_list %}">{% trans "Projects" %}</a></div></td></tr>
-                <tr><td class="tab rtab_tribes"><div><a href="{% url tribe_list %}">{% trans "Tribes" %}</a></div></td></tr>
-                <tr><td class="tab rtab_tweets"><div><a href="{% url tweets_you_follow %}">{% trans "Tweets" %}</a></div></td></tr>
-                <tr><td class="tab rtab_bookmarks"><div><a href="{% url all_bookmarks %}">{% trans "Bookmarks" %}</a></div></td></tr>
-                <tr><td class="tab rtab_swaps"><div><a href="{% url offer_list_all %}">{% trans "Swaps" %}</a></div></td></tr>
-                <tr><td class="tab rtab_locations"><div><a href="{% url loc_yours %}">{% trans "Locations" %}</a></div></td></tr>
-                <tr><td class="tab rtab_inbox"><div><a href="{% url messages_inbox %}">{% trans "Inbox" %} ({{ combined_inbox_count }})</a></div></td></tr>
+            
+               {# <tr><td class="tab rtab_photos"><div><a href="{% url photos %}">{% trans "Photos" %}</a></div></td></tr> #}
+               {# <tr><td class="tab rtab_blogs"><div><a href="{% url blog_list_all %}">{% trans "Blogs" %}</a></div></td></tr> #}
+               {# <tr><td class="tab rtab_tribes"><div><a href="{% url tribe_list %}">{% trans "Tribes" %}</a></div></td></tr> #}
         </table>
     {% endif %}
 {% endblock %}
