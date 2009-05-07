@@ -1,0 +1,28 @@
+{% extends "tribes/base.html" %}
+
+{% load i18n %}
+{% load extra_tagging_tags %}
+{% load threadedcommentstags %}
+{% load avatar_tags %}
+{% load comments_tag %}
+{% load tribe_tags %}
+
+{% block body %}
+
+{% if user.is_authenticated %}
+    <form class="uniForm" method="POST" action="{% get_comment_url topic %}">
+        <fieldset class="inlineLabels">
+            <div class="ctrlHolder">
+                <textarea id="id_comment" rows="10" cols="40" name="comment"></textarea>
+            </div>
+            <div class="form_block">
+                <input type="hidden" name="next" value="{% url tribe_topic topic.id %}" />
+                <input type="submit" value="{% trans "Post Response" %}" />
+            </div>
+        </fieldset>
+    </form>
+{% else %}
+    <h3>Please <a href="{% url acct_login %}">Login</a> (or <a href="{% url acct_signup %}">Sign Up</a>) to leave a comment</h3>
+{% endif %}
+
+{% endblock %}
