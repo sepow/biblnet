@@ -236,13 +236,13 @@ ul#messages {
 }
 ul#messages li {
     padding: 5px 10px;
-    background: #EFD;
-    margin: 3px;
-    border: 1px solid #BC9;
+    background: #98AAAE;
+    margin: 0px;
+    border: 1px solid #0E3037;
 }
 ul#messages li a {
     float: right;
-    color: #693;
+    color: #0E3037;
 }
 .verified {
     color: green;
