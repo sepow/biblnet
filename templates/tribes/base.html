@@ -7,7 +7,7 @@
 {% block admin_tab%}
 	{% if user.is_staff %}
 	<ul id="admin">
-		<li><a href="{% url tribe_admin tribe.slug  %}"><span>{% trans "Group Admin" %}</span></a></li>
+		<li class="admin_tab"><a href="{% url tribe_admin tribe.slug  %}"><span>{% trans "Group Admin" %}</span></a></li>
 	</ul>
 	{% endif %}
 {% endblock %}
