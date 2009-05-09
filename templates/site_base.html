@@ -62,12 +62,22 @@
 			<li class="docs_tab"><a href="{% firstof tribe.get_absolute_url group.get_absolute_url "#" %}"><span>{% trans "Knowledge Bank" %}</span></a></li>
 			{% block group %}<li class="members_tab"><a href="{% url tribe_list %}"><span>{% trans "Groups" %}</span></a></li>{% endblock %}
 		</ul>
+		
 		{% block admin_tab%}
-		{% if user.is_staff %}
-		<ul id="admin">
-			<li class="admin_tab" ><a href="/admin/"><span>{% trans "Admin" %}</span></a></li>
-		</ul>
+		{% if tribe or group %}
+            {% if user.is_staff %} {# or if user is modetor, skal lige tilføjes. #}
+		    <ul id="admin">
+			    <li class="admin_tab" ><a href="{% firstof tribe.get_absolute_url group.get_absolute_url%}admin/"><span>{% trans "Group Admin" %}</span></a></li>
+		    </ul>
+            {% endif %} 
+		{% else %}
+		    {% if user.is_staff %}
+		    <ul id="admin">
+			    <li class="admin_tab" ><a href="/admin/"><span>{% trans "Admin" %}</span></a></li>
+		    </ul>
+		    {% endif %} 
 		{% endif %}
+		
 		{% endblock %}
 	</div>
 {% endblock %}

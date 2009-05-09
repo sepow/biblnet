@@ -12,13 +12,7 @@
 
 {% block group %}<li class="members_tab"><a href="{% url tribe_list %}"><span>{% trans "Groups" %}</span></a></li>{% endblock %}
 {% block boxtab_id %}id="members_tab"{% endblock %}
-{% block admin_tab%}
-	{% if user.is_staff %}
-	<ul id="admin">
-		<li class ="admin_tab"><a href="/admin/"><span>{% trans "Admin" %}</span></a></li>
-	</ul>
-	{% endif %}
-{% endblock %}
+
 
 {% block body %}
     <h1>{% trans "Tribes" %}</h1>
