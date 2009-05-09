@@ -4,13 +4,13 @@
 {% load wikiurl %}
 
 {% block boxtab_id %}id="wiki_tab"{% endblock %}
+{% block group %}<li class="members_tab"><a href="{% url tribe_members group.slug  %}"><span>{% trans "Members" %}</span></a></li>{% endblock %}
 
 {% block admin_tab %}
-
     {% ifequal user.id group.creator.id %}
-	    <ul id="admin">
-		    <li><a href=""><span>{% trans "Admin" %}</span></a></li>
-	    </ul>
+	<ul id="admin">
+		<li><a href="{% url tribe_admin group.slug  %}"><span>{% trans "Group Admin" %}</span></a></li>
+	</ul>
     {% endifequal %}
 
 {% endblock %}

@@ -2,7 +2,15 @@
 
 {% load i18n %}
 
-{% block group %}<li class="tab members_tab"><a href="#"><span>{% trans "Members" %}</span></a></li>{% endblock %}
+{% block group %}<li class="tab members_tab"><a href="{{ tribe.get_absolute_url }}members/"><span>{% trans "Members" %}</span></a></li>{% endblock %}
+
+{% block admin_tab%}
+	{% if user.is_staff %}
+	<ul id="admin">
+		<li><a href="{% url tribe_admin tribe.slug  %}"><span>{% trans "Group Admin" %}</span></a></li>
+	</ul>
+	{% endif %}
+{% endblock %}
 
 {% block subnav %}
     <ul>

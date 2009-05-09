@@ -60,12 +60,12 @@
 			<li class="board_tab"><a href="{% firstof tribe.get_absolute_url group.get_absolute_url "#" %}topics"><span>{% trans "Message board" %}</span></a></li>
 			<li class="wiki_tab"><a href="{% firstof tribe.get_absolute_url group.get_absolute_url "#" %}wiki"><span>{% trans "Wiki" %}</span></a></li>
 			<li class="docs_tab"><a href="{% firstof tribe.get_absolute_url group.get_absolute_url "#" %}"><span>{% trans "Knowledge Bank" %}</span></a></li>
-			{% block group %}<li class="tab members_tab"><a href="{% url tribe_list %}"><span>{% trans "Groups" %}</span></a></li>{% endblock %}
+			{% block group %}<li class="members_tab"><a href="{% url tribe_list %}"><span>{% trans "Groups" %}</span></a></li>{% endblock %}
 		</ul>
 		{% block admin_tab%}
 		{% if user.is_staff %}
 		<ul id="admin">
-			<li><a href="/admin/"><span>{% trans "Admin" %}</span></a></li>
+			<li class ><a href="/admin/"><span>{% trans "Admin" %}</span></a></li>
 		</ul>
 		{% endif %}
 		{% endblock %}

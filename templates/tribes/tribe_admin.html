@@ -1,0 +1,45 @@
+{% extends "tribes/base.html" %}
+
+{% load microblogging_tags %}
+{% load i18n %}
+{% load uni_form %}
+{% load wiki %}
+{% load wikiurl %}
+{% load avatar_tags %}
+{% load threadedcommentstags %}
+{% load pagination_tags %}
+{% load extra_tagging_tags %}
+{% load tribe_tags %}
+
+{% block head_title %}{{ tribe.name }}{% endblock %}
+
+{% block boxtab_id %}id="admin_tab"{% endblock %}
+
+{% block body %}
+        {% ifequal user tribe.creator %}
+
+                <p><span id="edit-tribe-toggle">{% trans "Edit details" %}</span></p>
+                
+                <form class="uniForm" id="edit-tribe" method="POST" action="">
+                    <fieldset class="inlineLabels">
+                        {{ tribe_form|as_uni_form }}
+                        <div class="form_block">
+                            <input type="hidden" name="action" value="update" />
+                            <input type="submit" value="{% trans "update" %}"/>
+                        </div>
+                    </fieldset>
+                </form>
+
+            
+            {% ifequal tribe.members.all.count 1 %}
+                <p><img src="{{ MEDIA_URL }}pinax/images/silk/icons/delete.png" /> <a href="#" onclick="$('#delete_tribe_form').toggle(); return false;">{% trans "Delete tribe" %}</a><p>
+                 <form class="delete_form" id="delete_tribe_form" action="{% url tribe_delete tribe.slug %}" method="POST" style="display: none;">
+                     <input type="submit" value="{% trans "Delete Tribe" %}" /> (all content will be removed)
+                </form>
+            {% else %}
+                <br />
+                <p><b>{% trans "You are not the only member of the tribe so you can't delete the tribe." %}</b></p>
+            {% endifequal %}
+            
+        {% endifequal %}
+{% endblock %}

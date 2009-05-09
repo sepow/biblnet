@@ -35,12 +35,15 @@ urlpatterns = \
         # tribe-specific
         url(r'^tribe/([-\w]+)/$', 'tribes.views.tribe', name="tribe_detail"),
         url(r'^tribe/([-\w]+)/delete/$', 'tribes.views.delete', name="tribe_delete"),
+        url(r'^tribe/([-\w]+)/members/$', 'tribes.views.tribe', {"template_name":"tribes/tribe_members.html"}, name="tribe_members"),
+        url(r'^tribe/([-\w]+)/admin/$', 'tribes.views.tribe', {"template_name":"tribes/tribe_admin.html"}, name="tribe_admin"),
         
         # topics
         url(r'^tribe/([-\w]+)/topics/$', 'tribes.views.topics', name="tribe_topics"),
         url(r'^topic/(\d+)/edit/$', 'tribes.views.topic', kwargs={"edit": True}, name="tribe_topic_edit"),
-        url(r'^topic/(\d+)/delete/$', 'tribes.views.topic_delete', name="tribe_topic_delete"),
+        url(r'^topic/(\d+)/delete/$', 'tribes.views.topic_delete', name="tribe_topic_delete"), #TODO virker ikke... 
         url(r'^topic/(\d+)/reply/$', 'tribes.views.topic', {"template_name":"tribes/add_post.html"} , name="tribe_reply"),
+        # TODO  url(r'^topic/(\d+)/move/$',
         url(r'^topic/(\d+)/$', 'tribes.views.topic', name="tribe_topic"),
         
         # wiki
