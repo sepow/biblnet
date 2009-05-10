@@ -4,6 +4,7 @@
 {% load pagination_tags %}
 {% load avatar_tags %}
 
+
 {% get_threaded_comment_tree for object as responses %}
 {% autopaginate responses %}
 
@@ -47,6 +48,7 @@
             <div class="form_block">
                 <input type="hidden" name="next" value="{{ request.path }}" />
                 <input type="submit" value="{% trans "Post Response" %}" />
+                <input type="submit" value="{% trans "Preview Comment" %}" name="preview" />
             </div>
         </fieldset>
     </form>

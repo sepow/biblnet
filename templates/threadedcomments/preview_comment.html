@@ -1,8 +1,15 @@
-{% extends "threadedcomments_base.html" %}
+{% extends "tribes/base.html" %}
 
+{% load i18n %}
 {% load threadedcommentstags %}
+{% load avatar_tags %}
+{% block body %}
 
-{% block content %}
+<ul class="responses">
+        <li class="odd clearfix">
+                <div class="body"> {{ request.POST.comment|urlize|linebreaks }}</div>
+</ul>
+
     {% if comment %}
         <div id="comment_preview">{% auto_transform_markup comment %}</div>
     {% endif %}
