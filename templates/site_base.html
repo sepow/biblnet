@@ -41,7 +41,7 @@
 
 
 
-{% block logo_link_image %}<a href="{% url home %}"><img src="{{ MEDIA_URL }}pinax/images/topbar.gif"/></a>{% endblock %}
+{% block logo_link_image %}<a href="{% url home %}"><img src="{{ MEDIA_URL }}pinax/images/topbar.gif"/></a> {{ CAN_ADMIN }}{% endblock %}
 
 {% block tabs %}
 {% comment %}
@@ -64,19 +64,25 @@
 		</ul>
 		
 		{% block admin_tab%}
-		{% if tribe or group or topic %}
-            {% if user.is_staff %} {# or if user is modetor, skal lige tilføjes. #}
-		    <ul id="admin">
-			    <li class="admin_tab" ><a href="{% firstof tribe.get_absolute_url group.get_absolute_url topic.tribe.get_absolute_url %}admin/"><span>{% trans "Group Admin" %}</span></a></li>
-		    </ul>
-            {% endif %} 
-		{% else %}
-		    {% if user.is_staff %}
+		
+
+		{% if tribe or topic %}
+                
+                {% if user.is_staff or are_moderator %}
+		            <ul id="admin">
+			            <li class="admin_tab" ><a href="{% firstof tribe.get_absolute_url group.get_absolute_url topic.tribe.get_absolute_url %}admin/"><span>
+			            {% trans "Group Admin" %}</span></a></li>
+		            </ul>      
+
+        {% else %} {% if user.is_staff %}
 		    <ul id="admin">
 			    <li class="admin_tab" ><a href="/admin/"><span>{% trans "Admin" %}</span></a></li>
 		    </ul>
-		    {% endif %} 
+       
+                {% endif %} 
+	        {% endif %}	
 		{% endif %}
+
 		
 		{% endblock %}
 	</div>

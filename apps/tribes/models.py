@@ -1,4 +1,6 @@
+#-*- coding:utf-8 -*-
 from datetime import datetime
+
 
 from django.db import models
 from django.conf import settings
@@ -26,13 +28,20 @@ class Tribe(models.Model):
     creator = models.ForeignKey(User, related_name="created_groups", verbose_name=_('creator'))
     created = models.DateTimeField(_('created'), default=datetime.now)
     description = models.TextField(_('description'))
-    members = models.ManyToManyField(User, verbose_name=_('members'))
-    
+
+
     deleted = models.BooleanField(_('deleted'), default=False)
-    
+
     tags = TagField()
+   
+    
     
     photos = generic.GenericRelation(Pool)
+    
+    # Lidt privatliv.. 
+        
+    private = models.BooleanField(_('private'), default=False)
+    member_users = models.ManyToManyField(User, through="TribeMember", verbose_name=_('members'))
     
     # @@@ this might be better as a filter provided by wikiapp
     def wiki_articles(self):
@@ -45,7 +54,16 @@ class Tribe(models.Model):
         return ("tribe_detail", [self.slug])
     get_absolute_url = models.permalink(get_absolute_url)
 
+class TribeMember(models.Model):
+    tribe = models.ForeignKey(Tribe, related_name="members", verbose_name=_('tribe'))
+    user = models.ForeignKey(User, related_name="tribes", verbose_name=_('user'))
+    
+    moderator = models.BooleanField(_('moderator'), default=False)
+    
+    def __unicode__(self):
+        return "%s - %s" % (self.tribe, self.user)
 
+from threadedcomments.models import ThreadedComment
 class Topic(models.Model):
     """
     a discussion topic for the tribe.
@@ -58,7 +76,10 @@ class Topic(models.Model):
     created = models.DateTimeField(_('created'), default=datetime.now)
     modified = models.DateTimeField(_('modified'), default=datetime.now) # topic modified when commented on
     body = models.TextField(_('body'), blank=True)
-    
+    # views = models.IntegerField(_("views"), default=0)
+    # sticky = models.BooleanField(_("sticky?"), blank=True, null=True, default=False) # øverst i forumet. 
+    # closed = models.BooleanField(_("closed?"), blank=True, null=True, default=False) # ikke muligt at skrive indlæg til denne post
+
     tags = TagField()
     
     def __unicode__(self):
@@ -69,15 +90,17 @@ class Topic(models.Model):
     get_absolute_url = models.permalink(get_absolute_url)
     
     class Meta:
+        # ordering = ('sticky', '-modified')
         ordering = ('-modified', )
 
 
-from threadedcomments.models import ThreadedComment
+
 def new_comment(sender, instance, **kwargs):
     if isinstance(instance.content_object, Topic):
         topic = instance.content_object
         topic.modified = datetime.now()
         topic.save()
+
         if notification:
             notification.send([topic.creator], "tribes_topic_response", {"user": instance.user, "topic": topic})
 models.signals.post_save.connect(new_comment, sender=ThreadedComment)

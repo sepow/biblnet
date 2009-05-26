@@ -43,6 +43,7 @@ class Profile(models.Model):
 
     reading_now = models.CharField(_('reading'), max_length=150, null=True, blank=True)
     listening_now = models.CharField(_('listening to'), max_length=150, null=True, blank=True)
+    
     ln_facebook = models.CharField(_('facebook'), max_length=150, null=True, blank=True)
     ln_linkedin = models.CharField(_('linkedin'), max_length=150, null=True, blank=True)
     ln_libratything = models.CharField(_('librarything'), max_length=150, null=True, blank=True)

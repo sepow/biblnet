@@ -46,7 +46,22 @@ FROM tribes_tribe_members
 WHERE tribes_tribe_members.tribe_id = tribes_tribe.id
 """
 
+def has_member(tribe, user):
+    if user.is_authenticated():
+        if TribeMember.objects.filter(tribe=tribe, user=user).count() > 0:
+            return True
+    return False
 
+
+def is_moderator(tribe, user):
+    if user.is_authenticated():
+        is_in_group = TribeMember.objects.filter(tribe=tribe, user=user)
+        if is_in_group:
+            return is_in_group[0].moderator
+    return False
+   
+#tribe_member = TribeMember(tribe=tribe, user=request.user)
+from tribes.models import TribeMember
 def create(request, form_class=TribeForm, template_name="tribes/create.html"):
     if request.user.is_authenticated() and request.method == "POST":
         if request.POST["action"] == "create":
@@ -55,7 +70,9 @@ def create(request, form_class=TribeForm, template_name="tribes/create.html"):
                 tribe = tribe_form.save(commit=False)
                 tribe.creator = request.user
                 tribe.save()
-                tribe.members.add(request.user)
+                tmember = TribeMember(tribe=tribe, user=request.user)
+                tmember.moderator = True
+                tmember.save()
                 tribe.save()
                 if notification:
                     # @@@ might be worth having a shortcut for sending to all users
@@ -100,10 +117,11 @@ def tribes(request, template_name="tribes/tribes.html", order=None):
         tribes = tribes.order_by('-created')
     elif order == 'date_newest':
         tribes = tribes.order_by('created')
+
     context = {
         'tribes': tribes,
         'search_terms': search_terms,
-        'order': order,
+
     }
     return render_to_response(
         template_name,
@@ -116,8 +134,8 @@ def delete(request, slug, redirect_url=None):
     if not redirect_url:
         redirect_url = reverse('tribe_list')
     
-    # @@@ eventually, we'll remove restriction that tribe.creator can't leave tribe but we'll still require tribe.members.all().count() == 1
-    if request.user.is_authenticated() and request.method == "POST" and request.user == tribe.creator and tribe.members.all().count() == 1:
+    # @@@ eventually, we'll remove restriction that tribe.creator can't leave tribe but we'll still require tribe.member_users.all().count() == 1
+    if request.user.is_authenticated() and request.method == "POST" and request.user == tribe.creator and tribe.member_users.all().count() == 1:
         tribe.deleted = True
         tribe.save()
         request.user.message_set.create(message="Tribe %s deleted." % tribe)
@@ -149,15 +167,17 @@ def tribe(request, slug, form_class=TribeUpdateForm,
         else:
             tribe_form = form_class(instance=tribe)
         if request.POST["action"] == "join":
-            tribe.members.add(request.user)
+            tmember = TribeMember(tribe=tribe, user=request.user)
+            tmember.save()
             request.user.message_set.create(message="You have joined the tribe %s" % tribe.name)
             if notification:
                 notification.send([tribe.creator], "tribes_created_new_member", {"user": request.user, "tribe": tribe})
-                notification.send(tribe.members.all(), "tribes_new_member", {"user": request.user, "tribe": tribe})
+                notification.send(tribe.member_users.all(), "tribes_new_member", {"user": request.user, "tribe": tribe})
                 if friends: # @@@ might be worth having a shortcut for sending to all friends
                     notification.send((x['friend'] for x in Friendship.objects.friends_for_user(request.user)), "tribes_friend_joined", {"user": request.user, "tribe": tribe})
         elif request.POST["action"] == "leave":
-            tribe.members.remove(request.user)
+            TribeMember.objects.filter(tribe=tribe, user=request.user).delete()
+
             request.user.message_set.create(message="You have left the tribe %s" % tribe.name)
             if notification:
                 pass # @@@
@@ -173,8 +193,6 @@ def tribe(request, slug, form_class=TribeUpdateForm,
     
     tweets = TweetInstance.objects.tweets_for(tribe).order_by("-sent")
     
-    are_member = request.user in tribe.members.all()
-    
     return render_to_response(template_name, {
         "tribe_form": tribe_form,
         "tribe": tribe,
@@ -183,7 +201,8 @@ def tribe(request, slug, form_class=TribeUpdateForm,
         "articles": articles,
         "tweets": tweets,
         "total_articles": total_articles,
-        "are_member": are_member,
+        "are_member": has_member(tribe, request.user),
+        "are_moderator" : is_moderator(tribe, request.user),
     }, context_instance=RequestContext(request))
 
 def topics(request, slug, form_class=TopicForm,
@@ -193,10 +212,10 @@ def topics(request, slug, form_class=TopicForm,
     if tribe.deleted:
         raise Http404
     
-    are_member = False
-    if request.user.is_authenticated():
-        are_member = request.user in tribe.members.all()
-    
+    are_member = has_member(tribe, request.user),
+    are_moderator =  is_moderator(tribe, request.user),
+
+        
     if request.method == "POST":
         if request.user.is_authenticated():
             if are_member:
@@ -208,7 +227,7 @@ def topics(request, slug, form_class=TopicForm,
                     topic.save()
                     request.user.message_set.create(message="You have started the topic %s" % topic.title)
                     if notification:
-                        notification.send(tribe.members.all(), "tribes_new_topic", {"topic": topic})
+                        notification.send(tribe.member_users.all(), "tribes_new_topic", {"topic": topic})
                     topic_form = form_class() # @@@ is this the right way to reset it?
             else:
                 request.user.message_set.create(message="You are not a member and so cannot start a new topic")
@@ -221,7 +240,8 @@ def topics(request, slug, form_class=TopicForm,
     return render_to_response(template_name, {
         "tribe": tribe,
         "topic_form": topic_form,
-        "are_member": are_member,
+        "are_member": has_member(tribe, request.user),
+        "are_moderator" : is_moderator(tribe, request.user),
     }, context_instance=RequestContext(request))
 
 def topic(request, id, edit=False, template_name="tribes/topic.html"):
@@ -235,9 +255,12 @@ def topic(request, id, edit=False, template_name="tribes/topic.html"):
         topic.body = request.POST["body"]
         topic.save()
         return HttpResponseRedirect(reverse('tribe_topic', args=[topic.id]))
+
     return render_to_response(template_name, {
         'topic': topic,
         'edit': edit,
+        "are_member": has_member(topic.tribe, request.user),
+        "are_moderator" : is_moderator(topic.tribe, request.user),
     }, context_instance=RequestContext(request))
 
 def topic_delete(request, pk):

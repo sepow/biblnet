@@ -16,7 +16,7 @@
 {% block boxtab_id %}id="admin_tab"{% endblock %}
 
 {% block body %}
-        {% ifequal user tribe.creator %}
+        {% if are_moderator %}
 
                 <p><span id="edit-tribe-toggle">{% trans "Edit details" %}</span></p>
                 
@@ -41,5 +41,5 @@
                 <p><b>{% trans "You are not the only member of the tribe so you can't delete the tribe." %}</b></p>
             {% endifequal %}
             
-        {% endifequal %}
+        {% endif %}
 {% endblock %}
