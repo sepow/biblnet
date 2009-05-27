@@ -229,6 +229,7 @@ def topics(request, slug, form_class=TopicForm,
                     if notification:
                         notification.send(tribe.member_users.all(), "tribes_new_topic", {"topic": topic})
                     topic_form = form_class() # @@@ is this the right way to reset it?
+                    return HttpResponseRedirect(topic.get_absolute_url())
             else:
                 request.user.message_set.create(message="You are not a member and so cannot start a new topic")
                 topic_form = form_class()

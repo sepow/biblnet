@@ -10,7 +10,13 @@
 {% block boxtab_id %}id="board_tab"{% endblock %}
 
 {% block body %}
-    <h1>{% trans "Message Board for" %} <a href="{% url tribe_detail tribe.slug %}">{{ tribe.name }}</a></h1>
+
+
+    
+    <h3>{% trans "Message Board for" %} <a href="{% url tribe_detail tribe.slug %}">{{ tribe.name }}</a></h3>
+    {% if are_member %}
+       <a href="create/">{% trans "Create New Topic" %}</a>
+    {% endif %}
     
     {% autopaginate tribe.topics.all %}
     
@@ -26,18 +32,5 @@
 </table>
     
     {% paginate %}
-    
-    {% if are_member %}
-        <h2>{% trans "New Topic" %}</h2>
-        <form class="uniForm" id="tribe_form" method="POST" action="">
-            <fieldset class="inlineLabels">
-                {{ topic_form|as_uni_form }}
-                <div class="form_block">
-                    <input type="hidden" name="next" value="{{ request.path }}" />
-                    <input type="submit" value="{% trans "Create New Topic" %}" /></td>
-                </div>
-            </fieldset>
-        </form>
-    {% endif %}
     
 {% endblock %}
