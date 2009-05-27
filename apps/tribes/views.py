@@ -251,11 +251,12 @@ def topic(request, id, edit=False, template_name="tribes/topic.html"):
         raise Http404
     
     if request.method == "POST" and edit == True and \
-        (request.user == topic.creator or request.user == topic.tribe.creator):
+        (request.user == topic.creator or is_moderator(topic.tribe, request.user)):
         topic.body = request.POST["body"]
         topic.save()
         return HttpResponseRedirect(reverse('tribe_topic', args=[topic.id]))
-
+    topic.views += 1
+    topic.save()
     return render_to_response(template_name, {
         'topic': topic,
         'edit': edit,

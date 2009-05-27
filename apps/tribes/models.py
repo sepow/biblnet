@@ -76,9 +76,9 @@ class Topic(models.Model):
     created = models.DateTimeField(_('created'), default=datetime.now)
     modified = models.DateTimeField(_('modified'), default=datetime.now) # topic modified when commented on
     body = models.TextField(_('body'), blank=True)
-    # views = models.IntegerField(_("views"), default=0)
-    # sticky = models.BooleanField(_("sticky?"), blank=True, null=True, default=False) # øverst i forumet. 
-    # closed = models.BooleanField(_("closed?"), blank=True, null=True, default=False) # ikke muligt at skrive indlæg til denne post
+    views = models.IntegerField(_("views"), default=0)
+    sticky = models.BooleanField(_("sticky?"), blank=True, null=True, default=False) # øverst i forumet. 
+    closed = models.BooleanField(_("closed?"), blank=True, null=True, default=False) # ikke muligt at skrive indlæg til denne post
 
     tags = TagField()
     
@@ -90,13 +90,13 @@ class Topic(models.Model):
     get_absolute_url = models.permalink(get_absolute_url)
     
     class Meta:
-        # ordering = ('sticky', '-modified')
-        ordering = ('-modified', )
+        ordering = ('sticky', '-modified')
+        #ordering = ('-modified', )
 
 
 
 def new_comment(sender, instance, **kwargs):
-    if isinstance(instance.content_object, Topic):
+    if isinstance(instance.content_object, Topic) and not instance.content_object.closed:
         topic = instance.content_object
         topic.modified = datetime.now()
         topic.save()

@@ -15,7 +15,7 @@
     {% autopaginate tribe.topics.all %}
     
 <table class="topics clearfix">
-<tr class="even clearfix"><th></th><th>{% trans "Topic" %}</th><th>{% trans "Started by" %}</th><th>{% trans "Replies" %}</th><th>{% trans "Latest reply" %}</th><th>{% trans "Tags" %}</th></tr>
+<tr class="even clearfix"><th></th><th>{% trans "Topic" %}</th><th>{% trans "Started by" %}</th><th>{% trans "Views" %}</th><th>{% trans "Replies" %}</th><th>{% trans "Latest reply" %}</th><th>{% trans "Tags" %}</th></tr>
 	{% if tribe.topics.all %}
 	{% for topic in tribe.topics.all %}
 		{% show_tribe_topic topic %}

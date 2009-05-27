@@ -8,6 +8,13 @@
 <td><a href="{{ topic.get_absolute_url }}">{{ topic.title }}</a></td>
 <td><div class="avatar">{% avatar topic.creator 40 %}</div><div class="details"><a href="{{ topic.creator.get_profile.get_absolute_url }}">{{ topic.creator }}</a></div></td>
 <td>
+
+		<div class="comment_stats">
+			{{ topic.views }}
+		</div>
+
+</td>
+<td>
 	{% get_comment_count for topic as comment_count %}
 	{% if comment_count %}
 		<div class="comment_stats">
@@ -15,6 +22,9 @@
 		</div>
 	{% endif %}
 </td>
+
+
+
 <td>
 	{% get_comment_count for topic as comment_count %}
 	{% if comment_count %}
