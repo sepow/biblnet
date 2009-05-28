@@ -90,17 +90,16 @@ class Topic(models.Model):
     get_absolute_url = models.permalink(get_absolute_url)
     
     class Meta:
-        ordering = ('sticky', '-modified')
+        ordering = ('-sticky', '-modified')
         #ordering = ('-modified', )
 
 
 
 def new_comment(sender, instance, **kwargs):
-    if isinstance(instance.content_object, Topic) and not instance.content_object.closed:
+    if isinstance(instance.content_object, Topic):
         topic = instance.content_object
         topic.modified = datetime.now()
         topic.save()
-
         if notification:
             notification.send([topic.creator], "tribes_topic_response", {"user": instance.user, "topic": topic})
 models.signals.post_save.connect(new_comment, sender=ThreadedComment)

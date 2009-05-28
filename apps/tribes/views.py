@@ -214,7 +214,7 @@ def topics(request, slug, form_class=TopicForm,
     
     are_member = has_member(tribe, request.user),
     are_moderator =  is_moderator(tribe, request.user),
-
+    topics = tribe.topics.all()
         
     if request.method == "POST":
         if request.user.is_authenticated():
@@ -239,6 +239,7 @@ def topics(request, slug, form_class=TopicForm,
         topic_form = form_class()
     
     return render_to_response(template_name, {
+        "topics": topics,
         "tribe": tribe,
         "topic_form": topic_form,
         "are_member": has_member(tribe, request.user),

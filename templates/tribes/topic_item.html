@@ -6,7 +6,7 @@
 <tr class="{% cycle odd,even %} clearfix">
 <td><img src="/site_media/images/sitegraphics/pin.gif" /></td>
 <td><a href="{{ topic.get_absolute_url }}">{{ topic.title }}</a></td>
-<td><div class="avatar">{% avatar topic.creator 40 %}</div><div class="details"><a href="{{ topic.creator.get_profile.get_absolute_url }}">{{ topic.creator }}</a></div></td>
+<td>{% firstof topic.creator.get_profile.name topic.creator %}</a></div></td>
 <td>
 
 		<div class="comment_stats">

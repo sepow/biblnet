@@ -46,7 +46,6 @@
 	</form>
 	{% else %}
 		{% comments topic %}
-			  <br />  <a href="reply/">Reply</a>
 	{% endif %}
 	<p><a href="{% url tribe_topics topic.tribe.slug %}">&larr; {% trans "Back to Topic List for " %} {{ topic.tribe }}</a></p>
 {% endblock %}
