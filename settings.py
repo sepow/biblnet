@@ -101,7 +101,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.i18n",
     "django.core.context_processors.media",
     "django.core.context_processors.request",
-
+    
     "notification.context_processors.notification",
     "announcements.context_processors.site_wide_announcements",
     "account.context_processors.openid",
@@ -111,6 +111,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "messages.context_processors.inbox",
     "friends_app.context_processors.invitations",
     "misc.context_processors.combined_inbox_count",
+    
 )
 
 COMBINED_INBOX_COUNT_SOURCES = (
@@ -172,7 +173,8 @@ INSTALLED_APPS = (
     'tag_app',
     'debug_toolbar',
     'django.contrib.admin',
-    'django.contrib.admindocs'
+    'django.contrib.admindocs',
+    'sepow',
 
 )
 
