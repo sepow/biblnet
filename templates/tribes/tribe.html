@@ -16,7 +16,9 @@
 {% block boxtab_id %}id="index_tab"{% endblock %}
 
 {% block body %}
-    
+{% load condition_tag %}
+    {% if_can_see tribe user %}
+
     {% if user.is_authenticated %}
         <div class="right_panel">
         <p>
@@ -130,4 +132,8 @@
             
         {% endif %}
     </div>
+
+    {% else %}
+    {% trans "... This is a private group!" %}
+    {% endif_can_see %}	
 {% endblock %}

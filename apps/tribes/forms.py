@@ -41,7 +41,7 @@ class TribeUpdateForm(forms.ModelForm):
     
     class Meta:
         model = Tribe
-        fields = ('name', 'description', 'tags')
+        fields = ('name', 'description', 'tags', 'private')
 
 
 class TopicForm(forms.ModelForm):

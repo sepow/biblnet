@@ -13,6 +13,8 @@
 {% block group %}<li class="members_tab"><a href="{{ topic.tribe.get_absolute_url }}members/"><span>{% trans "Members" %}</span></a></li>{% endblock %}
 
 {% block body %}
+{% load condition_tag %}
+   {% if_can_see topic.tribe user %}
 <h1>{{ topic.title }}</h1>
 	<ul class="responses">
 	<li class="odd clearfix">
@@ -47,5 +49,8 @@
 	{% else %}
 		{% comments topic %}
 	{% endif %}
-	<p><a href="{% url tribe_topics topic.tribe.slug %}">&larr; {% trans "Back to Topic List for " %} {{ topic.tribe }}</a></p>
+	<p><a href="{% url tribe_topics topic.tribe.slug %}">&larr; {% trans "Back to Topic List for " %} {{ topic.tribe }}</a></p>	
+    {% else %}
+    ... This is a private group!
+    {% endif_can_see %}	
 {% endblock %}

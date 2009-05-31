@@ -10,6 +10,8 @@
 {% block boxtab_id %}id="board_tab"{% endblock %}
 
 {% block body %}
+{% load condition_tag %}
+    {% if_can_see tribe user %}
 
 	{% autopaginate topics 10 %}
     
@@ -36,6 +38,9 @@
     </table>
     {% paginate %}
     
-    
-    
+
+
+    {% else %}
+    {% trans "... This is a private group!" %}
+    {% endif_can_see %}	    
 {% endblock %}

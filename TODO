@@ -1,3 +1,7 @@
-# Tribes sender nu to variabler videre, are_moderator og is_member
 
-topic.closed i tribes.models fungere ikke som den skal. 
+Add knapper på topics til sticky og close. 
+skriv tests for privat-tribe funktionallitet. 
+
+Add knapper på tribe medlemmer listen, 'add to moderators' og 'kick from group'  
+
+Opret en standard fælles gruppe.

@@ -77,7 +77,7 @@ class Topic(models.Model):
     modified = models.DateTimeField(_('modified'), default=datetime.now) # topic modified when commented on
     body = models.TextField(_('body'), blank=True)
     views = models.IntegerField(_("views"), default=0)
-    sticky = models.BooleanField(_("sticky?"), blank=True, null=True, default=False) # øverst i forumet. 
+    sticky = models.BooleanField(_("sticky?"), blank=True, null=True, default=False) # skupper tråden op øverst i forumet. 
     closed = models.BooleanField(_("closed?"), blank=True, null=True, default=False) # ikke muligt at skrive indlæg til denne post
 
     tags = TagField()

@@ -4,6 +4,8 @@
 {% load i18n %}
 {% load wiki %}
 {% load wikiurl %}
+{% load condition_tag %}
+        {% if_can_see group user %}
 
 {% block head_title %}{{ article.title }} {% endblock %}
 
@@ -57,3 +59,7 @@
     {% endif %}
 
 {% endblock %}
+
+        {% else %}
+        ... This is a private group!
+        {% endif_can_see %}	

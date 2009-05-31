@@ -6,7 +6,7 @@
 
 {% get_threaded_comment_tree for object as responses %}
 {% autopaginate responses 10 %}
-
+       
 <ul class="responses">
     {% for response in responses %}
         <li class="{% cycle even,odd %} clearfix">
@@ -16,7 +16,7 @@
 		 {% trans "Kl."%} {{ response.date_submitted|time }}<br />
 		({{ response.date_submitted|timesince }} {% trans "ago"%})</div>
 		<div class="details clearboth"><a href="{% url profile_detail response.user.username %}">{{ response.user }}</a></div>
-                {% ifequal user response.user %}
+                {% ifequal user.id object.tribe.creator.id %}
                 <form method="POST" action="{% url tc_comment_delete response.id %}">
                     <input type="submit" value="{% trans "Delete Post" %}" />
                     <input type="hidden" name="next" value="{{ request.path }}" />
@@ -52,6 +52,10 @@
             </div>
         </fieldset>
     </form>
+{% else %} {% if user.is_authenticated %}
+<p>
+{% trans "You need to be a member of this group to reply."%}
+</p>
 {% else %}
     <h3>Please <a href="{% url acct_login %}">Login</a> (or <a href="{% url acct_signup %}">Sign Up</a>) to leave a comment</h3> 
-{% endif %}{% endif %}
+{% endif %}{% endif %}{% endif %}

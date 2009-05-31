@@ -1,6 +1,8 @@
 {% load i18n %}
 {% load wikiurl %}
 {% load uni_form %}
+{% load condition_tag %}
+    {% if_can_see group user %}
 
 {% if search_form %}
     <div id="searchbox">
@@ -14,3 +16,7 @@
         </form>
     </div>
 {% endif %}
+
+    {% else %}
+    ... This is a private group!
+    {% endif_can_see %}	

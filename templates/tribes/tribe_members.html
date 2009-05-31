@@ -16,6 +16,12 @@
 {% block boxtab_id %}id="members_tab"{% endblock %}
 
 {% block body %}
+
+{% load condition_tag %}
+   {% if_can_see tribe user %}
+
+
+        
     
     {% if user.is_authenticated %}
 
@@ -36,4 +42,7 @@
 
     {% endif %}
    
+    {% else %}
+    {% trans "... This is a private group!" %}
+    {% endif_can_see %}	
 {% endblock %}

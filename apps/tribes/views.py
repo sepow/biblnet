@@ -1,3 +1,4 @@
+#-*- coding:utf-8 -*-
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
@@ -76,9 +77,10 @@ def create(request, form_class=TribeForm, template_name="tribes/create.html"):
                 tribe.save()
                 if notification:
                     # @@@ might be worth having a shortcut for sending to all users
-                    notification.send(User.objects.all(), "tribes_new_tribe", {"tribe": tribe}, queue=True)
-                    if friends: # @@@ might be worth having a shortcut for sending to all friends
-                        notification.send((x['friend'] for x in Friendship.objects.friends_for_user(tribe.creator)), "tribes_friend_tribe", {"tribe": tribe})
+                    if not tribe.private:
+                        notification.send(User.objects.all(), "tribes_new_tribe", {"tribe": tribe}, queue=True)
+                        if friends: # @@@ might be worth having a shortcut for sending to all friends
+                            notification.send((x['friend'] for x in Friendship.objects.friends_for_user(tribe.creator)), "tribes_friend_tribe", {"tribe": tribe})
                 #return render_to_response("base.html", {
                 #}, context_instance=RequestContext(request))
                 return HttpResponseRedirect(tribe.get_absolute_url())
@@ -92,7 +94,7 @@ def create(request, form_class=TribeForm, template_name="tribes/create.html"):
     }, context_instance=RequestContext(request))
 
 def tribes(request, template_name="tribes/tribes.html", order=None):
-    tribes = Tribe.objects.filter(deleted=False)
+    tribes = Tribe.objects.filter(deleted=False, private=False) #TODO skal admins kunne se alle tribes her?
     search_terms = request.GET.get('search', '')
     if search_terms:
         tribes = (tribes.filter(name__icontains=search_terms) |
@@ -154,9 +156,18 @@ def tribe(request, slug, form_class=TribeUpdateForm,
         template_name="tribes/tribe.html"):
     tribe = get_object_or_404(Tribe, slug=slug)
     
+
     if tribe.deleted:
         raise Http404
     
+    are_member = has_member(tribe, request.user)
+    
+    if tribe.private and not are_member:
+        if not request.user.is_superuser:
+            resp = render_to_response('403.html', context_instance=RequestContext(request))
+            resp.status_code = 403
+            return resp
+        
     photos = tribe.photos.all()
     
     if request.user.is_authenticated() and request.method == "POST":
@@ -166,7 +177,7 @@ def tribe(request, slug, form_class=TribeUpdateForm,
                 tribe = tribe_form.save()
         else:
             tribe_form = form_class(instance=tribe)
-        if request.POST["action"] == "join":
+        if request.POST["action"] == "join" and not tribe.private:
             tmember = TribeMember(tribe=tribe, user=request.user)
             tmember.save()
             request.user.message_set.create(message="You have joined the tribe %s" % tribe.name)
@@ -184,7 +195,7 @@ def tribe(request, slug, form_class=TribeUpdateForm,
     else:
         tribe_form = form_class(instance=tribe)
     
-    topics = tribe.topics.all()[:5]
+    topics = tribe.topics.all()[:5] #TODO Skal være de topics der er ændret siden sidst. request.user
     articles = Article.objects.filter(
         content_type=get_ct(tribe),
         object_id=tribe.id).order_by('-last_update')
@@ -201,7 +212,7 @@ def tribe(request, slug, form_class=TribeUpdateForm,
         "articles": articles,
         "tweets": tweets,
         "total_articles": total_articles,
-        "are_member": has_member(tribe, request.user),
+        "are_member": are_member,
         "are_moderator" : is_moderator(tribe, request.user),
     }, context_instance=RequestContext(request))
 
@@ -214,11 +225,18 @@ def topics(request, slug, form_class=TopicForm,
     
     are_member = has_member(tribe, request.user),
     are_moderator =  is_moderator(tribe, request.user),
-    topics = tribe.topics.all()
+    
+    if tribe.private and not are_member:
+        if not request.user.is_superuser:
+            resp = render_to_response('403.html', context_instance=RequestContext(request))
+            resp.status_code = 403
+            return resp
+    else:
+        topics = tribe.topics.all()
         
     if request.method == "POST":
         if request.user.is_authenticated():
-            if are_member:
+            if are_member and not tribe.closed:
                 topic_form = form_class(request.POST)
                 if topic_form.is_valid():
                     topic = topic_form.save(commit=False)
@@ -252,6 +270,14 @@ def topic(request, id, edit=False, template_name="tribes/topic.html"):
     if topic.tribe.deleted:
         raise Http404
     
+    are_member = has_member(topic.tribe, request.user)
+    
+    if topic.tribe.private and not are_member:
+        if not request.user.is_superuser:
+            resp = render_to_response('403.html', context_instance=RequestContext(request))
+            resp.status_code = 403
+            return resp
+             
     if request.method == "POST" and edit == True and \
         (request.user == topic.creator or is_moderator(topic.tribe, request.user)):
         topic.body = request.POST["body"]
@@ -262,7 +288,7 @@ def topic(request, id, edit=False, template_name="tribes/topic.html"):
     return render_to_response(template_name, {
         'topic': topic,
         'edit': edit,
-        "are_member": has_member(topic.tribe, request.user),
+        "are_member": are_member,
         "are_moderator" : is_moderator(topic.tribe, request.user),
     }, context_instance=RequestContext(request))
 
@@ -272,10 +298,17 @@ def topic_delete(request, pk):
     if topic.tribe.deleted:
         raise Http404
     
-    if request.method == "POST" and (request.user == topic.creator or \
-        request.user == topic.tribe.creator): 
-        if forums:
-            ThreadedComment.objects.all_for_object(topic).delete()
-        topic.delete()
+    are_member = has_member(topic.tribe, request.user)
+    
+    if topic.tribe.private and not are_member:
+        if not request.user.is_superuser:
+            resp = render_to_response('403.html', context_instance=RequestContext(request))
+            resp.status_code = 403
+            return resp
+            
+        if request.method == "POST" and is_moderator(topic.tribe, request.user): 
+            if forums:
+                ThreadedComment.objects.all_for_object(topic).delete()
+            topic.delete()
     
     return HttpResponseRedirect(request.POST["next"])
