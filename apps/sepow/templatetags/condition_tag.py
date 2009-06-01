@@ -2,6 +2,9 @@ from django import template
 from django.template import NodeList
 from functools import wraps
 import inspect
+from tribes.models import TribeMember
+from datetime import datetime
+register = template.Library()
 
 def condition_tag(func):
     """ Generic conditional templatetag decorator.
@@ -96,12 +99,9 @@ def condition_tag(func):
     return wrapper
 
 
-from django.shortcuts import render_to_response
 
-register = template.Library()
-from tribes.models import TribeMember
+
 @condition_tag
-
 def if_can_see(tribe, user='user'):
 
     def is_member(tribe, user):
@@ -119,3 +119,27 @@ def if_can_see(tribe, user='user'):
 
 register.tag('if_can_see', if_can_see)
 
+
+@condition_tag
+def if_can_edit_topic(topic='topic', user='user'):
+    ''' Determins if the user can edit a topic.
+        
+        A user can always edit a topic if she is the creator of the tribe.
+        
+        Other users have got 20 minutes from they posted the topic.
+    '''
+
+    if topic.tribe.creator.id == user.id:
+        return True
+    if topic.creator.id == user.id:
+        created = topic.created
+        now = datetime.now()
+        time_since = now - created
+        if time_since.seconds > 60*15:
+            return False
+        else: 
+            return True
+            
+    return False
+    
+register.tag('if_can_edit_topic', if_can_edit_topic)

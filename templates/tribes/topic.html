@@ -24,7 +24,7 @@
 			{% trans "Kl." %} {{ topic.created|time }}<br />
 			({{ topic.created|timesince }} {% trans "ago"%})</div>
 			<div class="details clearboth"><a href="{% url profile_detail topic.creator.username %}">{{ topic.creator }}</a></div>
-			{% ifequal user topic.creator %}
+			{% ifequal user topic.tribe.creator %}
 			<form method="POST" action="{% url tc_comment_delete topic.id %}">
 				<input type="submit" value="{% trans "Delete Topic" %}" />
 				<input type="hidden" name="next" value="{% url tribe_topics topic.tribe.slug %}" />
@@ -34,9 +34,9 @@
 		<div class="bulk">
 			<div class="body">{{ topic.body|urlize|linebreaks }}</div>
 			<p>{% show_tags_for topic %}</p>
-			{% ifequal user topic.creator %}
-			{% if not edit %}<p><a href="{{ request.path }}edit/">{% trans "Edit post"%}</a></p>{% endif %}
-			{% endifequal %}
+			{% if_can_edit_topic %}
+			    {% if not edit %}<p><a href="{{ request.path }}edit/">{% trans "Edit post"%}</a></p>{% endif %}
+			{% endif_can_edit_topic %}
 		</div>
 	</li>
 	{% if edit %}

@@ -16,9 +16,15 @@
 		 {% trans "Kl."%} {{ response.date_submitted|time }}<br />
 		({{ response.date_submitted|timesince }} {% trans "ago"%})</div>
 		<div class="details clearboth"><a href="{% url profile_detail response.user.username %}">{{ response.user }}</a></div>
-                {% ifequal user.id object.tribe.creator.id %}
+                {% ifequal user.id object.tribe.creator.id %} {# if_can_delete_topic topic user #}
                 <form method="POST" action="{% url tc_comment_delete response.id %}">
                     <input type="submit" value="{% trans "Delete Post" %}" />
+                    <input type="hidden" name="next" value="{{ request.path }}" />
+                </form>
+                {% endifequal %}
+                {% ifequal user.id object.creator.id %} {# if_can_edit_comment comment user #}
+                <form method="POST" action="{% url tc_comment_delete response.id %}">
+                    <input type="submit" value="{% trans "Edit Post" %}" />
                     <input type="hidden" name="next" value="{{ request.path }}" />
                 </form>
                 {% endifequal %}

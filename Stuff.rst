@@ -26,13 +26,14 @@ Creator kan..
 * En Tribes creator kan gøre en tribe privat, og omvendt. 
 * En Tribes creator kan gøre andre medlemmer til moderators.
 * En Tribes creator kan slette gruppen.
+* En Tribes creator kan edite tråde og comments.
 * En Tribes creator kan slette topics og tråde.
 * En Tribes creator kan smide alle ud af gruppen.
 
 Moderators kan..
 ^^^^^^^^^^^^^^^^
 * Moderators kan gøre tråde sticky og lukke tråde.
-* Moderators kan indvitere medlemmer til gruppen. 
+* Moderators kan invitere medlemmer til gruppen. 
 * Moderators kan smide almindelige medlemmer ud af gruppen
 
 wiki
