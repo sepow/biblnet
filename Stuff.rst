@@ -11,10 +11,13 @@ tribe
 -----
 
 * En tribe kan være enten privat, eller public. 
+
 * Hvis en tribe er public kan *alle* læse *alt* indholdet.
 * Alle autorisrede users kan blive medlemmer.
 
-* Alle medlemmer af en Tribe kan oprette indhold (topic, comment, dokument, wikiside).
+Medlemmer kan...
+^^^^^^^^^^^^^^^^
+* Alle medlemmer af en Tribe kan oprette indhold (topic, comment, dokument, wikiside, tag).
 
 Creator kan.. 
 ^^^^^^^^^^^^^

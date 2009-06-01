@@ -236,7 +236,7 @@ def topics(request, slug, form_class=TopicForm,
         
     if request.method == "POST":
         if request.user.is_authenticated():
-            if are_member and not tribe.closed:
+            if are_member:
                 topic_form = form_class(request.POST)
                 if topic_form.is_valid():
                     topic = topic_form.save(commit=False)
