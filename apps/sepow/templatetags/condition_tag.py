@@ -103,7 +103,6 @@ def condition_tag(func):
 
 @condition_tag
 def if_can_see(tribe, user='user'):
-
     def is_member(tribe, user):
         if user.is_authenticated():
             if TribeMember.objects.filter(tribe=tribe, user=user).count() > 0:

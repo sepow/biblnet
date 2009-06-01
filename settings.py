@@ -10,7 +10,7 @@ PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 # tells Pinax to use the default theme
 PINAX_THEME = 'default'
 
-
+TIME_FORMAT = 'H:i'
 DEFAULT_MAX_COMMENT_LENGTH = 6000
 
 DEBUG = True

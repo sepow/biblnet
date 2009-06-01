@@ -6,11 +6,13 @@
 {% load pagination_tags %}
 {% load humanize %}
 {% load condition_tag %}
-    {% if_can_see group user %}
 
 {% block head_title %}Wiki for {{ group.name }}{% endblock %}
 
 {% block body %}
+
+    {% if_can_see group user %}
+    
     {% wiki_title group %}
 
     {% include "wiki/searchbox.html" %}
@@ -32,9 +34,9 @@
     {% if allow_write %}
         <p>Start a <a href="{% wikiurl edit group new_article %}">NewArticle</a>.</p>
     {% endif %}
-
-{% endblock %}
-
+    
     {% else %}
     ... This is a private group!
     {% endif_can_see %}	
+{% endblock %}
+

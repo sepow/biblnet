@@ -42,7 +42,8 @@ urlpatterns = \
         url(r'^tribe/([-\w]+)/topics/$', 'tribes.views.topics', name="tribe_topics"),
         url(r'^tribe/([-\w]+)/topics/create/$', 'tribes.views.topics', {"template_name":"tribes/create_topic.html"}, name="tribe_create_topic"),
         url(r'^topic/(\d+)/edit/$', 'tribes.views.topic', kwargs={"edit": True}, name="tribe_topic_edit"),
-        url(r'^topic/(\d+)/delete/$', 'tribes.views.topic_delete', name="tribe_topic_delete"), #TODO virker ikke... 
+        url(r'^topic/(\d+)/delete/$', 'tribes.views.topic_delete', name="tribe_topic_delete"), 
+        url(r'^topic/(\d+)/moderate/', 'tribes.views.topic_moderate', name="tribe_topic_moderate"), 
         url(r'^topic/(\d+)/reply/$', 'tribes.views.topic', {"template_name":"tribes/add_post.html"} , name="tribe_reply"),
         # TODO  url(r'^topic/(\d+)/move/$',
         url(r'^topic/(\d+)/$', 'tribes.views.topic', name="tribe_topic"),

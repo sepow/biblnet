@@ -7,6 +7,7 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.conf import settings
+from tribes.models import TribeMember
 
 if "notification" in settings.INSTALLED_APPS:
     from notification import models as notification
@@ -61,8 +62,7 @@ def is_moderator(tribe, user):
             return is_in_group[0].moderator
     return False
    
-#tribe_member = TribeMember(tribe=tribe, user=request.user)
-from tribes.models import TribeMember
+
 def create(request, form_class=TribeForm, template_name="tribes/create.html"):
     if request.user.is_authenticated() and request.method == "POST":
         if request.POST["action"] == "create":
@@ -301,14 +301,47 @@ def topic_delete(request, pk):
     are_member = has_member(topic.tribe, request.user)
     
     if topic.tribe.private and not are_member:
+        
         if not request.user.is_superuser:
             resp = render_to_response('403.html', context_instance=RequestContext(request))
             resp.status_code = 403
             return resp
-            
-        if request.method == "POST" and is_moderator(topic.tribe, request.user): 
-            if forums:
-                ThreadedComment.objects.all_for_object(topic).delete()
-            topic.delete()
-    
+       
+    if request.method == "POST" and topic.creator == request.user: 
+        if forums:
+            ThreadedComment.objects.all_for_object(topic).delete()
+        topic.delete()
+        
     return HttpResponseRedirect(request.POST["next"])
+
+def topic_moderate(request, pk):
+    topic = Topic.objects.get(pk=pk)
+    
+    if topic.tribe.deleted:
+        raise Http404
+    are_member = has_member(topic.tribe, request.user)
+    
+    if topic.tribe.private and not are_member:
+        if not request.user.is_superuser:
+            resp = render_to_response('403.html', context_instance=RequestContext(request))
+            resp.status_code = 403
+            return resp
+
+        
+    if request.method == "POST" and is_moderator(topic.tribe, request.user):
+        if 'sticky' in request.POST:
+            if topic.sticky == True:
+                topic.sticky = False
+            else: 
+                topic.sticky = True
+            topic.save()
+            
+        elif 'close' in request.POST:
+            if topic.closed == True:
+                topic.closed = False
+            else: 
+                topic.closed = True
+            topic.save()          
+    return HttpResponseRedirect(request.POST["next"])
+
+

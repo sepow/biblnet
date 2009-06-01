@@ -24,12 +24,25 @@
 			{% trans "Kl." %} {{ topic.created|time }}<br />
 			({{ topic.created|timesince }} {% trans "ago"%})</div>
 			<div class="details clearboth"><a href="{% url profile_detail topic.creator.username %}">{{ topic.creator }}</a></div>
+			
 			{% ifequal user topic.tribe.creator %}
-			<form method="POST" action="{% url tc_comment_delete topic.id %}">
+			<form method="POST" action="{% url tribe_topic_delete topic.id %}">
 				<input type="submit" value="{% trans "Delete Topic" %}" />
 				<input type="hidden" name="next" value="{% url tribe_topics topic.tribe.slug %}" />
 			</form>
 			{% endifequal %}
+			{% if are_moderator %}
+			<form method="POST" action="{% url tribe_topic_moderate topic.id %}">
+				<input type="submit" value={% if topic.sticky %}"{% trans "unSticky topic" %}"{% else %}"{% trans "Sticky topic" %}"{% endif%} />
+				<input type="hidden" name="sticky" value="" />
+				<input type="hidden" name="next" value="{% url tribe_topics topic.tribe.slug %}" />
+			</form>
+			<form method="POST" action="{% url tribe_topic_moderate topic.id %}">
+				<input type="submit" value={% if topic.closed %}"{% trans "Reopen topic" %}"{% else %}"{% trans "Close topic" %}"{% endif%} />
+				<input type="hidden" name="close" value="" />
+				<input type="hidden" name="next" value="{% url tribe_topics topic.tribe.slug %}" />
+			</form>
+			{% endif %}
 		</div>
 		<div class="bulk">
 			<div class="body">{{ topic.body|urlize|linebreaks }}</div>
