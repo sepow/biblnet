@@ -23,9 +23,9 @@
                 </form>
                 {% endifequal %}
                 {% ifequal user.id object.creator.id %} {# if_can_edit_comment comment user #}
-                <form method="POST" action="{% url tc_comment_delete response.id %}">
+                <form method="POST" action="{% url tc_comment_edit response.id %}">
                     <input type="submit" value="{% trans "Edit Post" %}" />
-                    <input type="hidden" name="next" value="{{ request.path }}" />
+                    <input type="hidden" name="next" value="{{ request.path }}" /> {# #TODO få teksten med til edit siden. #} 
                 </form>
                 {% endifequal %}
             </div>
