@@ -19,6 +19,11 @@ TEMPLATE_DEBUG = DEBUG
 # tells Pinax to serve media through django.views.static.serve.
 SERVE_MEDIA = DEBUG
 
+AUTHENTICATION_BACKENDS = (
+    'sepow.profilestuff.CaseInsensitiveModelBackend',
+)
+
+
 ADMINS = (
     # ('Your Name', 'your_email@domain.com'),
 )

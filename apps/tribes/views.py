@@ -242,7 +242,7 @@ def topics(request, slug, form_class=TopicForm,
                     topic = topic_form.save(commit=False)
                     topic.tribe = tribe
                     topic.creator = request.user
-                    topic.save()
+                    topic.save()        
                     request.user.message_set.create(message="You have started the topic %s" % topic.title)
                     if notification:
                         notification.send(tribe.member_users.all(), "tribes_new_topic", {"topic": topic})
