@@ -17,7 +17,7 @@
     
     <h3>{% trans "Message Board for" %} <a href="{% url tribe_detail tribe.slug %}">{{ tribe.name }}</a></h3>
     {% if are_member %}
-       <a href="create/">{% trans "Create New Topic" %}</a>
+       <a href="{% url tribe_create_topic tribe.slug %}">{% trans "Start New Topic" %}</a>
     {% endif %}
     
     
@@ -32,7 +32,8 @@
 	    {% endfor %}
 	
 	    {% else %}
-		    <tr class="odd clearfix"><td colspan=6>{% trans "There are no topics yet..." %}</td></tr>
+                {% url tribe_create_topic tribe.slug as new_topic_url %}
+		<tr class="odd clearfix"><td colspan=7>{% blocktrans %}There are no topics yet - <a href="{{ new_topic_url }}">start one...</a>{% endblocktrans %}</td></tr>
 	    {% endif %}
 	
     </table>

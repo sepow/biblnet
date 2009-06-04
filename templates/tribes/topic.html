@@ -14,56 +14,63 @@
 
 {% block body %}
 {% load condition_tag %}
-   {% if_can_see topic.tribe user %}
+
+{% if_can_see topic.tribe user %}
 <h1>{{ topic.title }}</h1>
-	<ul class="responses">
-	<li class="odd clearfix">
+<table class="topics clearfix">
+	<tr class="even clearfix"><th>{% trans "Written by" %}</th><th>{% trans "Posts" %}</th></tr>
+	<tr class="odd clearfix">
+		<td>
 		<div class="meta">
 			<div class="avatar"><a href="{% url profile_detail topic.creator.username %}">{% avatar topic.creator 60 %}</a></div>
 			<div class="created">{{ topic.created|date }}<br />
-			{% trans "Kl." %} {{ topic.created|time }}<br />
-			({{ topic.created|timesince }} {% trans "ago"%})</div>
+				{% trans "Kl." %} {{ topic.created|time }}<br />
+				({{ topic.created|timesince }} {% trans "ago"%})
+			</div>
 			<div class="details clearboth"><a href="{% url profile_detail topic.creator.username %}">{{ topic.creator }}</a></div>
 			
 			{% ifequal user topic.tribe.creator %}
-			<form method="POST" action="{% url tribe_topic_delete topic.id %}">
-				<input type="submit" value="{% trans "Delete Topic" %}" />
-				<input type="hidden" name="next" value="{% url tribe_topics topic.tribe.slug %}" />
-			</form>
+				<form method="POST" action="{% url tribe_topic_delete topic.id %}">
+					<input type="submit" value="{% trans "Delete Topic" %}" />
+					<input type="hidden" name="next" value="{% url tribe_topics topic.tribe.slug %}" />
+				</form>
 			{% endifequal %}
 			{% if are_moderator %}
-			<form method="POST" action="{% url tribe_topic_moderate topic.id %}">
-				<input type="submit" value={% if topic.sticky %}"{% trans "unSticky topic" %}"{% else %}"{% trans "Sticky topic" %}"{% endif%} />
-				<input type="hidden" name="sticky" value="" />
-				<input type="hidden" name="next" value="{% url tribe_topics topic.tribe.slug %}" />
-			</form>
-			<form method="POST" action="{% url tribe_topic_moderate topic.id %}">
-				<input type="submit" value={% if topic.closed %}"{% trans "Reopen topic" %}"{% else %}"{% trans "Close topic" %}"{% endif%} />
-				<input type="hidden" name="close" value="" />
-				<input type="hidden" name="next" value="{% url tribe_topics topic.tribe.slug %}" />
-			</form>
+				<form method="POST" action="{% url tribe_topic_moderate topic.id %}">
+					<input type="submit" value={% if topic.sticky %}"{% trans "unSticky topic" %}"{% else %}"{% trans "Sticky topic" %}"{% endif%} />
+					<input type="hidden" name="sticky" value="" />
+					<input type="hidden" name="next" value="{% url tribe_topics topic.tribe.slug %}" />
+				</form>
+				<form method="POST" action="{% url tribe_topic_moderate topic.id %}">
+					<input type="submit" value={% if topic.closed %}"{% trans "Reopen topic" %}"{% else %}"{% trans "Close topic" %}"{% endif%} />
+					<input type="hidden" name="close" value="" />
+					<input type="hidden" name="next" value="{% url tribe_topics topic.tribe.slug %}" />
+				</form>
 			{% endif %}
 		</div>
-		<div class="bulk">
+		</td>
+		<td>
+		<div>
+			{% if edit %}
+			<form method="post" action="{{ request.path }}">
+				<textarea id="id_body" rows="10" cols="40" name="body">{{ topic.body }}</textarea>
+				<input type="submit" name="edit" value="Edit!" />
+			</form>
+			{% else %}
 			<div class="body">{{ topic.body|urlize|linebreaks }}</div>
 			<p>{% show_tags_for topic %}</p>
 			{% if_can_edit_topic %}
 			    {% if not edit %}<p><a href="{{ request.path }}edit/">{% trans "Edit post"%}</a></p>{% endif %}
 			{% endif_can_edit_topic %}
+			{% endif %}
 		</div>
-	</li>
-	{% if edit %}
-	</ul>
-	<h2>Edit {{ topic.name }}</h2>
-	<form method="post" action="{{ request.path }}">
-		<textarea id="id_body" rows="10" cols="40" name="body">{{ topic.body }}</textarea>
-		<input type="submit" name="edit" value="Edit!" />
-	</form>
-	{% else %}
-		{% comments topic %}
-	{% endif %}
+		</td>
+	</tr>
+	{% comments topic %}
+</table>
+
 	<p><a href="{% url tribe_topics topic.tribe.slug %}">&larr; {% trans "Back to Topic List for " %} {{ topic.tribe }}</a></p>	
     {% else %}
-    ... This is a private group!
-    {% endif_can_see %}	
+    {% trans "... This is a private group!" %}
+    {% endif_can_see %}
 {% endblock %}

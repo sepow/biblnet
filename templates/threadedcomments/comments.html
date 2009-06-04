@@ -6,10 +6,10 @@
 
 {% get_threaded_comment_tree for object as responses %}
 {% autopaginate responses 10 %}
-       
-<ul class="responses">
+
     {% for response in responses %}
-        <li class="{% cycle even,odd %} clearfix">
+        <tr class="{% cycle even,odd %} clearfix">
+		<td>
             <div class="meta">
                 <div class="avatar"><a href="{% url profile_detail response.user.username %}">{% avatar response.user 60 %}</a></div>
 		<div class="created">{{ response.date_submitted|date }}<br />
@@ -22,30 +22,32 @@
                     <input type="hidden" name="next" value="{{ request.path }}" />
                 </form>
                 {% endifequal %}
-                {% ifequal user.id object.creator.id %} {# if_can_edit_comment comment user #}
-                <form method="POST" action="{% url tc_comment_edit response.id %}">
-                    <input type="submit" value="{% trans "Edit Post" %}" />
-                    <input type="hidden" name="next" value="{{ request.path }}" /> {# #TODO få teksten med til edit siden. #} 
-                </form>
-                {% endifequal %}
             </div>
-            <div class="bulk">
+		</td>
+		<td>
+            <div>
                 <div class="body">{{ response.comment|urlize|linebreaks }}</div>
-{#                <a href="javascript:toggle_comment_form({{ response.id }})">{% trans "Reply to This Post" %}</a>#}
-{#                <form class="hidden" method="POST" action="{% get_comment_url object response %}" id="comment_form_{{ response.id }}">#}
-{#                    <table><tr><td><textarea id="id_comment" rows="10" cols="40" name="comment"></textarea></td></tr>#}
-{#                    <tr><td><input type="submit" value="{% trans "Post Response" %}" /></td></tr></table>#}
-{#                    <input type="hidden" name="next" value="{{ request.path }}" />#}
-{#                </form>#}
-            </div>
-        </li>
+		{% ifequal user.id object.creator.id %} {# if_can_edit_comment comment user #}
+		<p><a href="{{ request.path }}edit/">{% trans "Edit post"%}</a></p> {# #TODO få teksten med til edit siden. #}
+                {% endifequal %}
+           </div>
+		</td>
+        </tr>
     {% endfor %}
-</ul>
 
 {% paginate %}
-{% if object.closed%}
-    This topic has been closed. 
+
+{% if object.closed %}
+    {% trans "This topic has been closed." %}
 {% else %}{% if are_member %}
+<tr>
+<td>
+            <div class="meta">
+                <div class="avatar"><a href="{% url profile_detail user %}">{% avatar user 60 %}</a></div>
+		<div class="details clearboth"><a href="{% url profile_detail user %}">{{ user }}</a></div>
+            </div>
+</td>
+<td>
     <form class="uniForm" method="POST" action="{% get_comment_url object %}">
         <fieldset class="inlineLabels">
             <div class="ctrlHolder">
@@ -58,6 +60,8 @@
             </div>
         </fieldset>
     </form>
+</td>
+</tr>
 {% else %} {% if user.is_authenticated %}
 <p>
 {% trans "You need to be a member of this group to reply."%}
