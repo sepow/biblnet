@@ -4,13 +4,13 @@
 {% load wiki %}
 {% load wikiurl %}
 {% load extra_tagging_tags %}
-{% load condition_tag %}
-    {% if_can_see group user %}
+
 
 {% block head_title %}Wiki for {{ group.name }} {% endblock %}
 
 {% block body %}
-
+{% load condition_tag %}
+    {% if_can_see group user %}
     {% if allow_write or article.id %}
     <div class="right_panel">
         <div class="tribes">
@@ -57,9 +57,10 @@
             </form>
         {% endif %}
     {% endif %}
-{% endblock %}
-
 
     {% else %}
     ... This is a private group!
     {% endif_can_see %}	
+{% endblock %}
+
+

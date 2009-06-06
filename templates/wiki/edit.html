@@ -5,11 +5,12 @@
 {% load wiki %}
 {% load wikiurl %}
 {% load condition_tag %}
-    {% if_can_see group user %}
+    
 
 {% block head_title %}Wiki for {{ group.name }} {% endblock %}
 
 {% block body %}
+{% if_can_see group user %}
     
     {% wiki_title group %}
     
@@ -23,8 +24,9 @@
             </div>
         </fieldset>
     </form>
+{% else %}
+    ... This is a private group!
+{% endif_can_see %}	
 {% endblock %}
 
-    {% else %}
-    ... This is a private group!
-    {% endif_can_see %}	
+

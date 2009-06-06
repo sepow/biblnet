@@ -1,10 +1,11 @@
 {% load i18n %}
 {% load wikiurl %}
 {% load uni_form %}
-{% load condition_tag %}
-    {% if_can_see group user %}
+
 
 {% if search_form %}
+{% load condition_tag %}
+    {% if_can_see group user %}
     <div id="searchbox">
         <form class="uniForm" method="post" action="{% wikiurl search group %}">
             <fieldset class="inlineLabels">
@@ -15,8 +16,9 @@
             </fieldset>
         </form>
     </div>
-{% endif %}
-
-    {% else %}
+{% else %}
     ... This is a private group!
     {% endif_can_see %}	
+{% endif %}
+
+

@@ -33,7 +33,7 @@ class BiblnetSignupForm(forms.Form):
     username = forms.CharField(label=_("Username"), max_length=30, widget=forms.TextInput())
     password1 = forms.CharField(label=_("Password"), widget=forms.PasswordInput(render_value=False))
     password2 = forms.CharField(label=_("Password (again)"), widget=forms.PasswordInput(render_value=False))
-    affiliation = forms.ModelChoiceField(queryset=Affiliation.objects.all(), empty_label=_("(Pick your affiliation)"))
+    affiliation = forms.ModelChoiceField(queryset=Affiliation.objects.all(), empty_label=_("(Pick your affiliation)")) #clean?
     confirmation_key = forms.CharField(max_length=40, required=False, widget=forms.HiddenInput())
 
     def clean_username(self):

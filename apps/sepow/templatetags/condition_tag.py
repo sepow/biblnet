@@ -103,12 +103,13 @@ def condition_tag(func):
 
 @condition_tag
 def if_can_see(tribe, user='user'):
+
     def is_member(tribe, user):
         if user.is_authenticated():
             if TribeMember.objects.filter(tribe=tribe, user=user).count() > 0:
                 return True
         return False
-    
+        
     if tribe.private and is_member(tribe, user):
         return True
     elif not tribe.private:
@@ -121,7 +122,7 @@ def if_can_see(tribe, user='user'):
 
 @condition_tag
 def if_can_edit_topic(topic='topic', user='user'):
-    ''' Determins if the user can edit a topic.
+    ''' Determin if a user can edit a topic.
         
         A user can always edit a topic if she is the creator of the tribe.
         
