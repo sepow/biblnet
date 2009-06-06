@@ -23,7 +23,9 @@
 	
     {% if user.tribe_set.all %}
         {% for tribe in user.tribe_set.all %}
+            {% if not tribe.deleted %}
             <img src="{{ MEDIA_URL }}images/sitegraphics/gruppe.gif"/> <a href="{% url tribe_detail tribe.slug %}">{{ tribe.name }}</a><br />
+            {% endif %}
         {% endfor %}
     {% else %}
         {% url tribe_list as tribe_url %}

@@ -2,10 +2,11 @@ from django.conf.urls.defaults import *
 from django.conf import settings
 from django.views.generic.simple import direct_to_template
 from django.contrib import admin
-
+from sepow.forms import BiblnetSignupForm
 from account.openid_consumer import PinaxConsumer
-
+from profiles.models import Affiliation
 import os.path
+
 
 from microblogging.feeds import TweetFeedAll, TweetFeedUser, TweetFeedUserWithFriends
 tweets_feed_dict = {"feed_dict": {
@@ -24,13 +25,16 @@ from bookmarks.feeds import BookmarkFeed
 bookmarks_feed_dict = {"feed_dict": { '': BookmarkFeed }}
 
 admin.autodiscover()
-from profiles.models import Affiliation
+
 urlpatterns = patterns('',
     url(r'^$', direct_to_template, {"template": "homepage.html"}, name="home"),
     (r'^affiliations/$', 'django.views.generic.list_detail.object_list', {'queryset': Affiliation.objects.all()}, 'affiliation_list', ),
     
     (r'^about/', include('about.urls')),
+    url(r'^captcha/', include('captcha.urls')),
+    url(r'^account/signup/$', 'account.views.signup', { "form_class" : BiblnetSignupForm, } ,name="acct_signup"),
     (r'^account/', include('account.urls')),
+    
     (r'^openid/(.*)', PinaxConsumer()),
     (r'^bbauth/', include('bbauth.urls')),
     (r'^authsub/', include('authsub.urls')),
@@ -59,6 +63,7 @@ urlpatterns = patterns('',
     (r'^feeds/tweets/(.*)/$', 'django.contrib.syndication.views.feed', tweets_feed_dict),
     (r'^feeds/posts/(.*)/$', 'django.contrib.syndication.views.feed', blogs_feed_dict),
     (r'^feeds/bookmarks/(.*)/?$', 'django.contrib.syndication.views.feed', bookmarks_feed_dict),
+    
 )
 
 ## @@@ for now, we'll use friends_app to glue this stuff together

@@ -7,4 +7,11 @@ skriv tests for privat-tribe funktionallitet.
 
 Add knapper på tribe medlemmer listen, 'add to moderators' og 'kick from group'  
 
-Opret en standard fælles gruppe.
+
+Serveren:
+    Opret cronjob med for emails
+
+Ved syncdb:
+    Opret fælles Tribe.
+    Opret affiliations
+    
