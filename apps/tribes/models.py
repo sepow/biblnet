@@ -61,7 +61,7 @@ class TribeMember(models.Model):
     moderator = models.BooleanField(_('moderator'), default=False)
     
     def __unicode__(self):
-        return "%s - %s" % (self.tribe, self.user)
+        return u"%s - %s" % (self.tribe, self.user)
 
 from threadedcomments.models import ThreadedComment
 class Topic(models.Model):

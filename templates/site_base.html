@@ -5,6 +5,8 @@
 {% load svn_app_version %}
 {% load analytics %}
 {% load avatar_tags %}
+{% load handy_shorts %}
+
 
 {% block extra_head_base %}
     <link rel="stylesheet" href="{{ MEDIA_URL }}css/site_tabs.css" />
@@ -47,10 +49,10 @@
 {% block boxtab %}
 	<div id="boxtab">
 		<ul>
-			<li class="index_tab"><a href="{% firstof tribe.get_absolute_url group.get_absolute_url topic.tribe.get_absolute_url "#" %}"><span>{% trans "Index" %}</span></a></li>
-			<li class="board_tab"><a href="{% firstof tribe.get_absolute_url group.get_absolute_url topic.tribe.get_absolute_url "#" %}topics/"><span>{% trans "Message board" %}</span></a></li>
-			<li class="wiki_tab"><a href="{% firstof tribe.get_absolute_url group.get_absolute_url topic.tribe.get_absolute_url "#" %}wiki/"><span>{% trans "Wiki" %}</span></a></li>
-			<li class="docs_tab"><a href="{% firstof tribe.get_absolute_url group.get_absolute_url topic.tribe.get_absolute_url "#" %}"><span>{% trans "Knowledge Bank" %}</span></a></li>
+			<li class="index_tab"><a href="{% firstof tribe.get_absolute_url group.get_absolute_url topic.tribe.get_absolute_url affil_tribe %}"><span>{% trans "Index" %}</span></a></li>
+			<li class="board_tab"><a href="{% firstof tribe.get_absolute_url group.get_absolute_url topic.tribe.get_absolute_url affil_tribe %}topics/"><span>{% trans "Message board" %}</span></a></li>
+			<li class="wiki_tab"><a href="{% firstof tribe.get_absolute_url group.get_absolute_url topic.tribe.get_absolute_url affil_tribe %}wiki/"><span>{% trans "Wiki" %}</span></a></li>
+			<li class="docs_tab"><a href="{% firstof tribe.get_absolute_url group.get_absolute_url topic.tribe.get_absolute_url affil_tribe %}"><span>{% trans "Knowledge Bank" %}</span></a></li>
 			{% block group %}<li class="members_tab"><a href="{% url tribe_list %}"><span>{% trans "Groups" %}</span></a></li>{% endblock %}
 		</ul>
 		

@@ -12,7 +12,7 @@ PINAX_THEME = 'default'
 
 TIME_FORMAT = 'H:i'
 DEFAULT_MAX_COMMENT_LENGTH = 6000
-
+DEFAULT_CHARSET = "utf-8"
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -117,6 +117,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "messages.context_processors.inbox",
     "friends_app.context_processors.invitations",
     "misc.context_processors.combined_inbox_count",
+    "sepow.context_processors.affil_tribe",
     
 )
 

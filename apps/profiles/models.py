@@ -4,15 +4,20 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
+from tribes.models import Tribe
 
 from timezones.fields import TimeZoneField
 class Affiliation(models.Model):
-
-# der skal kun være de 7 whatever antal objekter. 
+    ''' An affiliation describes a users affiliation with one of the outside 
+        groups. This class is used to show an icon depending on which affil you
+        belond to.
+    '''
 
     affiliation = models.CharField(_('affiliation'), max_length=40, null=True)
-    icon = models.ImageField(upload_to="uploads/affiliateicons")
+    icon = models.ImageField(upload_to="images/affiliateicons")
     slug = models.SlugField(max_length=10, null=True)
+    tribe = models.OneToOneField(Tribe, primary_key=True)
+    
     def __unicode__(self):
         return self.affiliation
 
