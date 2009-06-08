@@ -125,18 +125,18 @@ img {
 	overflow:hidden;
 }
 
-#columntop {
+.columntop {
 	margin-top: 10px;
 	height:15px;
 	background-image:url(images/sitegraphics/coltop.gif);
 }
 
-#columnmid {
+.columnmid {
 	background-image:url(images/sitegraphics/colbackground.gif);
 	padding: 0 .4em 0 .4em;
 }
 
-#columnbottom {
+.columnbottom {
 	height:15px;
 	background-image:url(images/sitegraphics/colbottom.gif);
 }
