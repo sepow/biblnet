@@ -202,12 +202,16 @@ form.signup input[type="submit"], form.login input[type="submit"] {
     font-size: 14pt;
 }
 input[type="text"], input[type="password"], textarea {
-    padding: 3px;
+/*    padding: 3px;
     margin: 3px;
     border: solid 1px #C6C6C6;
     border-bottom: solid 1px #E3E3E3;
     color: #666;
-    font-size: 12pt;
+    font-size: 12pt;*/
+    padding: 3px;
+    margin: 3px;
+    border: none;
+    border-bottom: none;
     background: #F3F3F3 url('/site_media/pinax/images/form-shadow.png') left top repeat-x;
 }
 /*
@@ -575,21 +579,26 @@ div.tweet .reply {
 }
 .pagination .disabled {
     padding: 3px;
-    color: #999;
-    border: 1px solid #CCC;
+    color: #DFDFDF;
+    border: 1px solid #0E3037;
 }
 .pagination .current {
     padding: 3px;
-    color: #FFF;
-    border: 1px solid #9BC;
-    background: #9BC;
+    color: #DFDFDF;
+    border: 1px solid #0E3037;
+    background: #0E3037;
 }
 .pagination a {
     padding: 3px;
     text-decoration: none;
-    border: 1px solid #9BC;
-    color: #444;
-    background: #DEF;
+    border: 1px solid #0E3037;
+    color: #0E3037;
+    background: #98AAAE;
+}
+.pagination a:hover {
+    border: 1px solid #0E3037;
+    color: #DFDFDF;
+    background: #0E3037;
 }
 
 /* reference:

@@ -6,10 +6,12 @@ table.topic, table.topics {
 }
 table.topic th, table.topics th {
 	text-align:left;
+    padding: 5px 20px 5px 5px;
 }
 table.topic td, table.topics td {
     vertical-align: top;
     padding: 5px 20px 5px 5px;
+    font-size:90%;
 }
 table.topic td h1, table.topics td h2 {
     margin: 0;
@@ -42,7 +44,7 @@ div.meta {
 	width: 200px;
 /*	margin: 4px;*/
 /*	padding: 4px;*/
-	font-size: 80%;
+/*	font-size: 90%;*/
 	overflow:hidden;
 }
 div.avatar {

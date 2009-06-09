@@ -4,37 +4,28 @@
 {% load extra_tagging_tags %}
 
 <tr class="{% cycle odd,even %} clearfix">
-<td><img src="/site_media/images/sitegraphics/pin.gif" />{% if topic.closed %}<b>c</b>{% endif %}{% if topic.sticky %}<b> s</b>{% endif %}</td>
+<td><img src="/site_media/images/sitegraphics/pin.gif" />{% if topic.closed %}<b>c</b>{% endif %} {% if topic.sticky %}<b>s</b>{% endif %}</td>
 <td><a href="{{ topic.get_absolute_url }}">{{ topic.title }}</a></td>
-<td>{% firstof topic.creator.get_profile.name topic.creator %}</a></div></td>
+<td><a href="{{ topic.creator.get_profile.get_absolute_url }}">{% firstof topic.creator.get_profile.name topic.creator %}</a></div></td>
 <td>
-
-		<div class="comment_stats">
-			{{ topic.views }}
-		</div>
-
+        <div class="comment_stats">
+            {{ topic.views }}
+        </div>
 </td>
 <td>
-	{% get_comment_count for topic as comment_count %}
-	{% if comment_count %}
-		<div class="comment_stats">
-			{{ comment_count }} {# comment{{ comment_count|pluralize }} #}
-			{% else %} -
-		</div>
-	{% endif %}
+    {% get_comment_count for topic as comment_count %}
+    {% if comment_count %}
+        <div class="comment_stats">
+            {{ comment_count }}
+            {% else %} -
+        </div>
+    {% endif %}
 </td>
 
 <td>
-	{% get_comment_count for topic as comment_count %}
-
-		<div class="comment_stats">
-			{% blocktrans with topic.modified|date as topic_modified and topic.modified|timesince as timesince_topic_modified %}
-			{{ topic_modified }}<br />({{ timesince_topic_modified }} ago)
-			{% endblocktrans %}
-		</div>
-
+    <div class="comment_stats">
+        {{ topic.modified|timesince }} {% trans "ago" %}
+    </div>
 </td>
 <td>{% show_tags_for topic %}</td>
 </tr>
-
-

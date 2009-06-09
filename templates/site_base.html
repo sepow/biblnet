@@ -5,7 +5,7 @@
 {% load svn_app_version %}
 {% load analytics %}
 {% load avatar_tags %}
-{% load handy_shorts %}
+{#% load handy_shorts %#}
 
 {% block extra_head_base %}
     <link rel="stylesheet" href="{{ MEDIA_URL }}css/site_tabs.css" />
@@ -17,11 +17,11 @@
 {% block login %}
     {% if user.is_authenticated %}
         {% openid_icon openid user %}
-	<b><a href="{% url profile_detail user %}">{% avatar user 40 %}</a><a href="{% url profile_detail user %}">{{ user }}</a></b> 
-	{# {% if user.is_staff %}<a href="/admin/">{% trans "Admin" %}</a>  | {% endif %} TODO behøver den være her? #}
-	<a href="/openid/logout/?next={% url acct_logout %}">{% trans "Logout" %}</a> <br/><br />
-	<p>
-	
+    <b><a href="{% url profile_detail user %}">{% avatar user 40 %}</a><a href="{% url profile_detail user %}">{{ user }}</a></b> 
+    {# {% if user.is_staff %}<a href="/admin/">{% trans "Admin" %}</a>  | {% endif %} TODO behøver den være her? #}
+    <a href="/openid/logout/?next={% url acct_logout %}">{% trans "Logout" %}</a> <br/><br />
+    <p>
+    
     {% if user.tribe_set.all %}
         {% for tribe in user.tribe_set.all %}
             {% if not tribe.deleted %}
@@ -32,11 +32,11 @@
         {% url tribe_list as tribe_url %}
     <p>{% blocktrans %}You are not yet a member of any <a href="{{ tribe_url }}">tribes</a>.{% endblocktrans %}</p>
     {% endif %}
-	
-	</p>
-	
+    
+    </p>
+    
     {% else %}
-	<p>Du er ikke logget på</p>
+    <p>Du er ikke logget på</p>
         <a href="{% url acct_login %}">{% trans "Log på" %}</a> / <a href="{% url acct_signup %}"><b>{% trans "Bliv medlem" %}</b></a>
     {% endif %}
 {% endblock %}
@@ -46,31 +46,31 @@
 {% block logo_link_image %}<a href="{% url home %}"><img src="{{ MEDIA_URL }}pinax/images/topbar.gif" alt="Biblnet Topbar"/></a> {{ CAN_ADMIN }}{% endblock %}
 
 {% block boxtab %}
-	<div id="boxtab">
-		<ul>
-			<li class="index_tab"><a href="{% firstof tribe.get_absolute_url group.get_absolute_url topic.tribe.get_absolute_url affil_tribe %}"><span>{% trans "Index" %}</span></a></li>
-			<li class="board_tab"><a href="{% firstof tribe.get_absolute_url group.get_absolute_url topic.tribe.get_absolute_url affil_tribe %}topics/"><span>{% trans "Message board" %}</span></a></li>
-			<li class="wiki_tab"><a href="{% firstof tribe.get_absolute_url group.get_absolute_url topic.tribe.get_absolute_url affil_tribe %}wiki/"><span>{% trans "Wiki" %}</span></a></li>
-			<li class="docs_tab"><a href="{% firstof tribe.get_absolute_url group.get_absolute_url topic.tribe.get_absolute_url affil_tribe %}"><span>{% trans "Knowledge Bank" %}</span></a></li>
-			{% block group %}<li class="members_tab"><a href="{% url tribe_list %}"><span>{% trans "Groups" %}</span></a></li>{% endblock %}
-		</ul>
-		
-		{% block admin_tab%}
-		{% if tribe or topic %}
-			{% if user.is_staff or are_moderator %}
-				<ul id="admin">
-					<li class="admin_tab" ><a href="{% firstof tribe.get_absolute_url group.get_absolute_url topic.tribe.get_absolute_url %}admin/"><span>
-					{% trans "Group Admin" %}</span></a></li>
-				</ul>
-			{% else %}
-				{% if user.is_staff %}
-				<ul id="admin">
-					<li class="admin_tab" ><a href="/admin/"><span>{% trans "Admin" %}</span></a></li>
-				</ul>
-		                {% endif %}
-		        {% endif %}
-		{% endif %}
-		{% endblock %}
+    <div id="boxtab">
+        <ul>
+            <li class="index_tab"><a href="{% firstof tribe.get_absolute_url group.get_absolute_url topic.tribe.get_absolute_url affil_tribe %}"><span>{% trans "Index" %}</span></a></li>
+            <li class="board_tab"><a href="{% firstof tribe.get_absolute_url group.get_absolute_url topic.tribe.get_absolute_url affil_tribe %}topics/"><span>{% trans "Message board" %}</span></a></li>
+            <li class="wiki_tab"><a href="{% firstof tribe.get_absolute_url group.get_absolute_url topic.tribe.get_absolute_url affil_tribe %}wiki/"><span>{% trans "Wiki" %}</span></a></li>
+            <li class="docs_tab"><a href="{% firstof tribe.get_absolute_url group.get_absolute_url topic.tribe.get_absolute_url affil_tribe %}"><span>{% trans "Knowledge Bank" %}</span></a></li>
+            {% block group %}<li class="members_tab"><a href="{% url tribe_list %}"><span>{% trans "Groups" %}</span></a></li>{% endblock %}
+        </ul>
+        
+        {% block admin_tab%}
+            {% if tribe or topic %}
+                {% if user.is_staff or are_moderator %}
+                    <ul id="admin">
+                        <li class="admin_tab" ><a href="{% firstof tribe.get_absolute_url group.get_absolute_url topic.tribe.get_absolute_url %}admin/"><span>
+                        {% trans "Group Admin" %}</span></a></li>
+                    </ul>
+                {% else %}
+                    {% if user.is_staff %}
+                        <ul id="admin">
+                            <li class="admin_tab" ><a href="/admin/"><span>{% trans "Admin" %}</span></a></li>
+                        </ul>
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+        {% endblock %}
 	</div>
 {% endblock %}
 
@@ -86,43 +86,42 @@
 {% endblock %}
 
 {% block messages %}
-	{% if user.is_authenticated %}
-		<div class="messages">
-			<a href="{% url messages_inbox %}">{% trans "Private messages" %}{% if messages_inbox_count %} <b>({{ messages_inbox_count }})</b>{% endif %}</a><br />
-			<a href="{% url messages_outbox %}">{% trans "Sent" %}</a><br />
-			<a href="{% url messages_trash %}">{% trans "Trash" %}</a><br />
-			<a href="{% url notification_notices %}">{% trans "Notices" %}{% if notice_unseen_count %} <b>({{ notice_unseen_count }})</b>{% endif %}</a><br />
-			<a href="{% url invitations %}">{% trans "Invitations" %}{% if invitations_count %} <b>({{ invitations_count }})</b>{% endif %}</a><br />
-			<a href="{% url invitations_contacts %}">{% trans "Contacts" %}</a>
-		</div>
-	{% else %}
-		<div class="messages">
-			{% trans "Log in to see your messages" %}
-		</div>
-		
-	{% endif %}
+    {% if user.is_authenticated %}
+        <div class="messages">
+            <a href="{% url messages_inbox %}">{% trans "Private messages" %}{% if messages_inbox_count %} <b>({{ messages_inbox_count }})</b>{% endif %}</a><br />
+            <a href="{% url messages_outbox %}">{% trans "Sent" %}</a><br />
+            <a href="{% url messages_trash %}">{% trans "Trash" %}</a><br />
+            <a href="{% url notification_notices %}">{% trans "Notices" %}{% if notice_unseen_count %} <b>({{ notice_unseen_count }})</b>{% endif %}</a><br />
+            <a href="{% url invitations %}">{% trans "Invitations" %}{% if invitations_count %} <b>({{ invitations_count }})</b>{% endif %}</a><br />
+            <a href="{% url invitations_contacts %}">{% trans "Contacts" %}</a>
+        </div>
+    {% else %}
+        <div class="messages">
+            {% trans "Log in to see your messages" %}
+        </div>
+    {% endif %}
 {% endblock %}
 
 {% block calendar %}
-	<div class="calendar">
-		{% trans "Your calendar" %}<br />
-{#		{% for events in calendar %} #}
-		{% trans "Event 1" %}<br />
-		{% trans "Event 2" %}<br />
-{#		{% endfor %} #}
-	</div>
+    <div class="calendar">
+        {% trans "Your calendar" %}<br />
+{#      {% for events in calendar %} #}
+        {% trans "Event 1" %}<br />
+        {% trans "Event 2" %}<br />
+{#      {% endfor %} #}
+    </div>
 {% endblock %}
 
 {% block footer %}
-	<div class="legal">
-	    {% trans "&copy; 2008 &lt;your company here&gt;" %}
-	    - <a href="{% url about %}">{% trans "About" %}</a>
-	    - <a href="{% url terms %}">{% trans "Terms of Service" %}</a>
-	    - <a href="{% url privacy %}">{% trans "Privacy Policy" %}</a>
-	    - <a href="{% url dmca %}">{% trans "DMCA Notice" %}</a>
-	    - Version: {% svn_app_version %}
-	    - Django: {% svn_app_version "django" %}
-	</div>
+    <div class="legal">
+        {% trans "&copy; 2008 &lt;your company here&gt;" %}
+        - <a href="{% url about %}">{% trans "About" %}</a>
+        - <a href="{% url terms %}">{% trans "Terms of Service" %}</a>
+        - <a href="{% url privacy %}">{% trans "Privacy Policy" %}</a>
+        - <a href="{% url dmca %}">{% trans "DMCA Notice" %}</a>
+        - Version: {% svn_app_version %}
+        - Django: {% svn_app_version "django" %}
+    </div>
 {% endblock %}
 
 {% block extra_body_base %}

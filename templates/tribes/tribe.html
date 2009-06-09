@@ -23,9 +23,7 @@
     <!--div style="width: 550px;"-->
         
         <h2>{% trans "Welcome to" %} {{ tribe.name }}</h2>
-        
 
-        
         <p>{{ tribe.description }}</p>
 
     {% if user.is_authenticated %}
@@ -59,21 +57,19 @@
 
         {% if user.is_authenticated %}
           
-            <h3>{% trans "Discussion Topics" %}{% if tribe.topics.all.count %} ({{ tribe.topics.all.count }}){% endif %}</h3>
+            <h2>{% trans "Discussion Topics" %}{% if tribe.topics.all.count %} ({{ tribe.topics.all.count }}){% endif %}</h2>
             <table class="topics clearfix">
-            <tr class="even clearfix"><th></th><th>{% trans "Topic" %}</th><th>{% trans "Started by" %}</th><th>{% trans "Views" %}</th><th>{% trans "Replies" %}</th><th>{% trans "Latest reply" %}</th><th>{% trans "Tags" %}</th></tr>
-            
+            {#<tr class="even clearfix"><th></th><th>{% trans "Topic" %}</th><th>{% trans "Started by" %}</th><th>{% trans "Views" %}</th><th>{% trans "Replies" %}</th><th>{% trans "Latest reply" %}</th><th>{% trans "Tags" %}</th></tr>#}
+            <tr class="even clearfix"><th width="5%"></th><th width="25%">{% trans "Topic" %}</th><th width="15%">{% trans "Started by" %}</th><th width="7%">{% trans "Views" %}</th><th width="8%">{% trans "Replies" %}</th><th width="25%">{% trans "Latest reply" %}</th><th width="15%">{% trans "Tags" %}</th></tr>
             {% if topics %}
-	            {#% if tribe.topics.all %#}
-		            {% for topic in topics %}
-			            {% show_tribe_topic topic %}
-		            {% endfor %}
-	            {#% endif %#}
-           
+                {#% if tribe.topics.all %#}
+                    {% for topic in topics %}
+                        {% show_tribe_topic topic %}
+                    {% endfor %}
+                {#% endif %#}
             {% else %}
                 {% url tribe_create_topic tribe.slug as new_topic_url %}
-		<tr class="odd clearfix"><td colspan=7>{% blocktrans %}There are no topics yet - <a href="{{ new_topic_url }}">start one...</a>{% endblocktrans %}</td></tr>
-
+                <tr class="odd clearfix"><td colspan=7>{% blocktrans %}There are no topics yet - <a href="{{ new_topic_url }}">start one...</a>{% endblocktrans %}</td></tr>
             {% endif %}
             </table>            
             
@@ -95,7 +91,6 @@
                 </p>
             {% endif %}
             
-            
             <h2>{% trans "Tweets" %}</h2>
             
             {% tweet_listing tweets 1 0 %}            
@@ -111,12 +106,10 @@
                    {% endfor %}
                </div>
             {% endif %}
-            
-            
         {% endif %}
     </div>
 
     {% else %}
     {% trans "... This is a private group!" %}
-    {% endif_can_see %}	
+    {% endif_can_see %}
 {% endblock %}
