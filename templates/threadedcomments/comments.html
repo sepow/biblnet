@@ -7,33 +7,35 @@
 {% get_threaded_comment_tree for object as responses %}
 {% autopaginate responses 10 %}
 
-    {% for response in responses %}
-        <tr class="{% cycle even,odd %} clearfix">
-		<td>
-            <div class="meta">
-                <div class="avatar"><a href="{% url profile_detail response.user.username %}">{% avatar response.user 60 %}</a></div>
-		<div class="created">{{ response.date_submitted|date }}<br />
-		 {% trans "Kl."%} {{ response.date_submitted|time }}<br />
-		({{ response.date_submitted|timesince }} {% trans "ago"%})</div>
-		<div class="details clearboth"><a href="{% url profile_detail response.user.username %}">{{ response.user }}</a></div>
-                {% ifequal user.id object.tribe.creator.id %} {# if_can_delete_topic topic user #}
+{% for response in responses %}
+    <tr class="{% cycle even,odd %} clearfix">
+    <td>
+        <div class="meta">
+            <div class="avatar"><a href="{% url profile_detail response.user.username %}">{% avatar response.user 60 %}</a></div>
+            <div class="created">
+                {{ response.date_submitted|date }}<br />
+                {% trans "Kl."%} {{ response.date_submitted|time }}<br />
+                ({{ response.date_submitted|timesince }} {% trans "ago"%})
+            </div>
+            <div class="details clearboth"><a href="{% url profile_detail response.user.username %}">{{ response.user }}</a></div>
+            {% ifequal user.id object.tribe.creator.id %} {# if_can_delete_topic topic user #}
                 <form method="POST" action="{% url tc_comment_delete response.id %}">
                     <input type="submit" value="{% trans "Delete Post" %}" />
                     <input type="hidden" name="next" value="{{ request.path }}" />
                 </form>
-                {% endifequal %}
-            </div>
-		</td>
-		<td>
-            <div>
-                <div class="body">{{ response.comment|urlize|linebreaks }}</div>
-		{% ifequal user.id object.creator.id %} {# if_can_edit_comment comment user #}
-		<p><a href="{{ request.path }}edit/">{% trans "Edit post"%}</a></p> {# #TODO få teksten med til edit siden. #}
-                {% endifequal %}
-           </div>
-		</td>
-        </tr>
-    {% endfor %}
+            {% endifequal %}
+        </div>
+    </td>
+    <td>
+        <div>
+            <div class="body">{{ response.comment|urlize|linebreaks }}</div>
+            {% ifequal user.id object.creator.id %} {# if_can_edit_comment comment user #}
+                <p><a href="{{ request.path }}edit/">{% trans "Edit post"%}</a></p> {# #TODO få teksten med til edit siden. #}
+            {% endifequal %}
+        </div>
+    </td>
+    </tr>
+{% endfor %}
 
 {% paginate %}
 
@@ -42,30 +44,26 @@
 {% else %}{% if are_member %}
 <tr>
 <td>
-            <div class="meta">
-                <div class="avatar"><a href="{% url profile_detail user %}">{% avatar user 60 %}</a></div>
-		<div class="details clearboth"><a href="{% url profile_detail user %}">{{ user }}</a></div>
-            </div>
+    <div class="meta">
+        <div class="avatar"><a href="{% url profile_detail user %}">{% avatar user 60 %}</a></div>
+        <div class="details clearboth"><a href="{% url profile_detail user %}">{{ user }}</a></div>
+    </div>
 </td>
 <td>
-    <form class="uniForm" method="POST" action="{% get_comment_url object %}">
-        <fieldset class="inlineLabels">
-            <!--div class="ctrlHolder"-->
-                <textarea id="id_comment" rows="10" cols="40" name="comment"></textarea>
-            <!--/div-->
-            <div class="form_block">
-                <input type="hidden" name="next" value="{{ request.path }}" />
-                <input type="submit" value="{% trans "Post Response" %}" />
-                <input type="submit" value="{% trans "Preview Comment" %}" name="preview" />
-            </div>
-        </fieldset>
+    <form method="POST" action="{% get_comment_url object %}">
+        <div class="ctrlHolder">
+            <textarea id="id_comment" rows="10" cols="40" name="comment"></textarea>
+        </div>
+        <div class="form_block">
+            <input type="hidden" name="next" value="{{ request.path }}" />
+            <input type="submit" value="{% trans "Post Response" %}" />
+            <input type="submit" value="{% trans "Preview Comment" %}" name="preview" />
+        </div>
     </form>
 </td>
 </tr>
 {% else %} {% if user.is_authenticated %}
-<p>
-{% trans "You need to be a member of this group to reply."%}
-</p>
+    <p>{% trans "You need to be a member of this group to reply."%}</p>
 {% else %}
     <h3>Please <a href="{% url acct_login %}">Login</a> (or <a href="{% url acct_signup %}">Sign Up</a>) to leave a comment</h3> 
 {% endif %}{% endif %}{% endif %}

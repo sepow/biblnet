@@ -202,17 +202,18 @@ form.signup input[type="submit"], form.login input[type="submit"] {
     font-size: 14pt;
 }
 input[type="text"], input[type="password"], textarea {
-/*    padding: 3px;
+    padding: 3px;
     margin: 3px;
     border: solid 1px #C6C6C6;
     border-bottom: solid 1px #E3E3E3;
-    color: #666;
-    font-size: 12pt;*/
-    padding: 3px;
-    margin: 3px;
-    border: none;
-    border-bottom: none;
+    color: #0E3037;
+/*    font-size: 12pt;*/
     background: #F3F3F3 url('/site_media/pinax/images/form-shadow.png') left top repeat-x;
+}
+textarea#id_comment {
+    width: 100%;
+    margin: 0;
+    padding: 0.4em 3px 0.8em 3px;
 }
 /*
 input[type="submit"] {

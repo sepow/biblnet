@@ -73,7 +73,7 @@
     .uniForm .inlineLabels .selectInput,
     .uniForm .inlineLabels select{ width: 45%; /* <- Required property */ }
     
-    .uniForm .inlineLabels textarea{  width: 100%; /* <- Required property */ height: 12em; padding: 0.4em 0 0.8em; margin: 0px; }
+    .uniForm .inlineLabels textarea{  width: 45%; /* <- Required property */ height: 12em; }
 
     .uniForm .inlineLabels .formHint{ margin-top: 0; margin-left: 47%; font-size: .9em; color: #777; position: static; }
     
@@ -116,3 +116,11 @@ YOU CAN VERY EASILY REVERT TO A GENERIC STYLE OF UNI-FORM. BEST OF LUCK...
 
 /* ------------------------------------------------------------------------------ */
 
+/* This class gets added to div.ctrlHolder to highlight the row */
+.uniForm .focused {
+    background: #0E3037;
+    color: #DFDFDF;
+}
+.uniForm .ctrlHolder{
+    border-bottom: none;
+}

@@ -6,26 +6,22 @@
 <tr class="{% cycle odd,even %} clearfix">
 <td><img src="/site_media/images/sitegraphics/pin.gif" />{% if topic.closed %}<b>c</b>{% endif %} {% if topic.sticky %}<b>s</b>{% endif %}</td>
 <td><a href="{{ topic.get_absolute_url }}">{{ topic.title }}</a></td>
-<td><a href="{{ topic.creator.get_profile.get_absolute_url }}">{% firstof topic.creator.get_profile.name topic.creator %}</a></div></td>
+<td><a href="{{ topic.creator.get_profile.get_absolute_url }}">{% firstof topic.creator topic.creator.get_profile.name %}</a></td>
 <td>
         <div class="comment_stats">
             {{ topic.views }}
         </div>
 </td>
 <td>
-    {% get_comment_count for topic as comment_count %}
-    {% if comment_count %}
-        <div class="comment_stats">
-            {{ comment_count }}
-            {% else %} -
-        </div>
-    {% endif %}
-</td>
-
-<td>
     <div class="comment_stats">
-        {{ topic.modified|timesince }} {% trans "ago" %}
+        {% get_comment_count for topic as comment_count %}
+        {% if comment_count %}
+            {{ comment_count }}
+        {% else %}
+            -
+        {% endif %}
     </div>
 </td>
+<td>{{ topic.modified|timesince }} {% trans "ago" %}</td>
 <td>{% show_tags_for topic %}</td>
 </tr>

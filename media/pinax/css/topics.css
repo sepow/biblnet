@@ -41,7 +41,7 @@ td.meta {
 }
 div.meta {
 	float: left;
-	width: 200px;
+	width: 250px;
 /*	margin: 4px;*/
 /*	padding: 4px;*/
 /*	font-size: 90%;*/
@@ -63,12 +63,10 @@ div.bulk {
 }
 .hidden { display: none; }
 
+table.topics .comment_stats {
+    text-align: center;
+}
 /*table.topics .created {
     color: #999;
-    font-size: 90%;
-}
-table.topics .comment_stats {
-    color: #999;
-    border-top: 1px solid #CCC;
     font-size: 90%;
 }*/
