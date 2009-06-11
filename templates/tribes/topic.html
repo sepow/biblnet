@@ -18,38 +18,57 @@
 {% if_can_see topic.tribe user %}
 <h1>{{ topic.title }}</h1>
 <p>{% show_tags_for topic %}</p>
-<table class="topics clearfix">
-    <tr class="even clearfix"><th>{% trans "Meta" %}</th><th>{% trans "Posts" %}</th></tr>
-    <tr class="odd clearfix">
-        <td>
-        <div class="meta">
-            <div class="avatar"><a href="{% url profile_detail topic.creator.username %}">{% avatar topic.creator 60 %}</a></div>
-            <div class="created">{{ topic.created|date }}<br />
-                {% trans "Kl." %} {{ topic.created|time }}<br />
-                ({{ topic.created|timesince }} {% trans "ago"%})
-            </div>
-            <div class="details clearboth"><a href="{% url profile_detail topic.creator.username %}">{{ topic.creator }}</a></div>
-            
+
             {% ifequal user topic.tribe.creator %}
                 <form method="POST" action="{% url tribe_topic_delete topic.id %}">
-                    <input type="submit" value="{% trans "Delete Topic" %}" />
+                    <input type="image" src="/site_media/images/sitegraphics/trash.gif" alt="{% trans "Delete Topic" %}" />
                     <input type="hidden" name="next" value="{% url tribe_topics topic.tribe.slug %}" />
                 </form>
             {% endifequal %}
 
             {% if are_moderator %}
                 <form method="POST" action="{% url tribe_topic_moderate topic.id %}">
-                    <input type="submit" value={% if topic.sticky %}"{% trans "unSticky topic" %}"{% else %}"{% trans "Sticky topic" %}"{% endif %} />
+                    {% if topic.sticky %}
+                        <input type="image" src="/site_media/images/sitegraphics/unsticky.gif" alt="{% trans "unSticky topic" %}" />
+                    {% else %}
+                        <input type="image" src="/site_media/images/sitegraphics/sticky.gif" alt="{% trans "Sticky topic" %}" />
+                    {% endif %}
+                    <!--input type="submit" value={% if topic.sticky %}"{% trans "unSticky topic" %}"{% else %}"{% trans "Sticky topic" %}"{% endif %} /-->
                     <input type="hidden" name="sticky" value="" />
                     <input type="hidden" name="next" value="{% url tribe_topics topic.tribe.slug %}" />
                 </form>
                 <form method="POST" action="{% url tribe_topic_moderate topic.id %}">
-                    <input type="submit" value={% if topic.closed %}"{% trans "Reopen topic" %}"{% else %}"{% trans "Close topic" %}"{% endif %} />
+                    {% if topic.closed %}
+                        <input type="image" src="/site_media/images/sitegraphics/unlock.gif" alt="{% trans "Reopen topic" %}" />
+                    {% else %}
+                        <input type="image" src="/site_media/images/sitegraphics/lock.gif" alt="{% trans "Close topic" %}" />
+                    {% endif %}
+                    <!--input type="submit" value={% if topic.closed %}"{% trans "Reopen topic" %}"{% else %}"{% trans "Close topic" %}"{% endif %} /-->
                     <input type="hidden" name="close" value="" />
                     <input type="hidden" name="next" value="{% url tribe_topics topic.tribe.slug %}" />
                 </form>
             {% endif %}
+
+{% if topic.closed %}
+    <p><img src="/site_media/images/sitegraphics/lock.gif" alt="{% trans "Closed topic" %}" /> {% trans "This topic has been closed." %}</p>
+{% endif %}
+
+<table class="topics">
+    <tr class="even"><th class="meta">{% trans "Meta" %}</th><th class="options"></th><th>{% trans "Posts" %}</th></tr>
+    <tr class="odd">
+        <td>
+        <div class="meta">
+            <div class="avatar"><a href="{% url profile_detail topic.creator.username %}">{% avatar topic.creator 60 %}</a></div>
+            <div class="created">{{ topic.created|date }} - {{ topic.created|time }}<br />
+                ({{ topic.created|timesince }} {% trans "ago"%})
+            </div>
+            <div class="details clearboth"><a href="{% url profile_detail topic.creator.username %}">{{ topic.creator }}</a></div>
         </div>
+        </td>
+        <td>
+            {% if_can_edit_topic %}
+                {% if not edit %}<a href="{{ request.path }}edit/"><img src="/site_media/images/sitegraphics/edit.gif" alt="{% trans "Edit post" %}" /></a>{% endif %}
+            {% endif_can_edit_topic %}
         </td>
         <td>
         <div>
@@ -60,9 +79,6 @@
             </form>
             {% else %}
             <div class="body">{{ topic.body|urlize|linebreaks }}</div>
-            {% if_can_edit_topic %}
-                {% if not edit %}<p><a href="{{ request.path }}edit/">{% trans "Edit post"%}</a></p>{% endif %}
-            {% endif_can_edit_topic %}
             {% endif %}
         </div>
         </td>
@@ -70,8 +86,16 @@
     {% comments topic %}
 </table>
 
-    <p><a href="{% url tribe_topics topic.tribe.slug %}">&larr; {% trans "Back to Topic List for " %} {{ topic.tribe }}</a></p>	
-    {% else %}
+{% else %}
     {% trans "... This is a private group!" %}
-    {% endif_can_see %}
+{% endif_can_see %}
+{% if topic.closed %}
+    <p><img src="/site_media/images/sitegraphics/lock.gif" alt="{% trans "Closed topic" %}" /> {% trans "This topic has been closed." %}</p>
+{% else %} {% if user.is_authenticated %}
+    <p>{% trans "You need to be a member of this group to reply."%}</p>
+{% else %}
+    <h3>Please <a href="{% url acct_login %}">Login</a> (or <a href="{% url acct_signup %}">Sign Up</a>) to leave a comment</h3> 
+{% endif %}
+{% endif %}
+    <p><a href="{% url tribe_topics topic.tribe.slug %}">&larr; {% trans "Back to Topic List for " %} {{ topic.tribe }}</a></p>	
 {% endblock %}

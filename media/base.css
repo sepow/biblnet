@@ -133,7 +133,7 @@ img {
 
 .columnmid {
 	background-image:url(images/sitegraphics/colbackground.gif);
-	padding: 0 .4em 0 .4em;
+	padding: 5px;
 }
 
 .columnbottom {
@@ -143,11 +143,8 @@ img {
 
 #content {
 	margin: 15px;
+/*    font-size: 90%;*/
 }
-
-
-
-
 
 #body {
     clear: both;
@@ -209,11 +206,6 @@ input[type="text"], input[type="password"], textarea {
     color: #0E3037;
 /*    font-size: 12pt;*/
     background: #F3F3F3 url('/site_media/pinax/images/form-shadow.png') left top repeat-x;
-}
-textarea#id_comment {
-    width: 100%;
-    margin: 0;
-    padding: 0.4em 3px 0.8em 3px;
 }
 /*
 input[type="submit"] {
@@ -364,20 +356,31 @@ ul.avatar_choices li {
 }
 table.messages {
     width: 100%;
+	border-spacing: 0;
+	margin:0.5em 0;
 }
 
-table.messages tbody tr {
-    border-bottom: 1px solid #ccc;
-}
-
-table.messages tr th, table.messages tr td {
+table.messages th {
     text-align: left;
     padding: 5px;
+    font-weight: bold;
 }
 
-table.messages tr th {
-    font-weight:bold;
-    border-bottom: 1px solid #999;
+table.messages td {
+    vertical-align: top;
+    padding: 5px;
+    font-size: 90%;
+}
+.messages .even, .topics .even {
+	color: #DFDFDF;
+	background-color: #0E3037;
+}
+.messages .odd, .topics .odd {
+    background-color: #DFDFDF;
+}
+.messages {
+    margin: 0px;
+    padding: 0px;
 }
 
 #subnav {
