@@ -5,20 +5,74 @@
 {% load avatar_tags %}
 {% block body %}
 
-<ul class="responses">
-        <li class="odd clearfix">
-                <div class="body"> {{ request.POST.comment|urlize|linebreaks }}</div>
-</ul>
+<h2>{% trans "Preview of your post" %}</h2>
 
-    {% if comment %}
-        <div id="comment_preview">{% auto_transform_markup comment %}</div>
-    {% endif %}
+{% if request.POST.markup %}
+
+<table class="topics">
+    <tr class="even"><th class="meta">{% trans "Meta" %}</th><th class="options"></th><th>{% trans "Preview of your post" %}</th></tr>
+    <tr class="odd">
+    <td>
+        <div class="meta">
+            <div class="avatar">{% avatar user 60 %}</div>
+            <div class="created">
+                {% trans "Your chosen Markup:" %}
+            </div>
+            <div class="details clearboth">{{ user }}</div>
+        </div>
+    </td>
+    <td></td>
+    <td>
+        <div class="body">{% auto_transform_markup comment %}</div>
+    </td>
+    </tr>
+
+{% else %}
+
+<table class="topics">
+    <tr class="even"><th class="meta">{% trans "Meta" %}</th><th class="options"></th><th>{% trans "Preview of your post" %}</th></tr>
+    <tr class="odd">
+    <td>
+        <div class="meta">
+            <div class="avatar">{% avatar user 60 %}</div>
+            <div class="created">
+                {% trans "Default Markup:" %}
+            </div>
+            <div class="details clearboth">{{ user }}</div>
+        </div>
+    </td>
+    <td></td>
+    <td>
+        <div class="body">{{ request.POST.comment|urlize|linebreaks }}</div>
+    </td>
+    </tr>
+
+{% endif %}
+
+<tr class="even">
+<td>
+    <div class="meta">
+        <div class="avatar">{% avatar user 60 %}</div>
+            <div class="created">
+                {% trans "Edit your post:" %}
+            </div>
+        <div class="details clearboth">{{ user }}</div>
+    </div>
+</td>
+<td></td>
+<td id="commentHolder">
     <form method="POST" action="">
-        <ul>
-            {{ form.as_ul }}
-            <li><input type="submit" value="Submit Comment" /></li>
-            <li><input type="submit" value="Preview Updated Comment" name="preview" /></li>
-        </ul>
-        <input type="hidden" name="next" value="{{ next }}" />
+        {{ form.comment }}
+        <div class="form_block">
+            <input type="submit" value="Submit Comment" />
+            <input type="submit" value="Preview Updated Comment" name="preview" />
+            {{ form.markup }}
+            <input type="hidden" name="next" value="{{ next }}" />
+        </div>
     </form>
+</td>
+</tr>
+</table>
+
+
 {% endblock %}

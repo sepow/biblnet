@@ -3,7 +3,7 @@
 {% load threadedcommentstags %}
 {% load extra_tagging_tags %}
 
-<tr class="{% cycle odd,even %}">
+<tr class="{% cycle 'odd' 'even' %}">
 <td>
     {% if topic.sticky %}<img src="/site_media/images/sitegraphics/sticky.gif" alt="{% trans "Sticky topic" %}" />{% else %}<img src="/site_media/images/sitegraphics/pin.gif" alt="{% trans "Topic" %}" />{% endif %}
     {% if topic.closed %}<img src="/site_media/images/sitegraphics/lock.gif" alt="{% trans "Closed topic" %}" />{% endif %}

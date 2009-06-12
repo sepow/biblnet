@@ -5,10 +5,9 @@
 {% load avatar_tags %}
 
 {% get_threaded_comment_tree for object as responses %}
-{#% autopaginate responses 10 %#}
 
 {% for response in responses %}
-    <tr class="{% cycle even,odd %}">
+    <tr class="{% cycle 'even' 'odd' as rowcolors %}">
     <td>
         <div class="meta">
             <div class="avatar"><a href="{% url profile_detail response.user.username %}">{% avatar response.user 60 %}</a></div>
@@ -16,39 +15,45 @@
                 {{ response.date_submitted|date }} - {{ response.date_submitted|time }}<br />
                 {{ response.date_submitted|timesince }} {% trans "ago"%}
             </div>
-            <div class="details clearboth"><a href="{% url profile_detail response.user.username %}">{{ response.user }}</a> ({{ response.user.affiliation }})</div>
+            <div class="details clearboth"><a href="{% url profile_detail response.user.username %}">{{ response.user }}</a></div>
         </div>
     </td>
     <td>
         {% ifequal user.id object.creator.id %} {# if_can_edit_comment comment user #}
             <div class="edit">
-                <form method="POST" action="{% url tc_comment_edit response.id %}"> {# #TODO få teksten med til edit siden. #}
+                <form method="POST" action="{% url tc_comment_edit response.id %}">
                     <input type="image" src="/site_media/images/sitegraphics/edit.gif" alt="{% trans "Edit" %}" />
-                    <input type="hidden" name="response_text" value="response" />
-                    <input type="hidden" name="next" value="{{ request.path }}" />
+                    <input type="hidden" value="{{ response.comment }}" name="comment" />
+                    <input type="hidden" value="" name="preview" />
+                    <input type="hidden" value="{{ request.path }}" name="next" />
                 </form>
             </div>
         {% endifequal %}
         {% ifequal user.id object.tribe.creator.id %} {# if_can_delete_topic topic user #}
             <div class="delete">
-                <form method="POST" action="{% url tc_comment_delete response.id %}">
+                <a onclick="$('#{{ response.id }}.delete_post_form').toggle(); return false;" href="#"><img src="/site_media/images/sitegraphics/trash.gif" alt="{% trans "Delete" %}" /></a>
+                <!--form method="POST" action="{% url tc_comment_delete response.id %}">
                     <input type="image" src="/site_media/images/sitegraphics/trash.gif" alt="{% trans "Delete" %}" />
                     <input type="hidden" name="next" value="{{ request.path }}" />
-                </form>
+                </form-->
             </div>
         {% endifequal %}
     </td>
     <td>
         <div class="body">{{ response.comment|urlize|linebreaks }}</div>
+        {% ifequal user.id object.tribe.creator.id %} {# if_can_delete_topic topic user #}
+            <form id="{{ response.id }}" class="delete_post_form delete_form" style="display: none;" method="POST" action="{% url tc_comment_delete response.id %}">
+                <input type="submit" value="Delete Post"/> {% trans "Are you sure you wish to delete this post?"%}
+                <input type="hidden" name="next" value="{{ request.path }}" />
+            </form>
+        {% endifequal %}
     </td>
     </tr>
 {% endfor %}
 
-{#% paginate %#}
-
 {% if not object.closed %}
 {% if are_member %}
-<tr>
+<tr class="{% cycle rowcolors %}">
 <td>
     <div class="meta">
         <div class="avatar"><a href="{% url profile_detail user %}">{% avatar user 60 %}</a></div>
@@ -61,7 +66,7 @@
         <textarea id="id_comment" rows="10" cols="40" name="comment"></textarea>
         <div class="form_block">
             <input type="hidden" name="next" value="{{ request.path }}" />
-            <input type="submit" value="{% trans "Post Response" %}" />
+            <input type="submit" value="{% trans "Submit Comment" %}" />
             <input type="submit" value="{% trans "Preview Comment" %}" name="preview" />
         </div>
     </form>

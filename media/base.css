@@ -234,7 +234,7 @@ ul#messages {
 ul#messages li {
     padding: 5px 10px;
     background: #98AAAE;
-    margin: 0px;
+    margin: 0 0 3px 0;
     border: 1px solid #0E3037;
 }
 ul#messages li a {
@@ -473,7 +473,7 @@ div.tribes h2 {
     padding: 0;
 }
 div.members {
-    background: #DEF;
+/*    background: #DEF;*/
     padding: 8px;
     margin-bottom: 20px;
 }
@@ -481,14 +481,12 @@ div.members h2 {
     margin: 0 0 5px 0;
     padding: 0;
 }
-div.members .avatar {
-    padding: 0;
-    text-align: center;
+div.members td.avatar {
+/*    text-decoration: none;*/
 }
-div.members .details {
-    text-align: center;
+div.members td.details {
     overflow: hidden;
-    width: 60px;
+    width: 33%;
     margin: 0 0 12px 0;
 }
 div.notice_settings {
@@ -889,6 +887,7 @@ div.embed {
   cursor: pointer;
 }
 .delete_form {
+	color:#0E3037;
     padding: 5px;
     background: #F99;
 }

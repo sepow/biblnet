@@ -18,10 +18,7 @@
 {% block body %}
 
 {% load condition_tag %}
-   {% if_can_see tribe user %}
-
-
-        
+    {% if_can_see tribe user %}
     
     {% if user.is_authenticated %}
 
@@ -30,10 +27,7 @@
                 <table width="100%">
                     {% for member in tribe.member_users.all %}
                         {% if forloop.counter0|divisibleby:"3" %}<tr>{% endif %}
-                        <td>
-                            <div class="avatar">{% avatar member 40 %}</div>
-                            <div class="details"><a href="{% url profile_detail member.username %}" title="{{ member.username }}">{{ member.username }}</a></div>
-                        </td>
+                            <td class="avatar"><a href="{% url profile_detail member.username %}" title="{{ member.username }}">{% avatar member 40 %}</a></td><td class="details"><a href="{% url profile_detail member.username %}" title="{{ member.username }}">{{ member.username }}</a></td>
                         {% if forloop.counter0|add:"1"|divisibleby:"3" %}</tr>{% endif %}
                     {% endfor %}
                     {% if tribe.members.all|length|divisibleby:"3" %}{% else %}</tr>{% endif %}

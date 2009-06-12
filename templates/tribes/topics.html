@@ -5,7 +5,7 @@
 {% load pagination_tags %}
 {% load tribe_tags %}
 
-{% block head_title %}{% blocktrans with tribe.name as tribe_name %}Topics for {{ tribe_name }}{% endblocktrans %}{% endblock %}
+{% block head_title %}{% blocktrans with tribe.name as tribe_name %}Message Board for {{ tribe_name }}{% endblocktrans %}{% endblock %}
 
 {% block boxtab_id %}id="board_tab"{% endblock %}
 
@@ -13,9 +13,9 @@
 {% load condition_tag %}
     {% if_can_see tribe user %}
 
-        {% autopaginate topics 10 %}
+        {% autopaginate topics 20 %}
     
-        <h3>{% trans "Message Board for" %} <a href="{% url tribe_detail tribe.slug %}">{{ tribe.name }}</a></h3>
+        <h2>{% trans "Message Board for" %} <a href="{% url tribe_detail tribe.slug %}">{{ tribe.name }}</a></h2>
 
         {% if are_member %}
            <a href="{% url tribe_create_topic tribe.slug %}">{% trans "Start New Topic" %}</a>
