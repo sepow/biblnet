@@ -5,7 +5,8 @@
 {% load threadedcommentstags %}
 {% load avatar_tags %}
 {% load security_tag %}
-
+{% load markup %}
+{% load markitup_tags %}
 {% block head_title %}{{ topic.title }}{% endblock %}
 
 {% block boxtab_id %}id="board_tab"{% endblock %}
@@ -103,30 +104,34 @@
         </td>
         <td>
         <div>
+            
             {% if edit %}
+            {% insert_markitup "#id_body" %}
             <form method="post" action="{{ request.path }}">
-                <textarea id="id_body" rows="10" cols="40" name="body">{{ topic.body }}</textarea>
+                <textarea id="id_body" rows="10" cols="40" name="body">{{ topic.body|markdown|sanitize }}</textarea>
                 <input type="submit" name="edit" value="Edit!" />
             </form>
             {% else %}
-            <div class="body">{{ topic.body|urlize|linebreaks }}</div>
+            <div class="body">{{ topic.body|markdown|sanitize }}</div>
             {% endif %}
         </div>
         </td>
     </tr>
-    {% comments topic %}
+    {% if not edit %}{% comments topic %} {% endif %}
 </table>
 
 {% else %}
     {% trans "... This is a private group!" %}
 {% endif_can_see %}
+
 {% if topic.closed %}
     <p><img src="/site_media/images/sitegraphics/lock.gif" alt="{% trans "Closed topic" %}" /> {% trans "The topic has been closed. It can only be reopened by a moderator of this group." %}</p>
-{% else %} {% if user.is_authenticated %}
+{% else %} {% if user.is_authenticated and not are_member %}
     <p>{% trans "You need to be a member of this group to reply."%}</p>
-{% else %}
+{% else %} {% if not user.is_authenticated %}
     <h3>Please <a href="{% url acct_login %}">Login</a> (or <a href="{% url acct_signup %}">Sign Up</a>) to leave a comment</h3> 
 {% endif %}
 {% endif %}
+{% endif %} 
     <p><a href="{% url tribe_topics topic.tribe.slug %}">&larr; {% trans "Back to Topic List for " %} {{ topic.tribe }}</a></p>	
 {% endblock %}

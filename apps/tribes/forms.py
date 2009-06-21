@@ -6,7 +6,7 @@ from tribes.models import Tribe, Topic
 class TribeForm(forms.ModelForm):
     
     slug = forms.SlugField(max_length=20,
-        help_text = _("a short version of the name consisting only of letters, numbers, underscores and hyphens."),
+        help_text = _("A short version of the name consisting only of letters (a-z), numbers, underscores and hyphens."),
         error_message = _("This value must contain only letters, numbers, underscores and hyphens."))
             
     def clean_slug(self):
@@ -43,9 +43,9 @@ class TribeUpdateForm(forms.ModelForm):
         model = Tribe
         fields = ('name', 'description', 'tags', 'private')
 
-
+from markitup.widgets import MarkItUpWidget
 class TopicForm(forms.ModelForm):
-    
+    body = forms.CharField(widget=MarkItUpWidget())
     class Meta:
         model = Topic
         fields = ('title', 'body', 'tags')

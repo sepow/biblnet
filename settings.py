@@ -148,24 +148,24 @@ INSTALLED_APPS = (
     'messages',
     'announcements',
     'oembed',
-    'djangodblog',
+    'djangodblog', # remove?
     'pagination',
 #    'gravatar',
     'threadedcomments',
     'wiki',
-    'swaps',
+    'swaps', # remove
     'timezones',
     'app_plugins',
-    'voting',
+    'voting', 
     'tagging',
-    'bookmarks',
-    'blog',
+    'bookmarks', 
+    'blog', # remove?
     'ajax_validation',
     'photologue',
     'avatar',
     'flag',
     'microblogging',
-    'locations',
+    'locations', # remove
     'uni_form',
     
     # internal (for now)
@@ -174,7 +174,7 @@ INSTALLED_APPS = (
     'staticfiles',
     'account',
     'tribes',
-    'projects',
+    'projects', # remove
     'misc',
     'photos',
     'tag_app',
@@ -183,6 +183,7 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'sepow',
     'captcha',
+    'markitup',
 
 )
 
@@ -254,9 +255,12 @@ WIKI_REQUIRES_LOGIN = True
 AVATAR_DEFAULT_URL = MEDIA_URL + 'images/kristine.jpg'
 AVATAR_GRAVATAR_BACKUP = False
 
-# Uncomment this line after signing up for a Yahoo Maps API key at the
-# following URL: https://developer.yahoo.com/wsregapp/
-# YAHOO_MAPS_API_KEY = ''
+
+# markitup
+MARKITUP_SET = 'markitup/sets/markdown'
+MARKITUP_SKIN = 'markitup/skins/markitup'
+MARKITUP_PREVIEW_FILTER = ('markdown.markdown', {'safe_mode': True})
+JQUERY_URL = "pinax/js/jquery.js"
 
 # local_settings.py can be used to override environment-specific settings
 # like database and email that differ between development and production.

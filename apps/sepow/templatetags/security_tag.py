@@ -25,3 +25,6 @@ def comments(context, obj):
     }
     
 register.inclusion_tag('threadedcomments/comments.html', takes_context=True)(comments)
+
+
+

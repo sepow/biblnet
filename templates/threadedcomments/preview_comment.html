@@ -3,31 +3,14 @@
 {% load i18n %}
 {% load threadedcommentstags %}
 {% load avatar_tags %}
+{% load markup %}
+{% load markitup_tags %}
+
 {% block body %}
 
 <h2>{% trans "Preview of your post" %}</h2>
 
-{% if request.POST.markup %}
 
-<table class="topics">
-    <tr class="even"><th class="meta">{% trans "Meta" %}</th><th class="options"></th><th>{% trans "Preview of your post" %}</th></tr>
-    <tr class="odd">
-    <td>
-        <div class="meta">
-            <div class="avatar">{% avatar user 60 %}</div>
-            <div class="created">
-                {% trans "Your chosen Markup:" %}
-            </div>
-            <div class="details clearboth">{{ user }}</div>
-        </div>
-    </td>
-    <td></td>
-    <td>
-        <div class="body">{% auto_transform_markup comment %}</div>
-    </td>
-    </tr>
-
-{% else %}
 
 <table class="topics">
     <tr class="even"><th class="meta">{% trans "Meta" %}</th><th class="options"></th><th>{% trans "Preview of your post" %}</th></tr>
@@ -43,11 +26,10 @@
     </td>
     <td></td>
     <td>
-        <div class="body">{{ request.POST.comment|urlize|linebreaks }}</div>
+        <div class="body">{{ request.POST.comment|sanitize|markdown }}</div>
     </td>
     </tr>
 
-{% endif %}
 
 <tr class="even">
 <td>
@@ -66,7 +48,6 @@
         <div class="form_block">
             <input type="submit" value="Submit Comment" />
             <input type="submit" value="Preview Updated Comment" name="preview" />
-            {{ form.markup }}
             <input type="hidden" name="next" value="{{ next }}" />
         </div>
     </form>
@@ -74,5 +55,5 @@
 </tr>
 </table>
 
-
+{% insert_markitup "#id_comment" %}
 {% endblock %}

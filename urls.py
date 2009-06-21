@@ -34,7 +34,7 @@ urlpatterns = patterns('',
     url(r'^captcha/', include('captcha.urls')),
     url(r'^account/signup/$', 'account.views.signup', { "form_class" : BiblnetSignupForm, } ,name="acct_signup"),
     (r'^account/', include('account.urls')),
-    
+    url(r'^markitup/', include('markitup.urls')),
     (r'^openid/(.*)', PinaxConsumer()),
     (r'^bbauth/', include('bbauth.urls')),
     (r'^authsub/', include('authsub.urls')),

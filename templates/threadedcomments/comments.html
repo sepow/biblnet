@@ -3,9 +3,11 @@
 {% load uni_form %}
 {% load pagination_tags %}
 {% load avatar_tags %}
+{% load markup %}
+{% load markitup_tags %}
 
 {% get_threaded_comment_tree for object as responses %}
-
+{% autopaginate responses 40 %}
 {% for response in responses %}
     <tr class="{% cycle 'even' 'odd' as rowcolors %}">
     <td>
@@ -40,7 +42,8 @@
         {% endifequal %}
     </td>
     <td>
-        <div class="body">{{ response.comment|urlize|linebreaks }}</div>
+        
+        <div class="body">{{ response.comment|markdown|sanitize }} </div>
         {% ifequal user.id object.tribe.creator.id %} {# if_can_delete_topic topic user #}
             <form id="{{ response.id }}" class="delete_post_form delete_form" style="display: none;" method="POST" action="{% url tc_comment_delete response.id %}">
                 <input type="submit" value="Delete Post"/> {% trans "Are you sure you wish to delete this post?"%}
@@ -50,9 +53,10 @@
     </td>
     </tr>
 {% endfor %}
-
+{% paginate %}
 {% if not object.closed %}
 {% if are_member %}
+
 <tr class="{% cycle rowcolors %}">
 <td>
     <div class="meta">
@@ -72,5 +76,7 @@
     </form>
 </td>
 </tr>
+
+
 {% endif %}
 {% endif %}

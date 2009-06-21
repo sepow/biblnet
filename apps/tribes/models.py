@@ -23,8 +23,9 @@ class Tribe(models.Model):
     a tribe is a group of users with a common interest
     """
     
-    slug = models.SlugField(_('slug'), unique=True)
+    
     name = models.CharField(_('name'), max_length=80, unique=True)
+    slug = models.SlugField(_('slug'), unique=True)
     creator = models.ForeignKey(User, related_name="created_groups", verbose_name=_('creator'))
     created = models.DateTimeField(_('created'), default=datetime.now)
     description = models.TextField(_('description'))
@@ -60,6 +61,8 @@ class TribeMember(models.Model):
     
     moderator = models.BooleanField(_('moderator'), default=False)
     
+    # last_visit = models.DateTimeField(_('last visit'), default=datetime.now)
+    
     def __unicode__(self):
         return u"%s - %s" % (self.tribe, self.user)
 
@@ -76,6 +79,7 @@ class Topic(models.Model):
     created = models.DateTimeField(_('created'), default=datetime.now)
     modified = models.DateTimeField(_('modified'), default=datetime.now) # topic modified when commented on
     body = models.TextField(_('body'), blank=True)
+    # body_marked_up = models.TextField(_('body'), blank=True)
     views = models.IntegerField(_("views"), default=0)
     sticky = models.BooleanField(_("sticky?"), blank=True, null=True, default=False) # skupper tråden op øverst i forumet. 
     closed = models.BooleanField(_("closed?"), blank=True, null=True, default=False) # ikke muligt at skrive indlæg til denne post

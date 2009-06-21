@@ -138,6 +138,7 @@ def delete(request, slug, redirect_url=None):
     
     # @@@ eventually, we'll remove restriction that tribe.creator can't leave tribe but we'll still require tribe.member_users.all().count() == 1
     if request.user.is_authenticated() and request.method == "POST" and request.user == tribe.creator and tribe.member_users.all().count() == 1:
+        tribe.slug = u"%s%s" % ("deleted_", tribe.slug)
         tribe.deleted = True
         tribe.save()
         request.user.message_set.create(message="Tribe %s deleted." % tribe)
