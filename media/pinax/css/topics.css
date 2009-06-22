@@ -32,6 +32,12 @@ table.topic td h1, table.topics td h2 {
 .responses li {
     list-style-type: none;
 }
+.even a {
+	color: #DFDFDF;
+}
+.odd a {
+	color: #0E3037;
+}
 th.meta {
     width: 230px;
 }
@@ -53,6 +59,9 @@ div.created {
 div.details {
     float: left;
 	padding: 0 0 0 1em;
+}
+div.body {
+    overflow: auto;
 }
 /*div.bulk {
     margin-left: 200px;

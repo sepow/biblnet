@@ -10,7 +10,7 @@
 {{ topic_form.media }}
     {% if are_member %}
         <h2>{% trans "New Topic in:" %} {{tribe}}</h2>
-        <form class="x" id="tribe_form" method="POST" action="">
+        <form class="uniForm" id="tribe_form" method="POST" action="">
             <fieldset class="inlineLabels">
                 {{ topic_form|as_uni_form }}
                 <div class="form_block">

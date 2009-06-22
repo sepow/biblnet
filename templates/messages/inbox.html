@@ -6,29 +6,36 @@
 {% block body %}
 <h1>{% trans "Inbox" %}</h1>
 
+<a href="{% url messages_outbox %}">{% trans "Sent Messages" %}</a><br />
+<a href="{% url messages_trash %}">{% trans "Deleted Messages" %}</a><br />
+<br />
 <a href="{% url messages_compose %} ">{% trans "Compose New Message" %}</a>
 
 <table class="messages">
     <thead>
-        <tr class="even"><th width="35px"></th><th>{% trans "Subject" %}</th><th>{% trans "Sender" %}</th><th>{% trans "Received" %}</th><th>{% trans "Action" %}</th></tr>
+        <tr class="even"><th width="35px"></th><th>{% trans "Sender" %}</th><th>{% trans "Subject" %}</th><th>{% trans "Received" %}</th><th>{% trans "Action" %}</th></tr>
     </thead>
     <tbody>
-        {% for message in message_list %} 
+        {% if message_list %}
+        {% for message in message_list %}
             <tr class="{% cycle odd,even %}">
                 <td>
                     {% if message.new %}<img src="{{ MEDIA_URL }}images/sitegraphics/pb.gif"/>{% else %}<img src="{{ MEDIA_URL }}images/sitegraphics/pbopen.gif"/>{% endif %}
                     {% if message.replied %}<img src="{{ MEDIA_URL }}images/sitegraphics/jump.gif"/>{% endif %}
                 </td>
+                <td>{{ message.sender }}</td>
                 <td>
                     {% if message.new %}<strong>{% endif %}
                         <a href="{{ message.get_absolute_url }}">{% if message.subject.strip %}{{ message.subject }}{% else %}(none){% endif %}</a>
                     {% if message.new %}</strong>{% endif %}
                 </td>
-                <td>{{ message.sender }}</td>
                 <td>{{ message.sent_at|localtime:account.timezone|date:_("DATETIME_FORMAT") }}</td>
                 <td><a href="{% url messages_delete message.id %}">{% trans "delete" %}</a></td>
             </tr>
         {% endfor %}
+        {% else %}
+            <tr class="odd"><td></td><td colspan="4">{% trans "There are no messages in your inbox..." %}</td></tr>
+        {% endif %}
     </tbody>
 </table>
 
