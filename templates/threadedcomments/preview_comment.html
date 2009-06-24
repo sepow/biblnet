@@ -4,7 +4,7 @@
 {% load threadedcommentstags %}
 {% load avatar_tags %}
 {% load markup %}
-{% load markitup_tags %}
+
 
 {% block body %}
 
@@ -26,7 +26,7 @@
     </td>
     <td></td>
     <td>
-        <div class="body">{{ request.POST.comment|sanitize|markdown }}</div>
+        <div class="body">{{ request.POST.comment }}</div>
     </td>
     </tr>
 
@@ -55,5 +55,4 @@
 </tr>
 </table>
 
-{% insert_markitup "#id_comment" %}
 {% endblock %}

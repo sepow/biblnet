@@ -47,9 +47,8 @@ def visit_tribe(tribe, user):
             tribe_member = TribeMember.objects.filter(tribe=tribe, user=user)[0]
             tribe_member.last_visit = datetime.now()
             tribe_member.save()
-
         except AttributeError:
             pass
-
+    return ""
 register.simple_tag(visit_tribe)
 

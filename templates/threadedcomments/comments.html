@@ -4,7 +4,7 @@
 {% load pagination_tags %}
 {% load avatar_tags %}
 {% load markup %}
-{% load markitup_tags %}
+
 
 {% get_threaded_comment_tree for object as responses %}
 {% autopaginate responses 40 %}
@@ -43,7 +43,7 @@
     </td>
     <td>
         
-        <div class="body">{{ response.comment|markdown|sanitize }} </div>
+        <div class="body">{{ response.comment }} </div>
         {% ifequal user.id object.tribe.creator.id %} {# if_can_delete_topic topic user #}
             <form id="{{ response.id }}" class="delete_post_form delete_form" style="display: none;" method="POST" action="{% url tc_comment_delete response.id %}">
                 <input type="submit" value="Delete Post"/> {% trans "Are you sure you wish to delete this post?"%}

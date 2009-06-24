@@ -43,9 +43,8 @@ class TribeUpdateForm(forms.ModelForm):
         model = Tribe
         fields = ('name', 'description', 'tags', 'private')
 
-from markitup.widgets import MarkItUpWidget
+
 class TopicForm(forms.ModelForm):
-    body = forms.CharField(widget=MarkItUpWidget())
     class Meta:
         model = Topic
         fields = ('title', 'body', 'tags')

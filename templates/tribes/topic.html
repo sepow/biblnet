@@ -6,7 +6,7 @@
 {% load avatar_tags %}
 {% load security_tag %}
 {% load markup %}
-{% load markitup_tags %}
+
 {% block head_title %}{{ topic.title }}{% endblock %}
 
 {% block boxtab_id %}id="board_tab"{% endblock %}
@@ -106,13 +106,13 @@
         <div>
             
             {% if edit %}
-            {% insert_markitup "#id_body" %}
+
             <form method="post" action="{{ request.path }}">
-                <textarea id="id_body" rows="10" cols="40" name="body">{{ topic.body|markdown|sanitize }}</textarea>
+                <textarea id="id_body" rows="10" cols="40" name="body">{{ topic.body }}</textarea>
                 <input type="submit" name="edit" value="Edit!" />
             </form>
             {% else %}
-            <div class="body">{{ topic.body|markdown|sanitize }}</div>
+            <div class="body">{{ topic.body }}</div>
             {% endif %}
         </div>
         </td>

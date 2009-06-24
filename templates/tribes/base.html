@@ -3,5 +3,5 @@
 {% load i18n %}
 
 
-{% block extra_head %}{% endblock %}
-{% block group %}{% visit_tribe tribe request.user %}<li class="tab members_tab"><a href="{{ tribe.get_absolute_url }}members/"><span>{% trans "Members" %}</span></a></li>{% endblock %}
+{% block visit %}{% if tribe %}{% visit_tribe tribe request.user %}{%endif%}{% endblock%}
+{% block group %}<li class="tab members_tab"><a href="{{ tribe.get_absolute_url }}members/"><span>{% trans "Members" %}</span></a></li>{% endblock %}

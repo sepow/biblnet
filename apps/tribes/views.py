@@ -289,6 +289,7 @@ def topic(request, id, edit=False, template_name="tribes/topic.html"):
     return render_to_response(template_name, {
         'topic': topic,
         'edit': edit,
+        'tribe': topic.tribe,
         "are_member": are_member,
         "are_moderator" : is_moderator(topic.tribe, request.user),
     }, context_instance=RequestContext(request))
