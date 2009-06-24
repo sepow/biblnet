@@ -61,11 +61,14 @@ class TribeMember(models.Model):
     
     moderator = models.BooleanField(_('moderator'), default=False)
     
-    # last_visit = models.DateTimeField(_('last visit'), default=datetime.now)
+    last_visit = models.DateTimeField(_('last visit'), default=datetime.now)
     
     def __unicode__(self):
         return u"%s - %s" % (self.tribe, self.user)
 
+    class Meta:
+        unique_together = (("tribe", "user"),) 
+        
 from threadedcomments.models import ThreadedComment
 class Topic(models.Model):
     """
@@ -79,7 +82,7 @@ class Topic(models.Model):
     created = models.DateTimeField(_('created'), default=datetime.now)
     modified = models.DateTimeField(_('modified'), default=datetime.now) # topic modified when commented on
     body = models.TextField(_('body'), blank=True)
-    # body_marked_up = models.TextField(_('body'), blank=True)
+    body_html = models.TextField(_('body'), blank=True)
     views = models.IntegerField(_("views"), default=0)
     sticky = models.BooleanField(_("sticky?"), blank=True, null=True, default=False) # skupper tråden op øverst i forumet. 
     closed = models.BooleanField(_("closed?"), blank=True, null=True, default=False) # ikke muligt at skrive indlæg til denne post
@@ -95,7 +98,6 @@ class Topic(models.Model):
     
     class Meta:
         ordering = ('-sticky', '-modified')
-        #ordering = ('-modified', )
 
 
 

@@ -1,1 +1,3 @@
-<p>New Topics in the group <a href="{% url tribe_topics tribe.slug %}">{{tribe}}</a>: {{new_topics}} ({{new_posts}} posts )<p/>
+{% if changed %}
+<p><a href="{% url tribe_topics tribe.slug %}">New in the {{tribe}} {{new_topics}} +({{new_posts}}) replies</a><p/>
+{% endif %}

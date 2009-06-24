@@ -14,7 +14,7 @@
         {% if user.tribe_set.all %}
             {% for tribe in user.tribe_set.all %}
                 {% if not tribe.deleted %}
-                {% new_since_last_visit tribe %}
+                {% new_since_last_visit tribe user %}
                 {% endif %}
             {% endfor %}
         {% else %}
