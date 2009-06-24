@@ -6,7 +6,15 @@
 {% load tribe_tags %}
 
 {% block body %}
-
+<script type="text/javascript" src="{{MEDIA_URL}}fckeditor/fckeditor.js"></script>
+<script type="text/javascript">
+window.onload = function()
+{
+var oFCKeditor = new FCKeditor( 'id_body' ) ;
+oFCKeditor.BasePath = "{{MEDIA_URL}}fckeditor/" ;
+oFCKeditor.ReplaceTextarea() ;
+}
+</script>
     {% if are_member %}
         <h2>{% trans "New Topic in:" %} {{tribe}}</h2>
         <form class="uniForm" id="tribe_form" method="POST" action="">
@@ -19,5 +27,7 @@
             </fieldset>
         </form>
     {% endif %}
-    
+
+
+
 {% endblock %}

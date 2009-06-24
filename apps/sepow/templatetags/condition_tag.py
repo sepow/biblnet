@@ -139,7 +139,26 @@ def if_can_edit_topic(topic='topic', user='user'):
             return False
         else: 
             return True
-            
     return False
     
 register.tag('if_can_edit_topic', if_can_edit_topic)
+
+@condition_tag
+def if_can_edit_comment(comment='response', user='user'):
+    if user.id == comment.user.id: 
+        created = comment.date_submitted
+        now = datetime.now()
+        time_since = now - created
+        if time_since.seconds > 60*15:
+            return False
+        else: 
+            return True
+    return False
+    
+register.tag('if_can_edit_comment', if_can_edit_comment)
+
+
+
+
+
+

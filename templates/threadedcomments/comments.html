@@ -4,7 +4,7 @@
 {% load pagination_tags %}
 {% load avatar_tags %}
 {% load markup %}
-
+{% load condition_tag %}
 
 {% get_threaded_comment_tree for object as responses %}
 {% autopaginate responses 40 %}
@@ -21,7 +21,7 @@
         </div>
     </td>
     <td>
-        {% ifequal user.id object.creator.id %} {# if_can_edit_comment comment user #}
+        {% if_can_edit_comment response user%} 
             <div class="edit">
                 <form method="POST" action="{% url tc_comment_edit response.id %}">
                     <input type="image" src="/site_media/images/sitegraphics/edit.gif" alt="{% trans "Edit" %}" />
@@ -30,7 +30,7 @@
                     <input type="hidden" value="{{ request.path }}" name="next" />
                 </form>
             </div>
-        {% endifequal %}
+        {% endif_can_edit_comment%} 
         {% ifequal user.id object.tribe.creator.id %} {# if_can_delete_topic topic user #}
             <div class="delete">
                 <a onclick="$('#{{ response.id }}.delete_post_form').toggle(); return false;" href="#"><img src="/site_media/images/sitegraphics/trash.gif" alt="{% trans "Delete" %}" /></a>

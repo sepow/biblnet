@@ -112,7 +112,7 @@
                 <input type="submit" name="edit" value="Edit!" />
             </form>
             {% else %}
-            <div class="body">{{ topic.body }}</div>
+            <div class="body">{% autoescape off %}{{ topic.body }}{% endautoescape %}</div>
             {% endif %}
         </div>
         </td>
