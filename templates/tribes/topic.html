@@ -106,11 +106,21 @@
         <div>
             
             {% if edit %}
-
             <form method="post" action="{{ request.path }}">
-                <textarea id="id_body" rows="10" cols="40" name="body">{{ topic.body }}</textarea>
+                <textarea id="id_body" rows="20" cols="80" name="body">{{ topic.body }}</textarea>
                 <input type="submit" name="edit" value="Edit!" />
             </form>
+            {% block extra_body %}
+                <script type="text/javascript" src="{{MEDIA_URL}}fckeditor/fckeditor.js"></script>
+                <script type="text/javascript">
+                window.onload = function()
+                {
+                var oFCKeditor = new FCKeditor( 'id_body' ) ;
+                oFCKeditor.BasePath = "{{MEDIA_URL}}fckeditor/" ;
+                oFCKeditor.ReplaceTextarea() ;
+                }
+                </script>
+            {% endblock %}
             {% else %}
             <div class="body">{% autoescape off %}{{ topic.body }}{% endautoescape %}</div>
             {% endif %}

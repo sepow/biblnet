@@ -44,6 +44,7 @@
     <form method="POST" action="">
         {{ form.comment }}
         <div class="form_block">
+            
             <input type="submit" value="Submit Comment" />
             <input type="submit" value="Preview Updated Comment" name="preview" />
             <input type="hidden" name="next" value="{{ next }}" />
@@ -52,5 +53,15 @@
 </td>
 </tr>
 </table>
-
+{% block extra_body %}
+    <script type="text/javascript" src="{{MEDIA_URL}}fckeditor/fckeditor.js"></script>
+    <script type="text/javascript">
+    window.onload = function()
+    {
+    var oFCKeditor = new FCKeditor( 'id_comment' ) ;
+    oFCKeditor.BasePath = "{{MEDIA_URL}}fckeditor/" ;
+    oFCKeditor.ReplaceTextarea() ;
+    }
+    </script>
+{% endblock %}
 {% endblock %}

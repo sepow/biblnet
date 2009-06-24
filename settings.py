@@ -13,11 +13,11 @@ PINAX_THEME = 'default'
 TIME_FORMAT = 'H:i'
 DEFAULT_MAX_COMMENT_LENGTH = 6000
 DEFAULT_CHARSET = "utf-8"
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 # tells Pinax to serve media through django.views.static.serve.
-SERVE_MEDIA = DEBUG
+SERVE_MEDIA = True
 
 AUTHENTICATION_BACKENDS = (
     'sepow.profilestuff.CaseInsensitiveModelBackend',
