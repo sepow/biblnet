@@ -213,7 +213,7 @@ EMAIL_DEBUG = DEBUG
 CONTACT_EMAIL = "test@example.com"
 SITE_NAME = "Biblnet"
 LOGIN_URL = "/account/login"
-LOGIN_REDIRECT_URLNAME = "what_next"
+LOGIN_REDIRECT_URLNAME = "home"
 
 INTERNAL_IPS = (
     '127.0.0.1',
@@ -255,7 +255,10 @@ WIKI_REQUIRES_LOGIN = True
 AVATAR_DEFAULT_URL = MEDIA_URL + 'images/kristine.jpg'
 AVATAR_GRAVATAR_BACKUP = False
 
+# Captcha
 
+CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.word_challenge' 
+CAPTCHA_NOISE_FUNCTIONS = ('captcha.helpers.noise_dots',)
 # markitup
 MARKITUP_SET = 'markitup/sets/markdown'
 MARKITUP_SKIN = 'markitup/skins/markitup'

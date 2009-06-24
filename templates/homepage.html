@@ -1,5 +1,5 @@
 {% extends "site_base.html" %}
-
+{% load biblnet_tags %}
 {% load i18n %}
 
 {% block head_title %}{% trans "Welcome" %}{% endblock %}
@@ -13,11 +13,19 @@
 	<p>Alle medlemmer kan bidrage med indhold.</p>
 	{% endblocktrans %}
 
-	{% if user.is_authenticated %}
-		{% url what_next as what_next_url %}
-		<p class="what_next">{% blocktrans %}Wondering <a href="{{ what_next_url }}">What Next</a>?{% endblocktrans %}</p>
-	{% else %}
-		{% url acct_signup as signup_url %}
-		<p>{% blocktrans %}<a href="{{ signup_url }}">Bliv medlem</a> for at være med!{% endblocktrans %}</p>
-	{% endif %}
+    {% if user.is_authenticated %}
+    
+        -- {% trans "You last visited us " %}{{user.last_login|timesince}} {% trans "ago" %} -- <br/>
+        
+        {% if user.tribe_set.all %}
+            {% for tribe in user.tribe_set.all %}
+                {% if not tribe.deleted %}
+                {% new_since_last_visit tribe user %}
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            {% url tribe_list as tribe_url %}
+            <p>{% blocktrans %}You are not yet a member of any <a href="{{ tribe_url }}">tribes</a>.{% endblocktrans %}</p>
+        {% endif %}
+   {%endif %}
 {% endblock %}

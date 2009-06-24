@@ -2,9 +2,11 @@ from django import template
 from tribes.models import Tribe
 from datetime import datetime
 from tribes.models import TribeMember
-from threadedcomments.models import ThreadedComment # posts
-register = template.Library()
+from threadedcomments.models import ThreadedComment
 from tribes.models import Topic
+
+register = template.Library()
+
 def has_member(tribe, user):
     if user.is_authenticated():
         if TribeMember.objects.filter(tribe=tribe, user=user).count() > 0:
@@ -14,14 +16,15 @@ def has_member(tribe, user):
 def new_since_last_visit(tribe, user):
     if has_member(tribe, user):
         since = TribeMember.objects.filter(tribe=tribe, user=user)[0].last_visit
-        new_topics = tribe.topics.filter(created__gte=since).count()
-        modified_topics = tribe.topics.filter(modified__gte=since)
         
-        new_posts = 0 # tribe.topics.filter(modified__gte=since).filter(created__gte=since).count()
+        # new topics
+        new_topics = tribe.topics.filter(created__gte=since).count() # user != user
         
-        count = 0
+        # new posts
+        modified_topics = tribe.topics.filter(modified__gte=since) 
+        new_posts = 0         
         for topic in modified_topics:
-            new_posts += ThreadedComment.objects.filter(date_modified__gte=since, object_id=topic.id).count()
+            new_posts += ThreadedComment.objects.filter(date_modified__gte=since, object_id=topic.id).count() # user != user
 
     if new_topics or new_posts:
         changed = True

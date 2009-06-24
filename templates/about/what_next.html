@@ -9,24 +9,6 @@
     
     {% if user.is_authenticated %}
     
-        -- You last visited us {{user.last_login|timesince}} ago -- <br/>
-        
-        {% if user.tribe_set.all %}
-            {% for tribe in user.tribe_set.all %}
-                {% if not tribe.deleted %}
-                {% new_since_last_visit tribe user %}
-                {% endif %}
-            {% endfor %}
-        {% else %}
-            {% url tribe_list as tribe_url %}
-            <p>{% blocktrans %}You are not yet a member of any <a href="{{ tribe_url }}">tribes</a>.{% endblocktrans %}</p>
-        {% endif %}
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    
         <p>Here are some things to do to get started with this site:</p>
         
         <dl class="what_next">
