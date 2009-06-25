@@ -20,8 +20,15 @@
         {% for message in message_list %}
             <tr class="{% cycle odd,even %}">
                 <td>
-                    {% if message.new %}<img src="{{ MEDIA_URL }}images/sitegraphics/pb.gif"/>{% else %}<img src="{{ MEDIA_URL }}images/sitegraphics/pbopen.gif"/>{% endif %}
-                    {% if message.replied %}<img src="{{ MEDIA_URL }}images/sitegraphics/jump.gif"/>{% endif %}
+                    {% if message.new %}
+                        <img src="{{ MEDIA_URL }}images/sitegraphics/email.png"/>
+                    {% else %}
+                        {% if message.replied %}
+                            <img src="{{ MEDIA_URL }}images/sitegraphics/email_go.png"/>
+                        {% else %}
+                            <img src="{{ MEDIA_URL }}images/sitegraphics/email_open.png"/>
+                        {% endif %}
+                    {% endif %}
                 </td>
                 <td>{{ message.sender }}</td>
                 <td>

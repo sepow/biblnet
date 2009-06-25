@@ -23,9 +23,9 @@
                 <td>
                 <form method="POST" action="{% url tribe_topic_moderate topic.id %}">
                     {% if topic.sticky %}
-                        <input type="image" src="/site_media/images/sitegraphics/unsticky.gif" alt="{% trans "unSticky topic" %}" />
+                        <input type="image" src="/site_media/images/sitegraphics/lightbulb_delete.png" alt="{% trans "unSticky topic" %}" />
                     {% else %}
-                        <input type="image" src="/site_media/images/sitegraphics/sticky.gif" alt="{% trans "Sticky topic" %}" />
+                        <input type="image" src="/site_media/images/sitegraphics/lightbulb.png" alt="{% trans "Sticky topic" %}" />
                     {% endif %}
                     <!--input type="submit" value={% if topic.sticky %}"{% trans "unSticky topic" %}"{% else %}"{% trans "Sticky topic" %}"{% endif %} /-->
                     <input type="hidden" name="sticky" value="" />
@@ -44,9 +44,9 @@
                 <td>
                 <form method="POST" action="{% url tribe_topic_moderate topic.id %}">
                     {% if topic.closed %}
-                        <input type="image" src="/site_media/images/sitegraphics/unlock.gif" alt="{% trans "Reopen topic" %}" />
+                        <input type="image" src="/site_media/images/sitegraphics/lock_open.png" alt="{% trans "Reopen topic" %}" />
                     {% else %}
-                        <input type="image" src="/site_media/images/sitegraphics/lock.gif" alt="{% trans "Close topic" %}" />
+                        <input type="image" src="/site_media/images/sitegraphics/lock.png" alt="{% trans "Close topic" %}" />
                     {% endif %}
                     <!--input type="submit" value={% if topic.closed %}"{% trans "Reopen topic" %}"{% else %}"{% trans "Close topic" %}"{% endif %} /-->
                     <input type="hidden" name="close" value="" />
@@ -70,11 +70,11 @@
 <p>{% show_tags_for topic %}</p>
 
 {% if topic.sticky %}
-    <p><img src="/site_media/images/sitegraphics/sticky.gif" alt="{% trans "Sticky topic" %}" /> {% trans "This is a sticky topic. That means that it will always appear as the first topic on the Message Board." %}</p>
+    <p><img src="/site_media/images/sitegraphics/lightbulb.png" alt="{% trans "Sticky topic" %}" /> {% trans "This is a sticky topic, which means that it will always appear at the top of the Message Board." %}</p>
 {% endif %}
 
 {% if topic.closed %}
-    <p><img src="/site_media/images/sitegraphics/lock.gif" alt="{% trans "Closed topic" %}" /> {% trans "The topic has been closed. It can only be reopened by a moderator of this group." %}</p>
+    <p><img src="/site_media/images/sitegraphics/lock.png" alt="{% trans "Closed topic" %}" /> {% trans "The topic has been closed. It can only be reopened by a moderator of this group." %}</p>
 {% endif %}
 
 <form id="{{ topic.id }}" class="delete_topic_form delete_form" style="display: none;" method="POST" action="{% url tribe_topic_delete topic.id %}">
@@ -96,10 +96,10 @@
         </td>
         <td>
             {% if_can_edit_topic %}
-                {% if not edit %}<a href="{{ request.path }}edit/"><img src="/site_media/images/sitegraphics/edit.gif" alt="{% trans "Edit post" %}" /></a>{% endif %}
+                {% if not edit %}<a href="{{ request.path }}edit/"><img src="/site_media/images/sitegraphics/page_white_edit.png" alt="{% trans "Edit post" %}" /></a>{% endif %}
             {% endif_can_edit_topic %}
             {% ifequal user topic.tribe.creator %}
-                <div class="delete"><a onclick="$('#{{ topic.id }}.delete_topic_form').toggle(); return false;" href="#"><img src="/site_media/images/sitegraphics/trash.gif" alt="{% trans "Delete Topic" %}" /></a></div>
+                <div class="delete"><a onclick="$('#{{ topic.id }}.delete_topic_form').toggle(); return false;" href="#"><img src="/site_media/images/sitegraphics/bin.png" alt="{% trans "Delete Topic" %}" /></a></div>
             {% endifequal %}
         </td>
         <td>
@@ -125,7 +125,7 @@
 {% endif_can_see %}
 
 {% if topic.closed %}
-    <p><img src="/site_media/images/sitegraphics/lock.gif" alt="{% trans "Closed topic" %}" /> {% trans "The topic has been closed. It can only be reopened by a moderator of this group." %}</p>
+    <p><img src="/site_media/images/sitegraphics/lock.png" alt="{% trans "Closed topic" %}" /> {% trans "The topic has been closed. It can only be reopened by a moderator of this group." %}</p>
 {% else %} {% if user.is_authenticated and not are_member %}
     <p>{% trans "You need to be a member of this group to reply."%}</p>
 {% else %} {% if not user.is_authenticated %}

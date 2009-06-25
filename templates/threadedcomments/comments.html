@@ -7,7 +7,7 @@
 {% load markitup_tags %}
 
 {% get_threaded_comment_tree for object as responses %}
-{% autopaginate responses 40 %}
+{% autopaginate responses 100 %} {# ;) #}
 {% for response in responses %}
     <tr class="{% cycle 'even' 'odd' as rowcolors %}">
     <td>
@@ -24,7 +24,7 @@
         {% ifequal user.id object.creator.id %} {# if_can_edit_comment comment user #}
             <div class="edit">
                 <form method="POST" action="{% url tc_comment_edit response.id %}">
-                    <input type="image" src="/site_media/images/sitegraphics/edit.gif" alt="{% trans "Edit" %}" />
+                    <input type="image" src="/site_media/images/sitegraphics/page_white_edit.png" alt="{% trans "Edit" %}" />
                     <input type="hidden" value="{{ response.comment }}" name="comment" />
                     <input type="hidden" value="" name="preview" />
                     <input type="hidden" value="{{ request.path }}" name="next" />
@@ -33,9 +33,9 @@
         {% endifequal %}
         {% ifequal user.id object.tribe.creator.id %} {# if_can_delete_topic topic user #}
             <div class="delete">
-                <a onclick="$('#{{ response.id }}.delete_post_form').toggle(); return false;" href="#"><img src="/site_media/images/sitegraphics/trash.gif" alt="{% trans "Delete" %}" /></a>
+                <a onclick="$('#{{ response.id }}.delete_post_form').toggle(); return false;" href="#"><img src="/site_media/images/sitegraphics/bin.png" alt="{% trans "Delete" %}" /></a>
                 <!--form method="POST" action="{% url tc_comment_delete response.id %}">
-                    <input type="image" src="/site_media/images/sitegraphics/trash.gif" alt="{% trans "Delete" %}" />
+                    <input type="image" src="/site_media/images/sitegraphics/bin.png" alt="{% trans "Delete" %}" />
                     <input type="hidden" name="next" value="{{ request.path }}" />
                 </form-->
             </div>
