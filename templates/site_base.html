@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% load i18n %}
-{% load openid_tags %}
+
 {% load svn_app_version %}
 {% load analytics %}
 {% load avatar_tags %}
@@ -15,7 +15,7 @@
 
 {% block login %}
     {% if user.is_authenticated %}
-        {% openid_icon openid user %}
+
     <b><a href="{% url profile_detail user %}">{% avatar user 40 %}</a><a href="{% url profile_detail user %}">{{ user }}</a></b> 
     {# {% if user.is_staff %}<a href="/admin/">{% trans "Admin" %}</a>  | {% endif %} TODO behøver den være her? #}
     <a href="/openid/logout/?next={% url acct_logout %}">{% trans "Logout" %}</a> <br/><br />

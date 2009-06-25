@@ -83,7 +83,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django_openid.consumer.SessionConsumer',
+    #'django_openid.consumer.SessionConsumer',
     'account.middleware.LocaleMiddleware',
     'django.middleware.doc.XViewMiddleware',
     'pagination.middleware.PaginationMiddleware',
@@ -110,7 +110,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     
     "notification.context_processors.notification",
     "announcements.context_processors.site_wide_announcements",
-    "account.context_processors.openid",
+#    "account.context_processors.openid",
     "account.context_processors.account",
     "misc.context_processors.contact_email",
     "misc.context_processors.site_name",
@@ -127,6 +127,11 @@ COMBINED_INBOX_COUNT_SOURCES = (
     "notification.context_processors.notification",
 )
 
+# Search 
+
+HAYSTACK_SEARCH_ENGINE = 'whoosh'
+HAYSTACK_WHOOSH_PATH = os.path.join(os.path.dirname(__file__), 'biblnet_index')
+
 INSTALLED_APPS = (
     # included
     'django.contrib.auth',
@@ -138,7 +143,7 @@ INSTALLED_APPS = (
     
     # external
     'notification', # must be first
-    'django_openid',
+    #'django_openid',
     'emailconfirmation',
     'django_extensions',
     'robots',
@@ -184,6 +189,7 @@ INSTALLED_APPS = (
     'sepow',
     'captcha',
     'markitup',
+    'haystack',
 
 )
 
@@ -259,11 +265,6 @@ AVATAR_GRAVATAR_BACKUP = False
 
 CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.word_challenge' 
 CAPTCHA_NOISE_FUNCTIONS = ('captcha.helpers.noise_dots',)
-# markitup
-MARKITUP_SET = 'markitup/sets/markdown'
-MARKITUP_SKIN = 'markitup/skins/markitup'
-MARKITUP_PREVIEW_FILTER = ('markdown.markdown', {'safe_mode': True})
-JQUERY_URL = "pinax/js/jquery.js"
 
 # local_settings.py can be used to override environment-specific settings
 # like database and email that differ between development and production.

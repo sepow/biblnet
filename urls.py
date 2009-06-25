@@ -59,7 +59,8 @@ urlpatterns = patterns('',
     (r'^swaps/', include('swaps.urls')),
     (r'^flag/', include('flag.urls')),
     (r'^locations/', include('locations.urls')),
-    
+    (r'^search/', include('haystack.urls')),
+
     (r'^feeds/tweets/(.*)/$', 'django.contrib.syndication.views.feed', tweets_feed_dict),
     (r'^feeds/posts/(.*)/$', 'django.contrib.syndication.views.feed', blogs_feed_dict),
     (r'^feeds/bookmarks/(.*)/?$', 'django.contrib.syndication.views.feed', bookmarks_feed_dict),
@@ -105,6 +106,9 @@ urlpatterns += patterns('',
     url('^tweets/friends_tweets/$', 'friends_app.views.friends_objects', kwargs=friends_tweets_kwargs, name="friends_tweets"),
     url('^bookmarks/friends_bookmarks/$', 'friends_app.views.friends_objects', kwargs=friends_bookmarks_kwargs, name="friends_bookmarks"),
 )
+import haystack
+
+haystack.autodiscover()
 
 if settings.SERVE_MEDIA:
     urlpatterns += patterns('', 
