@@ -7,7 +7,6 @@ from django.conf import settings
 from django.utils.translation import ugettext_lazy as _, ugettext
 from django.utils.encoding import smart_unicode
 from django.utils.hashcompat import sha_constructor
-
 from misc.utils import get_send_mail
 send_mail = get_send_mail()
 
@@ -35,6 +34,8 @@ class BiblnetSignupForm(forms.Form):
     password2 = forms.CharField(label=_(u"Password (again)"), widget=forms.PasswordInput(render_value=False))
     affiliation = forms.ModelChoiceField(queryset=Affiliation.objects.filter(tribe__private__exact=False), empty_label=_("(Pick your affiliation)")) #TODO clean
     confirmation_key = forms.CharField(max_length=40, required=False, widget=forms.HiddenInput())
+    
+    accept_terms = forms.BooleanField(required=True) 
 
     def clean_username(self):
         if not alnum_re.search(self.cleaned_data["username"]):

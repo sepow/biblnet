@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.conf import settings
 from tribes.models import TribeMember
-
+from sepow.html import sanitize_html
 if "notification" in settings.INSTALLED_APPS:
     from notification import models as notification
 else:
@@ -243,6 +243,8 @@ def topics(request, slug, form_class=TopicForm,
                     topic = topic_form.save(commit=False)
                     topic.tribe = tribe
                     topic.creator = request.user
+                    topic.body = sanitize_html(topic.body)
+                    
                     topic.save()        
                     request.user.message_set.create(message="You have started the topic %s" % topic.title)
                     if notification:
@@ -265,6 +267,7 @@ def topics(request, slug, form_class=TopicForm,
         "are_moderator" : is_moderator(tribe, request.user),
     }, context_instance=RequestContext(request))
 
+
 def topic(request, id, edit=False, template_name="tribes/topic.html"):
     topic = get_object_or_404(Topic, id=id)
     
@@ -281,8 +284,9 @@ def topic(request, id, edit=False, template_name="tribes/topic.html"):
              
     if request.method == "POST" and edit == True and \
         (request.user == topic.creator or is_moderator(topic.tribe, request.user)):
-        topic.body = request.POST["body"]
-        topic.save()
+        if True:        
+            topic.body = sanitize_html(request.POST["body"])
+            topic.save()
         return HttpResponseRedirect(reverse('tribe_topic', args=[topic.id]))
     topic.views += 1
     topic.save()

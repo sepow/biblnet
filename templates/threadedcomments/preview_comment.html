@@ -24,7 +24,7 @@
     </td>
     <td></td>
     <td>
-        <div class="body">{{ request.POST.comment }}</div>
+        <div class="body">{% autoescape off %}{{ request.POST.comment }}{% endautoescape %}</div>
     </td>
     </tr>
 

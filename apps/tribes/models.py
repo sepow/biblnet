@@ -103,6 +103,9 @@ class Topic(models.Model):
 
 def new_comment(sender, instance, **kwargs):
     if isinstance(instance.content_object, Topic):
+
+       
+        
         topic = instance.content_object
         topic.modified = datetime.now()
         topic.save()

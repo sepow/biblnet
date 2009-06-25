@@ -11,9 +11,9 @@ PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 PINAX_THEME = 'default'
 
 TIME_FORMAT = 'H:i'
-DEFAULT_MAX_COMMENT_LENGTH = 6000
+DEFAULT_MAX_COMMENT_LENGTH = 15000
 DEFAULT_CHARSET = "utf-8"
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 # tells Pinax to serve media through django.views.static.serve.

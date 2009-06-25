@@ -15,7 +15,7 @@ import re
 
 RE_EXXX = re.compile('j[\s]*(&#x.{1,7})?a[\s]*(&#x.{1,7})?v[\s]*(&#x.{1,7})?a[\s]*(&#x.{1,7})?s[\s]*(&#x.{1,7})?c[\s]*(&#x.{1,7})?r[\s]*(&#x.{1,7})?i[\s]*(&#x.{1,7})?p[\s]*(&#x.{1,7})?t', re.IGNORECASE)
 
-def _sanitize_html(value): #TODO execute at topic.save. 
+def sanitize_html(value): #TODO execute at topic.save. 
     valid_tags = [
                     'br', 'strong', 'b', 'p', 'div', 'em', 'u', 'strike', 'ul',
                     'li', 'ol', 'a', 'img', 'highlight', 'sup', 'sub', 'span',
@@ -48,5 +48,5 @@ def _sanitize_html(value): #TODO execute at topic.save.
                    
     return re.sub(RE_EXXX, '', soup.renderContents().decode('utf8'))
 sanitize_html.is_safe = True
-register.filter('sanitize', _sanitize_html)
+register.filter('sanitize', sanitize_html)
 

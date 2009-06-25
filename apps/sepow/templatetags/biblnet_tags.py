@@ -15,6 +15,7 @@ def has_member(tribe, user):
     
 def new_since_last_visit(tribe, user):
     if has_member(tribe, user):
+        
         since = TribeMember.objects.filter(tribe=tribe, user=user)[0].last_visit
         
         # new topics
