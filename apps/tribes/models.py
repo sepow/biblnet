@@ -82,7 +82,6 @@ class Topic(models.Model):
     created = models.DateTimeField(_('created'), default=datetime.now)
     modified = models.DateTimeField(_('modified'), default=datetime.now) # topic modified when commented on
     body = models.TextField(_('body'), blank=True)
-    body_html = models.TextField(_('body'), blank=True)
     views = models.IntegerField(_("views"), default=0)
     sticky = models.BooleanField(_("sticky?"), blank=True, null=True, default=False) # skupper tråden op øverst i forumet. 
     closed = models.BooleanField(_("closed?"), blank=True, null=True, default=False) # ikke muligt at skrive indlæg til denne post
@@ -102,10 +101,7 @@ class Topic(models.Model):
 
 
 def new_comment(sender, instance, **kwargs):
-    if isinstance(instance.content_object, Topic):
-
-       
-        
+    if isinstance(instance.content_object, Topic):       
         topic = instance.content_object
         topic.modified = datetime.now()
         topic.save()
