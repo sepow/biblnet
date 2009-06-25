@@ -9,6 +9,8 @@ from django.contrib.auth.models import User
 from django.conf import settings
 from tribes.models import TribeMember
 from sepow.html import sanitize_html
+from datetime import datetime
+
 if "notification" in settings.INSTALLED_APPS:
     from notification import models as notification
 else:
@@ -282,11 +284,19 @@ def topic(request, id, edit=False, template_name="tribes/topic.html"):
             resp.status_code = 403
             return resp
              
-    if request.method == "POST" and edit == True and \
-        (request.user == topic.creator or is_moderator(topic.tribe, request.user)):
-        if True:        
-            topic.body = sanitize_html(request.POST["body"])
-            topic.save()
+    if request.method == "POST" and edit == True:
+        if request.user == topic.creator:
+            created = topic.created
+            now = datetime.now()
+            time_since = now - created
+            if time_since.seconds < 60*15:
+                topic.body = sanitize_html(request.POST["body"])
+                topic.save()
+        
+        elif is_moderator(topic.tribe, request.user):
+                topic.body = sanitize_html(request.POST["body"])
+                topic.save()
+        
         return HttpResponseRedirect(reverse('tribe_topic', args=[topic.id]))
     topic.views += 1
     topic.save()
