@@ -2,3 +2,4 @@
 *.db
 *~
 local_settings.py
+/biblnet_index/*
