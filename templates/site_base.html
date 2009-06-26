@@ -85,8 +85,8 @@
 
 {% block search %}
     <div class="search">
-        <form method="post" action="/search/" name="search">
-            <input type="text" name="search_string" />
+        <form method="get" action="/search/" name="search">
+            <input type="text" name="q" />
             <select>
                 <option value="all">All</option>
                 <option value="msg">Comments</option>
@@ -95,6 +95,8 @@
                 <option value="memb">Members</option>
             </select>
             <input type="submit" value="{% trans "Search" %}" />
+
+            
         </form>
     </div>
 {% endblock %}

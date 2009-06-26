@@ -106,9 +106,12 @@ urlpatterns += patterns('',
     url('^tweets/friends_tweets/$', 'friends_app.views.friends_objects', kwargs=friends_tweets_kwargs, name="friends_tweets"),
     url('^bookmarks/friends_bookmarks/$', 'friends_app.views.friends_objects', kwargs=friends_bookmarks_kwargs, name="friends_bookmarks"),
 )
+
 import haystack
 
 haystack.autodiscover()
+
+
 
 if settings.SERVE_MEDIA:
     urlpatterns += patterns('', 
