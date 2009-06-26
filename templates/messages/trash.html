@@ -1,0 +1,38 @@
+{% extends "messages/base.html" %} 
+
+{% load i18n %} 
+{% load timezone_filters %}
+
+{% block body %} 
+<h1>{% trans "Deleted Messages" %}</h1>
+
+<a href="{% url messages_inbox %}">{% trans "Inbox" %}</a><br />
+<a href="{% url messages_outbox %}">{% trans "Sent Messages" %}</a><br />
+<br />
+<a href="{% url messages_compose %} ">{% trans "Compose New Message" %}</a>
+
+<table class="messages">
+    <thead>
+        <tr class="even"><th width="35px"></th><th>{% trans "Sender" %}</th><th>{% trans "Subject" %}</th><th>{% trans "Sent" %}</th><th>{% trans "Action" %}</th></tr>
+    </thead>
+    <tbody>
+        {% if message_list %}
+        {% for message in message_list %}
+            <tr class="{% cycle odd,even %}">
+                <td></td>
+                <td>{{ message.sender }}</td>
+                <td>
+                    <a href="{{ message.get_absolute_url }}">{% if message.subject.strip %}{{ message.subject }}{% else %}(none){% endif %}</a>
+                </td>
+                <td>{{ message.sent_at|localtime:account.timezone|date:_("DATETIME_FORMAT") }}</td>
+                <td><a href="{% url messages_undelete message.id %}">{% trans "undelete" %}</a></td>
+            </tr>
+        {% endfor %}
+        {% else %}
+            <tr class="odd"><td></td><td colspan="4">{% trans "You do not have any deleted messages..." %}</td></tr>
+        {% endif %}
+    </tbody>
+</table>
+<br />
+<p>{% trans "Deleted Messages are removed from the trash at irregular intervals, don't rely on this feature for long-time storage." %}</p>
+{% endblock %}
