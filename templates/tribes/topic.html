@@ -16,9 +16,9 @@
 {% block body %}
 {% load condition_tag %}
 
-<div class="right_panel">
-    <table>
-        {% if are_moderator %}
+{% if are_moderator %}
+    <div class="right_panel">
+        <table>
             <tr>
                 <td>
                 <form method="POST" action="{% url tribe_topic_moderate topic.id %}">
@@ -61,9 +61,9 @@
                     {% endif %}
                 </td>
             </tr>
-       {% endif %}
-    </table>
-</div>
+        </table>
+    </div>
+{% endif %}
 
 {% if_can_see topic.tribe user %}
 <h2>{{ topic.title }}</h2>
@@ -77,19 +77,24 @@
     <p><img src="/site_media/images/sitegraphics/lock.png" alt="{% trans "Closed topic" %}" /> {% trans "The topic has been closed. It can only be reopened by a moderator of this group." %}</p>
 {% endif %}
 
-<form id="{{ topic.id }}" class="delete_topic_form delete_form" style="display: none;" method="POST" action="{% url tribe_topic_delete topic.id %}">
-    <input type="submit" value="Delete Topic"/> {% trans "Are you sure you wish to delete this topic? All posts will be lost..." %}
-    <input type="hidden" name="next" value="{% url tribe_topics topic.tribe.slug %}" />
-</form>
+{% ifequal user topic.tribe.creator %}
+    <form id="{{ topic.id }}" class="delete_topic_form delete_form" style="display: none;" method="POST" action="{% url tribe_topic_delete topic.id %}">
+        <input type="submit" value="Delete Topic"/> {% trans "Are you sure you wish to delete this topic? All posts will be lost..." %}
+        <input type="hidden" name="next" value="{% url tribe_topics topic.tribe.slug %}" />
+    </form>
+{% endifequal %}
 
 <table class="topics">
     <tr class="even"><th class="meta">{% trans "Meta" %}</th><th class="options"></th><th>{% trans "Posts" %}</th></tr>
     <tr class="odd">
         <td>
         <div class="meta">
-            <div class="avatar"><a href="{% url profile_detail topic.creator.username %}">{% avatar topic.creator 60 %}</a></div>
+            <div class="avatar">
+                {#% affiliation.icon %#}<br />
+                <a href="{% url profile_detail topic.creator.username %}">{% avatar topic.creator 60 %}</a>
+            </div>
             <div class="created">{{ topic.created|date }} - {{ topic.created|time }}<br />
-                ({{ topic.created|timesince }} {% trans "ago"%})
+                {{ topic.created|timesince }} {% trans "ago"%}
             </div>
             <div class="details clearboth"><a href="{% url profile_detail topic.creator.username %}">{{ topic.creator }}</a></div>
         </div>
@@ -104,12 +109,11 @@
         </td>
         <td>
         <div>
-            
             {% if edit %}
-            <form method="post" action="{{ request.path }}">
-                <textarea id="id_body" rows="20" cols="80" name="body">{{ topic.body }}</textarea>
-                <input type="submit" name="edit" value="Edit!" />
-            </form>
+                <form method="post" action="{{ request.path }}">
+                    <textarea id="id_body" rows="20" cols="80" name="body">{{ topic.body }}</textarea>
+                    <input type="submit" name="edit" value="Edit!" />
+                </form>
             {% block extra_body %}
                 <script type="text/javascript" src="{{MEDIA_URL}}fckeditor/fckeditor.js"></script>
                 <script type="text/javascript">
