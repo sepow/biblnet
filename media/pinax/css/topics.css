@@ -46,7 +46,7 @@ th.options {
 }
 div.meta {
 	float: left;
-/*	font-size: 90%;*/
+	font-size: 80%;
 	overflow:hidden;
 }
 div.avatar {
@@ -55,6 +55,7 @@ div.avatar {
 div.created {
     float: left;
 	padding: .4em;
+    margin-top: 14px;
 }
 div.details {
     float: left;
