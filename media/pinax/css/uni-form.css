@@ -44,7 +44,7 @@
       .uniForm .blockLabels textarea{ width: 53%; /* <- Required property */ height: 12em; }
 
       .uniForm .formHint,
-      .uniForm .blockLabels .formHint{ width: 45%; /* <- Required property */ font-size: .9em; color: #777; position: relative; top: -.5em; }
+      .uniForm .blockLabels .formHint{ width: 45%; /* <- Required property */ font-size: .9em; /*color: #777;*/ position: relative; top: -.5em; }
       
       .uniForm .multiField,
       .uniForm .blockLabels .multiField{ width: 53%; }
@@ -75,7 +75,7 @@
     
     .uniForm .inlineLabels textarea{  width: 45%; /* <- Required property */ height: 12em; }
 
-    .uniForm .inlineLabels .formHint{ margin-top: 0; margin-left: 47%; font-size: .9em; color: #777; position: static; }
+    .uniForm .inlineLabels .formHint{ margin-top: 0; margin-left: 47%; font-size: .9em; /*color: #777;*/ position: static; }
     
     .uniForm .inlineLabels .multiField{ width: 45%; /* <- Required property */ margin: 0 0 .3em 0; }
       .uniForm .inlineLabels .multiField .inlineLabel{ display: block; margin: 0 0 .5em 0; }
@@ -87,7 +87,7 @@
 /* Focus pseudoclasses */
 .uniForm .ctrlHolder .textInput:focus{ outline: none; /* Get rid of the 'glow' effect in WebKit, optional */ }
 .uniForm .ctrlHolder textarea:focus{ outline: none; /* Get rid of the 'glow' effect in WebKit, optional */ }
-.uniForm div.focused .formHint{ color: #333; }
+.uniForm div.focused .formHint{ /*color: #333;*/ }
 
 /* Columns (they are floated left by default) */
 .uniForm .col{ width: 47.9%; /* <- Required property */ margin: 0 2% 20px 0; }
@@ -124,3 +124,4 @@ YOU CAN VERY EASILY REVERT TO A GENERIC STYLE OF UNI-FORM. BEST OF LUCK...
 .uniForm .ctrlHolder{
     border-bottom: none;
 }
+/* Commented out "Color" in lines 47, 78 and 90 */

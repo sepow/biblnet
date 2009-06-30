@@ -39,14 +39,14 @@ table.topic td h1, table.topics td h2 {
 	color: #0E3037;
 }
 th.meta {
-    width: 230px;
+    width: 180px;
 }
 th.options {
     width: 20px;
 }
 div.meta {
 	float: left;
-/*	font-size: 90%;*/
+	font-size: 80%;
 	overflow:hidden;
 }
 div.avatar {
@@ -55,6 +55,7 @@ div.avatar {
 div.created {
     float: left;
 	padding: .4em;
+    margin-top: 14px;
 }
 div.details {
     float: left;
