@@ -1,7 +1,7 @@
 from haystack.sites import site
 from haystack import indexes
 from tribes.models import Topic, Tribe
-
+import datetime
 
 
 class TopicIndex(indexes.SearchIndex):
@@ -14,6 +14,9 @@ class TopicIndex(indexes.SearchIndex):
     def get_query_set(self):
         "Used when the entire index for model is updated."
         return Topic.objects.all()
+    
+    def should_update(self, instance):
+        return (datetime.datetime.now() - instance.modified).seconds < 10 
 
 site.register(Topic, TopicIndex)
 
