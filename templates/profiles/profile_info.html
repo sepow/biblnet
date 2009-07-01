@@ -1,0 +1,10 @@
+{% load i18n %}
+{% load avatar_tags %}
+
+<table>
+    {% if other_user.get_profile.name %}<tr><td>{#% [icon] %#}</td><th>{% trans "Name" %}</th><td>{{ other_user.get_profile.name }}</td></tr>{% endif %}
+    {% if other_user.get_profile.affiliation %}<tr><td>{#% [icon] %#}</td><th>{% trans "Affiliation" %}</th><td>{{ other_user.get_profile.affiliation }}</td></tr>{% endif %}
+    {% if other_user.get_profile.phone_number %}<tr><td>{#% [icon] %#}</td><th>{% trans "Phone" %}</th><td>{{ other_user.get_profile.phone_number }}</td></tr>{% endif %}
+    {% if other_user.get_profile.website %}<rt><td>{#% [icon] %#}</td><th>{% trans "Website" %}</th><td><a href="{{ other_user.get_profile.website }}">{{ other_user.get_profile.website }}</a></td></tr>{% endif %}
+</table>
+

@@ -331,16 +331,28 @@ span.notice_type_description {
     font-size: 80%;
     font-style: italic;
 }
-
-div.profile_info p {
-    margin: 0;
+/*#profile_avatar {
+    float: left;
+}*/
+table.profile_info {
+    width: 100%;
+	border-spacing: 0;
+	margin: 0.5em 0;
 }
-#avatar_replace {
-    position: absolute;
-    margin-top: -23px;
-    background-color: #FFFFFF;
-    padding: 3px;
-    display: none;
+table.profile_info th {
+    vertical-align: top;
+    text-align: left;
+    padding: 5px;
+    font-weight: bold;
+}
+table.profile_info td {
+    vertical-align: top;
+    padding: 5px;
+    font-size: 90%;
+}
+#profile_avatar {
+    width: 200px;
+    text-align: center;
 }
 ul.avatar_choices,ul.avatar_choices ul {
     margin-left: 0px;
@@ -372,19 +384,19 @@ table.messages td {
     padding: 5px;
     font-size: 90%;
 }
-.messages .even, .topics .even {
+table.messages td.view {
+    text-align: right;
+}
+.messages .even, .topics .even, .tribes .even {
 	color: #DFDFDF;
 	background-color: #0E3037;
 }
-.messages .odd, .topics .odd {
+.messages .odd, .topics .odd, .tribes .odd {
     background-color: #DFDFDF;
 }
 .messages {
     margin: 0px;
     padding: 0px;
-}
-table.messages td.view {
-    text-align: right;
 }
 #subnav {
     margin: 0;
@@ -464,14 +476,20 @@ div.friends .details {
     width: 60px;
     margin: 0 0 12px 0;
 }
-div.tribes {
-    background: #DEF;
-    padding: 8px;
-    margin-bottom: 20px;
+table.tribes {
+    width: 50%;
+	border-spacing: 0;
+	margin: 0.5em 0;
 }
-div.tribes h2 {
-    margin: 0 0 5px 0;
-    padding: 0;
+table.tribes th {
+    text-align: left;
+    padding: 5px;
+    font-weight: bold;
+}
+table.tribes td {
+/*    vertical-align: top;*/
+    padding: 5px;
+    font-size: 90%;
 }
 div.members {
 /*    background: #DEF;*/
@@ -920,12 +938,13 @@ legend { padding: 0 .4em; font-weight: bold; font-size: 1.2em; }
 
 /* form toggle */
 
-.form-toggle p {
+/*.form-toggle p {
     margin-bottom: 2px;
-}
+}*/
 
 .form-toggle p span {
-    background: #DEF;
+    background: #0E3037;
+    color: #DFDFDF;
     padding: 3px 6px;
     border-top: 1px solid #9BC;
     border-left: 1px solid #9BC;
@@ -933,12 +952,12 @@ legend { padding: 0 .4em; font-weight: bold; font-size: 1.2em; }
     cursor: pointer;
 }
 
-.form-toggle form {
+/*.form-toggle form {
     padding: 3px 6px;
     margin: 0;
     background: #DEF;
     border: 1px solid #9BC;
-}
+}*/
 
 .form-toggle input[type="submit"] {
 }
