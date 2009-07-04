@@ -50,6 +50,13 @@ FROM tribes_tribe_members
 WHERE tribes_tribe_members.tribe_id = tribes_tribe.id
 """
 
+def do_403_if_not_superuser(request):
+    if not request.user.is_superuser:
+        resp = render_to_response('403.html', context_instance=RequestContext(request))
+        resp.status_code = 403
+        return resp
+
+
 def has_member(tribe, user):
     if user.is_authenticated():
         if TribeMember.objects.filter(tribe=tribe, user=user).count() > 0:
@@ -166,10 +173,7 @@ def tribe(request, slug, form_class=TribeUpdateForm,
     are_member = has_member(tribe, request.user)
     
     if tribe.private and not are_member:
-        if not request.user.is_superuser:
-            resp = render_to_response('403.html', context_instance=RequestContext(request))
-            resp.status_code = 403
-            return resp
+        do_403_if_not_superuser(request)
         
     photos = tribe.photos.all()
     
@@ -233,10 +237,8 @@ def topics(request, slug, form_class=TopicForm,
     are_moderator =  is_moderator(tribe, request.user),
     
     if tribe.private and not are_member:
-        if not request.user.is_superuser:
-            resp = render_to_response('403.html', context_instance=RequestContext(request))
-            resp.status_code = 403
-            return resp
+        do_403_if_not_superuser(request)
+        
     else:
         topics = tribe.topics.all()
         
@@ -283,9 +285,7 @@ def topic(request, id, edit=False, template_name="tribes/topic.html"):
     
     if topic.tribe.private and not are_member:
         if not request.user.is_superuser:
-            resp = render_to_response('403.html', context_instance=RequestContext(request))
-            resp.status_code = 403
-            return resp
+            do_403_if_not_superuser(request)
              
     if request.method == "POST" and edit == True:
         if request.user == topic.creator:
@@ -322,9 +322,7 @@ def topic_delete(request, pk):
     if topic.tribe.private and not are_member:
         
         if not request.user.is_superuser:
-            resp = render_to_response('403.html', context_instance=RequestContext(request))
-            resp.status_code = 403
-            return resp
+            do_403_if_not_superuser(request)
        
     if request.method == "POST" and topic.creator == request.user: 
         if forums:
@@ -342,9 +340,7 @@ def topic_moderate(request, pk):
     
     if topic.tribe.private and not are_member:
         if not request.user.is_superuser:
-            resp = render_to_response('403.html', context_instance=RequestContext(request))
-            resp.status_code = 403
-            return resp
+            do_403_if_not_superuser(request)
 
         
     if request.method == "POST" and is_moderator(topic.tribe, request.user):
