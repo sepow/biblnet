@@ -8,38 +8,22 @@
 {% block head_title %}{% blocktrans %}Profile for {{ other_user }}{% endblocktrans %}{% endblock %}
 
 {% block body %}
-    
-    <div class="right_panel">
+
+<h1>{% blocktrans %}Profile for {{ other_user }}{% endblocktrans %}</h1>
+
+    <table class="profile_info">
+        <tr>
+            <td id="profile_avatar">{% avatar other_user 200 %}
+                {% if is_me %}
+                    <p><a href="{% url avatar_change %}">Change avatar</a></p>
+                {% endif %}
+            </td>
+            <td>{% include "profiles/profile_info.html" %}</td>
+        </tr>
+    </table>
+
         {% include "profiles/profile_right_panel.html" %}
-    </div>
-    
-    <div class="left_panel">
-        <div id="profile_avatar">
-            <div>{% avatar other_user 80 %}</div>
-            {% if is_me %}
-            <a href="{% url avatar_change %}" id="avatar_replace">(replace)</a>
-               
-            <form action="{% if request.user.is_authenticated %}{% url acct_language_change %}{% else %}/i18n/setlang/{% endif %}" method="post" id="locale_switcher">
-			    <select name="language" onchange="$('#locale_switcher').submit()">
-			    {% for lang in LANGUAGES %}
-				    <option value="{{ lang.0 }}"{% ifequal lang.0 LANGUAGE_CODE %} selected="selected"{% endifequal %}>{{ lang.1 }}</option>
-			    {% endfor %}
-			    </select>
-		    </form>
-        {% endif %}
-        </div>
 
-
-        
-        <h1>{% blocktrans %}Profile for {{ other_user }}{% endblocktrans %}</h1>
-        
-        <div class="profile_info">
-            {% if other_user.get_profile.name %}<p><b>{% trans "Name" %}</b>: {{ other_user.get_profile.name }}</p>{% endif %}
-            {% if other_user.get_profile.about %}<p><b>{% trans "About" %}</b>: {{ other_user.get_profile.about }}</p>{% endif %}
-            {% if other_user.get_profile.location%}<p><b>{% trans "Location" %}</b>: {{ other_user.get_profile.location }}</p>{% endif %}
-            {% if other_user.get_profile.website %}<p><b>{% trans "Website" %}</b>: <a href="{{ other_user.get_profile.website }}">{{ other_user.get_profile.website }}</a></p>{% endif %}
-        </div>
-        
         {% if user.is_authenticated %}
             <p>
                 <a href="{% url tweet_followers other_user %}">{% trans "Followers" %}</a>: {{ other_user.followers.count|default:"0" }}
@@ -47,6 +31,14 @@
             </p>
             
             {% if is_me %}
+                <form action="{% if request.user.is_authenticated %}{% url acct_language_change %}{% else %}/i18n/setlang/{% endif %}" method="post" id="locale_switcher">
+    			    <select name="language" onchange="$('#locale_switcher').submit()">
+    			    {% for lang in LANGUAGES %}
+    				    <option value="{{ lang.0 }}"{% ifequal lang.0 LANGUAGE_CODE %} selected="selected"{% endifequal %}>{{ lang.1 }}</option>
+    			    {% endfor %}
+    			    </select>
+    		    </form>
+
                 <div class="form-toggle">
                 <p><span id="edit-profile-toggle">{% trans "Edit profile" %}</span></p>
                 
@@ -110,14 +102,13 @@
                 
             {% endif %} {# is me #}
             
-            {% plugin_point "profiles.profile" user=other_user owner=other_user viewer=user %}
+            {#% plugin_point "profiles.profile" user=other_user owner=other_user viewer=user %#}
             
         {% else %} {# not user.is_authenticated #}
             {% url acct_signup as signup_url %}
             {% url acct_login as login_url %}
             <p>{% blocktrans %}<a href="{{ signup_url }}">Sign up</a> and <a href="{{ login_url }}">log in </a> to add this person as a friend and see their tweets and blog posts.{% endblocktrans %}</p>
         {% endif %}
-    </div>
 {% endblock %}
 
 {% block extra_body %}

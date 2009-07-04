@@ -46,8 +46,8 @@ WHERE tribes_topic.tribe_id = tribes_tribe.id
 """
 MEMBER_COUNT_SQL = """
 SELECT COUNT(*)
-FROM tribes_tribe_members
-WHERE tribes_tribe_members.tribe_id = tribes_tribe.id
+FROM tribes_tribemember
+WHERE tribes_tribemember.tribe_id = tribes_tribe.id
 """
 
 def do_403_if_not_superuser(request):
@@ -125,14 +125,14 @@ def tribes(request, template_name="tribes/tribes.html", order=None):
     elif order == 'name_descending':
         tribes = tribes.order_by('-name')
     elif order == 'date_oldest':
-        tribes = tribes.order_by('-created')
-    elif order == 'date_newest':
         tribes = tribes.order_by('created')
+    elif order == 'date_newest':
+        tribes = tribes.order_by('-created')
 
     context = {
         'tribes': tribes,
         'search_terms': search_terms,
-
+        'order': order,
     }
     return render_to_response(
         template_name,

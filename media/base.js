@@ -2,14 +2,14 @@ jQuery.fn.autoscroll = function() {
     $('html,body').animate({scrollTop: this.offset().top}, 500);
 }
 $(function() {
-    var profile_avatar = $('#profile_avatar');
+    /*var profile_avatar = $('#profile_avatar');
     if(profile_avatar) {
         profile_avatar.bind('mouseenter', function() {
             $('#avatar_replace').css('display', 'block');
         }).bind('mouseleave', function() {
             $('#avatar_replace').css('display', 'none');
         });
-    }
+    }*/
     var ymap = document.getElementById('ymap');
     if(ymap) {
         var map = new YMap(ymap);

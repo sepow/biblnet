@@ -18,13 +18,12 @@
 {% block body %}
 {% load condition_tag %}
     {% if_can_see tribe user %}
-
-    <div>
         <div class="right_panel">
             {% trans "Creator:" %} <a href="{% url profile_detail tribe.creator.username %}">{{ tribe.creator }}</a><br />
             {% trans "Created:" %} {{ tribe.created|date }}<br />
         </div>
-        
+
+    <div>
         <h2>{% trans "Welcome to" %} {{ tribe.name }}</h2>
 
         <p>{% show_tags_for tribe %}</p>
@@ -39,11 +38,11 @@
                         <p>{% trans "You are the creator of this tribe so can't leave (yet)." %}</p>
                     {% else %}
                         <input type="hidden" name="action" value="leave" />
-                        <input type="submit" value="{% trans "leave tribe" %}"/>
+                        <input type="submit" value="{% trans 'leave tribe' %}"/>
                     {% endifequal %}
                 {% else %}
                     <input type="hidden" name="action" value="join" />
-                    <input type="submit" value="{% trans "join tribe" %}"/>
+                    <input type="submit" value="{% trans 'join tribe' %}"/>
                 {% endif %}
             </form>
         </div>
@@ -57,8 +56,7 @@
           
             <h2>{% trans "Discussion Topics" %}{% if tribe.topics.all.count %} ({{ tribe.topics.all.count }}){% endif %}</h2>
             <table class="topics">
-            {#<tr class="even"><th></th><th>{% trans "Topic" %}</th><th>{% trans "Started by" %}</th><th>{% trans "Views" %}</th><th>{% trans "Replies" %}</th><th>{% trans "Latest reply" %}</th><th>{% trans "Tags" %}</th></tr>#}
-            <tr class="even"><th width="36px"></th><th width="25%">{% trans "Topic" %}</th><th width="15%">{% trans "Started by" %}</th><th width="7%">{% trans "Views" %}</th><th width="8%">{% trans "Replies" %}</th><th width="25%">{% trans "Latest reply" %}</th></tr>
+            <tr class="even"><th width="36px"></th><th>{% trans "Topic" %}</th><th width="15%">{% trans "Started by" %}</th><th class="comment_stats" width="10%">{% trans "Views" %}</th><th class="comment_stats" width="15%">{% trans "Replies" %}</th><th width="150px">{% trans "Latest reply" %}</th></tr>
             {% if topics %}
                 {% for topic in topics %}
                     {% show_tribe_topic topic %}

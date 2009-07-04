@@ -5,6 +5,7 @@
 {% load avatar_tags %}
 {% load markup %}
 
+{#% block breadcrumb %}{{ block.super }} &raquo; <a href="{{ tribe.get_absolute_url }}topics/">{% trans "Message Board" %}</a>{% endblock %#}
 
 {% block body %}
 
@@ -15,11 +16,16 @@
     <tr class="odd">
     <td>
         <div class="meta">
-            <div class="avatar">{% avatar user 60 %}</div>
-            <div class="created">
-                {% trans "Default Markup:" %}
+            <div class="avatar">
+                <img src="/site_media/{{ user.get_profile.affiliation.icon }}"  alt="{{ user.get_profile.affiliation }}" title="{{ user.get_profile.affiliation }}" /><br />
+                {% avatar user 60 %}
             </div>
-            <div class="details clearboth">{{ user }}</div>
+            <div class="created">
+                {% now "N j, Y" %} - {% now "H:i" %}<br />
+                {% trans "0 minutes ago"%}<br />
+                <br />
+                {{ user }}
+            </div>
         </div>
     </td>
     <td></td>
@@ -32,11 +38,16 @@
 <tr class="even">
 <td>
     <div class="meta">
-        <div class="avatar">{% avatar user 60 %}</div>
-            <div class="created">
-                {% trans "Edit your post:" %}
+            <div class="avatar">
+                <img src="/site_media/{{ user.get_profile.affiliation.icon }}"  alt="{{ user.get_profile.affiliation }}" title="{{ user.get_profile.affiliation }}" /><br />
+                {% avatar user 60 %}
             </div>
-        <div class="details clearboth">{{ user }}</div>
+            <div class="created">
+                {% now "N j, Y" %} - {% now "H:i" %}<br />
+                {% trans "0 minutes ago"%}<br />
+                <br />
+                {{ user }}
+            </div>
     </div>
 </td>
 <td></td>

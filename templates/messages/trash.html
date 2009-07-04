@@ -4,7 +4,7 @@
 {% load timezone_filters %}
 
 {% block body %} 
-<h1>{% trans "Deleted Messages" %}</h1>
+<h2>{% trans "Deleted Messages" %}</h2>
 
 <a href="{% url messages_inbox %}">{% trans "Inbox" %}</a><br />
 <a href="{% url messages_outbox %}">{% trans "Sent Messages" %}</a><br />
@@ -13,19 +13,19 @@
 
 <table class="messages">
     <thead>
-        <tr class="even"><th width="35px"></th><th>{% trans "Sender" %}</th><th>{% trans "Subject" %}</th><th>{% trans "Sent" %}</th><th>{% trans "Action" %}</th></tr>
+        <tr class="even"><th width="35px"></th><th>{% trans "Sender" %}</th><th>{% trans "Subject" %}</th><th>{% trans "Sent" %}</th><th>{% trans "Undelete" %}</th></tr>
     </thead>
     <tbody>
         {% if message_list %}
         {% for message in message_list %}
             <tr class="{% cycle odd,even %}">
-                <td></td>
+                <td><img src="/site_media/images/sitegraphics/bin.png" alt="{% trans 'Deleted message' %}" title="{% trans 'Deleted message' %}" /></td>
                 <td>{{ message.sender }}</td>
                 <td>
                     <a href="{{ message.get_absolute_url }}">{% if message.subject.strip %}{{ message.subject }}{% else %}(none){% endif %}</a>
                 </td>
                 <td>{{ message.sent_at|localtime:account.timezone|date:_("DATETIME_FORMAT") }}</td>
-                <td><a href="{% url messages_undelete message.id %}">{% trans "undelete" %}</a></td>
+                <td><a href="{% url messages_undelete message.id %}"><img src="/site_media/images/sitegraphics/arrow_undo.png" alt="{% trans 'Undelete message' %}" title="{% trans 'Undelete message' %}" /></a></td>
             </tr>
         {% endfor %}
         {% else %}

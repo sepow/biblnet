@@ -8,6 +8,7 @@ table.topic th, table.topics th {
 	text-align:left;
     padding: 5px;
     font-weight: bold;
+    font-size:90%;
 }
 table.topic td, table.topics td {
     vertical-align: top;

@@ -66,9 +66,10 @@
     <div class="meta">
         <div class="avatar">
             <img src="/site_media/{{ user.get_profile.affiliation.icon }}"  alt="{{ user.get_profile.affiliation }}" title="{{ user.get_profile.affiliation }}" /><br />
-            <a href="{% url profile_detail user %}">{% avatar user 60 %}</a>
+            <a href="{% url profile_detail user %}">{% avatar user 60 %}</a><br />
+            <br />
+            <a href="{% url profile_detail user %}">{{ user }}</a>
         </div>
-        <div class="details clearboth"><a href="{% url profile_detail user %}">{{ user }}</a></div>
     </div>
 </td>
 <td></td>

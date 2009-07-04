@@ -31,8 +31,8 @@
             {% endif %}
         </p>
         <p>
-            <img src="{{ MEDIA_URL }}images/sitegraphics/group.png"/> <a href="{% url tribe_list %}">{% trans "All tribes" %}</a><br />
-            <img src="{{ MEDIA_URL }}images/sitegraphics/group.png"/> <a href="/tribes/create/">{% trans "Start a new tribe" %}</a>
+            <img src="{{ MEDIA_URL }}images/sitegraphics/group.png" alt="{% trans 'Tribe' %}" /> <a href="{% url tribe_list %}">{% trans "All tribes" %}</a><br />
+            <img src="{{ MEDIA_URL }}images/sitegraphics/group.png" alt="{% trans 'Tribe' %}" /> <a href="/tribes/create/">{% trans "Start a new tribe" %}</a>
         </p>
     {% else %}
         <p>Du er ikke logget på</p>

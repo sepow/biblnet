@@ -4,7 +4,7 @@
 {% load timezone_filters %}
 
 {% block body %}
-<h1>{% trans "Inbox" %}</h1>
+<h2>{% trans "Inbox" %}</h2>
 
 <a href="{% url messages_outbox %}">{% trans "Sent Messages" %}</a><br />
 <a href="{% url messages_trash %}">{% trans "Deleted Messages" %}</a><br />
@@ -13,7 +13,7 @@
 
 <table class="messages">
     <thead>
-        <tr class="even"><th width="35px"></th><th>{% trans "Sender" %}</th><th>{% trans "Subject" %}</th><th>{% trans "Received" %}</th><th>{% trans "Action" %}</th></tr>
+        <tr class="even"><th width="35px"></th><th>{% trans "Sender" %}</th><th>{% trans "Subject" %}</th><th>{% trans "Received" %}</th><th>{% trans "Delete" %}</th></tr>
     </thead>
     <tbody>
         {% if message_list %}
@@ -21,12 +21,12 @@
             <tr class="{% cycle odd,even %}">
                 <td>
                     {% if message.new %}
-                        <img src="{{ MEDIA_URL }}images/sitegraphics/email.png"/>
+                        <img src="{{ MEDIA_URL }}images/sitegraphics/email.png" alt="{% trans 'New message' %}" title="{% trans 'New message' %}"/>
                     {% else %}
                         {% if message.replied %}
-                            <img src="{{ MEDIA_URL }}images/sitegraphics/email_go.png"/>
+                            <img src="{{ MEDIA_URL }}images/sitegraphics/email_replied.png" alt="{% trans 'Replied message' %}" title="{% trans 'Replied message' %}"/>
                         {% else %}
-                            <img src="{{ MEDIA_URL }}images/sitegraphics/email_open.png"/>
+                            <img src="{{ MEDIA_URL }}images/sitegraphics/email_open.png" alt="{% trans 'Old message' %}" title="{% trans 'Old message' %}"/>
                         {% endif %}
                     {% endif %}
                 </td>
@@ -37,7 +37,7 @@
                     {% if message.new %}</strong>{% endif %}
                 </td>
                 <td>{{ message.sent_at|localtime:account.timezone|date:_("DATETIME_FORMAT") }}</td>
-                <td><a href="{% url messages_delete message.id %}">{% trans "delete" %}</a></td>
+                <td><a href="{% url messages_delete message.id %}"><img src="/site_media/images/sitegraphics/bin.png" alt="{% trans 'Delete message' %}" title="{% trans 'Delete message' %}" /></a></td>
             </tr>
         {% endfor %}
         {% else %}

@@ -48,6 +48,11 @@
 
 <div id="col1"><!-- Content column start -->
 <div id="content">
+
+    <div id="breadcrumbs">
+        <p>&raquo; {% block breadcrumb %}<a href="/">Biblnet.dk</a>{% endblock %}</p>
+    </div>
+
 	{% if messages %}
 	<ul id="messages">
 		{% for message in messages %}
