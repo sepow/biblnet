@@ -2,7 +2,7 @@ table.topic, table.topics {
 	width: 100%;
 	border-spacing: 0;
 	margin: 0.5em 0;
-/*	table-layout: fixed;*/
+	table-layout: fixed;
 }
 table.topic th, table.topics th {
 	text-align:left;
@@ -19,6 +19,11 @@ table.topic td h1, table.topics td h2 {
     margin: 0;
     padding: 0;
 }
+table.topics .comment_stats {
+    text-align: center;
+}
+/*table.topics .created {
+}*/
 .responses .even, .topics .even {
 	color: #DFDFDF;
 	background-color: #0E3037;
@@ -77,13 +82,6 @@ div.delete {
 }
 .hidden { display: none; }
 
-table.topics .comment_stats {
-    text-align: center;
-}
-/*table.topics .created {
-    color: #999;
-    font-size: 90%;
-}*/
 td#commentHolder {
     margin: 0;
     padding: 5px 15px 5px 0;

@@ -15,7 +15,7 @@
 
     {% if user.is_authenticated %}
     
-        -- {% trans "You last visited us " %}{{user.last_login|timesince}} {% trans "ago" %} -- <br/>
+        -- {% trans "You last visited us " %}{{ user.last_login|timesince }} {% trans "ago" %} -- <br/>
         
         {% if user.tribe_set.all %}
             {% for tribe in user.tribe_set.all %}
@@ -27,5 +27,5 @@
             {% url tribe_list as tribe_url %}
             <p>{% blocktrans %}You are not yet a member of any <a href="{{ tribe_url }}">tribes</a>.{% endblocktrans %}</p>
         {% endif %}
-   {%endif %}
+   {% endif %}
 {% endblock %}
