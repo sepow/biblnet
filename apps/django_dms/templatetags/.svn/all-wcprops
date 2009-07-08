@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/24/trunk/django_dms/templatetags
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/11/trunk/django_dms/templatetags/__init__.py
+END
+already.py
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/24/trunk/django_dms/templatetags/already.py
+END
+dms.py
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/12/trunk/django_dms/templatetags/dms.py
+END

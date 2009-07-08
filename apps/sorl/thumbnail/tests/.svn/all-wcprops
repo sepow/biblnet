@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/436/trunk/sorl/thumbnail/tests
+END
+base.py
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/432/trunk/sorl/thumbnail/tests/base.py
+END
+templatetags.py
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/405/trunk/sorl/thumbnail/tests/templatetags.py
+END
+classes.py
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/436/trunk/sorl/thumbnail/tests/classes.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/405/trunk/sorl/thumbnail/tests/__init__.py
+END
+utils.py
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/433/trunk/sorl/thumbnail/tests/utils.py
+END
+fields.py
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/436/trunk/sorl/thumbnail/tests/fields.py
+END

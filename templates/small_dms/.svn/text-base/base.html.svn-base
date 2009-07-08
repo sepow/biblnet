@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block extra_head %}
+<script type="text/javascript" src="/media/js/jquery.js"></script>
+<script type="text/javascript" src="/media/js/jquery.lightbox.js"></script>
+<link rel="stylesheet" type="text/css" href="/media/css/jquery.lightbox.css" media="screen" />
+{% endblock %}
+
+{% block body_class %}small_dms{% endblock body_class %}

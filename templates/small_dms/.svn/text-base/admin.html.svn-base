@@ -1,0 +1,10 @@
+{% extends "small_dms/base.html" %}
+
+{% block content %}
+<form action="." method="post">
+<table>
+{{ form }}
+</table>
+<input type="submit" value="Save"/>
+</form>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% load already %}
+{% load dms %}
+
+<div class="document-list">
+{% for item in object_list %}{% with item.document as document %}
+<div class="document-list-item">
+<h2><a href="{% dms_url dms_site document_detail document %}">{{ document|default:"Untitled" }}</a></h2>
+<p>{% if list_links.preview %}<a class="preview" title="{{ document.title }}" href="{{ document.file_thumbnail_medium }}">Preview</a>, {% endif %}
+   {% if list_links.view %}<a href="{% dms_url dms_site document_view document %}">View</a>, {% endif %}
+   {% if list_links.download %}<a href="{% dms_url dms_site document_download document %}">Download</a>, {% endif %}
+   {% if list_links.email %}{% if document|already_sent:request %}<span class="subtle">Email sent{% else %}<span id="send_{{ forloop.counter }}"><a class="send" href="{% dms_url dms_site document_send document %}">Email it to me</a>{% endif %}</span>{% endif %}</p>
+{% if list_links.preview %}<a class="preview" title="{{ document.title }}" href="{{ document.file_thumbnail_medium }}">{% endif %}{% if list_thumbnail %}<img src="{{ document.file_thumbnail_small }}" alt="Thumbnail of {{ document.title }}" />{% endif %}{% if list_links.preview %}</a>{% endif %}
+{% for name,field in item.display_fields %}{% if field %}
+<h3>{{ name|capfirst }}</h3>
+<p>{{ field }}</p>{% endif %}
+{% endfor %}
+<div class="clearing"></div>
+{% endwith %}
+</div>
+{% endfor %}
+    {% if page.has_previous %}<a href="?page={{ page.previous_page_number }}">previous</a>{% endif %}
+    {% ifnotequal page.paginator.num_pages 1 %}<span class="current">Page {{ page.number }} of {{ page.paginator.num_pages }}</span>{% endifnotequal %}
+    {% if page.has_next %}<a href="?page={{ page.next_page_number }}">next</a>{% endif %}
+</div>

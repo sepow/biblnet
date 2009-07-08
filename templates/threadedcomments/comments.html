@@ -5,7 +5,7 @@
 {% load avatar_tags %}
 {% load markup %}
 {% load condition_tag %}
-
+{% load oembed_tags %}
 {% get_threaded_comment_tree for object as responses %}
 {% autopaginate responses 100 %}
 {% for response in responses %}
@@ -47,7 +47,7 @@
     </td>
     <td>
         
-        <div class="body">{% autoescape off %} {{ response.comment|linebreaks  }} {% endautoescape %}</div>
+        <div class="body">{% autoescape off %} {% oembed %} {{ response.comment|linebreaks }}{% endoembed %} {% endautoescape %}</div>
         {% ifequal user.id object.tribe.creator.id %} {# if_can_delete_topic topic user #}
             <form id="{{ response.id }}" class="delete_post_form delete_form" style="display: none;" method="POST" action="{% url tc_comment_delete response.id %}">
                 <input type="submit" value="Delete Post"/> {% trans "Are you sure you wish to delete this post?"%}

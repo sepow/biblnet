@@ -26,7 +26,7 @@ def new_since_last_visit(tribe, user):
         new_posts = 0         
         for topic in modified_topics:
             new_posts += ThreadedComment.objects.filter(date_modified__gte=since, object_id=topic.id).count() # user != user
-
+        # return get_object_or_404(queryset, **kwargs)
     if new_topics or new_posts:
         changed = True
     else:

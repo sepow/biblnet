@@ -1,0 +1,10 @@
+{% extends "small_dms/base.html" %}
+{% load already %}
+{% load dms %}
+
+{% block body %}
+<div class="document-list">
+{% include "django_dms/list.html" %}
+
+</div>
+{% endblock body %}

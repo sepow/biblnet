@@ -359,4 +359,3 @@ def topic_moderate(request, pk):
             topic.save()          
     return HttpResponseRedirect(request.POST["next"])
 
-

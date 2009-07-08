@@ -1,0 +1,16 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+{% load uni_form %}
+
+{%block body%}
+
+<form enctype="multipart/form-data" class="upload uniForm" id="upload_form" method="post" action="">
+    <fieldset class="inlineLabels">
+        {{ form|as_uni_form }}
+        <div  class="form_blick">
+            <input type="submit" value="{% trans "Upload" %}" />
+        </div>
+    </fieldset>
+</form>
+{%endblock body%}
