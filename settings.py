@@ -192,6 +192,7 @@ INSTALLED_APPS = (
     'haystack',
     'django_dms',
     'django_dms.apps.small_dms',
+    'sorl.thumbnail',
 )
 
 # Import sorl.thumbnail if it is available

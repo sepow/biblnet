@@ -22,10 +22,10 @@ class DocumentView(DocumentView):
 document_view = DocumentView(name="document_view")
 
 class DocumentUpload(DocumentAdmin):
-    document_view = document_view
+    document_view = 'document_view'
     model = Document
     template = 'django_dms/admin.html'
     fields = None
-    exclude = None
+    exclude = ['tribe', 'uploader','date_created']
         
 document_upload = DocumentUpload(name="document_upload")

@@ -14,7 +14,6 @@
 	{% endblocktrans %}
 
     {% if user.is_authenticated %}
-    
         -- {% trans "You last visited us " %}{{user.last_login|timesince}} {% trans "ago" %} -- <br/>
         
         {% if user.tribe_set.all %}

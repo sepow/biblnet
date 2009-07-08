@@ -20,7 +20,7 @@ import os
 import threading
 from django import forms
 from django.shortcuts import get_object_or_404, render_to_response
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, HttpResponseForbidden
 from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
 from django.http import HttpResponse
@@ -117,7 +117,7 @@ class DocumentView(object):
         """ Get the list of url patterns for this view. """
         return patterns('',
             url(r'^$',                    self.list, name="%s_document_list" % self.name),
-           #url(r'^upload/$',             self.upload, name="%s_document_upload" % self.name),
+            url(r'^upload/$',             self.new_upload, name="%s_document_upload" % self.name),
             url(r'^([^\/]+)/download/$',  self.download, name="%s_document_download" % self.name),
             url(r'^([^\/]+)/send/$',      self.send, name="%s_document_send" % self.name),
             url(r'^([^\/]+)/send/ajax/$', self.send_ajax, name="%s_document_send_ajax" % self.name),
@@ -232,6 +232,29 @@ class DocumentView(object):
         document_interaction.send(sender=self, document=document, mode="viewed", request=request)
 
         return DocumentViewResponse(document)
+    
+    def get_tribe(self, tribe_slug):
+        print tribe_slug
+        return get_object_or_404(Tribe, slug=tribe_slug)
+    
+    def new_upload(self, request, tribe_slug):
+        if request.method == 'POST': # If the form has been submitted...
+            form = UploadForm(request.POST, request.FILES) # A form bound to the POST data
+            if form.is_valid(): # All validation rules pass
+                document = form.save(commit=False)
+                document.date_created = datetime.now()
+                tribe = self.get_tribe(tribe_slug)
+                document.tribe = tribe
+                document.uploader = request.user
+                document.save()
+                return HttpResponseRedirect('/') # Redirect after POST
+        else:
+            form = UploadForm() # An unbound form
+
+        return render_to_response('small_dms/upload.html', {
+            'form': form,
+            'tribe': self.get_tribe(tribe_slug),
+        }, context_instance=RequestContext(request))
         
     ####################
     # INTERNAL METHODS #
@@ -297,7 +320,7 @@ class DocumentView(object):
 class DocumentAdmin(object):
     model = None
     form = None # Use ModelForm
-    template = 'django_dms/admin.html'
+    template = 'small_dms/edit.html'
     fields = None
     exclude = None
     # Keys can be: email_subject, email_content, email_sender, email_date, email_received_date, 
@@ -311,48 +334,34 @@ class DocumentAdmin(object):
     def get_urls(self):
         """ Get the list of url patterns for this view. """
         return patterns('',
-            url(r'^$',                      self.new_upload, name="%s_document_list" % self.name),
-            #url(r'^([^\/]+)/edit/$',  self.edit, name="%s_document_edit" % self.name),
+            #url(r'^$',                      self.new_upload, name="%s_document_list" % self.name),
+            url(r'^([^\/]+)/edit/$',  self.edit, name="%s_document_edit" % self.name),
             url(r'^([\w\d-]+)/confirm/$',  self.confirm, name="%s_document_confirm" % self.name)
             )
     urls = property(get_urls)
-    
-    def get_tribe(self, tribe_slug):
-        print tribe_slug
-        return get_object_or_404(Tribe, slug=tribe_slug)
-    
-    def new_upload(self, request, tribe_slug):
-        if request.method == 'POST': # If the form has been submitted...
-            form = UploadForm(request.POST, request.FILES) # A form bound to the POST data
-            if form.is_valid(): # All validation rules pass
-                document = form.save(commit=False)
-                document.date_created = datetime.now()
-                tribe = self.get_tribe(tribe_slug)
-                document.tribe = tribe
-                document.uploader = request.user
-                document.save()
-                return HttpResponseRedirect('/') # Redirect after POST
-        else:
-            form = UploadForm() # An unbound form
-
-        return render_to_response('small_dms/upload.html', {
-            'form': form,
-            'tribe': self.get_tribe(tribe_slug),
-        }, context_instance=RequestContext(request))
 
         
-    def edit(self, request, pk):
-        instance = get_object_or_404(self.model, pk=pk)
+    def edit(self, request, pk, tribe_slug):
+         
+        tribe = get_object_or_404(Tribe, slug=tribe_slug)
+        instance = get_object_or_404(self.model, slug=pk, tribe=tribe)
+        
+        if request.user != instance.uploader:
+            if not request.user.is_superuser:
+                resp = render_to_response('403.html', context_instance=RequestContext(request))
+                resp.status_code = 403
+                return resp
+        
         Form = self.get_form()
         if request.method == "POST":
             form = Form(request.POST, instance=instance)
             if form.is_valid():
                 form.save()
-                return HttpResponseRedirect(reverse('%s_document_detail' % data.dms_site, args=[getattr(instance, data.dms_site.url_identifier_field)]))
+                return HttpResponseRedirect(reverse('%s_document_detail' % self.document_view, args=(tribe.slug, instance.slug) ))
         else:
             form = Form(instance=instance)
-        return HttpResponse(form)
-        return render_to_response('django_dms/edit.html')
+        
+            return render_to_response('small_dms/edit.html', {'form' : form}, context_instance=RequestContext(request))
 
     def get_form(self):
         # 2. Create form
@@ -418,4 +427,4 @@ class DocumentAdmin(object):
         context['form'] = form
         context['request'] = request
 
-        return render_to_response(self.template, context)
+        return render_to_response(self.template, context, context_instance=RequestContext(request))
