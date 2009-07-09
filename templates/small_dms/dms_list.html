@@ -3,6 +3,7 @@
 {% load dms %}
 
 {% block body %}
+<a href="{% url document_view_document_upload tribe.slug %}">Upload a document</a>
 <div class="document-list">
 {% include "django_dms/list.html" %}
 

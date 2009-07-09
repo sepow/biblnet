@@ -14,3 +14,8 @@
     </fieldset>
 </form>
 {%endblock body%}
+
+{% block extra_body %}
+<script type="text/javascript"> $(document).ready(function() { $("#id_title").slugify("#id_slug"); });</script>
+<script type="text/javascript" src=" {{MEDIA_URL}}js/slugify.js"></script>
+{% endblock %}

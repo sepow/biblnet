@@ -7,6 +7,7 @@ from django.utils.translation import ugettext_lazy as _
 from tribes.models import Tribe
 
 from timezones.fields import TimeZoneField
+
 class Affiliation(models.Model):
     ''' An affiliation describes a users affiliation with one of the outside 
         groups. This class is used to show an icon depending on which affil you
@@ -15,7 +16,7 @@ class Affiliation(models.Model):
 
     affiliation = models.CharField(_('affiliation'), max_length=40, null=True)
     icon = models.ImageField(upload_to="images/affiliateicons")
-    slug = models.SlugField(max_length=10, null=True)
+    slug = models.SlugField(max_length=30, null=True)
     tribe = models.OneToOneField(Tribe, primary_key=True)
     
     def __unicode__(self):
@@ -30,6 +31,25 @@ class Affiliation(models.Model):
         verbose_name = _('affiliation')
         verbose_name_plural = _('affiliations')
         
+class Profession(models.Model):
+    ''' An Profession describes a users profession 
+        
+        This class is used to show an icon depending on which profession you
+        belond to.
+    '''
+
+    profession = models.CharField(_('profession'), max_length=40, null=True)
+    icon = models.ImageField(upload_to="images/professionicons")
+    slug = models.SlugField(max_length=30, null=True)
+    
+    def __unicode__(self):
+        return self.profession
+
+
+    class Meta:
+        verbose_name = _('profession')
+        verbose_name_plural = _('professions')
+        
 class Profile(models.Model):
     
     user = models.ForeignKey(User, unique=True, verbose_name=_('user'))
@@ -38,7 +58,8 @@ class Profile(models.Model):
     location = models.CharField(_('location'), max_length=40, null=True, blank=True)
     website = models.URLField(_('website'), null=True, blank=True, verify_exists=False)
     affiliation = models.ForeignKey(Affiliation, verbose_name=_('affiliation'), null=True, blank=True)
-    profession = models.CharField(_('profession'), max_length=50, null=True, blank=True)
+    profession = models.ForeignKey(Profession, verbose_name=_('profession'), null=True, blank=True)
+    
     im_msn = models.CharField(_('msn'), max_length=50, null=True, blank=True)
 
     adresse_1 = models.CharField(_('address 1'), max_length=50, null=True, blank=True)

@@ -247,7 +247,8 @@ class DocumentView(object):
                 document.tribe = tribe
                 document.uploader = request.user
                 document.save()
-                return HttpResponseRedirect('/') # Redirect after POST
+                #return HttpResponseRedirect('/') # Redirect after POST
+                return HttpResponseRedirect(reverse('%s_document_detail' % self.name, args=(tribe_slug, document.slug) ))
         else:
             form = UploadForm() # An unbound form
 

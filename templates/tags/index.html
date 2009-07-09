@@ -117,7 +117,13 @@
         {% endfor %}
     </table>
 
+    <h1>{% blocktrans %}All Documents Matching <i>{{ tag }}</i>{% endblocktrans %}</h1>
 
+    <dl>
+        {% for document in document_tags %}
+           <a href="{% url document_view_document_detail document.tribe.slug document.slug %}">{{ document }} </a> in {{ document.tribe }}
+        {% endfor %}
+    </dl>
 {% endblock %}
 
 

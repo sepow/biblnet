@@ -21,7 +21,7 @@ from timezones.forms import TimeZoneField
 
 from account.models import PasswordReset
 from captcha.fields import CaptchaField
-from profiles.models import Affiliation
+from profiles.models import Affiliation, Profession
 from tribes.models import TribeMember
 alnum_re = re.compile(r'^\w+$')
 
@@ -33,6 +33,7 @@ class BiblnetSignupForm(forms.Form):
     password1 = forms.CharField(label=_(u"Password"), widget=forms.PasswordInput(render_value=False))
     password2 = forms.CharField(label=_(u"Password (again)"), widget=forms.PasswordInput(render_value=False))
     affiliation = forms.ModelChoiceField(queryset=Affiliation.objects.filter(tribe__private__exact=False), empty_label=_("(Pick your affiliation)")) #TODO clean
+    profession = forms.ModelChoiceField(queryset=Profession.objects.all(), empty_label=_("(Pick your profession)")) 
     confirmation_key = forms.CharField(max_length=40, required=False, widget=forms.HiddenInput())
     
     accept_terms = forms.BooleanField(required=True) 
@@ -57,6 +58,7 @@ class BiblnetSignupForm(forms.Form):
         email = self.cleaned_data["email"]
         name = self.cleaned_data["name"]
         affiliation = self.cleaned_data["affiliation"]
+        profession = self.cleaned_data["profession"]
         password = self.cleaned_data["password1"]
         
         if self.cleaned_data["confirmation_key"]:
