@@ -92,6 +92,7 @@ class BiblnetSignupForm(forms.Form):
             # def populate_profile: 
             new_profile = new_user.get_profile()
             new_profile.affiliation = affiliation
+            new_profile.profession = profession
             new_profile.name = name
             new_profile.save()
             tmember = TribeMember(tribe=new_profile.affiliation.tribe, user=new_user)
