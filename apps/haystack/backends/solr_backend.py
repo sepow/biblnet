@@ -1,6 +1,7 @@
 import sys
 from django.conf import settings
 from django.core.exceptions import ImproperlyConfigured
+from django.db.models.loading import get_model
 from django.utils.encoding import force_unicode
 from haystack.backends import BaseSearchBackend, BaseSearchQuery
 from haystack.exceptions import MissingDependency
@@ -27,7 +28,9 @@ class SearchBackend(BaseSearchBackend):
         '[', ']', '^', '"', '~', '*', '?', ':',
     )
     
-    def __init__(self):
+    def __init__(self, site=None):
+        super(SearchBackend, self).__init__(site)
+        
         if not hasattr(settings, 'HAYSTACK_SOLR_URL'):
             raise ImproperlyConfigured('You must specify a HAYSTACK_SOLR_URL in your settings.')
         
@@ -50,8 +53,8 @@ class SearchBackend(BaseSearchBackend):
         
         self.conn.add(docs, commit=commit)
 
-    def remove(self, obj, commit=True):
-        solr_id = self.get_identifier(obj)
+    def remove(self, obj_or_string, commit=True):
+        solr_id = self.get_identifier(obj_or_string)
         self.conn.delete(id=solr_id, commit=commit)
 
     def clear(self, models=[], commit=True):
@@ -125,14 +128,15 @@ class SearchBackend(BaseSearchBackend):
         return self._process_results(raw_results, highlight=highlight)
     
     def more_like_this(self, model_instance):
-        from haystack.sites import site, NotRegistered
-        index = site.get_index(model_instance.__class__)
+        index = self.site.get_index(model_instance.__class__)
         field_name = index.get_content_field()    
         raw_results = self.conn.more_like_this("id:%s" % self.get_identifier(model_instance), field_name, fl='*,score')
         return self._process_results(raw_results)
     
     def _process_results(self, raw_results, highlight=False):
+        from haystack import site
         results = []
+        hits = raw_results.hits
         facets = {}
         spelling_suggestion = None
         
@@ -156,8 +160,10 @@ class SearchBackend(BaseSearchBackend):
                     # collated result from the end.
                     spelling_suggestion = raw_results.spellcheck.get('suggestions')[-1]
         
+        indexed_models = site.get_indexed_models()
+        
         for raw_result in raw_results.docs:
-            app_label, module_name = raw_result['django_ct'].split('.')
+            app_label, model_name = raw_result['django_ct'].split('.')
             additional_fields = {}
             
             for key, value in raw_result.items():
@@ -170,12 +176,20 @@ class SearchBackend(BaseSearchBackend):
             if raw_result['id'] in getattr(raw_results, 'highlighting', {}):
                 additional_fields['highlighted'] = raw_results.highlighting[raw_result['id']]
             
-            result = SearchResult(app_label, module_name, raw_result['django_id'], raw_result['score'], **additional_fields)
-            results.append(result)
+            model = get_model(app_label, model_name)
+            
+            if model:
+                if model in indexed_models:
+                    result = SearchResult(app_label, model_name, raw_result['django_id'], raw_result['score'], **additional_fields)
+                    results.append(result)
+                else:
+                    hits -= 1
+            else:
+                hits -= 1
         
         return {
             'results': results,
-            'hits': raw_results.hits,
+            'hits': hits,
             'facets': facets,
             'spelling_suggestion': spelling_suggestion,
         }
@@ -235,7 +249,7 @@ class SearchQuery(BaseSearchQuery):
                         in_options = []
                         
                         for possible_value in value:
-                            in_options.append("%s:%s" % (the_filter.field, possible_value))
+                            in_options.append('%s:"%s"' % (the_filter.field, self.backend.conn._from_python(possible_value)))
                         
                         query_chunks.append("(%s)" % " OR ".join(in_options))
             

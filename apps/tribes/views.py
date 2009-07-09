@@ -294,10 +294,12 @@ def topic(request, id, edit=False, template_name="tribes/topic.html"):
             time_since = now - created
             if time_since.seconds < 60*20:
                 topic.body = sanitize_html(request.POST["body"])
+                topic.editet = datetime.now()
                 topic.save()
         
         elif is_moderator(topic.tribe, request.user):
                 topic.body = sanitize_html(request.POST["body"])
+                topic.editet = datetime.now()
                 topic.save()
         
         return HttpResponseRedirect(reverse('tribe_topic', args=[topic.id]))

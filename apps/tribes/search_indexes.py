@@ -16,7 +16,7 @@ class TopicIndex(indexes.SearchIndex):
         return Topic.objects.all()
     
     def should_update(self, instance):
-        return (datetime.datetime.now() - instance.modified).seconds < 10 
+        return (datetime.datetime.now() - instance.editet).seconds < 10 
 
 site.register(Topic, TopicIndex)
 

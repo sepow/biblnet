@@ -1,3 +1,4 @@
+from django.db.models import signals
 import haystack
 from haystack.fields import *
 
@@ -60,6 +61,18 @@ class SearchIndex(object):
         
         if not len(content_fields) == 1:
             raise SearchFieldError("An index must have one (and only one) SearchField with document=True.")
+    
+    def _setup_save(self, model):
+        signals.post_save.connect(self.update_object, sender=model)
+    
+    def _setup_delete(self, model):
+        signals.post_delete.connect(self.remove_object, sender=model)
+    
+    def _teardown_save(self, model):
+        signals.post_save.disconnect(self.update_object, sender=model)
+    
+    def _teardown_delete(self, model):
+        signals.post_delete.disconnect(self.remove_object, sender=model)
     
     def get_query_set(self):
         """
@@ -142,6 +155,18 @@ class SearchIndex(object):
         By default, returns True (always reindex).
         """
         return True
+    
+    def load_all_queryset(self):
+        """
+        Provides the ability to override how objects get loaded in conjunction
+        with ``SearchQuerySet.load_all``.
+        
+        This is useful for post-processing the results from the query, enabling
+        things like adding ``select_related`` or filtering certain data.
+        
+        By default, returns ``all()`` on the model's default manager.
+        """
+        return self.model._default_manager.all()
 
 
 class BasicSearchIndex(SearchIndex):
