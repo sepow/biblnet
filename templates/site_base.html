@@ -54,7 +54,7 @@
             {% block group %}<li class="members_tab"><a href="{% url tribe_list %}"><span>{% trans "Groups" %}</span></a></li>{% endblock %}
         </ul>
         
-        {% block admin_tab%}
+        {% block admin_tab %}
             {% if tribe or topic %}
                 {% if user.is_staff or are_moderator %}
                     <ul id="admin">
@@ -71,16 +71,6 @@
             {% endif %}
         {% endblock %}
 	</div>
-{% endblock %}
-
-{% block right_tab %}
-    {% if user.is_authenticated %}
-        <table>
-               {# <tr><td class="tab rtab_photos"><div><a href="{% url photos %}">{% trans "Photos" %}</a></div></td></tr> #}
-               {# <tr><td class="tab rtab_blogs"><div><a href="{% url blog_list_all %}">{% trans "Blogs" %}</a></div></td></tr> #}
-               {# <tr><td class="tab rtab_tribes"><div><a href="{% url tribe_list %}">{% trans "Tribes" %}</a></div></td></tr> #}
-        </table>
-    {% endif %}
 {% endblock %}
 
 {% block search %}
@@ -137,6 +127,7 @@
         - <a href="{% url dmca %}">{% trans "DMCA Notice" %}</a>
         - Version: {% svn_app_version %}
         - Django: {% svn_app_version "django" %}
+        - Icons: Silk
     </div>
 {% endblock %}
 

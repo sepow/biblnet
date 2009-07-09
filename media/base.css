@@ -43,6 +43,12 @@ img {
 	border: none;
 }
 
+table {
+    width: 100%;
+	border-spacing: 0;
+	margin: 0.5em 0;
+    border-collapse: collapse;
+}
 #header {
 	float:left;
 	width:100%;
@@ -192,7 +198,7 @@ img {
     color: #FFF; /* login bar link hover colour */
 }
 #breadcrumbs {
-    float: left;
+/*    float: left;*/
 }
 form th {
     text-align : left;
@@ -334,11 +340,6 @@ span.notice_type_description {
 /*#profile_avatar {
     float: left;
 }*/
-table.profile_info {
-    width: 100%;
-	border-spacing: 0;
-	margin: 0.5em 0;
-}
 table.profile_info th {
     vertical-align: top;
     text-align: left;
@@ -368,11 +369,6 @@ ul.avatar_choices li {
 }
 .invitation_2 {
     color: gray;
-}
-table.messages {
-    width: 100%;
-	border-spacing: 0;
-	margin: 0.5em 0;
 }
 table.messages th {
     text-align: left;
@@ -475,11 +471,6 @@ div.friends .details {
     overflow: hidden;
     width: 60px;
     margin: 0 0 12px 0;
-}
-table.tribes {
-    width: 50%;
-	border-spacing: 0;
-	margin: 0.5em 0;
 }
 table.tribes th {
     text-align: left;

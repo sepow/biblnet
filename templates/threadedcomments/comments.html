@@ -37,7 +37,7 @@
         {% endif_can_edit_comment %} 
         {% ifequal user.id object.tribe.creator.id %} {# if_can_delete_topic topic user #}
             <div class="delete">
-                <a onclick="$('#{{ response.id }}.delete_post_form').toggle(); return false;" href="#"><img src="/site_media/images/sitegraphics/bin.png" alt="{% trans 'Delete post' %}" title="{% trans 'Delete post' %}" /></a>
+                <a onclick="$('#post{{ response.id }}.delete_post_form').toggle(); return false;" href="#"><img src="/site_media/images/sitegraphics/bin.png" alt="{% trans 'Delete post' %}" title="{% trans 'Delete post' %}" /></a>
                 <!--form method="POST" action="{% url tc_comment_delete response.id %}">
                     <input type="image" src="/site_media/images/sitegraphics/bin.png" alt="{% trans "Delete" %}" />
                     <input type="hidden" name="next" value="{{ request.path }}" />
@@ -46,14 +46,15 @@
         {% endifequal %}
     </td>
     <td>
-        
-        <div class="body">{% autoescape off %} {% oembed %} {{ response.comment|linebreaks }}{% endoembed %} {% endautoescape %}</div>
-        {% ifequal user.id object.tribe.creator.id %} {# if_can_delete_topic topic user #}
-            <form id="{{ response.id }}" class="delete_post_form delete_form" style="display: none;" method="POST" action="{% url tc_comment_delete response.id %}">
-                <input type="submit" value="Delete Post"/> {% trans "Are you sure you wish to delete this post?"%}
-                <input type="hidden" name="next" value="{{ request.path }}" />
-            </form>
-        {% endifequal %}
+        <div class="body">
+            {% ifequal user.id object.tribe.creator.id %} {# if_can_delete_topic topic user #}
+                <form id="post{{ response.id }}" class="delete_post_form delete_form" style="display: none;" method="POST" action="{% url tc_comment_delete response.id %}">
+                    <input type="submit" value="Delete Post"/> {% trans "Are you sure you wish to delete this comment?"%}
+                    <input type="hidden" name="next" value="{{ request.path }}" />
+                </form>
+            {% endifequal %}
+            {% autoescape off %} {{ response.comment }} {% endautoescape %}
+        </div>
     </td>
     </tr>
 {% endfor %}
