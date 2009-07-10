@@ -83,8 +83,9 @@
             <textarea id="id_comment" rows="14" cols="40" name="comment"></textarea>
             <div class="form_block">
                 <input type="hidden" name="next" value="{{ request.path }}" />
-                <input type="submit" value="{% trans 'Submit Comment' %}" name="NOMARKUP"/>
-                <input type="submit" value="{% trans 'Preview Comment' %}" name="preview" />
+                <input type="hidden" name="NOMARKUP"/>
+                <input type="submit" value="{% trans 'Submit Comment' %}"/>
+                <input type="submit" value="{% trans 'Preview Comment' %}" name="preview"/>
             </div>
         </form>
     </td>
