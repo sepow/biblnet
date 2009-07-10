@@ -343,11 +343,15 @@ span.notice_type_description {
 /*#profile_avatar {
     float: left;
 }*/
+table.profile_info img {
+    vertical-align: text-bottom;
+}
 table.profile_info th {
     vertical-align: top;
     text-align: left;
     padding: 5px;
     font-weight: bold;
+    width: 100px;
 }
 table.profile_info td {
     vertical-align: top;

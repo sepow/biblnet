@@ -51,7 +51,7 @@
                         {% endifequal %}
                     {% endifequal %}
                 </th>
-                <th class="comment_stats" width="80px">
+                <th class="comment_stats" width="10%">
                     {% ifequal order 'most_members' %}
                         <a href="{% url tribe_list_least_members %}{% persist_getvars request %}">{% trans "Members" %} &darr;</a>
                     {% else %}
@@ -62,7 +62,7 @@
                         {% endifequal %}
                     {% endifequal %}
                 </th>
-                <th class="comment_stats" width="100px">
+                <th class="comment_stats" width="15%">
                     {% ifequal order 'most_topics' %}
                         <a href="{% url tribe_list_least_topics %}{% persist_getvars request %}">{% trans "Topics" %} &darr;</a>
                     {% else %}
@@ -75,12 +75,12 @@
                 </th>
                 <th width="150px">
                     {% ifequal order 'date_newest' %}
-                        <a href="{% url tribe_list_date_oldest %}{% persist_getvars request %}">{% trans "Date" %} &darr;</a>
+                        <a href="{% url tribe_list_date_oldest %}{% persist_getvars request %}">{% trans "Created" %} &darr;</a>
                     {% else %}
                         {% ifequal order 'date_oldest' %}
-                            <a href="{% url tribe_list_date_newest %}{% persist_getvars request %}">{% trans "Date" %} &uarr;</a>
+                            <a href="{% url tribe_list_date_newest %}{% persist_getvars request %}">{% trans "Created" %} &uarr;</a>
                         {% else %}
-                            <a href="{% url tribe_list_date_newest %}{% persist_getvars request %}">{% trans "Date" %}</a>
+                            <a href="{% url tribe_list_date_newest %}{% persist_getvars request %}">{% trans "Created" %}</a>
                         {% endifequal %}
                     {% endifequal %}
                 </th>

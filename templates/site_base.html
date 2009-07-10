@@ -24,7 +24,7 @@
             {% if user.tribe_set.all %}
                 {% for tribe in user.tribe_set.all %}
                     {% if not tribe.deleted %}
-                        <img src="{{ MEDIA_URL }}images/sitegraphics/group.png"/> <a href="{% url tribe_detail tribe.slug %}">{{ tribe.name }}</a><br />
+                        <img src="{{ MEDIA_URL }}images/sitegraphics/group.png" alt="{% trans 'Tribe' %}" /> <a href="{% url tribe_detail tribe.slug %}">{{ tribe.name }}</a><br />
                     {% endif %}
                 {% endfor %}
             {% else %}
