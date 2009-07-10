@@ -4,7 +4,7 @@
 {% load threadedcommentstags %}
 {% load avatar_tags %}
 {% load markup %}
-
+{% load oembed_tags %}
 {#% block breadcrumb %}{{ block.super }} &raquo; <a href="{{ tribe.get_absolute_url }}topics/">{% trans "Message Board" %}</a>{% endblock %#}
 
 {% block body %}
@@ -30,7 +30,7 @@
     </td>
     <td></td>
     <td>
-        <div class="body">{% autoescape off %}{{ request.POST.comment }}{% endautoescape %}</div>
+        <div class="body">{% autoescape off %}{% oembed %}{{ request.POST.comment }}{% endoembed %}{% endautoescape %}</div>
     </td>
     </tr>
 

@@ -6,6 +6,7 @@
 {% load avatar_tags %}
 {% load security_tag %}
 {% load markup %}
+{% load oembed_tags %}
 
 {% block head_title %}{{ topic.title }}{% endblock %}
 
@@ -127,7 +128,7 @@
                 </script>
             {% endblock %}
             {% else %}
-            <div class="body">{% autoescape off %}{{ topic.body }}{% endautoescape %}</div>
+            <div class="body">{% autoescape off %}{% oembed %}{{ topic.body }}{% endoembed %}{% endautoescape %}</div>
             {% endif %}
         </div>
         </td>

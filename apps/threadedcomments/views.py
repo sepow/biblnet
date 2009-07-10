@@ -92,7 +92,8 @@ def free_comment(request, content_type=None, object_id=None, edit_id=None, paren
             new_comment.user = request.user
         if parent_id:
             new_comment.parent = get_object_or_404(model, id = int(parent_id))
-
+        if "NOMARKUP" in request.POST:
+            new_comment.comment = new_comment.comment.replace('\n', '<br />')
         new_comment.comment = sanitize_html(new_comment.comment)
 
         new_comment.save()
