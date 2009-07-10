@@ -7,13 +7,15 @@
 {% load condition_tag %}
 {% load oembed_tags %}
 {% get_threaded_comment_tree for object as responses %}
-{% autopaginate responses 100 %}
+{% autopaginate responses 40 %}
+
 {% for response in responses %}
+
     <tr class="{% cycle 'even' 'odd' as rowcolors %}">
     <td>
         <div class="meta">
             <div class="avatar">
-                <img src="/site_media/{{ user.get_profile.affiliation.icon }}"  alt="{{ user.get_profile.affiliation }}" title="{{ user.get_profile.affiliation }}" /><br />
+                <img src="/site_media/{{ response.user.get_profile.affiliation.icon }}"  alt="{{ response.user.get_profile.affiliation.icon }}" title="{{ response.user.get_profile.affiliation.icon }}" /><br />
                 <a href="{% url profile_detail response.user.username %}">{% avatar response.user 60 %}</a></div>
             <div class="created">
                 {{ response.date_submitted|date }} - {{ response.date_submitted|time }}<br />
@@ -59,33 +61,34 @@
     </tr>
 {% endfor %}
 {% paginate %}
+
 {% if not object.closed %}
-{% if are_member %}
 
-<tr class="{% cycle rowcolors %}">
-<td>
-    <div class="meta">
-        <div class="avatar">
-            <img src="/site_media/{{ user.get_profile.affiliation.icon }}"  alt="{{ user.get_profile.affiliation }}" title="{{ user.get_profile.affiliation }}" /><br />
-            <a href="{% url profile_detail user %}">{% avatar user 60 %}</a><br />
-            <br />
-            <a href="{% url profile_detail user %}">{{ user }}</a>
+    {% if are_member %}
+
+    <tr class="{% cycle rowcolors %}">
+    <td>
+        <div class="meta">
+            <div class="avatar">
+                <img src="/site_media/{{ user.get_profile.affiliation.icon }}"  alt="{{ user.get_profile.affiliation }}" title="{{ user.get_profile.affiliation }}" /><br />
+                <a href="{% url profile_detail user %}">{% avatar user 60 %}</a><br />
+                <br />
+                <a href="{% url profile_detail user %}">{{ user }}</a>
+            </div>
         </div>
-    </div>
-</td>
-<td></td>
-<td id="commentHolder">
-    <form method="POST" action="{% get_comment_url object %}">
-        <textarea id="id_comment" rows="14" cols="40" name="comment"></textarea>
-        <div class="form_block">
-            <input type="hidden" name="next" value="{{ request.path }}" />
-            <input type="submit" value="{% trans 'Submit Comment' %}" name="NOMARKUP"/>
-            <input type="submit" value="{% trans 'Preview Comment' %}" name="preview" />
-        </div>
-    </form>
-</td>
-</tr>
-
-
-{% endif %}
+    </td>
+    <td></td>
+    <td id="commentHolder">
+        <form method="POST" action="{% get_comment_url object %}">
+            <textarea id="id_comment" rows="14" cols="40" name="comment"></textarea>
+            <div class="form_block">
+                <input type="hidden" name="next" value="{{ request.path }}" />
+                <input type="submit" value="{% trans 'Submit Comment' %}" name="NOMARKUP"/>
+                <input type="submit" value="{% trans 'Preview Comment' %}" name="preview" />
+            </div>
+        </form>
+    </td>
+    </tr>
+    {% endif %}
+    
 {% endif %}
