@@ -123,6 +123,9 @@ table {
 	left: 200px;
 	overflow: hidden;
 }
+#col2 img {
+    vertical-align: middle
+}
 
 #col3 {
 	float: left;

@@ -15,9 +15,11 @@
 
 {% block login %}
     {% if user.is_authenticated %}
-        <b><a href="{% url profile_detail user %}">{% avatar user 40 %}</a><a href="{% url profile_detail user %}">{{ user }}</a></b> 
-        {# {% if user.is_staff %}<a href="/admin/">{% trans "Admin" %}</a>  | {% endif %} TODO behøver den være her? #}
-        <a href="/openid/logout/?next={% url acct_logout %}">{% trans "Logout" %}</a> <br/><br />
+        <p>
+            <a href="{% url profile_detail user %}">{% avatar user 40 %}</a>
+            <b><a href="{% url profile_detail user %}">{{ user }}</a></b> (<a href="/openid/logout/?next={% url acct_logout %}">{% trans "Logout" %}</a>)
+        </p>
+
         <p>
             {% if user.tribe_set.all %}
                 {% for tribe in user.tribe_set.all %}
@@ -30,13 +32,14 @@
                 <p>{% blocktrans %}You are not yet a member of any <a href="{{ tribe_url }}">tribes</a>.{% endblocktrans %}</p>
             {% endif %}
         </p>
+
         <p>
             <img src="{{ MEDIA_URL }}images/sitegraphics/group.png" alt="{% trans 'Tribe' %}" /> <a href="{% url tribe_list %}">{% trans "All tribes" %}</a><br />
             <img src="{{ MEDIA_URL }}images/sitegraphics/group.png" alt="{% trans 'Tribe' %}" /> <a href="/tribes/create/">{% trans "Start a new tribe" %}</a>
         </p>
     {% else %}
-        <p>Du er ikke logget på</p>
-        <a href="{% url acct_login %}">{% trans "Log på" %}</a> / <a href="{% url acct_signup %}"><b>{% trans "Bliv medlem" %}</b></a>
+        <p>{% trans "You are not logged in" %}</p>
+        <p><a href="{% url acct_login %}">{% trans "Log in" %}</a> / <a href="{% url acct_signup %}"><b>{% trans "Sign up" %}</b></a></p>
     {% endif %}
 {% endblock %}
 

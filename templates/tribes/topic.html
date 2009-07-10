@@ -70,6 +70,10 @@
 <h2>{{ topic.title }}</h2>
 <p>{% show_tags_for topic %}</p>
 
+{% if not user.is_authenticated %}
+    <h3>Please <a href="{% url acct_login %}">Login</a> (or <a href="{% url acct_signup %}">Sign Up</a>) to leave a comment</h3> 
+{% endif %}
+
 {% if topic.sticky %}
     <p><img src="{{MEDIA_URL}}images/sitegraphics/lightbulb.png" alt="{% trans 'Sticky topic' %}" /> {% trans "This is a sticky topic, which means that it will always appear at the top of the Message Board." %}</p>
 {% endif %}
@@ -144,9 +148,6 @@
     <p><img src="{{MEDIA_URL}}images/sitegraphics/lock.png" alt="{% trans 'Closed topic' %}" /> {% trans "The topic has been closed. It can only be reopened by a moderator of this group." %}</p>
 {% else %} {% if user.is_authenticated and not are_member %}
     <p>{% trans "You need to be a member of this group to reply."%}</p>
-{% else %} {% if not user.is_authenticated %}
-    <h3>Please <a href="{% url acct_login %}">Login</a> (or <a href="{% url acct_signup %}">Sign Up</a>) to leave a comment</h3> 
-{% endif %}
 {% endif %}
 {% endif %} 
     <p><a href="{% url tribe_topics topic.tribe.slug %}">&larr; {% trans "Back to Topic List for " %} {{ topic.tribe }}</a></p>	
