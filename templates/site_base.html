@@ -15,10 +15,15 @@
 
 {% block login %}
     {% if user.is_authenticated %}
-        <p>
-            <a href="{% url profile_detail user %}">{% avatar user 40 %}</a>
-            <b><a href="{% url profile_detail user %}">{{ user }}</a></b><br />
-            <a href="/openid/logout/?next={% url acct_logout %}">{% trans "Logout" %}</a>
+        <table>
+            <tr>
+                <td width="45px"><a href="{% url profile_detail user %}">{% avatar user 40 %}</a></td>
+                <td><b><a href="{% url profile_detail user %}">{{ user }}</a></b></td>
+            </tr>
+        </table>
+        <a style="font-size: 90%;" href="/openid/logout/?next={% url acct_logout %}">{% trans "Logout" %}</a>
+        <p>{% trans "Your last login:" %}<br />
+        {{ user.last_login|timesince }} {% trans "ago" %}
         </p>
 
         <p>

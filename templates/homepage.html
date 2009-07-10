@@ -8,21 +8,25 @@
 
 {% block body %}
 	{% blocktrans %}
-	<h2>Velkommen til biblnet.dk!</h2>
-	<p>Dette er et forum for folk med tilknytning til danske uddannelser i biblioteks- og informationsvidenskab.</p>
-	<p>Alle medlemmer kan bidrage med indhold.</p>
+	<h1>Welcome to Biblnet.dk!</h1>
+	<p>Biblnet is a forum for people with an interest in Library and Information Science.</p>
+	<p>All members can join in on the debates on the Message Boards and contribute to the creation of knowledge in the Wikis and in the Knowledge Bank.</p>
 	{% endblocktrans %}
 
     {% if user.is_authenticated %}
 
-        -- {% trans "You last visited us " %}{{ user.last_login|timesince }} {% trans "ago" %} -- <br/>
-        
+    <p>-- {% trans "You last visited us " %}{{ user.last_login|timesince }} {% trans "ago" %} --</p>
+
+    <h2>{% trans "New posts since your last login" %}</h2>
         {% if user.tribe_set.all %}
+            <table class="tribes">
+            <tr class="even"><th>{% trans "Tribe" %}</th><th class="comment_stats">{% trans "New topics" %}</th><th class="comment_stats">{% trans "New replies" %}</th></tr>
             {% for tribe in user.tribe_set.all %}
                 {% if not tribe.deleted %}
-                {% new_since_last_visit tribe user %}
+                    {% new_since_last_visit tribe user %}
                 {% endif %}
             {% endfor %}
+            </table>
         {% else %}
             {% url tribe_list as tribe_url %}
             <p>{% blocktrans %}You are not yet a member of any <a href="{{ tribe_url }}">tribes</a>.{% endblocktrans %}</p>

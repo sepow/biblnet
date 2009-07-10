@@ -41,12 +41,12 @@ p {
 img {
 /*	margin:10px 0 5px;*/
 	border: none;
+    vertical-align: middle;
 }
 
 table {
     width: 100%;
 	border-spacing: 0;
-	margin: 0.5em 0;
     border-collapse: collapse;
 }
 #header {
@@ -123,9 +123,9 @@ table {
 	left: 200px;
 	overflow: hidden;
 }
-#col2 img {
+/*#col2 img {
     vertical-align: middle
-}
+}*/
 
 #col3 {
 	float: left;
@@ -390,11 +390,11 @@ table.messages td {
 table.messages td.view {
     text-align: right;
 }
-.messages .even, .topics .even, .tribes .even {
+.messages .even, .topic .even, .topics .even, .tribes .even {
 	color: #DFDFDF;
 	background-color: #0E3037;
 }
-.messages .odd, .topics .odd, .tribes .odd {
+.messages .odd, .topic .odd, .topics .odd, .tribes .odd {
     background-color: #DFDFDF;
 }
 .messages {
@@ -479,6 +479,9 @@ div.friends .details {
     width: 60px;
     margin: 0 0 12px 0;
 }
+table.tribes{
+    width: 50%;
+}
 table.tribes th {
     text-align: left;
     padding: 5px;
@@ -488,6 +491,9 @@ table.tribes td {
 /*    vertical-align: top;*/
     padding: 5px;
     font-size: 90%;
+}
+table.tribes .comment_stats {
+    text-align: center;
 }
 div.members {
 /*    background: #DEF;*/

@@ -11,17 +11,23 @@
 
 {% block body %}
 {% load condition_tag %}
-    {% if_can_see tribe user %}
 
-        {% autopaginate topics 20 %}
-    
-        <h2>{% trans "Message Board for" %} <a href="{% url tribe_detail tribe.slug %}">{{ tribe.name }}</a></h2>
+{% if_can_see tribe user %}
 
-        {% if are_member %}
-           <a href="{% url tribe_create_topic tribe.slug %}">{% trans "Start New Topic" %}</a>
-        {% endif %}
-    
-        <table class="topics">
+    {% autopaginate topics 20 %}
+
+    <h2>{% trans "Message Board for" %} <a href="{% url tribe_detail tribe.slug %}">{{ tribe.name }}</a></h2>
+
+    {% if are_member %}
+        <a href="{% url tribe_create_topic tribe.slug %}">{% trans "Start New Topic" %}</a>
+    {% else %}
+        <form method="POST" action="{% url tribe_detail tribe.slug %}">
+            <input type="hidden" name="action" value="join" />
+            <input type="submit" value="{% trans 'join tribe' %}"/>
+        </form>
+    {% endif %}
+
+    <table class="topics">
         <tr class="even"><th width="36px"></th><th>{% trans "Topic" %}</th><th width="15%">{% trans "Started by" %}</th><th class="comment_stats" width="10%">{% trans "Views" %}</th><th class="comment_stats" width="15%">{% trans "Replies" %}</th><th width="150px">{% trans "Latest reply" %}</th></tr>
         {% if tribe.topics.all %}
             {% for topic in topics %}
@@ -29,14 +35,14 @@
             {% endfor %}
         {% else %}
             {% url tribe_create_topic tribe.slug as new_topic_url %}
-            <tr class="odd"><td><img src="/site_media/images/sitegraphics/pin.gif" /></td><td colspan=5>{% trans "There are no topics yet" %}{% if user.is_authenticated %} - <a href="{{ new_topic_url }}">{% trans "create a topic..." %}</a>{% endif %}</td></tr>
+            <tr class="odd"><td><img src="/site_media/images/sitegraphics/pin.gif" /></td><td colspan=5>{% trans "There are no topics yet" %}{% if are_member %} - <a href="{{ new_topic_url }}">{% trans "create a topic..." %}</a>{% endif %}</td></tr>
         {% endif %}
-        </table>
+    </table>
 
-        {% paginate %}
+    {% paginate %}
 
-    {% else %}
-        {% trans "... This is a private group!" %}
-    {% endif_can_see %}
+{% else %}
+    {% trans "This is a private group!" %}
+{% endif_can_see %}
 
 {% endblock %}
