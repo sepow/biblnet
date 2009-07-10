@@ -95,7 +95,8 @@
         <td>
         <div class="meta">
             <div class="avatar">
-                <img src="{{MEDIA_URL}}{{ topic.creator.get_profile.affiliation.icon }}" alt="{{ user.get_profile.affiliation }}" title="{{ user.get_profile.affiliation }}" /><br />
+                <img src="{{MEDIA_URL}}{{ topic.creator.get_profile.affiliation.icon }}" alt="{{ topic.creator.get_profile.affiliation }}" title="{{ topic.creator.get_profile.affiliation }}" />
+                <img src="{{MEDIA_URL}}{{ topic.creator.get_profile.occupation.icon }}"  alt="{{ topic.creator.get_profile.occupation }}" title="{{ topic.creator.get_profile.occupation }}" /><br />
                 <a href="{% url profile_detail topic.creator.username %}">{% avatar topic.creator 60 %}</a>
             </div>
             <div class="created">{{ topic.created|date }} - {{ topic.created|time }}<br />

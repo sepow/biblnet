@@ -52,14 +52,16 @@ th.options {
 }
 div.meta {
 	float: left;
+    width: 100%;
 	font-size: 80%;
-	overflow:hidden;
+	overflow: hidden;
 }
 div.avatar {
 	float: left;
+    margin-right: 5px;
 }
 div.created {
-    float: left;
+/*    float: left;*/
 	padding: .4em;
     margin-top: 14px;
 }
