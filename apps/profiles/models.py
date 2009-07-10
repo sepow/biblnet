@@ -31,24 +31,24 @@ class Affiliation(models.Model):
         verbose_name = _('affiliation')
         verbose_name_plural = _('affiliations')
         
-class Profession(models.Model):
+class Occupation(models.Model):
     ''' An Profession describes a users profession 
         
         This class is used to show an icon depending on which profession you
         belond to.
     '''
 
-    profession = models.CharField(_('profession'), max_length=40, null=True)
+    occupation = models.CharField(_('occupation'), max_length=40, null=True)
     icon = models.ImageField(upload_to="images/professionicons")
     slug = models.SlugField(max_length=30, null=True)
     
     def __unicode__(self):
-        return self.profession
+        return self.occupation
 
 
     class Meta:
-        verbose_name = _('profession')
-        verbose_name_plural = _('professions')
+        verbose_name = _('occupation')
+        verbose_name_plural = _('occupation')
         
 class Profile(models.Model):
     
@@ -58,7 +58,7 @@ class Profile(models.Model):
     location = models.CharField(_('location'), max_length=40, null=True, blank=True)
     website = models.URLField(_('website'), null=True, blank=True, verify_exists=False)
     affiliation = models.ForeignKey(Affiliation, verbose_name=_('affiliation'), null=True, blank=True)
-    profession = models.ForeignKey(Profession, verbose_name=_('profession'), null=True, blank=True)
+    occupation = models.ForeignKey(Occupation, verbose_name=_('occupation'), null=True, blank=True)
     
     im_msn = models.CharField(_('msn'), max_length=50, null=True, blank=True)
 

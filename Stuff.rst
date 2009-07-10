@@ -49,9 +49,6 @@ dms
 ---
 
 
-
-Gør det muligt at edite topics
-
 Skriv tests for tribe funktionallitet. 
 
 Add knapper på tribe medlemmer listen, 'add to moderators' og 'kick from group'
@@ -63,22 +60,6 @@ Serveren:
 Ved syncdb:
     Opret en global fælles tribe "global"
     Opret affiliations
-
-
-# Users joiner en affiliation tribe ved oprettelse. 
-Administrators                       : admin ? private tribe
-Danmarks Biblioteksskole - København : db-kbh
-Danmarks Biblioteksskole - Aalborg   : db-aa
-Universitetsansatte                  : uni
-Syddansk Universitet                 : sdu
-It-Universitetet                     : itu
-Tidligere studerende                 : alumni
-International Students               : inter
-Biblioteksrelevante organisationer   : bib-org
-Eksterne brugere                     : ext
-
-En fælles gruppe for x. 
-
 
 tags: sluggen, fælles
 
