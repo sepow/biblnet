@@ -11,9 +11,9 @@
                     <td><img src="/site_media/images/sitegraphics/group.png" alt="{% trans 'Tribe' %}" /></td>
                     <td>
                         {% ifequal tribe.creator user %}
-                            <img src="/site_media/images/sitegraphics/crown.gif" alt="{% trans 'Tribe' %}" />
+                            <img src="/site_media/images/sitegraphics/crown.gif" alt="{% trans 'Tribe' %}" title="{% trans 'Administrator' %}" />
                         {% else %}
-                            <input type="image" src="/site_media/images/sitegraphics/cancel.png" value="{% trans 'leave tribe' %}"/>
+                            <input type="image" src="/site_media/images/sitegraphics/cancel.png" value="{% trans 'leave tribe' %}" title="{% trans 'Leave tribe' %}" />
                             <input type="hidden" name="action" value="leave" />
                         {% endifequal %}
                     </td>

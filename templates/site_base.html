@@ -17,7 +17,8 @@
     {% if user.is_authenticated %}
         <p>
             <a href="{% url profile_detail user %}">{% avatar user 40 %}</a>
-            <b><a href="{% url profile_detail user %}">{{ user }}</a></b> (<a href="/openid/logout/?next={% url acct_logout %}">{% trans "Logout" %}</a>)
+            <b><a href="{% url profile_detail user %}">{{ user }}</a></b><br />
+            <a href="/openid/logout/?next={% url acct_logout %}">{% trans "Logout" %}</a>
         </p>
 
         <p>
