@@ -23,15 +23,18 @@ def new_since_last_visit(tribe, user):
         
         # new posts
         modified_topics = tribe.topics.filter(modified__gte=since) 
-        new_posts = 0         
-        for topic in modified_topics:
-            new_posts += ThreadedComment.objects.filter(date_modified__gte=since, object_id=topic.id).count() # user != user
-        # return get_object_or_404(queryset, **kwargs)
-    if new_topics or new_posts:
-        changed = True
-    else:
-        changed = False
-
+        new_posts = 0        
+        if modified_topics: 
+            new_posts = ThreadedComment.objects.filter(object_id__in=modified_topics, date_modified__gte=since).count()
+        #for topic in modified_topics:
+        #    new_posts += ThreadedComment.objects.filter(date_modified__gte=since, object_id=topic.id).count() # user != user
+        
+    #if new_topics or new_posts:
+    #    changed = True
+    #else:
+    #    changed = False
+    
+    changed = bool(new_topics or new_posts)
     return {
         'changed' : changed, 
         'tribe' : tribe,
