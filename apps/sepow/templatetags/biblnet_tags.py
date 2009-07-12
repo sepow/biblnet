@@ -48,7 +48,7 @@ register.inclusion_tag('sepow/new_since_last_visit.html')(new_since_last_visit)
 def visit_tribe(tribe, user):
     if has_member(tribe, user): # if the user is a member, set the last visit to to now
         try:
-            tribe_member = TribeMember.objects.filter(tribe=tribe, user=user)[0]
+            tribe_member = TribeMember.objects.get(tribe=tribe, user=user)
             tribe_member.last_visit = datetime.now()
             tribe_member.save()
         except AttributeError:

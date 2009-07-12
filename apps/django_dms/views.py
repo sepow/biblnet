@@ -38,6 +38,7 @@ from django_dms.models import DocumentStaging
 from django.template import RequestContext 
 from tribes.models import Tribe
 from django_dms.apps.small_dms.forms import UploadForm
+from django.contrib.auth.decorators import login_required
 # Check if thumbnails are supported
 try:
     import sorl.thumbnail as SORL_THUMBNAIL
@@ -197,7 +198,7 @@ class DocumentView(object):
         document_interaction.send(sender=self, document=document, mode="sent", request=request, recipient=email)
     
         return HttpResponse('Email sent to %s' % email)
-    
+    @login_required
     def download(self, request, id, tribe_slug):
 
         document = self.get_document(id, tribe_slug)
@@ -236,7 +237,8 @@ class DocumentView(object):
     def get_tribe(self, tribe_slug):
         print tribe_slug
         return get_object_or_404(Tribe, slug=tribe_slug)
-    
+
+    @login_required
     def new_upload(self, request, tribe_slug):
         if request.method == 'POST': # If the form has been submitted...
             form = UploadForm(request.POST, request.FILES) # A form bound to the POST data

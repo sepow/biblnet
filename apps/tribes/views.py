@@ -10,6 +10,7 @@ from django.conf import settings
 from tribes.models import TribeMember
 from sepow.html import sanitize_html
 from datetime import datetime
+from django.contrib.auth.decorators import login_required
 
 if "notification" in settings.INSTALLED_APPS:
     from notification import models as notification
@@ -71,7 +72,7 @@ def is_moderator(tribe, user):
             return is_in_group[0].moderator
     return False
    
-
+@login_required
 def create(request, form_class=TribeForm, template_name="tribes/create.html"):
     if request.user.is_authenticated() and request.method == "POST":
         if request.POST["action"] == "create":
@@ -140,6 +141,7 @@ def tribes(request, template_name="tribes/tribes.html", order=None):
         context_instance=RequestContext(request)
     )
 
+@login_required
 def delete(request, slug, redirect_url=None):
     tribe = get_object_or_404(Tribe, slug=slug)
     if not redirect_url:
@@ -312,7 +314,7 @@ def topic(request, id, edit=False, template_name="tribes/topic.html"):
         "are_member": are_member,
         "are_moderator" : is_moderator(topic.tribe, request.user),
     }, context_instance=RequestContext(request))
-
+@login_required
 def topic_delete(request, pk):
     topic = Topic.objects.get(pk=pk)
     
@@ -333,6 +335,7 @@ def topic_delete(request, pk):
         
     return HttpResponseRedirect(request.POST["next"])
 
+@login_required
 def topic_moderate(request, pk):
     topic = Topic.objects.get(pk=pk)
     
