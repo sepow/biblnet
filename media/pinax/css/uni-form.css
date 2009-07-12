@@ -96,7 +96,7 @@
 .uniForm .col.last{ width: 49%; /* <- Required property */ float: right; clear: none; margin-right: 0; }
 
 /* Messages */
-.uniForm #errorMsg{ background: #ffdfdf; border: 1px solid #df7d7d; border-width: 1px 0; margin: 0 0 1.5em 0; padding: 7px; }
+.uniForm #errorMsg{ background: #ffdfdf; border: 1px solid #df7d7d; border-width: 1px 0; margin: 0 0 1.5em 0; padding: 7px; } /*** Changed - see bottom of page ***/
 .uniForm .error{ background: #ffdfdf; border: 1px solid #df7d7d; border-width: 1px 0; }
 
   .uniForm #errorMsg dt, .uniForm #errorMsg h3{ margin: 0 0 .5em 0; font-size: 100%; line-height: 100%; font-weight: bold; }
@@ -116,12 +116,14 @@ YOU CAN VERY EASILY REVERT TO A GENERIC STYLE OF UNI-FORM. BEST OF LUCK...
 
 /* ------------------------------------------------------------------------------ */
 
-/* This class gets added to div.ctrlHolder to highlight the row */
 .uniForm .focused {
     background: #0E3037;
     color: #DFDFDF;
 }
 .uniForm .ctrlHolder{
     border-bottom: none;
+}
+.uniForm #errorMsg{
+    margin: 0.5em 0 1.5em 0;
 }
 /* Commented out "Color" in lines 47, 78 and 90 */

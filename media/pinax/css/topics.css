@@ -11,9 +11,11 @@ table.topic th, table.topics th {
     font-size:90%;
 }
 table.topic td, table.topics td {
-    vertical-align: top;
     padding: 5px;
     font-size:90%;
+}
+table.topic td {
+    vertical-align: top;
 }
 table.topic td h1, table.topics td h2 {
     margin: 0;
@@ -45,10 +47,10 @@ table.topics .comment_stats {
 	color: #0E3037;
 }
 th.meta {
-    width: 180px;
+    width: 189px;
 }
 th.options {
-    width: 20px;
+    width: 16px;
 }
 div.meta {
 	float: left;
@@ -62,8 +64,8 @@ div.avatar {
 }
 div.created {
 /*    float: left;*/
-	padding: .4em;
-    margin-top: 14px;
+	padding: 4px;
+    margin-top: 12px;
 }
 div.details {
     float: left;
