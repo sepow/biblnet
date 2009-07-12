@@ -35,7 +35,7 @@
             {% endfor %}
         {% else %}
             {% url tribe_create_topic tribe.slug as new_topic_url %}
-            <tr class="odd"><td><img src="/site_media/images/sitegraphics/pin.gif" /></td><td colspan=5>{% trans "There are no topics yet" %}{% if are_member %} - <a href="{{ new_topic_url }}">{% trans "create a topic..." %}</a>{% endif %}</td></tr>
+            <tr class="odd"><td><img src="/site_media/images/sitegraphics/note.png" /></td><td colspan=5>{% trans "There are no topics yet" %}{% if are_member %} - <a href="{{ new_topic_url }}">{% trans "create a topic..." %}</a>{% endif %}</td></tr>
         {% endif %}
     </table>
 
