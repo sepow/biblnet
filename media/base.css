@@ -11,7 +11,7 @@ body {
 					/* The min-width property does not work in old versions of Internet Explorer */
 	max-width: 1224px;
 	font-size:90%;
-	font-family: tahoma, comic sans ms, arial, helvetica, trebuchet ms, arial narrow;
+	font-family: tahoma, arial, helvetica, trebuchet ms, arial narrow;
 	color:#0E3037;
 }
 

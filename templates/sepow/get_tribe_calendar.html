@@ -1,4 +1,5 @@
 {% for event in events %}
 {{event.start}}<br/>
-{{event.title}}<br/>
+
+<a href="{% url event event.event.id %}">{{event.title}}</a><br/>
 {%endfor%}
