@@ -56,3 +56,24 @@ def visit_tribe(tribe, user):
     return ""
 register.simple_tag(visit_tribe)
 
+import itertools 
+def get_tribe_calendar(tribe, user):
+    #from schedule.models import EventRelation
+    from schedule.models import Calendar
+    events = None
+    
+    try:
+        if has_member(tribe, user):
+            
+            calendar = Calendar.objects.get_calendar_for_object(tribe)
+            events = itertools.islice(calendar.occurrences_after(date=datetime.now()), 5)
+            #events = EventRelation.objects.get_events_for_object(tribe).filter(start__gte=datetime.now())[0:5]
+    except: 
+        pass
+
+    return {
+    'events' : events
+    }
+    
+register.inclusion_tag('sepow/get_tribe_calendar.html')(get_tribe_calendar)
+

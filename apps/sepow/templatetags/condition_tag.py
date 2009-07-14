@@ -99,16 +99,14 @@ def condition_tag(func):
     return wrapper
 
 
-
+def is_member(tribe, user):
+    if user.is_authenticated():
+        if TribeMember.objects.filter(tribe=tribe, user=user).count() > 0:
+            return True
+    return False
 
 @condition_tag
 def if_can_see(tribe, user='user'):
-
-    def is_member(tribe, user):
-        if user.is_authenticated():
-            if TribeMember.objects.filter(tribe=tribe, user=user).count() > 0:
-                return True
-        return False
         
     if tribe.private and is_member(tribe, user):
         return True
@@ -119,6 +117,21 @@ def if_can_see(tribe, user='user'):
 
 register.tag('if_can_see', if_can_see)
 
+@condition_tag
+
+def if_can_see_calendar(calendar, user='user'):
+    try:
+        tribe = calendar.calendarrelation_set.all()[0].content_object
+    except:
+        tribe = None
+    if tribe:
+        if tribe.private and is_member(tribe, user):
+            return True
+        elif not tribe.private:
+            return True    
+    return False
+        
+register.tag('if_can_see_calendar', if_can_see_calendar)
 
 @condition_tag
 def if_can_edit_topic(topic='topic', user='user'):

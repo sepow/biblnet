@@ -88,6 +88,7 @@ class BiblnetSignupForm(forms.Form):
                     EmailAddress.objects.add_email(new_user, email)
             return username, password # required for authenticate()
         else:
+
             new_user = User.objects.create_user(username, "", password)
             # def populate_profile: 
             new_profile = new_user.get_profile()
@@ -95,9 +96,10 @@ class BiblnetSignupForm(forms.Form):
             new_profile.occupation = occupation
             new_profile.name = name
             new_profile.save()
+            # Tribemember
             tmember = TribeMember(tribe=new_profile.affiliation.tribe, user=new_user)
-            tmember.save()
-            
+            tmember.save()           
+            # Global tribe
             try: 
                 global_tribe = Tribe.objects.get(slug = u'global')
                 tmember = TribeMember(tribe=global_tribe, user=new_user)

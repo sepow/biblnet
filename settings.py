@@ -193,6 +193,7 @@ INSTALLED_APPS = (
     'django_dms',
     'django_dms.apps.small_dms',
     'sorl.thumbnail',
+    'schedule',
 )
 
 # Import sorl.thumbnail if it is available
@@ -270,6 +271,26 @@ WIKI_REQUIRES_LOGIN = True
 AVATAR_DEFAULT_URL = MEDIA_URL + 'images/kristine.jpg'
 AVATAR_GRAVATAR_BACKUP = False
 
+# Schedule - calendar
+
+FIRST_DAY_OF_WEEK = 1 # Monday
+
+def check_edit_permission(ob, user):
+    if not ob: # opret
+        return user.is_authenticated()    
+   
+    #edit v 
+    tribe = ob.calendar.calendarrelation_set.all()[0].content_object
+    from tribes.models import TribeMember
+    if user.is_authenticated():
+        if TribeMember.objects.filter(tribe=tribe, user=user).count() > 0:
+            return True
+    return False
+    
+CHECK_PERMISSION_FUNC = check_edit_permission
+
+
+
 # Captcha
 
 CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.word_challenge' 
@@ -281,4 +302,5 @@ try:
     from local_settings import *
 except ImportError:
     pass
+    
 

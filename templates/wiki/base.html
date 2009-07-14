@@ -2,6 +2,11 @@
 
 {% load i18n %}
 {% load wikiurl %}
+{% load biblnet_tags %}
 
 {% block boxtab_id %}id="wiki_tab"{% endblock %}
 {% block group %}<li class="members_tab"><a href="{% url tribe_members group.slug  %}"><span>{% trans "Members" %}</span></a></li>{% endblock %}
+
+{%block calendar%}
+ {% get_tribe_calendar group request.user%}
+{% endblock calendar%}

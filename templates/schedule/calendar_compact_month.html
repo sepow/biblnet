@@ -1,0 +1,10 @@
+{% extends "schedule/base.html" %}
+{% load scheduletags %}
+{% load condition_tag %}
+
+{% block body %}
+{% if_can_see_calendar calendar request.user%}
+<p align="center"><b>{{ calendar.name }}</b></p>
+{% month_table calendar periods.month "small" %}
+{%endif_can_see_calendar%}
+{% endblock %}

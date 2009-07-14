@@ -1,0 +1,17 @@
+{% extends "schedule/base.html" %}
+{% load i18n %}
+{% load condition_tag %}
+{% block body %}
+{% if_can_see_calendar calendar request.user%}
+<h1>{% trans "Delete" %}</h1>
+{% trans "Are you sure that you really want to delete it?" %}
+
+<form action="." method="POST">
+    {{ object }} <br/>
+    <input type="submit" value="{% trans "Delete" %}" />
+    <input type="button" value="{% trans "Cancel" %}" onclick="window.location='{{next}}'"/>
+
+    <input type="hidden" name="next" value="{{next|default:""}}"/>
+</form>
+{%endif_can_see_calendar%}
+{% endblock %}

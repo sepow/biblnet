@@ -85,6 +85,12 @@ def create(request, form_class=TribeForm, template_name="tribes/create.html"):
                 tmember.moderator = True
                 tmember.save()
                 tribe.save()
+                # Calendar
+                from schedule.models import Calendar
+                tribe_cal = Calendar.objects.get_or_create_calendar_for_object(tribe, name = "%s" % tribe,)
+                tribe_cal.slug = tribe.slug
+                tribe_cal.save()       
+                         
                 if notification:
                     # @@@ might be worth having a shortcut for sending to all users
                     if not tribe.private:
