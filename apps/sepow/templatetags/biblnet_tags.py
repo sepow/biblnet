@@ -36,12 +36,11 @@ def new_since_last_visit(tribe, user):
     
     changed = bool(new_topics or new_posts)
     return {
-        'changed' : changed, 
+        'changed' : changed,
         'tribe' : tribe,
-        'new_topics': new_topics, 
-        'new_posts': new_posts, 
+        'new_topics' : new_topics,
+        'new_posts' : new_posts,
     }
-    
 register.inclusion_tag('sepow/new_since_last_visit.html')(new_since_last_visit)
 
 

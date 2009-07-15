@@ -17,14 +17,19 @@
     {% autopaginate topics 20 %}
 
     <h2>{% trans "Message Board for" %} <a href="{% url tribe_detail tribe.slug %}">{{ tribe.name }}</a></h2>
-
-    {% if are_member %}
-        <a href="{% url tribe_create_topic tribe.slug %}">{% trans "Start New Topic" %}</a>
+    {% if user.is_authenticated %}
+        {% if are_member %}
+            <a href="{% url tribe_create_topic tribe.slug %}">{% trans "Start New Topic" %}</a>
+        {% else %}
+            <form method="POST" action="{% url tribe_detail tribe.slug %}">
+                <input type="hidden" name="action" value="join" />
+                <input type="submit" value="{% trans 'join tribe' %}"/>
+            </form>
+        {% endif %}
     {% else %}
-        <form method="POST" action="{% url tribe_detail tribe.slug %}">
-            <input type="hidden" name="action" value="join" />
-            <input type="submit" value="{% trans 'join tribe' %}"/>
-        </form>
+        {% url acct_login as login_url %}
+        {% url tribe_detail tribe.slug as tribe_url %}
+        <h3>{% blocktrans %}Please <a href="{{ login_url }}?next={{ tribe_url }}">log in</a> to start a topic.{% endblocktrans %}</h3>
     {% endif %}
 
     <table class="topics">
