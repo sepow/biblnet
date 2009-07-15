@@ -43,7 +43,9 @@ img {
 	border: none;
     vertical-align: middle;
 }
-
+img.captcha {
+    margin: 3px;
+}
 table {
     width: 100%;
 	border-spacing: 0;

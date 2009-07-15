@@ -12,7 +12,7 @@ def math_challenge():
     return u'%s=' %(challenge), unicode(eval(challenge))
     
 def random_char_challenge():
-    chars,ret = u'abcdefghijklmnopqrstuvwxyz', u''
+    chars,ret = u'biblnet', u''
     for i in range(settings.CAPTCHA_LENGTH):
         ret += chars[random.randint(0,len(chars)-1)]
     return ret.upper(),ret

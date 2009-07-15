@@ -27,9 +27,9 @@ alnum_re = re.compile(r'^\w+$')
 
 class BiblnetSignupForm(forms.Form):
     captcha = CaptchaField()
+    username = forms.CharField(label=_(u"Username"), max_length=30, widget=forms.TextInput())
     name = forms.CharField(label=_(u"Full name"), max_length=50, widget=forms.TextInput())
     email = forms.EmailField(label=_(u"Email"), required=True, widget=forms.TextInput())
-    username = forms.CharField(label=_(u"Username"), max_length=30, widget=forms.TextInput())
     password1 = forms.CharField(label=_(u"Password"), widget=forms.PasswordInput(render_value=False))
     password2 = forms.CharField(label=_(u"Password (again)"), widget=forms.PasswordInput(render_value=False))
     affiliation = forms.ModelChoiceField(queryset=Affiliation.objects.filter(tribe__private__exact=False), empty_label=_("(Pick your affiliation)")) #TODO clean
