@@ -15,14 +15,22 @@
 
 {% block login %}
     {% if user.is_authenticated %}
-        <b><a href="{% url profile_detail user %}">{% avatar user 40 %}</a><a href="{% url profile_detail user %}">{{ user }}</a></b> 
-        {# {% if user.is_staff %}<a href="/admin/">{% trans "Admin" %}</a>  | {% endif %} TODO behøver den være her? #}
-        <a href="/openid/logout/?next={% url acct_logout %}">{% trans "Logout" %}</a> <br/><br />
+        <table>
+            <tr>
+                <td width="45px"><a href="{% url profile_detail user %}">{% avatar user 40 %}</a></td>
+                <td><b><a href="{% url profile_detail user %}">{{ user }}</a></b></td>
+            </tr>
+        </table>
+        <a style="font-size: 90%;" href="/openid/logout/?next={% url acct_logout %}">{% trans "Logout" %}</a>
+        <p>{% trans "Your last login:" %}<br />
+        {{ user.last_login|timesince }} {% trans "ago" %}
+        </p>
+
         <p>
             {% if user.tribe_set.all %}
                 {% for tribe in user.tribe_set.all %}
                     {% if not tribe.deleted %}
-                        <img src="{{ MEDIA_URL }}images/sitegraphics/group.png"/> <a href="{% url tribe_detail tribe.slug %}">{{ tribe.name }}</a><br />
+                        <img src="{{ MEDIA_URL }}images/sitegraphics/group.png" alt="{% trans 'Tribe' %}" /> <a href="{% url tribe_detail tribe.slug %}">{{ tribe.name }}</a><br />
                     {% endif %}
                 {% endfor %}
             {% else %}
@@ -30,13 +38,14 @@
                 <p>{% blocktrans %}You are not yet a member of any <a href="{{ tribe_url }}">tribes</a>.{% endblocktrans %}</p>
             {% endif %}
         </p>
+
         <p>
-            <img src="{{ MEDIA_URL }}images/sitegraphics/group.png"/> <a href="{% url tribe_list %}">{% trans "All tribes" %}</a><br />
-            <img src="{{ MEDIA_URL }}images/sitegraphics/group.png"/> <a href="/tribes/create/">{% trans "Start a new tribe" %}</a>
+            <img src="{{ MEDIA_URL }}images/sitegraphics/group.png" alt="{% trans 'Tribe' %}" /> <a href="{% url tribe_list %}">{% trans "All tribes" %}</a><br />
+            <img src="{{ MEDIA_URL }}images/sitegraphics/group.png" alt="{% trans 'Tribe' %}" /> <a href="/tribes/create/">{% trans "Start a new tribe" %}</a>
         </p>
     {% else %}
-        <p>Du er ikke logget på</p>
-        <a href="{% url acct_login %}">{% trans "Log på" %}</a> / <a href="{% url acct_signup %}"><b>{% trans "Bliv medlem" %}</b></a>
+        <p>{% trans "You are not logged in" %}</p>
+        <p><a href="{% url acct_login %}">{% trans "Log in" %}</a> / <a href="{% url acct_signup %}"><b>{% trans "Sign up" %}</b></a></p>
     {% endif %}
 {% endblock %}
 
@@ -50,11 +59,11 @@
             <li class="index_tab"><a href="{% firstof tribe.get_absolute_url group.get_absolute_url topic.tribe.get_absolute_url affil_tribe %}"><span>{% trans "Index" %}</span></a></li>
             <li class="board_tab"><a href="{% firstof tribe.get_absolute_url group.get_absolute_url topic.tribe.get_absolute_url affil_tribe %}topics/"><span>{% trans "Message board" %}</span></a></li>
             <li class="wiki_tab"><a href="{% firstof tribe.get_absolute_url group.get_absolute_url topic.tribe.get_absolute_url affil_tribe %}wiki/"><span>{% trans "Wiki" %}</span></a></li>
-            <li class="docs_tab"><a href="{% firstof tribe.get_absolute_url group.get_absolute_url topic.tribe.get_absolute_url affil_tribe %}"><span>{% trans "Knowledge Bank" %}</span></a></li>
+            <li class="docs_tab"><a href="{% firstof tribe.get_absolute_url group.get_absolute_url topic.tribe.get_absolute_url affil_tribe %}dms/"><span>{% trans "Knowledge Bank" %}</span></a></li>
             {% block group %}<li class="members_tab"><a href="{% url tribe_list %}"><span>{% trans "Groups" %}</span></a></li>{% endblock %}
         </ul>
         
-        {% block admin_tab%}
+        {% block admin_tab %}
             {% if tribe or topic %}
                 {% if user.is_staff or are_moderator %}
                     <ul id="admin">
@@ -73,30 +82,18 @@
 	</div>
 {% endblock %}
 
-{% block right_tab %}
-    {% if user.is_authenticated %}
-        <table>
-               {# <tr><td class="tab rtab_photos"><div><a href="{% url photos %}">{% trans "Photos" %}</a></div></td></tr> #}
-               {# <tr><td class="tab rtab_blogs"><div><a href="{% url blog_list_all %}">{% trans "Blogs" %}</a></div></td></tr> #}
-               {# <tr><td class="tab rtab_tribes"><div><a href="{% url tribe_list %}">{% trans "Tribes" %}</a></div></td></tr> #}
-        </table>
-    {% endif %}
-{% endblock %}
-
 {% block search %}
     <div class="search">
-        <form method="get" action="/search/" name="search">
+        <form action="/search/" method="get" name="search">
             <input type="text" name="q" />
             <select>
-                <option value="all">All</option>
-                <option value="msg">Comments</option>
-                <option value="doc">Docs</option>
-                <option value="wiki">Wiki</option>
-                <option value="memb">Members</option>
+                <option value="all">{% trans "All" %}</option>
+                <option value="msg">{% trans "Comments" %}</option>
+                <option value="doc">{% trans "Docs" %}</option>
+                <option value="wiki">{% trans "Wiki" %}</option>
+                <option value="memb">{% trans "Members" %}</option>
             </select>
-            <input type="submit" value="{% trans "Search" %}" />
-
-            
+            <input type="submit" value="{% trans 'Search' %}" />
         </form>
     </div>
 {% endblock %}
@@ -130,13 +127,14 @@
 
 {% block footer %}
     <div class="legal">
-        {% trans "&copy; 2009 Sean & Luhr" %}
+        {% trans "&copy; 2009 Sean &amp; Luhr" %}
         - <a href="{% url about %}">{% trans "About" %}</a>
         - <a href="{% url terms %}">{% trans "Terms of Service" %}</a>
         - <a href="{% url privacy %}">{% trans "Privacy Policy" %}</a>
         - <a href="{% url dmca %}">{% trans "DMCA Notice" %}</a>
         - Version: {% svn_app_version %}
         - Django: {% svn_app_version "django" %}
+        - Icons: Silk
     </div>
 {% endblock %}
 

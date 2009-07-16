@@ -1,0 +1,21 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+{% load uni_form %}
+
+{%block body%}
+
+<form enctype="multipart/form-data" class="upload uniForm" id="upload_form" method="post" action="">
+    <fieldset class="inlineLabels">
+        {{ form|as_uni_form }}
+        <div  class="form_blick">
+            <input type="submit" value="{% trans "Upload" %}" />
+        </div>
+    </fieldset>
+</form>
+{%endblock body%}
+
+{% block extra_body %}
+<script type="text/javascript"> $(document).ready(function() { $("#id_title").slugify("#id_slug"); });</script>
+<script type="text/javascript" src=" {{MEDIA_URL}}js/slugify.js"></script>
+{% endblock %}

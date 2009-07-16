@@ -41,10 +41,16 @@ def _preview(request, context_processors, extra_context, form_class=ThreadedComm
     edit it before submitting it permanently.
     """
     _adjust_max_comment_length(form_class)
-    form = form_class(request.POST or None)
+    mydict = request.POST.copy()
+    if "NOMARKUP" in mydict:
+        mydict['comment'] = mydict['comment'].replace('\n', '<br />')
+    
+    form = form_class(mydict or None)
     context = {
         'next' : _get_next(request),
         'form' : form,
+        'preview_comment' :  mydict['comment'],
+        
     }
     if form.is_valid():
         new_comment = form.save(commit=False)
@@ -74,6 +80,7 @@ def free_comment(request, content_type=None, object_id=None, edit_id=None, paren
     """
     if not edit_id and not (content_type and object_id):
         raise Http404 # Must specify either content_type and object_id or edit_id
+    
     if "preview" in request.POST:
         return _preview(request, context_processors, extra_context, form_class=form_class)
     if edit_id:
@@ -92,7 +99,8 @@ def free_comment(request, content_type=None, object_id=None, edit_id=None, paren
             new_comment.user = request.user
         if parent_id:
             new_comment.parent = get_object_or_404(model, id = int(parent_id))
-
+        if "NOMARKUP" in request.POST:
+            new_comment.comment = new_comment.comment.replace('\n', '<br />')
         new_comment.comment = sanitize_html(new_comment.comment)
 
         new_comment.save()

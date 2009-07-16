@@ -8,14 +8,14 @@
     .uniForm fieldset legend{ color: #333; font-weight: bold; font-size: 100%; margin: 0; padding: 1.5em 0; }
     
     /* This is the main unit that contains our form elements */
-    .uniForm .ctrlHolder{ padding: 7px; border-bottom: 1px solid #dfdfdf; }
+    .uniForm .ctrlHolder{ padding: 7px; border-bottom: 1px solid #dfdfdf; } /*** Changed - see bottom of page ***/
     
     .uniForm .buttonHolder{ text-align: right; }
       .uniForm .resetButton{ float: left; }
       .uniForm .primaryAction{ font-weight: bold; }
     
     /* This class gets added to div.ctrlHolder to highlight the row */
-    .uniForm .focused{ background: #fffcdf; }
+    .uniForm .focused{ background: #fffcdf; } /*** Changed - see bottom of page ***/
       
       /* .inlineLabel is used for inputs within labels - checkboxes and radio buttons */
       .uniForm .inlineLabel input,
@@ -44,7 +44,7 @@
       .uniForm .blockLabels textarea{ width: 53%; /* <- Required property */ height: 12em; }
 
       .uniForm .formHint,
-      .uniForm .blockLabels .formHint{ width: 45%; /* <- Required property */ font-size: .9em; /*color: #777;*/ position: relative; top: -.5em; }
+      .uniForm .blockLabels .formHint{ width: 45%; /* <- Required property */ font-size: .9em; /*color: #777;*/ position: relative; top: -.5em; } /*** Changed - see bottom of page ***/
       
       .uniForm .multiField,
       .uniForm .blockLabels .multiField{ width: 53%; }
@@ -75,7 +75,7 @@
     
     .uniForm .inlineLabels textarea{  width: 45%; /* <- Required property */ height: 12em; }
 
-    .uniForm .inlineLabels .formHint{ margin-top: 0; margin-left: 47%; font-size: .9em; /*color: #777;*/ position: static; }
+    .uniForm .inlineLabels .formHint{ margin-top: 0; margin-left: 47%; font-size: .9em; /*color: #777;*/ position: static; } /*** Changed - see bottom of page ***/
     
     .uniForm .inlineLabels .multiField{ width: 45%; /* <- Required property */ margin: 0 0 .3em 0; }
       .uniForm .inlineLabels .multiField .inlineLabel{ display: block; margin: 0 0 .5em 0; }
@@ -87,7 +87,7 @@
 /* Focus pseudoclasses */
 .uniForm .ctrlHolder .textInput:focus{ outline: none; /* Get rid of the 'glow' effect in WebKit, optional */ }
 .uniForm .ctrlHolder textarea:focus{ outline: none; /* Get rid of the 'glow' effect in WebKit, optional */ }
-.uniForm div.focused .formHint{ /*color: #333;*/ }
+.uniForm div.focused .formHint{ /*color: #333;*/ } /*** Changed - see bottom of page ***/
 
 /* Columns (they are floated left by default) */
 .uniForm .col{ width: 47.9%; /* <- Required property */ margin: 0 2% 20px 0; }
@@ -96,7 +96,7 @@
 .uniForm .col.last{ width: 49%; /* <- Required property */ float: right; clear: none; margin-right: 0; }
 
 /* Messages */
-.uniForm #errorMsg{ background: #ffdfdf; border: 1px solid #df7d7d; border-width: 1px 0; margin: 0 0 1.5em 0; padding: 7px; }
+.uniForm #errorMsg{ background: #ffdfdf; border: 1px solid #df7d7d; border-width: 1px 0; margin: 0 0 1.5em 0; padding: 7px; } /*** Changed - see bottom of page ***/
 .uniForm .error{ background: #ffdfdf; border: 1px solid #df7d7d; border-width: 1px 0; }
 
   .uniForm #errorMsg dt, .uniForm #errorMsg h3{ margin: 0 0 .5em 0; font-size: 100%; line-height: 100%; font-weight: bold; }
@@ -116,12 +116,14 @@ YOU CAN VERY EASILY REVERT TO A GENERIC STYLE OF UNI-FORM. BEST OF LUCK...
 
 /* ------------------------------------------------------------------------------ */
 
-/* This class gets added to div.ctrlHolder to highlight the row */
 .uniForm .focused {
     background: #0E3037;
     color: #DFDFDF;
 }
 .uniForm .ctrlHolder{
     border-bottom: none;
+}
+.uniForm #errorMsg{
+    margin: 0.5em 0 1.5em 0;
 }
 /* Commented out "Color" in lines 47, 78 and 90 */

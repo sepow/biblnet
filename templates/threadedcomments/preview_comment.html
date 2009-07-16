@@ -4,27 +4,35 @@
 {% load threadedcommentstags %}
 {% load avatar_tags %}
 {% load markup %}
+{% load oembed_tags %}
+{#% block breadcrumb %}{{ block.super }} &raquo; <a href="{{ tribe.get_absolute_url }}topics/">{% trans "Message Board" %}</a>{% endblock %#}
 
+{% block boxtab_id %}id="board_tab"{% endblock %}
 
 {% block body %}
 
 <h2>{% trans "Preview of your post" %}</h2>
 
-<table class="topics">
+<table class="topic">
     <tr class="even"><th class="meta">{% trans "Meta" %}</th><th class="options"></th><th>{% trans "Preview of your post" %}</th></tr>
     <tr class="odd">
     <td>
         <div class="meta">
-            <div class="avatar">{% avatar user 60 %}</div>
-            <div class="created">
-                {% trans "Default Markup:" %}
+            <div class="avatar">
+                <img src="/site_media/{{ user.get_profile.affiliation.icon }}"  alt="{{ user.get_profile.affiliation }}" title="{{ user.get_profile.affiliation }}" /><br />
+                {% avatar user 60 %}
             </div>
-            <div class="details clearboth">{{ user }}</div>
+            <div class="created">
+                {% now "N j, Y" %} - {% now "H:i" %}<br />
+                {% trans "0 minutes ago"%}<br />
+                <br />
+                {{ user }}
+            </div>
         </div>
     </td>
     <td></td>
     <td>
-        <div class="body">{% autoescape off %}{{ request.POST.comment }}{% endautoescape %}</div>
+        <div class="body">{% autoescape off %}{% oembed %}{{ preview_comment }}{% endoembed %}{% endautoescape %}</div>
     </td>
     </tr>
 
@@ -32,11 +40,16 @@
 <tr class="even">
 <td>
     <div class="meta">
-        <div class="avatar">{% avatar user 60 %}</div>
-            <div class="created">
-                {% trans "Edit your post:" %}
+            <div class="avatar">
+                <img src="/site_media/{{ user.get_profile.affiliation.icon }}"  alt="{{ user.get_profile.affiliation }}" title="{{ user.get_profile.affiliation }}" /><br />
+                {% avatar user 60 %}
             </div>
-        <div class="details clearboth">{{ user }}</div>
+            <div class="created">
+                {% now "N j, Y" %} - {% now "H:i" %}<br />
+                {% trans "0 minutes ago"%}<br />
+                <br />
+                {{ user }}
+            </div>
     </div>
 </td>
 <td></td>

@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/35/trunk/django_dms/apps/large_dms
+END
+admin.py
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/27/trunk/django_dms/apps/large_dms/admin.py
+END
+views.py
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/27/trunk/django_dms/apps/large_dms/views.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/23/trunk/django_dms/apps/large_dms/__init__.py
+END
+tests.py
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/23/trunk/django_dms/apps/large_dms/tests.py
+END
+models.py
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/35/trunk/django_dms/apps/large_dms/models.py
+END
+urls.py
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/24/trunk/django_dms/apps/large_dms/urls.py
+END

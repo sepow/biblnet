@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/449/trunk/sorl/thumbnail/management/commands
+END
+thumbnail_cleanup.py
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/449/trunk/sorl/thumbnail/management/commands/thumbnail_cleanup.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/449/trunk/sorl/thumbnail/management/commands/__init__.py
+END

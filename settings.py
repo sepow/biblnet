@@ -91,7 +91,7 @@ MIDDLEWARE_CLASSES = (
     'djangodblog.middleware.DBLogMiddleware',
     'django.middleware.transaction.TransactionMiddleware',
     #'sepow.middleware.UserBasedExceptionMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    #'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
 ROOT_URLCONF = 'biblnet.urls'
@@ -190,8 +190,17 @@ INSTALLED_APPS = (
     'captcha',
     'markitup',
     'haystack',
-
+    'django_dms',
+    'django_dms.apps.small_dms',
+    'sorl.thumbnail',
 )
+
+# Import sorl.thumbnail if it is available
+try:
+    import sorl.thumbnail
+    INSTALLED_APPS += ('sorl.thumbnail',)
+except ImportError:
+    pass
 
 DEBUG_TOOLBAR_CONFIG = { 'INTERCEPT_REDIRECTS' : False, } 
 
@@ -263,7 +272,7 @@ AVATAR_GRAVATAR_BACKUP = False
 
 # Captcha
 
-CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.word_challenge' 
+CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.random_char_challenge' 
 CAPTCHA_NOISE_FUNCTIONS = ('captcha.helpers.noise_dots',)
 
 # local_settings.py can be used to override environment-specific settings

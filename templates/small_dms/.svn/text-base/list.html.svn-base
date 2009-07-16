@@ -1,0 +1,29 @@
+{% extends "small_dms/base.html" %}
+{% load already %}
+{% load dms %}
+
+
+{% block extra_head %}
+{{ block.super }}
+<script type="text/javascript">
+$(document).ready(function() {
+    $('a.preview').lightBox();
+    $(".send").attr('href', '#');
+    });
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="document-list">
+{% include "django_dms/list.html" %}
+
+{% for item in object_list %}
+<script type="text/javascript">
+    $("#send_{{ forloop.counter }} a").click(function(){
+        $('#send_{{ forloop.counter }}').load('{% dms_url dms_site document_send_ajax item.document %}').addClass('subtle');
+        return false
+        });
+</script>
+{% endfor %}
+</div>
+{% endblock content %}

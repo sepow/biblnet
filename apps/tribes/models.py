@@ -81,10 +81,11 @@ class Topic(models.Model):
     creator = models.ForeignKey(User, related_name="created_topics", verbose_name=_('creator'))
     created = models.DateTimeField(_('created'), default=datetime.now)
     modified = models.DateTimeField(_('modified'), default=datetime.now) # topic modified when commented on
+    editet = models.DateTimeField(_('editet'), default=datetime.now) # topic editet
     body = models.TextField(_('body'))
     views = models.IntegerField(_("views"), default=0)
-    sticky = models.BooleanField(_("sticky?"), blank=True, null=True, default=False) # skupper tråden op øverst i forumet. 
-    closed = models.BooleanField(_("closed?"), blank=True, null=True, default=False) # ikke muligt at skrive indlæg til denne post
+    sticky = models.BooleanField(_("sticky?"), blank=True, default=False) # skupper tråden op øverst i forumet. 
+    closed = models.BooleanField(_("closed?"), blank=True, default=False) # ikke muligt at skrive indlæg til denne post
 
     tags = TagField()
     

@@ -126,7 +126,7 @@ def if_can_edit_topic(topic='topic', user='user'):
         
         A user can always edit a topic if she is the creator of the tribe.
         
-        Other users have got 20 minutes from they posted the topic.
+        Other users have got 15 minutes from they posted the topic.
     '''
 
     if topic.tribe.creator.id == user.id:

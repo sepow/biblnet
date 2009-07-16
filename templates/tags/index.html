@@ -15,31 +15,62 @@
 {% load extra_tagging_tags %}
 
 
-{% block head_title %}{% blocktrans %}Tags{% endblocktrans %}{% endblock %}
+{% block head_title %}{% blocktrans %}Items tagged with "{{ tag }}"{% endblocktrans %}{% endblock %}
 
 {% block body %}
-    <h1>{% trans "All Photos Matching " %}<i>"{{ tag }}"</i></h1>
+<h1>{% trans "Tag:" %} "{{ tag }}"</h1>
 
-    {% if phototags %}
-        <div class="thumb-row clearfix">
-        {% for photo in phototags %}
-                <div class="gallery-photo-thumb">
-                    <a href="/photos/details/{{ photo.id }}/"><img src="{{ photo.get_thumbnail_url }}" alt="{{ photo.title }}"/></a><br />
-                    from <a href="{% url profile_detail photo.member.username %}">{{ photo.member.username }}</a><br />
-                    <img src="{{ MEDIA_URL }}pinax/images/silk/icons/comment.png" border="0" class="noborder" align="absmiddle" /><a href="/photos/details/{{ photo.id }}/">{% get_comment_count for photo as commentcount %} {{ commentcount }} Comments</a>
-                    <br />
-                    Viewed {{ photo.view_count }} Times
-                </div>
-        {% endfor %}
-        </div>
-    {% else %}
-        No photos matching tag.
+    {% if tribe_tags %}
+        <h2>{% trans "Tribes" %}</h2>
+        <table class="topics">
+            <tr class="even">
+                <th width="16px"></th>
+                <th>{% trans "Name" %}</th>
+                <th class="comment_stats" width="10%">{% trans "Members" %}</th>
+                <th class="comment_stats" width="15%">{% trans "Topics" %}</th>
+                <th width="150px">{% trans "Created" %}</th>
+            </tr>
+            {% for tribe in tribe_tags %}
+                {% show_tribe tribe %}
+            {% endfor %}
+        </table>
     {% endif %}
+
+
+    {% if tribe_topic_tags %}
+        <h2>{% trans "Topics" %}</h2>
+        <table class="topics">
+        <tr class="even"><th width="36px"></th><th>{% trans "Topic" %}</th><th width="15%">{% trans "Started by" %}</th><th class="comment_stats" width="10%">{% trans "Views" %}</th><th class="comment_stats" width="15%">{% trans "Replies" %}</th><th width="150px">{% trans "Latest reply" %}</th></tr>
+        {% for topic in tribe_topic_tags %}
+            {% show_tribe_topic topic %}
+        {% endfor %}
+        </table>
+    {% endif %}
+
+
+    {% if wiki_article_tags %}
+    <h2>{% trans "Wiki Articles" %}</h2>
+    <table class="topics">
+        {% for article in wiki_article_tags %}
+            {% show_teaser article %}
+        {% endfor %}
+    </table>
+    {% endif %}
+
+
+    {% if document_tags %}
+    <h2>{% trans "Documents" %}</h2>
+    <dl>
+        {% for document in document_tags %}
+           <a href="{% url document_view_document_detail document.tribe.slug document.slug %}">{{ document }} </a> in {{ document.tribe }}
+        {% endfor %}
+    </dl>
+    {% endif %}
+
 
     {% if bookmarktags %}
         {% scores_for_objects bookmarktags as score_dict %}
-
-        <h1>All Bookmarks Matching <i>{{ tag }}</i></h1>
+        <h2>{% trans "Bookmarks" %}</h2>
         <table class="bookmarks" width="100%">
             {% for bookmark in bookmarktags %}
                 <tr class="{% cycle odd,even %}">
@@ -58,65 +89,56 @@
                 </tr>
             {% endfor %}
         </table>
-
-    {% else %}
-        No bookmarks matching tag.
     {% endif %}
 
 
-    <h1>{% trans "All Blog Posts Matching " %}<i>"{{ tag }}"</i></h1>
+    {% if phototags %}
+        <h2>{% trans "Photos" %}</h2>
+        <div class="thumb-row clearfix">
+        {% for photo in phototags %}
+                <div class="gallery-photo-thumb">
+                    <a href="/photos/details/{{ photo.id }}/"><img src="{{ photo.get_thumbnail_url }}" alt="{{ photo.title }}"/></a><br />
+                    from <a href="{% url profile_detail photo.member.username %}">{{ photo.member.username }}</a><br />
+                    <img src="{{ MEDIA_URL }}pinax/images/silk/icons/comment.png" border="0" class="noborder" align="absmiddle" /><a href="/photos/details/{{ photo.id }}/">{% get_comment_count for photo as commentcount %} {{ commentcount }} Comments</a>
+                    <br />
+                    Viewed {{ photo.view_count }} Times
+                </div>
+        {% endfor %}
+        </div>
+    {% endif %}
+
 
     {% if alltags %}
+        <h2>{% trans "Blog Posts" %}</h2>
         <p>{% trans "These are blog posts from everyone:" %}</p>
         {% for blog_post in alltags %}
             {% show_blog_post blog_post %}
         {% endfor %}
-    {% else %}
-        No blog posts matching tag.
     {% endif %}
 
-    <h1>{% blocktrans %}All Projects Matching <i>{{ tag }}</i>{% endblocktrans %}</h1>
 
+{% comment %} {# Skal disse tre bare fjernes? #}
+    <h2>{% blocktrans %}Projects Matching <i>{{ tag }}</i>{% endblocktrans %}</h2>
     <dl>
         {% for project in project_tags %}
             {% show_project project %}
         {% endfor %}
     </dl>
 
-    <h1>{% blocktrans %}All Project Topics Matching <i>{{ tag }}</i>{% endblocktrans %}</h1>
 
+    <h2>{% blocktrans %}Project Topics Matching <i>{{ tag }}</i>{% endblocktrans %}</h2>
     {% for topic in project_topic_tags %}
         {% show_project_topic topic %}
     {% endfor %}
 
-    <h1>{% blocktrans %}All Project Tasks Matching <i>{{ tag }}</i>{% endblocktrans %}</h1>
 
+    <h2>{% blocktrans %}Project Tasks Matching <i>{{ tag }}</i>{% endblocktrans %}</h2>
     {% for task in project_task_tags %}
         {% show_task task %}
     {% endfor %}
+{% endcomment %}
 
-    <h1>{% blocktrans %}All Tribes Matching <i>{{ tag }}</i>{% endblocktrans %}</h1>
-
-    <dl>
-        {% for tribe in tribe_tags %}
-            {% show_tribe tribe %}
-        {% endfor %}
-    </dl>
-
-    <h1>{% blocktrans %}All Tribe Topics Matching <i>{{ tag }}</i>{% endblocktrans %}</h1>
-
-    {% for topic in tribe_topic_tags %}
-        {% show_tribe_topic topic %}
-    {% endfor %}
-
-    <h1>{% blocktrans %}All Wiki Articles Matching <i>{{ tag }}</i>{% endblocktrans %}</h1>
-
-    <table class="topics">
-        {% for article in wiki_article_tags %}
-            {% show_teaser article %}
-        {% endfor %}
-    </table>
-
+<p>{% blocktrans %}No further items matching <i>{{ tag }}</i>{% endblocktrans %}</p>
 
 {% endblock %}
 

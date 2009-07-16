@@ -3,6 +3,7 @@
 #index_tab .index_tab,
 #wiki_tab .wiki_tab,
 #board_tab .board_tab,
+#docs_tab .docs_tab,
 #admin_tab .admin_tab,
 #members_tab .members_tab
 {
@@ -13,6 +14,7 @@
 #index_tab ul li.index_tab a, #index_tab ul li.index_tab a:hover,
 #wiki_tab ul li.wiki_tab a, #wiki_tab ul li.wiki_tab a:hover,
 #board_tab ul li.board_tab a, #board_tab ul li.board_tab a:hover,
+#docs_tab ul li.docs_tab a, #docs_tab ul li.docs_tab a:hover,
 #admin_tab ul li.admin_tab a, #admin_tab ul li.admin_tab a:hover,
 #members_tab ul li.members_tab a, #members_tab ul li.members_tab a:hover
 {

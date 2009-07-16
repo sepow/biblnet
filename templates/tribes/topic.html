@@ -6,6 +6,7 @@
 {% load avatar_tags %}
 {% load security_tag %}
 {% load markup %}
+{% load oembed_tags %}
 
 {% block head_title %}{{ topic.title }}{% endblock %}
 
@@ -23,9 +24,9 @@
                 <td>
                 <form method="POST" action="{% url tribe_topic_moderate topic.id %}">
                     {% if topic.sticky %}
-                        <input type="image" src="/site_media/images/sitegraphics/lightbulb_delete.png" alt="{% trans "unSticky topic" %}" />
+                        <input type="image" src="{{MEDIA_URL}}images/sitegraphics/lightbulb_delete.png" alt="{% trans "unSticky topic" %}" />
                     {% else %}
-                        <input type="image" src="/site_media/images/sitegraphics/lightbulb.png" alt="{% trans "Sticky topic" %}" />
+                        <input type="image" src="{{MEDIA_URL}}images/sitegraphics/lightbulb.png" alt="{% trans "Sticky topic" %}" />
                     {% endif %}
                     <!--input type="submit" value={% if topic.sticky %}"{% trans "unSticky topic" %}"{% else %}"{% trans "Sticky topic" %}"{% endif %} /-->
                     <input type="hidden" name="sticky" value="" />
@@ -44,11 +45,11 @@
                 <td>
                 <form method="POST" action="{% url tribe_topic_moderate topic.id %}">
                     {% if topic.closed %}
-                        <input type="image" src="/site_media/images/sitegraphics/lock_open.png" alt="{% trans "Reopen topic" %}" />
+                        <input type="image" src="{{MEDIA_URL}}images/sitegraphics/lock_open.png" alt="{% trans 'Reopen topic' %}" />
                     {% else %}
-                        <input type="image" src="/site_media/images/sitegraphics/lock.png" alt="{% trans "Close topic" %}" />
+                        <input type="image" src="{{MEDIA_URL}}images/sitegraphics/lock.png" alt="{% trans 'Close topic' %}" />
                     {% endif %}
-                    <!--input type="submit" value={% if topic.closed %}"{% trans "Reopen topic" %}"{% else %}"{% trans "Close topic" %}"{% endif %} /-->
+                    <!--input type="submit" value={% if topic.closed %}"{% trans 'Reopen topic' %}"{% else %}"{% trans 'Close topic' %}"{% endif %} /-->
                     <input type="hidden" name="close" value="" />
                     <input type="hidden" name="next" value="{% url tribe_topics topic.tribe.slug %}" />
                 </form>
@@ -69,12 +70,16 @@
 <h2>{{ topic.title }}</h2>
 <p>{% show_tags_for topic %}</p>
 
+{% if not user.is_authenticated %}
+    <h3>Please <a href="{% url acct_login %}?next={{ topic.get_absolute_url }}">log in</a> to leave a comment</h3> 
+{% endif %}
+
 {% if topic.sticky %}
-    <p><img src="/site_media/images/sitegraphics/lightbulb.png" alt="{% trans "Sticky topic" %}" /> {% trans "This is a sticky topic, which means that it will always appear at the top of the Message Board." %}</p>
+    <p><img src="{{MEDIA_URL}}images/sitegraphics/lightbulb.png" alt="{% trans 'Sticky topic' %}" /> {% trans "This is a sticky topic, which means that it will always appear at the top of the Message Board." %}</p>
 {% endif %}
 
 {% if topic.closed %}
-    <p><img src="/site_media/images/sitegraphics/lock.png" alt="{% trans "Closed topic" %}" /> {% trans "The topic has been closed. It can only be reopened by a moderator of this group." %}</p>
+    <p><img src="{{MEDIA_URL}}images/sitegraphics/lock.png" alt="{% trans 'Closed topic' %}" /> {% trans "The topic has been closed. It can only be reopened by a moderator of this group." %}</p>
 {% endif %}
 
 {% ifequal user topic.tribe.creator %}
@@ -84,27 +89,29 @@
     </form>
 {% endifequal %}
 
-<table class="topics">
+<table class="topic">
     <tr class="even"><th class="meta">{% trans "Meta" %}</th><th class="options"></th><th>{% trans "Posts" %}</th></tr>
     <tr class="odd">
         <td>
         <div class="meta">
             <div class="avatar">
-                {#% affiliation.icon %#}<br />
+                <img src="{{MEDIA_URL}}{{ topic.creator.get_profile.affiliation.icon }}" alt="{{ topic.creator.get_profile.affiliation }}" title="{{ topic.creator.get_profile.affiliation }}" />
+                <img src="{{MEDIA_URL}}{{ topic.creator.get_profile.occupation.icon }}"  alt="{{ topic.creator.get_profile.occupation }}" title="{{ topic.creator.get_profile.occupation }}" /><br />
                 <a href="{% url profile_detail topic.creator.username %}">{% avatar topic.creator 60 %}</a>
             </div>
             <div class="created">{{ topic.created|date }} - {{ topic.created|time }}<br />
-                {{ topic.created|timesince }} {% trans "ago"%}
+                {{ topic.created|timesince }} {% trans "ago"%}<br />
+                <br />
+                <a href="{% url profile_detail topic.creator.username %}">{{ topic.creator }}</a>
             </div>
-            <div class="details clearboth"><a href="{% url profile_detail topic.creator.username %}">{{ topic.creator }}</a></div>
         </div>
         </td>
         <td>
             {% if_can_edit_topic %}
-                {% if not edit %}<a href="{{ request.path }}edit/"><img src="/site_media/images/sitegraphics/page_white_edit.png" alt="{% trans "Edit post" %}" /></a>{% endif %}
+                {% if not edit %}<a href="{{ request.path }}edit/"><img src="{{MEDIA_URL}}images/sitegraphics/page_white_edit.png" alt="{% trans 'Edit post' %}" title="{% trans 'Edit post' %}" /></a>{% endif %}
             {% endif_can_edit_topic %}
             {% ifequal user topic.tribe.creator %}
-                <div class="delete"><a onclick="$('#{{ topic.id }}.delete_topic_form').toggle(); return false;" href="#"><img src="/site_media/images/sitegraphics/bin.png" alt="{% trans "Delete Topic" %}" /></a></div>
+                <div class="delete"><a onclick="$('#{{ topic.id }}.delete_topic_form').toggle(); return false;" href="#"><img src="{{MEDIA_URL}}images/sitegraphics/bin.png" alt="{% trans 'Delete Topic' %}" title="{% trans 'Delete Topic' %}" /></a></div>
             {% endifequal %}
         </td>
         <td>
@@ -126,7 +133,7 @@
                 </script>
             {% endblock %}
             {% else %}
-            <div class="body">{% autoescape off %}{{ topic.body }}{% endautoescape %}</div>
+            <div class="body">{% autoescape off %}{% oembed %}{{ topic.body }}{% endoembed %}{% endautoescape %}</div>
             {% endif %}
         </div>
         </td>
@@ -139,12 +146,9 @@
 {% endif_can_see %}
 
 {% if topic.closed %}
-    <p><img src="/site_media/images/sitegraphics/lock.png" alt="{% trans "Closed topic" %}" /> {% trans "The topic has been closed. It can only be reopened by a moderator of this group." %}</p>
+    <p><img src="{{MEDIA_URL}}images/sitegraphics/lock.png" alt="{% trans 'Closed topic' %}" /> {% trans "The topic has been closed. It can only be reopened by a moderator of this group." %}</p>
 {% else %} {% if user.is_authenticated and not are_member %}
     <p>{% trans "You need to be a member of this group to reply."%}</p>
-{% else %} {% if not user.is_authenticated %}
-    <h3>Please <a href="{% url acct_login %}">Login</a> (or <a href="{% url acct_signup %}">Sign Up</a>) to leave a comment</h3> 
-{% endif %}
 {% endif %}
 {% endif %} 
     <p><a href="{% url tribe_topics topic.tribe.slug %}">&larr; {% trans "Back to Topic List for " %} {{ topic.tribe }}</a></p>	

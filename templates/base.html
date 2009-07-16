@@ -48,6 +48,11 @@
 
 <div id="col1"><!-- Content column start -->
 <div id="content">
+
+    <div id="breadcrumbs">
+        <p>&raquo; {% block breadcrumb %}<a href="/">Biblnet.dk</a>{% endblock %}</p>
+    </div>
+
 	{% if messages %}
 	<ul id="messages">
 		{% for message in messages %}
@@ -68,8 +73,6 @@
 <div class="columntop"></div>
 <div class="columnmid">
 	<div class="login">{% block login %}{% endblock %}</div>
-	<div class="tabs" {% block tab_id %}{% endblock %}>{% block tabs %}{% endblock %}</div>
-	<div class="right_tab" {% block rtab_id %}{% endblock %}>{% block right_tab %}{% endblock %}</div>
 </div>
 <div class="columnbottom"></div>
 </div><!-- Left column end -->

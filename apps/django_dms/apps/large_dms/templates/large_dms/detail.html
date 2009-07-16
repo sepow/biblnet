@@ -1,0 +1,24 @@
+{% extends "large_dms/base.html" %}
+{% load dms %}
+
+{% block extra_head %}
+{{ block.super }}
+<script type="text/javascript">
+$(document).ready(function() {
+    $('a.preview').lightBox();
+    $(".send").attr('href', '#');
+    });
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="document-detail">
+{% include "django_dms/detail.html" %}
+<script type="text/javascript">
+    $("#send a").click(function(){
+        $('#send').load('{% dms_url dms_site document_send_ajax document %}').addClass('subtle');
+        return false
+        });
+</script>
+</div>
+{% endblock content %}

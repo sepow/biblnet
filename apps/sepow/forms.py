@@ -21,18 +21,19 @@ from timezones.forms import TimeZoneField
 
 from account.models import PasswordReset
 from captcha.fields import CaptchaField
-from profiles.models import Affiliation
-from tribes.models import TribeMember
+from profiles.models import Affiliation, Occupation
+from tribes.models import TribeMember, Tribe
 alnum_re = re.compile(r'^\w+$')
 
 class BiblnetSignupForm(forms.Form):
     captcha = CaptchaField()
+    username = forms.CharField(label=_(u"Username"), max_length=30, widget=forms.TextInput())
     name = forms.CharField(label=_(u"Full name"), max_length=50, widget=forms.TextInput())
     email = forms.EmailField(label=_(u"Email"), required=True, widget=forms.TextInput())
-    username = forms.CharField(label=_(u"Username"), max_length=30, widget=forms.TextInput())
     password1 = forms.CharField(label=_(u"Password"), widget=forms.PasswordInput(render_value=False))
     password2 = forms.CharField(label=_(u"Password (again)"), widget=forms.PasswordInput(render_value=False))
     affiliation = forms.ModelChoiceField(queryset=Affiliation.objects.filter(tribe__private__exact=False), empty_label=_("(Pick your affiliation)")) #TODO clean
+    occupation = forms.ModelChoiceField(queryset=Occupation.objects.all(), empty_label=_("(Pick your occupation)")) 
     confirmation_key = forms.CharField(max_length=40, required=False, widget=forms.HiddenInput())
     
     accept_terms = forms.BooleanField(required=True) 
@@ -57,6 +58,7 @@ class BiblnetSignupForm(forms.Form):
         email = self.cleaned_data["email"]
         name = self.cleaned_data["name"]
         affiliation = self.cleaned_data["affiliation"]
+        occupation = self.cleaned_data["occupation"]
         password = self.cleaned_data["password1"]
         
         if self.cleaned_data["confirmation_key"]:
@@ -90,11 +92,19 @@ class BiblnetSignupForm(forms.Form):
             # def populate_profile: 
             new_profile = new_user.get_profile()
             new_profile.affiliation = affiliation
+            new_profile.occupation = occupation
             new_profile.name = name
             new_profile.save()
             tmember = TribeMember(tribe=new_profile.affiliation.tribe, user=new_user)
             tmember.save()
             
+            try: 
+                global_tribe = Tribe.objects.get(slug = u'global')
+                tmember = TribeMember(tribe=global_tribe, user=new_user)
+                tmember.save()
+            except:
+                pass
+                
             if email:
                 new_user.message_set.create(message=ugettext(u"Confirmation email sent to %(email)s") % {'email': email})
                 EmailAddress.objects.add_email(new_user, email)

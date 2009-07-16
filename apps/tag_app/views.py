@@ -10,7 +10,7 @@ from projects.models import Topic as ProjectTopic
 
 from tribes.models import Tribe
 from tribes.models import Topic as TribeTopic
-
+from django_dms.apps.small_dms.models import Document 
 from wiki.models import Article as WikiArticle
 
 def tags(request, tag, template_name='tags/index.html'):
@@ -31,6 +31,8 @@ def tags(request, tag, template_name='tags/index.html'):
     # @@@ TODO: tribe_wiki_article_tags and project_wiki_article_tags
     wiki_article_tags = TaggedItem.objects.get_by_model(WikiArticle, tag)
     
+    document_tags = TaggedItem.objects.get_by_model(Document, tag).filter(tribe__deleted=False).filter(tribe__private=False)
+    
     return render_to_response(template_name, {
         'tag': tag,
         'alltags': alltags,
@@ -42,4 +44,5 @@ def tags(request, tag, template_name='tags/index.html'):
         'tribe_tags': tribe_tags,
         'tribe_topic_tags': tribe_topic_tags,
         'wiki_article_tags': wiki_article_tags,
+        'document_tags' : document_tags,
     }, context_instance=RequestContext(request))

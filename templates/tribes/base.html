@@ -1,7 +1,9 @@
 {% extends "site_base.html" %}
 {% load biblnet_tags %}
 {% load i18n %}
+{% block extra_head %} {% endblock %}
 
-
-{% block visit %}{% if tribe %}{% visit_tribe tribe request.user %}{%endif%}{% endblock%}
+{% block visit %}{% if tribe %}{% visit_tribe tribe request.user %}{% endif %}{% endblock %}
 {% block group %}<li class="tab members_tab"><a href="{{ tribe.get_absolute_url }}members/"><span>{% trans "Members" %}</span></a></li>{% endblock %}
+
+{% block breadcrumb %}{{ block.super }} &raquo; <a href="/tribes/">{% trans "Tribes" %}</a>{% if tribe %} &raquo; <a href="{{ tribe.get_absolute_url }}">{{ tribe.name }}</a>{% endif %}{% endblock %}

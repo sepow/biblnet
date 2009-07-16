@@ -1,0 +1,6 @@
+{% load dms %}
+Thank you, your document{{ documents|pluralize }} ha{{ documents|pluralize:"s,ve" }} been received.
+Please visit the following page{{ documents|pluralize }} with your internet browser for confirmation:
+
+{% for document in documents %}
+  {% if not documents|length_is:1 %}* {{ document.original_filename }}: {% endif %}{{ host }}{% dms_url dms_site document_confirm document.uuid %}{% endfor %}

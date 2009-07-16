@@ -1,3 +1,7 @@
 {% if changed %}
-<p><a href="{% url tribe_topics tribe.slug %}">New in the {{tribe}} {{new_topics}} +({{new_posts}}) replies</a><p/>
+    <tr class="{% cycle 'odd' 'even' %}">
+        <td><a href="{% url tribe_topics tribe.slug %}">{{ tribe }}</a></td>
+        <td class="comment_stats">{{ new_topics }}</td>
+        <td class="comment_stats">{{ new_posts }}</td>
+    <tr>
 {% endif %}

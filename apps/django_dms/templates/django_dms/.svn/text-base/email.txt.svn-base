@@ -1,0 +1,5 @@
+Attached is the document you wanted:
+
+Title:   {{ document.title }}
+Summary: {{ document.summary }}
+

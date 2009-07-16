@@ -1,0 +1,16 @@
+{% load already %}
+{% load dms %}
+
+<h2><a href="{% dms_url dms_site document_detail document %}">{{ document.title|default:"Untitled" }}</a></h2>
+<p>{% if list_links.preview %}<a class="preview" title="{{ document.title }}" href="{{ document.file_thumbnail_medium }}">Preview</a>, {% endif %}
+   {% if list_links.view %}<a href="{% dms_url dms_site document_view document %}">View</a>, {% endif %}
+   {% if list_links.download %}<a href="{% dms_url dms_site document_download document %}">Download</a>, {% endif %}
+   {% if list_links.email %}{% if document|already_sent:request %}<span class="subtle">Email sent{% else %}<span id="send"><a class="send" href="{% dms_url dms_site document_send document %}">Email it to me</a>{% endif %}</span>{% endif %}</p>
+{% if list_links.preview %}<a class="preview" title="{{ document.title }}" href="{{ document.file_thumbnail_medium }}">{% endif %}{% if thumbnail %}<img src="{{ document.file_thumbnail_small}}" alt="Thumbnail of {{ document.title }}" />{% endif %}{% if list_links.preview %}</a>{% endif %}
+Uploaded by: <a href="{% url profile_detail document.uploader %}">{{document.uploader}}</a>
+{% for name,field in fields %}{% if field %}
+<h3>{{ name|capfirst }}</h3>
+<p>{{ field|linebreaks }}</p>{% endif %}
+{% endfor %}
+
+

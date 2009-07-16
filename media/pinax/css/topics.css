@@ -2,22 +2,30 @@ table.topic, table.topics {
 	width: 100%;
 	border-spacing: 0;
 	margin: 0.5em 0;
-/*	table-layout: fixed;*/
+	table-layout: fixed;
 }
 table.topic th, table.topics th {
 	text-align:left;
     padding: 5px;
     font-weight: bold;
+    font-size:90%;
 }
 table.topic td, table.topics td {
-    vertical-align: top;
     padding: 5px;
     font-size:90%;
+}
+table.topic td {
+    vertical-align: top;
 }
 table.topic td h1, table.topics td h2 {
     margin: 0;
     padding: 0;
 }
+table.topics .comment_stats {
+    text-align: center;
+}
+/*table.topics .created {
+}*/
 .responses .even, .topics .even {
 	color: #DFDFDF;
 	background-color: #0E3037;
@@ -39,22 +47,25 @@ table.topic td h1, table.topics td h2 {
 	color: #0E3037;
 }
 th.meta {
-    width: 180px;
+    width: 189px;
 }
 th.options {
-    width: 20px;
+    width: 16px;
 }
 div.meta {
 	float: left;
-/*	font-size: 90%;*/
-	overflow:hidden;
+    width: 100%;
+	font-size: 80%;
+	overflow: hidden;
 }
 div.avatar {
 	float: left;
+    margin-right: 5px;
 }
 div.created {
-    float: left;
-	padding: .4em;
+/*    float: left;*/
+	padding: 4px;
+    margin-top: 12px;
 }
 div.details {
     float: left;
@@ -75,13 +86,6 @@ div.delete {
 }
 .hidden { display: none; }
 
-table.topics .comment_stats {
-    text-align: center;
-}
-/*table.topics .created {
-    color: #999;
-    font-size: 90%;
-}*/
 td#commentHolder {
     margin: 0;
     padding: 5px 15px 5px 0;

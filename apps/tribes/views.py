@@ -10,6 +10,7 @@ from django.conf import settings
 from tribes.models import TribeMember
 from sepow.html import sanitize_html
 from datetime import datetime
+from django.contrib.auth.decorators import login_required
 
 if "notification" in settings.INSTALLED_APPS:
     from notification import models as notification
@@ -46,9 +47,16 @@ WHERE tribes_topic.tribe_id = tribes_tribe.id
 """
 MEMBER_COUNT_SQL = """
 SELECT COUNT(*)
-FROM tribes_tribe_members
-WHERE tribes_tribe_members.tribe_id = tribes_tribe.id
+FROM tribes_tribemember
+WHERE tribes_tribemember.tribe_id = tribes_tribe.id
 """
+
+def do_403_if_not_superuser(request):
+    if not request.user.is_superuser:
+        resp = render_to_response('403.html', context_instance=RequestContext(request))
+        resp.status_code = 403
+        return resp
+
 
 def has_member(tribe, user):
     if user.is_authenticated():
@@ -64,7 +72,7 @@ def is_moderator(tribe, user):
             return is_in_group[0].moderator
     return False
    
-
+@login_required
 def create(request, form_class=TribeForm, template_name="tribes/create.html"):
     if request.user.is_authenticated() and request.method == "POST":
         if request.POST["action"] == "create":
@@ -118,14 +126,14 @@ def tribes(request, template_name="tribes/tribes.html", order=None):
     elif order == 'name_descending':
         tribes = tribes.order_by('-name')
     elif order == 'date_oldest':
-        tribes = tribes.order_by('-created')
-    elif order == 'date_newest':
         tribes = tribes.order_by('created')
+    elif order == 'date_newest':
+        tribes = tribes.order_by('-created')
 
     context = {
         'tribes': tribes,
         'search_terms': search_terms,
-
+        'order': order,
     }
     return render_to_response(
         template_name,
@@ -133,6 +141,7 @@ def tribes(request, template_name="tribes/tribes.html", order=None):
         context_instance=RequestContext(request)
     )
 
+@login_required
 def delete(request, slug, redirect_url=None):
     tribe = get_object_or_404(Tribe, slug=slug)
     if not redirect_url:
@@ -166,10 +175,7 @@ def tribe(request, slug, form_class=TribeUpdateForm,
     are_member = has_member(tribe, request.user)
     
     if tribe.private and not are_member:
-        if not request.user.is_superuser:
-            resp = render_to_response('403.html', context_instance=RequestContext(request))
-            resp.status_code = 403
-            return resp
+        do_403_if_not_superuser(request)
         
     photos = tribe.photos.all()
     
@@ -233,10 +239,8 @@ def topics(request, slug, form_class=TopicForm,
     are_moderator =  is_moderator(tribe, request.user),
     
     if tribe.private and not are_member:
-        if not request.user.is_superuser:
-            resp = render_to_response('403.html', context_instance=RequestContext(request))
-            resp.status_code = 403
-            return resp
+        do_403_if_not_superuser(request)
+        
     else:
         topics = tribe.topics.all()
         
@@ -283,21 +287,21 @@ def topic(request, id, edit=False, template_name="tribes/topic.html"):
     
     if topic.tribe.private and not are_member:
         if not request.user.is_superuser:
-            resp = render_to_response('403.html', context_instance=RequestContext(request))
-            resp.status_code = 403
-            return resp
+            do_403_if_not_superuser(request)
              
     if request.method == "POST" and edit == True:
         if request.user == topic.creator:
             created = topic.created
             now = datetime.now()
             time_since = now - created
-            if time_since.seconds < 60*15:
+            if time_since.seconds < 60*20:
                 topic.body = sanitize_html(request.POST["body"])
+                topic.editet = datetime.now()
                 topic.save()
         
         elif is_moderator(topic.tribe, request.user):
                 topic.body = sanitize_html(request.POST["body"])
+                topic.editet = datetime.now()
                 topic.save()
         
         return HttpResponseRedirect(reverse('tribe_topic', args=[topic.id]))
@@ -310,7 +314,7 @@ def topic(request, id, edit=False, template_name="tribes/topic.html"):
         "are_member": are_member,
         "are_moderator" : is_moderator(topic.tribe, request.user),
     }, context_instance=RequestContext(request))
-
+@login_required
 def topic_delete(request, pk):
     topic = Topic.objects.get(pk=pk)
     
@@ -322,9 +326,7 @@ def topic_delete(request, pk):
     if topic.tribe.private and not are_member:
         
         if not request.user.is_superuser:
-            resp = render_to_response('403.html', context_instance=RequestContext(request))
-            resp.status_code = 403
-            return resp
+            do_403_if_not_superuser(request)
        
     if request.method == "POST" and topic.creator == request.user: 
         if forums:
@@ -333,6 +335,7 @@ def topic_delete(request, pk):
         
     return HttpResponseRedirect(request.POST["next"])
 
+@login_required
 def topic_moderate(request, pk):
     topic = Topic.objects.get(pk=pk)
     
@@ -342,9 +345,7 @@ def topic_moderate(request, pk):
     
     if topic.tribe.private and not are_member:
         if not request.user.is_superuser:
-            resp = render_to_response('403.html', context_instance=RequestContext(request))
-            resp.status_code = 403
-            return resp
+            do_403_if_not_superuser(request)
 
         
     if request.method == "POST" and is_moderator(topic.tribe, request.user):
@@ -362,5 +363,4 @@ def topic_moderate(request, pk):
                 topic.closed = True
             topic.save()          
     return HttpResponseRedirect(request.POST["next"])
-
 

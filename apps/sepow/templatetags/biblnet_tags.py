@@ -23,29 +23,31 @@ def new_since_last_visit(tribe, user):
         
         # new posts
         modified_topics = tribe.topics.filter(modified__gte=since) 
-        new_posts = 0         
-        for topic in modified_topics:
-            new_posts += ThreadedComment.objects.filter(date_modified__gte=since, object_id=topic.id).count() # user != user
-
-    if new_topics or new_posts:
-        changed = True
-    else:
-        changed = False
-
-    return {
-        'changed' : changed, 
-        'tribe' : tribe,
-        'new_topics': new_topics, 
-        'new_posts': new_posts, 
-    }
+        new_posts = 0        
+        if modified_topics: 
+            new_posts = ThreadedComment.objects.filter(object_id__in=modified_topics, date_modified__gte=since).count()
+        #for topic in modified_topics:
+        #    new_posts += ThreadedComment.objects.filter(date_modified__gte=since, object_id=topic.id).count() # user != user
+        
+    #if new_topics or new_posts:
+    #    changed = True
+    #else:
+    #    changed = False
     
+    changed = bool(new_topics or new_posts)
+    return {
+        'changed' : changed,
+        'tribe' : tribe,
+        'new_topics' : new_topics,
+        'new_posts' : new_posts,
+    }
 register.inclusion_tag('sepow/new_since_last_visit.html')(new_since_last_visit)
 
 
 def visit_tribe(tribe, user):
     if has_member(tribe, user): # if the user is a member, set the last visit to to now
         try:
-            tribe_member = TribeMember.objects.filter(tribe=tribe, user=user)[0]
+            tribe_member = TribeMember.objects.get(tribe=tribe, user=user)
             tribe_member.last_visit = datetime.now()
             tribe_member.save()
         except AttributeError:

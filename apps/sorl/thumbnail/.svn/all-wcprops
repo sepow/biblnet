@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/449/trunk/sorl/thumbnail
+END
+LICENSE.TXT
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/416/trunk/sorl/thumbnail/LICENSE.TXT
+END
+base.py
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/445/trunk/sorl/thumbnail/base.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/405/trunk/sorl/thumbnail/__init__.py
+END
+utils.py
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/436/trunk/sorl/thumbnail/utils.py
+END
+processors.py
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/405/trunk/sorl/thumbnail/processors.py
+END
+models.py
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/405/trunk/sorl/thumbnail/models.py
+END
+main.py
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/436/trunk/sorl/thumbnail/main.py
+END
+README.TXT
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/436/trunk/sorl/thumbnail/README.TXT
+END
+fields.py
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/436/trunk/sorl/thumbnail/fields.py
+END
+defaults.py
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/436/trunk/sorl/thumbnail/defaults.py
+END

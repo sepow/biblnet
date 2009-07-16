@@ -1,0 +1,31 @@
+9
+
+dir
+42
+http://django-dms.googlecode.com/svn/trunk/django_dms/templates
+http://django-dms.googlecode.com/svn
+
+
+
+2009-03-18T22:02:54.564262Z
+41
+e.willhardy
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+8b66519c-c2ba-11dd-b31d-17274aa020d1
+
+django_dms
+dir
+

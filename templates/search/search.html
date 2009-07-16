@@ -1,7 +1,10 @@
 {% extends 'site_base.html' %}
+{% load i18n %}
+
+{% block head_title %}{% trans "Search results" %}{% endblock %}
 
 {% block body %}
-    <h2>Search</h2>
+    <h1>{% trans "Search results" %}</h1>
 
     <form method="get" action=".">
         <table>
@@ -13,16 +16,14 @@
                 </td>
             </tr>
         </table>
-        {% if page.object_list %}
-        
-            {% for result in page.object_list %}
-                
-                 <p>
-                    <p>{{result.text|safe }}</p>
-                </p>
-            {% endfor %}
-        {% else %}
-            <p>No results found.</p>
-        {% endif %}
     </form>
+
+    {% if page.object_list %}
+        {% for result in page.object_list %}
+            <p>{{ result.text|safe }}</p>
+        {% endfor %}
+    {% else %}
+        <p>No results found.</p>
+    {% endif %}
+
 {% endblock %}

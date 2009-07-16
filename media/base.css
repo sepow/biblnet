@@ -1,5 +1,5 @@
 html {
-	margin: 10px 10px;
+	margin: 10px;
 }
 
 body {
@@ -28,6 +28,7 @@ a:hover {
 h1, h2, h3 {
 	margin:.8em 0 .2em 0;
 	padding:0;
+    clear: left;
 }
 
 p {
@@ -36,12 +37,24 @@ p {
 /*	margin:.4em 0 .8em 0;*/
 /*	padding:0;*/
 }
-
+ul {
+	margin:0;
+	padding-top: .4em;
+    padding-bottom: .8em;
+}
 img {
 /*	margin:10px 0 5px;*/
 	border: none;
+    vertical-align: middle;
 }
-
+img.captcha {
+    margin: 3px;
+}
+table {
+    width: 100%;
+	border-spacing: 0;
+    border-collapse: collapse;
+}
 #header {
 	float:left;
 	width:100%;
@@ -61,7 +74,7 @@ img {
 }
 
 #header h2  {
-	padding:.2em 15px	.7em 15px;
+	padding:.2em 15px .7em 15px;
 	margin:0;
 }
 
@@ -99,35 +112,38 @@ img {
 }
 
 #col1pad {
-	margin:0 0 0 400px;
-	overflow:hidden;
+	margin: 0 0 0 400px;
+	overflow: hidden;
 }
 
 #col1 {
-	width:100%;
-	overflow:hidden;
+	width: 100%;
+	overflow: hidden;
 }
 
 #col2 {
-	float:left;
-	width:200px;
-	position:relative;
-	margin-left:-50%;
-	left:200px;
-	overflow:hidden;
+	float: left;
+	width: 200px;
+	position: relative;
+	margin-left: -50%;
+	left: 200px;
+	overflow: hidden;
 }
+/*#col2 img {
+    vertical-align: middle
+}*/
 
 #col3 {
-	float:left;
-	width:200px;
-	position:relative;
-	left:0px;
-	overflow:hidden;
+	float: left;
+	width: 200px;
+	position: relative;
+	left: 0px;
+	overflow: hidden;
 }
 
 .columntop {
 	margin-top: 10px;
-	height:15px;
+	height: 15px;
 	background-image:url(images/sitegraphics/coltop.gif);
 }
 
@@ -137,7 +153,7 @@ img {
 }
 
 .columnbottom {
-	height:15px;
+	height: 15px;
 	background-image:url(images/sitegraphics/colbottom.gif);
 }
 
@@ -161,9 +177,9 @@ img {
     padding: 0;
     margin: 0;
 }
-h1 {
+/*h1 {
     margin: 0;
-}
+}*/
 #tabhead {
     position: relative;
     background: #035 url('/site_media/pinax/images/heading.png') left top repeat-x;
@@ -190,7 +206,9 @@ h1 {
 #tabhead .login a:hover {
     color: #FFF; /* login bar link hover colour */
 }
-
+#breadcrumbs {
+/*    float: left;*/
+}
 form th {
     text-align : left;
 }
@@ -328,16 +346,27 @@ span.notice_type_description {
     font-size: 80%;
     font-style: italic;
 }
-
-div.profile_info p {
-    margin: 0;
+/*#profile_avatar {
+    float: left;
+}*/
+table.profile_info img {
+    vertical-align: text-bottom;
 }
-#avatar_replace {
-    position: absolute;
-    margin-top: -23px;
-    background-color: #FFFFFF;
-    padding: 3px;
-    display: none;
+table.profile_info th {
+    vertical-align: top;
+    text-align: left;
+    padding: 5px;
+    font-weight: bold;
+    width: 100px;
+}
+table.profile_info td {
+    vertical-align: top;
+    padding: 5px;
+    font-size: 90%;
+}
+#profile_avatar {
+    width: 200px;
+    text-align: center;
 }
 ul.avatar_choices,ul.avatar_choices ul {
     margin-left: 0px;
@@ -354,53 +383,45 @@ ul.avatar_choices li {
 .invitation_2 {
     color: gray;
 }
-table.messages {
-    width: 100%;
-	border-spacing: 0;
-	margin:0.5em 0;
-}
-
 table.messages th {
     text-align: left;
     padding: 5px;
     font-weight: bold;
 }
-
 table.messages td {
-    vertical-align: top;
+/*    vertical-align: top;*/
     padding: 5px;
     font-size: 90%;
 }
-.messages .even, .topics .even {
+table.messages td.view {
+    text-align: right;
+}
+.messages .even, .topic .even, .topics .even, .tribes .even {
 	color: #DFDFDF;
 	background-color: #0E3037;
 }
-.messages .odd, .topics .odd {
+.messages .odd, .topic .odd, .topics .odd, .tribes .odd {
     background-color: #DFDFDF;
 }
 .messages {
     margin: 0px;
     padding: 0px;
 }
-
 #subnav {
     margin: 0;
     padding: 0;
     background: #DEF; /* tab colour */
     border-bottom: 1px solid #9BC;
 }
-
 #subnav ul {
     float: right;
     margin: 0 20px;
     padding: 0;
 }
-
 #subnav ul li {
     display: inline;
     list-style-type: none;
 }
-
 #subnav ul a:link, #subnav ul a:visited {
     float: left;
     font-weight: bold;
@@ -408,15 +429,14 @@ table.messages td {
     color: #444;
     padding: 4px 20px;
 }
-
 #subnav ul a:hover {
     color: #FFF;
     background: #9BC;
 }
 
 dl.message-headers {
-    border-top:1px solid #CCC;
-    border-bottom:1px solid #CCC;
+/*    border-top:1px solid #CCC;
+    border-bottom:1px solid #CCC;*/
     padding: 5px 0;
     width: 100%;
     font-family: Arial, sans-serif;
@@ -434,7 +454,7 @@ dl.message-header dd {
     float: left;
 }
 div.right_panel {
-    margin-top: 20px;
+    margin: 10px 0px;
     padding: 5px;
     width: 150px;
     border: 1px solid #0E3037;
@@ -465,14 +485,21 @@ div.friends .details {
     width: 60px;
     margin: 0 0 12px 0;
 }
-div.tribes {
-    background: #DEF;
-    padding: 8px;
-    margin-bottom: 20px;
+table.tribes{
+    width: 50%;
 }
-div.tribes h2 {
-    margin: 0 0 5px 0;
-    padding: 0;
+table.tribes th {
+    text-align: left;
+    padding: 5px;
+    font-weight: bold;
+}
+table.tribes td {
+/*    vertical-align: top;*/
+    padding: 5px;
+    font-size: 90%;
+}
+table.tribes .comment_stats {
+    text-align: center;
 }
 div.members {
 /*    background: #DEF;*/
@@ -921,12 +948,13 @@ legend { padding: 0 .4em; font-weight: bold; font-size: 1.2em; }
 
 /* form toggle */
 
-.form-toggle p {
+/*.form-toggle p {
     margin-bottom: 2px;
-}
+}*/
 
 .form-toggle p span {
-    background: #DEF;
+    background: #0E3037;
+    color: #DFDFDF;
     padding: 3px 6px;
     border-top: 1px solid #9BC;
     border-left: 1px solid #9BC;
@@ -934,12 +962,12 @@ legend { padding: 0 .4em; font-weight: bold; font-size: 1.2em; }
     cursor: pointer;
 }
 
-.form-toggle form {
+/*.form-toggle form {
     padding: 3px 6px;
     margin: 0;
     background: #DEF;
     border: 1px solid #9BC;
-}
+}*/
 
 .form-toggle input[type="submit"] {
 }
