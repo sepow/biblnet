@@ -228,11 +228,11 @@ def tribe(request, slug, form_class=TribeUpdateForm,
         "are_moderator" : is_moderator(tribe, request.user),
     }, context_instance=RequestContext(request))
 
-def tribe_members(request, slug, template_name="tribes/tribe_members.html"):
+def tribe_members(request, slug, tribe_form=AddMemberForm, template_name="tribes/tribe_members.html"):
     
     tribe = get_object_or_404(Tribe, slug=slug)
 
-    if tribe.deleted: .
+    if tribe.deleted:
         raise Http404
     
     are_member = has_member(tribe, request.user)
