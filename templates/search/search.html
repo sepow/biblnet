@@ -13,11 +13,11 @@
                 </td>
             </tr>
         </table>
-
         {% if page.object_list %}
         
             {% for result in page.object_list %}
-                <p>
+                
+                 <p>
                     <p>{{result.text|safe }}</p>
                 </p>
             {% endfor %}

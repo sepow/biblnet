@@ -23,8 +23,30 @@ def comments(context, obj):
         "are_member": has_member(obj.tribe, context['request'].user),
         "are_moderator" : is_moderator(obj.tribe, context['request'].user),
     }
-    
+
 register.inclusion_tag('threadedcomments/comments.html', takes_context=True)(comments)
 
+'''
+from tribes.models import Tribe, Topic
+from wiki.models import Article
+from threadedcomment.models import Comment
 
 
+def get_tribe_from_object(obj):
+    # takes an object, and returns the tribe is belongs to
+    if isinstance(obj, Tribe):
+        return obj
+    elif isinstance(obj, Wiki):
+        return obj.group
+    elif isinstance(obj, Comment):
+        return obj # HUR?
+    elif isinstance(obj, Topic):
+        return obj.tribe
+    else: 
+        return False
+
+
+def can_access(obj, user):
+    # Returns true if the user can access object
+    pass
+'''
