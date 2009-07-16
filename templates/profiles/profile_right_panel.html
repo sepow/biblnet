@@ -5,13 +5,13 @@
     <h2>{% trans "Your Tribes" %}</h2>
         <table class="tribes">
         {% if other_user.tribe_set.all %}
-            <tr class="even"><th width="16px"></th><th width="16px"></th><th>{% trans "Name" %}</th>
+            <tr class="even"><th width="16px"></th><th width="16px"></th><th>{% trans "Name" %}</th></tr>
             {% for tribe in other_user.tribe_set.all %}
                 <tr class="{% cycle 'odd' 'even' %}">
                     <td><img src="/site_media/images/sitegraphics/group.png" alt="{% trans 'Tribe' %}" /></td>
                     <td>
                         {% ifequal tribe.creator user %}
-                            <img src="/site_media/images/sitegraphics/crown.gif" alt="{% trans 'Tribe' %}" title="{% trans 'Administrator' %}" />
+                            <img src="/site_media/images/sitegraphics/crown.gif" alt="{% trans 'Administrator' %}" title="{% trans 'Administrator' %}" />
                         {% else %}
                             <input type="image" src="/site_media/images/sitegraphics/cancel.png" value="{% trans 'leave tribe' %}" title="{% trans 'Leave tribe' %}" />
                             <input type="hidden" name="action" value="leave" />
@@ -54,7 +54,7 @@
                     <td><img src="/site_media/images/sitegraphics/group.png" alt="{% trans 'Tribe' %}" /></td>
                     <td>
                         {% ifequal tribe.creator other_user %}
-                            <img src="/site_media/images/sitegraphics/crown.gif" alt="{% trans 'Tribe' %}" />
+                            <img src="/site_media/images/sitegraphics/crown.gif" alt="{% trans 'Administrator' %}" title="{% trans 'Administrator' %}" />
                         {% endifequal %}
                     </td>
                     <td><a href="{% url tribe_detail tribe.slug %}">{{ tribe.name }}</a></td>
