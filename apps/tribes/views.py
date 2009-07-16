@@ -232,7 +232,7 @@ def tribe_members(request, slug, template_name="tribes/tribe_members.html"):
     
     tribe = get_object_or_404(Tribe, slug=slug)
 
-    if tribe.deleted:
+    if tribe.deleted: .
         raise Http404
     
     are_member = has_member(tribe, request.user)
@@ -240,14 +240,13 @@ def tribe_members(request, slug, template_name="tribes/tribe_members.html"):
 
     if tribe.private and not are_member:
         do_403_if_not_superuser(request)
-    
-    if request.method == "POST":
-        tribe_form = AddMemberForm(tribe, request.POST)
-        if tribe_form.is_valid():
-            new_member = tribe_form.save()
-    else:
-        tribe_form = AddMemberForm(tribe)
-    print tribe_form
+    if are_moderator: 
+        if request.method == "POST":
+            tribe_form = AddMemberForm(tribe, request.POST)
+            if tribe_form.is_valid():
+                new_member = tribe_form.save()
+        else:
+            tribe_form = AddMemberForm(tribe)
     
     return render_to_response(template_name, {
             "tribe_form": tribe_form,
