@@ -1,5 +1,6 @@
 {% extends "site_base.html" %}
-
+{% load security_tag %}
+{% load biblnet_tags %}
 {% block extra_head %}
 {{ block.super }}
 
@@ -9,19 +10,26 @@
 <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.js"></script>
 <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-ui.js"></script>
 <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.tooltip.js"></script>
+
 {% endblock %}
 
 {% block rtab_id %}id="schedule_tab"{% endblock %}
  
 {% block subnav %}
-    <ul>
-        <li><a href="">Create a Calendar</a></li>
-        <li><a href="">Your Calendars</a></li>
-        <li><a href="">All Calendars</a></li>
-    </ul>
-{% endblock %}
+{% endblock subnav %}
 
 {% block body %}
 
-
 {% endblock body %}
+
+{% block calendar %}
+    
+    {% if calendar %}
+        {% can_access calendar request.user %}
+        {% get_tribe_calendar tribe request.user %}
+    {% else %}{% if event %}
+        {% can_access event request.user %}
+        {% get_tribe_calendar tribe request.user %}
+    {% endif %}{% endif %}
+
+{% endblock calendar %}

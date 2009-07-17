@@ -1,4 +1,6 @@
 {% extends "site_base.html" %}
+{% load security_tag %}
+{% load biblnet_tags %}
 {% block extra_head %}
     {{ block.super }}
     <link rel="stylesheet" href="{{ MEDIA_URL }}css/jquery-ui.css" type="text/css" media="screen" />
@@ -38,3 +40,12 @@
     </script>
 {% endblock %}
 
+{% block calendar %}
+    {% if calendar %}
+        {% can_access calendar request.user %}
+        {% get_tribe_calendar tribe request.user %}
+    {% else %}{% if event %}
+        {% can_access event request.user %}
+        {% get_tribe_calendar tribe request.user %}
+    {% endif %}{% endif %}
+{% endblock calendar %}

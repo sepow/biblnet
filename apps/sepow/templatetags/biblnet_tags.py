@@ -60,10 +60,8 @@ def get_tribe_calendar(tribe, user):
     #from schedule.models import EventRelation
     from schedule.models import Calendar
     events = None
-    
     try:
         if has_member(tribe, user):
-            
             calendar = Calendar.objects.get_calendar_for_object(tribe)
             events = itertools.islice(calendar.occurrences_after(date=datetime.now()), 5)
             #events = EventRelation.objects.get_events_for_object(tribe).filter(start__gte=datetime.now())[0:5]

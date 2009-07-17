@@ -59,7 +59,7 @@ class Profile(models.Model):
     website = models.URLField(_('website'), null=True, blank=True, verify_exists=False)
     affiliation = models.ForeignKey(Affiliation, verbose_name=_('affiliation'), null=True, blank=True)
     occupation = models.ForeignKey(Occupation, verbose_name=_('occupation'), null=True, blank=True)
-    
+    # last_visit = 
     im_msn = models.CharField(_('msn'), max_length=50, null=True, blank=True)
 
     adresse_1 = models.CharField(_('address 1'), max_length=50, null=True, blank=True)
