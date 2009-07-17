@@ -293,7 +293,7 @@ CHECK_PERMISSION_FUNC = check_edit_permission
 
 # Captcha
 
-CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.word_challenge' 
+CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.random_char_challenge' 
 CAPTCHA_NOISE_FUNCTIONS = ('captcha.helpers.noise_dots',)
 
 # local_settings.py can be used to override environment-specific settings

@@ -7,11 +7,13 @@
 {% load oembed_tags %}
 {#% block breadcrumb %}{{ block.super }} &raquo; <a href="{{ tribe.get_absolute_url }}topics/">{% trans "Message Board" %}</a>{% endblock %#}
 
+{% block boxtab_id %}id="board_tab"{% endblock %}
+
 {% block body %}
 
 <h2>{% trans "Preview of your post" %}</h2>
 
-<table class="topics">
+<table class="topic">
     <tr class="even"><th class="meta">{% trans "Meta" %}</th><th class="options"></th><th>{% trans "Preview of your post" %}</th></tr>
     <tr class="odd">
     <td>

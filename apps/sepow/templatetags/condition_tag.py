@@ -169,9 +169,3 @@ def if_can_edit_comment(comment='response', user='user'):
     return False
     
 register.tag('if_can_edit_comment', if_can_edit_comment)
-
-
-
-
-
-

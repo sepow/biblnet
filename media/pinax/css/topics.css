@@ -1,7 +1,4 @@
 table.topic, table.topics {
-	width: 100%;
-	border-spacing: 0;
-	margin: 0.5em 0;
 	table-layout: fixed;
 }
 table.topic th, table.topics th {
@@ -26,13 +23,13 @@ table.topics .comment_stats {
 }
 /*table.topics .created {
 }*/
-.responses .even, .topics .even {
+/*.responses .even, .topics .even {
 	color: #DFDFDF;
 	background-color: #0E3037;
 }
 .responses .odd, .topics .odd {
     background-color: #DFDFDF;
-}
+}*/
 .responses {
     margin: 0px;
     padding: 0px;

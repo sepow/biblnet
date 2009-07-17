@@ -7,29 +7,45 @@
 {% block tab_id %}id="home_tab"{% endblock %}
 
 {% block body %}
-	{% blocktrans %}
-	<h1>Welcome to Biblnet.dk!</h1>
-	<p>Biblnet is a forum for people with an interest in Library and Information Science.</p>
-	<p>All members can join in on the debates on the Message Boards and contribute to the creation of knowledge in the Wikis and in the Knowledge Bank.</p>
-	{% endblocktrans %}
+	<h1>{% trans "Welcome to Biblnet.dk!" %}</h1>
 
     {% if user.is_authenticated %}
+        <p>{% trans "You last visited us " %}{{ user.last_login|timesince }} {% trans "ago" %}</p>
 
-    <p>-- {% trans "You last visited us " %}{{ user.last_login|timesince }} {% trans "ago" %} --</p>
+        <h2>{% trans "New posts since your last login" %}</h2>
 
-    <h2>{% trans "New posts since your last login" %}</h2>
         {% if user.tribe_set.all %}
             <table class="tribes">
-            <tr class="even"><th>{% trans "Tribe" %}</th><th class="comment_stats">{% trans "New topics" %}</th><th class="comment_stats">{% trans "New replies" %}</th></tr>
-            {% for tribe in user.tribe_set.all %}
-                {% if not tribe.deleted %}
-                    {% new_since_last_visit tribe user %}
+                <tr class="even"><th>{% trans "Tribe" %}</th><th class="comment_stats">{% trans "New topics" %}</th><th class="comment_stats">{% trans "New replies" %}</th></tr>
+                {% for tribe in user.tribe_set.all %}
+                    {% if not tribe.deleted %}
+                        {% new_since_last_visit tribe user %}
+                    {% endif %}
+                {% endfor %}
+{% comment %} ### Vi skal have en metode til at afgøre om der er nyt fra nogle af brugerens grupper, så vi kan fortælle dem at der ikke er noget nyt hvis det er tilfældet
+                {% if changed %}
+                    <tr class="odd"><td colspan="3">{% trans "No new posts since your last visit..." %}</td></tr>
                 {% endif %}
-            {% endfor %}
+{% endcomment %}
             </table>
+
         {% else %}
+
             {% url tribe_list as tribe_url %}
             <p>{% blocktrans %}You are not yet a member of any <a href="{{ tribe_url }}">tribes</a>.{% endblocktrans %}</p>
+
         {% endif %}
+
+    {% else %}
+
+        {% url acct_signup as signup_url %}
+        {% url acct_login as login_url %}
+    	{% blocktrans %}
+        	<p>Biblnet is a forum for people with an interest in Library and Information Science.</p>
+        	<p>All members can join in on the debates on the Message Boards and contribute to the creation of knowledge in the Wikis and in the Knowledge Bank.</p>
+            <h3><a href="{{ signup_url }}">Sign up</a> or <a href="{{ login_url }}">log in</a> to get started.</h3>
+    	{% endblocktrans %}
+
    {% endif %}
+
 {% endblock %}

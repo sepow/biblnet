@@ -36,7 +36,7 @@ urlpatterns = \
         # tribe-specific
         url(r'^tribe/([-\w]+)/$', 'tribes.views.tribe', name="tribe_detail"),
         url(r'^tribe/([-\w]+)/delete/$', 'tribes.views.delete', name="tribe_delete"),
-        url(r'^tribe/([-\w]+)/members/$', 'tribes.views.tribe', {"template_name":"tribes/tribe_members.html"}, name="tribe_members"),
+        url(r'^tribe/([-\w]+)/members/$', 'tribes.views.tribe_members', name="tribe_members"),
         url(r'^tribe/([-\w]+)/admin/$', 'tribes.views.tribe', {"template_name":"tribes/tribe_admin.html"}, name="tribe_admin"),  
         # DMS
         url(r'^tribe/(?P<tribe_slug>[-\w]+)/dms/', include('django_dms.apps.small_dms.urls')),

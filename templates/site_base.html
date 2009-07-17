@@ -84,18 +84,16 @@
 
 {% block search %}
     <div class="search">
-        <form method="get" action="/search/" name="search">
+        <form action="/search/" method="get" name="search">
             <input type="text" name="q" />
             <select>
-                <option value="all">All</option>
-                <option value="msg">Comments</option>
-                <option value="doc">Docs</option>
-                <option value="wiki">Wiki</option>
-                <option value="memb">Members</option>
+                <option value="all">{% trans "All" %}</option>
+                <option value="msg">{% trans "Comments" %}</option>
+                <option value="doc">{% trans "Docs" %}</option>
+                <option value="wiki">{% trans "Wiki" %}</option>
+                <option value="memb">{% trans "Members" %}</option>
             </select>
-            <input type="submit" value="{% trans "Search" %}" />
-
-            
+            <input type="submit" value="{% trans 'Search' %}" />
         </form>
     </div>
 {% endblock %}
@@ -129,7 +127,7 @@
 
 {% block footer %}
     <div class="legal">
-        {% trans "&copy; 2009 Sean & Luhr" %}
+        {% trans "&copy; 2009 Sean &amp; Luhr" %}
         - <a href="{% url about %}">{% trans "About" %}</a>
         - <a href="{% url terms %}">{% trans "Terms of Service" %}</a>
         - <a href="{% url privacy %}">{% trans "Privacy Policy" %}</a>

@@ -24,13 +24,14 @@ else:
     notification = None
 
 def profiles(request, template_name="profiles/profiles.html"):
-    users = User.objects.all().order_by("-date_joined")
+    users = User.objects.all().order_by("username")
     search_terms = request.GET.get('search', '')
     order = request.GET.get('order')
     if not order:
-        order = 'date'
+        order = 'name'
     if search_terms:
-        users = users.filter(username__icontains=search_terms)
+#        users = users.filter(username__icontains=search_terms)
+        users = users.filter(profile__name__icontains=search_terms) | users.filter(profile__user__username__icontains=search_terms)
     if order == 'date':
         users = users.order_by("-date_joined")
     elif order == 'name':

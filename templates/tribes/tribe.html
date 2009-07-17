@@ -38,14 +38,14 @@
                     </form>
                 </div>
             {% else %}
-                {% url acct_signup as signup_url %}
                 {% url acct_login as login_url %}
-                <h3>{% blocktrans %}<a href="{{ signup_url }}">Sign up</a> and <a href="{{ login_url }}">log in</a> to join this tribe.{% endblocktrans %}</h3>
+                {% url tribe_detail tribe.slug as tribe_url %}
+                <strong>{% blocktrans %}<a href="{{ login_url }}?next={{ tribe_url }}">Log in</a> to join tribe{% endblocktrans %}</strong>
             {% endif %}
         </div>
 
     <div>
-        <h2>{% trans "Welcome to" %} {{ tribe.name }}</h2>
+        <h1>{% trans "Welcome to" %} {{ tribe.name }}</h1>
 
         <p>{% show_tags_for tribe %}</p>
 

@@ -4,6 +4,18 @@
 {% load humanize %}
 
     
+<tr class="{% cycle 'odd' 'even' %}">
+    <td>{% avatar user 40 %}</td>
+    <td>
+        <img src="/site_media/{{ user.get_profile.affiliation.icon }}"  alt="{{ user.get_profile.affiliation }}" title="{{ user.get_profile.affiliation }}" />
+        <img src="/site_media/{{ user.get_profile.occupation.icon }}"  alt="{{ user.get_profile.occupation }}" title="{{ user.get_profile.occupation }}" />
+    </td>
+    <td><a href="{% url profile_detail user.username %}">{{ user }}</a></td>
+    <td>{{ user.get_profile.name }}</td>
+</tr>
+
+
+{% comment %}
     {# @@@ factor out style into css file #}
 <div style="float: left;">{% avatar user 40 %}</div>
     <div style="padding: 5px; margin-left: 50px;"><a href="{% url profile_detail user.username %}">{{ user }}</a><br />
@@ -11,3 +23,4 @@
 
      {% if user.get_profile.location%}<b>{% trans "Location" %}</b>: {{ user.get_profile.location }}{% endif %}<br />
 </div>
+{% endcomment %}

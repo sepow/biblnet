@@ -37,17 +37,27 @@ p {
 /*	margin:.4em 0 .8em 0;*/
 /*	padding:0;*/
 }
-
+ul {
+	margin:0;
+	padding-top: .4em;
+    padding-bottom: .8em;
+}
 img {
 /*	margin:10px 0 5px;*/
 	border: none;
     vertical-align: middle;
 }
-
+img.captcha {
+    margin: 3px;
+}
 table {
     width: 100%;
 	border-spacing: 0;
     border-collapse: collapse;
+	margin: 0.5em 0;
+}
+table th {
+    text-align: left;
 }
 #header {
 	float:left;
@@ -390,13 +400,20 @@ table.messages td {
 table.messages td.view {
     text-align: right;
 }
-.messages .even, .topic .even, .topics .even, .tribes .even {
+.even {
+	color: #DFDFDF;
+	background-color: #0E3037;
+}
+.odd {
+    background-color: #DFDFDF;
+}
+/*.messages .even, .topic .even, .topics .even, .tribes .even {
 	color: #DFDFDF;
 	background-color: #0E3037;
 }
 .messages .odd, .topic .odd, .topics .odd, .tribes .odd {
     background-color: #DFDFDF;
-}
+}*/
 .messages {
     margin: 0px;
     padding: 0px;
@@ -664,12 +681,12 @@ table.bookmarks td.vote {
     text-align: center;
     vertical-align: middle;
 }
-.bookmarks .even {
+/*.bookmarks .even {
     background-color: #FAFAFA;
 }
 .bookmarks .odd {
     background-color: #F3F3F3;
-}
+}*/
 div.url {
     color: #666;
     font-size: 90%;
@@ -734,12 +751,12 @@ p.what_next {
 
 /* tasks */
 
-.tasks .even {
+/*.tasks .even {
     background-color: #FAFAFA;
 }
 .tasks .odd {
     background-color: #F3F3F3;
-}
+}*/
 table.task td, table.tasks td {
     vertical-align: top;
     padding: 5px 20px 5px 5px;

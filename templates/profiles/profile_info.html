@@ -5,6 +5,7 @@
     {% if other_user.get_profile.name %}<tr><td><img src="/site_media/{{ other_user.get_profile.occupation.icon }}"  alt="{{ other_user.get_profile.occupation }}" title="{{ other_user.get_profile.occupation }}" /> {{ other_user.get_profile.name }}</td></tr>{% endif %}
     {% if other_user.get_profile.affiliation %}<tr><td><img src="/site_media/{{ other_user.get_profile.affiliation.icon }}"  alt="{{ other_user.get_profile.affiliation }}" title="{{ other_user.get_profile.affiliation }}" /> {{ other_user.get_profile.affiliation }}</td></tr>{% endif %}
     {% if other_user.get_profile.phone_number %}<tr><td><img src="{{ MEDIA_URL }}images/sitegraphics/phone.png" alt="{% trans 'Phone' %}" /> {{ other_user.get_profile.phone_number }}</td></tr>{% endif %}
-    {% if other_user.get_profile.website %}<rt><td><img src="{{ MEDIA_URL }}images/sitegraphics/link.png" alt="{% trans 'Link' %}" /> <a href="{{ other_user.get_profile.website }}">{{ other_user.get_profile.website }}</a></td></tr>{% endif %}
+    {% if other_user.get_profile.website %}<tr><td><img src="{{ MEDIA_URL }}images/sitegraphics/link.png" alt="{% trans 'Link' %}" /> <a href="{{ other_user.get_profile.website }}">{{ other_user.get_profile.website }}</a></td></tr>{% endif %}
+    <tr><td><img src="{{ MEDIA_URL }}images/sitegraphics/email.png" alt="{% trans 'Email' %}" /> <a href="{% url messages_compose %}{{ other_user }}/">{% trans "Send a message" %}</a></td></tr>
 </table>
 

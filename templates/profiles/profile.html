@@ -9,50 +9,46 @@
 
 {% block body %}
 
+{% if is_me %}
+<div class="right_panel">
+    <form action="{% if request.user.is_authenticated %}{% url acct_language_change %}{% else %}/i18n/setlang/{% endif %}" method="post" id="locale_switcher">
+    <img src="{{ MEDIA_URL }}images/sitegraphics/world.png" alt="Edit" title="Edit profile" />
+        <select name="language" onchange="$('#locale_switcher').submit()">
+        {% for lang in LANGUAGES %}
+            <option value="{{ lang.0 }}"{% ifequal lang.0 LANGUAGE_CODE %} selected="selected"{% endifequal %}>{{ lang.1 }}</option>
+        {% endfor %}
+        </select>
+    </form>
+</div>
+{% endif %}
+
 <h1>{% blocktrans %}Profile for {{ other_user }}{% endblocktrans %}</h1>
 
+{% if user.is_authenticated %}
     <table class="profile_info">
         <tr>
-            <td id="profile_avatar">{% avatar other_user 200 %}
+            <td id="profile_avatar">
+                {% avatar other_user 200 %}
                 {% if is_me %}
-                    <p><a href="{% url avatar_change %}">Change avatar</a></p>
+                    <a href="{% url avatar_change %}">Change avatar</a>
+                {% endif %}
+                {% if is_me %}
+                    <p id="edit-profile-toggle">
+                        <img src="{{ MEDIA_URL }}images/sitegraphics/page_white_edit.png" alt="Edit" title="Edit profile" />
+                        <a href="#">{% trans "Edit profile" %}</a>
+                    </p>
                 {% endif %}
             </td>
             <td>{% include "profiles/profile_info.html" %}</td>
         </tr>
     </table>
 
-        {% include "profiles/profile_right_panel.html" %}
-
-        {% if user.is_authenticated %}
-            <p>
-                <a href="{% url tweet_followers other_user %}">{% trans "Followers" %}</a>: {{ other_user.followers.count|default:"0" }}
-                <a href="{% url tweet_following other_user %}">{% trans "Following" %}</a>: {{ other_user.followed.count|default:"0" }}
-            </p>
+    <p>
+        <a href="{% url tweet_followers other_user %}">{% trans "Followers" %}</a>: {{ other_user.followers.count|default:"0" }}
+        <a href="{% url tweet_following other_user %}">{% trans "Following" %}</a>: {{ other_user.followed.count|default:"0" }}
+    </p>
             
-            {% if is_me %}
-                <form action="{% if request.user.is_authenticated %}{% url acct_language_change %}{% else %}/i18n/setlang/{% endif %}" method="post" id="locale_switcher">
-    			    <select name="language" onchange="$('#locale_switcher').submit()">
-    			    {% for lang in LANGUAGES %}
-    				    <option value="{{ lang.0 }}"{% ifequal lang.0 LANGUAGE_CODE %} selected="selected"{% endifequal %}>{{ lang.1 }}</option>
-    			    {% endfor %}
-    			    </select>
-    		    </form>
-
-                <div class="form-toggle">
-                <p><span id="edit-profile-toggle">{% trans "Edit profile" %}</span></p>
-                
-                <form class="uniForm" id="edit-profile" method="POST" action="" style="display: none;">
-                    <fieldset class="inlineLabels">  
-                        {{ profile_form|as_uni_form }}
-                        <div class="form_block">
-                        <input type="hidden" name="action" value="update" />
-                        <input type="submit" value="{% trans "update" %}"/>
-                        </div>
-                    </fieldset>
-                </form>
-                </div>
-            {% else %}
+            {% if not is_me %}
                 {# @@@ this could be done with ajax, or at the very least turned into an inclusion tag #}
                 <div>
                     <form method="POST" action="{% url toggle_follow other_user %}">
@@ -63,52 +59,32 @@
                         {% endif %}
                     </form>
                 </div>
-                
-                {# @@@ this should be an inclusion tag #}
-                {% if is_friend %}
-                    <p>{% blocktrans %}You are friends with {{ other_user }}.{% endblocktrans %} <a href="{% url messages_compose %}{{ other_user }}/">{% trans "Send a message" %}</a>.</p>
-                {% else %}
-                    {% if previous_invitations_from %}
-                        <p>{% blocktrans %}{{ other_user }} has requested friendship.{% endblocktrans %}</p>
-                        {% for invitation in previous_invitations_from %}
-                            <div class="friendship_request">
-                                <p>From <a href="{% url profile_detail invitation.from_user.username %}">{{ invitation.from_user }}</a> ({{ invitation.sent }}):</p>
-                                <p class="invitation_message">{{ invitation.message }}</p>
-                                <form method="post" action="">
-                                    <input type="hidden" name="invitation" value="{{ invitation.id }}"/>
-                                    <input type="hidden" name="action" value="accept"/>
-                                    <input type="submit" value="{% trans 'accept' %}" />
-                                </form>
-                            </div>
-                        {% endfor %}
-                    {% else %}
-                        {% if previous_invitations_to %}
-                            <p>{% trans "Friendship request sent." %}</p>
-                        {% else %}
-                            <h2>{% trans "Add As Friend" %}</h2>
-                            <form class="uniForm" method="POST" action="">
-                                <fieldset class="inlineLabels">  
-                                    {{ invite_form|as_uni_form }}
-                                    <div class="form_block">
-                                        <input type="hidden" name="action" value="invite" />
-                                        <input type="submit" value="{% trans "invite" %}"/>
-                                        {% blocktrans %}{{ other_user }} to be a friend.{%  endblocktrans %}
-                                    </div>
-                                </fieldset>
-                            </form>
-                        {% endif %} {# previous_invitations_to #}
-                    {% endif %} {# previous_invitations_from #}
-                {% endif %} {# is_friend #}
-                
-            {% endif %} {# is me #}
+            {% endif %}
+
+            {% include "profiles/profile_right_panel.html" %}
+
+            {% if is_me %}
+                <div class="form-toggle" id="edit-profile" style="display: none;">
+                <h2>Edit your profile</h2>
+                <form class="uniForm" method="POST" action="">
+                    <fieldset class="inlineLabels">  
+                        {{ profile_form|as_uni_form }}
+                        <div class="form_block">
+                        <input type="hidden" name="action" value="update" />
+                        <input type="submit" value="{% trans "update" %}"/>
+                        </div>
+                    </fieldset>
+                </form>
+                </div>
+            {% endif %}
             
             {#% plugin_point "profiles.profile" user=other_user owner=other_user viewer=user %#}
             
         {% else %} {# not user.is_authenticated #}
-            {% url acct_signup as signup_url %}
             {% url acct_login as login_url %}
-            <p>{% blocktrans %}<a href="{{ signup_url }}">Sign up</a> and <a href="{{ login_url }}">log in </a> to add this person as a friend and see their tweets and blog posts.{% endblocktrans %}</p>
+            <strong>{% blocktrans %}<a href="{{ login_url }}?next=/profiles/{{ other_user }}/">Log in</a> to see this person's details and tribes and to follow their tweets.{% endblocktrans %}</strong>
         {% endif %}
+
 {% endblock %}
 
 {% block extra_body %}

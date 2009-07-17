@@ -48,3 +48,36 @@ class TopicForm(forms.ModelForm):
     class Meta:
         model = Topic
         fields = ('title', 'body', 'tags')
+from tribes.models import TribeMember, Tribe
+from django.contrib.auth.models import User
+
+class AddMemberForm(forms.Form):
+
+    user = forms.CharField(label=_(u"User"))
+
+    def __init__(self, tribe, *args, **kwargs):
+        super(AddMemberForm, self).__init__(*args, **kwargs)
+        self.tribe = tribe
+
+    def clean_user(self):
+        try:
+            user = User.objects.get(username__iexact=self.cleaned_data['user'])
+        except User.DoesNotExist:
+            raise forms.ValidationError(_("There is no user with this username."))
+
+        if TribeMember.objects.filter(tribe=self.tribe, user=user).count() > 0:
+            raise forms.ValidationError(_("User is already a member of this tribe."))
+        return self.cleaned_data['user']
+  
+    # @@@ we don't need to pass in project any more as we have self.project
+    def save(self):
+        username = self.cleaned_data["user"]
+        new_member = User.objects.get(username__iexact=username)
+        tribe_member = TribeMember(tribe=self.tribe, user=new_member)
+        tribe_member.save()
+        '''
+        if notification:
+            notification.send(project.member_users.all(), "projects_new_member", {"new_member": new_member, "project": project})
+            notification.send([new_member], "projects_added_as_member", {"adder": user, "project": project})
+        user.message_set.create(message="added %s to project" % new_member)
+        '''
