@@ -26,8 +26,8 @@ a:hover {
 }
 
 h1, h2, h3 {
-	margin:.8em 0 .2em 0;
-	padding:0;
+	margin: .6em 0 .4em 0;
+	padding: 0;
     clear: left;
 }
 
@@ -54,7 +54,7 @@ table {
     width: 100%;
 	border-spacing: 0;
     border-collapse: collapse;
-	margin: 0.5em 0;
+/*	margin: 0.5em 0;*/
 }
 table th {
     text-align: left;
@@ -512,22 +512,28 @@ table.tribes td {
 table.tribes .comment_stats {
     text-align: center;
 }
-div.members {
+table.members {
 /*    background: #DEF;*/
-    padding: 8px;
-    margin-bottom: 20px;
+/*    padding: 8px;*/
+/*    margin-bottom: 20px;*/
+	table-layout: fixed;
+    margin: 0.5em 0;
 }
-div.members h2 {
+/*table.members h2 {
     margin: 0 0 5px 0;
     padding: 0;
+}*/
+table.members td {
+    padding-bottom: 1em;
 }
-div.members td.avatar {
+table.members td.avatar {
+    width: 50px;
 /*    text-decoration: none;*/
 }
-div.members td.details {
+table.members td.details {
     overflow: hidden;
-    width: 33%;
-    margin: 0 0 12px 0;
+/*    width: 33%;*/
+/*    margin: 0 0 12px 0;*/
 }
 div.notice_settings {
     background: #DEF;

@@ -116,6 +116,10 @@ YOU CAN VERY EASILY REVERT TO A GENERIC STYLE OF UNI-FORM. BEST OF LUCK...
 
 /* ------------------------------------------------------------------------------ */
 
+/*.uniForm {
+    margin: 0.5em 0;
+}*/
+
 .uniForm .focused {
     background: #0E3037;
     color: #DFDFDF;
