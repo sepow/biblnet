@@ -9,7 +9,7 @@
 <p>
     {% for object in object_list %}
       {# <a href="{% url affiliation_list object.slug %}">{{object}}</a> <br> #}
-     <a href="#"> {{ object }} </a> <img src="{{MEDIA_URL}}{{object.icon}}"> ({{object.profile_set.count}} medlemmer)<br/>
+     <a href="#"> {{ object }} </a> <img src="{{MEDIA_URL}}{{object.icon}}"> ({{ object.profile_set.count }} {% trans "members" %})<br/>
     {% endfor %}
 </p>
 {% endblock %}

@@ -18,35 +18,41 @@
 {% block body %}
 
 {% load condition_tag %}
-    {% if_can_see tribe user %}
-    
-    {% if user.is_authenticated %}
-    {% if are_moderator %}
-        <form class="uniForm" id="tribe_form" method="POST" action="">
-            <fieldset class="inlineLabels">
-                {{ tribe_form|as_uni_form }}
-                <div class="form_block">
-                    <input type="hidden" name="action" value="add" />
-                    <input type="submit" value="{% trans 'Invite' %}"/>
-                </div>
-            </fieldset>
-        </form>
-    {%endif%}
-            <div class="members">
-                <h2>{% trans "Members" %}</h2>
-                <table width="100%">
-                    {% for member in tribe.member_users.all %}
-                        {% if forloop.counter0|divisibleby:"3" %}<tr>{% endif %}
-                            <td class="avatar"><a href="{% url profile_detail member.username %}" title="{{ member.username }}">{% avatar member 40 %}</a></td><td class="details"><a href="{% url profile_detail member.username %}" title="{{ member.username }}">{{ member.username }}</a></td>
-                        {% if forloop.counter0|add:"1"|divisibleby:"3" %}</tr>{% endif %}
-                    {% endfor %}
-                    {% if tribe.members.all|length|divisibleby:"3" %}{% else %}</tr>{% endif %}
-                </table>
-            </div>  
 
-    {% endif %}
-   
+<h1>{% trans "Members of " %} <a href="{% url tribe_detail tribe.slug %}">{{ tribe.name }}</a></h2>
+
+    {% if_can_see tribe user %}
+
+        {% if user.is_authenticated %}
+
+            {% if are_moderator %}
+                <form class="uniForm" id="tribe_form" method="POST" action="">
+                    <fieldset class="inlineLabels">
+                        {{ tribe_form|as_uni_form }}
+                        <div class="form_block">
+                            <input type="hidden" name="action" value="add" />
+                            <input type="submit" value="{% trans 'Invite' %}"/>
+                        </div>
+                    </fieldset>
+                </form>
+            {% endif %}
+
+            <table class="members">
+                {% for member in tribe.member_users.all %}
+                    {% if forloop.counter0|divisibleby:"3" %}<tr>{% endif %}
+                        <td class="avatar"><a href="{% url profile_detail member.username %}" title="{{ member.username }}">{% avatar member 40 %}</a></td>
+                        <td class="details"><a href="{% url profile_detail member.username %}" title="{{ member.username }}">{{ member.username }}</a></td>
+                    {% if forloop.counter0|add:"1"|divisibleby:"3" %}</tr>{% endif %}
+                {% endfor %}
+                {% if tribe.members.all|length|divisibleby:"3" %}{% else %}</tr>{% endif %}
+            </table>
+
+        {% endif %}
+
     {% else %}
-    {% trans "... This is a private group!" %}
+
+        {% trans "... This is a private group!" %}
+
     {% endif_can_see %}	
+
 {% endblock %}

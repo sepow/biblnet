@@ -1,5 +1,6 @@
 table.topic, table.topics {
 	table-layout: fixed;
+	margin: 0.5em 0;
 }
 table.topic th, table.topics th {
 	text-align:left;

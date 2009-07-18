@@ -16,7 +16,7 @@
 
     {% autopaginate topics 20 %}
 
-    <h2>{% trans "Message Board for" %} <a href="{% url tribe_detail tribe.slug %}">{{ tribe.name }}</a></h2>
+    <h1>{% trans "Message Board for" %} <a href="{% url tribe_detail tribe.slug %}">{{ tribe.name }}</a></h1>
     {% if user.is_authenticated %}
         {% if are_member %}
             <a href="{% url tribe_create_topic tribe.slug %}">{% trans "Start New Topic" %}</a>
@@ -47,7 +47,7 @@
     {% paginate %}
 
 {% else %}
-    {% trans "This is a private group!" %}
+    <p>{% trans "This is a private group!" %}</p>
 {% endif_can_see %}
 
 {% endblock %}
