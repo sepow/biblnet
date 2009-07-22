@@ -9,6 +9,7 @@ from threadedcomments.forms import FreeThreadedCommentForm, ThreadedCommentForm
 from threadedcomments.models import ThreadedComment, FreeThreadedComment, DEFAULT_MAX_COMMENT_LENGTH
 from threadedcomments.utils import JSONResponse, XMLResponse
 from sepow.html import sanitize_html
+from tribes.models import Topic
 def _adjust_max_comment_length(form, field_name='comment'):
     """
     Sets the maximum comment length to that default specified in the settings.
@@ -82,6 +83,9 @@ def free_comment(request, content_type=None, object_id=None, edit_id=None, paren
         raise Http404 # Must specify either content_type and object_id or edit_id
     
     if "preview" in request.POST:
+
+        items = ThreadedComment.objects.filter(content_type__id=content_type, object_id=object_id)
+        extra_context['tribe'] = items[0].content_object.tribe
         return _preview(request, context_processors, extra_context, form_class=form_class)
     if edit_id:
         instance = get_object_or_404(model, id=edit_id)

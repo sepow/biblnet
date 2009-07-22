@@ -14,7 +14,7 @@
 {% endblock %}
 
 {% block login %}
-    {% if user.is_authenticated %}
+    {% if user.is_authenticated %} 
         <table>
             <tr>
                 <td width="45px"><a href="{% url profile_detail user %}">{% avatar user 40 %}</a></td>
