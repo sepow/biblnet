@@ -11,6 +11,7 @@ from tribes.models import TribeMember
 from sepow.html import sanitize_html
 from datetime import datetime
 from django.contrib.auth.decorators import login_required
+from schedule.models import Calendar
 
 if "notification" in settings.INSTALLED_APPS:
     from notification import models as notification
@@ -86,7 +87,6 @@ def create(request, form_class=TribeForm, template_name="tribes/create.html"):
                 tmember.save()
                 tribe.save()
                 # Calendar
-                from schedule.models import Calendar
                 tribe_cal = Calendar.objects.get_or_create_calendar_for_object(tribe, name = "%s" % tribe,)
                 tribe_cal.slug = tribe.slug
                 tribe_cal.save()       
@@ -157,6 +157,8 @@ def delete(request, slug, redirect_url=None):
     if request.user.is_authenticated() and request.method == "POST" and request.user == tribe.creator and tribe.member_users.all().count() == 1:
         tribe.slug = u"%s%s" % ("deleted_", tribe.slug)
         tribe.deleted = True
+        calendar = Calendar.objects.get_calendar_for_object(tribe)
+        calendar.delete()
         tribe.save()
         request.user.message_set.create(message="Tribe %s deleted." % tribe)
         # @@@ no notification as the deleter must be the only member
@@ -332,7 +334,9 @@ def topic(request, id, edit=False, template_name="tribes/topic.html"):
                 topic.save()
         
         elif is_moderator(topic.tribe, request.user):
-                topic.body = sanitize_html(request.POST["body"])
+                text = request.POST["body"]
+                text += "<i>Topic editet by %s : %s</i>" % (request.user, datetime.now()) 
+                topic.body = sanitize_html(text)
                 topic.editet = datetime.now()
                 topic.save()
         
@@ -395,4 +399,3 @@ def topic_moderate(request, pk):
                 topic.closed = True
             topic.save()          
     return HttpResponseRedirect(request.POST["next"])
-
