@@ -16,7 +16,7 @@
 {% block boxtab_id %}id="admin_tab"{% endblock %}
 
 {% block body %}
-        {% if are_moderator %}
+        {% if are_moderator or user.is_staff %}
 
                 <p><span id="edit-tribe-toggle">{% trans "Edit details" %}</span></p>
                 
