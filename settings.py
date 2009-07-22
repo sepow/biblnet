@@ -194,6 +194,7 @@ INSTALLED_APPS = (
     'django_dms.apps.small_dms',
     'sorl.thumbnail',
     'schedule',
+    'elsewhere',
 )
 
 # Import sorl.thumbnail if it is available

@@ -53,27 +53,21 @@ class Occupation(models.Model):
 class Profile(models.Model):
     
     user = models.ForeignKey(User, unique=True, verbose_name=_('user'))
-    name = models.CharField(_('name'), max_length=50, null=True, blank=True)
+    name = models.CharField(_('name'), max_length=60, null=True)
     about = models.TextField(_('about'), null=True, blank=True)
-    location = models.CharField(_('location'), max_length=40, null=True, blank=True)
-    website = models.URLField(_('website'), null=True, blank=True, verify_exists=False)
+    address = models.CharField(_('address'), max_length=600, null=True, blank=True)
+    website = models.URLField(_('my favorite website'), null=True, blank=True, verify_exists=False)
     affiliation = models.ForeignKey(Affiliation, verbose_name=_('affiliation'), null=True, blank=True)
     occupation = models.ForeignKey(Occupation, verbose_name=_('occupation'), null=True, blank=True)
     # last_visit = 
     im_msn = models.CharField(_('msn'), max_length=50, null=True, blank=True)
-
-    adresse_1 = models.CharField(_('address 1'), max_length=50, null=True, blank=True)
-    adresse_2 = models.CharField(_('address 2'), max_length=50, null=True, blank=True)
-    postal_code = models.CharField(_('postal code'), max_length=4, null=True, blank=True)
     phone_number = models.CharField(_('phone number'), max_length=12, null=True, blank=True)
 
     reading_now = models.CharField(_('reading'), max_length=150, null=True, blank=True)
     listening_now = models.CharField(_('listening to'), max_length=150, null=True, blank=True)
     
-    ln_facebook = models.CharField(_('facebook'), max_length=150, null=True, blank=True)
-    ln_linkedin = models.CharField(_('linkedin'), max_length=150, null=True, blank=True)
-    ln_libratything = models.CharField(_('librarything'), max_length=150, null=True, blank=True)
-    ln_lastfm = models.CharField(_('last.fm'), max_length=150, null=True, blank=True)
+#    ln_facebook = models.CharField(_('facebook'), max_length=150, null=True, blank=True)
+
 
     def __unicode__(self):
         return self.user.username
