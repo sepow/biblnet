@@ -23,7 +23,7 @@
         </table>
         <a style="font-size: 90%;" href="/openid/logout/?next={% url acct_logout %}">{% trans "Logout" %}</a>
         <p>{% trans "Your last login:" %}<br />
-        {{ user.last_login|timesince }} {% trans "ago" %}
+        {{ user.get_profile.last_visit|timesince }} {% trans "ago" %}
         </p>
 
         <p>

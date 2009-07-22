@@ -10,7 +10,7 @@
 	<h1>{% trans "Welcome to Biblnet.dk!" %}</h1>
 
     {% if user.is_authenticated %}
-        <p>{% trans "You last visited us " %}{{ user.last_login|timesince }} {% trans "ago" %}</p>
+        <p>{% trans "You last visited us " %}{{ user.get_profile.last_visit|timesince }} {% trans "ago" %}</p>
 
         <h2>{% trans "New posts since your last login" %}</h2>
 

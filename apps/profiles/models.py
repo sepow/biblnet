@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
 from tribes.models import Tribe
+from datetime import datetime
 
 from timezones.fields import TimeZoneField
 
@@ -48,25 +49,22 @@ class Occupation(models.Model):
 
     class Meta:
         verbose_name = _('occupation')
-        verbose_name_plural = _('occupation')
+        verbose_name_plural = _('occupations')
         
 class Profile(models.Model):
     
     user = models.ForeignKey(User, unique=True, verbose_name=_('user'))
     name = models.CharField(_('name'), max_length=60, null=True)
+    nickname = models.CharField(_('nickname'), max_length=60, blank=True, null=True)
     about = models.TextField(_('about'), null=True, blank=True)
-    address = models.CharField(_('address'), max_length=600, null=True, blank=True)
-    website = models.URLField(_('my favorite website'), null=True, blank=True, verify_exists=False)
+    address = models.TextField(_('address'), max_length=600, null=True, blank=True)
+    phone_number = models.CharField(_('phone number'), max_length=12, null=True, blank=True)
     affiliation = models.ForeignKey(Affiliation, verbose_name=_('affiliation'), null=True, blank=True)
     occupation = models.ForeignKey(Occupation, verbose_name=_('occupation'), null=True, blank=True)
-    # last_visit = 
-    im_msn = models.CharField(_('msn'), max_length=50, null=True, blank=True)
-    phone_number = models.CharField(_('phone number'), max_length=12, null=True, blank=True)
+    last_visit = models.DateTimeField(_('last visit'), default=datetime.now)
 
     reading_now = models.CharField(_('reading'), max_length=150, null=True, blank=True)
     listening_now = models.CharField(_('listening to'), max_length=150, null=True, blank=True)
-    
-#    ln_facebook = models.CharField(_('facebook'), max_length=150, null=True, blank=True)
 
 
     def __unicode__(self):

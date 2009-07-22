@@ -2,7 +2,7 @@ from django.conf.urls.defaults import *
 from django.conf import settings
 from django.views.generic.simple import direct_to_template
 from django.contrib import admin
-from sepow.forms import BiblnetSignupForm
+from sepow.forms import BiblnetSignupForm, BiblnetLoginForm
 from account.openid_consumer import PinaxConsumer
 from profiles.models import Affiliation
 import os.path
@@ -33,6 +33,7 @@ urlpatterns = patterns('',
     (r'^about/', include('about.urls')),
     url(r'^captcha/', include('captcha.urls')),
     url(r'^account/signup/$', 'account.views.signup', { "form_class" : BiblnetSignupForm, } ,name="acct_signup"),
+    url(r'^account/login/$', 'account.views.login', { "form_class" : BiblnetLoginForm, } ,name="acct_login"),
     (r'^account/', include('account.urls')),
     url(r'^markitup/', include('markitup.urls')),
     (r'^openid/(.*)', PinaxConsumer()),

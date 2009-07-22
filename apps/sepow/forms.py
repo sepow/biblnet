@@ -21,8 +21,9 @@ from timezones.forms import TimeZoneField
 
 from account.models import PasswordReset
 from captcha.fields import CaptchaField
-from profiles.models import Affiliation, Occupation
+from profiles.models import Affiliation, Occupation, Profile
 from tribes.models import TribeMember, Tribe
+from datetime import datetime
 alnum_re = re.compile(r'^\w+$')
 
 class BiblnetSignupForm(forms.Form):
@@ -112,3 +113,38 @@ class BiblnetSignupForm(forms.Form):
                 EmailAddress.objects.add_email(new_user, email)
             
             return username, password # required for authenticate()
+            
+            
+class BiblnetLoginForm(forms.Form):
+
+    username = forms.CharField(label=_("Username"), max_length=30, widget=forms.TextInput())
+    password = forms.CharField(label=_("Password"), widget=forms.PasswordInput(render_value=False))
+    remember = forms.BooleanField(label=_("Remember Me"), help_text=_("If checked you will stay logged in for 3 weeks"), required=False)
+
+    user = None
+
+    def clean(self):
+        if self._errors:
+            return
+        user = authenticate(username=self.cleaned_data["username"], password=self.cleaned_data["password"])
+        if user:
+            if user.is_active:
+                self.user = user
+            else:
+                raise forms.ValidationError(_("This account is currently inactive."))
+        else:
+            raise forms.ValidationError(_("The username and/or password you specified are not correct."))
+        return self.cleaned_data
+
+    def login(self, request):
+        if self.is_valid():
+            login(request, self.user)
+            request.user.message_set.create(message=ugettext(u"Successfully logged in as %(username)s.") % {'username': self.user.username})
+            if self.cleaned_data['remember']:
+                request.session.set_expiry(60 * 60 * 24 * 7 * 3)
+            else:
+                request.session.set_expiry(0)
+            self.user.get_profile().last_visit = datetime.now()
+            self.user.get_profile().save()
+            return True
+        return False
