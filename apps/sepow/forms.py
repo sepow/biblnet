@@ -144,7 +144,14 @@ class BiblnetLoginForm(forms.Form):
                 request.session.set_expiry(60 * 60 * 24 * 7 * 3)
             else:
                 request.session.set_expiry(0)
-            self.user.get_profile().last_visit = datetime.now()
-            self.user.get_profile().save()
+
+
+            last_visit = self.user.get_profile().last_visit_storage
+            
+            self.user.get_profile().last_visit_storage = datetime.now()
+            self.user.get_profile().save()  
+            ## now use last_visit         
+            
+
             return True
         return False

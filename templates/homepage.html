@@ -6,7 +6,9 @@
 
 {% block tab_id %}id="home_tab"{% endblock %}
 
-{% block body %}
+{% block body%}
+
+{% get_latest_updates %} <- findes i sepow/latest_updates.html
 	<h1>{% trans "Welcome to Biblnet.dk!" %}</h1>
 
     {% if user.is_authenticated %}

@@ -4,6 +4,7 @@ from datetime import datetime
 from tribes.models import TribeMember
 from threadedcomments.models import ThreadedComment
 from tribes.models import Topic
+from django.contrib.auth.models import User
 
 register = template.Library()
 
@@ -73,4 +74,11 @@ def get_tribe_calendar(tribe, user):
     }
     
 register.inclusion_tag('sepow/get_tribe_calendar.html')(get_tribe_calendar)
+
+
+def get_latest_updates():
+    return {'latest_updates' : User.objects.order_by('-profile__last_visit')[:5]}
+    
+register.inclusion_tag('sepow/latest_updates.html')(get_latest_updates)
+
 

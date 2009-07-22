@@ -61,8 +61,11 @@ class Profile(models.Model):
     phone_number = models.CharField(_('phone number'), max_length=12, null=True, blank=True)
     affiliation = models.ForeignKey(Affiliation, verbose_name=_('affiliation'), null=True, blank=True)
     occupation = models.ForeignKey(Occupation, verbose_name=_('occupation'), null=True, blank=True)
+    
+    
     last_visit = models.DateTimeField(_('last visit'), default=datetime.now)
-
+    last_visit_storage = models.DateTimeField(_('last visit'), default=datetime.now)
+    
     reading_now = models.CharField(_('reading'), max_length=150, null=True, blank=True)
     listening_now = models.CharField(_('listening to'), max_length=150, null=True, blank=True)
 
