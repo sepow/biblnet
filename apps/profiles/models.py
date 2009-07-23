@@ -64,7 +64,7 @@ class Profile(models.Model):
     
     
     last_visit = models.DateTimeField(_('last visit'), default=datetime.now)
-    last_visit_storage = models.DateTimeField(_('last visit'), default=datetime.now)
+    last_visit_storage = models.DateTimeField(_('last visit (storage)'), default=datetime.now)
     
     reading_now = models.CharField(_('reading'), max_length=150, null=True, blank=True)
     listening_now = models.CharField(_('listening to'), max_length=150, null=True, blank=True)

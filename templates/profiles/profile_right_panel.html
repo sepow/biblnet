@@ -7,6 +7,7 @@
         {% if other_user.tribe_set.all %}
             <tr class="even"><th width="16px"></th><th width="16px"></th><th>{% trans "Name" %}</th></tr>
             {% for tribe in other_user.tribe_set.all %}
+                {% if not tribe.deleted %}
                 <tr class="{% cycle 'odd' 'even' %}">
                     <td><img src="/site_media/images/sitegraphics/group.png" alt="{% trans 'Tribe' %}" /></td>
                     <td>
@@ -19,6 +20,7 @@
                     </td>
                     <td><a href="{% url tribe_detail tribe.slug %}">{{ tribe.name }}</a></td>
                 </tr>
+               {% endif %}
             {% endfor %}
         {% else %}
             {% url tribe_thing_list "" as tribe_url %}

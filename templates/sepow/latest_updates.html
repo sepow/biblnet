@@ -1,7 +1,10 @@
 {% load avatar_tags %}
 
-{% for update in latest_updates %}
+{% for update in latest_users %}
 
 {% avatar update 40 %}
 
 {% endfor %}
+<p>
+ <a href="{% url profile_detail latest_topic.creator%}">{{latest_topic.creator}}</a> created: <a href="{% url tribe_topic latest_topic.id%}">{{latest_topic}}</a>
+</p>
