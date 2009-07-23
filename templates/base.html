@@ -11,9 +11,15 @@
 	<meta name="robots" content="index, follow" />
 	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 	<!--link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}reset.css" media="screen" /-->
+	{% load compress %}
+
+	{% compress css %}
+
 	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}base.css" media="screen" />
  	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}pinax/css/tabs.css" media="screen" />
-	<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}pinax/css/uni-form.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}pinax/css/uni-form.css" media="screen" />
+
+	{% endcompress %}
 	<script src="{{ MEDIA_URL }}pinax/js/jquery.js" type="text/javascript"></script>
         {% block extra_head_base %}
             {% block extra_head %}{% endblock %}

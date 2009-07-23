@@ -4,17 +4,10 @@
 {% load uni_form %}
 {% load pagination_tags %}
 {% load tribe_tags %}
+{% load cache %}
 
 {% block body %}
-<script type="text/javascript" src="{{MEDIA_URL}}fckeditor/fckeditor.js"></script>
-<script type="text/javascript">
-window.onload = function()
-{
-var oFCKeditor = new FCKeditor( 'id_body' ) ;
-oFCKeditor.BasePath = "{{MEDIA_URL}}fckeditor/" ;
-oFCKeditor.ReplaceTextarea() ;
-}
-</script>
+
     {% if are_member %}
         <h2>{% trans "New Topic in:" %} {{tribe}}</h2>
         <form class="uniForm" id="tribe_form" method="POST" action="">
@@ -30,4 +23,19 @@ oFCKeditor.ReplaceTextarea() ;
 
 
 
+{% endblock %}
+
+{% block extra_body %}
+
+{% cache 600000 fckeditor_create_topic %}
+    <script type="text/javascript" src="{{MEDIA_URL}}fckeditor/fckeditor.js"></script>
+    <script type="text/javascript">
+    window.onload = function()
+    {
+    var oFCKeditor = new FCKeditor( 'id_body' ) ;
+    oFCKeditor.BasePath = "{{MEDIA_URL}}fckeditor/" ;
+    oFCKeditor.ReplaceTextarea() ;
+    }
+    </script>
+    {% endcache %}
 {% endblock %}

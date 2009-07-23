@@ -21,6 +21,7 @@ def is_moderator(tribe, user):
 
 def comments(context, obj):
     return {
+        'tribe' : obj.tribe,
         'object': obj, 
         'request': context['request'],
         'user': context['user'],

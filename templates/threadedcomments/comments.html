@@ -81,17 +81,20 @@
     </td>
     <td></td>
     <td id="commentHolder">
+
         <form method="POST" action="{% get_comment_url object %}">
             <textarea id="id_comment" rows="14" cols="40" name="comment"></textarea>
             <div class="form_block">
                 <input type="hidden" name="next" value="{{ request.path }}" />
                 <input type="hidden" name="NOMARKUP"/>
+                <input type="hidden" name="tribe"/ value="{{tribe.slug}}"/>
                 <input type="submit" value="{% trans 'Submit Comment' %}"/>
                 <input type="submit" value="{% trans 'Preview Comment' %}" name="preview"/>
             </div>
         </form>
     </td>
     </tr>
+    
     {% endif %}
     
 {% endif %}

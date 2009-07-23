@@ -7,8 +7,13 @@
 {% block tab_id %}id="home_tab"{% endblock %}
 
 {% block body%}
+
+<hr>
 <b>vv</b> - 5 sidste logins + sidste topic.. templaten findes i sepow/latest_updates.html <br/>
 {% get_latest%} 
+<hr>
+
+
 	<h1>{% trans "Welcome to Biblnet.dk!" %}</h1>
 
     {% if user.is_authenticated %}
