@@ -29,3 +29,6 @@ class DocumentUpload(DocumentAdmin):
     exclude = ['tribe', 'uploader','date_created']
         
 document_upload = DocumentUpload(name="document_upload")
+
+
+

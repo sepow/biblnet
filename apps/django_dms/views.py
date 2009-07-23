@@ -124,6 +124,7 @@ class DocumentView(object):
             url(r'^([^\/]+)/send/ajax/$', self.send_ajax, name="%s_document_send_ajax" % self.name),
             url(r'^([^\/]+)/detail/$',    self.detail, name="%s_document_detail" % self.name),
             url(r'^([^\/]+)/view/$',      self.view, name="%s_document_view" % self.name),
+            url(r'^([^\/]+)/delete/$',    self.delete, name="%s_document_delete" % self.name),
             )
     urls = property(get_urls)
 
@@ -174,7 +175,7 @@ class DocumentView(object):
         # Send a signal to let everyone know about this document interaction
         document_interaction.send(sender=self, document=document, mode="sent", request=request, recipient=email)
     
-        return HttpResponseRedirect(reverse('%s_document_list' % self.name))
+        return HttpResponseRedirect(reverse('%s_document_list' % self.name, args=(tribe_slug, ) ))
     
     def send_ajax(self, request, id, tribe_slug):
         """ Send the specified document to the user's email address (AJAX version). """
@@ -258,7 +259,19 @@ class DocumentView(object):
             'form': form,
             'tribe': self.get_tribe(tribe_slug),
         }, context_instance=RequestContext(request))
+    
+    def delete(self, request, pk, tribe_slug):
+        print "DELETE WOOOOH WOOOOOH!!!!"
+        tribe = get_object_or_404(Tribe, slug=tribe_slug)
+        instance = self.get_document(pk, tribe_slug)
         
+        if request.user != instance.uploader:
+            if not request.user.is_superuser:
+                resp = render_to_response('403.html', context_instance=RequestContext(request))
+                resp.status_code = 403
+                return resp 
+        instance.delete()
+        return HttpResponseRedirect(reverse('%s_document_list' % self.name, args=(tribe_slug,) ))
     ####################
     # INTERNAL METHODS #
     ####################
@@ -343,7 +356,8 @@ class DocumentAdmin(object):
             )
     urls = property(get_urls)
 
-        
+
+                
     def edit(self, request, pk, tribe_slug):
          
         tribe = get_object_or_404(Tribe, slug=tribe_slug)

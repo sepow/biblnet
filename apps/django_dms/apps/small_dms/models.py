@@ -31,6 +31,10 @@ class Document(DocumentBase):
     
     class Meta:
         unique_together = ("tribe", "slug")
+'''
+class Essay(Document):
+    grade        = models.CharField(_('Grade'), max_length=5, default="", blank=True)
+'''
 
 # Some automatic metadata handing, if the extractor library is available
 try:
