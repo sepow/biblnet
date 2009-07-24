@@ -196,6 +196,7 @@ INSTALLED_APPS = (
     'schedule',
     'elsewhere',
     'compressor',
+    'test_utils',
 )
 
 # Import sorl.thumbnail if it is available
