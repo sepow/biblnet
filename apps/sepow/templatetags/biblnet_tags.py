@@ -77,9 +77,12 @@ register.inclusion_tag('sepow/get_tribe_calendar.html')(get_tribe_calendar)
 
 
 def get_latest():
-
+    try:
+        latest_topic = Topic.objects.filter(tribe__private=False).order_by('-created')[0]
+    except IndexError:
+        latest_topic = None
     return {'latest_users' : User.objects.order_by('-profile__last_visit')[:5],
-            'latest_topic' : Topic.objects.filter(tribe__private=False).order_by('-created')[0],
+            'latest_topic' : latest_topic
             }
     
 register.inclusion_tag('sepow/latest_updates.html')(get_latest)

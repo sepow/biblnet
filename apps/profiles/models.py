@@ -40,7 +40,7 @@ class Occupation(models.Model):
     '''
 
     occupation = models.CharField(_('occupation'), max_length=40, null=True)
-    icon = models.ImageField(upload_to="images/professionicons")
+    icon = models.ImageField(upload_to="images/occupationicons")
     slug = models.SlugField(max_length=30, null=True)
     
     def __unicode__(self):
