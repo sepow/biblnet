@@ -13,7 +13,7 @@ PINAX_THEME = 'default'
 TIME_FORMAT = 'H:i'
 DEFAULT_MAX_COMMENT_LENGTH = 15000
 DEFAULT_CHARSET = "utf-8"
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 # tells Pinax to serve media through django.views.static.serve.
@@ -91,7 +91,7 @@ MIDDLEWARE_CLASSES = (
     'djangodblog.middleware.DBLogMiddleware',
     'django.middleware.transaction.TransactionMiddleware',
     #'sepow.middleware.UserBasedExceptionMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    #'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
 ROOT_URLCONF = 'biblnet.urls'
