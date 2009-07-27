@@ -31,14 +31,25 @@ class VoteManager(models.Manager):
             return {}
 
         ctype = ContentType.objects.get_for_model(objects[0])
-        ctype = ContentType.objects.get_for_model(objects[0])
-        queryset = self.filter(
-            object_id__in=object_ids, content_type=ctype).extra(
-            select={
-                'score': 'COALESCE(SUM(vote), 0)',
-                'num_votes': 'COALESCE(COUNT(vote), 0)',
-        }).values_list('object_id', 'score', 'num_votes')
-        queryset.query.group_by.append('object_id')
+        if hasattr(models, 'Sum'): # django 1.1
+            queryset=self.filter(
+                object_id__in=object_ids,
+                content_type=ctype).values(
+                'object_id').annotate(
+                score=models.Sum('vote'),
+                num_votes=models.Count('vote'))
+            return dict((d['object_id'],
+                         {'score' : d['score'],
+                          'num_votes' : d['num_votes']}) for d in queryset)
+        else:
+            queryset = self.filter(
+                object_id__in=object_ids, content_type=ctype).extra(
+                select={
+                    'score': 'COALESCE(SUM(vote), 0)',
+                    'num_votes': 'COALESCE(COUNT(vote), 0)',
+                    }).values_list('object_id', 'score', 'num_votes')
+
+            queryset.query.group_by.append('object_id')
         vote_dict = {}
         for id, score, num_votes in queryset:
             vote_dict[id] = {'score': int(score), 'num_votes': int(num_votes)}
