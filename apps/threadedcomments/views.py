@@ -46,7 +46,6 @@ def _preview(request, context_processors, extra_context, form_class=ThreadedComm
 
     if "NOMARKUP" in mydict:
         mydict['comment'] = mydict['comment'].replace('\n', '<br />')
-
     
     form = form_class(mydict or None)
     context = {
@@ -109,7 +108,7 @@ def free_comment(request, content_type=None, object_id=None, edit_id=None, paren
         if parent_id:
             new_comment.parent = get_object_or_404(model, id = int(parent_id))
         if "NOMARKUP" in request.POST:
-            new_comment.comment = new_comment.comment.replace('\n', '<br />')
+            new_comment.comment = "<p> " + new_comment.comment.replace('\n', ' <br /> ') + " </p>"
         new_comment.comment = sanitize_html(new_comment.comment)
 
         new_comment.save()
