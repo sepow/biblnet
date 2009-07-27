@@ -19,7 +19,4 @@ from django_dms.apps.small_dms.models import Document
 urlpatterns = patterns('',
     url(r'^',  include(document_view.urls), name="document_view" ),
     url(r'^',  include(document_upload.urls), name="document_upload" ),
-
-
-
 )

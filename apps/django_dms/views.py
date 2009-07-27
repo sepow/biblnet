@@ -125,13 +125,34 @@ class DocumentView(object):
             url(r'^([^\/]+)/detail/$',    self.detail, name="%s_document_detail" % self.name),
             url(r'^([^\/]+)/view/$',      self.view, name="%s_document_view" % self.name),
             url(r'^([^\/]+)/delete/$',    self.delete, name="%s_document_delete" % self.name),
+            url(r'^(?P<object_id>([^\/]+))/(?P<direction>up|down|clear)vote/?$', self.vote, name="%s_document_vote" % self.name),
             )
     urls = property(get_urls)
 
     #########
     # VIEWS #
     #########
-
+    
+    def vote(self, request, object_id, tribe_slug, direction):
+        from voting.views import vote_on_object
+        from django_dms.apps.small_dms.models import Document
+        
+        tribe = get_object_or_404(Tribe, slug=tribe_slug)
+        document = self.get_document(object_id, tribe_slug)
+        model = Document
+        
+        return vote_on_object(request, model, direction, 
+                                slug=document.uuid, slug_field='uuid',
+                                template_object_name='bookmark',
+                                template_name='small_dms/dms_list.html',
+                                allow_xmlhttprequest=True,
+                                extra_context={'dms_site' : self,
+                                               'tribe' : tribe,
+                                               'document' : document,
+                                              }
+                                              
+                             )
+    
     def list(self, request, tribe_slug):
         tribe = get_object_or_404(Tribe, slug=tribe_slug)
         page_number = request.GET.get('page', 1)

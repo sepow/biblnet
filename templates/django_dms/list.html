@@ -1,8 +1,26 @@
 {% load already %}
 {% load dms %}
+{% load voting_tags %}
 {% load extra_tagging_tags %}
 <div class="document-list">
+
+
 {% for item in object_list %}{% with item.document as document %}
+{% vote_by_user user on document as vote %}
+{% score_for_object document as score %}
+
+
+{% if user.is_authenticated %}
+    <a id="up_{{ document.slug }}" href="" onclick="vote('{{document.slug}}', '{% if vote and vote.is_downvote %}clear{% else %}up{% endif %}'); return false;"><img src="{{ MEDIA_URL }}bookmarks/img/up_{% if vote and vote.is_upvote %}mod{% else %}grey{% endif %}.png"/></a><br />
+{% endif %}
+<span id="document_'{{document.slug}}'_score">
+    {{ score.score|default:0 }} point{{ score.score|default:0|pluralize }}
+</span><br />
+{% if user.is_authenticated %}
+    <a id="down_'{{ document.slug }}'" href="" onclick="vote('{{document.slug}}', '{% if vote and vote.is_upvote %}clear{% else %}down{% endif %}'); return false;"><img id="img_'{{ document.slug }}'_down" src="{{ MEDIA_URL }}bookmarks/img/down_{% if vote and vote.is_downvote %}mod{% else %}grey{% endif %}.png"/></a>
+{% endif %}
+
+
 <div class="document-list-item">
 <h2><a href="{% dms_url dms_site document_detail document %}">{{ document|default:"Untitled" }}</a></h2>
 <p>{% if list_links.preview %}<a class="preview" title="{{ document.title }}" href="{{ document.file_thumbnail_medium }}">Preview</a>, {% endif %}
@@ -24,3 +42,27 @@
     {% ifnotequal page.paginator.num_pages 1 %}<span class="current">Page {{ page.number }} of {{ page.paginator.num_pages }}</span>{% endifnotequal %}
     {% if page.has_next %}<a href="?page={{ page.next_page_number }}">next</a>{% endif %}
 </div>
+
+{% block extra_body %}
+<script>
+    function vote(document_id, direction) {
+        $.post(document_id + '/' + direction + 'vote/', function(data) {
+            var jsonResult = eval('(' + data + ')');
+            var new_score = jsonResult.score.score;
+            $('#document_' + document_id + '_score').text(new_score + ' point' + (new_score == 1 ? '': 's'));
+        });
+        if (direction == 'up') {
+            $('#up_' + document_id).replaceWith('<a id="up_' + document_id + '" href="" onclick="return false;"><img src="{{ MEDIA_URL }}bookmarks/img/up_mod.png"/>');
+            $('#down_' + document_id).replaceWith('<a id="down_' + document_id + '" href="" onclick="vote(' + document_id + ', \'clear\'); return false;"><img src="{{ MEDIA_URL }}bookmarks/img/down_grey.png"/>');
+        }
+        else if (direction == 'down') {
+            $('#up_' + document_id).replaceWith('<a id="up_' + document_id + '" href="" onclick="vote(' + document_id + ', \'clear\'); return false;"><img src="{{ MEDIA_URL }}bookmarks/img/up_grey.png"/>');
+            $('#down_' + document_id).replaceWith('<a id="down_' + document_id + '" href="" onclick="return false;"><img src="{{ MEDIA_URL }}bookmarks/img/down_mod.png"/>');
+        }
+        else { // clear
+            $('#up_' + document_id).replaceWith('<a id="up_' + document_id + '" href="" onclick="vote(' + document_id + ', \'up\'); return false;"><img src="{{ MEDIA_URL }}bookmarks/img/up_grey.png"/>');
+            $('#down_' + document_id).replaceWith('<a id="down_' + document_id + '" href="" onclick="vote(' + document_id + ', \'down\'); return false;"><img src="{{ MEDIA_URL }}bookmarks/img/down_grey.png"/>');
+        }
+    }
+</script>
+{% endblock %}
