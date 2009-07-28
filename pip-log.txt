@@ -1,0 +1,461 @@
+Downloading/unpacking psycopg
+  Getting page http://pypi.python.org/simple/psycopg
+  URLs to search for versions for psycopg:
+  * http://pypi.python.org/simple/psycopg
+  Getting page http://initd.org/projects/psycopg1
+  Skipping page http://initd.org/pub/software/psycopg/psycopg-1.1.21.tar.gz (from http://pypi.python.org/simple/psycopg) because of Content-Type: application/x-gzip
+  Analyzing links from page http://pypi.python.org/simple/psycopg
+    Skipping link http://initd.org/projects/psycopg1 (from http://pypi.python.org/simple/psycopg); not a file
+    Found link http://initd.org/pub/software/psycopg/psycopg-1.1.21.tar.gz (from http://pypi.python.org/simple/psycopg), version: 1.1.21
+  Analyzing links from page http://initd.org/projects/psycopg1
+    Skipping link http://initd.org/pub/software/ (from http://initd.org/projects/psycopg1); not a file
+    Skipping link https://dndg.it/cgi-bin/gitweb.cgi?p=public/psycopg2.git (from http://initd.org/projects/psycopg1); unknown archive format: .cgi
+    Skipping link git://luna.dndg.it/public/psycopg2.git (from http://initd.org/projects/psycopg1); unknown archive format: .git
+  Downloading from URL http://initd.org/pub/software/psycopg/psycopg-1.1.21.tar.gz (from http://pypi.python.org/simple/psycopg)
+  Running setup.py egg_info for package psycopg
+    Traceback (most recent call last):
+      File "<string>", line 13, in <module>
+    IOError: [Errno 2] No such file or directory: '/home/sean/programming/pinax-env/build/psycopg/setup.py'
+    Complete output from command python setup.py egg_info:
+    Traceback (most recent call last):
+
+  File "<string>", line 13, in <module>
+
+IOError: [Errno 2] No such file or directory: '/home/sean/programming/pinax-env/build/psycopg/setup.py'
+
+----------------------------------------
+Command python setup.py egg_info failed with error code 1
+Exception information:
+Traceback (most recent call last):
+  File "/home/sean/programming/pinax-env/lib/python2.5/site-packages/pip-0.3.1-py2.5.egg/pip.py", line 252, in main
+    self.run(options, args)
+  File "/home/sean/programming/pinax-env/lib/python2.5/site-packages/pip-0.3.1-py2.5.egg/pip.py", line 408, in run
+    requirement_set.install_files(finder, force_root_egg_info=self.bundle)
+  File "/home/sean/programming/pinax-env/lib/python2.5/site-packages/pip-0.3.1-py2.5.egg/pip.py", line 1775, in install_files
+    req_to_install.run_egg_info()
+  File "/home/sean/programming/pinax-env/lib/python2.5/site-packages/pip-0.3.1-py2.5.egg/pip.py", line 1346, in run_egg_info
+    command_desc='python setup.py egg_info')
+  File "/home/sean/programming/pinax-env/lib/python2.5/site-packages/pip-0.3.1-py2.5.egg/pip.py", line 3543, in call_subprocess
+    % (command_desc, proc.returncode))
+InstallationError: Command python setup.py egg_info failed with error code 1
+------------------------------------------------------------
+/home/sean/programming/pinax-env/bin/pip run on Tue Jul 28 14:36:23 2009
+Downloading/unpacking psycopg
+  Getting page http://pypi.python.org/simple/psycopg
+  URLs to search for versions for psycopg:
+  * http://pypi.python.org/simple/psycopg
+  Getting page http://initd.org/projects/psycopg1
+  Skipping page http://initd.org/pub/software/psycopg/psycopg-1.1.21.tar.gz (from http://pypi.python.org/simple/psycopg) because of Content-Type: application/x-gzip
+  Analyzing links from page http://pypi.python.org/simple/psycopg
+    Skipping link http://initd.org/projects/psycopg1 (from http://pypi.python.org/simple/psycopg); not a file
+    Found link http://initd.org/pub/software/psycopg/psycopg-1.1.21.tar.gz (from http://pypi.python.org/simple/psycopg), version: 1.1.21
+  Analyzing links from page http://initd.org/projects/psycopg1
+    Skipping link http://initd.org/pub/software/ (from http://initd.org/projects/psycopg1); not a file
+    Skipping link https://dndg.it/cgi-bin/gitweb.cgi?p=public/psycopg2.git (from http://initd.org/projects/psycopg1); unknown archive format: .cgi
+    Skipping link git://luna.dndg.it/public/psycopg2.git (from http://initd.org/projects/psycopg1); unknown archive format: .git
+  Downloading from URL http://initd.org/pub/software/psycopg/psycopg-1.1.21.tar.gz (from http://pypi.python.org/simple/psycopg)
+  Running setup.py egg_info for package psycopg
+    Traceback (most recent call last):
+      File "<string>", line 13, in <module>
+    IOError: [Errno 2] No such file or directory: '/home/sean/programming/pinax-env/build/psycopg/setup.py'
+    Complete output from command python setup.py egg_info:
+    Traceback (most recent call last):
+
+  File "<string>", line 13, in <module>
+
+IOError: [Errno 2] No such file or directory: '/home/sean/programming/pinax-env/build/psycopg/setup.py'
+
+----------------------------------------
+Command python setup.py egg_info failed with error code 1
+Exception information:
+Traceback (most recent call last):
+  File "/home/sean/programming/pinax-env/lib/python2.5/site-packages/pip-0.3.1-py2.5.egg/pip.py", line 252, in main
+    self.run(options, args)
+  File "/home/sean/programming/pinax-env/lib/python2.5/site-packages/pip-0.3.1-py2.5.egg/pip.py", line 408, in run
+    requirement_set.install_files(finder, force_root_egg_info=self.bundle)
+  File "/home/sean/programming/pinax-env/lib/python2.5/site-packages/pip-0.3.1-py2.5.egg/pip.py", line 1775, in install_files
+    req_to_install.run_egg_info()
+  File "/home/sean/programming/pinax-env/lib/python2.5/site-packages/pip-0.3.1-py2.5.egg/pip.py", line 1346, in run_egg_info
+    command_desc='python setup.py egg_info')
+  File "/home/sean/programming/pinax-env/lib/python2.5/site-packages/pip-0.3.1-py2.5.egg/pip.py", line 3543, in call_subprocess
+    % (command_desc, proc.returncode))
+InstallationError: Command python setup.py egg_info failed with error code 1
+------------------------------------------------------------
+/home/sean/programming/pinax-env/bin/pip run on Tue Jul 28 15:26:59 2009
+Downloading/unpacking pygraphviz
+  Getting page http://pypi.python.org/simple/pygraphviz
+  URLs to search for versions for pygraphviz:
+  * http://pypi.python.org/simple/pygraphviz
+  Getting page http://networkx.lanl.gov/pygraphviz
+  Getting page http://networkx.lanl.gov/wiki/download
+  Could not fetch URL http://networkx.lanl.gov/wiki/download (from http://pypi.python.org/simple/pygraphviz): HTTP Error 404: Not Found
+  Will skip URL http://networkx.lanl.gov/wiki/download when looking for download links for pygraphviz
+  Getting page http://networkx.lanl.gov/wiki/download
+  Could not fetch URL http://networkx.lanl.gov/wiki/download (from http://pypi.python.org/simple/pygraphviz): HTTP Error 404: Not Found
+  Will skip URL http://networkx.lanl.gov/wiki/download when looking for download links for pygraphviz
+  Getting page http://sourceforge.net/project/showfiles.php?group_id=122233&package_id=161979
+  Could not fetch URL http://sourceforge.net/project/showfiles.php?group_id=122233&package_id=161979 (from http://pypi.python.org/simple/pygraphviz): HTTP Error 404: Not Found
+  Will skip URL http://sourceforge.net/project/showfiles.php?group_id=122233&package_id=161979 when looking for download links for pygraphviz
+  Getting page http://sourceforge.net/project/showfiles.php?group_id=122233&package_id=161979
+  Could not fetch URL http://sourceforge.net/project/showfiles.php?group_id=122233&package_id=161979 (from http://pypi.python.org/simple/pygraphviz): HTTP Error 404: Not Found
+  Will skip URL http://sourceforge.net/project/showfiles.php?group_id=122233&package_id=161979 when looking for download links for pygraphviz
+  Getting page http://networkx.lanl.gov/download
+  Analyzing links from page http://pypi.python.org/simple/pygraphviz
+    Found link http://pypi.python.org/packages/source/p/pygraphviz/pygraphviz-0.36.tar.gz#md5=13c32c59933dfc3de3edd092b5b3b08c (from http://pypi.python.org/simple/pygraphviz), version: 0.36
+    Found link http://pypi.python.org/packages/source/p/pygraphviz/pygraphviz-0.35.zip#md5=fa41fbca0edeccf6ec044294dab4c7ca (from http://pypi.python.org/simple/pygraphviz), version: 0.35
+    Found link http://pypi.python.org/packages/source/p/pygraphviz/pygraphviz-0.36.zip#md5=2ad831f8014d782fee23f650aa0cd535 (from http://pypi.python.org/simple/pygraphviz), version: 0.36
+    Skipping link http://pypi.python.org/packages/2.5/p/pygraphviz/pygraphviz-0.99.1-py2.5-linux-i686.egg#md5=b440a72ab04a80eb48dd09aed2121bf5 (from http://pypi.python.org/simple/pygraphviz); unknown archive format: .egg
+    Found link http://pypi.python.org/packages/source/p/pygraphviz/pygraphviz-0.37.tar.gz#md5=3379f23497bffe549269cfcf00de099b (from http://pypi.python.org/simple/pygraphviz), version: 0.37
+    Skipping link http://pypi.python.org/packages/2.4/p/pygraphviz/pygraphviz-0.99.1-py2.4-linux-i686.egg#md5=b9c89f19746e57cfab51ab281381a609 (from http://pypi.python.org/simple/pygraphviz); unknown archive format: .egg
+    Found link http://pypi.python.org/packages/source/p/pygraphviz/pygraphviz-0.34.tar.gz#md5=550b94a2cbb1827af1a23d87c4e04810 (from http://pypi.python.org/simple/pygraphviz), version: 0.34
+    Skipping link http://pypi.python.org/packages/2.5/p/pygraphviz/pygraphviz-0.99-py2.5-linux-i686.egg#md5=359c0c5bee29cf7365707ff536ab6892 (from http://pypi.python.org/simple/pygraphviz); unknown archive format: .egg
+    Found link http://pypi.python.org/packages/source/p/pygraphviz/pygraphviz-0.99.tar.gz#md5=b0052a2b1d3a9cfb806eb8b28abf8e2d (from http://pypi.python.org/simple/pygraphviz), version: 0.99
+    Found link http://pypi.python.org/packages/source/p/pygraphviz/pygraphviz-0.99.1.zip#md5=33a9d11592a10dd0e9de6d587db5b101 (from http://pypi.python.org/simple/pygraphviz), version: 0.99.1
+    Skipping link http://pypi.python.org/packages/2.4/p/pygraphviz/pygraphviz-0.99-py2.4-linux-i686.egg#md5=82581a5e6021989c904fed1ee742cd99 (from http://pypi.python.org/simple/pygraphviz); unknown archive format: .egg
+    Found link http://pypi.python.org/packages/source/p/pygraphviz/pygraphviz-0.35.tar.gz#md5=28bf924a706e073fc9861f0beeb0b9aa (from http://pypi.python.org/simple/pygraphviz), version: 0.35
+    Found link http://pypi.python.org/packages/source/p/pygraphviz/pygraphviz-0.37.zip#md5=0f935a2517341e27886e21216525a9cd (from http://pypi.python.org/simple/pygraphviz), version: 0.37
+    Found link http://pypi.python.org/packages/source/p/pygraphviz/pygraphviz-0.99.1.tar.gz#md5=5381633f9538804b24046eb96474668d (from http://pypi.python.org/simple/pygraphviz), version: 0.99.1
+    Found link http://pypi.python.org/packages/source/p/pygraphviz/pygraphviz-0.99.zip#md5=1625afb50d6d2d4dd833ee2f9810bcd0 (from http://pypi.python.org/simple/pygraphviz), version: 0.99
+    Found link http://pypi.python.org/packages/source/p/pygraphviz/pygraphviz-0.34.zip#md5=775cec62c3da868553f0a7b89ec1dcc2 (from http://pypi.python.org/simple/pygraphviz), version: 0.34
+    Skipping link http://networkx.lanl.gov/pygraphviz (from http://pypi.python.org/simple/pygraphviz); not a file
+    Skipping link http://networkx.lanl.gov/wiki/download (from http://pypi.python.org/simple/pygraphviz); not a file
+    Skipping link http://networkx.lanl.gov/pygraphviz/ (from http://pypi.python.org/simple/pygraphviz); not a file
+    Skipping link http://sourceforge.net/project/showfiles.php?group_id=122233&package_id=161979 (from http://pypi.python.org/simple/pygraphviz); unknown archive format: .php
+    Skipping link http://networkx.lanl.gov/download (from http://pypi.python.org/simple/pygraphviz); not a file
+  Analyzing links from page http://networkx.lanl.gov/pygraphviz/
+    Skipping link http://networkx.lanl.gov/pygraphviz/_static/sphinxdoc.css (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .css
+    Skipping link http://networkx.lanl.gov/pygraphviz/_static/pygments.css (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .css
+    Skipping link http://networkx.lanl.gov/pygraphviz/_static/opensearch.xml (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .xml
+    Skipping link http://networkx.lanl.gov/pygraphviz/genindex.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/pygraphviz/search.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/pygraphviz/ (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://networkx.lanl.gov/pygraphviz/download.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/trac/wiki/PyGraphviz (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://networkx.lanl.gov/pygraphviz/contents.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://pypi.python.org/pypi/pygraphviz (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://groups.google.com/group/pygraphviz-discuss (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://networkx.lanl.gov (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://networkx.lanl.gov/pygraphviz/tutorial.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/pygraphviz/reference/index.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/pygraphviz/examples.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/pygraphviz/modindex.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://peak.telecommunity.com/DevCenter/EasyInstall (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://networkx.lanl.gov/svn/pygraphviz/trunk (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://sphinx.pocoo.org/ (from http://networkx.lanl.gov/pygraphviz/); not a file
+  Analyzing links from page http://networkx.lanl.gov/pygraphviz/
+    Skipping link http://networkx.lanl.gov/pygraphviz/_static/sphinxdoc.css (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .css
+    Skipping link http://networkx.lanl.gov/pygraphviz/_static/pygments.css (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .css
+    Skipping link http://networkx.lanl.gov/pygraphviz/_static/opensearch.xml (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .xml
+    Skipping link http://networkx.lanl.gov/pygraphviz/genindex.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/pygraphviz/search.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/pygraphviz/ (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://networkx.lanl.gov/pygraphviz/download.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/trac/wiki/PyGraphviz (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://networkx.lanl.gov/pygraphviz/contents.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://pypi.python.org/pypi/pygraphviz (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://groups.google.com/group/pygraphviz-discuss (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://networkx.lanl.gov (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://networkx.lanl.gov/pygraphviz/tutorial.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/pygraphviz/reference/index.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/pygraphviz/examples.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/pygraphviz/modindex.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://peak.telecommunity.com/DevCenter/EasyInstall (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://networkx.lanl.gov/svn/pygraphviz/trunk (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://sphinx.pocoo.org/ (from http://networkx.lanl.gov/pygraphviz/); not a file
+  Analyzing links from page http://networkx.lanl.gov/pygraphviz/
+    Skipping link http://networkx.lanl.gov/pygraphviz/_static/sphinxdoc.css (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .css
+    Skipping link http://networkx.lanl.gov/pygraphviz/_static/pygments.css (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .css
+    Skipping link http://networkx.lanl.gov/pygraphviz/_static/opensearch.xml (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .xml
+    Skipping link http://networkx.lanl.gov/pygraphviz/genindex.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/pygraphviz/search.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/pygraphviz/ (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://networkx.lanl.gov/pygraphviz/download.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/trac/wiki/PyGraphviz (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://networkx.lanl.gov/pygraphviz/contents.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://pypi.python.org/pypi/pygraphviz (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://groups.google.com/group/pygraphviz-discuss (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://networkx.lanl.gov (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://networkx.lanl.gov/pygraphviz/tutorial.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/pygraphviz/reference/index.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/pygraphviz/examples.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/pygraphviz/modindex.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://peak.telecommunity.com/DevCenter/EasyInstall (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://networkx.lanl.gov/svn/pygraphviz/trunk (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://sphinx.pocoo.org/ (from http://networkx.lanl.gov/pygraphviz/); not a file
+  Analyzing links from page http://networkx.lanl.gov/pygraphviz/
+    Skipping link http://networkx.lanl.gov/pygraphviz/_static/sphinxdoc.css (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .css
+    Skipping link http://networkx.lanl.gov/pygraphviz/_static/pygments.css (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .css
+    Skipping link http://networkx.lanl.gov/pygraphviz/_static/opensearch.xml (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .xml
+    Skipping link http://networkx.lanl.gov/pygraphviz/genindex.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/pygraphviz/search.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/pygraphviz/ (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://networkx.lanl.gov/pygraphviz/download.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/trac/wiki/PyGraphviz (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://networkx.lanl.gov/pygraphviz/contents.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://pypi.python.org/pypi/pygraphviz (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://groups.google.com/group/pygraphviz-discuss (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://networkx.lanl.gov (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://networkx.lanl.gov/pygraphviz/tutorial.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/pygraphviz/reference/index.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/pygraphviz/examples.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/pygraphviz/modindex.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://peak.telecommunity.com/DevCenter/EasyInstall (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://networkx.lanl.gov/svn/pygraphviz/trunk (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://sphinx.pocoo.org/ (from http://networkx.lanl.gov/pygraphviz/); not a file
+  Analyzing links from page http://networkx.lanl.gov/pygraphviz/
+    Skipping link http://networkx.lanl.gov/pygraphviz/_static/sphinxdoc.css (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .css
+    Skipping link http://networkx.lanl.gov/pygraphviz/_static/pygments.css (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .css
+    Skipping link http://networkx.lanl.gov/pygraphviz/_static/opensearch.xml (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .xml
+    Skipping link http://networkx.lanl.gov/pygraphviz/genindex.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/pygraphviz/search.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/pygraphviz/ (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://networkx.lanl.gov/pygraphviz/download.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/trac/wiki/PyGraphviz (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://networkx.lanl.gov/pygraphviz/contents.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://pypi.python.org/pypi/pygraphviz (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://groups.google.com/group/pygraphviz-discuss (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://networkx.lanl.gov (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://networkx.lanl.gov/pygraphviz/tutorial.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/pygraphviz/reference/index.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/pygraphviz/examples.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/pygraphviz/modindex.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://peak.telecommunity.com/DevCenter/EasyInstall (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://networkx.lanl.gov/svn/pygraphviz/trunk (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://sphinx.pocoo.org/ (from http://networkx.lanl.gov/pygraphviz/); not a file
+  Analyzing links from page http://networkx.lanl.gov/pygraphviz/
+    Skipping link http://networkx.lanl.gov/pygraphviz/_static/sphinxdoc.css (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .css
+    Skipping link http://networkx.lanl.gov/pygraphviz/_static/pygments.css (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .css
+    Skipping link http://networkx.lanl.gov/pygraphviz/_static/opensearch.xml (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .xml
+    Skipping link http://networkx.lanl.gov/pygraphviz/genindex.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/pygraphviz/search.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/pygraphviz/ (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://networkx.lanl.gov/pygraphviz/download.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/trac/wiki/PyGraphviz (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://networkx.lanl.gov/pygraphviz/contents.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://pypi.python.org/pypi/pygraphviz (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://groups.google.com/group/pygraphviz-discuss (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://networkx.lanl.gov (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://networkx.lanl.gov/pygraphviz/tutorial.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/pygraphviz/reference/index.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/pygraphviz/examples.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/pygraphviz/modindex.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://peak.telecommunity.com/DevCenter/EasyInstall (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://networkx.lanl.gov/svn/pygraphviz/trunk (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://sphinx.pocoo.org/ (from http://networkx.lanl.gov/pygraphviz/); not a file
+  Analyzing links from page http://networkx.lanl.gov/pygraphviz/
+    Skipping link http://networkx.lanl.gov/pygraphviz/_static/sphinxdoc.css (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .css
+    Skipping link http://networkx.lanl.gov/pygraphviz/_static/pygments.css (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .css
+    Skipping link http://networkx.lanl.gov/pygraphviz/_static/opensearch.xml (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .xml
+    Skipping link http://networkx.lanl.gov/pygraphviz/genindex.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/pygraphviz/search.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/pygraphviz/ (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://networkx.lanl.gov/pygraphviz/download.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/trac/wiki/PyGraphviz (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://networkx.lanl.gov/pygraphviz/contents.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://pypi.python.org/pypi/pygraphviz (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://groups.google.com/group/pygraphviz-discuss (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://networkx.lanl.gov (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://networkx.lanl.gov/pygraphviz/tutorial.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/pygraphviz/reference/index.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/pygraphviz/examples.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/pygraphviz/modindex.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://peak.telecommunity.com/DevCenter/EasyInstall (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://networkx.lanl.gov/svn/pygraphviz/trunk (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://sphinx.pocoo.org/ (from http://networkx.lanl.gov/pygraphviz/); not a file
+  Analyzing links from page http://networkx.lanl.gov/pygraphviz/
+    Skipping link http://networkx.lanl.gov/pygraphviz/_static/sphinxdoc.css (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .css
+    Skipping link http://networkx.lanl.gov/pygraphviz/_static/pygments.css (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .css
+    Skipping link http://networkx.lanl.gov/pygraphviz/_static/opensearch.xml (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .xml
+    Skipping link http://networkx.lanl.gov/pygraphviz/genindex.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/pygraphviz/search.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/pygraphviz/ (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://networkx.lanl.gov/pygraphviz/download.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/trac/wiki/PyGraphviz (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://networkx.lanl.gov/pygraphviz/contents.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://pypi.python.org/pypi/pygraphviz (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://groups.google.com/group/pygraphviz-discuss (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://networkx.lanl.gov (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://networkx.lanl.gov/pygraphviz/tutorial.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/pygraphviz/reference/index.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/pygraphviz/examples.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/pygraphviz/modindex.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://peak.telecommunity.com/DevCenter/EasyInstall (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://networkx.lanl.gov/svn/pygraphviz/trunk (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://sphinx.pocoo.org/ (from http://networkx.lanl.gov/pygraphviz/); not a file
+  Analyzing links from page http://networkx.lanl.gov/download/
+    Skipping link http://networkx.lanl.gov/download/?C=N;O=D (from http://networkx.lanl.gov/download/); not a file
+    Skipping link http://networkx.lanl.gov/download/?C=M;O=A (from http://networkx.lanl.gov/download/); not a file
+    Skipping link http://networkx.lanl.gov/download/?C=S;O=A (from http://networkx.lanl.gov/download/); not a file
+    Skipping link http://networkx.lanl.gov/download/?C=D;O=A (from http://networkx.lanl.gov/download/); not a file
+    Skipping link http://networkx.lanl.gov/ (from http://networkx.lanl.gov/download/); not a file
+    Skipping link http://networkx.lanl.gov/download/networkx/ (from http://networkx.lanl.gov/download/); not a file
+    Skipping link http://networkx.lanl.gov/download/pygraphviz/ (from http://networkx.lanl.gov/download/); not a file
+  Analyzing links from page http://networkx.lanl.gov/pygraphviz/
+    Skipping link http://networkx.lanl.gov/pygraphviz/_static/sphinxdoc.css (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .css
+    Skipping link http://networkx.lanl.gov/pygraphviz/_static/pygments.css (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .css
+    Skipping link http://networkx.lanl.gov/pygraphviz/_static/opensearch.xml (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .xml
+    Skipping link http://networkx.lanl.gov/pygraphviz/genindex.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/pygraphviz/search.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/pygraphviz/ (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://networkx.lanl.gov/pygraphviz/download.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/trac/wiki/PyGraphviz (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://networkx.lanl.gov/pygraphviz/contents.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://pypi.python.org/pypi/pygraphviz (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://groups.google.com/group/pygraphviz-discuss (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://networkx.lanl.gov (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://networkx.lanl.gov/pygraphviz/tutorial.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/pygraphviz/reference/index.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/pygraphviz/examples.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/pygraphviz/modindex.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://peak.telecommunity.com/DevCenter/EasyInstall (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://networkx.lanl.gov/svn/pygraphviz/trunk (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://sphinx.pocoo.org/ (from http://networkx.lanl.gov/pygraphviz/); not a file
+  Analyzing links from page http://networkx.lanl.gov/pygraphviz/
+    Skipping link http://networkx.lanl.gov/pygraphviz/_static/sphinxdoc.css (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .css
+    Skipping link http://networkx.lanl.gov/pygraphviz/_static/pygments.css (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .css
+    Skipping link http://networkx.lanl.gov/pygraphviz/_static/opensearch.xml (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .xml
+    Skipping link http://networkx.lanl.gov/pygraphviz/genindex.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/pygraphviz/search.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/pygraphviz/ (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://networkx.lanl.gov/pygraphviz/download.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/trac/wiki/PyGraphviz (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://networkx.lanl.gov/pygraphviz/contents.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://pypi.python.org/pypi/pygraphviz (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://groups.google.com/group/pygraphviz-discuss (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://networkx.lanl.gov (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://networkx.lanl.gov/pygraphviz/tutorial.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/pygraphviz/reference/index.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/pygraphviz/examples.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/pygraphviz/modindex.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://peak.telecommunity.com/DevCenter/EasyInstall (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://networkx.lanl.gov/svn/pygraphviz/trunk (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://sphinx.pocoo.org/ (from http://networkx.lanl.gov/pygraphviz/); not a file
+  Analyzing links from page http://networkx.lanl.gov/pygraphviz/
+    Skipping link http://networkx.lanl.gov/pygraphviz/_static/sphinxdoc.css (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .css
+    Skipping link http://networkx.lanl.gov/pygraphviz/_static/pygments.css (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .css
+    Skipping link http://networkx.lanl.gov/pygraphviz/_static/opensearch.xml (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .xml
+    Skipping link http://networkx.lanl.gov/pygraphviz/genindex.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/pygraphviz/search.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/pygraphviz/ (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://networkx.lanl.gov/pygraphviz/download.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/trac/wiki/PyGraphviz (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://networkx.lanl.gov/pygraphviz/contents.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://pypi.python.org/pypi/pygraphviz (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://groups.google.com/group/pygraphviz-discuss (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://networkx.lanl.gov (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://networkx.lanl.gov/pygraphviz/tutorial.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/pygraphviz/reference/index.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/pygraphviz/examples.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://networkx.lanl.gov/pygraphviz/modindex.html (from http://networkx.lanl.gov/pygraphviz/); unknown archive format: .html
+    Skipping link http://peak.telecommunity.com/DevCenter/EasyInstall (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://networkx.lanl.gov/svn/pygraphviz/trunk (from http://networkx.lanl.gov/pygraphviz/); not a file
+    Skipping link http://sphinx.pocoo.org/ (from http://networkx.lanl.gov/pygraphviz/); not a file
+  Using version 0.99.1 (newest of versions: 0.99.1, 0.99.1, 0.99, 0.99, 0.37, 0.37, 0.36, 0.36, 0.35, 0.35, 0.34, 0.34)
+  Downloading from URL http://pypi.python.org/packages/source/p/pygraphviz/pygraphviz-0.99.1.zip#md5=33a9d11592a10dd0e9de6d587db5b101 (from http://pypi.python.org/simple/pygraphviz)
+  Running setup.py egg_info for package pygraphviz
+    Package libcgraph was not found in the pkg-config search path.
+    Perhaps you should add the directory containing `libcgraph.pc'
+    to the PKG_CONFIG_PATH environment variable
+    No package 'libcgraph' found
+    Package libcgraph was not found in the pkg-config search path.
+    Perhaps you should add the directory containing `libcgraph.pc'
+    to the PKG_CONFIG_PATH environment variable
+    No package 'libcgraph' found
+    Trying pkg-config
+    Trying dotneato-config
+    Failed to find dotneato-config
+    
+    Your graphviz installation could not be found.
+    
+    Either the graphviz package is missing on incomplete
+    (binary packages graphviz-dev or graphviz-devel missing?).
+    
+    If you think your installation is correct you will need to manually
+    change the include_path and library_path variables in setup.py to
+    point to the correct locations of your graphviz installation.
+    
+    The current setting of library_path and include_path is:
+    library_path=None
+    include_path=None
+    
+    Traceback (most recent call last):
+      File "<string>", line 13, in <module>
+      File "/home/sean/programming/pinax-env/build/pygraphviz/setup.py", line 120, in <module>
+        raise OSError,"Error locating graphviz."
+    OSError: Error locating graphviz.
+    Complete output from command python setup.py egg_info:
+    Package libcgraph was not found in the pkg-config search path.
+
+Perhaps you should add the directory containing `libcgraph.pc'
+
+to the PKG_CONFIG_PATH environment variable
+
+No package 'libcgraph' found
+
+Package libcgraph was not found in the pkg-config search path.
+
+Perhaps you should add the directory containing `libcgraph.pc'
+
+to the PKG_CONFIG_PATH environment variable
+
+No package 'libcgraph' found
+
+Trying pkg-config
+
+Trying dotneato-config
+
+Failed to find dotneato-config
+
+
+
+Your graphviz installation could not be found.
+
+
+
+Either the graphviz package is missing on incomplete
+
+(binary packages graphviz-dev or graphviz-devel missing?).
+
+
+
+If you think your installation is correct you will need to manually
+
+change the include_path and library_path variables in setup.py to
+
+point to the correct locations of your graphviz installation.
+
+
+
+The current setting of library_path and include_path is:
+
+library_path=None
+
+include_path=None
+
+
+
+Traceback (most recent call last):
+
+  File "<string>", line 13, in <module>
+
+  File "/home/sean/programming/pinax-env/build/pygraphviz/setup.py", line 120, in <module>
+
+    raise OSError,"Error locating graphviz."
+
+OSError: Error locating graphviz.
+
+----------------------------------------
+Command python setup.py egg_info failed with error code 1
+Exception information:
+Traceback (most recent call last):
+  File "/home/sean/programming/pinax-env/lib/python2.5/site-packages/pip-0.3.1-py2.5.egg/pip.py", line 252, in main
+    self.run(options, args)
+  File "/home/sean/programming/pinax-env/lib/python2.5/site-packages/pip-0.3.1-py2.5.egg/pip.py", line 408, in run
+    requirement_set.install_files(finder, force_root_egg_info=self.bundle)
+  File "/home/sean/programming/pinax-env/lib/python2.5/site-packages/pip-0.3.1-py2.5.egg/pip.py", line 1775, in install_files
+    req_to_install.run_egg_info()
+  File "/home/sean/programming/pinax-env/lib/python2.5/site-packages/pip-0.3.1-py2.5.egg/pip.py", line 1346, in run_egg_info
+    command_desc='python setup.py egg_info')
+  File "/home/sean/programming/pinax-env/lib/python2.5/site-packages/pip-0.3.1-py2.5.egg/pip.py", line 3543, in call_subprocess
+    % (command_desc, proc.returncode))
+InstallationError: Command python setup.py egg_info failed with error code 1
