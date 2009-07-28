@@ -53,6 +53,6 @@ def example(request):
     im_form = InstantMessengerForm()
     w_form = WebsiteForm()
 
-    return render_to_response('elsewhere/example.html', {
+    return render_to_response('elsewhere/base.html', {
         'sn_form': sn_form, 'im_form': im_form, 'w_form': w_form,
     }, context_instance=RequestContext(request))

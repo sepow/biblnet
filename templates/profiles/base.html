@@ -15,4 +15,4 @@
     {% endif %}
 {% endblock %}
 
-{% block breadcrumb %}{{ block.super }} &raquo; <a href="/profiles/">{% trans "Profiles" %}</a>{% endblock %}
+{% block breadcrumb %}{{ block.super }} &raquo; <a href="/profiles/">{% trans "Profiles" %}</a> &raquo; <a href="/profiles/{{ other_user }}">{{ other_user }}</a>{% endblock %}
