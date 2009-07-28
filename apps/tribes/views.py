@@ -245,6 +245,10 @@ def tribe_members(request, slug, tribe_form=AddMemberForm, template_name="tribes
     
     are_member = has_member(tribe, request.user)
     are_moderator = is_moderator(tribe, request.user)
+    tribe_members = None
+    search_terms = ""
+    order = None
+
 
     if tribe.private and not are_member:
         do_403_if_not_superuser(request)
@@ -255,8 +259,33 @@ def tribe_members(request, slug, tribe_form=AddMemberForm, template_name="tribes
                 new_member = tribe_form.save()
         else:
             tribe_form = AddMemberForm(tribe)
+            ## search for user 
+
+        if request.method == "GET":
+            
+            if 'search' in request.GET: 
+                tribe_members = TribeMember.objects.filter(tribe=tribe)
+                search_terms = request.GET.get('search', '')
+                order = request.GET.get('order')
+
+            elif 'kick' in request.GET: 
+                try:
+                    kicked_user_slug = request.GET['kick'] # lav til en form
+                    tm = TribeMember.objects.get(tribe=tribe, user__username=kicked_user_slug)
+                    tm.delete()
+                except:
+                    pass
+            if not order:
+                order = 'name'
+            if search_terms:
+                tribe_members = tribe_members.filter(user__profile__name__icontains=search_terms) | tribe_members.filter(user__username__icontains=search_terms) | tribe_members.filter(user__profile__nickname__icontains=search_terms)
+                
+
     
     return render_to_response(template_name, {
+            'tribe_members':tribe_members,
+            'order' : order,
+            'search_terms' : search_terms,
             "tribe_form": tribe_form,
             "tribe": tribe,
             "are_member": are_member,
@@ -350,6 +379,7 @@ def topic(request, id, edit=False, template_name="tribes/topic.html"):
         "are_member": are_member,
         "are_moderator" : is_moderator(topic.tribe, request.user),
     }, context_instance=RequestContext(request))
+
 @login_required
 def topic_delete(request, pk):
     topic = Topic.objects.get(pk=pk)
