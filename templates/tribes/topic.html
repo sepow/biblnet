@@ -133,7 +133,7 @@
                 </script>
             {% endblock %}
             {% else %}
-            <div class="body">{% autoescape off %}{% oembed %}{{ topic.body }}{% endoembed %}{% endautoescape %}</div>
+            <div class="body">{% autoescape off %}{% oembed %}{{ topic.body|urlize }}{% endoembed %}{% endautoescape %}</div>
             {% endif %}
         </div>
         </td>
