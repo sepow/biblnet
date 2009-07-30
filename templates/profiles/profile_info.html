@@ -69,4 +69,18 @@
             </tr>
         {% endfor %}
     {% endif %}
+
+    {% if other_user.get_profile.listening_now %}
+        <tr>
+            <td class="icon"><img src="{{ MEDIA_URL }}images/sitegraphics/music.png" alt="{% trans 'Music' %}" /></td>
+            <td>{{ other_user.get_profile.listening_now }}</td>
+        </tr>
+    {% endif %}
+
+    {% if other_user.get_profile.reading_now %}
+        <tr>
+            <td class="icon"><img src="{{ MEDIA_URL }}images/sitegraphics/book_open.png" alt="{% trans 'Book' %}" /></td>
+            <td>{{ other_user.get_profile.reading_now }}</td>
+        </tr>
+    {% endif %}
 </table>

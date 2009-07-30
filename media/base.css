@@ -16,13 +16,13 @@ body {
 }
 
 a, a:visited {
-	color:#369;
+	color:#0E3037;
 }
 
 a:hover {
-/*	color:#fff;*/
+	color:#369;
 /*	background:#369;*/
-	text-decoration:underline;
+	text-decoration: underline;
 }
 
 h1, h2, h3 {
@@ -63,7 +63,7 @@ table td.icon {
     width: 16px;
 }
 #header {
-	float:left;
+/*	float:left;*/
 	width:100%;
 	padding:0;
 	margin:0;
@@ -83,6 +83,24 @@ table td.icon {
 #header h2  {
 	padding:.2em 15px .7em 15px;
 	margin:0;
+}
+#header div.logo {
+    float: left;
+}
+#header div.dynamic_updates {
+    float: right;
+}
+#header div#dynamic_avatars {
+    position: relative;
+    right: 0px;
+/*    float: right;*/
+/*    clear: right;*/
+}
+#header div#dynamic_topics {
+    position: relative;
+    right: 0px;
+/*    float: right;*/
+/*    clear: right;*/
 }
 
 #colmask {

@@ -2,8 +2,9 @@
 {% load i18n %}
 {% load condition_tag %}
 {% block body %}
-{% if_can_see_calendar calendar request.user%}
-<h1>{% trans "Delete" %}</h1>
+
+{% if_can_see_calendar object.calendar request.user%}
+<h1>{% trans "Delete event" %}</h1>
 {% trans "Are you sure that you really want to delete it?" %}
 
 <form action="." method="POST">
@@ -11,7 +12,7 @@
     <input type="submit" value="{% trans "Delete" %}" />
     <input type="button" value="{% trans "Cancel" %}" onclick="window.location='{{next}}'"/>
 
-    <input type="hidden" name="next" value="{{next|default:""}}"/>
+    <input type="hidden" name="next" value="{{next|default:''}}"/>
 </form>
-{%endif_can_see_calendar%}
+{% endif_can_see_calendar %}
 {% endblock %}

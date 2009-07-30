@@ -1,1 +1,3 @@
-<a href="{{ create_event_url }}&next={{here}}"><img border="0" src="{{ MEDIA_URL }}schedule/img/add.png" alt="Add Event"></a>
+{% load i18n %}
+
+<a href="{{ create_event_url }}&next={{ here }}"><img src="{{ MEDIA_URL }}schedule/img/add.png" alt="{% trans 'Add Event' %}" /></a>

@@ -1,47 +1,43 @@
 {% extends "schedule/base.html" %}
 {% load scheduletags %}
 {% load condition_tag %}
+{% load i18n %}
 
 {% block body %}
+
 {% if_can_see_calendar calendar request.user%}
-{% include "schedule/_dialogs.html" %}
+    {% include "schedule/_dialogs.html" %}
 
-<div class="navigation">
-  <a href="{% url month_calendar calendar.slug %}{% querystring_for_date periods.week.start 2 %}">
-    Month
-  </a>
-  <a href="{% url year_calendar calendar.slug %}{% querystring_for_date periods.week.start 1%}">
-    Year
-  </a>
-</div>
-
-<div class="tablewrapper">
-    <div class="calendarname">{{ calendar.name }}</div>
-    {% prevnext "week_calendar" calendar.slug periods.week "\Week W, M Y" %}
-    <div class="now">
-      <a href="{% url week_calendar calendar.slug %}">
-        This week
-      </a>
+    <div class="navigation">
+        <a href="{% url month_calendar calendar.slug %}{% querystring_for_date periods.week.start 2 %}">{% trans "Monthly Calendar" %}</a>
+        <a href="{% url tri_month_calendar calendar.slug %}{% querystring_for_date periods.week.start 2 %}">{% trans "Three Month Calendar" %}</a>
+        <a href="{% url year_calendar calendar.slug %}{% querystring_for_date periods.week.start 1%}">{% trans "Full Year Calendar" %}</a>
     </div>
-</div>
 
-<div id="week">
-  {% for day in periods.week.get_days %}
-    <div class="weekday weekday{{forloop.counter}}">
-      <div class="weekdayheader">
-        <a href="{% url day_calendar calendar.slug %}{% querystring_for_date day.start %}">
-          {{day.start|date:"l, d"}}
-        </a>
-      </div>
-      <div class="weekdaytable">
-      {% if forloop.first %}
-          {% daily_table day 230 80 600 9 21 %}
-      {% else %}
-          {% daily_table day 150 15 600 9 21 %}
-      {% endif %}
-      </div>
+    <div class="tablewrapper">
+        <div class="now">
+            <a href="{% url week_calendar calendar.slug %}">This week</a>
+        </div>
+        {% prevnext "week_calendar" calendar.slug periods.week "\Week W, M Y" %}
     </div>
-  {% endfor %}
-</div>
-{%endif_can_see_calendar%}
+
+    <div id="week" class="colwrapper">
+        {% for day in periods.week.get_days %}
+            <div class="weekday weekday{{forloop.counter}}">
+                <div class="weekdayheader">
+                    <a href="{% url day_calendar calendar.slug %}{% querystring_for_date day.start %}">{{day.start|date:"D, d"}}</a><br />
+                    <a href="{% url calendar_create_event calendar.slug %}{% querystring_for_date day.start 3 %}&next={{ here }}"><img src="{{ MEDIA_URL }}schedule/img/add.png" alt="{% trans 'Add Event' %}" /></a>
+                </div>
+                <div class="weekdaytable">
+                    {% if forloop.first %}
+                        {% daily_table day 110 40 600 9 24 %}
+                    {% else %}
+                        {% daily_table day 70 0 600 9 24 %}
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endif_can_see_calendar %}
+
 {% endblock %}

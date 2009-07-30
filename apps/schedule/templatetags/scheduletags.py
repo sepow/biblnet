@@ -194,6 +194,7 @@ def prevnext( target, slug, period, fmt=None):
         'period' : period,
         'period_name': format(period.start, fmt),
         'target':target,
+        'MEDIA_URL' : getattr(settings, "MEDIA_URL"),
     }
     return context
 

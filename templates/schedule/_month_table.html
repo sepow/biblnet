@@ -1,10 +1,12 @@
 {% load scheduletags %}
+
 <table align="center" class="calendar">
 {% if day_names %}
-<tr class="daysofweek">
-<td>&nbsp;</td>
-	{% for day_name in day_names %}<td{% ifnotequal size "small" %} width='120'{% endifnotequal %}>{{ day_name }}</td>
-{% endfor %}
+    <tr class="daysofweek">
+    <td>&nbsp;</td>
+	{% for day_name in day_names %}
+        <th{% ifnotequal size "small" %} width="120"{% endifnotequal %}>{{ day_name }}</th>
+    {% endfor %}
 {% endif %}
 {% for week in month.get_weeks %}
     <tr>
@@ -14,7 +16,7 @@
         </a>
     </td>
     {% for day in week.get_days %}
-	{% day_cell calendar day month size %}
+    	{% day_cell calendar day month size %}
     {% endfor %}
     </tr>
 {% endfor %}

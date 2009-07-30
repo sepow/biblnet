@@ -1,12 +1,16 @@
 {% load avatar_tags %}
+{% load i18n %}
 
-{% for update in latest_users %}
+<div id="dynamic_avatars">
+    {% for user in latest_users %}
+        <a href="{% url profile_detail user.username %}" title="{{ user.username }}">{% avatar user 40 %}</a>
+    {% endfor %}
+</div>
 
-{% avatar update 40 %}
-
-{% endfor %}
 {% if latest_topic %}
-<p>
- <a href="{% url profile_detail latest_topic.creator%}">{{latest_topic.creator}}</a> created: <a href="{% url tribe_topic latest_topic.id%}">{{latest_topic}}</a>
-</p>
+<div id="dynamic_topics">
+    <p>
+        <a href="{% url profile_detail latest_topic.creator%}">{{ latest_topic.creator }}</a> {% trans "wrote" %}: <a href="{% url tribe_topic latest_topic.id%}">{{latest_topic}}</a>
+    </p>
+</div>
 {% endif %}
