@@ -1,3 +1,4 @@
+'''
 import datetime
 from schedule.models import Calendar
 from schedule.models import Event
@@ -19,3 +20,6 @@ except Rule.DoesNotExist:
     rule = Rule(frequency = "DAILY", name = "Daily", description = "will recur once every Day")
     rule.save()
     print "Daily recurrence created"
+    
+    gem i fixtures istedet
+'''
