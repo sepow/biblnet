@@ -13,7 +13,7 @@ PINAX_THEME = 'default'
 TIME_FORMAT = 'H:i'
 DEFAULT_MAX_COMMENT_LENGTH = 15000
 DEFAULT_CHARSET = "utf-8"
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 # tells Pinax to serve media through django.views.static.serve.
@@ -249,7 +249,7 @@ LANGUAGES = (
 
 # CHACHE STUFF
 
-CACHE_BACKEND = "locmem:///?max_entries=300"
+CACHE_BACKEND = "dummy:///?max_entries=300"
 
 COMPRESS_CSS_FILTERS = ('compressor.filters.css_default.CssAbsoluteFilter',)
 

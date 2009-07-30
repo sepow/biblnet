@@ -17,7 +17,7 @@
 
 {% block body %}
         {% if are_moderator or user.is_staff %}
-
+                {{ tribe_form.media}}
                 <p><span id="edit-tribe-toggle">{% trans "Edit details" %}</span></p>
                 
                 <form class="uniForm" id="edit-tribe" method="POST" action="">

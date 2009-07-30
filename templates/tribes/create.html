@@ -12,7 +12,7 @@
 
 {% block body %}
     <h1>{% trans "Create Tribe" %}</h1>
-    
+    {{ tribe_form.media}}
     <p>{% trans "A <b>tribe</b> is a group of people with some common interest." %}</p>
     {% if user.is_authenticated %}
         <form class="uniForm" id="tribe_form" method="POST" action="">
