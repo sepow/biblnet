@@ -67,32 +67,32 @@
 
     {% if are_member %}
 
-    <tr class="{% cycle rowcolors %}">
-    <td>
-        <div class="meta">
-            <div class="avatar">
-                <img src="/site_media/{{ user.get_profile.affiliation.icon }}"  alt="{{ user.get_profile.affiliation }}" title="{{ user.get_profile.affiliation }}" />
-                <img src="/site_media/{{ user.get_profile.occupation.icon }}"  alt="{{ user.get_profile.occupation }}" title="{{ user.get_profile.occupation }}" /><br />
-                <a href="{% url profile_detail user %}">{% avatar user 60 %}</a><br />
-                <br />
-                <a href="{% url profile_detail user %}">{{ user }}</a>
+        <tr class="{% cycle rowcolors %}">
+        <td>
+            <div class="meta">
+                <div class="avatar">
+                    <img src="/site_media/{{ user.get_profile.affiliation.icon }}"  alt="{{ user.get_profile.affiliation }}" title="{{ user.get_profile.affiliation }}" />
+                    <img src="/site_media/{{ user.get_profile.occupation.icon }}"  alt="{{ user.get_profile.occupation }}" title="{{ user.get_profile.occupation }}" /><br />
+                    <a href="{% url profile_detail user %}">{% avatar user 60 %}</a><br />
+                    <br />
+                    <a href="{% url profile_detail user %}">{{ user }}</a>
+                </div>
             </div>
-        </div>
-    </td>
-    <td></td>
-    <td id="commentHolder">
+        </td>
+        <td></td>
+        <td id="commentHolder">
 
-        <form method="POST" action="{% get_comment_url object %}">
-            <textarea id="id_comment" rows="14" cols="40" name="comment"></textarea>
-            <div class="form_block">
-                <input type="hidden" name="next" value="{{ request.path }}" />
-                <input type="hidden" name="tribe"/ value="{{tribe.slug}}"/>
-                <input type="submit" name="NOMARKUP" value="{% trans 'Submit Comment' %}"/>
-                <input type="submit" value="{% trans 'Preview Comment' %}" name="preview"/>
-            </div>
-        </form>
-    </td>
-    </tr>
+            <form method="POST" action="{% get_comment_url object %}">
+                <textarea id="id_comment" rows="14" cols="40" name="comment"></textarea>
+                <div class="form_block">
+                    <input type="hidden" name="next" value="{{ request.path }}" />
+                    <input type="hidden" name="tribe"/ value="{{ tribe.slug }}" />
+                    <input type="submit" name="NOMARKUP" value="{% trans 'Submit Comment' %}" />
+                    <input type="submit" value="{% trans 'Preview Comment' %}" name="preview" />
+                </div>
+            </form>
+        </td>
+        </tr>
     
     {% endif %}
     

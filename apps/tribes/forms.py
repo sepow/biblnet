@@ -51,6 +51,13 @@ class TopicForm(forms.ModelForm):
 from tribes.models import TribeMember, Tribe
 from django.contrib.auth.models import User
 
+class RemoveMemberForm(forms.Form):
+    
+    def __init__(self, tribe, user, *args, **kwargs):
+        super(RemoveMemberForm, self).__init__(*args, **kwargs)
+        self.tribe = tribe
+        self.user = user
+
 class AddMemberForm(forms.Form):
 
     user = forms.CharField(label=_(u"User"))

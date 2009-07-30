@@ -59,6 +59,9 @@ table {
 table th {
     text-align: left;
 }
+table td.icon {
+    width: 16px;
+}
 #header {
 	float:left;
 	width:100%;
@@ -361,7 +364,6 @@ table.profile_info th {
     text-align: left;
     padding: 5px;
     font-weight: bold;
-    width: 100px;
 }
 table.profile_info td {
     vertical-align: top;

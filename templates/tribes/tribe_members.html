@@ -26,16 +26,61 @@
         {% if user.is_authenticated %}
 
             {% if are_moderator or user.is_staff %}
-                <form class="uniForm" id="tribe_form" method="POST" action="">
-                    <fieldset class="inlineLabels">
-                        {{ tribe_form|as_uni_form }}
-                        <div class="form_block">
-                            <input type="hidden" name="action" value="add" />
-                            <input type="submit" value="{% trans 'Invite' %}"/>
-                        </div>
-                    </fieldset>
+                <fieldset>
+                <legend>
+                Search for members (kick/promote)
+                </legend>
+                <form method="GET" action="" >
+                    <input type="text" name="search_members" value="{{ search_terms }}" />
+                    <input type="submit" value="Search" />
+                    {% if search_terms %}
+                        <a href="{% clear_search_url request %}">Clear Search Terms</a>
+                    {% endif %}
                 </form>
+                </fieldset>
+                
+                <fieldset>
+                <legend>
+                Search for users (invite)
+                </legend>                
+                <form method="GET" action="">
+                    <input type="text" name="search_all" value="{{ search_terms_all }}" />
+                    <input type="submit" value="Search" />
+                    {% if search_terms %}
+                        <a href="{% clear_search_url request %}">Clear Search Terms</a>
+                    {% endif %}
+                </form>
+                </fieldset>
             {% endif %}
+
+
+
+
+{% if tribe_members %}
+{% for member in tribe_members %}
+{{member.user.get_profile.name}}
+<form method="GET" action="">
+    <input type="submit" value="kick" />
+    <input type="hidden" name ="kick" value="{{member.user.username}}" />
+</form>
+{% endfor %}
+{% endif %}
+
+{% if users %}
+
+{% for user in users %}
+{{user.get_profile.name}}
+<form method="GET" action="">
+    <input type="submit" value="invite" />
+    <input type="hidden" name="invite" value="{{user.username}}" />
+    <input type="checkbox" name="moderator" value="moderator" />Make moderator
+</form>
+{% endfor %}
+{% endif %}
+
+
+
+
 
             <table class="members">
                 {% for member in tribe.member_users.all %}

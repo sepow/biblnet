@@ -47,19 +47,23 @@
         <a href="{% url tweet_followers other_user %}">{% trans "Followers" %}</a>: {{ other_user.followers.count|default:"0" }}
         <a href="{% url tweet_following other_user %}">{% trans "Following" %}</a>: {{ other_user.followed.count|default:"0" }}
     </p>
-            
-            {% if not is_me %}
-                {# @@@ this could be done with ajax, or at the very least turned into an inclusion tag #}
-                <div>
-                    <form method="POST" action="{% url toggle_follow other_user %}">
-                        {% if is_following %}
-                            <input type="hidden" name="action" value="unfollow" /><input type="submit" value="{% trans "unfollow" %}"/>
-                        {% else %}
-                            <input type="hidden" name="action" value="follow" /><input type="submit" value="{% trans "follow tweets" %}"/>
-                        {% endif %}
-                    </form>
-                </div>
-            {% endif %}
+    {% if not is_me %}
+        {# @@@ this could be done with ajax, or at the very least turned into an inclusion tag #}
+        <div>
+            <form method="POST" action="{% url toggle_follow other_user %}">
+                {% if is_following %}
+                    <input type="hidden" name="action" value="unfollow" /><input type="submit" value="{% trans "unfollow" %}"/>
+                {% else %}
+                    <input type="hidden" name="action" value="follow" /><input type="submit" value="{% trans "follow tweets" %}"/>
+                {% endif %}
+            </form>
+        </div>
+    {% endif %}
+
+    {% if other_user.get_profile.about %}
+        <h2>{% trans "About" %}</h2>
+        <p>{{ other_user.get_profile.about|linebreaksbr }}</p>
+    {% endif %}
 
             {% include "profiles/profile_right_panel.html" %}
 

@@ -196,6 +196,7 @@ INSTALLED_APPS = (
     'schedule',
     'elsewhere',
     'compressor',
+    'django_extensions',
 )
 
 # Import sorl.thumbnail if it is available
