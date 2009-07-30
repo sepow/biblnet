@@ -69,6 +69,8 @@ class Profile(models.Model):
     reading_now = models.CharField(_('reading'), max_length=150, null=True, blank=True)
     listening_now = models.CharField(_('listening to'), max_length=150, null=True, blank=True)
 
+    def get_name(self):
+        return (self.nickname or self.name or self.user.username)
 
     def __unicode__(self):
         return self.user.username

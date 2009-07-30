@@ -2,7 +2,7 @@ from django import template
 from tribes.models import TribeMember
 from tribes.models import Tribe, Topic
 from threadedcomments.models import ThreadedComment
-from schedule.models import Calendar, Event
+from schedule.models import Calendar, Event, Occurrence
 
 register = template.Library()
 
@@ -34,7 +34,7 @@ register.inclusion_tag('threadedcomments/comments.html', takes_context=True)(com
 
 
 def get_tribe_from_object(obj):
-
+    print type(obj)
     if isinstance(obj, Tribe):
         return obj
     elif isinstance(obj, ThreadedComment):
@@ -43,10 +43,14 @@ def get_tribe_from_object(obj):
         return obj.tribe
     elif isinstance(obj, Event):
         return obj.calendar.calendarrelation_set.all()[0].content_object   
+    elif isinstance(obj, Occurrence):
+        return obj.event.calendar.calendarrelation_set.all()[0].content_object   
     elif isinstance(obj, Calendar):
         return obj.calendarrelation_set.all()[0].content_object   
     else: 
         return None
+
+register.simple_tag(get_tribe_from_object)
         
 def can_access(obj, user):
 

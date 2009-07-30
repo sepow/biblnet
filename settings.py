@@ -197,6 +197,7 @@ INSTALLED_APPS = (
     'elsewhere',
     'compressor',
     'django_extensions',
+    'south',
 )
 
 # Import sorl.thumbnail if it is available

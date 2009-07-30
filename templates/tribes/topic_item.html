@@ -9,7 +9,9 @@
     {% if topic.closed %}<img src="/site_media/images/sitegraphics/lock.png" alt="{% trans "Closed topic" %}" />{% endif %}
 </td>
 <td><a href="{{ topic.get_absolute_url }}">{{ topic.title }}</a></td>
-<td><a href="{{ topic.creator.get_profile.get_absolute_url }}">{% firstof topic.creator topic.creator.get_profile.name %}</a></td>
+<td><a href="{{ topic.creator.get_profile.get_absolute_url }}">
+{% firstof topic.creator.get_profile.nickname topic.creator.get_profile.name %}
+</a></td>
 <td>
         <div class="comment_stats">
             {{ topic.views }}

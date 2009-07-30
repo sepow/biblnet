@@ -87,7 +87,7 @@ def get_all_tribe_calendars(user, event_slice=5):
         pass
 
     return {
-    'events' : events
+    'events' : events,
     }
     
 register.inclusion_tag('sepow/get_tribe_calendar.html')(get_all_tribe_calendars)
