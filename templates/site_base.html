@@ -6,6 +6,7 @@
 {% load analytics %}
 {% load avatar_tags %}
 {% load cache %}
+{% load biblnet_tags%}
 
 {% block extra_head_base %}
 	{% load compress %}
@@ -122,11 +123,10 @@
 
 {% block calendar %}
     <div class="calendar">
-        {% trans "Your calendar" %}<br />
-{#      {% for events in calendar %} #}
-        {% trans "Event 1" %}<br />
-        {% trans "Event 2" %}<br />
-{#      {% endfor %} #}
+        {% if user.is_authenticated %}
+            Next events for all your tribes <br/><br/>
+            {% get_all_tribe_calendars request.user 5 %}
+        {% endif %}
     </div>
 {% endblock %}
 
