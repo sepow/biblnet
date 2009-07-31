@@ -93,13 +93,23 @@ def get_all_tribe_calendars(user, event_slice=5):
 register.inclusion_tag('sepow/get_tribe_calendar.html')(get_all_tribe_calendars)
 
 
-def get_latest():
+def get_latest(comments=2, topics=1, users=5):
     try:
-        latest_topic = Topic.objects.filter(tribe__private=False).order_by('-created')[0]
+        latest_topic = Topic.objects.filter(tribe__private=False).order_by('-created')[:topics]
     except IndexError:
         latest_topic = None
-    return {'latest_users' : User.objects.order_by('-profile__last_visit')[:5],
-            'latest_topic' : latest_topic
+
+    try:
+        # find the lates topic that's been modified in a public tribe' TODO Cache this?
+        last_modified = Topic.objects.filter(tribe__private=False).order_by('-modified')
+        latest_post = ThreadedComment.objects.filter(object_id__in=last_modified).order_by('-date_modified')[:comments]
+        
+    except IndexError:
+        latest_post = None
+
+    return {'latest_users' : User.objects.order_by('-profile__last_visit')[:users],
+            'latest_topics' : latest_topic,
+            'latest_posts'  : latest_post,
             }
     
 register.inclusion_tag('sepow/latest_updates.html')(get_latest)

@@ -6,11 +6,20 @@
         <a href="{% url profile_detail user.username %}" title="{{ user.username }}">{% avatar user 40 %}</a>
     {% endfor %}
 </div>
-
-{% if latest_topic %}
 <div id="dynamic_topics">
-    <p>
-        <a href="{% url profile_detail latest_topic.creator%}">{{ latest_topic.creator }}</a> {% trans "wrote" %}: <a href="{% url tribe_topic latest_topic.id%}">{{latest_topic}}</a>
-    </p>
-</div>
+{% if latest_topics %}
+	
+{% for latest_topic in latest_topics %}
+
+        <a href="{% url profile_detail latest_topic.creator%}">{{ latest_topic.creator.get_profile.get_name }}</a> {% trans "wrote" %}: <a href="{% url tribe_topic latest_topic.id%}">{{latest_topic}}</a>
+        <br/>
+{% endfor %}
+{% if latest_posts %}
+    {% for post in latest_posts %}
+
+            <a href="{% url profile_detail post.user %}">{{ post.user.get_profile.get_name }}</a> {% trans "replied to" %}: <a href="{% url tribe_topic post.get_content_object.id %}">{{post.get_content_object}}</a>
+    <br/>
+    {% endfor %}
 {% endif %}
+{% endif %}
+</div>
