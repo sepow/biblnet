@@ -1,62 +1,62 @@
 /**** DAILY VIEW ****/
 
 div.slot_column {
-  top:0px;
-  left:0px;
-  border:1px solid black;
-  border-right:none;
+    top: 0px;
+    left: 0px;
+    border: 1px solid black;
+    border-right: none;
 }
 
 div.slot {
-  position:absolute;
-  left:0px;
-  border-bottom:1px dotted grey;
+    position: absolute;
+    left: 1px;
+    border-bottom: 1px dotted grey;
 }
 
 div.occ_column {
-  position:absolute;
-  border:1px solid black;
-  top:0px;
+    position: absolute;
+    border: 1px solid black;
+    top: 0px;
 }
 
 div.occ {
-  position:absolute;
-  border:1px solid red;
-  background-color:#eee;
-  cursor:pointer;
-  overflow:hidden;
+    position: absolute;
+    border: 1px solid #0E3037;
+    background-color: #bdc9cf;
+    cursor: pointer;
+    overflow: hidden;
 }
 
 div.occ a:hover {
-    background-color:gray;
+/*    background-color: gray;*/
 }
 
 div.occ_column div.cancelled {
-  background-color:#FFF;
-  border:1px solid black;
-  color:gray;
+    background-color: #FFF;
+    border: 1px solid black;
+    color: gray;
 }
 
 div.occ_column div.cancelled .actions {
-  display:none;
+    display: none;
 }
 
 td.daynumber div.daycell .cancelled {
-  background-color:inherit;
-  color:gray;
+    background-color: inherit;
+    color: gray;
 }
 
 div.type0 {
-  border-bottom:4px dotted gray;
+    border-bottom: 2px dotted #0E3037;
 }
 
 div.type3 {
-  border-top:4px dotted gray;
+    border-top: 2px dotted #0E3037;
 }
 
 div.type2 {
-  border-top:4px dotted gray;
-  border-bottom:4px dotted gray;
+    border-top: 2px dotted #0E3037;
+    border-bottom: 2px dotted #0E3037;
 }
 
 /**** EVENT DETAIL DIALOG ****/
@@ -66,11 +66,11 @@ div.detail tr {vertical-align:top;}
 div.detail td.left {font-weight:bold;}
 
 div.event_options div.title {
-  float:left;
+    float:left;
 }
 
 div.event_options div.buttons {
-  float:right;
+    float:right;
 }
 
 div.occ span.actions {display:block;float:right;padding-right:3px;}
@@ -80,8 +80,7 @@ div.occ span.actions span.edit {padding-right:3px;}
 
 table.calendar {
 	border-collapse: separate;
-	border-spacing: 2px;
-  border:2px solid #f0f0f0;
+	border-spacing: 1px;
 }
 
 .dateheader {
@@ -94,8 +93,11 @@ table.calendar {
 	text-align: center
 }
 
+table.calendar th {
+    text-align: center;
+}
 table.calendar td {
-  text-align:left;
+    text-align: left;
 	margin: 2px;
 	padding: 1px;
 }
@@ -106,15 +108,15 @@ table.calendar td.daynumber {
 }
 
 table.calendar td.noday {
-	background-color: #eef
+	background-color: #0E3037
 }
 
 table.calendar td.free {
-	background-color: #c5dbff
+	background-color: #dfdfdf
 }
 
 table.calendar td.busy {
-	background-color: #ffcece
+	background-color: #bdc9cf
 }
 
 table.calendar td.small {
@@ -126,14 +128,14 @@ table.calendar td.small {
 td.daynumber { height:50px;}
 
 td.daynumber div.header {
-  margin-bottom:2px;
-  padding-bottom:1px;
-  padding-top:1px;
-  text-align:right;
+    margin-bottom:2px;
+    padding-bottom:1px;
+    padding-top:1px;
+    text-align:right;
 }
 
 td.daynumber div.header a {
-  padding:1px 5px 1px 90px;
+/*    padding:1px 5px 1px 90px;*/
 }
 
 td.small div.header a {
@@ -141,65 +143,74 @@ td.small div.header a {
 }
 
 td.daynumber div.eventcell {
-    background:#f0f0f0;
-    border:1px dotted grey;
-    clear:both;
-    cursor:pointer;
-    margin:0 1px 3px 1px;
-    overflow:auto;
+/*    background:#f0f0f0;*/
+    border:1px dotted #0E3037;
+    clear: both;
+    cursor: pointer;
+    margin: 0 1px 3px 1px;
+    overflow: hidden;
 }
 
 td.daynumber div.starttime {
-    float:left;
-    width:40px;
+    float: left;
+    width: 100%;
 }
 
 td.daynumber div.eventdesc {
-    float:left;
-    height:1em;
-    overflow:hidden;
-    width:75px;
+    float: left;
+    height: 1em;
+    overflow: hidden;
+    width: 100%;
 }
 
 /**** WEEK VIEW ****/
 
-div#week {
-  margin-top:10px;
-  overflow:auto;
-  position:relative;
-}
-
 div#week div.weekdayheader {
-  background:#D0D0D0 none repeat scroll 0 0;
-  border:1px solid black;
-  display:block;
-  display:block;
-  font-size:14px;
-  font-weight:bold;
-  padding-left:5px;
+/*    background: #D0D0D0 none repeat scroll 0 0;*/
+/*    border: 1px solid black;*/
+    display: block;
+    font-size: 90%;
+    font-weight: bold;
+/*    padding-left: 5px;*/
+    text-align: center;
 }
 
-div#week div.weekdaytable {position:relative;}
+div#week div.weekdaytable {
+    position: relative;
+}
 
 div#week div.weekday {
-  float:left;
-  width:150px;
+    float: left;
+    width: 70px;
 }
 
 div#week div.weekday1 {
-  width:230px;
+    width: 110px;
 }
-
+div#week div.weekday1 div.weekdayheader {
+    width: 70px;
+    margin-left: 40px;
+}
 div#week div.slot {
-  font-size:14px;
+    font-size: 14px;
 }
 
+div.weekday div.occ_column {
+    border-left: none;
+}
 div.weekday span.time {
-  display:none;
+    display: none;
 }
 
 div.weekday1 span.time {
-  display:inline;
+    display: inline;
+}
+
+div.weekday span.title {
+    display: none;
+}
+div.weekday div.slot a {
+    display: none;
 }
 
 #week div.occ span.title {font-size:12px;}
@@ -241,43 +252,49 @@ div.time-picker li.selected {
 /**** GENERAL SETTINGS ****/
 
 #demo {
-  border-color:#e0e0e0;
-  border-style:solid;
-  border-width: 0 3px 3px 0;
-  float:left;
-  padding-right:5px;
+    border-color:#e0e0e0;
+    border-style:solid;
+    border-width: 0 3px 3px 0;
+    float:left;
+    padding-right:5px;
 }
 
-body, td {font-family:sans-serif;}
+/*body, td {font-family:sans-serif;}*/
 
 .error {
-  border:1px solid red;
+    border:1px solid red;
 }
 
 #messages {
-  position:absolute;
-  top:50px;
+    position:absolute;
+    top:50px;
 }
 
-div.calendarname {
-  border-color:#e0e0e0;
-  border-style:solid;
-  border-width: 0 0px 3px 3px;
-  font-weight:bold;
-  padding-left:5px;
-  position:absolute;
-  right:10px;
-  top:10px;
+div.calendarname { /* Delete: Removed from templates */
+    border-color:#e0e0e0;
+    border-style:solid;
+    border-width: 0 0px 3px 3px;
+    font-weight:bold;
+    padding-left:5px;
+    position:absolute;
+    right:10px;
+    top:10px;
 }
 
 div.navigation {
-  text-align:center;
+    text-align:center;
 }
 
 div.navigation a {
-  padding:0 20px;
+    padding: 0 20px;
 }
 
 div.tablewrapper {
-    text-align:center;
+    text-align: center;
+}
+div.colwrapper {
+    position: relative;
+    width: 544px;
+    margin: 10px auto;
+    height: 700px;
 }

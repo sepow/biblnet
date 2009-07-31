@@ -14,13 +14,15 @@
 <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-ui.js"></script>
 <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.tooltip.js"></script>
 {% endblock %}
+
 {% block boxtab %}
     {% if calendar %}
         {% can_access calendar request.user %}
-    {% else %}{% if event %}
-        {% can_access event request.user %}
-    {% endif %}{% endif %}
-    
+    {% else %}
+        {% if event %}
+            {% can_access event request.user %}
+        {% endif %}
+    {% endif %}
 {{ block.super }}
 {% endblock boxtab %}
 
@@ -34,18 +36,18 @@
     {% endif %}{% endif %}
 {{ block.super }} &raquo; <a href="/tribes/">{% trans "Tribes" %}</a>{% if tribe %} &raquo; <a href="{{ tribe.get_absolute_url }}">{{ tribe.name }}</a>{% endif %}{% endblock %}
 
-
 {% block rtab_id %}id="schedule_tab"{% endblock %}
-
 
 {% block calendar %}
 
     {% if calendar %}
         {% can_access calendar request.user %}
         {% get_tribe_calendar tribe request.user %}
-    {% else %}{% if event %}
-        {% can_access event request.user %}
-        {% get_tribe_calendar tribe request.user %}
-    {% endif %}{% endif %}
+    {% else %}
+        {% if event %}
+            {% can_access event request.user %}
+            {% get_tribe_calendar tribe request.user %}
+        {% endif %}
+    {% endif %}
 
 {% endblock calendar %}

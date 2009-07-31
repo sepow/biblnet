@@ -3,10 +3,9 @@
 {% load condition_tag %}
 {% block body %}
 
-{% if_can_see_calendar calendar request.user%}
+{% if_can_see_calendar calendar request.user %}
 
-
-<a href={% url s_create_event %}>{% trans "Add" %}</a>
+<a href="{% url s_create_event %}">{% trans "Add" %}</a>
     <h1>
         <a href="{% url s_calendar_date calendar.slug periods.month.prev_month.year periods.month.prev_month.month %}"> &lt; </a>
 	{{periods.month.start|date:_("YEAR_MONTH_FORMAT")}}
@@ -46,5 +45,6 @@
         </tr>
     {% endfor %}
     </table>
-{%endif_can_see_calendar%}
+{% endif_can_see_calendar %}
+
 {% endblock %}

@@ -17,10 +17,11 @@
             <div class="avatar">
                 <img src="/site_media/{{ response.user.get_profile.affiliation.icon }}"  alt="{{ response.user.get_profile.affiliation }}" title="{{ response.user.get_profile.affiliation }}" />
                 <img src="/site_media/{{ response.user.get_profile.occupation.icon }}"  alt="{{ response.user.get_profile.occupation }}" title="{{ response.user.get_profile.occupation }}" /><br />
-                <a href="{% url profile_detail response.user.username %}">{% avatar response.user 60 %}</a></div>
+                <a href="{% url profile_detail response.user.username %}">{% avatar response.user 60 %}</a>
+            </div>
             <div class="created">
                 {{ response.date_submitted|date }} - {{ response.date_submitted|time }}<br />
-                {{ response.date_submitted|timesince }} {% trans "ago"%}<br />
+                {{ response.date_submitted|timesince }} {% trans "ago" %}<br />
                 <br />
                 <a href="{% url profile_detail response.user.username %}">{{ response.user }}</a>
             </div>
@@ -74,6 +75,10 @@
                     <img src="/site_media/{{ user.get_profile.affiliation.icon }}"  alt="{{ user.get_profile.affiliation }}" title="{{ user.get_profile.affiliation }}" />
                     <img src="/site_media/{{ user.get_profile.occupation.icon }}"  alt="{{ user.get_profile.occupation }}" title="{{ user.get_profile.occupation }}" /><br />
                     <a href="{% url profile_detail user %}">{% avatar user 60 %}</a><br />
+                </div>
+                <div class="created">
+                    {% now "N j, Y" %} - {% now "H:i" %}<br />
+                    0 {% trans "minutes ago"%}<br />
                     <br />
                     <a href="{% url profile_detail user %}">{{ user }}</a>
                 </div>

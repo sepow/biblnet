@@ -6,7 +6,9 @@
 {% load analytics %}
 {% load avatar_tags %}
 {% load cache %}
-{% load biblnet_tags%}
+
+{% load biblnet_tags %}
+
 
 {% block extra_head_base %}
 
@@ -53,10 +55,10 @@
     {% endif %}
 {% endblock %}
 
-
-
-
 {% block logo_link_image %}{% cache 60000000 biblnetbanner %}<a href="{% url home %}"><img src="{{ MEDIA_URL }}pinax/images/topbar.gif" alt="Biblnet Topbar"/></a>{% endcache %} {{ CAN_ADMIN }}{% endblock %}
+{% block dynamic_updates %}
+    {% get_latest %}
+{% endblock %}
 
 {% block boxtab %}
     <div id="boxtab">
