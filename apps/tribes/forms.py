@@ -47,6 +47,7 @@ class TribeUpdateForm(forms.ModelForm):
 
 
 class TopicForm(forms.ModelForm):
+    tags = TagField(widget=AutoCompleteTagInput(cls=Topic), required=False)
     class Meta:
         model = Topic
         fields = ('title', 'body', 'tags')
