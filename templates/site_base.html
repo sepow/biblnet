@@ -7,12 +7,14 @@
 {% load avatar_tags %}
 {% load cache %}
 
+{% load biblnet_tags %}
+
+
 {% block extra_head_base %}
-	{% load compress %}
-	{% compress css %}
+
     <link rel="stylesheet" href="{{ MEDIA_URL }}css/site_tabs.css" />
     <link rel="stylesheet" href="{{ MEDIA_URL }}pinax/css/topics.css" />
-    {% endcompress %}
+
     <script type="text/javascript" src="{{ MEDIA_URL }}pinax/js/topics.js"></script>
     {% block extra_head %}{% endblock %}
 {% endblock %}
@@ -53,10 +55,10 @@
     {% endif %}
 {% endblock %}
 
-
-
-
 {% block logo_link_image %}{% cache 60000000 biblnetbanner %}<a href="{% url home %}"><img src="{{ MEDIA_URL }}pinax/images/topbar.gif" alt="Biblnet Topbar"/></a>{% endcache %} {{ CAN_ADMIN }}{% endblock %}
+{% block dynamic_updates %}
+    {% get_latest %}
+{% endblock %}
 
 {% block boxtab %}
     <div id="boxtab">
@@ -122,11 +124,11 @@
 
 {% block calendar %}
     <div class="calendar">
-        {% trans "Your calendar" %}<br />
-{#      {% for events in calendar %} #}
-        {% trans "Event 1" %}<br />
-        {% trans "Event 2" %}<br />
-{#      {% endfor %} #}
+        {% if user.is_authenticated %}
+            
+            Next events for all your tribes <br/><br/>
+            {% get_all_tribe_calendars request.user 5 %}
+        {% endif %}
     </div>
 {% endblock %}
 

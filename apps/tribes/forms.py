@@ -1,10 +1,11 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
-
+from sepow.widgets import AutoCompleteTagInput
 from tribes.models import Tribe, Topic
+from tagging.forms import TagField
 
 class TribeForm(forms.ModelForm):
-    
+    tags = TagField(widget=AutoCompleteTagInput(cls=Tribe), required=False)
     slug = forms.SlugField(max_length=20,
         help_text = _("A short version of the name consisting only of letters (a-z), numbers, underscores and hyphens."),
         error_message = _("This value must contain only letters, numbers, underscores and hyphens."))
@@ -24,13 +25,14 @@ class TribeForm(forms.ModelForm):
     
     class Meta:
         model = Tribe
-        fields = ('name', 'slug', 'description', 'tags', 'private')
+        fields = ('name', 'slug', 'tags', 'description', 'private')
 
 
 # @@@ is this the right approach, to have two forms where creation and update fields differ?
 
 class TribeUpdateForm(forms.ModelForm):
-    
+
+    tags = TagField(widget=AutoCompleteTagInput(cls=Tribe), required=False)    
     def clean_name(self):
         if Tribe.objects.filter(name__iexact=self.cleaned_data["name"]).count() > 0:
             if self.cleaned_data["name"] == self.instance.name:
@@ -45,6 +47,7 @@ class TribeUpdateForm(forms.ModelForm):
 
 
 class TopicForm(forms.ModelForm):
+    tags = TagField(widget=AutoCompleteTagInput(cls=Topic), required=False)
     class Meta:
         model = Topic
         fields = ('title', 'body', 'tags')

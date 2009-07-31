@@ -155,13 +155,16 @@ def delete(request, slug, redirect_url=None):
     
     # @@@ eventually, we'll remove restriction that tribe.creator can't leave tribe but we'll still require tribe.member_users.all().count() == 1
     if request.user.is_authenticated() and request.method == "POST" and request.user == tribe.creator and tribe.member_users.all().count() == 1:
-        tribe.slug = u"%s%s" % ("deleted_", tribe.slug)
-        tribe.deleted = True
-        calendar = Calendar.objects.get_calendar_for_object(tribe)
-        calendar.delete()
-        tribe.save()
-        request.user.message_set.create(message="Tribe %s deleted." % tribe)
-        # @@@ no notification as the deleter must be the only member
+        from profiles.models import Affiliation
+        if not Affiliation.objects.filter(tribe=tribe):
+            tribe.slug = u"%s%s" % ("deleted_", tribe.slug)
+            tribe.deleted = True
+            calendar = Calendar.objects.get_calendar_for_object(tribe)
+            calendar.delete()
+            tribe.save()
+            request.user.message_set.create(message="Tribe %s deleted." % tribe)
+        
+        request.user.message_set.create(message="Tribe %s cannot be deleted. It is an Affiliation tribe" % tribe)
     
     return HttpResponseRedirect(redirect_url)
 
@@ -175,7 +178,6 @@ your_tribes = login_required(your_tribes)
 def tribe(request, slug, form_class=TribeUpdateForm,
         template_name="tribes/tribe.html"):
     tribe = get_object_or_404(Tribe, slug=slug)
-    
 
     if tribe.deleted:
         raise Http404

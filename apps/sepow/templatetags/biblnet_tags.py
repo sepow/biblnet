@@ -5,7 +5,8 @@ from tribes.models import TribeMember
 from threadedcomments.models import ThreadedComment
 from tribes.models import Topic
 from django.contrib.auth.models import User
-
+from schedule.utils import EventListManager
+from schedule.models import Calendar, Event
 register = template.Library()
 
 def has_member(tribe, user):
@@ -27,14 +28,7 @@ def new_since_last_visit(tribe, user):
         new_posts = 0        
         if modified_topics: 
             new_posts = ThreadedComment.objects.filter(object_id__in=modified_topics, date_modified__gte=since).count()
-        #for topic in modified_topics:
-        #    new_posts += ThreadedComment.objects.filter(date_modified__gte=since, object_id=topic.id).count() # user != user
-        
-    #if new_topics or new_posts:
-    #    changed = True
-    #else:
-    #    changed = False
-    
+
     changed = bool(new_topics or new_posts)
     return {
         'changed' : changed,
@@ -57,32 +51,65 @@ def visit_tribe(tribe, user):
 register.simple_tag(visit_tribe)
 
 import itertools 
-def get_tribe_calendar(tribe, user):
-    #from schedule.models import EventRelation
-    from schedule.models import Calendar
+def get_tribe_calendar(tribe, user, event_slice=5):
+    '''
+    Returns the next events for the user from one tribe. 
+    
+    Yields a itertools.islice
+    '''  
     events = None
     try:
         if has_member(tribe, user):
             calendar = Calendar.objects.get_calendar_for_object(tribe)
-            events = itertools.islice(calendar.occurrences_after(date=datetime.now()), 5)
-            #events = EventRelation.objects.get_events_for_object(tribe).filter(start__gte=datetime.now())[0:5]
+            events = itertools.islice(calendar.occurrences_after(date=datetime.now()), event_slice)
     except: 
         pass
-
+    #user.message_set.create(message="Type: %s" % type(events))   
     return {
     'events' : events
     }
     
 register.inclusion_tag('sepow/get_tribe_calendar.html')(get_tribe_calendar)
 
-
-def get_latest():
+def get_all_tribe_calendars(user, event_slice=5):
+    '''
+    Returns the users next events, gathered from all the tribes he is a member of. 
+    
+    Yields a itertools.islice
+    '''  
+    events = None
+    tribes = user.tribe_set.all()
+    
     try:
-        latest_topic = Topic.objects.filter(tribe__private=False).order_by('-created')[0]
+        events = Event.objects.filter(calendar__calendarrelation__object_id__in=tribes)
+        events = itertools.islice(EventListManager(events).occurrences_after(datetime.now()), event_slice)
+    except:
+        pass
+
+    return {
+    'events' : events,
+    }
+    
+register.inclusion_tag('sepow/get_tribe_calendar.html')(get_all_tribe_calendars)
+
+
+def get_latest(comments=2, topics=1, users=5):
+    try:
+        latest_topic = Topic.objects.filter(tribe__private=False).order_by('-created')[:topics]
     except IndexError:
         latest_topic = None
-    return {'latest_users' : User.objects.order_by('-profile__last_visit')[:5],
-            'latest_topic' : latest_topic
+
+    try:
+        # find the lates topic that's been modified in a public tribe' TODO Cache this?
+        last_modified = Topic.objects.filter(tribe__private=False).order_by('-modified')
+        latest_post = ThreadedComment.objects.filter(object_id__in=last_modified).order_by('-date_modified')[:comments]
+        
+    except IndexError:
+        latest_post = None
+
+    return {'latest_users' : User.objects.order_by('-profile__last_visit')[:users],
+            'latest_topics' : latest_topic,
+            'latest_posts'  : latest_post,
             }
     
 register.inclusion_tag('sepow/latest_updates.html')(get_latest)
