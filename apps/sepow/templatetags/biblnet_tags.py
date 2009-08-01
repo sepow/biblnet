@@ -115,3 +115,13 @@ def get_latest(comments=2, topics=1, users=5):
 register.inclusion_tag('sepow/latest_updates.html')(get_latest)
 
 
+@register.filter("truncate_chars")
+def truncate_chars(value, max_length):
+    if len(value) > max_length:
+        truncd_val = value[:max_length]
+        if value[max_length+1] != " ":
+            truncd_val = truncd_val[:truncd_val.rfind(" ")]
+        return  truncd_val + "..."
+    return value
+
+
