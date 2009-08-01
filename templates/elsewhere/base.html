@@ -9,7 +9,7 @@
 <h1>{% trans "Places to find you on the web" %}</h1>
 <h2>{% trans "Social Networks" %}</h2>
     <table class="tribes">
-        <tr class="even"><td></td><td>{% trans "Social network" %}</td><td>{% trans "Username" %}</td><td></td></tr>
+        <tr class="even"><td></td><td>{% trans "Social network" %}</td><td>{% trans "Username or id" %}</td><td></td></tr>
         {% for profile in request.user.social_network_profiles.all %}
             <tr class="{% cycle 'odd' 'even' as rowcolors %}">
                 <td class="icon"><img src="{{MEDIA_URL}}{{ profile.icon }}" alt="{{ profile.name }}" /></td>

@@ -31,7 +31,15 @@
     {% endif %}
     
 {% endblock %}
-{% block calendar%}
+{% load biblnet_tags %}
+{% block calendar %}
+    <div class="calendar">
+        {% if user.is_authenticated %}
+            
+            Next events for all your tribes <br/><br/>
+            {% get_all_tribe_calendars request.user 5 %}
+        {% endif %}
+    </div>
 {% endblock calendar%}
 
  {% block extra_body %}

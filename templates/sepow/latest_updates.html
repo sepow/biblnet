@@ -3,7 +3,7 @@
 
 <div id="dynamic_avatars">
     {% for user in latest_users %}
-        <a href="{% url profile_detail user.username %}" title="{{ user.username }}">{% avatar user 40 %}</a>
+        <a href="{% url profile_detail user.username %}" title="{{ user.get_profile.get_name }}">{% avatar user 40 %}</a>
     {% endfor %}
 </div>
 <div id="dynamic_topics">

@@ -3,6 +3,7 @@
 from south.db import db
 from django.db import models
 from profiles.models import *
+from tagging.forms import TagField
 
 class Migration:
     

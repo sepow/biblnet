@@ -51,9 +51,8 @@ def get_tribe_from_object(obj):
         return None
 
 register.simple_tag(get_tribe_from_object)
-        
-def can_access(obj, user):
 
+def can_access(obj, user):
     tribe = get_tribe_from_object(obj)
     data = {'can_access' : has_member(tribe, user)}
     if tribe:
