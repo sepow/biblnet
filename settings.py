@@ -25,7 +25,7 @@ AUTHENTICATION_BACKENDS = (
 
 
 ADMINS = (
-    # ('Your Name', 'your_email@domain.com'),
+    ('Sean Bendtsen Powell', 'BendtsenPowell@gmail.com'),
 )
 
 MANAGERS = ADMINS
@@ -230,7 +230,8 @@ NOTIFICATION_LANGUAGE_MODULE = 'account.Account'
 
 EMAIL_CONFIRMATION_DAYS = 2
 EMAIL_DEBUG = DEBUG
-CONTACT_EMAIL = "test@example.com"
+CONTACT_EMAIL = "BendtsenPowell@gmail.com"
+
 SITE_NAME = "Biblnet"
 LOGIN_URL = "/account/login"
 LOGIN_REDIRECT_URLNAME = "home"

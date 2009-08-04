@@ -9,7 +9,7 @@ from tagging.models import Tag
 class AutoCompleteTagInput(forms.Textarea):
     
     def __init__(self, attrs=None, cls=None):
-        attrs = {'cols': '20', 'rows': '10'}
+        attrs = {'cols': '10', 'rows': '30'}
         super(AutoCompleteTagInput, self).__init__(attrs)
         self.cls = cls
     
@@ -25,7 +25,7 @@ class AutoCompleteTagInput(forms.Textarea):
         )
     def render(self, name, value, attrs=None,):
         output = super(AutoCompleteTagInput, self).render(name, value, attrs)
-        page_tags = Tag.objects.usage_for_model(self.cls)
+        page_tags = Tag.objects.usage_for_model(self.cls, counts=True)
         tag_list = simplejson.dumps([tag.name for tag in page_tags],
                                     ensure_ascii=False)
         return output + mark_safe(u'''<script type="text/javascript">

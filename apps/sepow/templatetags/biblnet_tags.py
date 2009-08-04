@@ -107,7 +107,7 @@ def get_latest(comments=2, topics=1, users=5):
     except IndexError:
         latest_post = None
 
-    return {'latest_users' : User.objects.order_by('-profile__last_visit')[:users],
+    return {'latest_users' : User.objects.order_by('-profile__last_visit_storage')[:users].reverse(),
             'latest_topics' : latest_topic,
             'latest_posts'  : latest_post,
             }
