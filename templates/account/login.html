@@ -27,7 +27,7 @@
             </div>
         </fieldset>
     </form>
-    
+    {% comment %}
     {% if not openid %}
         <p>{% trans "Or sign in with your OpenID" %}:</p>
         {# @@@ why isn't this just does as a form object ? #}
@@ -53,6 +53,7 @@
             </fieldset>
         </form>
     {% endif %}
+    {% endcomment %}
     <p>{% blocktrans %}If you have any trouble logging in to your account, contact us at <a href="mailto:{{ contact_email }}">{{ contact_email }}</a>.{% endblocktrans %}</p>
 {% endblock %}
 
