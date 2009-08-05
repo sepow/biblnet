@@ -109,11 +109,8 @@
     {% if user.is_authenticated %}
         <div class="messages">
             <a href="{% url messages_inbox %}">{% trans "Private messages" %}{% if messages_inbox_count %} <b>({{ messages_inbox_count }})</b>{% endif %}</a><br />
-            <!--a href="{% url messages_outbox %}">{% trans "Sent" %}</a><br /-->
-            <!--a href="{% url messages_trash %}">{% trans "Trash" %}</a><br /-->
             <a href="{% url notification_notices %}">{% trans "Notices" %}{% if notice_unseen_count %} <b>({{ notice_unseen_count }})</b>{% endif %}</a><br />
-            <a href="{% url invitations %}">{% trans "Invitations" %}{% if invitations_count %} <b>({{ invitations_count }})</b>{% endif %}</a><br />
-            <!--a href="{% url invitations_contacts %}">{% trans "Contacts" %}</a-->
+
         </div>
     {% else %}
         <div class="messages">
