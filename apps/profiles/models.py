@@ -55,7 +55,7 @@ class Profile(models.Model):
     
     user = models.ForeignKey(User, unique=True, verbose_name=_('user'))
     name = models.CharField(_('name'), max_length=60, null=True)
-    nickname = models.CharField(_('nickname'), max_length=60, blank=True, null=True)
+    nickname = models.CharField(_('nickname'), max_length=36, blank=True, null=True)
     about = models.TextField(_('about'), null=True, blank=True)
     address = models.TextField(_('address'), max_length=600, null=True, blank=True)
     phone_number = models.CharField(_('phone number'), max_length=12, null=True, blank=True)

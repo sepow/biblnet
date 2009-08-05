@@ -10,7 +10,7 @@
 {% load wiki %}
 {% load voting_tags %} 
 {% load extra_voting_tags %}
-
+{% load condition_tag %}
 {% load in_filter %}
 {% load extra_tagging_tags %}
 
@@ -31,7 +31,9 @@
                 <th width="150px">{% trans "Created" %}</th>
             </tr>
             {% for tribe in tribe_tags %}
-                {% show_tribe tribe %}
+                {% if_can_see tribe%}
+                    {% show_tribe tribe %}
+                {% endif_can_see %}
             {% endfor %}
         </table>
     {% endif %}
@@ -42,7 +44,9 @@
         <table class="topics">
         <tr class="even"><th width="36px"></th><th>{% trans "Topic" %}</th><th width="15%">{% trans "Started by" %}</th><th class="comment_stats" width="10%">{% trans "Views" %}</th><th class="comment_stats" width="15%">{% trans "Replies" %}</th><th width="150px">{% trans "Latest reply" %}</th></tr>
         {% for topic in tribe_topic_tags %}
-            {% show_tribe_topic topic %}
+            {% if_can_see topic.tribe%}
+                {% show_tribe_topic topic %}
+            {% endif_can_see %}
         {% endfor %}
         </table>
     {% endif %}
@@ -52,7 +56,9 @@
     <h2>{% trans "Wiki Articles" %}</h2>
     <table class="topics">
         {% for article in wiki_article_tags %}
-            {% show_teaser article %}
+            {% if_can_see article.group%}
+                {% show_teaser article %}
+            {% endif_can_see %}
         {% endfor %}
     </table>
     {% endif %}
@@ -62,7 +68,9 @@
     <h2>{% trans "Documents" %}</h2>
     <dl>
         {% for document in document_tags %}
-           <a href="{% url document_view_document_detail document.tribe.slug document.slug %}">{{ document }} </a> in {{ document.tribe }}
+            {% if_can_see document.tribe %}
+                <a href="{% url document_view_document_detail document.tribe.slug document.slug %}">{{ document }} </a> in {{ document.tribe }}
+            {% endif_can_see %}
         {% endfor %}
     </dl>
     {% endif %}
