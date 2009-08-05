@@ -68,6 +68,8 @@ def has_member(tribe, user):
 
 def is_moderator(tribe, user):
     if user.is_authenticated():
+        if user.is_superuser:
+            return True
         is_in_group = TribeMember.objects.filter(tribe=tribe, user=user)
         if is_in_group:
             return is_in_group[0].moderator
