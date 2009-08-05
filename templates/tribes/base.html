@@ -8,11 +8,10 @@
 
 {% block breadcrumb %}{{ block.super }} &raquo; <a href="/tribes/">{% trans "Tribes" %}</a>{% if tribe %} &raquo; <a href="{{ tribe.get_absolute_url }}">{{ tribe.name }}</a>{% endif %}{% endblock %}
 
-{%block calendar%}
-{% if tribe %}
-<p><a href="{% url calendar_create_event tribe.slug %}">New event</a>  for <a href="{% url month_calendar tribe.slug %}">{{tribe}}</a></p> 
-{% get_tribe_calendar tribe request.user%}
-{%else%}
-You are previewing a post?.
-{% endif %}
-{% endblock calendar%}
+{% block calendar %}
+    {% if tribe %}
+        <div>{% trans "Next events for" %} <a href="{% url month_calendar tribe.slug %}">{{ tribe }}</a></div>
+        {% get_tribe_calendar tribe request.user %}
+        <p><a href="{% url calendar_create_event tribe.slug %}">{% trans "Add new event" %}</a></p> 
+    {% endif %}
+{% endblock calendar %}

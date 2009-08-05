@@ -8,11 +8,10 @@
 {% block group %}<li class="members_tab"><a href="{% url tribe_members group.slug  %}"><span>{% trans "Members" %}</span></a></li>{% endblock %}
 
 
-{%block calendar%}
- <p><a href="{% url calendar_create_event group.slug %}">New event</a>  for <a href="{% url month_calendar group.slug %}">{{group}}</a></p> 
- {% get_tribe_calendar group request.user%}
-
-{% endblock calendar%}
+{% block calendar %}
+    <p><a href="{% url calendar_create_event group.slug %}">{% trans "New event" %}</a></p>
+    {% get_tribe_calendar group request.user%}
+{% endblock calendar %}
 
 {% block breadcrumb %}{{ block.super }} &raquo; <a href="/tribes/">{% trans "Tribes" %}</a>{% if group %} &raquo; <a href="{{ group.get_absolute_url }}">{{ group.name }}</a>{% endif %}{% endblock %}
 

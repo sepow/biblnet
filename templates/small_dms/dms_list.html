@@ -1,11 +1,17 @@
 {% extends "small_dms/base.html" %}
 {% load already %}
 {% load dms %}
+{% load i18n %}
+
+{% block head_title %}{% blocktrans %}Docs for {{ tribe }}{% endblocktrans %}{% endblock %}
 
 {% block body %}
-<a href="{% url document_view_document_upload tribe.slug %}">Upload a document</a>
-<div class="document-list">
-{% include "django_dms/list.html" %}
+<h1>{% trans "Docs for" %} <a href="{% url tribe_detail tribe.slug %}">{{ tribe }}</a></h1>
 
+<a href="{% url document_view_document_upload tribe.slug %}">{% trans "Upload a document" %}</a>
+
+<div class="document-list">
+    {% include "django_dms/list.html" %}
 </div>
+
 {% endblock body %}
