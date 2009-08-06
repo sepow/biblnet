@@ -11,7 +11,7 @@
 
 {% block head_title %}{% blocktrans %}Tribes{% endblocktrans %}{% endblock %}
 
-{% block group %}<li class="members_tab"><a href="{% url tribe_list %}"><span>{% trans "Groups" %}</span></a></li>{% endblock %}
+{% block group %}<li class="members_tab"><a href="{% url tribe_list %}"><span>{% trans "Tribes" %}</span></a></li>{% endblock %}
 {% block boxtab_id %}id="members_tab"{% endblock %}
 
 
@@ -20,7 +20,7 @@
     
     <p>{% trans "A <b>tribe</b> is a group of people with some common interest." %}</p>
     {% if user.is_authenticated %}
-            <p><a href="create/">{% trans "Start your own tribe" %}</a></p>
+            <p><a href="create/">{% trans "Start a new tribe" %}</a></p>
 
     {% else %}
         {% url acct_signup as signup_url %}

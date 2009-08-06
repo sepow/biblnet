@@ -55,8 +55,9 @@
     $tpDiv.append($tpList);
     // Store element offset.
     var elmOffset = $(elm).offset();
+    var elmHeight = $(elm).height();
     // Append the timPicker to the body and position it.
-    $tpDiv.appendTo('body').css({'top':elmOffset.top, 'left':elmOffset.left}).hide();
+    $tpDiv.appendTo('body').css({'top':elmOffset.top+elmHeight*1.5, 'left':elmOffset.left}).hide();
     
     $("li", $tpList).unbind().mouseover(function() {
       $("li.selected", $tpDiv).removeClass("selected");  // TODO: only needs to run once.

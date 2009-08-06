@@ -26,6 +26,10 @@ class EventForm(SpanForm):
         model = Event
         exclude = ('creator', 'created_on', 'calendar')
         
+    def clean_end_recurring_period(self):
+        if self.cleaned_data['rule'] and not self.cleaned_data['end_recurring_period']:
+            raise forms.ValidationError(_("There must be an end date for recurring events"))
+        return self.cleaned_data['end_recurring_period']
 
 class OccurrenceForm(SpanForm):
     

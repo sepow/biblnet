@@ -144,11 +144,22 @@ td.small div.header a {
 
 td.daynumber div.eventcell {
 /*    background:#f0f0f0;*/
-    border:1px dotted #0E3037;
+    border: 1px solid #0E3037;
     clear: both;
     cursor: pointer;
-    margin: 0 1px 3px 1px;
+    margin: 0 1px 2px 1px;
+    padding: 3px;
     overflow: hidden;
+}
+td.daynumber div.eventcell0 {
+    border-bottom:1px dotted #0E3037;
+}
+td.daynumber div.eventcell2 {
+    border-top:1px dotted #0E3037;
+    border-bottom:1px dotted #0E3037;
+}
+td.daynumber div.eventcell3 {
+    border-top:1px dotted #0E3037;
 }
 
 td.daynumber div.starttime {

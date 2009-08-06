@@ -1,5 +1,10 @@
 {% load security_tag %}
+{% load i18n %}
+{% load scheduletags %}
+
 {% for event in events %}
-    {{ event.start }}<br/>
-    <a href="{% url event event.event.id %}">{{event.title}}</a><br/><br/>
+    <p>
+        <a href="{% url day_calendar event.event.calendar.slug %}{% querystring_for_date event.start 3 %}"><small>{{ event.start|date }} - {{ event.start|time }}</small></a><br/>
+        <a href="{% url event event.event.id %}">{{ event.title }}</a>
+    </p>
 {% endfor %}
