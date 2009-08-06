@@ -34,7 +34,6 @@ register.inclusion_tag('threadedcomments/comments.html', takes_context=True)(com
 
 
 def get_tribe_from_object(obj):
-    print type(obj)
     if isinstance(obj, Tribe):
         return obj
     elif isinstance(obj, ThreadedComment):
