@@ -21,9 +21,6 @@ class TopicIndex(indexes.SearchIndex):
     def get_query_set(self):
         "Used when the entire index for model is updated."
         return Topic.objects.filter(tribe__private=False)
-           
-    def should_update(self, instance):
-        return False
 
 site.register(Topic, TopicIndex)
 
