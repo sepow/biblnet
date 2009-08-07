@@ -48,7 +48,11 @@ img {
     vertical-align: middle;
 }
 img.captcha {
-    margin: 3px;
+    width: 60px;
+    height: 25px;
+    margin: 0;
+    margin-left: -60px;
+    padding-bottom: 7px;
 }
 table {
     width: 100%;
@@ -89,18 +93,18 @@ table td.icon {
 }
 #header div.dynamic_updates {
     float: right;
+    width: 348px;
 }
 #header div#dynamic_avatars {
-    position: relative;
-    right: 0px;
-/*    float: right;*/
-/*    clear: right;*/
+    width: 100%;
 }
 #header div#dynamic_topics {
-    position: relative;
-    right: 0px;
-/*    float: right;*/
-/*    clear: right;*/
+    width: 100%;
+    margin-top: 3px;
+}
+#header div.dynamic_line {
+    height: 1.1em;
+    overflow: hidden;
 }
 
 #colmask {
@@ -239,7 +243,7 @@ form th {
 }
 form.signup input[type="submit"], form.login input[type="submit"] {
     margin: 20px 0;
-    font-size: 14pt;
+/*    font-size: 14pt;*/
 }
 input[type="text"], input[type="password"], textarea {
     padding: 3px;
@@ -249,16 +253,9 @@ input[type="text"], input[type="password"], textarea {
     color: #0E3037;
 /*    font-size: 12pt;*/
     background: #F3F3F3 url('/site_media/pinax/images/form-shadow.png') left top repeat-x;
+    width: 45%;
 }
-/*
-input[type="submit"] {
-    background-color: #FFF0F5;
-    border: 1px solid #FF0000;
-    cursor: pointer;
-    color: #FF0000;
-    text-decoration: underline;
-}
-*/
+
 .clearboth {
     clear: both;
 }

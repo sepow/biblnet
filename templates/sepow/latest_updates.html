@@ -9,18 +9,17 @@
 </div>
 <div id="dynamic_topics">
 {% if latest_topics %}
-	
-{% for latest_topic in latest_topics %}
-
-        <a href="{% url profile_detail latest_topic.creator%}">{{ latest_topic.creator.get_profile.get_name }}</a> {% trans "wrote" %}: <a href="{% url tribe_topic latest_topic.id%}">{{latest_topic.title|truncate_chars:30}}</a>
-        <br/>
-{% endfor %}
-{% if latest_posts %}
-    {% for post in latest_posts %}
-
-            <a href="{% url profile_detail post.user %}">{{ post.user.get_profile.get_name }}</a> {% trans "replied to" %}: <a href="{% url tribe_topic post.get_content_object.id %}">{{post.get_content_object.title|truncate_chars:30}}</a>
-    <br/>
+    {% for latest_topic in latest_topics %}
+        <div class="dynamic_line"><small>{{ latest_topic.created|date }} {{ latest_topic.created|time }} {% trans "in" %} {{ latest_topic.tribe }}</small></div>
+        <div class="dynamic_line"><a href="{% url profile_detail latest_topic.creator%}">{{ latest_topic.creator.get_profile.get_name }}</a> {% trans "created" %}: <a href="{% url tribe_topic latest_topic.id%}">{{latest_topic.title|truncate_chars:30}}</a></div>
     {% endfor %}
 {% endif %}
+</div>
+<div id="dynamic_topics">
+{% if latest_posts %}
+    {% for post in latest_posts %}
+        <div class="dynamic_line"><small>{{ post.date_submitted|date }} {{ post.date_submitted|time }} {% trans "in" %} {{ post.content_object.tribe }}</small></div>
+        <div class="dynamic_line"><a href="{% url profile_detail post.user %}">{{ post.user.get_profile.get_name }}</a> {% trans "replied to" %}: <a href="{% url tribe_topic post.get_content_object.id %}">{{post.get_content_object.title|truncate_chars:30}}</a></div>
+    {% endfor %}
 {% endif %}
 </div>

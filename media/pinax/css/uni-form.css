@@ -130,4 +130,10 @@ YOU CAN VERY EASILY REVERT TO A GENERIC STYLE OF UNI-FORM. BEST OF LUCK...
 .uniForm #errorMsg{
     margin: 0.5em 0 1.5em 0;
 }
+.uniForm .inlineLabels textarea#id_tags {
+    height: 3em;
+}
+.uniForm .form_block {
+    margin: 20px 0;
+}
 /* Commented out "Color" in lines 47, 78 and 90 */
