@@ -1,0 +1,6 @@
+* * * * * /home/sepow/webapps/devdjango/pinax-env/biblnet/cron/send_mail.sh
+* * * * * /home/sepow/webapps/devdjango/pinax-env/biblnet/cron/emit_notices.sh
+
+
+0,20,40 * * * * /home/sepow/webapps/devdjango/pinax-env/biblnet/cron/retry_deferred.sh
+0,20,40 * * * * /home/sepow/webapps/devdjango/pinax-env/biblnet/cron/reindex.sh

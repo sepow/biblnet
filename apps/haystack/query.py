@@ -87,6 +87,7 @@ class SearchQuerySet(object):
         
         # Tell the query where to start from and how many we'd like.
         cache_length = len(self._result_cache)
+        self.query._reset()
         self.query.set_limits(cache_length, cache_length + ITERATOR_LOAD_PER_QUERY)
         results = self.query.get_results()
         
@@ -254,13 +255,10 @@ class SearchQuerySet(object):
         
         return clone
     
-    def boost(self, **kwargs):
+    def boost(self, term, boost):
         """Boosts a certain aspect of the query."""
         clone = self._clone()
-        
-        for field, boost_value in kwargs.items():
-            clone.query.add_boost(field, boost_value)
-        
+        clone.query.add_boost(term, boost)
         return clone
     
     def facet(self, field):

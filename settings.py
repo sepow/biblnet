@@ -25,7 +25,7 @@ AUTHENTICATION_BACKENDS = (
 
 
 ADMINS = (
-    # ('Your Name', 'your_email@domain.com'),
+    ('Sean Bendtsen Powell', 'BendtsenPowell@gmail.com'),
 )
 
 MANAGERS = ADMINS
@@ -129,8 +129,8 @@ COMBINED_INBOX_COUNT_SOURCES = (
 
 # Search 
 
-HAYSTACK_SEARCH_ENGINE = 'whoosh'
-HAYSTACK_WHOOSH_PATH = os.path.join(os.path.dirname(__file__), 'biblnet_index')
+HAYSTACK_SEARCH_ENGINE = 'dummy'
+#HAYSTACK_SITECONF = 'biblnet.search_sites'
 
 INSTALLED_APPS = (
     # included
@@ -230,7 +230,8 @@ NOTIFICATION_LANGUAGE_MODULE = 'account.Account'
 
 EMAIL_CONFIRMATION_DAYS = 2
 EMAIL_DEBUG = DEBUG
-CONTACT_EMAIL = "test@example.com"
+CONTACT_EMAIL = "BendtsenPowell@gmail.com"
+
 SITE_NAME = "Biblnet"
 LOGIN_URL = "/account/login"
 LOGIN_REDIRECT_URLNAME = "home"

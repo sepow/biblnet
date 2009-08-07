@@ -3,7 +3,7 @@ from django.db import models
 from django.utils.text import capfirst
 import haystack
 from haystack.query import SearchQuerySet
-from django.utils.translation import ugettext_lazy as _, ugettext
+
 
 def model_choices(site=None):
     if site is None:
@@ -14,7 +14,7 @@ def model_choices(site=None):
 
 
 class SearchForm(forms.Form):
-    q = forms.CharField(label=_(u"Query"), required=False)
+    q = forms.CharField(required=False)
     
     def __init__(self, *args, **kwargs):
         self.searchqueryset = kwargs.get('searchqueryset', None)

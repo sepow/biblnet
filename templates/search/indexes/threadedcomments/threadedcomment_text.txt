@@ -1,0 +1,7 @@
+{% load extra_tagging_tags %}
+
+
+Comment in the Topic: <a href="{{object.get_absolute_url}}">{{ object.title }}</a> <br/><br/>
+
+{{ object.comment|safe }}
+<p>{% show_tags_for object %}</p>

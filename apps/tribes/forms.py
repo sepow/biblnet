@@ -1,8 +1,9 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
-from sepow.widgets import AutoCompleteTagInput
 from tribes.models import Tribe, Topic
 from tagging.forms import TagField
+from sepow.widgets import AutoCompleteTagInput
+
 
 class TribeForm(forms.ModelForm):
     tags = TagField(widget=AutoCompleteTagInput(cls=Tribe), required=False)

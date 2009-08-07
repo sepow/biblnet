@@ -1,0 +1,8 @@
+{% load extra_tagging_tags %}
+
+
+Document: <a href="{% url document_view_document_detail object.tribe.slug object.slug%}">{{ object.title }}</a> <br/>
+
+{{ object.summary|safe }}
+
+<p>{% show_tags_for object %}</p>
