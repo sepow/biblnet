@@ -109,9 +109,6 @@ urlpatterns += patterns('',
     url('^bookmarks/friends_bookmarks/$', 'friends_app.views.friends_objects', kwargs=friends_bookmarks_kwargs, name="friends_bookmarks"),
 )
 
-import haystack
-
-haystack.autodiscover()
 
 
 

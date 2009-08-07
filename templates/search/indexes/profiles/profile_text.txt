@@ -1,0 +1,6 @@
+
+Topic: <a href="{{ object.get_absolute_url }}">{{ object.fullname }}</a> <br/>
+
+{{ object.name}}
+{{ object.address}}
+{{ object.about}}
