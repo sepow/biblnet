@@ -21,7 +21,6 @@ class TopicIndex(indexes.SearchIndex):
         "Used when the entire index for model is updated."
         return Topic.objects.filter(tribe__private=False)
 
-site.register(Topic, TopicIndex)
 site.register(Document)
 site.register(Article)
 site.register(Profile)
