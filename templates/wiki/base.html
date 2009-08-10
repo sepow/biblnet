@@ -1,5 +1,5 @@
 {% extends "site_base.html" %}
-
+{% load condition_tag %}
 {% load i18n %}
 {% load wikiurl %}
 {% load biblnet_tags %}
@@ -7,11 +7,17 @@
 {% block boxtab_id %}id="wiki_tab"{% endblock %}
 {% block group %}<li class="members_tab"><a href="{% url tribe_members group.slug  %}"><span>{% trans "Members" %}</span></a></li>{% endblock %}
 
-
-{% block calendar %}
-    <p><a href="{% url calendar_create_event group.slug %}">{% trans "New event" %}</a></p>
-    {% get_tribe_calendar group request.user%}
-{% endblock calendar %}
-
 {% block breadcrumb %}{{ block.super }} &raquo; <a href="/tribes/">{% trans "Tribes" %}</a>{% if group %} &raquo; <a href="{{ group.get_absolute_url }}">{{ group.name }}</a>{% endif %}{% endblock %}
+
+{% block calendarevents %}
+    {% if group %}
+        {% if_can_see group user %}
+            <div>{% trans "Next events for" %} <a href="{% url month_calendar group.slug %}">{{ group }}</a></div>
+            {% get_tribe_calendar group request.user %}
+            <p><a href="{% url calendar_create_event group.slug %}">{% trans "Add new event" %}</a></p>
+        {% else %}
+            <div>{% trans "This calendar is private" %}</div>
+        {% endif_can_see %}
+    {% endif %}
+{% endblock calendarevents %}
 

@@ -4,17 +4,16 @@
 
 {% block body %}
 
-{% if_can_see_calendar calendar request.user%}
-    <h2>{% trans "Create or change event" %}</h2>
-    <br/><br/>
+{% if_can_see_calendar calendar request.user %}
+    <h1>{% trans "Create or change event" %}</h1>
     <form action="" method="post">
-    <table>
-        {{ form.as_table }}
-    </table>
-    <br/>
-    <input type="submit" value="{% trans 'Save' %}">
-    <input type="button" value="{% trans 'Cancel' %}" onclick="window.location='{{ next }}'"/>
-    <input type="hidden" name="next" value="{{ next|default:'' }}"/>
+        <table>
+            {{ form.as_table }}
+        </table>
+        <br/>
+        <input type="submit" value="{% trans 'Save' %}">
+        <input type="button" value="{% trans 'Cancel' %}" onclick="window.location='{{ next }}'"/>
+        <input type="hidden" name="next" value="{{ next|default:'' }}"/>
     </form>
 {% endif_can_see_calendar %}
 

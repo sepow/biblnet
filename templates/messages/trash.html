@@ -4,7 +4,7 @@
 {% load timezone_filters %}
 
 {% block body %} 
-<h2>{% trans "Deleted Messages" %}</h2>
+<h1>{% trans "Deleted Messages" %}</h1>
 
 <a href="{% url messages_inbox %}">{% trans "Inbox" %}</a><br />
 <a href="{% url messages_outbox %}">{% trans "Sent Messages" %}</a><br />

@@ -4,12 +4,12 @@
 {% load timezone_filters %}
 
 {% block body %}
-<h2>{% trans "Inbox" %}</h2>
+<h1>{% trans "Inbox" %}</h1>
 
 <a href="{% url messages_outbox %}">{% trans "Sent Messages" %}</a><br />
 <a href="{% url messages_trash %}">{% trans "Deleted Messages" %}</a><br />
 <br />
-<a href="{% url messages_compose %} ">{% trans "Compose New Message" %}</a>
+<a href="{% url messages_compose %}">{% trans "Compose New Message" %}</a>
 
 <table class="messages">
     <thead>

@@ -44,7 +44,7 @@
       .uniForm .blockLabels textarea{ width: 53%; /* <- Required property */ height: 12em; }
 
       .uniForm .formHint,
-      .uniForm .blockLabels .formHint{ width: 45%; /* <- Required property */ font-size: .9em; /*color: #777;*/ position: relative; top: -.5em; } /*** Changed - see bottom of page ***/
+      .uniForm .blockLabels .formHint{ width: 45%; /* <- Required property */ font-size: .9em; /*color: #777;*/ position: relative; top: -.5em; } /*** Changed: Commented out "Color" ***/
       
       .uniForm .multiField,
       .uniForm .blockLabels .multiField{ width: 53%; }
@@ -65,7 +65,7 @@
     .uniForm .inlineLabels .ctrlHolder{}
     
     .uniForm .inlineLabels label,
-    .uniForm .inlineLabels .label{ width: 45%; /* <- Required property */ margin: .3em 2% 0 0; /* <- Required property */ }
+    .uniForm .inlineLabels .label{ width: 45%; /* <- Required property */ margin: .5em 2% 0 0; /* <- Required property */ }
     
     .uniForm .inlineLabels .textInput,
     .uniForm .inlineLabels .fileUpload{ width: 45%; /* <- Required property */ }
@@ -75,7 +75,7 @@
     
     .uniForm .inlineLabels textarea{  width: 45%; /* <- Required property */ height: 12em; }
 
-    .uniForm .inlineLabels .formHint{ margin-top: 0; margin-left: 47%; font-size: .9em; /*color: #777;*/ position: static; } /*** Changed - see bottom of page ***/
+    .uniForm .inlineLabels .formHint{ margin-top: 0; margin-left: 47%; font-size: .9em; /*color: #777;*/ position: static; } /*** Changed: Commented out "Color" ***/
     
     .uniForm .inlineLabels .multiField{ width: 45%; /* <- Required property */ margin: 0 0 .3em 0; }
       .uniForm .inlineLabels .multiField .inlineLabel{ display: block; margin: 0 0 .5em 0; }
@@ -87,7 +87,7 @@
 /* Focus pseudoclasses */
 .uniForm .ctrlHolder .textInput:focus{ outline: none; /* Get rid of the 'glow' effect in WebKit, optional */ }
 .uniForm .ctrlHolder textarea:focus{ outline: none; /* Get rid of the 'glow' effect in WebKit, optional */ }
-.uniForm div.focused .formHint{ /*color: #333;*/ } /*** Changed - see bottom of page ***/
+.uniForm div.focused .formHint{ /*color: #333;*/ } /*** Changed: Commented out "Color" ***/
 
 /* Columns (they are floated left by default) */
 .uniForm .col{ width: 47.9%; /* <- Required property */ margin: 0 2% 20px 0; }
@@ -119,13 +119,21 @@ YOU CAN VERY EASILY REVERT TO A GENERIC STYLE OF UNI-FORM. BEST OF LUCK...
 /*.uniForm {
     margin: 0.5em 0;
 }*/
-
+.uniForm .ctrlHolder{
+    border-bottom: none;
+}
 .uniForm .focused {
     background: #0E3037;
     color: #DFDFDF;
 }
-.uniForm .ctrlHolder{
-    border-bottom: none;
+.uniForm .inlineLabels .textInput,
+.uniForm .inlineLabels .fileUpload,
+.uniForm .inlineLabels .selectInput,
+.uniForm .inlineLabels select,
+.uniForm .inlineLabels textarea
+{
+    margin: 3px;
+    background: #F3F3F3 url('/site_media/pinax/images/form-shadow.png') left top repeat-x;
 }
 .uniForm #errorMsg{
     margin: 0.5em 0 1.5em 0;
@@ -136,4 +144,3 @@ YOU CAN VERY EASILY REVERT TO A GENERIC STYLE OF UNI-FORM. BEST OF LUCK...
 .uniForm .form_block {
     margin: 20px 0;
 }
-/* Commented out "Color" in lines 47, 78 and 90 */
