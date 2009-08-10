@@ -1,8 +1,9 @@
+#-*- coding:utf-8 -*-
 from haystack.sites import site
 from haystack import indexes
 from tribes.models import Topic, Tribe
 from profiles.models import Profile
-from tagging.models import Tag
+
 from django_dms.apps.small_dms.models import Document
 from wiki.models import Article
 from threadedcomments.models import ThreadedComment
@@ -21,6 +22,12 @@ class TopicIndex(indexes.SearchIndex):
         "Used when the entire index for model is updated."
         return Topic.objects.filter(tribe__private=False)
 
+    def should_update(self):
+        # opdater if editet er blvet changed indenfor 5 secs. 
+        return True
+        
+site.register(Topic)
+site.register(Tribe)
 site.register(Document)
 site.register(Article)
 site.register(Profile)

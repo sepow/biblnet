@@ -228,7 +228,10 @@ class ThreadedComment(models.Model):
         verbose_name = _("Threaded Comment")
         verbose_name_plural = _("Threaded Comments")
         get_latest_by = "date_submitted"
-
+    
+    def get_absolute_url(self):
+        return ("tribe_topic", [self.get_content_object().pk])
+    get_absolute_url = models.permalink(get_absolute_url)
     
 class FreeThreadedComment(models.Model):
     """

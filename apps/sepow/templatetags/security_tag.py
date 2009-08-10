@@ -1,8 +1,11 @@
 from django import template
+from apps.wiki.models import Article
 from tribes.models import TribeMember
 from tribes.models import Tribe, Topic
 from threadedcomments.models import ThreadedComment
+from django_dms.apps.small_dms.models import Document
 from schedule.models import Calendar, Event, Occurrence
+
 
 register = template.Library()
 
@@ -34,10 +37,13 @@ register.inclusion_tag('threadedcomments/comments.html', takes_context=True)(com
 
 
 def get_tribe_from_object(obj):
+    # print "object: ", obj
     if isinstance(obj, Tribe):
         return obj
     elif isinstance(obj, ThreadedComment):
-        return obj.get_content_object # HUR?
+        return obj.get_content_object().tribe
+    elif isinstance(obj, Document):
+        return obj.tribe
     elif isinstance(obj, Topic):
         return obj.tribe
     elif isinstance(obj, Event):
@@ -46,6 +52,8 @@ def get_tribe_from_object(obj):
         return obj.event.calendar.calendarrelation_set.all()[0].content_object   
     elif isinstance(obj, Calendar):
         return obj.calendarrelation_set.all()[0].content_object   
+    elif isinstance(obj, Article):
+        return obj.group
     else: 
         return None
 
@@ -70,8 +78,12 @@ class CanAccessNode(template.Node):
             actual_user = self.user.resolve(context)
             
             tribe = get_tribe_from_object(actual_obj)
-            user_can_access = bool(can_access(tribe, actual_user))
+            user_can_access = False
             
+            if tribe:
+                user_can_access = (has_member(tribe, actual_user) or not tribe.private)
+            # print "Tribe: ", tribe
+            # print "Can access?: ", user_can_access
             context['tribe'] = tribe
             context['has_access'] = user_can_access
             
@@ -80,6 +92,15 @@ class CanAccessNode(template.Node):
         return ''
 
 def do_can_access(parser, token):
+    ''' 
+    Takes an object and a user, and determins if the object belongs to a tribe
+    and if so, if the user can access this object/tribe
+    
+    returns:
+    
+    'tribe' which is the tribe or None
+    'has_access' which is a bool determining if the object should be shown. 
+    '''
     try:
         # split_contents() knows not to split quoted strings.
         tag_name, obj, user = token.split_contents()

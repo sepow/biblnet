@@ -3,6 +3,7 @@ from django_dms.apps.small_dms.models import Document
 from django.db import models
 from django.contrib.humanize.templatetags.humanize import naturalday
 
+
 class DocumentView(DocumentView):
 
     list_display = ['summary']

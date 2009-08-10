@@ -289,13 +289,15 @@ def check_edit_permission(ob, user):
         return user.is_authenticated()    
    
     #edit v 
-    tribe = ob.calendar.calendarrelation_set.all()[0].content_object
-    from tribes.models import TribeMember
-    if user.is_authenticated():
-        if TribeMember.objects.filter(tribe=tribe, user=user).count() > 0:
-            return True
-    return False
-    
+    try:
+        tribe = ob.calendar.calendarrelation_set.all()[0].content_object
+        from tribes.models import TribeMember
+        if user.is_authenticated():
+            if TribeMember.objects.filter(tribe=tribe, user=user)[0].modetator:
+                return True
+    except:
+        return user.id == ob.creator.id
+        
 CHECK_PERMISSION_FUNC = check_edit_permission
 
 
