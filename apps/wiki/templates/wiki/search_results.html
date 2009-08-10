@@ -1,0 +1,49 @@
+{% extends 'wiki/base.html' %}
+{% load i18n %}
+
+
+{% block title %}
+    {% trans "Search" %}
+{% endblock %}
+
+{% block searchbox %}{% endblock %}
+
+{% block content %}
+	<h1>{% trans "Search" %}</h1>
+    {% if search_term %}<p>You searched for {{ search_term }}.</p>{% endif %}
+
+    <form method="get" action="{% url wiki_search %}">
+        {% for field in search_form %}{{ field.errors }}{% endfor %}
+        <p>
+            {% for field in search_form %}{{ field.label }}&nbsp;{{ field }}&nbsp;&nbsp;{% endfor %}
+            <input type="submit" value="{% trans "Go" %}" accesskey="g">
+        </p>
+    </form>
+
+	{% if article_by_title %}
+        <h2>{% trans "Matches by title" %}</h2>
+		<ul>
+			<li>
+                <a href="{% url wiki_article article_by_title.title %}">{{ article_by_title.title }}</a>
+                {% if article_by_title.summary %}
+                    <blockquote>{{ article_by_title.summary }}</blockquote>
+                {% endif %}
+            </li>
+		</ul>
+    {% endif %}
+	{% if articles_by_content %}
+        <h2>{% trans "Matches by content/summary" %}</h2>
+		<ul>
+			{% for article in articles_by_content %}
+				<li>
+                    <a href="{% url wiki_article article.title %}">{{ article.title }}</a>
+                    {% if article.summary %}
+                        <blockquote>{{ article.summary }}</blockquote>
+                    {% endif %}
+            </li>
+			{% endfor %}
+		</ul>
+	{% else %}
+        {% if search_term %}<h2>{% trans "No results." %}</h2>{% endif %}
+	{% endif %}
+{% endblock %}

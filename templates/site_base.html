@@ -5,7 +5,6 @@
 {% load svn_app_version %}
 {% load analytics %}
 {% load avatar_tags %}
-{% load cache %}
 
 {% load biblnet_tags %}
 
@@ -34,11 +33,13 @@
 
         <p>
             {% if user.tribe_set.all %}
+            {% cache 600 request.user %}
                 {% for tribe in user.tribe_set.all %}
                     {% if not tribe.deleted %}
                         <img src="{{ MEDIA_URL }}images/sitegraphics/group.png" alt="{% trans 'Tribe' %}" /> <a href="{% url tribe_detail tribe.slug %}">{{ tribe.name }}</a><br />
                     {% endif %}
                 {% endfor %}
+            {% endcache %}
             {% else %}
                 {% url tribe_list as tribe_url %}
                 <p>{% blocktrans %}You are not yet a member of any <a href="{{ tribe_url }}">tribes</a>.{% endblocktrans %}</p>

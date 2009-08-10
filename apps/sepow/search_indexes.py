@@ -26,8 +26,8 @@ class TopicIndex(indexes.SearchIndex):
         # opdater if editet er blvet changed indenfor 5 secs. 
         return True
         
-site.register(Topic)
-site.register(Tribe)
+#site.register(Topic)
+#site.register(Tribe)
 site.register(Document)
 site.register(Article)
 site.register(Profile)
