@@ -4,24 +4,24 @@ html {
 
 body {
 	margin: 0px auto;
-	padding:0px;
-	width:100%;
-	background:#98aaae;
-	min-width:974px;		/* Minimum width of layout - remove line if not required */
+	padding: 0px;
+	width: 100%;
+	background: #98aaae;
+	min-width: 974px;		/* Minimum width of layout - remove line if not required */
 					/* The min-width property does not work in old versions of Internet Explorer */
 	max-width: 1224px;
-	font-size:90%;
+	font-size: 90%;
 	font-family: tahoma, arial, helvetica, trebuchet ms, arial narrow;
-	color:#0E3037;
+	color: #0E3037;
 }
 
 a, a:visited {
-	color:#0E3037;
+	color: #0E3037;
 }
 
 a:hover {
-	color:#369;
-/*	background:#369;*/
+	color: #369;
+/*	background: #369;*/
 	text-decoration: underline;
 }
 
@@ -32,10 +32,10 @@ h1, h2, h3 {
 }
 
 p {
-	margin:0;
-	padding:.4em 0 .8em 0;
-/*	margin:.4em 0 .8em 0;*/
-/*	padding:0;*/
+	margin: 0;
+	padding: .4em 0 .8em 0;
+/*	margin: .4em 0 .8em 0;*/
+/*	padding: 0;*/
 }
 ul {
 	margin:0;
@@ -67,26 +67,26 @@ table td.icon {
     width: 16px;
 }
 #header {
-/*	float:left;*/
-	width:100%;
-	padding:0;
-	margin:0;
-/*	border-bottom:1px solid #000;*/
+/*	float: left;*/
+	width: 100%;
+	padding: 0;
+	margin: 0;
+/*	border-bottom: 1px solid #000;*/
 }
 
 #header p {
-	padding:.5em 15px .2em 15px;
-	margin:0;
+	padding: .5em 15px .2em 15px;
+	margin: 0;
 }
 
 #header h1  {
-	padding:.2em 15px;
-	margin:0;
+	padding: .2em 15px;
+	margin: 0;
 }
 
 #header h2  {
-	padding:.2em 15px .7em 15px;
-	margin:0;
+	padding: .2em 15px .7em 15px;
+	margin: 0;
 }
 #header div.logo {
     float: left;
@@ -95,12 +95,18 @@ table td.icon {
     float: right;
     width: 348px;
 }
+#header div.dynamic_updates, #header div.dynamic_updates a {
+/*    font-family: Futura;*/
+    color: #e8e5d6;
+}
 #header div#dynamic_avatars {
     width: 100%;
+    text-align: right;
 }
 #header div#dynamic_topics {
     width: 100%;
     margin-top: 3px;
+    text-align: right;
 }
 #header div.dynamic_line {
     height: 1.1em;
@@ -108,36 +114,36 @@ table td.icon {
 }
 
 #colmask {
-	position:relative;	/* This fixes the IE7 overflow hidden bug and stops the layout jumping out of place */
-	clear:both;
-	float:left;
-	width:100%;			/* width of whole page */
-	overflow:hidden;		/* This chops off any overhanging divs */
-/*	background:#ffd8b7;*/		/* Left column background colour */
+	position: relative;	/* This fixes the IE7 overflow hidden bug and stops the layout jumping out of place */
+	clear: both;
+	float: left;
+	width: 100%;			/* width of whole page */
+	overflow: hidden;		/* This chops off any overhanging divs */
+/*	background: #ffd8b7;*/		/* Left column background colour */
 }
 
 #colmid {
-	float:left;
-	width:200%;
-	position:relative;
-	left:200px;
-/*	background:#fff;*/    	/* Centre column background colour */
+	float: left;
+	width: 200%;
+	position: relative;
+	left: 200px;
+/*	background: #fff;*/    	/* Centre column background colour */
 }
 
 #colright {
-	float:left;
-	width:100%;
-	position:relative;
-	left:50%;
-	margin-left:-400px;
-/*	background:#ff9;*/    	/* Right column background colour */
+	float: left;
+	width: 100%;
+	position: relative;
+	left: 50%;
+	margin-left: -400px;
+/*	background: #ff9;*/    	/* Right column background colour */
 }
 
 #col1wrap {
-	float:right;
-	width:50%;
-	position:relative;
-	right:100%;
+	float: right;
+	width: 50%;
+	position: relative;
+	right: 100%;
 }
 
 #col1pad {
@@ -173,17 +179,22 @@ table td.icon {
 .columntop {
 	margin-top: 10px;
 	height: 15px;
-	background-image:url(images/sitegraphics/coltop.gif);
+	background-image: url('images/sitegraphics/coltop.gif');
 }
-
 .columnmid {
-	background-image:url(images/sitegraphics/colbackground.gif);
+    background: #bdc9cf url('images/sitegraphics/colbackground.gif') repeat-y;
 	padding: 5px;
 }
-
 .columnbottom {
 	height: 15px;
-	background-image:url(images/sitegraphics/colbottom.gif);
+	background-image: url('images/sitegraphics/colbottom.gif');
+}
+p.blocktitle {
+    font-size: 75%;
+    margin: 0;
+    padding: 1px;
+    text-align: center;
+/*    color: #bdc9cf;*/
 }
 
 #content {

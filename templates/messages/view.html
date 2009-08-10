@@ -7,7 +7,7 @@
 {% block breadcrumb %}{{ block.super }} &raquo; <a href="{% url messages_inbox %} ">{% trans "Inbox" %}</a>{% endblock %}
 
 {% block body %}
-    <h2>{% trans "View Message" %}</h2>
+    <h1>{% trans "View Message" %}</h1>
     
     <table class="messages">
         <tr class="even"><td class="view">{% trans "Sender" %}:</td><td><a href="{% url profile_detail message.sender %}">{{ message.sender }}</a></td><td></td></tr>

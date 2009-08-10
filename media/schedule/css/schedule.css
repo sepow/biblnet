@@ -292,11 +292,11 @@ div.calendarname { /* Delete: Removed from templates */
     top:10px;
 }
 
-div.navigation {
+div.cal_navigation {
     text-align:center;
 }
 
-div.navigation a {
+div.cal_navigation a {
     padding: 0 20px;
 }
 

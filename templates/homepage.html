@@ -11,7 +11,7 @@
 	<h1>{% trans "Welcome to Biblnet.dk!" %}</h1>
 
     {% if user.is_authenticated %}
-        <p>{% trans "You last visited us " %}{{ user.get_profile.last_visit|timesince }} {% trans "ago" %}</p>
+        <p>{% trans "You last visited us" %} {{ user.get_profile.last_visit|timesince }} {% trans "ago" %}</p>
 
         <h2>{% trans "New posts since your last login" %}</h2>
 
@@ -44,7 +44,7 @@
     	{% blocktrans %}
         	<p>Biblnet is a forum for people with an interest in Library and Information Science.</p>
         	<p>All members can join in on the debates on the Message Boards and contribute to the creation of knowledge in the Wikis and in the Knowledge Bank.</p>
-            <h3><a href="{{ login_url }}">Log in</a> or <a href="{{ signup_url }}">sign up</a> to get started.</h3>
+            <h3><a href="{{ login_url }}">Log in</a> or <a href="{{ signup_url }}">Sign up</a> to get started.</h3>
     	{% endblocktrans %}
 
    {% endif %}

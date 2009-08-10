@@ -6,7 +6,7 @@
 {% block body %}
 
 {% if_can_see_calendar calendar request.user%}
-    <div class="navigation">
+    <div class="cal_navigation">
         <a href="{% url month_calendar calendar.slug %}{% querystring_for_date periods.month.start 2 %}">{% trans "Monthly Calendar" %}</a>
         <a href="{% url year_calendar calendar.slug %}{% querystring_for_date periods.month.start 1 %}">{% trans "Full Year Calendar" %}</a>
     </div>
