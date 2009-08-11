@@ -6,7 +6,7 @@ table.topic th, table.topics th {
 	text-align:left;
     padding: 5px;
     font-weight: bold;
-    font-size:90%;
+    font-size: 90%;
 }
 table.topic td, table.topics td {
     padding: 5px;
@@ -86,11 +86,14 @@ div.delete {
 
 td#commentHolder {
     margin: 0;
-    padding: 5px 15px 5px 0;
+    padding: 5px 10px 5px 0;
 }
 textarea#id_comment {
     margin: 0;
     margin-bottom: 0.5em;
-    padding: 0.4em 4px 0.8em 4px;
+    padding: 0.4em 0 0.8em 5px;
     width: 100%;
+    border: none;
+    font-family: tahoma,arial,helvetica,trebuchet ms,arial narrow;
+    font-size: 100%;
 }

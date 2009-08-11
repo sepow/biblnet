@@ -91,6 +91,7 @@
                 {% url tribe_list as tribe_url %}
                 <p>{% blocktrans %}You are not yet a member of any <a href="{{ tribe_url }}">tribes</a>.{% endblocktrans %}</p>
             {% endif %}
+                <br/><img src="{{ MEDIA_URL }}images/sitegraphics/group_add.png" alt="{% trans 'Tribe' %}" /> <a href="/tribes/create/">{% trans "Start a new tribe" %}</a>
         </div>
         <div class="columnbottom">&nbsp;</div>
     {% endif %}
@@ -102,9 +103,9 @@
         <div class="columnmid">
         	<div class="navigation">
                     <img src="{{ MEDIA_URL }}images/sitegraphics/group.png" alt="{% trans 'Tribe' %}" /> <a href="{% url tribe_list %}">{% trans "All tribes" %}</a><br/>
-                    <img src="{{ MEDIA_URL }}images/sitegraphics/group.png" alt="{% trans 'Tribe' %}" /> <a href="/tribes/create/">{% trans "Start a new tribe" %}</a><br/>
-                    <img src="{{ MEDIA_URL }}images/sitegraphics/group.png" alt="{% trans 'Members' %}" /> <a href="/profiles/">{% trans "Members" %}</a><br/>
-                    <img src="{{ MEDIA_URL }}images/sitegraphics/group.png" alt="{% trans 'Docs' %}" /> <a href="/dms/">{% trans "Docs" %}</a>
+                    <img src="{{ MEDIA_URL }}images/sitegraphics/user.png" alt="{% trans 'Members' %}" /> <a href="/profiles/">{% trans "All members" %}</a><br/>
+                    <img src="{{ MEDIA_URL }}images/sitegraphics/book_open.png" alt="{% trans 'Knowledge Bank' %}" /> <a href="/dms/">{% trans "Knowledge Bank" %}</a><br/>
+                    <!--img src="{{ MEDIA_URL }}images/sitegraphics/tag_blue.png" alt="{% trans 'Tags' %}" /> <a href="/tags/">{% trans "Tags" %}</a><br/-->
             </div>
         </div>
         <div class="columnbottom">&nbsp;</div>
@@ -115,15 +116,17 @@
     <div class="columntop"><p class="blocktitle">{% trans "Search" %}</p></div>
     <div class="columnmid">
         <div class="search">
-            <form action="/search/" method="get" name="search">
+            <form id="search" action="/search/" method="get" name="search">
                 <input type="text" name="q" />
-                <select>
-                    <option value="all">{% trans "All" %}</option>
-                    <option value="msg">{% trans "Comments" %}</option>
-                    <option value="doc">{% trans "Docs" %}</option>
-                    <option value="wiki">{% trans "Wiki" %}</option>
-                    <option value="memb">{% trans "Members" %}</option>
+                <select name="models">
+                    <option>{% trans "All" %}</option>
+                    <option value="tribes.tribe">{% trans "Tribes" %}</option>
+                    <option value="tribes.topic">{% trans "Topics" %}</option>
+                    <option value="wiki.article">{% trans "Wiki" %}</option>
+                    <option value="small_dms.document">{% trans "Documents" %}</option>
+                    <option value="profiles.profile">{% trans "Members" %}</option>
                 </select>
+                <!--button onclick="$('#search').submit(); return false"><span>{% trans 'Search' %}</span></button-->
                 <input type="submit" value="{% trans 'Search' %}" />
             </form>
         </div>

@@ -17,7 +17,7 @@
             {% get_tribe_calendar tribe request.user %}
             <p><a href="{% url calendar_create_event tribe.slug %}">{% trans "Add new event" %}</a></p>
         {% else %}
-            <div>{% trans "This calendar is private" %}</div>
+            <div>{% trans "This calendar is private..." %}</div>
         {% endif_can_see %}
     {% endif %}
 {% endblock calendarevents %}

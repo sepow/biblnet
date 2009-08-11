@@ -216,6 +216,7 @@ def tribe(request, slug, form_class=TribeUpdateForm,
             request.user.message_set.create(message="You have left the tribe %s" % tribe.name)
             if notification:
                 pass # @@@
+        are_member = has_member(tribe, request.user)
     else:
         tribe_form = form_class(instance=tribe)
     

@@ -128,11 +128,18 @@ YOU CAN VERY EASILY REVERT TO A GENERIC STYLE OF UNI-FORM. BEST OF LUCK...
 }
 .uniForm .inlineLabels .textInput,
 .uniForm .inlineLabels .fileUpload,
+.uniForm .inlineLabels textarea
+{
+    padding: 3px;
+}
+.uniForm .inlineLabels .textInput,
+.uniForm .inlineLabels .fileUpload,
 .uniForm .inlineLabels .selectInput,
 .uniForm .inlineLabels select,
 .uniForm .inlineLabels textarea
 {
     margin: 3px;
+    color: #0E3037;
     background: #F3F3F3 url('/site_media/pinax/images/form-shadow.png') left top repeat-x;
 }
 .uniForm #errorMsg{

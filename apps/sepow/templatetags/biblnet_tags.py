@@ -59,9 +59,8 @@ def get_tribe_calendar(tribe, user, event_slice=5):
     '''  
     events = None
     try:
-        if has_member(tribe, user):
-            calendar = Calendar.objects.get_calendar_for_object(tribe)
-            events = itertools.islice(calendar.occurrences_after(date=datetime.now()), event_slice)
+        calendar = Calendar.objects.get_calendar_for_object(tribe)
+        events = itertools.islice(calendar.occurrences_after(date=datetime.now()), event_slice)
     except: 
         pass
     #user.message_set.create(message="Type: %s" % type(events))   

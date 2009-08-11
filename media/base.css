@@ -97,7 +97,7 @@ table td.icon {
 }
 #header div.dynamic_updates, #header div.dynamic_updates a {
 /*    font-family: Futura;*/
-    color: #e8e5d6;
+/*    color: #e8e5d6;*/
 }
 #header div#dynamic_avatars {
     width: 100%;
@@ -109,7 +109,7 @@ table td.icon {
     text-align: right;
 }
 #header div.dynamic_line {
-    height: 1.1em;
+/*    height: 1.1em;*/
     overflow: hidden;
 }
 
@@ -254,19 +254,35 @@ form th {
 }
 form.signup input[type="submit"], form.login input[type="submit"] {
     margin: 20px 0;
+    padding: 0;
 /*    font-size: 14pt;*/
 }
-input[type="text"], input[type="password"], textarea {
+input[type="text"],
+input[type="password"],
+input[type="file"],
+textarea
+{
     padding: 3px;
+}
+input[type="text"],
+input[type="password"],
+input[type="file"],
+select,
+textarea
+{
     margin: 3px;
-    border: solid 1px #C6C6C6;
-/*    border-bottom: solid 1px #E3E3E3;*/
     color: #0E3037;
-/*    font-size: 12pt;*/
     background: #F3F3F3 url('/site_media/pinax/images/form-shadow.png') left top repeat-x;
+}
+input[type="text"],
+input[type="password"],
+textarea
+{
     width: 45%;
 }
-
+input[type="submit"] {
+    margin: 3px;
+}
 .clearboth {
     clear: both;
 }
@@ -524,6 +540,9 @@ div.friends .details {
     width: 60px;
     margin: 0 0 12px 0;
 }
+div.search input[type="text"] {
+    width: 172px;
+}
 table.tribes{
     width: 50%;
 }
@@ -647,7 +666,32 @@ div.tweet .reply {
     background-color: #0A246A;
     color: white;
 }
+/* Buttons */
+button {
+    border: 0;
+    cursor: pointer;
+/*    font-weight: bold;*/
+    padding: 0 20px 0 0;
+    text-align: center;
 
+    background: transparent url('/site_media/images/sitegraphics/buttons/button.png') top right no-repeat;
+}
+button span {
+    position: relative;
+    display: block;
+    white-space: nowrap;
+    padding: 0 0 0 20px;
+
+    height: 24px;
+    line-height: 14px;
+    background: transparent url('/site_media/images/sitegraphics/buttons/button_span.png') top left no-repeat;
+}
+button:active {
+    background: url('/site_media/images/sitegraphics/buttons/button.png') bottom right no-repeat;
+}
+button:active span {
+    background: url('/site_media/images/sitegraphics/buttons/button_span.png') bottom left no-repeat;
+}
 
 /* pagination */
 .pagination {

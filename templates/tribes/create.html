@@ -31,18 +31,24 @@
     {% endif %}
     
 {% endblock %}
+
 {% load biblnet_tags %}
 {% block calendar %}
-    <div class="calendar">
-        {% if user.is_authenticated %}
-            
-            Next events for all your tribes <br/><br/>
-            {% get_all_tribe_calendars request.user 5 %}
-        {% endif %}
-    </div>
-{% endblock calendar%}
+    {% if user.is_authenticated %}
+        <div class="columntop"><p class="blocktitle">{% trans "Calendar" %}</p></div>
+        <div class="columnmid">
+            <div class="calendar">
+                {% block calendarevents %}
+                    <div>{% trans "Next events for all your tribes" %}</div>
+                    {% get_all_tribe_calendars request.user 5 %}
+                {% endblock %}
+            </div>
+        </div>
+        <div class="columnbottom">&nbsp;</div>
+    {% endif %}
+{% endblock %}
 
- {% block extra_body %}
- <script type="text/javascript"> $(document).ready(function() { $("#id_name").slugify("#id_slug"); });</script>
- <script type="text/javascript" src=" {{MEDIA_URL}}js/slugify.js"></script>
- {% endblock %}
+{% block extra_body %}
+    <script type="text/javascript"> $(document).ready(function() { $("#id_name").slugify("#id_slug"); });</script>
+    <script type="text/javascript" src=" {{MEDIA_URL}}js/slugify.js"></script>
+{% endblock %}
