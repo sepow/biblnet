@@ -216,6 +216,7 @@ def tribe(request, slug, form_class=TribeUpdateForm,
             request.user.message_set.create(message="You have left the tribe %s" % tribe.name)
             if notification:
                 pass # @@@
+        are_member = has_member(tribe, request.user)
     else:
         tribe_form = form_class(instance=tribe)
     
@@ -378,19 +379,20 @@ def topic(request, id, edit=False, template_name="tribes/topic.html"):
             do_403_if_not_superuser(request)
              
     if request.method == "POST" and edit == True:
-        if request.user == topic.creator:
+        
+        if is_moderator(topic.tribe, request.user):
+                text = request.POST["body"]
+                text += "<small><i>Topic editet by %s : %s</i></small>" % (request.user, datetime.now()) 
+                topic.body = sanitize_html(text)
+                topic.editet = datetime.now()
+                topic.save()
+
+        elif request.user == topic.creator:
             created = topic.created
             now = datetime.now()
             time_since = now - created
             if time_since.seconds < 60*20:
                 topic.body = sanitize_html(request.POST["body"])
-                topic.editet = datetime.now()
-                topic.save()
-        
-        elif is_moderator(topic.tribe, request.user):
-                text = request.POST["body"]
-                text += "<i>Topic editet by %s : %s</i>" % (request.user, datetime.now()) 
-                topic.body = sanitize_html(text)
                 topic.editet = datetime.now()
                 topic.save()
         

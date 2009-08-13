@@ -1,6 +1,8 @@
 {% extends "site_base.html" %}
 {% load biblnet_tags %}
 {% load i18n %}
+{% load condition_tag %}
+
 {% block extra_head %} {% endblock %}
 
 {% block visit %}{% if tribe %}{% visit_tribe tribe request.user %}{% endif %}{% endblock %}
@@ -8,10 +10,14 @@
 
 {% block breadcrumb %}{{ block.super }} &raquo; <a href="/tribes/">{% trans "Tribes" %}</a>{% if tribe %} &raquo; <a href="{{ tribe.get_absolute_url }}">{{ tribe.name }}</a>{% endif %}{% endblock %}
 
-{% block calendar %}
+{% block calendarevents %}
     {% if tribe %}
-        <div>{% trans "Next events for" %} <a href="{% url month_calendar tribe.slug %}">{{ tribe }}</a></div>
-        {% get_tribe_calendar tribe request.user %}
-        <p><a href="{% url calendar_create_event tribe.slug %}">{% trans "Add new event" %}</a></p> 
+        {% if_can_see tribe user %}
+            <div>{% trans "Next events for" %} <a href="{% url month_calendar tribe.slug %}">{{ tribe }}</a></div>
+            {% get_tribe_calendar tribe request.user %}
+            <p><a href="{% url calendar_create_event tribe.slug %}">{% trans "Add new event" %}</a></p>
+        {% else %}
+            <div>{% trans "This calendar is private..." %}</div>
+        {% endif_can_see %}
     {% endif %}
-{% endblock calendar %}
+{% endblock calendarevents %}

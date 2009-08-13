@@ -95,15 +95,12 @@
     {% endif %}
     
 {% endblock %}
-{% block calendar %}
-    <div class="calendar">
-        {% if user.is_authenticated %}
-            
-            Next events for all your tribes <br/><br/>
-            {% get_all_tribe_calendars request.user 5 %}
-        {% endif %}
-    </div>
-{% endblock calendar%}
+
+{% block calendarevents %}
+    <div>{% trans "Next events for all your tribes" %}</div>
+    {% get_all_tribe_calendars request.user 5 %}
+{% endblock %}
+
 {% block extra_body %}
     <script type="text/javascript">
         $(document).ready(function() {

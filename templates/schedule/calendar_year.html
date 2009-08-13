@@ -7,7 +7,7 @@
 
 {% if_can_see_calendar calendar request.user%}
     <div class="tablewrapper">
-        <div class="navigation">
+        <div class="cal_navigation">
             <a href="{% url month_calendar calendar.slug %}">{% trans "Current Month Calendar" %}</a>
             <a href="{% url year_calendar calendar.slug %}">{% trans "Current Year Calendar" %}</a>
         </div>

@@ -1,5 +1,6 @@
 {% extends 'site_base.html' %}
 {% load i18n %}
+{% load security_tag %}
 
 {% block head_title %}{% trans "Search results" %}{% endblock %}
 
@@ -19,9 +20,20 @@
     </form>
 
     {% if page.object_list %}
+        
         {% for result in page.object_list %}
-            <p>{{ result.text|safe }}</p>
+
+            {% can_access result.object request.user%}
+            
+            {% if has_access %}
+                <hr/> 
+                <a href="{{result.object.get_absolute_url}}"><strong>{{result.verbose_name}}</strong></a> i 
+                {% if tribe %}<a href="{% url tribe_detail tribe.slug %}">{{tribe}}</a>{% endif %} ({{result.score}})
+                <p>{{ result.text|safe|truncatewords_html:100 }}</p>
+            {% endif %}
+    
         {% endfor %}
+        
     {% else %}
         <p>No results found.</p>
     {% endif %}

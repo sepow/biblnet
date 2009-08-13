@@ -7,7 +7,7 @@
 
 {% if_can_see_calendar calendar request.user%}
     {% include "schedule/_dialogs.html" %}
-    <div class="navigation">
+    <div class="cal_navigation">
         <a href="{% url week_calendar calendar.slug %}{% querystring_for_date periods.day.start 3 %}">{% trans "Week" %}</a>
         <a href="{% url month_calendar calendar.slug %}{% querystring_for_date periods.day.start 2 %}">{% trans "Month" %}</a>
         <a href="{% url tri_month_calendar calendar.slug %}{% querystring_for_date periods.day.start 2 %}">{% trans "Three Months" %}</a>

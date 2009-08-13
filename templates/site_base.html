@@ -5,59 +5,23 @@
 {% load svn_app_version %}
 {% load analytics %}
 {% load avatar_tags %}
-{% load cache %}
 
 {% load biblnet_tags %}
 
 
 {% block extra_head_base %}
-
+    {% cache 60000 cssnjs %}
     <link rel="stylesheet" href="{{ MEDIA_URL }}css/site_tabs.css" />
     <link rel="stylesheet" href="{{ MEDIA_URL }}pinax/css/topics.css" />
 
     <script type="text/javascript" src="{{ MEDIA_URL }}pinax/js/topics.js"></script>
+    {% endcache %}
     {% block extra_head %}{% endblock %}
 {% endblock %}
 
-{% block login %}
-    {% if user.is_authenticated %} 
-        <table>
-            <tr>
-                <td width="45px"><a href="{% url profile_detail user %}">{% avatar user 40 %}</a></td>
-                <td><b><a href="{% url profile_detail user %}">{{ user }}</a></b></td>
-            </tr>
-        </table>
-        <a style="font-size: 90%;" href="{% url acct_logout %}">{% trans "Logout" %}</a>
-        <p>{% trans "Your last login:" %}<br />
-        {{ user.get_profile.last_visit|timesince }} {% trans "ago" %}
-        </p>
-
-        <p>
-            {% if user.tribe_set.all %}
-                {% for tribe in user.tribe_set.all %}
-                    {% if not tribe.deleted %}
-                        <img src="{{ MEDIA_URL }}images/sitegraphics/group.png" alt="{% trans 'Tribe' %}" /> <a href="{% url tribe_detail tribe.slug %}">{{ tribe.name }}</a><br />
-                    {% endif %}
-                {% endfor %}
-            {% else %}
-                {% url tribe_list as tribe_url %}
-                <p>{% blocktrans %}You are not yet a member of any <a href="{{ tribe_url }}">tribes</a>.{% endblocktrans %}</p>
-            {% endif %}
-        </p>
-
-        <p>
-            <img src="{{ MEDIA_URL }}images/sitegraphics/group.png" alt="{% trans 'Tribe' %}" /> <a href="{% url tribe_list %}">{% trans "All tribes" %}</a><br />
-            <img src="{{ MEDIA_URL }}images/sitegraphics/group.png" alt="{% trans 'Tribe' %}" /> <a href="/tribes/create/">{% trans "Start a new tribe" %}</a>
-        </p>
-    {% else %}
-        <p>{% trans "You are not logged in" %}</p>
-        <p><a href="{% url acct_login %}">{% trans "Log in" %}</a> / <a href="{% url acct_signup %}"><b>{% trans "Sign up" %}</b></a></p>
-    {% endif %}
-{% endblock %}
-
-{% block logo_link_image %}{% cache 60000000 biblnetbanner %}<a href="{% url home %}"><img src="{{ MEDIA_URL }}pinax/images/topbar.gif" alt="Biblnet Topbar"/></a>{% endcache %} {{ CAN_ADMIN }}{% endblock %}
+{% block logo_link_image %}{% cache 60000000 biblnetbanner %}<a href="{% url home %}"><img src="{{ MEDIA_URL }}pinax/images/Biblnet-logo.png" alt="Biblnet-logo"/></a>{% endcache %} {{ CAN_ADMIN }}{% endblock %}
 {% block dynamic_updates %}
-    {% get_latest %}
+    {% get_latest 8 1 1 %}
 {% endblock %}
 
 {% block boxtab %}
@@ -89,51 +53,125 @@
 	</div>
 {% endblock %}
 
-{% block search %}
-    <div class="search">
-        <form action="/search/" method="get" name="search">
-            <input type="text" name="q" />
-            <select>
-                <option value="all">{% trans "All" %}</option>
-                <option value="msg">{% trans "Comments" %}</option>
-                <option value="doc">{% trans "Docs" %}</option>
-                <option value="wiki">{% trans "Wiki" %}</option>
-                <option value="memb">{% trans "Members" %}</option>
-            </select>
-            <input type="submit" value="{% trans 'Search' %}" />
-        </form>
+{% block login %}
+    <div class="columntop"><p class="blocktitle">{% trans "Login" %}</p></div>
+    <div class="columnmid login">
+        {% if user.is_authenticated %}
+            <table>
+                <tr>
+                    <td width="45px"><a href="{% url profile_detail user %}">{% avatar user 40 %}</a></td>
+                    <td><b><a href="{% url profile_detail user %}">{{ user }}</a></b></td>
+                </tr>
+            </table>
+            <a style="font-size: 90%;" href="{% url acct_logout %}">{% trans "Logout" %}</a>
+            <p>{% trans "Your last login:" %}<br />
+            {{ user.get_profile.last_visit|timesince }} {% trans "ago" %}
+            </p>
+        {% else %}
+            <p style="text-align: center;">{% trans "You are not logged in..." %}</p>
+            <p style="text-align: center;"><a href="{% url acct_login %}"><b>{% trans "Log in" %}</b></a> / <a href="{% url acct_signup %}"><b>{% trans "Sign up" %}</b></a></p>
+        {% endif %}
     </div>
+    <div class="columnbottom">&nbsp;</div>
+{% endblock login %}
+
+{% block usertribes %}
+    {% if user.is_authenticated %}
+        <div class="columntop"><p class="blocktitle">{% trans "Your Tribes" %}</p></div>
+        <div class="columnmid">
+            {% if user.tribe_set.all %}
+                <div class="usertribes">
+                    {% for tribe in user.tribe_set.all %}
+                        {% if not tribe.deleted %}
+                            <img src="{{ MEDIA_URL }}images/sitegraphics/group.png" alt="{% trans 'Tribe' %}" /> <a href="{% url tribe_detail tribe.slug %}">{{ tribe.name }}</a><br />
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% else %}
+                {% url tribe_list as tribe_url %}
+                <p>{% blocktrans %}You are not yet a member of any <a href="{{ tribe_url }}">tribes</a>.{% endblocktrans %}</p>
+            {% endif %}
+                <br/><img src="{{ MEDIA_URL }}images/sitegraphics/group_add.png" alt="{% trans 'Tribe' %}" /> <a href="/tribes/create/">{% trans "Start a new tribe" %}</a>
+        </div>
+        <div class="columnbottom">&nbsp;</div>
+    {% endif %}
+{% endblock %}
+
+{% block navigation %}
+    {% if user.is_authenticated %}
+        <div class="columntop"><p class="blocktitle">{% trans "Navigation" %}</p></div>
+        <div class="columnmid">
+        	<div class="navigation">
+                    <img src="{{ MEDIA_URL }}images/sitegraphics/group.png" alt="{% trans 'Tribe' %}" /> <a href="{% url tribe_list %}">{% trans "All tribes" %}</a><br/>
+                    <img src="{{ MEDIA_URL }}images/sitegraphics/user.png" alt="{% trans 'Members' %}" /> <a href="/profiles/">{% trans "All members" %}</a><br/>
+                    <img src="{{ MEDIA_URL }}images/sitegraphics/book_open.png" alt="{% trans 'Knowledge Bank' %}" /> <a href="/dms/">{% trans "Knowledge Bank" %}</a><br/>
+                    <!--img src="{{ MEDIA_URL }}images/sitegraphics/tag_blue.png" alt="{% trans 'Tags' %}" /> <a href="/tags/">{% trans "Tags" %}</a><br/-->
+            </div>
+        </div>
+        <div class="columnbottom">&nbsp;</div>
+    {% endif %}
+{% endblock navigation %}
+
+{% block search %}
+    <div class="columntop"><p class="blocktitle">{% trans "Search" %}</p></div>
+    <div class="columnmid">
+        <div class="search">
+            <form id="search" action="/search/" method="get" name="search">
+                <input type="text" name="q" />
+                <select name="models">
+                    <option>{% trans "All" %}</option>
+                    <option value="tribes.tribe">{% trans "Tribes" %}</option>
+                    <option value="tribes.topic">{% trans "Topics" %}</option>
+                    <option value="wiki.article">{% trans "Wiki" %}</option>
+                    <option value="small_dms.document">{% trans "Documents" %}</option>
+                    <option value="profiles.profile">{% trans "Members" %}</option>
+                </select>
+                <!--button onclick="$('#search').submit(); return false"><span>{% trans 'Search' %}</span></button-->
+                <input type="submit" value="{% trans 'Search' %}" />
+            </form>
+        </div>
+    </div>
+    <div class="columnbottom">&nbsp;</div>
 {% endblock %}
 
 {% block messages %}
     {% if user.is_authenticated %}
-        <div class="messages">
-            <a href="{% url messages_inbox %}">{% trans "Private messages" %}{% if messages_inbox_count %} <b>({{ messages_inbox_count }})</b>{% endif %}</a><br />
-            <a href="{% url notification_notices %}">{% trans "Notices" %}{% if notice_unseen_count %} <b>({{ notice_unseen_count }})</b>{% endif %}</a><br />
-
-        </div>
-    {% else %}
-        <div class="messages">
-            {% trans "Log in to see your messages" %}
-        </div>
+    	<div class="columntop"><p class="blocktitle">{% trans "Inbox" %}</p></div>
+	    <div class="columnmid">
+            <div class="messages">
+                <a href="{% url messages_inbox %}">{% trans "Private messages" %}{% if messages_inbox_count %} <b>({{ messages_inbox_count }})</b>{% endif %}</a><br />
+                <a href="{% url notification_notices %}">{% trans "Notices" %}{% if notice_unseen_count %} <b>({{ notice_unseen_count }})</b>{% endif %}</a><br />
+            </div>
+	    </div>
+	    <div class="columnbottom">&nbsp;</div>
     {% endif %}
 {% endblock %}
 
 {% block calendar %}
-    <div class="calendar">
-        {% if user.is_authenticated %}
-            <div>{% trans "Next events for all your tribes" %}</div>
-            {% get_all_tribe_calendars request.user 5 %}
-        {% endif %}
-    </div>
+    {% if user.is_authenticated %}
+        <div class="columntop"><p class="blocktitle">{% trans "Calendar" %}</p></div>
+        <div class="columnmid">
+            <div class="calendar">
+                {% block calendarevents %}
+                    <div>{% trans "Next events for all your tribes" %}</div>
+                    {% get_all_tribe_calendars request.user 5 %}
+                {% endblock %}
+            </div>
+        </div>
+        <div class="columnbottom">&nbsp;</div>
+    {% endif %}
 {% endblock %}
 
 {% block footer %}
-    <div class="legal">
-        {% trans "&copy; 2009 Sean P &amp; Luhr B" %}
-          <a href="{% url about %}">{% trans "About" %}</a>
-        - <a href="{% url terms %}">{% trans "Terms of Service" %}</a>
+    <div class="columntop"><p class="blocktitle">{% trans "Site info" %}</p></div>
+    <div class="columnmid">
+        <div class="legal">
+            {% trans "&copy; 2009 Sean P &amp; Luhr B" %}
+              <a href="{% url about %}">{% trans "About" %}</a>
+            - <a href="{% url terms %}">{% trans "Terms of Service" %}</a>
+        </div>
     </div>
+    <div class="columnbottom">&nbsp;</div>
 {% endblock %}
 
 {% block extra_body_base %}

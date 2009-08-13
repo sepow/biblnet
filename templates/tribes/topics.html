@@ -14,7 +14,7 @@
 
 {% if_can_see tribe user %}
 
-    {% autopaginate topics 20 %}
+    
 
     <h1>{% trans "Message Board for" %} <a href="{% url tribe_detail tribe.slug %}">{{ tribe.name }}</a></h1>
     {% if user.is_authenticated %}

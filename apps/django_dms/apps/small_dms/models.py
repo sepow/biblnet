@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+#-*- coding:utf-8 -*-
+
 from django.db import models
 from django_dms.models import DocumentBase
 from tribes.models import Tribe
@@ -5,16 +8,35 @@ from django.utils.translation import ugettext_lazy as _
 from tagging.fields import TagField
 from django.contrib.auth.models import User
 
+
+
+
 class Document(DocumentBase):
     """ Basic document entry, with a selected metadata.
     """
-    title        = models.CharField(_('title'), max_length=150, default="")
-    slug         = models.SlugField(_('slug'))
-    summary      = models.TextField(_('summary'), default="", blank=True)
-    date_created = models.DateTimeField(_("created"), blank=True)
-    tribe        = models.ForeignKey(Tribe, related_name="documents", verbose_name=_('tribe'))
-    tags         = TagField()
-    uploader     = models.ForeignKey(User, related_name="documents", verbose_name=_('uploader'))
+    title           = models.CharField(_('title'), max_length=150, default="")
+    slug            = models.SlugField(_('slug'))
+    summary         = models.TextField(_('summary'), default="", blank=True)
+    date_created    = models.DateTimeField(_("created"), blank=True)
+    tribe           = models.ForeignKey(Tribe, related_name="documents", verbose_name=_('tribe'))
+    tags            = TagField()
+    uploader        = models.ForeignKey(User, related_name="documents", verbose_name=_('uploader'))   
+
+    authors      = models.CharField(_('authors'), max_length=300, default="", blank=True) 
+    semester     = models.CharField(_('semester'), max_length=300, default="", blank=True)    
+    
+    GRADES = (
+            (-3, '-3'),
+            (00, '00'),
+            (02, '02'),
+            (4 , '04'),
+            (7 , '07'),
+            (10, '10'),
+            (12, '12'),
+            (99, 'Bestået'),
+             )
+    grade        = models.CharField(_('grade'), max_length=2, blank=True, choices=GRADES)
+
     
     def __unicode__(self):
         return self.title or self.slug
@@ -31,11 +53,10 @@ class Document(DocumentBase):
     
     class Meta:
         unique_together = ("tribe", "slug")
-'''
-class Essay(Document):
-    grade        = models.CharField(_('Grade'), max_length=5, default="", blank=True)
-'''
 
+    def get_absolute_url(self):
+        return ("document_view_document_detail", [self.tribe.slug, self.slug])
+    get_absolute_url = models.permalink(get_absolute_url)
 # Some automatic metadata handing, if the extractor library is available
 try:
     import extractor

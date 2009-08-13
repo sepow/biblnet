@@ -54,6 +54,18 @@
 
           
             <h2>{% trans "Discussion Topics" %}{% if tribe.topics.all.count %} ({{ tribe.topics.all.count }}){% endif %}</h2>
+
+    {% if user.is_authenticated %}
+        {% if are_member %}
+            <a href="{% url tribe_create_topic tribe.slug %}">{% trans "Start New Topic" %}</a>
+        {% endif %}
+    {% else %}
+        {% url acct_login as login_url %}
+        {% url tribe_detail tribe.slug as tribe_url %}
+        <h3>{% blocktrans %}Please <a href="{{ login_url }}?next={{ tribe_url }}">log in</a> to start a topic.{% endblocktrans %}</h3>
+    {% endif %}
+
+
             <table class="topics">
             <tr class="even"><th width="36px"></th><th>{% trans "Topic" %}</th><th width="15%">{% trans "Started by" %}</th><th class="comment_stats" width="10%">{% trans "Views" %}</th><th class="comment_stats" width="15%">{% trans "Replies" %}</th><th width="150px">{% trans "Latest reply" %}</th></tr>
             {% if topics %}
@@ -100,6 +112,6 @@
     </div>
 
     {% else %}
-    {% trans "This is a private group!" %}
+    <h1>{% trans "This is a private group!" %}</h1>
     {% endif_can_see %}
 {% endblock %}

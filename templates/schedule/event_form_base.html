@@ -1,6 +1,8 @@
 {% extends "site_base.html" %}
 {% load security_tag %}
 {% load biblnet_tags %}
+{% load i18n %}
+
 {% block extra_head %}
 
     {{ block.super }}
@@ -41,12 +43,26 @@
     </script>
 {% endblock %}
 
-{% block calendar %}
+{% block breadcrumb %}
     {% if calendar %}
         {% can_access calendar request.user %}
-        {% get_tribe_calendar tribe request.user %}
     {% else %}{% if event %}
         {% can_access event request.user %}
-        {% get_tribe_calendar tribe request.user %}
     {% endif %}{% endif %}
-{% endblock calendar %}
+{{ block.super }} &raquo; <a href="/tribes/">{% trans "Tribes" %}</a>{% if tribe %} &raquo; <a href="{{ tribe.get_absolute_url }}">{{ tribe.name }}</a>{% endif %}{% endblock %}
+
+{% block calendarevents %}
+    {% if calendar %}
+        {% can_access calendar request.user %}
+        <div>{% trans "Next events for" %} <a href="{% url month_calendar tribe.slug %}">{{ tribe }}</a></div>
+        {% get_tribe_calendar tribe request.user %}
+        <p><a href="{% url calendar_create_event tribe.slug %}">{% trans "Add new event" %}</a></p> 
+    {% else %}
+        {% if event %}
+            {% can_access event request.user %}
+            <div>{% trans "Next events for" %} <a href="{% url month_calendar tribe.slug %}">{{ tribe }}</a></div>
+            {% get_tribe_calendar tribe request.user %}
+            <p><a href="{% url calendar_create_event tribe.slug %}">{% trans "Add new event" %}</a></p> 
+        {% endif %}
+    {% endif %}
+{% endblock calendarevents %}

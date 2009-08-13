@@ -1,6 +1,7 @@
 
-Topic: <a href="{{ object.get_absolute_url }}">{{ object.fullname }}</a> <br/>
-
-{{ object.name}}
-{{ object.address}}
-{{ object.about}}
+<strong>Profile</strong>: <a href="{{ object.get_absolute_url }}">'{{ object.user}}' {% if object.name  %}aka. {{ object.name}}{% endif %}</a> <br/>
+<p>
+{% if object.name %}{{ object.name}}{% endif %} <br/>
+{% if object.address %}{{ object.address}}{% endif %}<br/>
+{% if object.about %}{{ object.about}}{% endif %} 
+</p>

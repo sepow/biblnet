@@ -4,7 +4,9 @@
 
 {% for event in events %}
     <p>
-        <a href="{% url day_calendar event.event.calendar.slug %}{% querystring_for_date event.start 3 %}"><small>{{ event.start|date }} - {{ event.start|time }}</small></a><br/>
+        <a href="{% url day_calendar event.event.calendar.slug %}{% querystring_for_date event.start 3 %}" title="{{ event.event.calendar.name }}"><small>{{ event.start|date }} - {{ event.start|time }}</small></a><br/>
         <a href="{% url event event.event.id %}">{{ event.title }}</a>
     </p>
+{% empty %}
+    <p>{% trans "No events coming up..." %}</p>
 {% endfor %}

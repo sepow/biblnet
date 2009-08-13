@@ -59,9 +59,8 @@ def get_tribe_calendar(tribe, user, event_slice=5):
     '''  
     events = None
     try:
-        if has_member(tribe, user):
-            calendar = Calendar.objects.get_calendar_for_object(tribe)
-            events = itertools.islice(calendar.occurrences_after(date=datetime.now()), event_slice)
+        calendar = Calendar.objects.get_calendar_for_object(tribe)
+        events = itertools.islice(calendar.occurrences_after(date=datetime.now()), event_slice)
     except: 
         pass
     #user.message_set.create(message="Type: %s" % type(events))   
@@ -93,7 +92,16 @@ def get_all_tribe_calendars(user, event_slice=5):
 register.inclusion_tag('sepow/get_tribe_calendar.html')(get_all_tribe_calendars)
 
 
-def get_latest(comments=2, topics=1, users=5):
+def get_latest(users=8, topics=1, comments=2):
+    '''
+    Returns 3 different lists.
+    
+    latest_users  - a list of latest users to visit the site.
+    latest_topics - the latest public topics to be created.
+    latest_posts  - the latest public replies to a topic. 
+    
+    '''  
+    
     try:
         latest_topic = Topic.objects.filter(tribe__private=False).order_by('-created')[:topics]
     except IndexError:
@@ -103,15 +111,14 @@ def get_latest(comments=2, topics=1, users=5):
         # find the lates topic that's been modified in a public tribe' TODO Cache this?
         last_modified = Topic.objects.filter(tribe__private=False).order_by('-modified')
         latest_post = ThreadedComment.objects.filter(object_id__in=last_modified).order_by('-date_modified')[:comments]
-        
     except IndexError:
         latest_post = None
 
-    return {'latest_users' : User.objects.order_by('-profile__last_visit_storage')[:users].reverse(),
+    return {'latest_users' : User.objects.order_by('-profile__last_visit_storage')[:users],
             'latest_topics' : latest_topic,
             'latest_posts'  : latest_post,
             }
-    
+
 register.inclusion_tag('sepow/latest_updates.html')(get_latest)
 
 

@@ -2,43 +2,47 @@
 {% load i18n %}
 {% load scheduletags %}
 {% load condition_tag %}
+
 {% block body %}
 
-{% if_can_see_calendar calendar request.user%}
-<div class="navigation">
-  <a href="{% url day_calendar occurrence.event.calendar.slug %}{% querystring_for_date occurrence.start 3 %}">
-    Day
-  </a>
-  <a href="{% url month_calendar occurrence.event.calendar.slug %}{% querystring_for_date occurrence.start 2 %}">
-    Month
-  </a>
-</div>
-<div class="event_actions" align="center">
-	{% if back_url %}
-	<a href="{{ back_url }}"><img border="0" src="{{ MEDIA_URL }}schedule/img/left_mod.png" alt="{% trans "Back" %}"></a> &nbsp;
-	{% endif %}
-	<a href="{{occurrence.get_edit_url}}"><img border="0" src="{{ MEDIA_URL }}schedule/img/pencil.png" alt="{% trans "Change" %}"></a> &nbsp;
-	<a href="{{occurrence.get_cancel_url}}"><img border="0" src="{{ MEDIA_URL }}schedule/schedule/img/delete.png" alt="{% trans "Cancel" %}"></a>
-</div>
-<h2 align="center">{{occurrence.title}}</h2>
-<table align="center">
-<tr>
-<td>Starts</td>
-<td>{% blocktrans with occurrence.start|date:_("DATETIME_FORMAT") as start_date %}{{ start_date }}{% endblocktrans %}</td>
-</tr>
-<tr>
-<td>Ends</td>
-<td>{% blocktrans with occurrence.end|date:_("DATETIME_FORMAT") as end_date %}{{ end_date }}{% endblocktrans %}</td>
-</tr>
-{% if occurrence.event.rule %}
-<tr>
-<td>Reoccurs</td><td>{{event.rule}}</td>
-</tr>
-{% endif %}
-</table>
-{% if occurrence.description %}
-<h3>Description</h3>
-<p>{{occurrence.description}}</p>
-{% endif %}
-{%endif_can_see_calendar%}
+{% if_can_see_calendar calendar request.user %}
+
+    <div class="cal_navigation">
+        <a href="{% url day_calendar occurrence.event.calendar.slug %}{% querystring_for_date occurrence.start 3 %}">Day</a>
+        <a href="{% url week_calendar occurrence.event.calendar.slug %}{% querystring_for_date occurrence.start 3 %}">Week</a>
+        <a href="{% url month_calendar occurrence.event.calendar.slug %}{% querystring_for_date occurrence.start 2 %}">Month</a>
+        <a href="{% url year_calendar occurrence.event.calendar.slug %}{% querystring_for_date occurrence.start 1%}">Year</a>
+    </div>
+
+    <h2>{{ occurrence.title }}</h2>
+
+    <table align="center">
+        <tr>
+            <td>{% trans "Starts" %}</td>
+            <td>{% blocktrans with occurrence.start|date:_("DATETIME_FORMAT") as start_date %}{{ start_date }}{% endblocktrans %}</td>
+        </tr>
+        <tr>
+            <td>{% trans "Ends" %}</td>
+            <td>{% blocktrans with occurrence.end|date:_("DATETIME_FORMAT") as end_date %}{{ end_date }}{% endblocktrans %}</td>
+        </tr>
+        {% if occurrence.event.rule %}
+            <tr>
+                <td>{% trans "Reoccurs" %}</td><td>{{ event.rule }}</td>
+            </tr>
+        {% endif %}
+    </table>
+
+    <div class="event_actions">
+        <a href="{{ occurrence.get_edit_url }}"><img src="{{ MEDIA_URL }}schedule/img/pencil.png" alt="{% trans 'Change' %}"></a>
+        <a href="{{ occurrence.get_cancel_url }}"><img src="{{ MEDIA_URL }}schedule/schedule/img/delete.png" alt="{% trans 'Cancel' %}"></a>
+    </div>
+
+    <h2>{% trans "Description" %}</h2>
+    {% if occurrence.description %}
+        <p>{{ occurrence.description }}</p>
+    {% else %}
+        <p>{% trans "There's no further description of this event..." %}</p>
+    {% endif %}
+{% endif_can_see_calendar %}
+
 {% endblock %}

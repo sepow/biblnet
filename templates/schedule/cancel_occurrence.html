@@ -1,16 +1,20 @@
 {% extends "schedule/base.html" %}
 {% load i18n %}
+{% load condition_tag %}
 
 {% block body %}
-<h1>{% trans "Delete" %}</h1>
-{% trans "Are you sure that you really want to cancel this occurrence?" %}
 
-<form action="." method="POST">
-    <h2>{{ occurrence.title }}</h2>
-    <strong>From</strong> {{ occurrence.start|date:_("DATETIME_FORMAT") }}
-    <strong>to</strong> {{ occurrence.end|date:_("DATETIME_FORMAT") }} <br/>
-    <input type="submit" value="{% trans "Delete" %}" name="submit" />
-    <input type="button" value="{% trans "Cancel" %}" onclick="window.location='{{next}}'"/>
-    <input type="hidden" name="next" value="{{next|default:""}}"/>
-</form>
+{% if_can_see_calendar object.calendar request.user %}
+    <h1>{% trans "Delete occurrence" %}</h1>
+    {% trans "Are you sure you want to cancel this occurrence?" %}
+    <form action="." method="POST">
+        <h2>{{ occurrence.title }}</h2>
+        <strong>From</strong> {{ occurrence.start|date:_("DATETIME_FORMAT") }}
+        <strong>to</strong> {{ occurrence.end|date:_("DATETIME_FORMAT") }}<br/><br/>
+        <input type="submit" value="{% trans 'Delete' %}" name="submit" />
+        <input type="button" value="{% trans 'Cancel' %}" onclick="window.location='{{ next }}'"/>
+        <input type="hidden" name="next" value="{{ next|default:'' }}"/>
+    </form>
+{% endif_can_see_calendar %}
+
 {% endblock %}

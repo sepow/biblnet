@@ -7,14 +7,14 @@
 
 {% if_can_see_calendar event.calendar request.user %}
 
-    <div class="navigation">
+    <div class="cal_navigation">
         <a href="{% url day_calendar event.calendar.slug %}{% querystring_for_date event.start 3 %}">Day</a>
         <a href="{% url week_calendar event.calendar.slug %}{% querystring_for_date event.start 3 %}">Week</a>
         <a href="{% url month_calendar event.calendar.slug %}{% querystring_for_date event.start 2 %}">Month</a>
         <a href="{% url year_calendar event.calendar.slug %}{% querystring_for_date event.start 1%}">Year</a>
     </div>
 
-    <h1>{{event.title}}</h1>
+    <h1>{{ event.title }}</h1>
 
     <table align="center">
         <tr>
@@ -28,7 +28,7 @@
         <tr>
             <td>{% trans "Reoccurs" %}</td>
             {% if event.rule %}
-                <td>{{ event.rule }} until {% blocktrans with event.end_recurring_period|date:_("DATETIME_FORMAT") as end_recurring_date %}{{ end_recurring_date }}{% endblocktrans %}</td>
+                <td>{{ event.rule }} {% trans "until" %} {% blocktrans with event.end_recurring_period|date:_("DATETIME_FORMAT") as end_recurring_date %}{{ end_recurring_date }}{% endblocktrans %}</td>
             {% else %}
                 <td>{% trans "Never. This is a 'one time only' event." %}</td>
             {% endif %}
@@ -40,16 +40,11 @@
     </table>
 
     <div class="event_actions">
-        <a href="{% url edit_event event.calendar.slug,event.id %}">
-            <img border="0" src="{{ MEDIA_URL }}schedule/img/pencil.png" alt="{% trans "Change" %}"/>
-        </a>
-        &nbsp;
-        <a href="{% url delete_event event.id %}">
-            <img border="0" src="{{ MEDIA_URL }}schedule/img/delete.png" alt="{% trans "Delete" %}"/>
-        </a>
+        <a href="{% url edit_event event.calendar.slug,event.id %}"><img src="{{ MEDIA_URL }}schedule/img/pencil.png" alt="{% trans 'Change' %}"/></a>
+        <a href="{% url delete_event event.id %}"><img src="{{ MEDIA_URL }}schedule/img/delete.png" alt="{% trans 'Delete' %}"/></a>
     </div>
 
-    <h2>Description</h2>
+    <h2>{% trans "Description" %}</h2>
     {% if event.description %}
         <p>{{ event.description }}</p>
     {% else %}
