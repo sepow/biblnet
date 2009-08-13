@@ -5,27 +5,21 @@
 
 <tr class="{% cycle 'odd' 'even' %}">
 <td>
-    {% if topic.sticky %}<img src="/site_media/images/sitegraphics/lightbulb.png" alt="{% trans "Sticky topic" %}" />{% else %}<img src="/site_media/images/sitegraphics/note.png" alt="{% trans "Topic" %}" />{% endif %}
-    {% if topic.closed %}<img src="/site_media/images/sitegraphics/lock.png" alt="{% trans "Closed topic" %}" />{% endif %}
+    {% if topic.sticky %}<img src="/site_media/images/sitegraphics/lightbulb.png" alt="{% trans 'Sticky topic' %}" />{% else %}<img src="/site_media/images/sitegraphics/note.png" alt="{% trans 'Topic' %}" />{% endif %}
+    {% if topic.closed %}<img src="/site_media/images/sitegraphics/lock.png" alt="{% trans 'Closed topic' %}" />{% endif %}
 </td>
 <td><a href="{{ topic.get_absolute_url }}">{{ topic.title }}</a></td>
-<td><a href="{{ topic.creator.get_profile.get_absolute_url }}">
-{% firstof topic.creator.get_profile.nickname topic.creator.get_profile.name %}
-</a></td>
-<td>
-        <div class="comment_stats">
-            {{ topic.views }}
-        </div>
+<td><a href="{{ topic.creator.get_profile.get_absolute_url }}">{% firstof topic.creator.get_profile.nickname topic.creator.get_profile.name %}</a></td>
+<td class="comment_stats">
+    {{ topic.views }}
 </td>
-<td>
-    <div class="comment_stats">
-        {% get_comment_count for topic as comment_count %}
-        {% if comment_count %}
-            {{ comment_count }}
-        {% else %}
-            -
-        {% endif %}
-    </div>
+<td class="comment_stats">
+    {% get_comment_count for topic as comment_count %}
+    {% if comment_count %}
+        {{ comment_count }}
+    {% else %}
+        -
+    {% endif %}
 </td>
 <td>{{ topic.modified|timesince }} {% trans "ago" %}</td>
 </tr>

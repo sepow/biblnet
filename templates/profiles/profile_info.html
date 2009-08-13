@@ -44,7 +44,8 @@
         </tr>
     {% endif %}
 
-    <tr><th colspan="2">{% trans "Places to find me online:" %} {% if is_me %}(<a href="/elsewhere/">{% trans "add more" %}</a>){% endif %}</th></tr>
+    {% if other_user.instant_messenger_profiles.all or other_user.social_network_profiles.all or other_user.website_profiles.all %}
+        <tr><th colspan="2">{% trans "Places to find me online:" %} {% if is_me %}(<a href="/elsewhere/">{% trans "edit" %}</a>){% endif %}</th></tr>
     {% if other_user.instant_messenger_profiles.all %}
         <tr><td class="icon"><img src="{{ MEDIA_URL }}images/sitegraphics/comments.png" alt="Instant Messengers" title="Instant Messengers" /></td><td>
             {% for profile in other_user.instant_messenger_profiles.all %}
@@ -68,6 +69,9 @@
                 <td><a href="{{ profile.url }}" target="_blank" rel="me">{{ profile.name }}</a></td>
             </tr>
         {% endfor %}
+    {% endif %}
+    {% else %}
+        {% if is_me %}<tr><th colspan="2"><a href="/elsewhere/">{% trans "Add places to find you online" %}</a></th></tr>{% endif %}
     {% endif %}
 
     {% if other_user.get_profile.listening_now %}

@@ -13,9 +13,6 @@
 {% load condition_tag %}
 
 {% if_can_see tribe user %}
-
-    
-
     <h1>{% trans "Message Board for" %} <a href="{% url tribe_detail tribe.slug %}">{{ tribe.name }}</a></h1>
     {% if user.is_authenticated %}
         {% if are_member %}
@@ -47,7 +44,7 @@
     {% paginate %}
 
 {% else %}
-    <p>{% trans "This is a private group!" %}</p>
+    <h1>{% trans "This is a private group!" %}</h1>
 {% endif_can_see %}
 
 {% endblock %}

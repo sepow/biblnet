@@ -116,18 +116,20 @@
     <div class="columntop"><p class="blocktitle">{% trans "Search" %}</p></div>
     <div class="columnmid">
         <div class="search">
-            <form id="search" action="/search/" method="get" name="search">
-                <input type="text" name="q" />
-                <select name="models">
-                    <option>{% trans "All" %}</option>
-                    <option value="tribes.tribe">{% trans "Tribes" %}</option>
-                    <option value="tribes.topic">{% trans "Topics" %}</option>
-                    <option value="wiki.article">{% trans "Wiki" %}</option>
-                    <option value="small_dms.document">{% trans "Documents" %}</option>
-                    <option value="profiles.profile">{% trans "Members" %}</option>
-                </select>
-                <!--button onclick="$('#search').submit(); return false"><span>{% trans 'Search' %}</span></button-->
-                <input type="submit" value="{% trans 'Search' %}" />
+            <form class="uniForm" id="search" action="/search/" method="get">
+                <fieldset class="inlineLabels">
+                    <input type="text" name="q" />
+                    <select name="models">
+                        <option>{% trans "All" %}</option>
+                        <option value="tribes.tribe">{% trans "Tribes" %}</option>
+                        <option value="tribes.topic">{% trans "Topics" %}</option>
+                        <option value="wiki.article">{% trans "Wiki" %}</option>
+                        <option value="small_dms.document">{% trans "Documents" %}</option>
+                        <option value="profiles.profile">{% trans "Members" %}</option>
+                    </select>
+                    <!--button onclick="$('#search').submit(); return false"><span>{% trans 'Search' %}</span></button-->
+                    <input type="submit" value="{% trans 'Search' %}" />
+                </fieldset>
             </form>
         </div>
     </div>

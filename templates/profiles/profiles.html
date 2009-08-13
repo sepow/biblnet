@@ -24,7 +24,7 @@
             {% ifequal order 'name' %}
                 <a href="{% url profile_list %}?order=date{% if search_terms %}&search={{ search_terms }}{% endif %}">{% trans "Date" %} &darr;</a>
             {% else %}
-                <a href="{% url profile_list %}?order=name">{% trans "Name" %} &uarr;</a>
+                <a href="{% url profile_list %}?order=name{% if search_terms %}&search={{ search_terms }}{% endif %}">{% trans "Name" %} &uarr;</a>
             {% endifequal %}
         </p>
 
@@ -42,7 +42,7 @@
             </table>
         {% else %}
             {% regroup users by date_joined.date as users_by_date_joined %}
-            <h2>Profiles by sign up-date</h2>
+            <h2>{% trans "Profiles by sign up-date" %}</h2>
             {% for date in users_by_date_joined %}
                 <h3>{{ date.grouper|naturalday:_("MONTH_DAY_FORMAT")|capfirst }}</h3>
                 <table class="topics">

@@ -13,8 +13,10 @@ register.inclusion_tag("tribes/tribe_item.html")(show_tribe)
 
 def clear_search_url(request):
     getvars = request.GET.copy()
-    if 'search' in getvars:
-        del getvars['search']
+    if 'search_members' in getvars:
+        del getvars['search_members']
+    if 'search_all' in getvars:
+        del getvars['search_all']
     if len(getvars.keys()) > 0:
         return "%s?%s" % (request.path, getvars.urlencode())
     else:

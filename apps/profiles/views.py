@@ -12,6 +12,10 @@ from friends.models import FriendshipInvitation, Friendship
 
 from microblogging.models import Following
 
+from tribes.models import TribeMember
+from tribes.models import Tribe
+#from tribes.views import tribe
+
 from profiles.models import Profile
 from profiles.forms import ProfileForm
 
@@ -87,7 +91,7 @@ def profile(request, username, template_name="profiles/profile.html"):
         else:
             invite_form = InviteFriendForm(request.user, {
                 'to_user': username,
-                'message': ugettext("Let's be friends!"),
+                'message': _("Let's be friends!"),
             })
     previous_invitations_to = FriendshipInvitation.objects.filter(to_user=other_user, from_user=request.user)
     previous_invitations_from = FriendshipInvitation.objects.filter(to_user=request.user, from_user=other_user)
@@ -102,6 +106,14 @@ def profile(request, username, template_name="profiles/profile.html"):
                     profile.save()
             else:
                 profile_form = ProfileForm(instance=other_user.get_profile())
+            if request.POST["action"] == "leave":
+                slug = request.POST["slug"]
+                tribe = get_object_or_404(Tribe, slug=slug)
+                TribeMember.objects.filter(tribe=tribe, user=request.user).delete()
+
+                request.user.message_set.create(message=_("You have left the tribe %s") % tribe.name)
+                if notification:
+                    pass # @@@
         else:
             profile_form = ProfileForm(instance=other_user.get_profile())
     else:

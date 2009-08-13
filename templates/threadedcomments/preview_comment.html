@@ -6,7 +6,6 @@
 {% load markup %}
 {% load oembed_tags %}
 {% load cache %}
-{#% block breadcrumb %}{{ block.super }} &raquo; <a href="{{ tribe.get_absolute_url }}topics/">{% trans "Message Board" %}</a>{% endblock %#}
 
 {% block boxtab_id %}id="board_tab"{% endblock %}
 
@@ -19,8 +18,12 @@
     <tr class="odd">
     <td>
         <div class="meta">
+            <div class="usericons">
+                <img src="{{MEDIA_URL}}{{ user.get_profile.affiliation.icon }}"  alt="{{ user.get_profile.affiliation }}" title="{{ user.get_profile.affiliation }}" />
+                <img src="{{MEDIA_URL}}{{ user.get_profile.occupation.icon }}"  alt="{{ user.get_profile.occupation }}" title="{{ user.get_profile.occupation }}" />
+                {% if are_moderator %}<img src="/site_media/images/sitegraphics/award_star_gold_1.png"  alt="{% trans 'Tribe administrator' %}" title="{% trans 'Tribe administrator' %}" /><br />{% else %}<br/>{% endif %}
+            </div>
             <div class="avatar">
-                <img src="/site_media/{{ user.get_profile.affiliation.icon }}"  alt="{{ user.get_profile.affiliation }}" title="{{ user.get_profile.affiliation }}" /><br />
                 {% avatar user 60 %}
             </div>
             <div class="created">
@@ -41,8 +44,12 @@
 <tr class="even">
 <td>
     <div class="meta">
+            <div class="usericons">
+                <img src="{{MEDIA_URL}}{{ user.get_profile.affiliation.icon }}"  alt="{{ user.get_profile.affiliation }}" title="{{ user.get_profile.affiliation }}" />
+                <img src="{{MEDIA_URL}}{{ user.get_profile.occupation.icon }}"  alt="{{ user.get_profile.occupation }}" title="{{ user.get_profile.occupation }}" />
+                {% if are_moderator %}<img src="/site_media/images/sitegraphics/award_star_gold_1.png"  alt="{% trans 'Tribe administrator' %}" title="{% trans 'Tribe administrator' %}" /><br />{% else %}<br/>{% endif %}
+            </div>
             <div class="avatar">
-                <img src="/site_media/{{ user.get_profile.affiliation.icon }}"  alt="{{ user.get_profile.affiliation }}" title="{{ user.get_profile.affiliation }}" /><br />
                 {% avatar user 60 %}
             </div>
             <div class="created">
@@ -68,18 +75,18 @@
 </td>
 </tr>
 </table>
-{% block extra_body %}
 
-{% cache 600000 fckeditor_preview %}
-    <script type="text/javascript" src="{{MEDIA_URL}}fckeditor/fckeditor.js"></script>
-    <script type="text/javascript">
-    window.onload = function()
-    {
-    var oFCKeditor = new FCKeditor( 'id_comment' ) ;
-    oFCKeditor.BasePath = "{{MEDIA_URL}}fckeditor/" ;
-    oFCKeditor.ReplaceTextarea() ;
-    }
-    </script>
+{% block extra_body %}
+    {% cache 600000 fckeditor_preview %}
+        <script type="text/javascript" src="{{MEDIA_URL}}fckeditor/fckeditor.js"></script>
+        <script type="text/javascript">
+        window.onload = function()
+        {
+        var oFCKeditor = new FCKeditor( 'id_comment' ) ;
+        oFCKeditor.BasePath = "{{MEDIA_URL}}fckeditor/" ;
+        oFCKeditor.ReplaceTextarea() ;
+        }
+        </script>
     {% endcache %}
-{% endblock %}
-{% endblock %}
+{% endblock extra_body %}
+{% endblock body %}

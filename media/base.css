@@ -71,7 +71,9 @@ table td.icon {
 	width: 100%;
 	padding: 0;
 	margin: 0;
+    height: 150px;
 /*	border-bottom: 1px solid #000;*/
+    background: transparent url('images/sitegraphics/header.png') repeat-x;
 }
 
 #header p {
@@ -89,23 +91,39 @@ table td.icon {
 	margin: 0;
 }
 #header div.logo {
-    float: left;
+    position: absolute;
+    top: 0;
+    width: 530px;
+    height: 150px;
+    background: transparent url('images/sitegraphics/header_left.png') top left no-repeat;
+}
+#header div.logo img {
+    margin: 15px;
 }
 #header div.dynamic_updates {
     float: right;
-    width: 348px;
+    width: 530px;
+    height: 150px;
+    background: transparent url('images/sitegraphics/header_right.png') top right no-repeat;
 }
-#header div.dynamic_updates, #header div.dynamic_updates a {
-/*    font-family: Futura;*/
-/*    color: #e8e5d6;*/
-}
-#header div#dynamic_avatars {
-    width: 100%;
+/*#header div.dynamic_updates, #header div.dynamic_updates a {
+    font-family: Futura;
+    color: #e8e5d6;
+}*/
+#header div.dynamic_avatars {
+    float: right;
+    clear: both;
+    margin: 20px 5px 0 0;
+    width: 350px;
+    height: 40px;
     text-align: right;
+    overflow: hidden;
 }
-#header div#dynamic_topics {
+#header div.dynamic_topics {
+    float: right;
+    clear: both;
     width: 100%;
-    margin-top: 3px;
+    margin: 2px 5px 0 0;
     text-align: right;
 }
 #header div.dynamic_line {
@@ -283,6 +301,10 @@ textarea
 input[type="submit"] {
     margin: 3px;
 }
+input[type="image"] {
+	border: none;
+    vertical-align: middle;
+}
 .clearboth {
     clear: both;
 }
@@ -395,20 +417,12 @@ span.notice_type_description {
     font-size: 80%;
     font-style: italic;
 }
-/*#profile_avatar {
-    float: left;
-}*/
-table.profile_info img {
-    vertical-align: text-bottom;
-}
 table.profile_info th {
-    vertical-align: top;
     text-align: left;
     padding: 5px;
     font-weight: bold;
 }
 table.profile_info td {
-    vertical-align: top;
     padding: 5px;
     font-size: 90%;
 }

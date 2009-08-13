@@ -56,14 +56,20 @@ div.meta {
 	font-size: 80%;
 	overflow: hidden;
 }
+div.usericons {
+    width: 60px;
+    text-align: center;
+    clear: both;
+/*    margin-left: 0;*/
+}
 div.avatar {
 	float: left;
     margin-right: 5px;
 }
 div.created {
 /*    float: left;*/
-	padding: 4px;
-    margin-top: 12px;
+/*    padding: 4px;*/
+/*    padding-left: 5px;*/
 }
 div.details {
     float: left;
