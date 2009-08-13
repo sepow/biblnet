@@ -21,10 +21,6 @@ class TopicIndex(indexes.SearchIndex):
     def get_query_set(self):
         "Used when the entire index for model is updated."
         return Topic.objects.filter(tribe__private=False)
-<<<<<<< HEAD:apps/sepow/search_indexes.py
-
-=======
->>>>>>> 440b8fa6b9668880cd67ca808c3feb39ccfbbf1a:apps/sepow/search_indexes.py
 
     def should_update(self):
         # opdater if editet er blvet changed indenfor 5 secs. 
