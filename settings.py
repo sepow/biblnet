@@ -129,8 +129,9 @@ COMBINED_INBOX_COUNT_SOURCES = (
 
 # Search 
 
-HAYSTACK_SEARCH_ENGINE = 'dummy'
+HAYSTACK_SEARCH_ENGINE = 'whoosh'
 #HAYSTACK_SITECONF = 'biblnet.search_sites'
+HAYSTACK_WHOOSH_PATH = os.path.join(os.path.dirname(__file__), 'biblnet_index')
 
 INSTALLED_APPS = (
     # included
