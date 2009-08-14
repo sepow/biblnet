@@ -27,9 +27,10 @@
 
 body
 {
-	padding: 1px;
+/*	padding: 1px;*/
 	margin: 0;
-	background-color: #ffffff;
+	background-color: #F3F3F3;
+    font-size: 80%
 }
 
 #xEditingArea

@@ -2,11 +2,9 @@
 {% load dms %}
 {% load extra_tagging_tags %}
 
-
 {% block body %}
 <div class="document-detail">
-
-{% include "django_dms/detail.html" %}
-<p>{% show_tags_for document %}</p>
+    {% include "django_dms/detail.html" %}
+    <p>{% show_tags_for document %}</p>
 </div>
 {% endblock body %}

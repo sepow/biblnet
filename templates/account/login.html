@@ -21,12 +21,12 @@
     <form class="login uniForm" method="POST" action="">
         <fieldset class="inlineLabels">
             {{ form|as_uni_form }}
-            <p><a href="{% url acct_passwd_reset %}">{% trans "Forgot password?" %}</a></p>            
             <div class="form_block">
                 <input type="submit" value="{% trans "Log in &raquo;" %}" />
             </div>
         </fieldset>
     </form>
+    <p><a href="{% url acct_passwd_reset %}">{% trans "Forgot password?" %}</a></p>
     {% comment %}
     {% if not openid %}
         <p>{% trans "Or sign in with your OpenID" %}:</p>

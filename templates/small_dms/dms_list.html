@@ -8,10 +8,8 @@
 {% block body %}
 <h1>{% trans "Docs for" %} <a href="{% url tribe_detail tribe.slug %}">{{ tribe }}</a></h1>
 
-<a href="{% url document_view_document_upload tribe.slug %}">{% trans "Upload a document" %}</a>
+<p><a href="{% url document_view_document_upload tribe.slug %}">{% trans "Upload a new document" %}</a></p>
 
-<div class="document-list">
-    {% include "django_dms/list.html" %}
-</div>
+{% include "django_dms/list.html" %}
 
 {% endblock body %}

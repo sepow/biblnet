@@ -2,46 +2,96 @@
 {% load dms %}
 {% load voting_tags %}
 {% load extra_tagging_tags %}
-<div class="document-list">
+{% load i18n %}
 
+        <table class="topics">
+            <tr class="even">
+                <th width="16px"></th>
+                <th width="16px">
+{% comment %}
+                    {% ifequal order 'most_members' %}
+                        <a href="{% url tribe_list_least_members %}{% persist_getvars request %}">{% trans "Members" %} &darr;</a>
+                    {% else %}
+                        {% ifequal order 'least_members' %}
+                            <a href="{% url tribe_list_most_members %}{% persist_getvars request %}">{% trans "Members" %} &uarr;</a>
+                        {% else %}
+                            <a href="{% url tribe_list_most_members %}{% persist_getvars request %}">{% trans "Members" %}</a>
+                        {% endifequal %}
+                    {% endifequal %}
+{% endcomment %}
+                </th>
+                <th>
+                    {% trans "Title" %}
+{% comment %}
+                    {% ifequal order 'name_ascending' %}
+                        <a href="{% url tribe_list_name_descending %}{% persist_getvars request %}">{% trans "Name" %} &uarr;</a>
+                    {% else %}
+                        {% ifequal order 'name_descending' %}
+                            <a href="{% url tribe_list_name_ascending %}{% persist_getvars request %}">{% trans "Name" %} &darr;</a>
+                        {% else %}
+                            <a href="{% url tribe_list_name_ascending %}{% persist_getvars request %}">{% trans "Name" %}</a>
+                        {% endifequal %}
+                    {% endifequal %}
+{% endcomment %}
+                </th>
+                <th class="comment_stats" width="15%">
+                    {% trans "Author" %}
+{% comment %}
+                    {% ifequal order 'most_topics' %}
+                        <a href="{% url tribe_list_least_topics %}{% persist_getvars request %}">{% trans "Topics" %} &darr;</a>
+                    {% else %}
+                        {% ifequal order 'least_topics' %}
+                            <a href="{% url tribe_list_most_topics %}{% persist_getvars request %}">{% trans "Topics" %} &uarr;</a>
+                        {% else %}
+                            <a href="{% url tribe_list_most_topics %}{% persist_getvars request %}">{% trans "Topics" %}</a>
+                        {% endifequal %}
+                    {% endifequal %}
+{% endcomment %}
+                </th>
+                <th width="150px">
+                    {% trans "Score" %}
+{% comment %}
+                    {% ifequal order 'date_newest' %}
+                        <a href="{% url tribe_list_date_oldest %}{% persist_getvars request %}">{% trans "Created" %} &darr;</a>
+                    {% else %}
+                        {% ifequal order 'date_oldest' %}
+                            <a href="{% url tribe_list_date_newest %}{% persist_getvars request %}">{% trans "Created" %} &uarr;</a>
+                        {% else %}
+                            <a href="{% url tribe_list_date_newest %}{% persist_getvars request %}">{% trans "Created" %}</a>
+                        {% endifequal %}
+                    {% endifequal %}
+{% endcomment %}
+                </th>
+            </tr>
+            {% for item in object_list %}
+                <tr class="{% cycle 'odd' 'even' %}">
+                    {% with item.document as document %}
+                        <td><img src="{{MEDIA_URL}}images/sitegraphics/report.png" alt="{% trans 'Doc' %}"/></td>
+                        <td>{% if list_links.download %}<a href="{% dms_url dms_site document_download document %}"><img src="{{MEDIA_URL}}images/sitegraphics/report_disk.png" alt="{% trans 'Download' %}" title="{% trans 'Download' %}"/></a>{% endif %}</td>
+                        <td><a href="{% dms_url dms_site document_detail document %}">{{ document|default:"Untitled" }}</a></td>
+                        <td><a href="{% url profile_detail document.uploader %}">{{ document.uploader }}</a></td>
+                        <td>
+                            {% vote_by_user user on document as vote %}
+                            {% score_for_object document as score %}
+                            {% if user.is_authenticated %}
+                                <a id="up_{{ document.slug }}" href="" onclick="vote('{{document.slug}}', '{% if vote and vote.is_downvote %}clear{% else %}up{% endif %}'); return false;"><img src="{{ MEDIA_URL }}bookmarks/img/up_{% if vote and vote.is_upvote %}mod{% else %}grey{% endif %}.png"/></a><br />
+                            {% endif %}
+                            <span id="document_'{{document.slug}}'_score">
+                                {{ score.score|default:0 }} point{{ score.score|default:0|pluralize }}
+                            </span><br />
+                            {% if user.is_authenticated %}
+                                <a id="down_'{{ document.slug }}'" href="" onclick="vote('{{document.slug}}', '{% if vote and vote.is_upvote %}clear{% else %}down{% endif %}'); return false;"><img id="img_'{{ document.slug }}'_down" src="{{ MEDIA_URL }}bookmarks/img/down_{% if vote and vote.is_downvote %}mod{% else %}grey{% endif %}.png"/></a>
+                            {% endif %}
+                        </td>
+                    {% endwith %}
+                </tr>
+            {% endfor %}
+        </table>
 
-{% for item in object_list %}{% with item.document as document %}
-{% vote_by_user user on document as vote %}
-{% score_for_object document as score %}
-
-
-{% if user.is_authenticated %}
-    <a id="up_{{ document.slug }}" href="" onclick="vote('{{document.slug}}', '{% if vote and vote.is_downvote %}clear{% else %}up{% endif %}'); return false;"><img src="{{ MEDIA_URL }}bookmarks/img/up_{% if vote and vote.is_upvote %}mod{% else %}grey{% endif %}.png"/></a><br />
-{% endif %}
-<span id="document_'{{document.slug}}'_score">
-    {{ score.score|default:0 }} point{{ score.score|default:0|pluralize }}
-</span><br />
-{% if user.is_authenticated %}
-    <a id="down_'{{ document.slug }}'" href="" onclick="vote('{{document.slug}}', '{% if vote and vote.is_upvote %}clear{% else %}down{% endif %}'); return false;"><img id="img_'{{ document.slug }}'_down" src="{{ MEDIA_URL }}bookmarks/img/down_{% if vote and vote.is_downvote %}mod{% else %}grey{% endif %}.png"/></a>
-{% endif %}
-
-
-<div class="document-list-item">
-<h2><a href="{% dms_url dms_site document_detail document %}">{{ document|default:"Untitled" }}</a></h2>
-<p>{% if list_links.preview %}<a class="preview" title="{{ document.title }}" href="{{ document.file_thumbnail_medium }}">Preview</a>, {% endif %}
-   {% if list_links.view %}<a href="{% dms_url dms_site document_view document %}">View</a>, {% endif %}
-   {% if list_links.download %}<a href="{% dms_url dms_site document_download document %}">Download</a> {% endif %}
-   {% if list_links.email %}{% if document|already_sent:request %}<span class="subtle">Email sent{% else %}<span id="send_{{ forloop.counter }}"><a class="send" href="{% dms_url dms_site document_send document %}">Email it to me</a>{% endif %}</span>{% endif %}</p>
-{% if list_links.preview %}<a class="preview" title="{{ document.title }}" href="{{ document.file_thumbnail_medium }}">{% endif %}{% if list_thumbnail %}<img src="{{ document.file_thumbnail_small }}" alt="Thumbnail of {{ document.title }}" />{% endif %}{% if list_links.preview %}</a>{% endif %}
-{% for name,field in item.display_fields %}{% if field %}
-<h3>{{ name|capfirst }}</h3>
-<p>{{ field|linebreaks|truncatewords:30 }}</p>{% endif %}
-
-<p>{% show_tags_for document %}</p>
-{% endfor %}
-<div class="clearing"></div>
-{% endwith %}
-</div>
-{% endfor %}
     {% if page.has_previous %}<a href="?page={{ page.previous_page_number }}">previous</a>{% endif %}
     {% ifnotequal page.paginator.num_pages 1 %}<span class="current">Page {{ page.number }} of {{ page.paginator.num_pages }}</span>{% endifnotequal %}
     {% if page.has_next %}<a href="?page={{ page.next_page_number }}">next</a>{% endif %}
-</div>
+
 
 {% block extra_body %}
 <script>
