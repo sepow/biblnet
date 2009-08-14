@@ -222,14 +222,18 @@ def tribe(request, slug, form_class=TribeUpdateForm,
     else:
         tribe_form = form_class(instance=tribe)
     
-    topics = tribe.topics.all()[:5] #TODO Skal være de topics der er ændret siden sidst. request.user
+
     articles = Article.objects.filter(
         content_type=get_ct(tribe),
         object_id=tribe.id).order_by('-last_update')
     total_articles = articles.count()
     articles = articles[:5]
     
-    tweets = TweetInstance.objects.tweets_for(tribe).order_by("-sent")
+    try:
+        tm_visit = TribeMember.objects.get(tribe=tribe, user=request.user).last_visit
+        topics = tribe.topics.filter(modified__gte=tm_visit)
+    except ObjectDoesNotExist: 
+        topics = None
     
     return render_to_response(template_name, {
         "tribe_form": tribe_form,
@@ -237,7 +241,6 @@ def tribe(request, slug, form_class=TribeUpdateForm,
         "photos": photos,
         "topics": topics,
         "articles": articles,
-        "tweets": tweets,
         "total_articles": total_articles,
         "are_member": are_member,
         "are_moderator" : is_moderator(tribe, request.user),
