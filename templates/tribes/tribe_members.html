@@ -1,5 +1,6 @@
 {% extends "tribes/base.html" %}
 
+{% load humanize %}
 {% load microblogging_tags %}
 {% load i18n %}
 {% load uni_form %}
@@ -9,6 +10,7 @@
 {% load threadedcommentstags %}
 {% load pagination_tags %}
 {% load extra_tagging_tags %}
+{% load profile_tags %}
 {% load tribe_tags %}
 
 {% block head_title %}{{ tribe.name }}{% endblock %}
@@ -22,82 +24,117 @@
 <h1>{% trans "Members of " %} <a href="{% url tribe_detail tribe.slug %}">{{ tribe.name }}</a></h2>
 
     {% if_can_see tribe user %}
-
-        {% if user.is_authenticated %}
-
-            {% if are_moderator or user.is_staff %}
+        {% if are_moderator %}
+            <form method="GET" action="" >
                 <fieldset>
-                <legend>
-                Search for members (kick/promote)
-                </legend>
-                <form method="GET" action="" >
+                    <legend>{% trans "Find members of this tribe to kick or promote" %}</legend>
                     <input type="text" name="search_members" value="{{ search_terms }}" />
                     <input type="submit" value="Search" />
                     {% if search_terms %}
-                        <a href="{% clear_search_url request %}">Clear Search Terms</a>
+                        <a href="{% clear_search_url request %}">{% trans "Clear Search Terms" %}</a>
                     {% endif %}
-                </form>
                 </fieldset>
-                
+            </form>
+
+            <form method="GET" action="">
                 <fieldset>
-                <legend>
-                Search for users (invite)
-                </legend>                
-                <form method="GET" action="">
+                    <legend>{% trans "Find users to add to this tribe" %}</legend>
                     <input type="text" name="search_all" value="{{ search_terms_all }}" />
                     <input type="submit" value="Search" />
-                    {% if search_terms %}
-                        <a href="{% clear_search_url request %}">Clear Search Terms</a>
+                    {% if search_terms_all %}
+                        <a href="{% clear_search_url request %}">{% trans "Clear Search Terms" %}</a>
                     {% endif %}
-                </form>
-                </fieldset>
-            {% endif %}
-
-
-
-
-{% if tribe_members %}
-{% for member in tribe_members %}
-{{member.user.get_profile.name}}
-<form method="GET" action="">
-    <input type="submit" value="kick" />
-    <input type="hidden" name ="kick" value="{{member.user.username}}" />
-</form>
-{% endfor %}
-{% endif %}
-
-{% if users %}
-
-{% for user in users %}
-{{user.get_profile.name}}
-<form method="GET" action="">
-    <input type="submit" value="invite" />
-    <input type="hidden" name="invite" value="{{user.username}}" />
-    <input type="checkbox" name="moderator" value="moderator" />Make moderator
-</form>
-{% endfor %}
-{% endif %}
-
-
-
-
-
-            <table class="members">
-                {% for member in tribe.member_users.all %}
-                    {% if forloop.counter0|divisibleby:"3" %}<tr>{% endif %}
-                        <td class="avatar"><a href="{% url profile_detail member.username %}" title="{{ member.username }}">{% avatar member 40 %}</a></td>
-                        <td class="details"><a href="{% url profile_detail member.username %}" title="{{ member.username }}">{{ member.username }}</a></td>
-                    {% if forloop.counter0|add:"1"|divisibleby:"3" %}</tr>{% endif %}
-                {% endfor %}
-                {% if tribe.members.all|length|divisibleby:"3" %}{% else %}</tr>{% endif %}
-            </table>
-
+            </fieldset>
+            </form>
         {% endif %}
 
+        {% if tribe_members %}
+        <h2>{% trans "Members to kick or promote" %}</h2>
+        <table class="topics">
+                    <tr class="even"><th width="40px"></th><th width="36px"></th><th width="174px">{% trans "Username" %}</th><th>{% trans "Full name" %}</th><th class="comment_stats">{% trans "Change member status" %}</th><th class="comment_stats">{% trans "Kick" %}</th></tr>
+            {% for member in tribe_members %}
+                <tr class="{% cycle 'odd' 'even' as rows %}">
+                    {% show_profile member.user %}
+                        <td class="comment_stats">
+                            {% ifequal tribe.creator user %}
+                                {% if member.moderator %}
+                                        <form method="GET" action="">
+                                            <input type="image" src="{{ MEDIA_URL }}images/sitegraphics/award_star_delete.png" alt="{% trans 'Demote' %}" title="{% trans 'Demote to normal member' %}" />
+                                            <input type="hidden" name ="demote" value="{{ member.user.username }}" />
+                                        </form>
+                                {% else %}
+                                    <form method="GET" action="">
+                                        <input type="image" src="{{ MEDIA_URL }}images/sitegraphics/award_star_gold_1.png" alt="{% trans 'Promote' %}" title="{% trans 'Promote to moderator' %}" />
+                                        <input type="hidden" name ="promote" value="{{ member.user.username }}" />
+                                    </form>
+                                {% endif %}
+                            {% endifequal %}
+                        </td>
+                        <td class="comment_stats">
+                            <form method="GET" action="">
+                                <input type="image" src="{{ MEDIA_URL }}images/sitegraphics/delete.png" alt="{% trans 'Kick' %}" title="{% trans 'Kick from tribe' %}" />
+                                <input type="hidden" name ="kick" value="{{ member.user.username }}" />
+                            </form>
+                        </td>
+                </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+
+        {% if users %}
+        <h2>{% trans "Users to add" %}</h2>
+        <table class="topics">
+            <tr class="even"><th width="40px"></th><th width="36px"></th><th width="174px">{% trans "Username" %}</th><th>{% trans "Full name" %}</th><th class="comment_stats">{% trans "Add" %}</th></tr>
+            {% for user in users %}
+                <tr class="{% cycle 'odd' 'even' as rows %}">
+                    {% show_profile user %}
+                    <td class="comment_stats">
+                        <form method="GET" action="">
+                            <input type="image" src="{{ MEDIA_URL }}images/sitegraphics/add.png" alt="{% trans 'Invite' %}" title="{% trans 'Add user to tribe' %}" />
+                            <input type="hidden" name="invite" value="{{ user.username }}" />
+                            <input type="checkbox" name="moderator" value="moderator" />{% trans "Invite as moderator?" %}
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+
+        {% autopaginate tribe_members_all %}
+        
+        {% ifequal order 'name'  %}
+            <h2>{% if tribe_members or users %}{% trans "All members ordered by username" %}{% else %}{% trans "Ordered by username" %}{% endif %}</h2>
+            <p>{% trans "Order by:" %} <a href="?order=date{% if search_terms %}&search={{ search_terms }}{% endif %}">{% trans "Date" %} &darr;</a></p>
+            <table class="topics">
+                    <tr class="even"><th width="40px"></th><th width="36px"></th><th width="174px">{% trans "Username" %}</th><th>{% trans "Full name" %}</th></tr>
+                {% for member in tribe_members_all %}
+                    <tr class="{% cycle 'odd' 'even' as rows %}">
+                        {% show_profile member.user %}
+                    </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            {% regroup tribe_members_all by date_joined.date as members_by_date_joined %}
+            <h2>{% if tribe_members or users %}{% trans "All members ordered by join date" %}{% else %}{% trans "Ordered by join date" %}{% endif %}</h2></h2>
+            <p>{% trans "Order by:" %} <a href="?order=name{% if search_terms %}&search={{ search_terms }}{% endif %}">{% trans "Name" %} &uarr;</a></p>
+            {% for date in members_by_date_joined %}
+                <h3>{{ date.grouper|naturalday:_("MONTH_DAY_FORMAT")|capfirst }}</h3>
+                <table class="topics">
+                    <tr class="even"><th width="40px"></th><th width="36px"></th><th width="174px">{% trans "Username" %}</th><th>{% trans "Full name" %}</th></tr>
+                    {% for member in date.list %}
+                        <tr class="{% cycle 'odd' 'even' as rows %}">
+                            {% show_profile member.user %}
+                        </tr>
+                    {% endfor %}
+                    {#% resetcycle rows %#}
+                </table>
+            {% endfor %}
+        {% endifequal %}
+
+        {% paginate %}
+
     {% else %}
-
-        {% trans "... This is a private group!" %}
-
+        <h1>{% trans "This is a private group!" %}</h1>
     {% endif_can_see %}	
 
 {% endblock %}

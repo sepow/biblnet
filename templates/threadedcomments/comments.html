@@ -14,9 +14,12 @@
     <tr class="{% cycle 'even' 'odd' as rowcolors %}">
     <td>
         <div class="meta">
-            <div class="avatar">
+            <div class="usericons">
                 <img src="/site_media/{{ response.user.get_profile.affiliation.icon }}"  alt="{{ response.user.get_profile.affiliation }}" title="{{ response.user.get_profile.affiliation }}" />
-                <img src="/site_media/{{ response.user.get_profile.occupation.icon }}"  alt="{{ response.user.get_profile.occupation }}" title="{{ response.user.get_profile.occupation }}" /><br />
+                <img src="/site_media/{{ response.user.get_profile.occupation.icon }}"  alt="{{ response.user.get_profile.occupation }}" title="{{ response.user.get_profile.occupation }}" />
+                {% if are_moderator %}<img src="/site_media/images/sitegraphics/award_star_gold_1.png"  alt="{% trans 'Tribe administrator' %}" title="{% trans 'Tribe administrator' %}" /><br />{% else %}<br/>{% endif %}
+            </div>
+            <div class="avatar">
                 <a href="{% url profile_detail response.user.username %}">{% avatar response.user 60 %}</a>
             </div>
             <div class="created">
@@ -67,14 +70,16 @@
 {% if not object.closed %}
 
     {% if are_member %}
-
         <tr class="{% cycle rowcolors %}">
         <td>
             <div class="meta">
-                <div class="avatar">
+                <div class="usericons">
                     <img src="/site_media/{{ user.get_profile.affiliation.icon }}"  alt="{{ user.get_profile.affiliation }}" title="{{ user.get_profile.affiliation }}" />
-                    <img src="/site_media/{{ user.get_profile.occupation.icon }}"  alt="{{ user.get_profile.occupation }}" title="{{ user.get_profile.occupation }}" /><br />
-                    <a href="{% url profile_detail user %}">{% avatar user 60 %}</a><br />
+                    <img src="/site_media/{{ user.get_profile.occupation.icon }}"  alt="{{ user.get_profile.occupation }}" title="{{ user.get_profile.occupation }}" />
+                    {% if are_moderator %}<img src="/site_media/images/sitegraphics/award_star_gold_1.png"  alt="{% trans 'Tribe administrator' %}" title="{% trans 'Tribe administrator' %}" /><br />{% else %}<br/>{% endif %}
+                </div>
+                <div class="avatar">
+                    <a href="{% url profile_detail user %}">{% avatar user 60 %}</a>
                 </div>
                 <div class="created">
                     {% now "N j, Y" %} - {% now "H:i" %}<br />
@@ -98,7 +103,6 @@
             </form>
         </td>
         </tr>
-    
     {% endif %}
     
 {% endif %}

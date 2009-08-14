@@ -56,6 +56,7 @@ class Tribe(models.Model):
 class TribeMember(models.Model):
     tribe = models.ForeignKey(Tribe, related_name="members", verbose_name=_('tribe'))
     user = models.ForeignKey(User, related_name="tribes", verbose_name=_('user'))
+    date_joined = models.DateTimeField(_('date_joined'), default=datetime.now)
     
     moderator = models.BooleanField(_('moderator'), default=False)
     

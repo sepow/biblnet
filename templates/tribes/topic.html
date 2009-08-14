@@ -28,7 +28,6 @@
                     {% else %}
                         <input type="image" src="{{MEDIA_URL}}images/sitegraphics/lightbulb.png" alt="{% trans "Sticky topic" %}" />
                     {% endif %}
-                    <!--input type="submit" value={% if topic.sticky %}"{% trans "unSticky topic" %}"{% else %}"{% trans "Sticky topic" %}"{% endif %} /-->
                     <input type="hidden" name="sticky" value="" />
                     <input type="hidden" name="next" value="{% url tribe_topics topic.tribe.slug %}" />
                 </form>
@@ -49,7 +48,6 @@
                     {% else %}
                         <input type="image" src="{{MEDIA_URL}}images/sitegraphics/lock.png" alt="{% trans 'Close topic' %}" />
                     {% endif %}
-                    <!--input type="submit" value={% if topic.closed %}"{% trans 'Reopen topic' %}"{% else %}"{% trans 'Close topic' %}"{% endif %} /-->
                     <input type="hidden" name="close" value="" />
                     <input type="hidden" name="next" value="{% url tribe_topics topic.tribe.slug %}" />
                 </form>
@@ -94,9 +92,12 @@
     <tr class="odd">
         <td>
         <div class="meta">
-            <div class="avatar">
+            <div class="usericons">
                 <img src="{{MEDIA_URL}}{{ topic.creator.get_profile.affiliation.icon }}" alt="{{ topic.creator.get_profile.affiliation }}" title="{{ topic.creator.get_profile.affiliation }}" />
-                <img src="{{MEDIA_URL}}{{ topic.creator.get_profile.occupation.icon }}"  alt="{{ topic.creator.get_profile.occupation }}" title="{{ topic.creator.get_profile.occupation }}" /><br />
+                <img src="{{MEDIA_URL}}{{ topic.creator.get_profile.occupation.icon }}"  alt="{{ topic.creator.get_profile.occupation }}" title="{{ topic.creator.get_profile.occupation }}" />
+                {% if are_moderator %}<img src="{{MEDIA_URL}}images/sitegraphics/award_star_gold_1.png"  alt="{% trans 'Tribe administrator' %}" title="{% trans 'Tribe administrator' %}" /><br />{% else %}<br/>{% endif %}
+            </div>
+            <div class="avatar">
                 <a href="{% url profile_detail topic.creator.username %}">{% avatar topic.creator 60 %}</a>
             </div>
             <div class="created">{{ topic.created|date }} - {{ topic.created|time }}<br />

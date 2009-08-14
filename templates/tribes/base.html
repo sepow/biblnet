@@ -19,5 +19,8 @@
         {% else %}
             <div>{% trans "This calendar is private..." %}</div>
         {% endif_can_see %}
+    {% else %}
+        <div>{% trans "Next events for all your tribes" %}</div>
+        {% get_all_tribe_calendars request.user 5 %}
     {% endif %}
 {% endblock calendarevents %}

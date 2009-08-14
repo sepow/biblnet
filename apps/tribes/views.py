@@ -12,6 +12,8 @@ from sepow.html import sanitize_html
 from datetime import datetime
 from django.contrib.auth.decorators import login_required
 from schedule.models import Calendar
+from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext
 
 if "notification" in settings.INSTALLED_APPS:
     from notification import models as notification
@@ -164,9 +166,9 @@ def delete(request, slug, redirect_url=None):
             calendar = Calendar.objects.get_calendar_for_object(tribe)
             calendar.delete()
             tribe.save()
-            request.user.message_set.create(message="Tribe %s deleted." % tribe)
+            request.user.message_set.create(message=ugettext("Tribe %s deleted.") % tribe)
         
-        request.user.message_set.create(message="Tribe %s cannot be deleted. It is an Affiliation tribe" % tribe)
+        request.user.message_set.create(message=ugettext("Tribe %s cannot be deleted. It is an Affiliation tribe") % tribe)
     
     return HttpResponseRedirect(redirect_url)
 
@@ -213,7 +215,7 @@ def tribe(request, slug, form_class=TribeUpdateForm,
         elif request.POST["action"] == "leave":
             TribeMember.objects.filter(tribe=tribe, user=request.user).delete()
 
-            request.user.message_set.create(message="You have left the tribe %s" % tribe.name)
+            request.user.message_set.create(message=ugettext("You have left the tribe %s") % tribe.name)
             if notification:
                 pass # @@@
         are_member = has_member(tribe, request.user)
@@ -253,38 +255,43 @@ def tribe_members(request, slug, tribe_form=AddMemberForm, template_name="tribes
     
     tribe_members = None
     search_terms= ""
-    order = None
+    order = request.GET.get('order')
+    if not order:
+        order = 'name'
     
     users = None
-    tribe_members_all = None
+    tribe_members_all = TribeMember.objects.filter(tribe=tribe)
     search_terms_all = ""
 
     if tribe.private and not are_member:
         do_403_if_not_superuser(request)
     
-    if are_moderator: 
+    if are_moderator:
 
         if request.method == "GET":
             
             if 'search_members' in request.GET: 
-                tribe_members = TribeMember.objects.filter(tribe=tribe)
+                tribe_members = tribe_members_all
                 search_terms = request.GET.get('search_members', '')
-                order = request.GET.get('order')
+#                order = request.GET.get('order')
             
             elif 'search_all' in request.GET: 
                 users = User.objects.all()
                 search_terms_all = request.GET.get('search_all', '')
-                order = request.GET.get('order')
+#                order = request.GET.get('order')
 
-            if 'kick' in request.GET: 
+            if 'kick' in request.GET:
                 try:
-                    kicked_user_slug = request.GET['kick'] # lav til en form
+                    kicked_user_slug = request.GET['kick'] # lav til en form             
                     tm = TribeMember.objects.get(tribe=tribe, user__username=kicked_user_slug)
-                    tm.delete()
+                    if not tm.user.id == tribe.creator.id:       
+                        tm.delete()
+                    else:
+                        request.user.message_set.create(message=ugettext("You are the creator of this tribe so can't leave (yet)."))
                 except:
                     pass
             
-            elif 'invite' in request.GET: 
+            elif 'invite' in request.GET:
                 try:
                     invited_user_slug = request.GET['invite'] # lav til en form
                     
@@ -295,19 +302,41 @@ def tribe_members(request, slug, tribe_form=AddMemberForm, template_name="tribes
                         tm.moderator=True
                     tm.save()
                 except:
+                    request.user.message_set.create(message=ugettext("%s is already a member of this tribe") % invited_user_slug)
+
+            elif 'promote' in request.GET:
+                try:
+                    promoted_user_slug = request.GET['promote'] # lav til en form
+                    
+                    user = User.objects.get(username=promoted_user_slug)
+                    
+                    tm = TribeMember.objects.get(tribe=tribe, user=user)
+                    tm.moderator=True
+                    tm.save()
+                except:
                     pass
-            
-            if not order:
-                order = 'name'
+
+            elif 'demote' in request.GET:
+                try:
+                    promoted_user_slug = request.GET['demote'] # lav til en form
+                    
+                    user = User.objects.get(username=promoted_user_slug)
+                    
+                    tm = TribeMember.objects.get(tribe=tribe, user=user)
+                    tm.moderator=False
+                    tm.save()
+                except:
+                    pass
+
             if search_terms:
                 tribe_members = tribe_members.filter(user__profile__name__icontains=search_terms) | tribe_members.filter(user__username__icontains=search_terms) | tribe_members.filter(user__profile__nickname__icontains=search_terms)
             
             if search_terms_all:
                 users = users.filter(profile__name__icontains=search_terms_all) | users.filter(username__icontains=search_terms_all) | users.filter(profile__nickname__icontains=search_terms_all)
-
     
     return render_to_response(template_name, {
             'tribe_members':tribe_members,
+            'tribe_members_all':tribe_members_all,
             'users' : users,
             'order' : order,
             'search_terms_all' : search_terms_all ,
@@ -345,13 +374,13 @@ def topics(request, slug, form_class=TopicForm,
                     topic.body = sanitize_html(topic.body)
                     
                     topic.save()        
-                    request.user.message_set.create(message="You have started the topic %s" % topic.title)
+                    request.user.message_set.create(message=ugettext("You have started the topic %s") % topic.title)
                     if notification:
                         notification.send(tribe.member_users.all(), "tribes_new_topic", {"topic": topic})
                     topic_form = form_class() # @@@ is this the right way to reset it?
                     return HttpResponseRedirect(topic.get_absolute_url())
             else:
-                request.user.message_set.create(message="You are not a member and so cannot start a new topic")
+                request.user.message_set.create(message=ugettext("You are not a member and so cannot start a new topic"))
                 topic_form = form_class()
         else:
             return HttpResponseForbidden()
@@ -382,7 +411,7 @@ def topic(request, id, edit=False, template_name="tribes/topic.html"):
         
         if is_moderator(topic.tribe, request.user):
                 text = request.POST["body"]
-                text += "<small><i>Topic editet by %s : %s</i></small>" % (request.user, datetime.now()) 
+                text += ugettext("<small><i>Topic editet by %s : %s</i></small>") % (request.user, datetime.now()) 
                 topic.body = sanitize_html(text)
                 topic.editet = datetime.now()
                 topic.save()
