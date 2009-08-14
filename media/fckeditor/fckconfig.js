@@ -102,7 +102,7 @@ FCKConfig.ToolbarSets["Default"] = [
 	['Source','Preview'],
 	['PasteText','PasteWord'],
 	['Undo','Redo','RemoveFormat'],
-	['FitWindow','ShowBlocks'],
+	['ShowBlocks'],
 	'/',
 	['Bold','Italic','Underline','StrikeThrough'],
 	['OrderedList','UnorderedList','-','Outdent','Indent','Blockquote'],
