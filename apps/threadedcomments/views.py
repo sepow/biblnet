@@ -44,7 +44,7 @@ def _preview(request, context_processors, extra_context, form_class=ThreadedComm
     _adjust_max_comment_length(form_class)
     mydict = request.POST.copy()
 
-    if "NOMARKUP" in mydict:
+    if "convert" in mydict:
         mydict['comment'] = mydict['comment'].replace('\n', '<br />')
     
     form = form_class(mydict or None)

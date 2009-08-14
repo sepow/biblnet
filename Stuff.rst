@@ -48,22 +48,7 @@ comments
 dms
 ---
 
+Tags
+--- 
 
-Skriv tests for tribe funktionallitet. 
-
-Add knapper på tribe medlemmer listen, 'add to moderators' og 'kick from group'
-
-
-Serveren:
-    Opret cronjob med for emails
-
-Ved syncdb:
-    Opret en global fælles tribe "global"
-    Opret affiliations
-
-tags: sluggen, fælles
-
-Eventurelt mulighed for at joine et stamhold samtidig?
-
-python manage.py dumpdata > /home/sean/programming/pinax-env/biblnet/apps/sepow/fixtures/initial_data.json
 
