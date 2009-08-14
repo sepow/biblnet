@@ -25,7 +25,7 @@ class Tribe(models.Model):
     
     
     name = models.CharField(_('name'), max_length=80, unique=True)
-    slug = models.SlugField(_('slug'), unique=True)
+    slug = models.SlugField(_('slug'), max_length=30, unique=True)
     creator = models.ForeignKey(User, related_name="created_groups", verbose_name=_('creator'))
     created = models.DateTimeField(_('created'), default=datetime.now)
     description = models.TextField(_('description'))

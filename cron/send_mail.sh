@@ -1,8 +1,8 @@
-WORKON_HOME=/home/sepow/webapps/devdjango
-PROJECT_ROOT=/home/sepow/webapps/devdjango/pinax-env/biblnet
+WORKON_HOME=/home/biblnet/webapps/bnet
+PROJECT_ROOT=/home/biblnet/webapps/bnet/pinax-env/biblnet
 
 # activate virtual environment
-source $WORKON_HOME/pinax-env/bin/activate
+source /home/biblnet/webapps/bnet/pinax-env/bin/activate
 
-cd $PROJECT_ROOT
-python manage.py send_mail >> $PROJECT_ROOT/logs/cron_mail.log 2>&1
+cd /home/biblnet/webapps/bnet/pinax-env/biblnet
+python manage.py send_mail >> /home/biblnet/webapps/bnet/pinax-env/biblnet/logs/cron_mail.log 2>&1

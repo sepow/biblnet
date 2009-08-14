@@ -2,7 +2,7 @@
 
 {% load i18n %}
 {% load uni_form %}
-
+{% block head_title %}Elsewhere{% endblock %}
 {% block breadcrumb %}{{ block.super }} &raquo; <a href="/profiles/">{% trans "Profiles" %}</a> &raquo; <a href="/profiles/{{ user }}">{{ user }}</a>{% endblock %}
 
 {% block body %}

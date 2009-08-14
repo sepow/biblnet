@@ -1,5 +1,5 @@
-WORKON_HOME=/home/sepow/webapps/devdjango
-PROJECT_ROOT=/home/sepow/webapps/devdjango/pinax-env/biblnet
+WORKON_HOME=/home/biblnet/webapps/bnet
+PROJECT_ROOT=/home/biblnet/webapps/bnet/pinax-env/biblnet
 
 # activate virtual environment
 source $WORKON_HOME/pinax-env/bin/activate
