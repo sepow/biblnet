@@ -33,15 +33,15 @@
 
 body
 {
-	background-color: #ffffff;
+	background: #F3F3F3 url(/site_media/pinax/images/form-shadow.png) repeat-x scroll left top;
 	padding: 5px 5px 5px 5px;
 	margin: 0px;
 }
 
 body, td
 {
-	font-family: Arial, Verdana, sans-serif;
-	font-size: 12px;
+    font-family: tahoma,arial,helvetica,trebuchet ms,arial narrow;
+    font-size: 81%;
 }
 
 a[href]

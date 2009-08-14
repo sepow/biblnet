@@ -1,9 +1,5 @@
-html {
-	margin: 10px;
-}
-
 body {
-	margin: 0px auto;
+	margin: 10px auto;
 	padding: 0px;
 	width: 100%;
 	background: #98aaae;
@@ -92,7 +88,7 @@ table td.icon {
 }
 #header div.logo {
     position: absolute;
-    top: 0;
+    top: 10px;
     width: 530px;
     height: 150px;
     background: transparent url('images/sitegraphics/header_left.png') top left no-repeat;
@@ -123,12 +119,13 @@ table td.icon {
     float: right;
     clear: both;
     width: 100%;
-    margin: 2px 5px 0 0;
+    margin: 5px 5px 0 0;
     text-align: right;
 }
 #header div.dynamic_line {
-/*    height: 1.1em;*/
+/*    height: 15px;*/
     overflow: hidden;
+    font-size: 12px;
 }
 
 #colmask {
@@ -270,11 +267,11 @@ p.blocktitle {
 form th {
     text-align : left;
 }
-form.signup input[type="submit"], form.login input[type="submit"] {
+/*form.signup input[type="submit"], form.login input[type="submit"] {
     margin: 20px 0;
     padding: 0;
-/*    font-size: 14pt;*/
-}
+    font-size: 14pt;
+}*/
 input[type="text"],
 input[type="password"],
 input[type="file"],

@@ -19,7 +19,7 @@
     {% block extra_head %}{% endblock %}
 {% endblock %}
 
-{% block logo_link_image %}{% cache 60000000 biblnetbanner %}<a href="{% url home %}"><img src="{{ MEDIA_URL }}pinax/images/Biblnet-logo.png" alt="Biblnet-logo"/></a>{% endcache %} {{ CAN_ADMIN }}{% endblock %}
+{% block logo_link_image %}{% cache 60000000 biblnetbanner %}<a href="{% url home %}"><img src="{{ MEDIA_URL }}images/sitegraphics/biblnet.png" alt="biblnet"/></a>{% endcache %} {{ CAN_ADMIN }}{% endblock %}
 {% block dynamic_updates %}
     {% get_latest 8 1 1 %}
 {% endblock %}
@@ -104,7 +104,7 @@
         	<div class="navigation">
                     <img src="{{ MEDIA_URL }}images/sitegraphics/group.png" alt="{% trans 'Tribe' %}" /> <a href="{% url tribe_list %}">{% trans "All tribes" %}</a><br/>
                     <img src="{{ MEDIA_URL }}images/sitegraphics/user.png" alt="{% trans 'Members' %}" /> <a href="/profiles/">{% trans "All members" %}</a><br/>
-                    <img src="{{ MEDIA_URL }}images/sitegraphics/book_open.png" alt="{% trans 'Knowledge Bank' %}" /> <a href="/dms/">{% trans "Knowledge Bank" %}</a><br/>
+                    <img src="{{ MEDIA_URL }}images/sitegraphics/report.png" alt="{% trans 'Knowledge Bank' %}" /> <a href="{{affil_tribe}}dms/">{% trans "Knowledge Bank" %}</a><br/>
                     <!--img src="{{ MEDIA_URL }}images/sitegraphics/tag_blue.png" alt="{% trans 'Tags' %}" /> <a href="/tags/">{% trans "Tags" %}</a><br/-->
             </div>
         </div>
