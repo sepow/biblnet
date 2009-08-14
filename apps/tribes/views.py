@@ -232,7 +232,7 @@ def tribe(request, slug, form_class=TribeUpdateForm,
     try:
         tm_visit = TribeMember.objects.get(tribe=tribe, user=request.user).last_visit
         topics = tribe.topics.filter(modified__gte=tm_visit)
-    except ObjectDoesNotExist: 
+    except: 
         topics = None
     
     return render_to_response(template_name, {

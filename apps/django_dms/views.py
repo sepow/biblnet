@@ -282,7 +282,6 @@ class DocumentView(object):
         }, context_instance=RequestContext(request))
     
     def delete(self, request, pk, tribe_slug):
-        print "DELETE WOOOOH WOOOOOH!!!!"
         tribe = get_object_or_404(Tribe, slug=tribe_slug)
         instance = self.get_document(pk, tribe_slug)
         
@@ -293,6 +292,7 @@ class DocumentView(object):
                 return resp 
         instance.delete()
         return HttpResponseRedirect(reverse('%s_document_list' % self.name, args=(tribe_slug,) ))
+        
     ####################
     # INTERNAL METHODS #
     ####################

@@ -22,9 +22,6 @@ class Document(DocumentBase):
     tags            = TagField()
     uploader        = models.ForeignKey(User, related_name="documents", verbose_name=_('uploader'))   
 
-    authors      = models.CharField(_('authors'), max_length=300, default="", blank=True) 
-    semester     = models.CharField(_('semester'), max_length=300, default="", blank=True)    
-    
     GRADES = (
             (-3, '-3'),
             (00, '00'),
