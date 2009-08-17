@@ -15,5 +15,5 @@
         {% case '' %} {{ content|force_escape|wikiwords|linebreaks|safe }} {% endcase %}
     {% endswitch %}
 {% else %}
-    {{ content|force_escape|wikiwords|linebreaks|safe }}
+    {% autoescape off %}{{ content|urlize|wikiwords }}{% endautoescape %}
 {% endif %}

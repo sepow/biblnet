@@ -7,7 +7,7 @@ from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.contenttypes import generic
 from django.contrib.auth.models import User
-
+from sepow.html import sanitize_html
 from tagging.fields import TagField
 from photos.models import Pool
 

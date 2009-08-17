@@ -14,7 +14,7 @@ wikiword_pattern = re.compile('^' + WIKI_WORD_RE + '$')
 
 class ArticleForm(forms.ModelForm):
 
-    summary = forms.CharField(widget=forms.Textarea)
+    summary = forms.CharField(widget=forms.Textarea, required=False)
 
     comment = forms.CharField(required=False)
     user_ip = forms.CharField(widget=forms.HiddenInput)
@@ -31,7 +31,7 @@ class ArticleForm(forms.ModelForm):
     class Meta:
         model = Article
         exclude = ('creator', 'creator_ip',
-                   'group', 'created_at', 'last_update')
+                   'group', 'created_at', 'last_update', 'markup')
 
     def clean_title(self):
         """ Page title must be a WikiWord.

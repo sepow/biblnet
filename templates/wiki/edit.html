@@ -5,7 +5,7 @@
 {% load wiki %}
 {% load wikiurl %}
 {% load condition_tag %}
-    
+{% load cache %}
 
 {% block head_title %}Wiki for {{ group.name }} {% endblock %}
 
@@ -27,4 +27,18 @@
 {% else %}
     ... This is a private group!
 {% endif_can_see %}	
+{% endblock %}
+
+{% block extra_body %}
+{% cache 600000 fckeditor_create_topic %}
+    <script type="text/javascript" src="{{MEDIA_URL}}fckeditor/fckeditor.js"></script>
+    <script type="text/javascript">
+    window.onload = function()
+    {
+    var oFCKeditor = new FCKeditor( 'id_content' ) ;
+    oFCKeditor.BasePath = "{{MEDIA_URL}}fckeditor/" ;
+    oFCKeditor.ReplaceTextarea() ;
+    }
+    </script>
+    {% endcache %}
 {% endblock %}

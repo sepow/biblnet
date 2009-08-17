@@ -13,7 +13,7 @@ from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
-
+from sepow.html import sanitize_html
 from tagging.fields import TagField
 from tagging.models import Tag
 
@@ -46,6 +46,7 @@ class Article(models.Model):
     """ A wiki page.
     """
     title = models.CharField(_(u"Title"), max_length=50)
+    #slug =  models.SlugField(_(u"Slug"), max_length=50)
     content = models.TextField(_(u"Content"))
     summary = models.CharField(_(u"Summary"), max_length=150,
                                null=True, blank=True)
@@ -75,6 +76,8 @@ class Article(models.Model):
         return self.group.get_absolute_url() + 'wiki/' + self.title
 
     def save(self, force_insert=False, force_update=False):
+        self.summary = sanitize_html(self.summary)
+        self.content = sanitize_html(self.content)
         self.last_update = datetime.now()
         super(Article, self).save(force_insert, force_update)
 
