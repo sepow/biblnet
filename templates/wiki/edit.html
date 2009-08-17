@@ -15,7 +15,7 @@
     {% wiki_title group %}
     
     <h2>{% trans "Edit Article" %} {{ article.title }}</h2>
-    
+    {{ form.media }}
     <form method="POST" action="" class="uniForm">
         <fieldset class="inlineLabels">
             {{ form|as_uni_form }}

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import re
-
+from tagging.forms import TagField
+from sepow.widgets import AutoCompleteTagInput
 from django import forms
 from django.forms import widgets
 from django.contrib.contenttypes.models import ContentType
@@ -15,17 +16,17 @@ wikiword_pattern = re.compile('^' + WIKI_WORD_RE + '$')
 class ArticleForm(forms.ModelForm):
 
     summary = forms.CharField(widget=forms.Textarea, required=False)
-
+    tags = TagField(widget=AutoCompleteTagInput(cls=Article), required=False)
     comment = forms.CharField(required=False)
     user_ip = forms.CharField(widget=forms.HiddenInput)
-
+    
     content_type = forms.ModelChoiceField(
         queryset=ContentType.objects.all(),
         required=False,
         widget=forms.HiddenInput)
     object_id = forms.IntegerField(required=False,
                                    widget=forms.HiddenInput)
-
+    
     action = forms.CharField(widget=forms.HiddenInput)
 
     class Meta:
