@@ -223,18 +223,22 @@ def tribe(request, slug, form_class=TribeUpdateForm,
         tribe_form = form_class(instance=tribe)
     
 
-    articles = Article.objects.filter(
-        content_type=get_ct(tribe),
-        object_id=tribe.id).order_by('-last_update')
-    total_articles = articles.count()
-    articles = articles[:5]
-    
+
     try:
         tm_visit = TribeMember.objects.get(tribe=tribe, user=request.user).last_visit
         topics = tribe.topics.filter(modified__gte=tm_visit)
+        
+        articles = Article.objects.filter(
+            content_type=get_ct(tribe),
+            object_id=tribe.id)
+        total_articles = articles.count()
+        articles = articles.filter(last_update__gte=tm_visit).order_by('-last_update')[:10]
     except: 
-        topics = None
-    
+        topics   = None
+        articles = None
+
+
+        
     return render_to_response(template_name, {
         "tribe_form": tribe_form,
         "tribe": tribe,
