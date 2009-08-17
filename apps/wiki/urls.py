@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from django.conf.urls.defaults import *
-
+import re
 from wiki import views, models
 from wiki.templatetags.wiki import WIKI_URL_RE
 

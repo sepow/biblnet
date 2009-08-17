@@ -37,8 +37,7 @@ class ArticleForm(forms.ModelForm):
         """ Page title must be a WikiWord.
         """
         title = self.cleaned_data['title']
-        if not wikiword_pattern.match(title):
-            raise forms.ValidationError(_('Must be a WikiWord.'))
+
 
         return title
 

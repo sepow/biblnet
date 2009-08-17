@@ -5,19 +5,19 @@ from django import template
 from django.conf import settings
 from django.utils.encoding import force_unicode
 from django.utils.safestring import mark_safe
-
+from sepow.downcode import downcode
 try:
     WIKI_WORD_RE = settings.WIKI_WORD_RE
 except AttributeError:
-    WIKI_WORD_RE = r'(?:[A-Z]+[a-z]+){2,}'
-
+    #WIKI_WORD_RE = r"\[\[([\wøæå ]+)\]\]"
+    WIKI_WORD_RE = r"\[\[([\wæøå \-]+)(?:\|([\wæøå \-]+)\]\]|\]\])"
 try:
     WIKI_URL_RE = settings.WIKI_URL_RE
 except AttributeError:
-    WIKI_URL_RE = r'\w+'
+    WIKI_URL_RE = u'[\w_\-]+' 
 
 
-wikiwordfier = re.compile(r'(?<!!)\b(%s)\b' % WIKI_WORD_RE)
+wikiwordfier = re.compile(WIKI_WORD_RE, re.U)
 #wikiwordfier = re.compile(r'\b(%s)\b' % WIKI_WORD)
 
 register = template.Library()
@@ -29,7 +29,13 @@ def wikiwords(s):
         '(?:[A-Z]+[a-z]+){2,}'
     """
     # @@@ TODO: absolute links
-    s = wikiwordfier.sub(r'<a href="../\1/">\1</a>', s)
+    
+    def slugify_wikiword(match):
+        wiki_url = '<a href="../%s/">%s</a>' % (downcode(match.group(2) or match.group(1)).lower(), match.group(1))
+        return wiki_url
+    s = re.sub(wikiwordfier, slugify_wikiword, s)
+    
+    #s = wikiwordfier.sub(r'<a href="../\1/">\1</a>', s)
     return force_unicode(s)
 wikiwords.is_safe = True
 
