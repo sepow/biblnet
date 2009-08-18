@@ -7,7 +7,7 @@ from sepow.widgets import AutoCompleteTagInput
 
 
 class TribeForm(forms.ModelForm):
-    tags = TagField(widget=AutoCompleteTagInput(cls=Tribe), required=False)
+    tags = TagField(widget=AutoCompleteTagInput(cls=Tribe), required=False, help_text = _("Tags are seperated by a comma fx. 'three word tag, another tag' ."),)
     slug = forms.SlugField(max_length=20,
         help_text = _("A short version of the name consisting only of letters (a-z), numbers, underscores and hyphens."),
         error_message = _("This value must contain only letters, numbers, underscores and hyphens."))

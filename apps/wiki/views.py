@@ -123,7 +123,7 @@ def has_write_perm(user, group, is_member):
     return False
 
 
-@login_required
+
 def article_list(request,
                  group_slug=None, group_slug_field=None, group_qs=None,
                  article_qs=ALL_ARTICLES,
@@ -172,7 +172,7 @@ def article_list(request,
     return HttpResponseNotAllowed(['GET'])
 
 
-@login_required
+
 def view_article(request, title,
                  ArticleClass=Article, # to create an unsaved instance
                  group_slug=None, group_slug_field=None, group_qs=None,

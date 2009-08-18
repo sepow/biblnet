@@ -87,7 +87,7 @@ class CanAccessNode(template.Node):
             # print "Can access?: ", user_can_access
             context['tribe'] = tribe
             
-            if isinstance(obj, Profile):
+            if isinstance(actual_obj, Profile):
                 user_can_access = True
             context['has_access'] = user_can_access
             

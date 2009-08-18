@@ -49,6 +49,8 @@ DATETIME_FORMAT = 'N j, Y, H:i'
 # http://blogs.law.harvard.edu/tech/stories/storyReader$15
 LANGUAGE_CODE = 'en'
 
+#LANGUAGE_CODE = 'da-DK'
+
 SITE_ID = 1
 
 # If you set this to False, Django will make some optimizations so as not

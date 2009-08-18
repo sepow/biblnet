@@ -3,6 +3,7 @@ from django.db.models import signals
 from elsewhere.default_list import *
 from elsewhere.models import SocialNetwork, InstantMessenger
 
+
 # this function will fill the database with default data (stored in default_lists.py)
 
 def fill_db(sender=None, **kwargs):

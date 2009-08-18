@@ -238,7 +238,9 @@ def tribe(request, slug, form_class=TribeUpdateForm,
     except: 
         topics    = None
         articles  = None
+        total_articles = None
         documents = None
+        
 
         
     return render_to_response(template_name, {
