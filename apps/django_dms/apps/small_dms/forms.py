@@ -9,3 +9,4 @@ class UploadForm(forms.ModelForm):
     class Meta:
         model = Document
         fields = ('file', 'title', 'slug', 'summary', 'tags', 'grade',)
+

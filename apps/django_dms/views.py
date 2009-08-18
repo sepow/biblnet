@@ -394,6 +394,7 @@ class DocumentAdmin(object):
         if request.method == "POST":
             form = Form(request.POST, instance=instance)
             if form.is_valid():
+                
                 form.save()
                 return HttpResponseRedirect(reverse('%s_document_detail' % self.document_view, args=(tribe.slug, instance.slug) ))
         else:
@@ -407,6 +408,7 @@ class DocumentAdmin(object):
             Form = self.form
         else:
             class Form(forms.ModelForm):
+                delete = forms.BooleanField(required=False)
                 class Meta:
                     model = self.model
                     fields = self.fields or None
