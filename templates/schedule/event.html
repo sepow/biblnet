@@ -39,10 +39,12 @@
         </tr>
     </table>
 
-    <div class="event_actions">
-        <a href="{% url edit_event event.calendar.slug,event.id %}"><img src="{{ MEDIA_URL }}schedule/img/pencil.png" alt="{% trans 'Change' %}"/></a>
-        <a href="{% url delete_event event.id %}"><img src="{{ MEDIA_URL }}schedule/img/delete.png" alt="{% trans 'Delete' %}"/></a>
-    </div>
+    {% ifequal event.creator request.user %}
+        <div class="event_actions">
+            <a href="{% url edit_event event.calendar.slug,event.id %}"><img src="{{ MEDIA_URL }}schedule/img/pencil.png" alt="{% trans 'Change' %}"/></a>
+            <a href="{% url delete_event event.id %}"><img src="{{ MEDIA_URL }}schedule/img/delete.png" alt="{% trans 'Delete' %}"/></a>
+        </div>
+    {% endifequal %}
 
     <h2>{% trans "Description" %}</h2>
     {% if event.description %}

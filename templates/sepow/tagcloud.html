@@ -1,11 +1,15 @@
 {% extends "site_base.html" %}
+{% load i18n %}
 {% load cache %}
 
-{% block head_title %}Tag cloud{% endblock %}
+{% block head_title %}{% trans "Tag cloud" %}{% endblock %}
 
-{% block body%}
+{% block body %}
+<h1>{% trans "Tag cloud" %}</h1>
+
 {% for tag in tag_cloud %}
-<a style="font-size:{{tag.size}}em" href="{{tag.tag}}">{{tag.tag}}</a>
+    <a style="font-size:{{ tag.size }}em" href="{{ tag.tag }}">{{ tag.tag }}</a>
 {% endfor %}
+
 {% endblock body%}
 

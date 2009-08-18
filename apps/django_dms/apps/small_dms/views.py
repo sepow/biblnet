@@ -12,7 +12,7 @@ class DocumentView(DocumentView):
     links = ['download']
     thumbnail = False
     queryset = Document.objects.all()
-    fields = ['summary', 'date_created']
+    fields = ['summary']
     ordering = ['title']
     url_identifier_field = 'slug'
     field_class_filters = { models.DateTimeField: lambda v: naturalday(v, 'F Y').title() }

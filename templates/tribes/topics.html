@@ -26,7 +26,7 @@
     {% else %}
         {% url acct_login as login_url %}
         {% url tribe_detail tribe.slug as tribe_url %}
-        <h3>{% blocktrans %}Please <a href="{{ login_url }}?next={{ tribe_url }}">log in</a> to start a topic.{% endblocktrans %}</h3>
+        <h3>{% blocktrans %}Please <a href="{{ login_url }}?next={{ tribe_url }}topics">log in</a> to start a topic.{% endblocktrans %}</h3>
     {% endif %}
 
     <table class="topics">

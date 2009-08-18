@@ -4,21 +4,14 @@
 
 
 {% if search_form %}
-{% load condition_tag %}
-    {% if_can_see group user %}
-        <div id="searchbox">
-            <form class="uniForm" method="post" action="{% wikiurl search group %}">
-                <fieldset class="inlineLabels">
-                    {{ search_form|as_uni_form }}
-                    <div class="form_block">
-                        <input type="submit" name="search_button" value="{% trans 'Search' %}"/>
-                    </div>
-                </fieldset>
-            </form>
-        </div>
-    {% else %}
-        {% trans "This is a private group!" %}
-    {% endif_can_see %}	
+    <div id="searchbox">
+        <form class="uniForm" method="post" action="{% wikiurl search group %}">
+            <fieldset class="inlineLabels">
+                {{ search_form|as_uni_form }}
+                <div class="form_block">
+                    <input type="submit" name="search_button" value="{% trans 'Search' %}"/>
+                </div>
+            </fieldset>
+        </form>
+    </div>
 {% endif %}
-
-

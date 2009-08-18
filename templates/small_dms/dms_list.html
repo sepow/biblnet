@@ -2,14 +2,32 @@
 {% load already %}
 {% load dms %}
 {% load i18n %}
+{% load condition_tag %}
+
 
 {% block head_title %}{% blocktrans %}Docs for {{ tribe }}{% endblocktrans %}{% endblock %}
 
 {% block body %}
-<h1>{% trans "Docs for" %} <a href="{% url tribe_detail tribe.slug %}">{{ tribe }}</a></h1>
+{% if_can_see tribe %}
+    <h1>{% trans "Docs for" %} <a href="{% url tribe_detail tribe.slug %}">{{ tribe }}</a></h1>
 
-<p><a href="{% url document_view_document_upload tribe.slug %}">{% trans "Upload a new document" %}</a></p>
+    {% if user.is_authenticated %}
+        {% is_member tribe user %}
+            <p><a href="{% url document_view_document_upload tribe.slug %}">{% trans "Upload a new document" %}</a></p>
+        {% else %}
+            <form method="POST" action="{% url tribe_detail tribe.slug %}">
+                <input type="hidden" name="action" value="join" />
+                <input type="submit" value="{% trans 'join tribe' %}"/>
+            </form>
+        {% endis_member %}
+    {% else %}
+        {% url acct_login as login_url %}
+        {% url tribe_detail tribe.slug as tribe_url %}
+        <h3>{% blocktrans %}Please <a href="{{ login_url }}?next={{ tribe_url }}dms">log in</a> to upload or download documents.{% endblocktrans %}</h3>
+    {% endif %}
 
-{% include "django_dms/list.html" %}
-
+    {% include "django_dms/list.html" %}
+{% else %}
+    <h1>{% trans "This is a private group!" %}</h1>
+{% endif_can_see %}
 {% endblock body %}

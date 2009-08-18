@@ -4,42 +4,42 @@
 <table>
     {% if other_user.get_profile.name %}
         <tr>
-            <td class="icon"><img src="/site_media/{{ other_user.get_profile.occupation.icon }}"  alt="{{ other_user.get_profile.occupation }}" title="{{ other_user.get_profile.occupation }}" /></td>
+            <th class="icon"><img src="{{ MEDIA_URL }}{{ other_user.get_profile.occupation.icon }}"  alt="{{ other_user.get_profile.occupation }}" title="{{ other_user.get_profile.occupation }}" /></td>
             <td>{{ other_user.get_profile.name }}{% if other_user.get_profile.nickname %}, aka "{{ other_user.get_profile.nickname }}"{% endif %}</td>
         </tr>
     {% endif %}
 
     {% if other_user.get_profile.affiliation %}
         <tr>
-            <td class="icon"><img src="/site_media/{{ other_user.get_profile.affiliation.icon }}"  alt="{{ other_user.get_profile.affiliation }}" title="{{ other_user.get_profile.affiliation }}" /></td>
+            <th class="icon"><img src="{{ MEDIA_URL }}{{ other_user.get_profile.affiliation.icon }}"  alt="{{ other_user.get_profile.affiliation }}" title="{{ other_user.get_profile.affiliation }}" /></td>
             <td>{{ other_user.get_profile.affiliation }}</td>
         </tr>
     {% endif %}
 
     {% if other_user.get_profile.phone_number %}
         <tr>
-            <td class="icon"><img src="{{ MEDIA_URL }}images/sitegraphics/phone.png" alt="{% trans 'Phone' %}" /></td>
+            <th class="icon"><img src="{{ MEDIA_URL }}images/sitegraphics/phone.png" alt="{% trans 'Phone' %}" title="{% trans 'Phone' %}" /></td>
             <td>{{ other_user.get_profile.phone_number }}</td>
         </tr>
     {% endif %}
 
     {% if other_user.get_profile.address %}
         <tr>
-            <td class="icon"><img src="{{ MEDIA_URL }}images/sitegraphics/house.png" alt="{% trans 'Address' %}" /></td>
+            <th class="icon"><img src="{{ MEDIA_URL }}images/sitegraphics/house.png" alt="{% trans 'Address' %}" title="{% trans 'Address' %}"/></td>
             <td><a href="http://maps.google.dk/maps?q={{ other_user.get_profile.address|urlencode }}" target="_blank">{{ other_user.get_profile.address|linebreaksbr }}</a></td>
         </tr>
     {% endif %}
 
     {% if other_user.email %}
         <tr>
-            <td class="icon"><img src="{{ MEDIA_URL }}images/sitegraphics/snabela.png" alt="{% trans 'Email' %}" /></td>
+            <th class="icon"><img src="{{ MEDIA_URL }}images/sitegraphics/snabela.png" alt="{% trans 'Email' %}" title="{% trans 'Email' %}"/></td>
             <td><a href="mailto:{{ other_user.email }}">{{ other_user.email }}</a></td>
         </tr>
     {% endif %}
 
     {% if not is_me %}
         <tr>
-            <td class="icon"><img src="{{ MEDIA_URL }}images/sitegraphics/email.png" alt="{% trans 'Message' %}" /></td>
+            <th class="icon"><img src="{{ MEDIA_URL }}images/sitegraphics/email.png" alt="{% trans 'Message' %}" alt="{% trans 'Biblnet-message' %}"/></td>
             <td><a href="{% url messages_compose %}{{ other_user }}/">{% trans "Send a Biblnet-message" %}</a></td>
         </tr>
     {% endif %}
@@ -47,7 +47,7 @@
     {% if other_user.instant_messenger_profiles.all or other_user.social_network_profiles.all or other_user.website_profiles.all %}
         <tr><th colspan="2">{% trans "Places to find me online:" %} {% if is_me %}(<a href="/elsewhere/">{% trans "edit" %}</a>){% endif %}</th></tr>
     {% if other_user.instant_messenger_profiles.all %}
-        <tr><td class="icon"><img src="{{ MEDIA_URL }}images/sitegraphics/comments.png" alt="Instant Messengers" title="Instant Messengers" /></td><td>
+        <tr><th class="icon"><img src="{{ MEDIA_URL }}images/sitegraphics/comments.png" alt="Instant Messengers" title="Instant Messengers" /></td><td>
             {% for profile in other_user.instant_messenger_profiles.all %}
                 <a href="{{ profile.url }}" target="_blank" rel="me"><img src="{{ MEDIA_URL }}{{ profile.icon }}" alt="{{ profile.name }}" title="{{ profile.name }}" /></a> 
             {% endfor %}
@@ -55,7 +55,7 @@
     {% endif %}
 
     {% if other_user.social_network_profiles.all %}
-        <tr><td class="icon"><img src="{{ MEDIA_URL }}images/sitegraphics/group_link.png" alt="Social Networks" title="Social Networks" /></td><td>
+        <tr><th class="icon"><img src="{{ MEDIA_URL }}images/sitegraphics/group_link.png" alt="Social Networks" title="Social Networks" /></td><td>
         {% for profile in other_user.social_network_profiles.all %}
                 <a href="{{ profile.url }}" target="_blank" rel="me"><img src="{{ MEDIA_URL }}{{ profile.icon }}" alt="{{ profile.name }}" title="{{ profile.name }}" /></a> 
         {% endfor %}
@@ -65,7 +65,7 @@
     {% if other_user.website_profiles.all %}
         {% for profile in other_user.website_profiles.all %}
             <tr>
-                <td class="icon"><a href="{{ profile.url }}" target="_blank" rel="me"><img src="{{ profile.icon }}" alt="{{ profile.name }}" title="{{ profile.name }}"></a></td>
+                <th class="icon"><a href="{{ profile.url }}" target="_blank" rel="me"><img src="{{ profile.icon }}" alt="{{ profile.name }}" title="{{ profile.name }}"></a></td>
                 <td><a href="{{ profile.url }}" target="_blank" rel="me">{{ profile.name }}</a></td>
             </tr>
         {% endfor %}
@@ -76,14 +76,14 @@
 
     {% if other_user.get_profile.listening_now %}
         <tr>
-            <td class="icon"><img src="{{ MEDIA_URL }}images/sitegraphics/music.png" alt="{% trans 'Music' %}" /></td>
+            <th class="icon"><img src="{{ MEDIA_URL }}images/sitegraphics/music.png" alt="{% trans 'Music' %}" /></td>
             <td>{{ other_user.get_profile.listening_now }}</td>
         </tr>
     {% endif %}
 
     {% if other_user.get_profile.reading_now %}
         <tr>
-            <td class="icon"><img src="{{ MEDIA_URL }}images/sitegraphics/book_open.png" alt="{% trans 'Book' %}" /></td>
+            <th class="icon"><img src="{{ MEDIA_URL }}images/sitegraphics/book_open.png" alt="{% trans 'Book' %}" /></td>
             <td>{{ other_user.get_profile.reading_now }}</td>
         </tr>
     {% endif %}

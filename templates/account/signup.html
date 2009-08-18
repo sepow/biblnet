@@ -24,7 +24,7 @@
         
         {% url terms as terms_url %}
         {% url privacy as privacy_url %}
-        <p>{% blocktrans %}By clicking "Sign Up", you are indicating that you have read and agree to the <a href="{{ terms_url }}" target='_blank'>Terms of Use</a> and <a href="{{ privacy_url }}" target='_blank'>Privacy Policy</a>.{% endblocktrans %}</p>
+        <p>{% blocktrans %}By clicking "Sign Up", you are indicating that you have read and agree to the <a href="{{ terms_url }}" target='_blank'>Terms of Use</a>.{% endblocktrans %}</p>
         
         <p>{% blocktrans %}If you have any trouble creating your account, contact us at <a href="mailto:{{ contact_email }}">{{ contact_email }}</a>.{% endblocktrans %}</p>
     {% endif %}

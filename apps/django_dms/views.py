@@ -144,7 +144,7 @@ class DocumentView(object):
         return vote_on_object(request, model, direction, 
                                 slug=document.uuid, slug_field='uuid',
                                 template_object_name='bookmark',
-                                template_name='small_dms/dms_list.html',
+                                template_name='small_dms/dms_detail.html',
                                 allow_xmlhttprequest=True,
                                 extra_context={'dms_site' : self,
                                                'tribe' : tribe,

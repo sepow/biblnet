@@ -55,8 +55,9 @@
     {% if wiki_article_tags %}
     <h2>{% trans "Wiki Articles" %}</h2>
     <table class="topics">
+        <tr class="even"><th width="16px"></th><th width="20%">{% trans "Title" %}</th><th>{% trans "Summary" %}</th><th width="20%">{% trans "Latest editor" %}</th></tr>
         {% for article in wiki_article_tags %}
-            {% if_can_see article.group%}
+            {% if_can_see article.group %}
                 {% show_teaser article %}
             {% endif_can_see %}
         {% endfor %}
@@ -66,13 +67,25 @@
 
     {% if document_tags %}
     <h2>{% trans "Documents" %}</h2>
-    <dl>
+        <table class="topics">
+            <tr class="even"><th width="16px"></th><th>{% trans "Title" %}</th><th width="20%">{% trans "Author" %}</th></tr>
         {% for document in document_tags %}
             {% if_can_see document.tribe %}
-                <a href="{% url document_view_document_detail document.tribe.slug document.slug %}">{{ document }} </a> in {{ document.tribe }}
+                <tr class="{% cycle 'odd' 'even' %}">
+                    <td>
+                        {% if document.file_mimetype %}
+                            <img src="{{MEDIA_URL}}images/sitegraphics/page_white.png" alt="{% trans 'Filetype' %}" title="{{ document.file_mimetype }}"/>
+                        {% else %}
+                            <img src="{{MEDIA_URL}}images/sitegraphics/page_white.png" alt="{% trans 'Filetype' %}" title="{% trans 'Unknown filetype' %}"/>
+                        {% endif %}
+                    </td>
+                    <td><a href="{% url document_view_document_detail document.tribe.slug document.slug %}">{{ document|default:"Untitled" }}</a></td>
+                    <td><a href="{% url profile_detail document.uploader %}">{{ document.uploader }}</a></td>
+                </tr>
+
             {% endif_can_see %}
         {% endfor %}
-    </dl>
+        </table>
     {% endif %}
 
 

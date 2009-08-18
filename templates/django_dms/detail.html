@@ -1,16 +1,65 @@
 {% load already %}
 {% load dms %}
+{% load extra_tagging_tags %}
+{% load voting_tags %}
+{% load i18n %}
 
-<h2><a href="{% dms_url dms_site document_detail document %}">{{ document.title|default:"Untitled" }}</a></h2>
-<p>
-    {% if list_links.download %}<a href="{% dms_url dms_site document_download document %}">Download</a>{% endif %}
-    {% ifequal document.uploader request.user %}<a href="{% url document_upload_document_edit document.tribe.slug document.slug %}">Edit</a>{% endifequal %}
-    Uploaded by: <a href="{% url profile_detail document.uploader %}">{{ document.uploader }}</a>
-</p>
+<div class="right_panel">
+    <div><img src="{{ MEDIA_URL }}images/sitegraphics/user.png" alt="{% trans 'User' %}" title="{% trans 'Upload user' %}" /> <a href="{% url profile_detail document.uploader %}">{{ document.uploader }}</a></div>
+    <div><img src="{{ MEDIA_URL }}images/sitegraphics/date.png" alt="{% trans 'Date' %}" title="{% trans 'Upload date' %}" /> {{ document.date_created|date }}</div>
+    
+    {% ifequal document.uploader request.user %}<br/><div><img src="{{ MEDIA_URL }}images/sitegraphics/page_white_edit.png" alt="{% trans 'Edit' %}" title="{% trans 'Edit' %}" /> <a href="{% url document_upload_document_edit document.tribe.slug document.slug %}">Edit</a></div>{% endifequal %}
+</div>
 
-{% for name,field in fields %}{% if field %}
-    <h3>{{ name|capfirst }}</h3>
-    <p>{{ field|linebreaks }}</p>{% endif %}
+<h1>{{ document.title|default:"Untitled" }}</h1>
+
+<p>{% show_tags_for document %}</p>
+
+{% if user.is_authenticated %}{% if list_links.download %}<p><img src="{{ MEDIA_URL }}images/sitegraphics/arrow_down.png" alt="{% trans 'Download' %}" title="{% trans 'Download' %}" /> <a href="{% dms_url dms_site document_download document %}">{% trans "Download document" %}</a></p>{% endif %}{% endif %}
+
+<div>
+    {% vote_by_user user on document as vote %}
+    {% score_for_object document as score %}
+    {% if user.is_authenticated %}
+        <a id="up_{{ document.slug }}" href="" onclick="vote('{{document.slug}}', '{% if vote and vote.is_downvote %}clear{% else %}up{% endif %}'); return false;"><img src="{{ MEDIA_URL }}bookmarks/img/up_{% if vote and vote.is_upvote %}mod{% else %}grey{% endif %}.png"/></a>
+    {% endif %}
+    <span id="document_'{{document.slug}}'_score">
+        {{ score.score|default:0 }} point{{ score.score|default:0|pluralize }}
+    </span>
+    {% if user.is_authenticated %}
+        <a id="down_{{ document.slug }}" href="" onclick="vote('{{document.slug}}', '{% if vote and vote.is_upvote %}clear{% else %}down{% endif %}'); return false;"><img id="img_'{{ document.slug }}'_down" src="{{ MEDIA_URL }}bookmarks/img/down_{% if vote and vote.is_downvote %}mod{% else %}grey{% endif %}.png"/></a>
+    {% endif %}
+</div>
+
+{% for name,field in fields %}
+    {% if field %}
+        <h2>{{ name|capfirst }}</h2>
+        <p>{{ field|linebreaks }}</p>
+    {% endif %}
 {% endfor %}
 
 <!--img src="{{ document.file_thumbnail_small }}"-->
+
+{% block extra_body %}
+<script>
+    function vote(document_id, direction) {
+        $.post(document_id + '/' + direction + 'vote/', function(data) {
+            var jsonResult = eval('(' + data + ')');
+            var new_score = jsonResult.score.score;
+            $('#document_' + document_id + '_score').text(new_score + ' point' + (new_score == 1 ? '': 's'));
+        });
+        if (direction == 'up') {
+            $('#up_' + document_id).replaceWith('<a id="up_' + document_id + '" href="" onclick="return false;"><img src="{{ MEDIA_URL }}bookmarks/img/up_mod.png"/>');
+            $('#down_' + document_id).replaceWith('<a id="down_' + document_id + '" href="" onclick="vote(\'' + document_id + '\', \'clear\'); return false;"><img src="{{ MEDIA_URL }}bookmarks/img/down_grey.png"/>');
+        }
+        else if (direction == 'down') {
+            $('#up_' + document_id).replaceWith('<a id="up_' + document_id + '" href="" onclick="vote(\'' + document_id + '\', \'clear\'); return false;"><img src="{{ MEDIA_URL }}bookmarks/img/up_grey.png"/>');
+            $('#down_' + document_id).replaceWith('<a id="down_' + document_id + '" href="" onclick="return false;"><img src="{{ MEDIA_URL }}bookmarks/img/down_mod.png"/>');
+        }
+        else { // clear
+            $('#up_' + document_id).replaceWith('<a id="up_' + document_id + '" href="" onclick="vote(\'' + document_id + '\', \'up\'); return false;"><img src="{{ MEDIA_URL }}bookmarks/img/up_grey.png"/>');
+            $('#down_' + document_id).replaceWith('<a id="down_' + document_id + '" href="" onclick="vote(\'' + document_id + '\', \'down\'); return false;"><img src="{{ MEDIA_URL }}bookmarks/img/down_grey.png"/>');
+        }
+    }
+</script>
+{% endblock %}

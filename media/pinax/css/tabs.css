@@ -5,10 +5,10 @@
 	clear:left;
 	float:left;
 	padding:0;
-	background:#98AAAE url('/site_media/pinax/images/boxtab.gif') bottom repeat-x;
+	background:#98AAAE url('/site_media/images/sitegraphics/boxtab.gif') bottom repeat-x;
 	width:100%;
 	overflow:hidden;
-	font-family:Verdana, Geneva, sans-serif;
+	font-family: tahoma, arial, helvetica, trebuchet ms, arial narrow;
 }
 #boxtab ul {
 	float:left;

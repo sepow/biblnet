@@ -235,6 +235,12 @@ p.blocktitle {
 /*h1 {
     margin: 0;
 }*/
+#language {
+    float: right;
+    width: 200px;
+    background-color: #f00;
+}
+
 #tabhead {
     position: relative;
     background: #035 url('/site_media/pinax/images/heading.png') left top repeat-x;
@@ -287,7 +293,7 @@ textarea
 {
     margin: 3px;
     color: #0E3037;
-    background: #F3F3F3 url('/site_media/pinax/images/form-shadow.png') left top repeat-x;
+    background: #F3F3F3 url('/site_media/images/sitegraphics/form-shadow.png') left top repeat-x;
 }
 input[type="text"],
 input[type="password"],
@@ -295,7 +301,7 @@ textarea
 {
     width: 45%;
 }
-input[type="submit"] {
+input[type="submit"], input[type="button"] {
     margin: 3px;
 }
 input[type="image"] {
@@ -418,6 +424,10 @@ table.profile_info th {
     text-align: left;
     padding: 5px;
     font-weight: bold;
+}
+table.profile_info th.icon {
+    width: 16px;
+    border-right: 1px dotted #0E3037;
 }
 table.profile_info td {
     padding: 5px;

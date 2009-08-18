@@ -19,23 +19,19 @@
         </table>
     </form>
 
-    {% if page.object_list %}
-        
-        {% for result in page.object_list %}
+    {% for result in page.object_list %}
 
-            {% can_access result.object request.user%}
-            
-            {% if has_access %}
-                <hr/> 
-                <a href="{{result.object.get_absolute_url}}"><strong>{{result.verbose_name}}</strong></a> i 
-                {% if tribe %}<a href="{% url tribe_detail tribe.slug %}">{{tribe}}</a>{% endif %} ({{result.score}})
-                <p>{{ result.text|safe|truncatewords_html:100 }}</p>
-            {% endif %}
-    
-        {% endfor %}
+        {% can_access result.object request.user%}
         
-    {% else %}
+        {% if has_access %}
+            <hr/> 
+            <a href="{{result.object.get_absolute_url}}"><strong>{{result.verbose_name}}</strong></a> i 
+            {% if tribe %}<a href="{% url tribe_detail tribe.slug %}">{{tribe}}</a>{% endif %} ({{result.score}})
+            <p>{{ result.text|safe|truncatewords_html:100 }}</p>
+        {% endif %}
+
+    {% empty %}
         <p>No results found.</p>
-    {% endif %}
-
+    {% endfor %}
+        
 {% endblock %}

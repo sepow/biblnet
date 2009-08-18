@@ -147,11 +147,17 @@ def article_list(request,
         if not allow_read:
             return HttpResponseForbidden()
 
-        articles = articles.order_by('-created_at')
+        order = request.GET.get('order')
+
+        if order == 'date':
+            articles = articles.order_by('-created_at')
+        else:
+            articles = articles.order_by('title')
 
         search_form = SearchFormClass()
 
         template_params = {'articles': articles,
+                           'order': order,
                            'search_form': search_form,
                            'allow_write': allow_write}
 

@@ -2,6 +2,7 @@
 {% load dms %}
 {% load voting_tags %}
 {% load extra_tagging_tags %}
+{% load condition_tag %}
 {% load i18n %}
 
         <table class="topics">
@@ -34,7 +35,7 @@
                     {% endifequal %}
 {% endcomment %}
                 </th>
-                <th class="comment_stats" width="15%">
+                <th width="20%">
                     {% trans "Author" %}
 {% comment %}
                     {% ifequal order 'most_topics' %}
@@ -48,7 +49,7 @@
                     {% endifequal %}
 {% endcomment %}
                 </th>
-                <th width="150px">
+                <th class="comment_stats" width="120px">
                     {% trans "Score" %}
 {% comment %}
                     {% ifequal order 'date_newest' %}
@@ -66,53 +67,29 @@
             {% for item in object_list %}
                 <tr class="{% cycle 'odd' 'even' %}">
                     {% with item.document as document %}
-                        <td><img src="{{MEDIA_URL}}images/sitegraphics/report.png" alt="{% trans 'Doc' %}"/></td>
-                        <td>{% if list_links.download %}<a href="{% dms_url dms_site document_download document %}"><img src="{{MEDIA_URL}}images/sitegraphics/report_disk.png" alt="{% trans 'Download' %}" title="{% trans 'Download' %}"/></a>{% endif %}</td>
+                        <td>
+                            {% if document.file_mimetype %}
+                                <img src="{{MEDIA_URL}}images/sitegraphics/page_white.png" alt="{% trans 'Filetype' %}" title="{{ document.file_mimetype }}"/>
+                            {% else %}
+                                <img src="{{MEDIA_URL}}images/sitegraphics/page_white.png" alt="{% trans 'Filetype' %}" title="{% trans 'Unknown filetype' %}"/>
+                            {% endif %}
+                        </td>
+                        <td>{% if user.is_authenticated %}{% if list_links.download %}<a href="{% dms_url dms_site document_download document %}"><img src="{{MEDIA_URL}}images/sitegraphics/arrow_down.png" alt="{% trans 'Download' %}" title="{% trans 'Download' %}"/></a>{% endif %}{% endif %}</td>
                         <td><a href="{% dms_url dms_site document_detail document %}">{{ document|default:"Untitled" }}</a></td>
                         <td><a href="{% url profile_detail document.uploader %}">{{ document.uploader }}</a></td>
-                        <td>
-                            {% vote_by_user user on document as vote %}
+                        <td class="comment_stats">
                             {% score_for_object document as score %}
-                            {% if user.is_authenticated %}
-                                <a id="up_{{ document.slug }}" href="" onclick="vote('{{document.slug}}', '{% if vote and vote.is_downvote %}clear{% else %}up{% endif %}'); return false;"><img src="{{ MEDIA_URL }}bookmarks/img/up_{% if vote and vote.is_upvote %}mod{% else %}grey{% endif %}.png"/></a><br />
-                            {% endif %}
-                            <span id="document_'{{document.slug}}'_score">
+                            <span id="document_{{document.slug}}_score">
                                 {{ score.score|default:0 }} point{{ score.score|default:0|pluralize }}
-                            </span><br />
-                            {% if user.is_authenticated %}
-                                <a id="down_'{{ document.slug }}'" href="" onclick="vote('{{document.slug}}', '{% if vote and vote.is_upvote %}clear{% else %}down{% endif %}'); return false;"><img id="img_'{{ document.slug }}'_down" src="{{ MEDIA_URL }}bookmarks/img/down_{% if vote and vote.is_downvote %}mod{% else %}grey{% endif %}.png"/></a>
-                            {% endif %}
+                            </span>
                         </td>
                     {% endwith %}
                 </tr>
+            {% empty %}
+                <tr class="odd"><td></td><td></td><td colspan="3">{% trans "There are no documents yet" %}{% is_member tribe user %} - <a href="{% url document_view_document_upload tribe.slug %}">{% trans "upload a document" %}</a>{% endis_member %}</td></tr>
             {% endfor %}
         </table>
 
     {% if page.has_previous %}<a href="?page={{ page.previous_page_number }}">previous</a>{% endif %}
     {% ifnotequal page.paginator.num_pages 1 %}<span class="current">Page {{ page.number }} of {{ page.paginator.num_pages }}</span>{% endifnotequal %}
     {% if page.has_next %}<a href="?page={{ page.next_page_number }}">next</a>{% endif %}
-
-
-{% block extra_body %}
-<script>
-    function vote(document_id, direction) {
-        $.post(document_id + '/' + direction + 'vote/', function(data) {
-            var jsonResult = eval('(' + data + ')');
-            var new_score = jsonResult.score.score;
-            $('#document_' + document_id + '_score').text(new_score + ' point' + (new_score == 1 ? '': 's'));
-        });
-        if (direction == 'up') {
-            $('#up_' + document_id).replaceWith('<a id="up_' + document_id + '" href="" onclick="return false;"><img src="{{ MEDIA_URL }}bookmarks/img/up_mod.png"/>');
-            $('#down_' + document_id).replaceWith('<a id="down_' + document_id + '" href="" onclick="vote(' + document_id + ', \'clear\'); return false;"><img src="{{ MEDIA_URL }}bookmarks/img/down_grey.png"/>');
-        }
-        else if (direction == 'down') {
-            $('#up_' + document_id).replaceWith('<a id="up_' + document_id + '" href="" onclick="vote(' + document_id + ', \'clear\'); return false;"><img src="{{ MEDIA_URL }}bookmarks/img/up_grey.png"/>');
-            $('#down_' + document_id).replaceWith('<a id="down_' + document_id + '" href="" onclick="return false;"><img src="{{ MEDIA_URL }}bookmarks/img/down_mod.png"/>');
-        }
-        else { // clear
-            $('#up_' + document_id).replaceWith('<a id="up_' + document_id + '" href="" onclick="vote(' + document_id + ', \'up\'); return false;"><img src="{{ MEDIA_URL }}bookmarks/img/up_grey.png"/>');
-            $('#down_' + document_id).replaceWith('<a id="down_' + document_id + '" href="" onclick="vote(' + document_id + ', \'down\'); return false;"><img src="{{ MEDIA_URL }}bookmarks/img/down_grey.png"/>');
-        }
-    }
-</script>
-{% endblock %}

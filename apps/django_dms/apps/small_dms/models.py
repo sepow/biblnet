@@ -30,9 +30,9 @@ class Document(DocumentBase):
             (7 , '07'),
             (10, '10'),
             (12, '12'),
-            (99, 'Bestået'),
+            (99, _('Passed')),
              )
-    grade        = models.CharField(_('grade'), max_length=2, blank=True, choices=GRADES)
+    grade = models.CharField(_('grade'), max_length=2, blank=True, choices=GRADES)
 
     
     def __unicode__(self):

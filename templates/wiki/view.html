@@ -17,17 +17,17 @@
             {% if article.id %}
                 {% if allow_write %}
                     <tr>
-                        <td><a href="{% wikiurl edit group article %}"><img src="{{MEDIA_URL}}images/sitegraphics/page_white_edit.png" alt="{% trans 'Edit' %}" /></a></td>
+                        <td><img src="{{MEDIA_URL}}images/sitegraphics/page_white_edit.png" alt="{% trans 'Edit' %}"/></td>
                         <td><a href="{% wikiurl edit group article %}">{% trans "Edit this article" %}</a></td>
                     </tr>
                 {% endif %}
                 <tr>
-                    <td><a href="{% wikiurl article_history group article %}"><img src="{{MEDIA_URL}}images/sitegraphics/page_white_stack.png" alt="{% trans 'History' %}" /></a></td>
+                    <td><img src="{{MEDIA_URL}}images/sitegraphics/page_white_stack.png" alt="{% trans 'History' %}"/></td>
                     <td><a href="{% wikiurl article_history group article %}">{% trans "Editing history" %}</a></td>
                 </tr>
             {% else %}
                 <tr>
-                    <td><a href="{% wikiurl edit group article %}"><img src="{{MEDIA_URL}}images/sitegraphics/page_white_add.png" alt="{% trans 'Create' %}" /></a></td>
+                    <td><img src="{{MEDIA_URL}}images/sitegraphics/page_white_add.png" alt="{% trans 'Create' %}"/></td>
                     <td><a href="{% wikiurl edit group article %}">{% trans "Create this article" %}</a></td>
                 </tr>
             {% endif %}
@@ -37,15 +37,13 @@
 
     {% wiki_title group %}
 
-    <h2><a href="{% wikiurl article group article %}" rel="bookmark">{{ article.title }}</a></h2>
+    <h2>{{ article.title }}</h2>
 
     {% show_tags_for article %}
 
     {% if not article.id and allow_write %}
-        <p>
-            {% trans "This article does not exist." %}<br />
-            <a href="{% wikiurl edit group article %}">{% trans "Create it now?" %}</a>
-        </p>
+        <p>{% trans "This article does not exist." %}</p>
+        <p><a href="{% wikiurl edit group article %}">{% trans "Create it now?" %}</a></p>
     {% endif %}
 
     {% render_content article %}
@@ -54,11 +52,11 @@
     {% if article.id and can_observe %}
         {% if is_observing %}
             <form action="{% wikiurl stop_observing group article %}" method="post">
-                <input type="submit" value="{% trans "Stop Observing Article" %}">
+                <input type="submit" value="{% trans 'Stop Observing Article' %}">
             </form>
         {% else %}
             <form action="{% wikiurl observe group article %}" method="post">
-                <input type="submit" value="{% trans "Observe Article" %}">
+                <input type="submit" value="{% trans 'Observe Article' %}">
             </form>
         {% endif %}
     {% endif %}

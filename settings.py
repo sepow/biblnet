@@ -55,6 +55,8 @@ SITE_ID = 1
 # to load the internationalization machinery.
 USE_I18N = True
 
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
 

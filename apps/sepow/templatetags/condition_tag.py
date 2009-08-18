@@ -98,12 +98,13 @@ def condition_tag(func):
         return ConditionNode(arg_expressions, nodelist_true, nodelist_false)
     return wrapper
 
-
-def is_member(tribe, user):
+@condition_tag
+def is_member(tribe, user='user'):
     if user.is_authenticated():
         if TribeMember.objects.filter(tribe=tribe, user=user).count() > 0:
             return True
     return False
+register.tag('is_member', is_member)
 
 @condition_tag
 def if_can_see(tribe, user='user'):

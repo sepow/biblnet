@@ -4,6 +4,8 @@
 
 {% block rtab_id %}id="account_tab"{% endblock %}
 
+{% block breadcrumb %}{{ block.super }} &raquo; <a href="/profiles/">{% trans "Profiles" %}</a> &raquo; <a href="/profiles/{{ user }}">{{ user }}</a>{% endblock %}
+
 {% block subnav %}
     {% if user.is_authenticated %}
         <ul>

@@ -236,9 +236,10 @@ def tribe(request, slug, form_class=TribeUpdateForm,
         
         documents = Document.objects.filter(tribe=tribe, date_updated__gte=tm_visit).order_by('-date_updated')[:10]
     except: 
-        topics    = None
-        articles  = None
-        documents = None
+        topics          = None
+        total_articles  = None
+        articles        = None
+        documents       = None
 
         
     return render_to_response(template_name, {
