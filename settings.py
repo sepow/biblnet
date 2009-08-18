@@ -153,24 +153,24 @@ INSTALLED_APPS = (
     'messages',
     'announcements',
     'oembed',
-    'djangodblog', # remove?
+    'djangodblog',
     'pagination',
 #    'gravatar',
     'threadedcomments',
     'wiki',
-    'swaps', # remove
+#    'swaps', # remove
     'timezones',
     'app_plugins',
     'voting', 
     'tagging',
     'bookmarks', 
-    'blog', # remove?
+#    'blog', # remove?
     'ajax_validation',
     'photologue',
     'avatar',
     'flag',
     'microblogging',
-    'locations', # remove
+#    'locations', # remove
     'uni_form',
     
     # internal (for now)
@@ -179,7 +179,7 @@ INSTALLED_APPS = (
     'staticfiles',
     'account',
     'tribes',
-    'projects', # remove
+#    'projects', # remove
     'misc',
     'photos',
     'tag_app',
@@ -188,7 +188,7 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'sepow',
     'captcha',
-    'markitup',
+#    'markitup',
     'haystack',
     'django_dms',
     'django_dms.apps.small_dms',

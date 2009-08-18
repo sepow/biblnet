@@ -5,6 +5,7 @@ from tribes.models import Tribe, Topic
 from threadedcomments.models import ThreadedComment
 from django_dms.apps.small_dms.models import Document
 from schedule.models import Calendar, Event, Occurrence
+from profiles.models import Profile
 
 
 register = template.Library()
@@ -85,6 +86,9 @@ class CanAccessNode(template.Node):
             # print "Tribe: ", tribe
             # print "Can access?: ", user_can_access
             context['tribe'] = tribe
+            
+            if isinstance(obj, Profile):
+                user_can_access = True
             context['has_access'] = user_can_access
             
         except template.VariableDoesNotExist:
