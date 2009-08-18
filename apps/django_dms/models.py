@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 # -*- coding: UTF-8 -*-
 """
       Title: DMS framework models
@@ -45,8 +44,8 @@ class DocumentBase(models.Model):
     # TODO: The django admin uses the file extension to determine the filetype for the preview
     # A new widget will have to be created, in a similar fashion to the automatic one
     file           = models.FileField(upload_to=get_filename_from_uuid)#lambda i,f: 'documents/%s' % i.uuid)
-    file_mimetype  = models.CharField(max_length=50, default="", editable=False)
-    file_extension = models.CharField(max_length=10, default="", editable=False)
+    file_mimetype  = models.CharField(max_length=50, default="", editable=False, null=True)
+    file_extension = models.CharField(max_length=10, default="", editable=False, null=True)
 
     date_added   = models.DateTimeField("added", auto_now_add=True)
     date_updated = models.DateTimeField("updated", auto_now=True) # TODO: Only change this if the file field has changed

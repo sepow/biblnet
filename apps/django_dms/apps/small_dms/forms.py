@@ -8,4 +8,4 @@ class UploadForm(forms.ModelForm):
     tags = TagField(widget=AutoCompleteTagInput(cls=Document), required=False) 
     class Meta:
         model = Document
-        fields = ('file', 'title', 'slug', 'summary', 'tags', 'grade', 'authors', 'semester')
+        fields = ('file', 'title', 'slug', 'summary', 'tags', 'grade')

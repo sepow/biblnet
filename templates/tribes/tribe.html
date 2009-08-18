@@ -95,6 +95,14 @@
                 </p>
             {% endif %}
             
+            {% if documents %}
+                {% for document in documents %}
+                    {{document}}
+                {% endfor %}
+            {% else %}
+               {% trans "There have been no new documents added since your last visit" %}</td></tr>
+            {% endif %}
+                        
             {% if photos %}
                 <h2>{% trans "Tribe Photo Pool" %}</h2>
                 <div class="thumb-row clearfix">

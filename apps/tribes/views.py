@@ -14,7 +14,7 @@ from django.contrib.auth.decorators import login_required
 from schedule.models import Calendar
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
-
+from django_dms.apps.small_dms.models import Document
 if "notification" in settings.INSTALLED_APPS:
     from notification import models as notification
 else:
@@ -233,20 +233,23 @@ def tribe(request, slug, form_class=TribeUpdateForm,
             object_id=tribe.id)
         total_articles = articles.count()
         articles = articles.filter(last_update__gte=tm_visit).order_by('-last_update')[:10]
+        
+        documents = Document.objects.filter(tribe=tribe, date_updated__gte=tm_visit).order_by('-date_updated')[:10]
     except: 
-        topics   = None
-        articles = None
-
+        topics    = None
+        articles  = None
+        documents = None
 
         
     return render_to_response(template_name, {
-        "tribe_form": tribe_form,
-        "tribe": tribe,
-        "photos": photos,
-        "topics": topics,
-        "articles": articles,
+        "tribe_form"    : tribe_form,
+        "tribe"         : tribe,
+        "photos"        : photos,
+        "topics"        : topics,
+        "articles"      : articles,
+        "documents"     : documents,
         "total_articles": total_articles,
-        "are_member": are_member,
+        "are_member"    : are_member,
         "are_moderator" : is_moderator(tribe, request.user),
     }, context_instance=RequestContext(request))
 
