@@ -16,7 +16,7 @@ class Document(DocumentBase):
     """
     title           = models.CharField(_('title'), max_length=150, default="")
     slug            = models.SlugField(_('slug'))
-    summary         = models.TextField(_('summary'), default="", blank=True)
+    summary         = models.TextField(_('abstract / summary'), default="", blank=True)
     date_created    = models.DateTimeField(_("created"), blank=True)
     tribe           = models.ForeignKey(Tribe, related_name="documents", verbose_name=_('tribe'))
     tags            = TagField()
