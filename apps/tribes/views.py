@@ -240,7 +240,10 @@ def tribe(request, slug, form_class=TribeUpdateForm,
         total_articles  = None
         articles        = None
         documents       = None
-
+        topics    = None
+        articles  = None
+        total_articles = None
+        documents = None
         
     return render_to_response(template_name, {
         "tribe_form"    : tribe_form,

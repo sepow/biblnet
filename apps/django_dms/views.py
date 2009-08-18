@@ -39,6 +39,8 @@ from django.template import RequestContext
 from tribes.models import Tribe
 from django_dms.apps.small_dms.forms import UploadForm
 from django.contrib.auth.decorators import login_required
+from tagging.forms import TagField
+from sepow.widgets import AutoCompleteTagInput
 # Check if thumbnails are supported
 try:
     import sorl.thumbnail as SORL_THUMBNAIL
@@ -394,7 +396,9 @@ class DocumentAdmin(object):
         if request.method == "POST":
             form = Form(request.POST, instance=instance)
             if form.is_valid():
-                
+                if form.cleaned_data['delete'] == True:
+                    instance.delete()
+                    return HttpResponseRedirect(reverse('%s_document_list' % self.document_view, kwargs={'tribe_slug' : tribe.slug } ))
                 form.save()
                 return HttpResponseRedirect(reverse('%s_document_detail' % self.document_view, args=(tribe.slug, instance.slug) ))
         else:
@@ -408,6 +412,7 @@ class DocumentAdmin(object):
             Form = self.form
         else:
             class Form(forms.ModelForm):
+                tags = TagField(widget=AutoCompleteTagInput(cls=self.model), required=False)
                 delete = forms.BooleanField(required=False)
                 class Meta:
                     model = self.model

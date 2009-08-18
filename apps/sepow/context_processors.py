@@ -9,7 +9,7 @@ def affil_tribe(request):
             pass           
 
     try: # if that doesn't work, try to find a global tribe. 
-        global_tribe = Tribe.objects.get(slug = u'global')
+        global_tribe = Tribe.objects.get(slug = u'biblnet')
         return {'affil_tribe' : global_tribe.get_absolute_url()}
     except:
         pass            

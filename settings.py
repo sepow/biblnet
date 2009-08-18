@@ -49,6 +49,8 @@ DATETIME_FORMAT = 'N j, Y, H:i'
 # http://blogs.law.harvard.edu/tech/stories/storyReader$15
 LANGUAGE_CODE = 'en'
 
+#LANGUAGE_CODE = 'da-DK'
+
 SITE_ID = 1
 
 # If you set this to False, Django will make some optimizations so as not
@@ -155,24 +157,24 @@ INSTALLED_APPS = (
     'messages',
     'announcements',
     'oembed',
-    'djangodblog', # remove?
+    'djangodblog',
     'pagination',
 #    'gravatar',
     'threadedcomments',
     'wiki',
-    'swaps', # remove
+#    'swaps', # remove
     'timezones',
     'app_plugins',
     'voting', 
     'tagging',
     'bookmarks', 
-    'blog', # remove?
+#    'blog', # remove?
     'ajax_validation',
     'photologue',
     'avatar',
     'flag',
     'microblogging',
-    'locations', # remove
+#    'locations', # remove
     'uni_form',
     
     # internal (for now)
@@ -181,7 +183,7 @@ INSTALLED_APPS = (
     'staticfiles',
     'account',
     'tribes',
-    'projects', # remove
+#    'projects', # remove
     'misc',
     'photos',
     'tag_app',
@@ -190,7 +192,7 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'sepow',
     'captcha',
-    'markitup',
+#    'markitup',
     'haystack',
     'django_dms',
     'django_dms.apps.small_dms',
