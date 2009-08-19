@@ -6,7 +6,7 @@ from django import forms
 from django.forms import widgets
 from django.contrib.contenttypes.models import ContentType
 from django.utils.translation import ugettext_lazy as _
-
+from sepow.downcode import downcode
 from wiki.models import Article
 from wiki.templatetags.wiki import WIKI_WORD_RE
 
@@ -37,7 +37,7 @@ class ArticleForm(forms.ModelForm):
     def clean_title(self):
         """ Page title must be a WikiWord.
         """
-        title = self.cleaned_data['title']
+        title = downcode(self.cleaned_data['title']).lower()
 
 
         return title

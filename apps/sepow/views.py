@@ -18,18 +18,19 @@ def tagcloud(threshold=1, maxsize=2.75, minsize=.70):
     """
     counts, taglist, tagcloud = [], [], []
     tags = Tag.objects.all()
-    for tag in tags:
-        count = tag.items.count()
-        count >= threshold and (counts.append(count), taglist.append(tag))
-    maxcount = max(counts)
-    mincount = min(counts)
-    constant = log(maxcount - (mincount - 1))/(maxsize - minsize) or 1
-    tagcount = zip(taglist, counts)
-    for tag, count in tagcount:
-        size = log(count - (mincount - 1))/constant + minsize
-        tagcloud.append({'tag': tag, 'count': count, 'size': round(size, 7)})
-    return tagcloud
-
+    if tags: 
+        for tag in tags:
+            count = tag.items.count()
+            count >= threshold and (counts.append(count), taglist.append(tag))
+        maxcount = max(counts)
+        mincount = min(counts)
+        constant = log(maxcount - (mincount - 1))/(maxsize - minsize) or 1
+        tagcount = zip(taglist, counts)
+        for tag, count in tagcount:
+            size = log(count - (mincount - 1))/constant + minsize
+            tagcloud.append({'tag': tag, 'count': count, 'size': round(size, 7)})
+        return tagcloud
+    return None
 @cache_page(60 * 60)
 def show_tag_cloud(request, template_name="sepow/tagcloud.html" ):
     return render_to_response(template_name, {
