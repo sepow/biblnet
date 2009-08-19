@@ -67,8 +67,8 @@ class Article(models.Model):
     tags = TagField()
 
     class Meta:
-        verbose_name = _(u'Article')
-        verbose_name_plural = _(u'Articles')
+        verbose_name = _(u'Wiki')
+        verbose_name_plural = _(u'Wikis')
 
     def get_absolute_url(self):
         if self.group is None:

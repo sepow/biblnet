@@ -5,8 +5,7 @@
 
 {% load tribe_tags %}
 {% load avatar_tags %}
-{% load project_tags %}
-{% load blog_tags %}
+
 {% load wiki %}
 {% load voting_tags %} 
 {% load extra_voting_tags %}
@@ -128,36 +127,6 @@
         </div>
     {% endif %}
 
-
-    {% if alltags %}
-        <h2>{% trans "Blog Posts" %}</h2>
-        <p>{% trans "These are blog posts from everyone:" %}</p>
-        {% for blog_post in alltags %}
-            {% show_blog_post blog_post %}
-        {% endfor %}
-    {% endif %}
-
-
-{% comment %} {# Skal disse tre bare fjernes? #}
-    <h2>{% blocktrans %}Projects Matching <i>{{ tag }}</i>{% endblocktrans %}</h2>
-    <dl>
-        {% for project in project_tags %}
-            {% show_project project %}
-        {% endfor %}
-    </dl>
-
-
-    <h2>{% blocktrans %}Project Topics Matching <i>{{ tag }}</i>{% endblocktrans %}</h2>
-    {% for topic in project_topic_tags %}
-        {% show_project_topic topic %}
-    {% endfor %}
-
-
-    <h2>{% blocktrans %}Project Tasks Matching <i>{{ tag }}</i>{% endblocktrans %}</h2>
-    {% for task in project_task_tags %}
-        {% show_task task %}
-    {% endfor %}
-{% endcomment %}
 
 <p>{% blocktrans %}No further items matching <i>{{ tag }}</i>{% endblocktrans %}</p>
 
