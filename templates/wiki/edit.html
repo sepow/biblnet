@@ -30,7 +30,7 @@
 {% endblock %}
 
 {% block extra_body %}
-{% cache 600000 fckeditor_create_topic %}
+{% cache 600000 fckeditor_create_topic_wiki %}
     <script type="text/javascript" src="{{MEDIA_URL}}fckeditor/fckeditor.js"></script>
     <script type="text/javascript">
     window.onload = function()
