@@ -107,8 +107,12 @@ def is_member(tribe, user='user'):
 register.tag('is_member', is_member)
 
 @condition_tag
-def if_can_see(tribe, user='user'):
-        
+def if_can_see(tribe, user='user'): 
+    def is_member(tribe, user='user'): # ellers kommer decoratoren med
+        if user.is_authenticated():
+            if TribeMember.objects.filter(tribe=tribe, user=user).count() > 0:
+                return True
+        return False        
     if tribe.private and is_member(tribe, user):
         return True
     elif not tribe.private:
