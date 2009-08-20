@@ -1,5 +1,6 @@
 from django.conf.urls.defaults import *
 from account.forms import *
+from sepow.forms import BiblnetSignupForm
 
 urlpatterns = patterns('',
     url(r'^email/$', 'account.views.email', name="acct_email"),
@@ -27,5 +28,5 @@ urlpatterns = patterns('',
     url(r'^password_reset_key/$', 'account.views.password_reset_from_key', name="acct_passwd_reset_key"),    
 
     # ajax validation
-    (r'^validate/$', 'ajax_validation.views.validate', {'form_class': SignupForm}, 'signup_form_validate'),
+    (r'^validate/$', 'ajax_validation.views.validate', {'form_class': BiblnetSignupForm }, 'signup_form_validate'),
 )
