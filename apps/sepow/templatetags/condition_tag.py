@@ -103,6 +103,7 @@ def is_member(tribe, user='user'):
         if TribeMember.objects.filter(tribe=tribe, user=user).count() > 0:
             return True
     return False
+    
 @condition_tag
 def if_is_member(tribe, user='user'):
     if user.is_authenticated():
