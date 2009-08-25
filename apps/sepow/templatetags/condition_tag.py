@@ -108,12 +108,14 @@ register.tag('is_member', is_member)
 
 @condition_tag
 def if_can_see(tribe, user='user'):
-        
-    if tribe.private and is_member(tribe, user):
-        return True
-    elif not tribe.private:
-        return True
-    else:
+    try:
+        if tribe.private and is_member(tribe, user):
+            return True
+        elif not tribe.private:
+            return True
+        else:
+            return False
+    except:
         return False
 
 register.tag('if_can_see', if_can_see)

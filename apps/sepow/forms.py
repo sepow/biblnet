@@ -104,7 +104,7 @@ class BiblnetSignupForm(forms.Form):
             tmember.save()           
             # Global tribe
             try: 
-                global_tribe = Tribe.objects.get(slug = u'global')
+                global_tribe = Tribe.objects.get(slug = u'biblnet')
                 tmember = TribeMember(tribe=global_tribe, user=new_user)
                 tmember.save()
             except:
