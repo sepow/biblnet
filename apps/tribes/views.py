@@ -161,14 +161,20 @@ def delete(request, slug, redirect_url=None):
     if request.user.is_authenticated() and request.method == "POST" and request.user == tribe.creator and tribe.member_users.all().count() == 1:
         from profiles.models import Affiliation
         if not Affiliation.objects.filter(tribe=tribe):
-            tribe.slug = u"%s%s" % ("deleted_", tribe.slug)
-            tribe.deleted = True
-            calendar = Calendar.objects.get_calendar_for_object(tribe)
-            calendar.delete()
-            tribe.save()
-            request.user.message_set.create(message=ugettext("Tribe %s deleted.") % tribe)
-        
-        request.user.message_set.create(message=ugettext("Tribe %s cannot be deleted. It is an Affiliation tribe") % tribe)
+            try:
+                request.user.message_set.create(message=ugettext("Tribe %s deleted.") % tribe)
+                deleted = datetime.now().strftime("_deleted_%B-%Y-%s")
+                tribe.slug = u"%s%s" % (tribe.slug, deleted)
+                tribe.name = u"%s%s" % (tribe.name, deleted)
+                tribe.deleted = True
+                calendar = Calendar.objects.get_calendar_for_object(tribe)
+                calendar.delete()
+                tribe.save()
+            except:
+                pass
+            
+        else:
+            request.user.message_set.create(message=ugettext("Tribe %s cannot be deleted. It is an Affiliation tribe") % tribe)
     
     return HttpResponseRedirect(redirect_url)
 
