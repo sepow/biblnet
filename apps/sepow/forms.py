@@ -26,7 +26,7 @@ from tribes.models import TribeMember, Tribe
 from datetime import datetime
 #alnum_re = re.compile(r'^\w+$')
 
-alnum_re = re.compile(r'^[\wæøå]+$', re.U)
+alnum_re = re.compile(r'^[\wæøå\-]+$', re.U)
 
 class BiblnetSignupForm(forms.Form):
     captcha = CaptchaField()

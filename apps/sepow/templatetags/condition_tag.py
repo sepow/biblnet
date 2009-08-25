@@ -98,13 +98,19 @@ def condition_tag(func):
         return ConditionNode(arg_expressions, nodelist_true, nodelist_false)
     return wrapper
 
-@condition_tag
 def is_member(tribe, user='user'):
     if user.is_authenticated():
         if TribeMember.objects.filter(tribe=tribe, user=user).count() > 0:
             return True
     return False
-register.tag('is_member', is_member)
+    
+@condition_tag
+def if_is_member(tribe, user='user'):
+    if user.is_authenticated():
+        if TribeMember.objects.filter(tribe=tribe, user=user).count() > 0:
+            return True
+    return False
+register.tag('is_member', if_is_member)
 
 @condition_tag
 def if_can_see(tribe, user='user'):
@@ -121,7 +127,6 @@ def if_can_see(tribe, user='user'):
 register.tag('if_can_see', if_can_see)
 
 @condition_tag
-
 def if_can_see_calendar(calendar, user='user'):
     try:
         tribe = calendar.calendarrelation_set.all()[0].content_object
