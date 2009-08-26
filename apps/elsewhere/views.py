@@ -14,11 +14,11 @@ def example(request):
         # Add forms
         if new_data.get('sn-form.y') or new_data.get('im-form.y') or new_data.get('w-form.y'):
 
-            if new_data.get('sn-form'):
+            if new_data.get('sn-form.y'):
                 form = SocialNetworkForm(new_data)
-            elif new_data.get('im-form'):
+            elif new_data.get('im-form.y'):
                 form = InstantMessengerForm(new_data)
-            elif new_data.get('w-form'):
+            elif new_data.get('w-form.y'):
                 form = WebsiteForm(new_data)
 
             if form.is_valid():
