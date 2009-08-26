@@ -11,9 +11,8 @@ def example(request):
     if request.method == 'POST':
 
         new_data = request.POST.copy()
-
         # Add forms
-        if new_data.get('sn-form') or new_data.get('im-form') or new_data.get('w-form'):
+        if new_data.get('sn-form.y') or new_data.get('im-form.y') or new_data.get('w-form.y'):
 
             if new_data.get('sn-form'):
                 form = SocialNetworkForm(new_data)
@@ -32,14 +31,14 @@ def example(request):
                 print form.errors
 
         # Delete forms
-        elif new_data.get('delete-sn-form') or new_data.get('delete-im-form') or new_data.get('delete-w-form'):
+        elif new_data.get('delete-sn-form.y') or new_data.get('delete-im-form.y') or new_data.get('delete-w-form.y'):
             delete_id = request.POST['delete_id']
 
-            if new_data.get('delete-sn-form'):
+            if new_data.get('delete-sn-form.y'):
                 request.user.social_network_profiles.get(id=delete_id).delete()
-            elif new_data.get('delete-im-form'):
+            elif new_data.get('delete-im-form.y'):
                 request.user.instant_messenger_profiles.get(id=delete_id).delete()
-            elif new_data.get('delete-w-form'):
+            elif new_data.get('delete-w-form.y'):
                 request.user.website_profiles.get(id=delete_id).delete()
 
             return HttpResponseRedirect(request.path)
