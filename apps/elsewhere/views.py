@@ -11,14 +11,14 @@ def example(request):
     if request.method == 'POST':
 
         new_data = request.POST.copy()
-
-        sn = bool(new_data.get('sn-form.y') or new_data.get('sn-form.y') == 0 or new_data.get('sn-form'))
-        im = bool(new_data.get('im-form.y') or new_data.get('im-form.y') == 0 or new_data.get('im-form'))
-        w = bool(new_data.get('w-form.y') or new_data.get('w-form.y') == 0 or new_data.get('w-form'))
+        print new_data
+        sn = bool(new_data.get('sn-form') or new_data.get('sn-form.y'))
+        im = bool(new_data.get('im-form') or new_data.get('im-form.y'))
+        w = bool(new_data.get('w-form') or new_data.get('w-form.y'))
         
-        d_sn = bool(new_data.get('delete-sn-form.y') or new_data.get('delete-sn-form.y') == 0 or new_data.get('delete-sn-form'))
-        d_im = bool(new_data.get('delete-im-form.y') or new_data.get('delete-im-form.y') == 0 or new_data.get('delete-im-form'))
-        d_w = bool(new_data.get('delete-w-form.y') or new_data.get('delete-w-form.y') == 0 or  new_data.get('delete-w-form'))
+        d_sn = bool(new_data.get('delete-sn-form') or new_data.get('delete-sn-form.y') == 0 or new_data.get('delete-sn-form.y'))
+        d_im = bool(new_data.get('delete-im-form') or new_data.get('delete-im-form.y') == 0 or new_data.get('delete-im-form.y'))
+        d_w = bool(new_data.get('delete-w-form') or new_data.get('delete-w-form.y') == 0 or  new_data.get('delete-w-form.y'))
 
             
    
