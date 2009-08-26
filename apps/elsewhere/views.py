@@ -17,8 +17,8 @@ def example(request):
         w = bool(new_data.get('w-form.y') or new_data.get('w-form.y') == 0 or new_data.get('w-form'))
         
         d_sn = bool(new_data.get('delete-sn-form.y') or new_data.get('delete-sn-form.y') == 0 or new_data.get('delete-sn-form'))
-        d_im = bool(new_data.get('delete-im.y') or new_data.get('delete-im.y') == 0 or new_data.get('delete-im'))
-        d_w = bool(new_data.get('delete-w.y') or new_data.get('delete-w.y') == 0 or  new_data.get('delete-w'))
+        d_im = bool(new_data.get('delete-im-form.y') or new_data.get('delete-im-form.y') == 0 or new_data.get('delete-im-form'))
+        d_w = bool(new_data.get('delete-w-form.y') or new_data.get('delete-w-form.y') == 0 or  new_data.get('delete-w-form'))
 
             
    
