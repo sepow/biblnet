@@ -41,22 +41,20 @@ def example(request):
                 print form.errors
 
     
-        elif d_sn or d_im or d_w:
-            delete_id = request.POST['delete_id']
-
-            if d_sn:
-                request.user.social_network_profiles.get(id=delete_id).delete()
-            elif d_im:
-                request.user.instant_messenger_profiles.get(id=delete_id).delete()
-            elif d_w:
-                request.user.website_profiles.get(id=delete_id).delete()
-
-            return HttpResponseRedirect(request.path)
-
-        # WTF?
         else:
-            return HttpResponseServerError
+            try: 
+                delete_id = request.POST['delete_id']
 
+                if d_sn:
+                    request.user.social_network_profiles.get(id=delete_id).delete()
+                elif d_im:
+                    request.user.instant_messenger_profiles.get(id=delete_id).delete()
+                elif d_w:
+                    request.user.website_profiles.get(id=delete_id).delete()
+
+                return HttpResponseRedirect(request.path)
+            except:
+                pass
     # Create blank forms
     sn_form = SocialNetworkForm()
     im_form = InstantMessengerForm()
