@@ -20,7 +20,7 @@ def example(request):
         d_im = bool(new_data.get('delete-im-form') or new_data.get('delete-im-form.y') == 0 or new_data.get('delete-im-form.y'))
         d_w = bool(new_data.get('delete-w-form') or new_data.get('delete-w-form.y') == 0 or  new_data.get('delete-w-form.y'))
 
-            
+        print sn, im, w  
    
         if sn or im or w:
 

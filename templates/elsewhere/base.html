@@ -28,6 +28,7 @@
             <form class="uniForm" method="POST" action="">
             <td>{{ sn_form.network_id }}</td>
             <td>{{ sn_form.username }}</td>
+            <input type="hidden" name="sn-form" value="1" />
             <td class="icon"><input type="image" src="{{MEDIA_URL}}images/sitegraphics/add.png" name="sn-form" value="Add Social Network" class="button"></td>
             </form>
         </tr>
@@ -55,6 +56,7 @@
             <form method="POST" action=".">
             <td>{{ im_form.network_id }}</td>
             <td>{{ im_form.username }}</td>
+            <input type="hidden" name="im-form" value="1" />
             <td class="icon"><input type="image" src="{{MEDIA_URL}}images/sitegraphics/add.png" name="im-form" value="Add Instant Messenger" class="button"></td>
             </form>
         </tr>
@@ -80,6 +82,7 @@
             <td class="icon"></td>
             <form method="POST" action=".">
             <td>{{ w_form.name }}{{ w_form.url }}</td>
+            <input type="hidden" name="w-form" value="1" />
             <td class="icon"><input type="image" src="{{MEDIA_URL}}images/sitegraphics/add.png" name="w-form" value="Add Website" class="button"></td>
             </form>
         </tr>
