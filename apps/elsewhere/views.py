@@ -11,15 +11,25 @@ def example(request):
     if request.method == 'POST':
 
         new_data = request.POST.copy()
-        # Add forms
-        if new_data.get('sn-form.y') or new_data.get('im-form.y') or new_data.get('w-form.y'):
 
-            if new_data.get('sn-form.y'):
-                form = SocialNetworkForm(new_data)
-            elif new_data.get('im-form.y'):
-                form = InstantMessengerForm(new_data)
-            elif new_data.get('w-form.y'):
-                form = WebsiteForm(new_data)
+        sn = bool(new_data.get('sn-form.y') or new_data.get('sn-form'))
+        im = bool(new_data.get('im-form.y') or new_data.get('im-form'))
+        w = bool(new_data.get('w-form.y') or new_data.get('w-form'))
+        
+        d_sn = bool(new_data.get('delete-sn-form.y') or new_data.get('delete-sn-form'))
+        d_im = bool(new_data.get('delete-im.y') or new_data.get('delete-im'))
+        d_w = bool(new_data.get('delete-w.y') or  new_data.get('delete-w'))
+
+            
+   
+        if sn or im or w:
+
+            if sn:
+                form = SocialNetworkForm(request.POST)
+            elif im:
+                form = InstantMessengerForm(request.POST)
+            elif w:
+                form = WebsiteForm(request.POST)
 
             if form.is_valid():
                 profile = form.save(commit=False)
@@ -30,15 +40,15 @@ def example(request):
                 ## TODO should probably show the errors
                 print form.errors
 
-        # Delete forms
-        elif new_data.get('delete-sn-form.y') or new_data.get('delete-im-form.y') or new_data.get('delete-w-form.y'):
+    
+        elif d_sn or d_im or d_w:
             delete_id = request.POST['delete_id']
 
-            if new_data.get('delete-sn-form.y'):
+            if d_sn:
                 request.user.social_network_profiles.get(id=delete_id).delete()
-            elif new_data.get('delete-im-form.y'):
+            elif d_im:
                 request.user.instant_messenger_profiles.get(id=delete_id).delete()
-            elif new_data.get('delete-w-form.y'):
+            elif d_w:
                 request.user.website_profiles.get(id=delete_id).delete()
 
             return HttpResponseRedirect(request.path)
