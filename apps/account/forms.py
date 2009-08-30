@@ -6,6 +6,7 @@ from django.template.loader import render_to_string
 from django.conf import settings
 from django.utils.translation import ugettext_lazy as _, ugettext
 from django.utils.encoding import smart_unicode
+from django.contrib.sites.models import Site
 
 from misc.utils import get_send_mail
 send_mail = get_send_mail()
@@ -241,8 +242,8 @@ class ResetPasswordForm(forms.Form):
         
             # make a random password so this account can't be accessed.
             new_password = User.objects.make_random_password()
-            user.set_password(new_password)
-            user.save()
+            #user.set_password(new_password)
+            #user.save()
         
             # Make the temp key by generating another random password.
             temp_key = User.objects.make_random_password()
@@ -253,10 +254,13 @@ class ResetPasswordForm(forms.Form):
             
             #send the password reset email
             subject = _("Password reset email sent")
+            current_site = Site.objects.get(id=settings.SITE_ID)
             message = render_to_string("account/password_reset_key_message.txt", {
                 "user": user,        
-                "temp_key": temp_key
+                "temp_key": temp_key,
+                "domain" : current_site.domain,
             })
+            
             send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [user.email], priority="high")
         return self.cleaned_data["email"]
         

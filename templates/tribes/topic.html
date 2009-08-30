@@ -103,7 +103,7 @@
             <div class="created">{{ topic.created|date }} - {{ topic.created|time }}<br />
                 {{ topic.created|timesince }} {% trans "ago"%}<br />
                 <br />
-                <a href="{% url profile_detail topic.creator.username %}">{{ topic.creator }}</a>
+                <a href="{% url profile_detail topic.creator.username %}">{{ topic.creator.get_profile.get_name }}</a>
             </div>
         </div>
         </td>

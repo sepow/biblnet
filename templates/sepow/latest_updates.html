@@ -2,11 +2,13 @@
 {% load biblnet_tags %}
 {% load i18n %}
 {% load cache %}
+
 <div class="dynamic_avatars">
     {% for user in latest_users reversed %}
         <a href="{% url profile_detail user.username %}" title="{{ user.get_profile.get_name }}: {{ user.get_profile.last_visit_storage|timesince }} ago">{% cache 34560 user %}{% avatar user 40 %}{%endcache%}</a>
     {% endfor %}
 </div>
+
 <div class="dynamic_topics">
 {% if latest_topics %}
     {% for latest_topic in latest_topics %}
@@ -15,6 +17,7 @@
     {% endfor %}
 {% endif %}
 </div>
+
 <div class="dynamic_topics">
 {% if latest_posts %}
     {% for post in latest_posts %}
