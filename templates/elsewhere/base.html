@@ -8,14 +8,14 @@
 {% block body %}
 <h1>{% trans "Places to find you on the web" %}</h1>
 <h2>{% trans "Social Networks" %}</h2>
-    <table class="tribes">
-        <tr class="even"><td></td><td>{% trans "Social network" %}</td><td>{% trans "Username or id" %}</td><td></td></tr>
+    <table class="elsewhere">
+        <tr class="even"><td class="icon"></td><td>{% trans "Social network" %}</td><td>{% trans "Username or id" %}</td><td class="icon"></td></tr>
         {% for profile in request.user.social_network_profiles.all %}
             <tr class="{% cycle 'odd' 'even' as rowcolors %}">
-                <td class="icon"><img src="{{MEDIA_URL}}{{ profile.icon }}" alt="{{ profile.name }}" /></td>
+                <td><img src="{{MEDIA_URL}}{{ profile.icon }}" alt="{{ profile.name }}" /></td>
                 <td>{{ profile.name }}</td>
                 <td><a href="{{ profile.url }}" rel="me" target="_blank">{{ profile.username }}</a></td>
-                <td class="icon">
+                <td>
                     <form id="delete-network-{{ profile.id }}" method="post" action=".">
                         <input type="hidden" name="delete_id" value="{{ profile.id }}">
                         <input input type="image" src="{{MEDIA_URL}}images/sitegraphics/bin.png" name="delete-sn-form" value="Delete" class="button">
@@ -36,14 +36,14 @@
 
 
 <h2>{% trans "Instant Messengers" %}</h2>
-    <table class="tribes">
-        <tr class="even"><td></td><td>{% trans "Service" %}</td><td>{% trans "Username" %}</td><td></td></tr>
+    <table class="elsewhere">
+        <tr class="even"><td class="icon"></td><td>{% trans "Service" %}</td><td>{% trans "Username" %}</td><td class="icon"></td></tr>
         {% for profile in request.user.instant_messenger_profiles.all %}
             <tr class="{% cycle 'odd' 'even' as rowcolors %}">
-                <td class="icon"><img src="{{MEDIA_URL}}{{ profile.icon }}" alt="{{ profile.name }}" /></td>
+                <td><img src="{{MEDIA_URL}}{{ profile.icon }}" alt="{{ profile.name }}" /></td>
                 <td>{{ profile.name }}</td>
                 <td><a href="{{ profile.url }}" rel="me" target="_blank">{{ profile.username }}</a></td>
-                <td class="icon">
+                <td>
                     <form id="delete-messenger-{{ profile.id }}" method="post" action=".">
                         <input type="hidden" name="delete_id" value="{{ profile.id }}">
                         <input input type="image" src="{{MEDIA_URL}}images/sitegraphics/bin.png" name="delete-im-form" value="Delete" class="button">
@@ -64,13 +64,13 @@
 
 
 <h2>{% trans "Websites & Blogs" %}</h2>
-    <table class="tribes" width="100%">
-        <tr class="even"><td></td><td>{% trans "Link" %}</td><td></td></tr>
+    <table class="elsewhere">
+        <tr class="even"><td class="icon"></td><td>{% trans "Name" %}</td><td>{% trans "Link" %}</td><td class="icon"></td></tr>
         {% for profile in request.user.website_profiles.all %}
             <tr class="{% cycle 'odd' 'even' as rowcolors %}">
-                <td class="icon"><img src="{{ profile.icon }}" alt="{{ profile.name }}" /></td>
-                <td><a href="{{ profile.url }}" rel="me" target="_blank">{{ profile.name }}</a></td>
-                <td class="icon">
+                <td><img src="{{ profile.icon }}" alt="{{ profile.name }}" /></td>
+                <td colspan="2"><a href="{{ profile.url }}" rel="me" target="_blank">{{ profile.name }}</a></td>
+                <td>
                     <form id="delete-website-{{ profile.id }}" method="post" action=".">
                         <input type="hidden" name="delete_id" value="{{ profile.id }}">
                         <input input type="image" src="{{MEDIA_URL}}images/sitegraphics/bin.png" name="delete-w-form" value="Delete" class="button">
@@ -79,11 +79,12 @@
             </tr>
         {% endfor %}
         <tr class="{% cycle rowcolors %}">
-            <td class="icon"></td>
+            <td></td>
             <form method="POST" action=".">
-            <td>{{ w_form.name }}{{ w_form.url }}</td>
+            <td>{{ w_form.name }}</td>
+            <td>{{ w_form.url }}</td>
             <input type="hidden" name="w-form" value="1" />
-            <td class="icon"><input type="image" src="{{MEDIA_URL}}images/sitegraphics/add.png" name="w-form" value="Add Website" class="button"></td>
+            <td><input type="image" src="{{MEDIA_URL}}images/sitegraphics/add.png" name="w-form" value="Add Website" class="button"></td>
             </form>
         </tr>
     </table>

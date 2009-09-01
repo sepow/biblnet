@@ -11,14 +11,16 @@ body {
 	color: #0E3037;
 }
 
-a, a:visited {
-	color: #0E3037;
-}
-
 a:hover {
 	color: #369;
 /*	background: #369;*/
 	text-decoration: underline;
+}
+a, a:visited {
+	color: #0E3037;
+}
+.even a:visited {
+    color: #DFDFDF;
 }
 
 h1, h2, h3 {
@@ -437,7 +439,7 @@ table.profile_info td {
     width: 200px;
     text-align: center;
 }
-ul.avatar_choices,ul.avatar_choices ul {
+ul.avatar_choices, ul.avatar_choices ul {
     margin-left: 0px;
     padding-left: 0px;
 }
@@ -464,6 +466,17 @@ table.messages td {
 }
 table.messages td.view {
     text-align: right;
+}
+table.elsewhere {
+    width: 400px;
+    table-layout: fixed;
+}
+table.elsewhere td {
+    padding: 5px;
+    font-size: 90%;
+}
+table.elsewhere td input[type="text"], table.elsewhere td select {
+    width: 150px;
 }
 .even {
 	color: #DFDFDF;
