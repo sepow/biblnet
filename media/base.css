@@ -1,6 +1,6 @@
 body {
 	margin: 10px auto;
-	padding: 0px;
+	padding: 0px 10px;
 	width: 100%;
 	background: #98aaae;
 	min-width: 974px;		/* Minimum width of layout - remove line if not required */
