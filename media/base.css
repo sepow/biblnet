@@ -269,6 +269,9 @@ p.blocktitle {
 #tabhead .login a:hover {
     color: #FFF; /* login bar link hover colour */
 }
+.legal {
+    text-align: center;
+}
 #breadcrumbs {
 /*    float: left;*/
 }
