@@ -126,11 +126,11 @@ table td.icon {
     clear: both;
     width: 100%;
     margin-top: 5px;
-    padding-right: 5px;
     text-align: right;
 }
 #header div.dynamic_line {
 /*    height: 15px;*/
+    padding-right: 5px;
     overflow: hidden;
     font-size: 12px;
 }
