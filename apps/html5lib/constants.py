@@ -251,7 +251,7 @@ E = {
     "eof-in-frameset":
        _(u"Unexpected end of file. Expected frameset content."),
     "XXX-undefined-error":
-        (u"Undefined error (this sucks and should be fixed)"),
+       _(u"Undefined error (this sucks and should be fixed)"),
 }
 
 contentModelFlags = {
