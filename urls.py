@@ -110,7 +110,10 @@ urlpatterns += patterns('',
 
 
 
-
+if 'rosetta' in settings.INSTALLED_APPS:
+    urlpatterns += patterns('',
+        url(r'^rosetta/', include('rosetta.urls')),
+    )
 
 
 if settings.SERVE_MEDIA:

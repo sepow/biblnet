@@ -53,7 +53,7 @@ class Filter(_base.Filter):
                     raise LintError(_(u"Void element reported as EndTag token: %s") % name)
                 start_name = open_elements.pop()
                 if start_name != name:
-                    raise LintError(_(u"EndTag (%s) does not match StartTag (%s)") % (name, start_name))
+                    raise LintError(_(u"EndTag (%(name)s) does not match StartTag (%(start_name)s)") % {'name' : name, 'start_name':start_name}
                 contentModelFlag = "PCDATA"
 
             elif type == "Comment":

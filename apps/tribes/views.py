@@ -436,7 +436,7 @@ def topic(request, id, edit=False, template_name="tribes/topic.html"):
         
         if is_moderator(topic.tribe, request.user):
                 text = request.POST["body"]
-                text += ugettext("<small><i>Topic editet by %s : %s</i></small>") % (request.user, datetime.now()) 
+                text += ugettext("<small><i>Topic editet by %(user)s : %(date)s</i></small>") % {'user' : request.user, 'date' : datetime.now()}
                 topic.body = sanitize_html(text)
                 topic.editet = datetime.now()
                 topic.save()
