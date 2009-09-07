@@ -49,7 +49,7 @@ DATETIME_FORMAT = 'N j, Y, H:i'
 # http://blogs.law.harvard.edu/tech/stories/storyReader$15
 #LANGUAGE_CODE = 'en'
 
-LANGUAGE_CODE = 'da-DK'
+LANGUAGE_CODE = 'da'
 
 SITE_ID = 1
 
@@ -247,7 +247,7 @@ INTERNAL_IPS = (
 
 ugettext = lambda s: s
 LANGUAGES = (
-  ('da-DK', u'Danish'),
+  ('da', u'Danish'),
   ('en', u'English'),
 )
 
