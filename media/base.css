@@ -1,3 +1,7 @@
+html {
+    margin: 0 10px;
+}
+
 body {
 	margin: 10px auto;
 	padding: 0px;
@@ -121,11 +125,12 @@ table td.icon {
     float: right;
     clear: both;
     width: 100%;
-    margin: 5px 5px 0 0;
+    margin-top: 5px;
     text-align: right;
 }
 #header div.dynamic_line {
 /*    height: 15px;*/
+    padding-right: 5px;
     overflow: hidden;
     font-size: 12px;
 }
@@ -268,6 +273,9 @@ p.blocktitle {
 }
 #tabhead .login a:hover {
     color: #FFF; /* login bar link hover colour */
+}
+.legal {
+    text-align: center;
 }
 #breadcrumbs {
 /*    float: left;*/

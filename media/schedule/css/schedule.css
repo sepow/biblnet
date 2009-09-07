@@ -169,7 +169,7 @@ td.daynumber div.starttime {
 
 td.daynumber div.eventdesc {
     float: left;
-    height: 1em;
+/*    height: 1em;*/
     overflow: hidden;
     width: 100%;
 }

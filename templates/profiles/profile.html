@@ -94,7 +94,7 @@
             
         {% else %} {# not user.is_authenticated #}
             {% url acct_login as login_url %}
-            <strong>{% blocktrans %}<a href="{{ login_url }}?next=/profiles/{{ other_user }}/">Log in</a> to see this person's details and tribes and to follow their tweets.{% endblocktrans %}</strong>
+            <strong>{% blocktrans %}<a href="{{ login_url }}?next=/profiles/{{ other_user }}/">Log in</a> to see this person's profile.{% endblocktrans %}</strong>
         {% endif %}
 
 {% endblock %}

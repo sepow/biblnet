@@ -5,8 +5,6 @@
 
 {% block head_title %}{% trans "Avatar" %}{% endblock %}
 
-{% block breadcrumb %}{{ block.super }} &raquo; <a href="/profiles/">{% trans "Profiles" %}</a> &raquo; <a href="/profiles/{{ user }}">{{ user }}</a>{% endblock %}
-
 {% block body %}
     <h1>{% trans "Avatar" %}</h1>
     <h2>{% trans "Your current avatar:" %}</h2>
