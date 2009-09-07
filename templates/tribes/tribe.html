@@ -49,7 +49,7 @@
 
         <p>{% show_tags_for tribe %}</p>
 
-        <p>{{ tribe.description }}</p>
+        <p>{{ tribe.description|linebreaks }}</p>
 
         <h2>{% trans "Discussion Topics" %}{% if tribe.topics.all.count %} ({{ tribe.topics.all.count }}){% endif %}</h2>
         {% if user.is_authenticated %}

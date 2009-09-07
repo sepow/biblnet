@@ -26,7 +26,7 @@
                 {{ response.date_submitted|date }} - {{ response.date_submitted|time }}<br />
                 {{ response.date_submitted|timesince }} {% trans "ago" %}<br />
                 <br />
-                <a href="{% url profile_detail response.user.username %}">{{ response.user }}</a>
+                <a href="{% url profile_detail response.user.username %}">{{ response.user.get_profile.get_name}}</a>
             </div>
             <!--div class="details clearboth"><a href="{% url profile_detail response.user.username %}">{{ response.user }}</a></div-->
         </div>

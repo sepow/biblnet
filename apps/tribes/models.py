@@ -45,6 +45,9 @@ class Tribe(models.Model):
     # @@@ this might be better as a filter provided by wikiapp
     def wiki_articles(self):
         return get_articles_for_object(self)
+
+    class Meta:
+        ordering = ('name',)
     
     def __unicode__(self):
         return self.name
@@ -52,7 +55,7 @@ class Tribe(models.Model):
     def get_absolute_url(self):
         return ("tribe_detail", [self.slug])
     get_absolute_url = models.permalink(get_absolute_url)
-
+    
 class TribeMember(models.Model):
     tribe = models.ForeignKey(Tribe, related_name="members", verbose_name=_('tribe'))
     user = models.ForeignKey(User, related_name="tribes", verbose_name=_('user'))

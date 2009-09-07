@@ -93,7 +93,7 @@ def create(request, form_class=TribeForm, template_name="tribes/create.html"):
                 # Calendar
                 tribe_cal = Calendar.objects.get_or_create_calendar_for_object(tribe, name = "%s" % tribe,)
                 tribe_cal.slug = tribe.slug
-                tribe_cal.save()       
+                tribe_cal.save()
                          
                 if notification:
                     # @@@ might be worth having a shortcut for sending to all users
@@ -169,6 +169,11 @@ def delete(request, slug, redirect_url=None):
                 tribe.deleted = True
                 calendar = Calendar.objects.get_calendar_for_object(tribe)
                 calendar.delete()
+                # comments
+                # topics
+                # wiki
+                # documents
+                # events?
                 tribe.save()
             except:
                 pass
