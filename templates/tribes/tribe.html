@@ -24,6 +24,7 @@
         <div class="right_panel">
             <p>{% trans "Creator:" %} <a href="{% url profile_detail tribe.creator.username %}">{{ tribe.creator }}</a><br />
             {% trans "Created:" %} {{ tribe.created|date }}</p>
+            {% trans "This tribe is:" %} {% if tribe.private %} Private {%else %} Public {% endif%} 
             {% if user.is_authenticated %}
                 {% ifequal user tribe.creator %}
                     <p>{% trans "You are the creator of this tribe so can't leave (yet)." %}</p>

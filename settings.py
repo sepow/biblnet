@@ -13,7 +13,7 @@ PINAX_THEME = 'default'
 TIME_FORMAT = 'H:i'
 DEFAULT_MAX_COMMENT_LENGTH = 15000
 DEFAULT_CHARSET = "utf-8"
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 # tells Pinax to serve media through django.views.static.serve.
@@ -202,6 +202,7 @@ INSTALLED_APPS = (
     'compressor',
     'django_extensions',
 #    'south',
+    'rosetta',
 )
 
 # Import sorl.thumbnail if it is available

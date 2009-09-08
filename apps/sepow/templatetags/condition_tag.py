@@ -115,6 +115,8 @@ register.tag('is_member', if_is_member)
 @condition_tag
 def if_can_see(tribe, user='user'):
     try:
+        if tribe.deleted:
+            return False
         if tribe.private and is_member(tribe, user):
             return True
         elif not tribe.private:
@@ -133,6 +135,8 @@ def if_can_see_calendar(calendar, user='user'):
     except:
         tribe = None
     if tribe:
+        if tribe.deleted:
+            return False
         if tribe.private and is_member(tribe, user):
             return True
         elif not tribe.private:

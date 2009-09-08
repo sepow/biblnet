@@ -25,7 +25,7 @@ class Tribe(models.Model):
     
     
     name = models.CharField(_('name'), max_length=80, unique=True)
-    slug = models.SlugField(_('slug'), max_length=40, unique=True)
+    slug = models.SlugField(_('slug'), max_length=80, unique=True)
     creator = models.ForeignKey(User, related_name="created_groups", verbose_name=_('creator'))
     created = models.DateTimeField(_('created'), default=datetime.now)
     description = models.TextField(_('description'))
@@ -51,6 +51,9 @@ class Tribe(models.Model):
     
     def get_absolute_url(self):
         return ("tribe_detail", [self.slug])
+
+    class Meta:
+        ordering = ('name',)
     get_absolute_url = models.permalink(get_absolute_url)
 
 class TribeMember(models.Model):

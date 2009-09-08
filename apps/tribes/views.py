@@ -163,13 +163,17 @@ def delete(request, slug, redirect_url=None):
         if not Affiliation.objects.filter(tribe=tribe):
             try:
                 request.user.message_set.create(message=ugettext("Tribe %s deleted.") % tribe)
-                deleted = datetime.now().strftime("_deleted_%B-%Y-%s")
-                tribe.slug = u"%s%s" % (tribe.slug, deleted)
-                tribe.name = u"%s%s" % (tribe.name, deleted)
+                deleted = datetime.now().strftime("%s__")
+                tribe.slug = u"%s%s" % (deleted, tribe.slug)
+                tribe.name = u"%s%s" % (deleted, tribe.name)
                 tribe.deleted = True
-                calendar = Calendar.objects.get_calendar_for_object(tribe)
-                calendar.delete()
                 tribe.save()
+                
+                calendar = Calendar.objects.get_calendar_for_object(tribe)
+                calendar.name = u"%s%s" % (deleted, calendar.name)
+                calendar.slug = u"%s%s" % (deleted, calendar.slug)
+                calendar.save()
+                
             except:
                 pass
             
