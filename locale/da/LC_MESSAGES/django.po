@@ -1,0 +1,4109 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-09-07 16:26+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: apps/account/forms.py:29 apps/account/forms.py:62 apps/account/forms.py:333
+#: apps/sepow/forms.py:33 apps/sepow/forms.py:122
+#: templates/elsewhere/base.html:40 templates/profiles/profiles.html:36
+#: templates/profiles/profiles.html:49 templates/tribes/tribe_members.html:54
+#: templates/tribes/tribe_members.html:87
+#: templates/tribes/tribe_members.html:109
+#: templates/tribes/tribe_members.html:123
+msgid "Username"
+msgstr ""
+
+#: apps/account/forms.py:30 apps/account/forms.py:63 apps/account/forms.py:213
+#: apps/account/forms.py:334 apps/sepow/forms.py:36 apps/sepow/forms.py:123
+msgid "Password"
+msgstr ""
+
+#: apps/account/forms.py:31 apps/sepow/forms.py:124
+msgid "Remember Me"
+msgstr ""
+
+#: apps/account/forms.py:31 apps/sepow/forms.py:124
+msgid "If checked you will stay logged in for 3 weeks"
+msgstr ""
+
+#: apps/account/forms.py:43 apps/sepow/forms.py:136
+msgid "This account is currently inactive."
+msgstr ""
+
+#: apps/account/forms.py:45 apps/sepow/forms.py:138
+msgid "The username and/or password you specified are not correct."
+msgstr ""
+
+#: apps/account/forms.py:51 apps/account/views.py:57 apps/sepow/forms.py:144
+#, python-format
+msgid "Successfully logged in as %(username)s."
+msgstr ""
+
+#: apps/account/forms.py:64 apps/account/forms.py:214 apps/sepow/forms.py:37
+msgid "Password (again)"
+msgstr ""
+
+#: apps/account/forms.py:65
+msgid "Email (optional)"
+msgstr ""
+
+#: apps/account/forms.py:70 apps/sepow/forms.py:46
+msgid "Usernames can only contain letters, numbers and underscores."
+msgstr ""
+
+#: apps/account/forms.py:75 apps/sepow/forms.py:51
+msgid "This username is already taken. Please choose another."
+msgstr ""
+
+#: apps/account/forms.py:80 apps/account/forms.py:202
+#: apps/account/forms.py:219 apps/account/forms.py:281 apps/sepow/forms.py:56
+msgid "You must type the same password each time."
+msgstr ""
+
+#: apps/account/forms.py:103 apps/sepow/forms.py:83
+msgid "Your email address has already been verified"
+msgstr ""
+
+#: apps/account/forms.py:110 apps/account/forms.py:116
+#: apps/account/forms.py:184 apps/sepow/forms.py:90 apps/sepow/forms.py:114
+#, python-format
+msgid "Confirmation email sent to %(email)s"
+msgstr ""
+
+#: apps/account/forms.py:174 apps/account/forms.py:229 apps/sepow/forms.py:35
+#: templates/profiles/profile_info.html:35
+msgid "Email"
+msgstr ""
+
+#: apps/account/forms.py:181
+msgid "This email address already associated with this account."
+msgstr ""
+
+#: apps/account/forms.py:190
+msgid "Current Password"
+msgstr ""
+
+#: apps/account/forms.py:191 apps/account/forms.py:270
+msgid "New Password"
+msgstr ""
+
+#: apps/account/forms.py:192 apps/account/forms.py:271
+msgid "New Password (again)"
+msgstr ""
+
+#: apps/account/forms.py:196
+msgid "Please type your current password."
+msgstr ""
+
+#: apps/account/forms.py:208 apps/account/forms.py:292
+msgid "Password successfully changed."
+msgstr ""
+
+#: apps/account/forms.py:225
+msgid "Password successfully set."
+msgstr ""
+
+#: apps/account/forms.py:233
+msgid "Email address not verified for any user account"
+msgstr ""
+
+#: apps/account/forms.py:256
+msgid "Password reset email sent"
+msgstr ""
+
+#: apps/account/forms.py:269
+msgid "Temporary Password"
+msgstr ""
+
+#: apps/account/forms.py:275
+msgid "Please type your temporary password."
+msgstr ""
+
+#: apps/account/forms.py:303 templates/account/base.html:23
+msgid "Timezone"
+msgstr ""
+
+#: apps/account/forms.py:312
+msgid "Timezone successfully updated."
+msgstr ""
+
+#: apps/account/forms.py:316 templates/account/base.html:22
+msgid "Language"
+msgstr ""
+
+#: apps/account/forms.py:325
+msgid "Language successfully updated."
+msgstr ""
+
+#: apps/account/forms.py:347
+msgid "Successfully authenticated."
+msgstr ""
+
+#: apps/account/models.py:12 apps/account/models.py:25
+#: apps/account/models.py:80 apps/profiles/models.py:56
+#: apps/tribes/models.py:61
+msgid "user"
+msgstr ""
+
+#: apps/account/models.py:14
+msgid "timezone"
+msgstr ""
+
+#: apps/account/models.py:15
+msgid "language"
+msgstr ""
+
+#: apps/account/models.py:26
+msgid "Other Service Info Key"
+msgstr ""
+
+#: apps/account/models.py:27
+msgid "Other Service Info Value"
+msgstr ""
+
+#: apps/account/models.py:82
+msgid "temp_key"
+msgstr ""
+
+#: apps/account/models.py:83
+msgid "timestamp"
+msgstr ""
+
+#: apps/account/models.py:84
+msgid "reset yet?"
+msgstr ""
+
+#: apps/account/views.py:256
+msgid "Removed twitter account information successfully."
+msgstr ""
+
+#: apps/account/templatetags/openid_tags.py:27
+msgid "Logged in with OpenID"
+msgstr ""
+
+#: apps/avatar/models.py:37
+#, python-format
+msgid "Avatar for %s"
+msgstr ""
+
+#: apps/avatar/views.py:51
+msgid "Successfully uploaded a new avatar."
+msgstr ""
+
+#: apps/avatar/views.py:58
+msgid "Successfully updated your avatar."
+msgstr ""
+
+#: apps/avatar/views.py:85
+msgid "Successfully deleted the requested avatars."
+msgstr ""
+
+#: apps/avatar/templatetags/avatar_tags.py:48
+msgid "Default Avatar"
+msgstr ""
+
+#: apps/captcha/fields.py:34
+msgid "Play captcha as audio file"
+msgstr ""
+
+#: apps/captcha/fields.py:60 apps/captcha/tests/__init__.py:64
+msgid "Invalid CAPTCHA"
+msgstr ""
+
+#: apps/django_dms/widgets.py:45
+msgid "Currently:"
+msgstr ""
+
+#: apps/django_dms/widgets.py:45
+msgid "Change:"
+msgstr ""
+
+#: apps/django_dms/apps/small_dms/models.py:17
+#: apps/django_extensions/db/models.py:26 apps/photos/models.py:38
+#: apps/schedule/models/events.py:27 apps/schedule/models/events.py:347
+#: apps/tribes/models.py:82
+msgid "title"
+msgstr ""
+
+#: apps/django_dms/apps/small_dms/models.py:18
+#: apps/django_extensions/db/models.py:27 apps/photos/models.py:39
+#: apps/schedule/models/calendars.py:133 apps/tribes/models.py:28
+msgid "slug"
+msgstr ""
+
+#: apps/django_dms/apps/small_dms/models.py:19
+msgid "abstract / summary"
+msgstr ""
+
+#: apps/django_dms/apps/small_dms/models.py:20
+#: apps/django_extensions/db/models.py:15 apps/tribes/models.py:30
+#: apps/tribes/models.py:84 templates/sepow/latest_updates.html:16
+msgid "created"
+msgstr ""
+
+#: apps/django_dms/apps/small_dms/models.py:21 apps/tribes/models.py:60
+#: apps/tribes/models.py:80
+msgid "tribe"
+msgstr ""
+
+#: apps/django_dms/apps/small_dms/models.py:23
+msgid "uploader"
+msgstr ""
+
+#: apps/django_dms/apps/small_dms/models.py:33
+msgid "Passed"
+msgstr ""
+
+#: apps/django_dms/apps/small_dms/models.py:35
+msgid "grade"
+msgstr ""
+
+#: apps/django_extensions/admin/__init__.py:105
+msgid "and"
+msgstr ""
+
+#: apps/django_extensions/admin/__init__.py:107
+#, python-format
+msgid ""
+"Use the left field to do %(model_name)s lookups in the fields %(field_list)s."
+msgstr ""
+
+#: apps/django_extensions/db/models.py:16 apps/tribes/models.py:85
+msgid "modified"
+msgstr ""
+
+#: apps/django_extensions/db/models.py:28 apps/photos/models.py:22
+#: apps/schedule/models/events.py:28 apps/schedule/models/events.py:348
+#: apps/schedule/models/rules.py:42 apps/tribes/models.py:31
+msgid "description"
+msgstr ""
+
+#: apps/django_extensions/templates/django_extensions/widgets/foreignkey_searchinput.html:4
+msgid "Lookup"
+msgstr ""
+
+#: apps/elsewhere/models.py:114 apps/photos/models.py:41
+msgid "date added"
+msgstr ""
+
+#: apps/elsewhere/models.py:115
+msgid "date verified"
+msgstr ""
+
+#: apps/friends_app/views.py:25
+#, python-format
+msgid "Accepted friendship request from %(from_user)s"
+msgstr ""
+
+#: apps/friends_app/views.py:70
+#, python-format
+msgid "%(total)s vCards found, %(imported)s contacts imported."
+msgstr ""
+
+#: apps/friends_app/views.py:79 apps/friends_app/views.py:85
+#, python-format
+msgid "%(total)s people with email found, %(imported)s contacts imported."
+msgstr ""
+
+#: apps/html5lib/constants.py:15
+msgid "Null character in input stream, replaced with U+FFFD."
+msgstr ""
+
+#: apps/html5lib/constants.py:17
+msgid "Invalid codepoint in stream."
+msgstr ""
+
+#: apps/html5lib/constants.py:19
+msgid "Solidus (/) incorrectly placed in tag."
+msgstr ""
+
+#: apps/html5lib/constants.py:21
+msgid "Incorrect CR newline entity, replaced with LF."
+msgstr ""
+
+#: apps/html5lib/constants.py:23
+msgid "Entity used with illegal number (windows-1252 reference)."
+msgstr ""
+
+#: apps/html5lib/constants.py:25
+#, python-format
+msgid ""
+"Numeric entity couldn't be converted to character (codepoint U+%(charAsInt)"
+"08x)."
+msgstr ""
+
+#: apps/html5lib/constants.py:28
+#, python-format
+msgid "Numeric entity represents an illegal codepoint: U+%(charAsInt)08x."
+msgstr ""
+
+#: apps/html5lib/constants.py:31
+msgid "Numeric entity didn't end with ';'."
+msgstr ""
+
+#: apps/html5lib/constants.py:33
+msgid "Numeric entity expected. Got end of file instead."
+msgstr ""
+
+#: apps/html5lib/constants.py:35
+msgid "Numeric entity expected but none found."
+msgstr ""
+
+#: apps/html5lib/constants.py:37
+msgid "Named entity didn't end with ';'."
+msgstr ""
+
+#: apps/html5lib/constants.py:39
+msgid "Named entity expected. Got none."
+msgstr ""
+
+#: apps/html5lib/constants.py:41
+msgid "End tag contains unexpected attributes."
+msgstr ""
+
+#: apps/html5lib/constants.py:43
+msgid "Expected tag name. Got '>' instead."
+msgstr ""
+
+#: apps/html5lib/constants.py:45
+msgid ""
+"Expected tag name. Got '?' instead. (HTML doesn't support processing "
+"instructions.)"
+msgstr ""
+
+#: apps/html5lib/constants.py:48
+msgid "Expected tag name. Got something else instead"
+msgstr ""
+
+#: apps/html5lib/constants.py:50
+msgid "Expected closing tag. Got '>' instead. Ignoring '</>'."
+msgstr ""
+
+#: apps/html5lib/constants.py:52
+msgid "Expected closing tag. Unexpected end of file."
+msgstr ""
+
+#: apps/html5lib/constants.py:54
+#, python-format
+msgid "Expected closing tag. Unexpected character '%(data)s' found."
+msgstr ""
+
+#: apps/html5lib/constants.py:56
+msgid "Unexpected end of file in the tag name."
+msgstr ""
+
+#: apps/html5lib/constants.py:58
+msgid "Unexpected end of file. Expected attribute name instead."
+msgstr ""
+
+#: apps/html5lib/constants.py:60
+msgid "Unexpected end of file in attribute name."
+msgstr ""
+
+#: apps/html5lib/constants.py:62
+msgid "Dropped duplicate attribute on tag."
+msgstr ""
+
+#: apps/html5lib/constants.py:64
+msgid "Unexpected end of file. Expected = or end of tag."
+msgstr ""
+
+#: apps/html5lib/constants.py:66
+msgid "Unexpected end of file. Expected attribute value."
+msgstr ""
+
+#: apps/html5lib/constants.py:68
+msgid "Unexpected end of file in attribute value (\")."
+msgstr ""
+
+#: apps/html5lib/constants.py:70
+msgid "Unexpected end of file in attribute value (')."
+msgstr ""
+
+#: apps/html5lib/constants.py:72
+msgid "Unexpected end of file in attribute value."
+msgstr ""
+
+#: apps/html5lib/constants.py:74
+msgid "Expected '--' or 'DOCTYPE'. Not found."
+msgstr ""
+
+#: apps/html5lib/constants.py:76
+msgid "Incorrect comment."
+msgstr ""
+
+#: apps/html5lib/constants.py:78
+msgid "Unexpected end of file in comment."
+msgstr ""
+
+#: apps/html5lib/constants.py:80
+msgid "Unexpected end of file in comment (-)"
+msgstr ""
+
+#: apps/html5lib/constants.py:82
+msgid "Unexpected '-' after '--' found in comment."
+msgstr ""
+
+#: apps/html5lib/constants.py:84
+msgid "Unexpected end of file in comment (--)."
+msgstr ""
+
+#: apps/html5lib/constants.py:86
+msgid "Unexpected character in comment found."
+msgstr ""
+
+#: apps/html5lib/constants.py:88
+msgid "No space after literal string 'DOCTYPE'."
+msgstr ""
+
+#: apps/html5lib/constants.py:90
+msgid "Unexpected > character. Expected DOCTYPE name."
+msgstr ""
+
+#: apps/html5lib/constants.py:92
+msgid "Unexpected end of file. Expected DOCTYPE name."
+msgstr ""
+
+#: apps/html5lib/constants.py:94
+msgid "Unexpected end of file in DOCTYPE name."
+msgstr ""
+
+#: apps/html5lib/constants.py:96
+msgid "Unexpected end of file in DOCTYPE."
+msgstr ""
+
+#: apps/html5lib/constants.py:98
+#, python-format
+msgid "Expected space or '>'. Got '%(data)s'"
+msgstr ""
+
+#: apps/html5lib/constants.py:100
+msgid "Unexpected end of DOCTYPE."
+msgstr ""
+
+#: apps/html5lib/constants.py:102
+msgid "Unexpected character in DOCTYPE."
+msgstr ""
+
+#: apps/html5lib/constants.py:104
+msgid "Unexpected end of file in bogus doctype."
+msgstr ""
+
+#: apps/html5lib/constants.py:106
+msgid "XXX innerHTML EOF"
+msgstr ""
+
+#: apps/html5lib/constants.py:108
+msgid "Unexpected DOCTYPE. Ignored."
+msgstr ""
+
+#: apps/html5lib/constants.py:110
+msgid "html needs to be the first start tag."
+msgstr ""
+
+#: apps/html5lib/constants.py:112
+msgid "Unexpected End of file. Expected DOCTYPE."
+msgstr ""
+
+#: apps/html5lib/constants.py:114
+msgid "Erroneous DOCTYPE."
+msgstr ""
+
+#: apps/html5lib/constants.py:116
+msgid "Unexpected non-space characters. Expected DOCTYPE."
+msgstr ""
+
+#: apps/html5lib/constants.py:118
+#, python-format
+msgid "Unexpected start tag (%(name)s). Expected DOCTYPE."
+msgstr ""
+
+#: apps/html5lib/constants.py:120
+#, python-format
+msgid "Unexpected end tag (%(name)s). Expected DOCTYPE."
+msgstr ""
+
+#: apps/html5lib/constants.py:122
+#, python-format
+msgid "Unexpected end tag (%(name)s) after the (implied) root element."
+msgstr ""
+
+#: apps/html5lib/constants.py:124
+#, python-format
+msgid "Unexpected end of file. Expected end tag (%(name)s)."
+msgstr ""
+
+#: apps/html5lib/constants.py:126
+msgid "Unexpected start tag head in existing head. Ignored."
+msgstr ""
+
+#: apps/html5lib/constants.py:128
+#, python-format
+msgid "Unexpected end tag (%(name)s). Ignored."
+msgstr ""
+
+#: apps/html5lib/constants.py:130
+#, python-format
+msgid "Unexpected start tag (%(name)s) that can be in head. Moved."
+msgstr ""
+
+#: apps/html5lib/constants.py:132
+#, python-format
+msgid "Unexpected start tag (%(name)s)."
+msgstr ""
+
+#: apps/html5lib/constants.py:134
+#, python-format
+msgid "Missing end tag (%(name)s)."
+msgstr ""
+
+#: apps/html5lib/constants.py:136
+#, python-format
+msgid "Missing end tags (%(name)s)."
+msgstr ""
+
+#: apps/html5lib/constants.py:138
+#, python-format
+msgid "Unexpected start tag (%(startName)s) implies end tag (%(endName)s)."
+msgstr ""
+
+#: apps/html5lib/constants.py:141
+#, python-format
+msgid "Unexpected start tag (%(originalName)s). Treated as %(newName)s."
+msgstr ""
+
+#: apps/html5lib/constants.py:143
+#, python-format
+msgid "Unexpected start tag %(name)s. Don't use it!"
+msgstr ""
+
+#: apps/html5lib/constants.py:145
+#, python-format
+msgid "Unexpected start tag %(name)s. Ignored."
+msgstr ""
+
+#: apps/html5lib/constants.py:147
+#, python-format
+msgid "Unexpected end tag (%(gotName)s). Missing end tag (%(expectedName)s)."
+msgstr ""
+
+#: apps/html5lib/constants.py:150
+#, python-format
+msgid "End tag (%(name)s) seen too early. Expected other end tag."
+msgstr ""
+
+#: apps/html5lib/constants.py:152
+#, python-format
+msgid "Unexpected end tag (%(gotName)s). Expected end tag (%(expectedName)s)."
+msgstr ""
+
+#: apps/html5lib/constants.py:154
+#, python-format
+msgid "End tag (%(name)s) seen too early. Ignored."
+msgstr ""
+
+#: apps/html5lib/constants.py:156
+#, python-format
+msgid ""
+"End tag (%(name)s) violates step 1, paragraph 1 of the adoption agency "
+"algorithm."
+msgstr ""
+
+#: apps/html5lib/constants.py:159
+#, python-format
+msgid ""
+"End tag (%(name)s) violates step 1, paragraph 2 of the adoption agency "
+"algorithm."
+msgstr ""
+
+#: apps/html5lib/constants.py:162
+#, python-format
+msgid ""
+"End tag (%(name)s) violates step 1, paragraph 3 of the adoption agency "
+"algorithm."
+msgstr ""
+
+#: apps/html5lib/constants.py:165
+#, python-format
+msgid "Unexpected end tag (%(originalName)s). Treated as %(newName)s."
+msgstr ""
+
+#: apps/html5lib/constants.py:167
+#, python-format
+msgid "This element (%(name)s) has no end tag."
+msgstr ""
+
+#: apps/html5lib/constants.py:169
+#, python-format
+msgid "Unexpected implied end tag (%(name)s) in the table phase."
+msgstr ""
+
+#: apps/html5lib/constants.py:171
+#, python-format
+msgid "Unexpected implied end tag (%(name)s) in the table body phase."
+msgstr ""
+
+#: apps/html5lib/constants.py:173
+msgid "Unexpected non-space characters in table context caused voodoo mode."
+msgstr ""
+
+#: apps/html5lib/constants.py:176
+msgid "Unexpected input with type hidden in table context."
+msgstr ""
+
+#: apps/html5lib/constants.py:178
+#, python-format
+msgid "Unexpected start tag (%(name)s) in table context caused voodoo mode."
+msgstr ""
+
+#: apps/html5lib/constants.py:181
+#, python-format
+msgid "Unexpected end tag (%(name)s) in table context caused voodoo mode."
+msgstr ""
+
+#: apps/html5lib/constants.py:184
+#, python-format
+msgid "Unexpected table cell start tag (%(name)s) in the table body phase."
+msgstr ""
+
+#: apps/html5lib/constants.py:187
+#, python-format
+msgid "Got table cell end tag (%(name)s) while required end tags are missing."
+msgstr ""
+
+#: apps/html5lib/constants.py:190
+#, python-format
+msgid "Unexpected end tag (%(name)s) in the table body phase. Ignored."
+msgstr ""
+
+#: apps/html5lib/constants.py:192
+#, python-format
+msgid "Unexpected implied end tag (%(name)s) in the table row phase."
+msgstr ""
+
+#: apps/html5lib/constants.py:194
+#, python-format
+msgid "Unexpected end tag (%(name)s) in the table row phase. Ignored."
+msgstr ""
+
+#: apps/html5lib/constants.py:196
+msgid ""
+"Unexpected select start tag in the select phase treated as select end tag."
+msgstr ""
+
+#: apps/html5lib/constants.py:199
+msgid "Unexpected input start tag in the select phase."
+msgstr ""
+
+#: apps/html5lib/constants.py:201
+#, python-format
+msgid "Unexpected start tag token (%(name)s in the select phase. Ignored."
+msgstr ""
+
+#: apps/html5lib/constants.py:204
+#, python-format
+msgid "Unexpected end tag (%(name)s) in the select phase. Ignored."
+msgstr ""
+
+#: apps/html5lib/constants.py:206
+#, python-format
+msgid ""
+"Unexpected table element start tag (%(name)s) in the select in table phase."
+msgstr ""
+
+#: apps/html5lib/constants.py:208
+#, python-format
+msgid ""
+"Unexpected table element end tag (%(name)s) in the select in table phase."
+msgstr ""
+
+#: apps/html5lib/constants.py:210
+msgid "Unexpected non-space characters in the after body phase."
+msgstr ""
+
+#: apps/html5lib/constants.py:212
+#, python-format
+msgid "Unexpected start tag token (%(name)s) in the after body phase."
+msgstr ""
+
+#: apps/html5lib/constants.py:215
+#, python-format
+msgid "Unexpected end tag token (%(name)s) in the after body phase."
+msgstr ""
+
+#: apps/html5lib/constants.py:218
+msgid "Unepxected characters in the frameset phase. Characters ignored."
+msgstr ""
+
+#: apps/html5lib/constants.py:220
+#, python-format
+msgid "Unexpected start tag token (%(name)s) in the frameset phase. Ignored."
+msgstr ""
+
+#: apps/html5lib/constants.py:223
+msgid "Unexpected end tag token (frameset) in the frameset phase (innerHTML)."
+msgstr ""
+
+#: apps/html5lib/constants.py:226
+#, python-format
+msgid "Unexpected end tag token (%(name)s) in the frameset phase. Ignored."
+msgstr ""
+
+#: apps/html5lib/constants.py:229
+msgid "Unexpected non-space characters in the after frameset phase. Ignored."
+msgstr ""
+
+#: apps/html5lib/constants.py:232
+#, python-format
+msgid "Unexpected start tag (%(name)s) in the after frameset phase. Ignored."
+msgstr ""
+
+#: apps/html5lib/constants.py:235
+#, python-format
+msgid "Unexpected end tag (%(name)s) in the after frameset phase. Ignored."
+msgstr ""
+
+#: apps/html5lib/constants.py:238
+msgid "Unexpected end tag after body(innerHtml)"
+msgstr ""
+
+#: apps/html5lib/constants.py:240
+msgid "Unexpected non-space characters. Expected end of file."
+msgstr ""
+
+#: apps/html5lib/constants.py:242
+#, python-format
+msgid "Unexpected start tag (%(name)s). Expected end of file."
+msgstr ""
+
+#: apps/html5lib/constants.py:245
+#, python-format
+msgid "Unexpected end tag (%(name)s). Expected end of file."
+msgstr ""
+
+#: apps/html5lib/constants.py:248
+msgid "Unexpected end of file. Expected table content."
+msgstr ""
+
+#: apps/html5lib/constants.py:250
+msgid "Unexpected end of file. Expected select content."
+msgstr ""
+
+#: apps/html5lib/constants.py:252
+msgid "Unexpected end of file. Expected frameset content."
+msgstr ""
+
+#: apps/html5lib/constants.py:254
+msgid "Undefined error (this sucks and should be fixed)"
+msgstr ""
+
+#: apps/html5lib/filters/lint.py:21
+#, python-format
+msgid "StartTag not in PCDATA content model flag: %s"
+msgstr ""
+
+#: apps/html5lib/filters/lint.py:23 apps/html5lib/filters/lint.py:49
+#: apps/html5lib/filters/lint.py:79
+#, python-format
+msgid "Tag name is not a string: %r"
+msgstr ""
+
+#: apps/html5lib/filters/lint.py:25 apps/html5lib/filters/lint.py:51
+msgid "Empty tag name"
+msgstr ""
+
+#: apps/html5lib/filters/lint.py:27
+#, python-format
+msgid "Void element reported as StartTag token: %s"
+msgstr ""
+
+#: apps/html5lib/filters/lint.py:29
+#, python-format
+msgid "Non-void element reported as EmptyTag token: %s"
+msgstr ""
+
+#: apps/html5lib/filters/lint.py:34 apps/html5lib/filters/lint.py:66
+#, python-format
+msgid "Attribute name is not a string: %r"
+msgstr ""
+
+#: apps/html5lib/filters/lint.py:36
+msgid "Empty attribute name"
+msgstr ""
+
+#: apps/html5lib/filters/lint.py:38
+#, python-format
+msgid "Attribute value is not a string: %r"
+msgstr ""
+
+#: apps/html5lib/filters/lint.py:53
+#, python-format
+msgid "Void element reported as EndTag token: %s"
+msgstr ""
+
+#: apps/html5lib/filters/lint.py:56
+#, python-format
+msgid "EndTag (%(name)s) does not match StartTag (%(start_name)s)"
+msgstr ""
+
+#: apps/html5lib/filters/lint.py:61
+msgid "Comment not in PCDATA content model flag"
+msgstr ""
+
+#: apps/html5lib/filters/lint.py:68
+#, python-format
+msgid "%s token with empty data"
+msgstr ""
+
+#: apps/html5lib/filters/lint.py:72
+msgid "Non-space character(s) found in SpaceCharacters token: "
+msgstr ""
+
+#: apps/html5lib/filters/lint.py:77
+#, python-format
+msgid "Doctype not in PCDATA content model flag: %s"
+msgstr ""
+
+#: apps/html5lib/filters/lint.py:86
+#, python-format
+msgid "Unknown token type: %s"
+msgstr ""
+
+#: apps/html5lib/filters/validator.py:32
+#, python-format
+msgid "Unknown start tag <%(tagName)s>."
+msgstr ""
+
+#: apps/html5lib/filters/validator.py:34
+#, python-format
+msgid "Unknown '%(attributeName)s' attribute on <%(tagName)s>."
+msgstr ""
+
+#: apps/html5lib/filters/validator.py:36
+#, python-format
+msgid "The '%(attributeName)s' attribute is required on <%(tagName)s>."
+msgstr ""
+
+#: apps/html5lib/filters/validator.py:38
+#, python-format
+msgid "Illegal value for attribute on <input type='%(inputType)s'>."
+msgstr ""
+
+#: apps/html5lib/filters/validator.py:40
+#, python-format
+msgid ""
+"The '%(attributeName)s' attribute is not allowed on <input type=%(inputType)"
+"s>."
+msgstr ""
+
+#: apps/html5lib/filters/validator.py:42
+#, python-format
+msgid ""
+"This attribute is deprecated: '%(attributeName)s' attribute on <%(tagName)s>."
+msgstr ""
+
+#: apps/html5lib/filters/validator.py:44
+#, python-format
+msgid ""
+"Duplicate value in token list: '%(attributeValue)s' in '%(attributeName)s' "
+"attribute on <%(tagName)s>."
+msgstr ""
+
+#: apps/html5lib/filters/validator.py:46
+#, python-format
+msgid ""
+"Invalid attribute value: '%(attributeName)s' attribute on <%(tagName)s>."
+msgstr ""
+
+#: apps/html5lib/filters/validator.py:48
+#, python-format
+msgid ""
+"Whitespace is not allowed here: '%(attributeName)s' attribute on <%(tagName)"
+"s>."
+msgstr ""
+
+#: apps/html5lib/filters/validator.py:50
+#, python-format
+msgid "This ID was already defined earlier: 'id' attribute on <%(tagName)s>."
+msgstr ""
+
+#: apps/html5lib/filters/validator.py:52
+#, python-format
+msgid ""
+"This value can not be blank: '%(attributeName)s' attribute on <%(tagName)s>."
+msgstr ""
+
+#: apps/html5lib/filters/validator.py:54
+#, python-format
+msgid ""
+"This value refers to a non-existent ID: '%(attributeName)s' attribute on <%"
+"(tagName)s>."
+msgstr ""
+
+#: apps/html5lib/filters/validator.py:56 apps/html5lib/filters/validator.py:58
+msgid ""
+"Value must be one of %(enumeratedValues)s: '%(attributeName)s' attribute on <"
+"%tagName)s>."
+msgstr ""
+
+#: apps/html5lib/filters/validator.py:60
+msgid ""
+"The contextmenu attribute must point to an ID defined on a <menu> element."
+msgstr ""
+
+#: apps/html5lib/filters/validator.py:62
+#, python-format
+msgid "Invalid language code: '%(attributeName)s' attibute on <%(tagName)s>."
+msgstr ""
+
+#: apps/html5lib/filters/validator.py:64
+msgid ""
+"Value must be an integer: '%(attributeName)s' attribute on <%tagName)s>."
+msgstr ""
+
+#: apps/html5lib/filters/validator.py:66
+msgid "Root namespace must be 'http://www.w3.org/1999/xhtml', or omitted."
+msgstr ""
+
+#: apps/html5lib/filters/validator.py:68
+#, python-format
+msgid ""
+"Value must be one of ('_self', '_parent', '_top'), or a name that does not "
+"start with '_': '%(attributeName)s' attribute on <%(tagName)s>."
+msgstr ""
+
+#: apps/html5lib/filters/validator.py:70 apps/html5lib/filters/validator.py:78
+#: apps/html5lib/filters/validator.py:80
+#, python-format
+msgid "Invalid URI: '%(attributeName)s' attribute on <%(tagName)s>."
+msgstr ""
+
+#: apps/html5lib/filters/validator.py:72
+#, python-format
+msgid "Invalid URN: '%(attributeName)s' attribute on <%(tagName)s>."
+msgstr ""
+
+#: apps/html5lib/filters/validator.py:74
+#, python-format
+msgid ""
+"Illegal character in URI: '%(attributeName)s' attribute on <%(tagName)s>."
+msgstr ""
+
+#: apps/html5lib/filters/validator.py:76
+#, python-format
+msgid ""
+"Expected a URI but found an IRI: '%(attributeName)s' attribute on <%(tagName)"
+"s>."
+msgstr ""
+
+#: apps/html5lib/filters/validator.py:82
+#, python-format
+msgid ""
+"Unregistered URI scheme: '%(attributeName)s' attribute on <%(tagName)s>."
+msgstr ""
+
+#: apps/html5lib/filters/validator.py:84
+#, python-format
+msgid "Invalid link relation: '%(attributeName)s' attribute on <%(tagName)s>."
+msgstr ""
+
+#: apps/html5lib/filters/validator.py:86
+#, python-format
+msgid "Invalid MIME type: '%(attributeName)s' attribute on <%(tagName)s>."
+msgstr ""
+
+#: apps/html5lib/serializer/htmlserializer.py:115
+msgid "Unexpected </ in CDATA"
+msgstr ""
+
+#: apps/html5lib/serializer/htmlserializer.py:130
+#: apps/html5lib/serializer/htmlserializer.py:186
+msgid "Unexpected child element of a CDATA element"
+msgstr ""
+
+#: apps/html5lib/serializer/htmlserializer.py:195
+msgid "Comment contains --"
+msgstr ""
+
+#: apps/html5lib/treewalkers/_base.py:28
+msgid "Void element has children"
+msgstr ""
+
+#: apps/html5lib/treewalkers/_base.py:61
+msgid "Unknown node type: "
+msgstr ""
+
+#: apps/html5lib/treewalkers/lxmletree.py:111
+#: apps/html5lib/treewalkers/lxmletree.py:142
+#: apps/html5lib/treewalkers/lxmletree.py:158
+#, python-format
+msgid "Text nodes are text or tail, found %s"
+msgstr ""
+
+#: apps/html5lib/treewalkers/lxmletree.py:131
+msgid "Text nodes have no children"
+msgstr ""
+
+#: apps/photos/models.py:13
+msgid "Public"
+msgstr ""
+
+#: apps/photos/models.py:14
+msgid "Private"
+msgstr ""
+
+#: apps/photos/models.py:21 apps/profiles/models.py:57
+#: apps/schedule/models/calendars.py:132 apps/schedule/models/rules.py:41
+#: apps/threadedcomments/models.py:260 apps/tribes/models.py:27
+msgid "name"
+msgstr ""
+
+#: apps/photos/models.py:23
+msgid "publish_type"
+msgstr ""
+
+#: apps/photos/models.py:27 apps/photos/models.py:45
+msgid "photo set"
+msgstr ""
+
+#: apps/photos/models.py:28
+msgid "photo sets"
+msgstr ""
+
+#: apps/photos/models.py:35
+msgid "Safe"
+msgstr ""
+
+#: apps/photos/models.py:36
+msgid "Not Safe"
+msgstr ""
+
+#: apps/photos/models.py:40
+msgid "caption"
+msgstr ""
+
+#: apps/photos/models.py:42 apps/threadedcomments/models.py:166
+#: apps/threadedcomments/models.py:274
+msgid "is public"
+msgstr ""
+
+#: apps/photos/models.py:42
+msgid "Public photographs will be displayed in the default views."
+msgstr ""
+
+#: apps/photos/models.py:44
+msgid "safetylevel"
+msgstr ""
+
+#: apps/photos/models.py:64
+msgid "created_at"
+msgstr ""
+
+#: apps/photos/models.py:69
+msgid "pool"
+msgstr ""
+
+#: apps/photos/models.py:70
+msgid "pools"
+msgstr ""
+
+#: apps/photos/views.py:30
+#, python-format
+msgid "Successfully uploaded photo '%s'"
+msgstr ""
+
+#: apps/photos/views.py:123 apps/photos/views.py:160
+#, python-format
+msgid "Successfully add photo '%s' to project"
+msgstr ""
+
+#: apps/photos/views.py:126 apps/photos/views.py:163
+#, python-format
+msgid "Did not add photo '%s' to project because it already exists."
+msgstr ""
+
+#: apps/photos/views.py:136
+#, python-format
+msgid "Successfully add photo '%s' to tribe"
+msgstr ""
+
+#: apps/photos/views.py:139
+#, python-format
+msgid "Did not add photo '%s' to tribe because it already exists."
+msgstr ""
+
+#: apps/photos/views.py:148
+#, python-format
+msgid "Successfully removed photo '%s' from tribe"
+msgstr ""
+
+#: apps/photos/views.py:151
+#, python-format
+msgid "Did not remove photo '%s' from tribe."
+msgstr ""
+
+#: apps/photos/views.py:172
+#, python-format
+msgid "Successfully removed photo '%s' from project"
+msgstr ""
+
+#: apps/photos/views.py:175
+#, python-format
+msgid "Did not remove photo '%s' from project."
+msgstr ""
+
+#: apps/photos/views.py:214
+#, python-format
+msgid "Successfully updated photo '%s'"
+msgstr ""
+
+#: apps/photos/views.py:239
+#, python-format
+msgid "Successfully deleted photo '%s'"
+msgstr ""
+
+#: apps/profiles/forms.py:7 apps/sepow/forms.py:38
+msgid "(Pick your affiliation)"
+msgstr ""
+
+#: apps/profiles/forms.py:8 apps/sepow/forms.py:39
+msgid "(Pick your occupation)"
+msgstr ""
+
+#: apps/profiles/models.py:18 apps/profiles/models.py:32
+#: apps/profiles/models.py:62
+msgid "affiliation"
+msgstr ""
+
+#: apps/profiles/models.py:33
+msgid "affiliations"
+msgstr ""
+
+#: apps/profiles/models.py:42 apps/profiles/models.py:51
+#: apps/profiles/models.py:63
+msgid "occupation"
+msgstr ""
+
+#: apps/profiles/models.py:52
+msgid "occupations"
+msgstr ""
+
+#: apps/profiles/models.py:58
+msgid "nickname"
+msgstr ""
+
+#: apps/profiles/models.py:59
+msgid "about"
+msgstr ""
+
+#: apps/profiles/models.py:60
+msgid "address"
+msgstr ""
+
+#: apps/profiles/models.py:61
+msgid "phone number"
+msgstr ""
+
+#: apps/profiles/models.py:66 apps/tribes/models.py:66
+msgid "last visit"
+msgstr ""
+
+#: apps/profiles/models.py:67
+msgid "last visit (storage)"
+msgstr ""
+
+#: apps/profiles/models.py:69
+msgid "reading"
+msgstr ""
+
+#: apps/profiles/models.py:70
+msgid "listening to"
+msgstr ""
+
+#: apps/profiles/models.py:83
+msgid "profile"
+msgstr ""
+
+#: apps/profiles/models.py:84
+msgid "profiles"
+msgstr ""
+
+#: apps/profiles/views.py:78 apps/profiles/views.py:94
+msgid "Let's be friends!"
+msgstr ""
+
+#: apps/profiles/views.py:86
+#, python-format
+msgid "You have accepted the friendship request from %(from_user)s"
+msgstr ""
+
+#: apps/profiles/views.py:114 apps/tribes/views.py:229
+#, python-format
+msgid "You have left the tribe %s"
+msgstr ""
+
+#: apps/rosetta/templates/rosetta/languages.html:3
+#: apps/rosetta/templates/rosetta/pofile.html:13
+msgid "Home"
+msgstr ""
+
+#: apps/rosetta/templates/rosetta/languages.html:3
+#: apps/rosetta/templates/rosetta/languages.html:4
+msgid "Language selection"
+msgstr ""
+
+#: apps/rosetta/templates/rosetta/languages.html:14
+msgid "Application"
+msgstr ""
+
+#: apps/rosetta/templates/rosetta/languages.html:15
+msgid "Progress"
+msgstr ""
+
+#: apps/rosetta/templates/rosetta/languages.html:16
+#: templates/messages/base.html:5
+msgid "Messages"
+msgstr ""
+
+#: apps/rosetta/templates/rosetta/languages.html:17
+msgid "Translated"
+msgstr ""
+
+#: apps/rosetta/templates/rosetta/languages.html:18
+#: apps/rosetta/templates/rosetta/pofile.html:48
+msgid "Fuzzy"
+msgstr ""
+
+#: apps/rosetta/templates/rosetta/languages.html:19
+msgid "Obsolete"
+msgstr ""
+
+#: apps/rosetta/templates/rosetta/languages.html:20
+msgid "File"
+msgstr ""
+
+#: apps/rosetta/templates/rosetta/languages.html:41
+msgid "Nothing to translate!"
+msgstr ""
+
+#: apps/rosetta/templates/rosetta/languages.html:42
+msgid ""
+"You haven't specified any languages in your settings file, or haven't yet "
+"generated a batch of translation catalogs."
+msgstr ""
+
+#: apps/rosetta/templates/rosetta/languages.html:43
+#, python-format
+msgid ""
+"Please refer to <a href=\"%(i18n_doc_link)s\">Django's I18N documentation</"
+"a> for a guide on how to set up internationalization for your project."
+msgstr ""
+
+#: apps/rosetta/templates/rosetta/pofile.html:7
+msgid "Pick another file"
+msgstr ""
+
+#: apps/rosetta/templates/rosetta/pofile.html:8
+msgid "Download this catalog"
+msgstr ""
+
+#: apps/rosetta/templates/rosetta/pofile.html:16
+msgid "Progress: %(percent_translated)s%"
+msgstr ""
+
+#: apps/rosetta/templates/rosetta/pofile.html:17
+msgid "File is read-only: download the file when done editing!"
+msgstr ""
+
+#: apps/rosetta/templates/rosetta/pofile.html:19
+msgid "English"
+msgstr ""
+
+#: apps/rosetta/templates/rosetta/pofile.html:21
+#, python-format
+msgid "Translate into %(rosetta_i18n_lang_name)s"
+msgstr ""
+
+#: apps/rosetta/templates/rosetta/pofile.html:24
+msgid "Display:"
+msgstr ""
+
+#: apps/rosetta/templates/rosetta/pofile.html:25
+msgid "Untranslated only"
+msgstr ""
+
+#: apps/rosetta/templates/rosetta/pofile.html:26
+msgid "Translated only"
+msgstr ""
+
+#: apps/rosetta/templates/rosetta/pofile.html:27
+msgid "Fuzzy only"
+msgstr ""
+
+#: apps/rosetta/templates/rosetta/pofile.html:28 templates/site_base.html:121
+msgid "All"
+msgstr ""
+
+#: apps/rosetta/templates/rosetta/pofile.html:34
+#: apps/wiki/templates/wiki/search_results.html:6
+#: apps/wiki/templates/wiki/search_results.html:12
+#: templates/site_base.html:114 templates/site_base.html.py:128
+#: templates/site_base.html:129 templates/wiki/searchbox.html:12
+msgid "Search"
+msgstr ""
+
+#: apps/rosetta/templates/rosetta/pofile.html:36
+#: apps/wiki/templates/wiki/search_results.html:19
+msgid "Go"
+msgstr ""
+
+#: apps/rosetta/templates/rosetta/pofile.html:45
+msgid "Original"
+msgstr ""
+
+#: apps/rosetta/templates/rosetta/pofile.html:49
+msgid "Occurrences(s)"
+msgstr ""
+
+#: apps/rosetta/templates/rosetta/pofile.html:73
+msgid "suggest"
+msgstr ""
+
+#: apps/rosetta/templates/rosetta/pofile.html:84
+#, python-format
+msgid "%(more_count)s more"
+msgid_plural "%(more_count)s more"
+msgstr[0] ""
+msgstr[1] ""
+
+#: apps/rosetta/templates/rosetta/pofile.html:96
+msgid "Save and translate next block"
+msgstr ""
+
+#: apps/rosetta/templates/rosetta/pofile.html:100
+msgid "Skip to page:"
+msgstr ""
+
+#: apps/rosetta/templates/rosetta/pofile.html:113
+msgid "Displaying:"
+msgstr ""
+
+#: apps/rosetta/templates/rosetta/pofile.html:115
+#, python-format
+msgid "%(hits)s/%(message_number)s message"
+msgid_plural "%(hits)s/%(message_number)s messages"
+msgstr[0] ""
+msgstr[1] ""
+
+#: apps/schedule/forms.py:11 apps/schedule/forms.py:15
+msgid "The end time must be later than start time."
+msgstr ""
+
+#: apps/schedule/forms.py:23 apps/schedule/models/events.py:32
+msgid "This date is ignored for one time only events."
+msgstr ""
+
+#: apps/schedule/forms.py:31
+msgid "There must be an end date for recurring events"
+msgstr ""
+
+#: apps/schedule/periods.py:279 apps/schedule/periods.py:302
+#: apps/schedule/models/events.py:42
+msgid "DATE_FORMAT"
+msgstr ""
+
+#: apps/schedule/periods.py:280
+#, python-format
+msgid "Week: %(start)s-%(end)s"
+msgstr ""
+
+#: apps/schedule/periods.py:303
+#, python-format
+msgid "Day: %(start)s-%(end)s"
+msgstr ""
+
+#: apps/schedule/conf/settings.py:8
+msgid "FIRST_DAY_OF_WEEK"
+msgstr ""
+
+#: apps/schedule/models/calendars.py:137 apps/schedule/models/calendars.py:138
+#: apps/schedule/models/calendars.py:221
+msgid "calendar"
+msgstr ""
+
+#: apps/schedule/models/calendars.py:225 apps/schedule/models/events.py:330
+msgid "distinction"
+msgstr ""
+
+#: apps/schedule/models/calendars.py:226
+msgid "inheritable"
+msgstr ""
+
+#: apps/schedule/models/calendars.py:231
+msgid "calendar relation"
+msgstr ""
+
+#: apps/schedule/models/calendars.py:232
+msgid "calendar relations"
+msgstr ""
+
+#: apps/schedule/models/events.py:25 apps/schedule/models/events.py:349
+msgid "start"
+msgstr ""
+
+#: apps/schedule/models/events.py:26 apps/schedule/models/events.py:350
+msgid "end"
+msgstr ""
+
+#: apps/schedule/models/events.py:26
+msgid "The end time must be later than the start time."
+msgstr ""
+
+#: apps/schedule/models/events.py:29 apps/tribes/models.py:29
+#: apps/tribes/models.py:83
+msgid "creator"
+msgstr ""
+
+#: apps/schedule/models/events.py:30
+msgid "created on"
+msgstr ""
+
+#: apps/schedule/models/events.py:31 apps/schedule/models/rules.py:47
+msgid "rule"
+msgstr ""
+
+#: apps/schedule/models/events.py:31
+msgid "Select '----' for a one time only event."
+msgstr ""
+
+#: apps/schedule/models/events.py:32
+msgid "end recurring period"
+msgstr ""
+
+#: apps/schedule/models/events.py:37 apps/schedule/models/events.py:326
+#: apps/schedule/models/events.py:346
+msgid "event"
+msgstr ""
+
+#: apps/schedule/models/events.py:38
+msgid "events"
+msgstr ""
+
+#: apps/schedule/models/events.py:43
+#, python-format
+msgid "%(title)s: %(start)s-%(end)s"
+msgstr ""
+
+#: apps/schedule/models/events.py:335
+msgid "event relation"
+msgstr ""
+
+#: apps/schedule/models/events.py:336
+msgid "event relations"
+msgstr ""
+
+#: apps/schedule/models/events.py:351
+msgid "cancelled"
+msgstr ""
+
+#: apps/schedule/models/events.py:352
+msgid "original start"
+msgstr ""
+
+#: apps/schedule/models/events.py:353
+msgid "original end"
+msgstr ""
+
+#: apps/schedule/models/events.py:356
+msgid "occurrence"
+msgstr ""
+
+#: apps/schedule/models/events.py:357
+msgid "occurrences"
+msgstr ""
+
+#: apps/schedule/models/events.py:428
+#, python-format
+msgid "%(start)s to %(end)s"
+msgstr ""
+
+#: apps/schedule/models/rules.py:4
+msgid "Yearly"
+msgstr ""
+
+#: apps/schedule/models/rules.py:5
+msgid "Monthly"
+msgstr ""
+
+#: apps/schedule/models/rules.py:6
+msgid "Weekly"
+msgstr ""
+
+#: apps/schedule/models/rules.py:7
+msgid "Daily"
+msgstr ""
+
+#: apps/schedule/models/rules.py:8
+msgid "Hourly"
+msgstr ""
+
+#: apps/schedule/models/rules.py:9
+msgid "Minutely"
+msgstr ""
+
+#: apps/schedule/models/rules.py:10
+msgid "Secondly"
+msgstr ""
+
+#: apps/schedule/models/rules.py:43
+msgid "frequency"
+msgstr ""
+
+#: apps/schedule/models/rules.py:44
+msgid "params"
+msgstr ""
+
+#: apps/schedule/models/rules.py:48
+msgid "rules"
+msgstr ""
+
+#: apps/schedule/templates/schedule/_detail.html:7
+#: apps/schedule/templates/schedule/_detail.html:11
+#: apps/schedule/templates/schedule/_detail.html:21
+#: apps/schedule/templates/schedule/cancel_occurrence.html:10
+#: apps/schedule/templates/schedule/cancel_occurrence.html:11
+#: apps/schedule/templates/schedule/event.html:38
+#: apps/schedule/templates/schedule/event.html:42
+#: apps/schedule/templates/schedule/event.html:47
+#: apps/schedule/templates/schedule/occurrence.html:25
+#: apps/schedule/templates/schedule/occurrence.html:29
+#: templates/messages/inbox.html:39 templates/messages/outbox.html:27
+#: templates/messages/trash.html:27 templates/messages/view.html:15
+#: templates/schedule/_detail.html:8 templates/schedule/_detail.html.py:12
+#: templates/schedule/_detail.html:22
+#: templates/schedule/cancel_occurrence.html:12
+#: templates/schedule/cancel_occurrence.html:13
+#: templates/schedule/delete_event.html:12
+#: templates/schedule/delete_event.html:13 templates/schedule/event.html:22
+#: templates/schedule/event.html.py:26 templates/schedule/event.html:31
+#: templates/schedule/occurrence.html:22 templates/schedule/occurrence.html:26
+#: templates/wiki/history.html:31
+msgid "DATETIME_FORMAT"
+msgstr ""
+
+#: apps/schedule/templates/schedule/_detail.html:7
+#: apps/schedule/templates/schedule/event.html:38
+#: apps/schedule/templates/schedule/occurrence.html:25
+#: templates/schedule/_detail.html:8 templates/schedule/event.html:22
+#: templates/schedule/occurrence.html:22
+#, python-format
+msgid "%(start_date)s"
+msgstr ""
+
+#: apps/schedule/templates/schedule/_detail.html:11
+#: apps/schedule/templates/schedule/_detail.html:21
+#: apps/schedule/templates/schedule/event.html:42
+#: apps/schedule/templates/schedule/occurrence.html:29
+#: templates/schedule/_detail.html:12 templates/schedule/_detail.html.py:22
+#: templates/schedule/event.html:26 templates/schedule/occurrence.html:26
+#, python-format
+msgid "%(end_date)s"
+msgstr ""
+
+#: apps/schedule/templates/schedule/calendar.html:5
+#: templates/account/email.html:67 templates/schedule/calendar.html:8
+#: templates/tribes/tribe_members.html:87
+msgid "Add"
+msgstr ""
+
+#: apps/schedule/templates/schedule/calendar.html:8
+#: templates/schedule/calendar.html:11
+msgid "YEAR_MONTH_FORMAT"
+msgstr ""
+
+#: apps/schedule/templates/schedule/calendar.html:34
+#: templates/schedule/calendar.html:37 templates/schedule/event.html:21
+#: templates/schedule/occurrence.html:21
+msgid "Starts"
+msgstr ""
+
+#: apps/schedule/templates/schedule/calendar.html:35
+#: templates/schedule/calendar.html:38
+msgid "Continues"
+msgstr ""
+
+#: apps/schedule/templates/schedule/calendar.html:36
+#: templates/schedule/calendar.html:39 templates/schedule/event.html:25
+#: templates/schedule/occurrence.html:25
+msgid "Ends"
+msgstr ""
+
+#: apps/schedule/templates/schedule/cancel_occurrence.html:5
+#: apps/schedule/templates/schedule/cancel_occurrence.html:12
+#: apps/schedule/templates/schedule/delete_event.html:5
+#: apps/schedule/templates/schedule/delete_event.html:10
+#: apps/schedule/templates/schedule/event.html:31
+#: templates/messages/inbox.html:16 templates/messages/outbox.html:16
+#: templates/schedule/cancel_occurrence.html:14
+#: templates/schedule/delete_event.html:14 templates/schedule/event.html:45
+#: templates/threadedcomments/comments.html:49
+msgid "Delete"
+msgstr ""
+
+#: apps/schedule/templates/schedule/cancel_occurrence.html:6
+msgid "Are you sure that you really want to cancel this occurrence?"
+msgstr ""
+
+#: apps/schedule/templates/schedule/cancel_occurrence.html:13
+#: apps/schedule/templates/schedule/create_event.html:13
+#: apps/schedule/templates/schedule/delete_event.html:11
+#: apps/schedule/templates/schedule/edit_occurrence.html:13
+#: apps/schedule/templates/schedule/occurrence.html:19
+#: templates/schedule/cancel_occurrence.html:15
+#: templates/schedule/create_event.html:15
+#: templates/schedule/delete_event.html:15
+#: templates/schedule/edit_occurrence.html:15
+#: templates/schedule/occurrence.html:37
+msgid "Cancel"
+msgstr ""
+
+#: apps/schedule/templates/schedule/create_event.html:5
+msgid "Create or change event. All fields are required."
+msgstr ""
+
+#: apps/schedule/templates/schedule/create_event.html:12
+#: apps/schedule/templates/schedule/edit_occurrence.html:12
+#: apps/wiki/templates/wiki/edit.html:16
+#: templates/schedule/create_event.html:14
+#: templates/schedule/edit_occurrence.html:14
+msgid "Save"
+msgstr ""
+
+#: apps/schedule/templates/schedule/delete_event.html:6
+msgid "Are you sure that you really want to delete it?"
+msgstr ""
+
+#: apps/schedule/templates/schedule/edit_occurrence.html:5
+msgid "Create or change occurrence. All fields are required."
+msgstr ""
+
+#: apps/schedule/templates/schedule/event.html:22
+#: apps/schedule/templates/schedule/occurrence.html:16
+msgid "Back"
+msgstr ""
+
+#: apps/schedule/templates/schedule/event.html:27
+#: apps/schedule/templates/schedule/occurrence.html:18
+#: templates/schedule/event.html:44 templates/schedule/occurrence.html:36
+msgid "Change"
+msgstr ""
+
+#: apps/schedule/templates/schedule/event.html:47
+#: templates/schedule/event.html:31
+#, python-format
+msgid "%(end_recurring_date)s"
+msgstr ""
+
+#: apps/schedule/templates/schedule/event.html:49
+#: templates/schedule/event.html:33
+msgid "Never. This is a 'one time only' event."
+msgstr ""
+
+#: apps/sepow/forms.py:34 templates/profiles/profiles.html:36
+#: templates/profiles/profiles.html:49 templates/tribes/tribe_members.html:54
+#: templates/tribes/tribe_members.html:87
+#: templates/tribes/tribe_members.html:109
+#: templates/tribes/tribe_members.html:123
+msgid "Full name"
+msgstr ""
+
+#: apps/tag_app/templates/tag_app/tag_list.html:6
+msgid "Tag"
+msgstr ""
+
+#: apps/tag_app/templates/tag_app/tag_list.html:6 templates/site_base.html:106
+msgid "Tags"
+msgstr ""
+
+#: apps/threadedcomments/admin.py:8 apps/threadedcomments/admin.py:20
+msgid "Parent"
+msgstr ""
+
+#: apps/threadedcomments/admin.py:9 apps/threadedcomments/admin.py:21
+#: apps/wiki/models.py:50
+msgid "Content"
+msgstr ""
+
+#: apps/threadedcomments/admin.py:10 apps/threadedcomments/admin.py:22
+#: templates/threadedcomments/preview_comment.html:17
+#: templates/tribes/topic.html:91
+msgid "Meta"
+msgstr ""
+
+#: apps/threadedcomments/forms.py:15 apps/threadedcomments/forms.py:34
+#: apps/threadedcomments/models.py:162 apps/threadedcomments/models.py:270
+msgid "comment"
+msgstr ""
+
+#: apps/threadedcomments/models.py:20
+msgid "markdown"
+msgstr ""
+
+#: apps/threadedcomments/models.py:21
+msgid "textile"
+msgstr ""
+
+#: apps/threadedcomments/models.py:22
+msgid "restructuredtext"
+msgstr ""
+
+#: apps/threadedcomments/models.py:24
+msgid "plaintext"
+msgstr ""
+
+#: apps/threadedcomments/models.py:147 apps/threadedcomments/models.py:253
+msgid "object ID"
+msgstr ""
+
+#: apps/threadedcomments/models.py:157 apps/threadedcomments/models.py:265
+msgid "date/time submitted"
+msgstr ""
+
+#: apps/threadedcomments/models.py:158 apps/threadedcomments/models.py:266
+msgid "date/time modified"
+msgstr ""
+
+#: apps/threadedcomments/models.py:159 apps/threadedcomments/models.py:267
+msgid "date/time approved"
+msgstr ""
+
+#: apps/threadedcomments/models.py:167 apps/threadedcomments/models.py:275
+msgid "is approved"
+msgstr ""
+
+#: apps/threadedcomments/models.py:170 apps/threadedcomments/models.py:278
+msgid "IP address"
+msgstr ""
+
+#: apps/threadedcomments/models.py:228
+msgid "Threaded Comment"
+msgstr ""
+
+#: apps/threadedcomments/models.py:229
+msgid "Threaded Comments"
+msgstr ""
+
+#: apps/threadedcomments/models.py:261
+msgid "site"
+msgstr ""
+
+#: apps/threadedcomments/models.py:262
+msgid "e-mail address"
+msgstr ""
+
+#: apps/threadedcomments/models.py:338
+msgid "Free Threaded Comment"
+msgstr ""
+
+#: apps/threadedcomments/models.py:339
+msgid "Free Threaded Comments"
+msgstr ""
+
+#: apps/tribes/forms.py:10
+msgid "Tags are seperated by a comma fx. 'three word tag, another tag' ."
+msgstr ""
+
+#: apps/tribes/forms.py:12
+msgid ""
+"A short version of the name consisting only of letters (a-z), numbers, "
+"underscores and hyphens."
+msgstr ""
+
+#: apps/tribes/forms.py:13
+msgid "This value must contain only letters, numbers, underscores and hyphens."
+msgstr ""
+
+#: apps/tribes/forms.py:18
+msgid "The slug you've chosen is reserved for internal use."
+msgstr ""
+
+#: apps/tribes/forms.py:20
+msgid "A tribe already exists with that slug."
+msgstr ""
+
+#: apps/tribes/forms.py:25 apps/tribes/forms.py:43
+msgid "A tribe already exists with that name."
+msgstr ""
+
+#: apps/tribes/forms.py:68 apps/wiki/templates/wiki/history.html:20
+#: templates/django_dms/detail.html:8
+msgid "User"
+msgstr ""
+
+#: apps/tribes/forms.py:78
+msgid "There is no user with this username."
+msgstr ""
+
+#: apps/tribes/forms.py:81
+msgid "User is already a member of this tribe."
+msgstr ""
+
+#: apps/tribes/management.py:9
+msgid "Friend Joined Tribe"
+msgstr ""
+
+#: apps/tribes/management.py:9
+msgid "a friend of yours joined a tribe"
+msgstr ""
+
+#: apps/tribes/management.py:10
+msgid "New Tribe Member"
+msgstr ""
+
+#: apps/tribes/management.py:10
+msgid "a tribe you are a member of has a new member"
+msgstr ""
+
+#: apps/tribes/management.py:11
+msgid "New Member Of Tribe You Created"
+msgstr ""
+
+#: apps/tribes/management.py:11
+msgid "a tribe you created has a new member"
+msgstr ""
+
+#: apps/tribes/management.py:12
+msgid "New Tribe Created"
+msgstr ""
+
+#: apps/tribes/management.py:12
+msgid "a new tribe has been created"
+msgstr ""
+
+#: apps/tribes/management.py:13
+msgid "Friend Created Tribe"
+msgstr ""
+
+#: apps/tribes/management.py:13
+msgid "a friend has created a new tribe"
+msgstr ""
+
+#: apps/tribes/management.py:15
+msgid "New Topic Started"
+msgstr ""
+
+#: apps/tribes/management.py:15
+msgid "a new topic has started in a tribe you're a member of"
+msgstr ""
+
+#: apps/tribes/management.py:16
+msgid "Response To Your Topic"
+msgstr ""
+
+#: apps/tribes/management.py:16
+msgid "someone has responded on a topic you started"
+msgstr ""
+
+#: apps/tribes/models.py:32
+msgid "deleted"
+msgstr ""
+
+#: apps/tribes/models.py:42
+msgid "private"
+msgstr ""
+
+#: apps/tribes/models.py:43 templates/profiles/affiliation_list.html:12
+msgid "members"
+msgstr ""
+
+#: apps/tribes/models.py:62
+msgid "date_joined"
+msgstr ""
+
+#: apps/tribes/models.py:64
+msgid "moderator"
+msgstr ""
+
+#: apps/tribes/models.py:86
+msgid "editet"
+msgstr ""
+
+#: apps/tribes/models.py:87
+msgid "body"
+msgstr ""
+
+#: apps/tribes/models.py:88
+msgid "views"
+msgstr ""
+
+#: apps/tribes/models.py:89
+msgid "sticky?"
+msgstr ""
+
+#: apps/tribes/models.py:90
+msgid "closed?"
+msgstr ""
+
+#: apps/tribes/views.py:165
+#, python-format
+msgid "Tribe %s deleted."
+msgstr ""
+
+#: apps/tribes/views.py:182
+#, python-format
+msgid "Tribe %s cannot be deleted. It is an Affiliation tribe"
+msgstr ""
+
+#: apps/tribes/views.py:315 templates/tribes/tribe.html:30
+msgid "You are the creator of this tribe so can't leave (yet)."
+msgstr ""
+
+#: apps/tribes/views.py:330
+#, python-format
+msgid "%s is already a member of this tribe"
+msgstr ""
+
+#: apps/tribes/views.py:402
+#, python-format
+msgid "You have started the topic %s"
+msgstr ""
+
+#: apps/tribes/views.py:408
+msgid "You are not a member and so cannot start a new topic"
+msgstr ""
+
+#: apps/tribes/views.py:439
+#, python-format
+msgid "<small><i>Topic editet by %(user)s : %(date)s</i></small>"
+msgstr ""
+
+#: apps/tribes/templates/notification/tribes_created_new_member/notice.html:2
+#: apps/tribes/templates/notification/tribes_friend_joined/notice.html:2
+#: apps/tribes/templates/notification/tribes_new_member/notice.html:2
+#, python-format
+msgid ""
+"<a href=\"%(user_url)s\">%(user)s</a> has joined the tribe <a href=\"%"
+"(tribe_url)s\">%(tribe)s</a>."
+msgstr ""
+
+#: apps/tribes/templates/notification/tribes_friend_tribe/notice.html:2
+#, python-format
+msgid ""
+"<a href=\"%(user_url)s\">%(tribe_creator)s</a> has created a new tribe <a "
+"href=\"%(tribe_url)s\">%(tribe)s</a>."
+msgstr ""
+
+#: apps/tribes/templates/notification/tribes_new_topic/notice.html:2
+#, python-format
+msgid ""
+"<a href=\"%(user_url)s\">%(topic_creator)s</a> has started a topic '<a href="
+"\"%(topic_url)s\">%(topic)s</a>' in tribe <a href=\"%(tribe_url)s\">%"
+"(topic_tribe)s</a>."
+msgstr ""
+
+#: apps/tribes/templates/notification/tribes_new_tribe/notice.html:2
+#, python-format
+msgid "A new tribe <a href=\"%(tribe_url)s\">%(tribe)s</a> has been created."
+msgstr ""
+
+#: apps/tribes/templates/notification/tribes_topic_response/notice.html:2
+#, python-format
+msgid ""
+"<a href=\"%(user_url)s\">%(user)s</a> has responded to your topic '<a href="
+"\"%(topic_url)s\">%(topic)s</a>'."
+msgstr ""
+
+#: apps/tribes/templates/tribes/topic_item.html:19
+#, python-format
+msgid ""
+"\n"
+"                (most recent: %(topic_modified)s)\n"
+"                "
+msgstr ""
+
+#: apps/tribes/templates/tribes/tribe_item.html:7
+msgid "Members:"
+msgstr ""
+
+#: apps/tribes/templates/tribes/tribe_item.html:8
+msgid "Topics:"
+msgstr ""
+
+#: apps/tribes/templates/tribes/tribe_item.html:9
+msgid "Wiki Pages:"
+msgstr ""
+
+#: apps/wiki/feeds.py:96 apps/wiki/feeds.py:202
+msgid "Anonimous"
+msgstr ""
+
+#: apps/wiki/forms.py:59
+msgid "An article with this title already exists."
+msgstr ""
+
+#: apps/wiki/management.py:10
+msgid "Article Edited"
+msgstr ""
+
+#: apps/wiki/management.py:11
+msgid "your article has been edited"
+msgstr ""
+
+#: apps/wiki/management.py:13
+msgid "Article Revision Reverted"
+msgstr ""
+
+#: apps/wiki/management.py:14
+msgid "your revision has been reverted"
+msgstr ""
+
+#: apps/wiki/management.py:16
+msgid "Observed Article Changed"
+msgstr ""
+
+#: apps/wiki/management.py:17
+msgid "an article you observe has changed"
+msgstr ""
+
+#: apps/wiki/models.py:38
+msgid "Creole"
+msgstr ""
+
+#: apps/wiki/models.py:39
+msgid "reStructuredText"
+msgstr ""
+
+#: apps/wiki/models.py:40
+msgid "Textile"
+msgstr ""
+
+#: apps/wiki/models.py:41
+msgid "Markdown"
+msgstr ""
+
+#: apps/wiki/models.py:48 templates/django_dms/list.html:25
+#: templates/tags/index.html:57 templates/tags/index.html.py:70
+#: templates/tribes/tribe.html:89 templates/tribes/tribe.html.py:111
+#: templates/wiki/index.html:31 templates/wiki/index.html.py:40
+msgid "Title"
+msgstr ""
+
+#: apps/wiki/models.py:51 templates/tags/index.html:57
+#: templates/tribes/tribe.html:89 templates/wiki/index.html:31
+#: templates/wiki/index.html.py:40
+msgid "Summary"
+msgstr ""
+
+#: apps/wiki/models.py:53
+msgid "Content Markup"
+msgstr ""
+
+#: apps/wiki/models.py:56
+msgid "Article Creator"
+msgstr ""
+
+#: apps/wiki/models.py:58
+msgid "IP Address of the Article Creator"
+msgstr ""
+
+#: apps/wiki/models.py:70 templates/site_base.html:32
+#: templates/site_base.html.py:124 templates/wiki/article_teaser.html:6
+msgid "Wiki"
+msgstr ""
+
+#: apps/wiki/models.py:71
+msgid "Wikis"
+msgstr ""
+
+#: apps/wiki/models.py:145
+msgid "Article"
+msgstr ""
+
+#: apps/wiki/models.py:148 templates/wiki/history.html:23
+msgid "Editor"
+msgstr ""
+
+#: apps/wiki/models.py:150
+msgid "IP Address of the Editor"
+msgstr ""
+
+#: apps/wiki/models.py:153
+msgid "Revision Number"
+msgstr ""
+
+#: apps/wiki/models.py:156
+msgid "Old Title"
+msgstr ""
+
+#: apps/wiki/models.py:157
+msgid "Article Content Markup"
+msgstr ""
+
+#: apps/wiki/models.py:160
+msgid "Content Patch"
+msgstr ""
+
+#: apps/wiki/models.py:162
+msgid "Editor comment"
+msgstr ""
+
+#: apps/wiki/models.py:163
+msgid "Modified at"
+msgstr ""
+
+#: apps/wiki/models.py:164
+msgid "Reverted Revision"
+msgstr ""
+
+#: apps/wiki/models.py:170
+msgid "Change set"
+msgstr ""
+
+#: apps/wiki/models.py:171
+msgid "Change sets"
+msgstr ""
+
+#: apps/wiki/templates/feeds/history_description.html:3
+msgid "edited by user"
+msgstr ""
+
+#: apps/wiki/templates/feeds/history_description.html:3
+msgid "at"
+msgstr ""
+
+#: apps/wiki/templates/notification/wiki_article_edited/notice.html:2
+#, python-format
+msgid ""
+"The wiki article <a href=\"%(article_url)s\">%(article)s</a> has been edited "
+"by <a href=\"%(user_url)s\">%(user)s</a>."
+msgstr ""
+
+#: apps/wiki/templates/notification/wiki_observed_article_changed/notice.html:1
+#, python-format
+msgid ""
+"The wiki article <a href=\"%(article_url)s\">%(observed)s</a>, that you "
+"observe, has changed."
+msgstr ""
+
+#: apps/wiki/templates/notification/wiki_revision_reverted/notice.html:2
+#, python-format
+msgid ""
+"Your revision <a href=\"%(revision_url)s\">%(revision)s</a> on <a href=\"%"
+"(article_url)s\">%(article)s</a> has been reverted."
+msgstr ""
+
+#: apps/wiki/templates/wiki/base.html:20
+msgid "List all articles"
+msgstr ""
+
+#: apps/wiki/templates/wiki/changeset.html:14 templates/wiki/changeset.html:25
+msgid "Markup:"
+msgstr ""
+
+#: apps/wiki/templates/wiki/changeset.html:16
+msgid "Plain Text."
+msgstr ""
+
+#: apps/wiki/templates/wiki/confirm_remove.html:5
+msgid "Remove article"
+msgstr ""
+
+#: apps/wiki/templates/wiki/confirm_remove.html:9
+msgid "Confirm deletion"
+msgstr ""
+
+#: apps/wiki/templates/wiki/confirm_remove.html:16
+msgid "Confirm"
+msgstr ""
+
+#: apps/wiki/templates/wiki/edit.html:5
+msgid "Editing article"
+msgstr ""
+
+#: apps/wiki/templates/wiki/edit.html:9 templates/django_dms/detail.html:11
+#: templates/wiki/view.html:20
+msgid "Edit"
+msgstr ""
+
+#: apps/wiki/templates/wiki/history.html:6
+msgid "History for"
+msgstr ""
+
+#: apps/wiki/templates/wiki/history.html:14
+msgid "Article History"
+msgstr ""
+
+#: apps/wiki/templates/wiki/history.html:19
+msgid "At"
+msgstr ""
+
+#: apps/wiki/templates/wiki/history.html:21 templates/wiki/history.html:24
+msgid "Comment"
+msgstr ""
+
+#: apps/wiki/templates/wiki/history.html:22
+#: apps/wiki/templates/wiki/history.html:51 templates/wiki/history.html:55
+msgid "Revert"
+msgstr ""
+
+#: apps/wiki/templates/wiki/history.html:41
+msgid "Current revision"
+msgstr ""
+
+#: apps/wiki/templates/wiki/index.html:19
+msgid "Create a new article"
+msgstr ""
+
+#: apps/wiki/templates/wiki/recentchanges.html:6
+msgid "Recent Changes"
+msgstr ""
+
+#: apps/wiki/templates/wiki/search_results.html:24
+msgid "Matches by title"
+msgstr ""
+
+#: apps/wiki/templates/wiki/search_results.html:35
+msgid "Matches by content/summary"
+msgstr ""
+
+#: apps/wiki/templates/wiki/search_results.html:47
+msgid "No results."
+msgstr ""
+
+#: apps/wiki/templates/wiki/searchbox.html:7
+msgid "Article by title"
+msgstr ""
+
+#: apps/wiki/templates/wiki/view.html:13 templates/wiki/view.html:45
+msgid "This article does not exist."
+msgstr ""
+
+#: apps/wiki/templates/wiki/view.html:14
+msgid ">Create it now</a>?"
+msgstr ""
+
+#: apps/wiki/templates/wiki/view.html:23 templates/wiki/view.html:21
+msgid "Edit this article"
+msgstr ""
+
+#: apps/wiki/templates/wiki/view.html:25 templates/wiki/view.html:26
+msgid "Editing history"
+msgstr ""
+
+#: apps/wiki/templates/wiki/view.html:27 templates/wiki/view.html:31
+msgid "Create this article"
+msgstr ""
+
+#: apps/wiki/templates/wiki/wiki_title.html:3
+#, python-format
+msgid ""
+"\n"
+"    <h1>Wiki for <a href=\"%(group_url)s\">%(group_name)s</a></h1>\n"
+msgstr ""
+
+#: templates/403.html:5
+msgid "403"
+msgstr ""
+
+#: templates/403.html:8
+msgid "Sorry, you don't have access to this part of the site."
+msgstr ""
+
+#: templates/404.html:5
+msgid "Not Found"
+msgstr ""
+
+#: templates/404.html:8
+msgid "We're sorry but that page could not be found."
+msgstr ""
+
+#: templates/500.html:5
+msgid "Server Error"
+msgstr ""
+
+#: templates/500.html:8
+msgid ""
+"We're sorry but a server error has occurred. We've been notified and will "
+"look into it as soon as possible."
+msgstr ""
+
+#: templates/base.html:33
+msgid "Hide announcement"
+msgstr ""
+
+#: templates/base.html:64
+msgid "clear"
+msgstr ""
+
+#: templates/homepage.html:5
+msgid "Welcome"
+msgstr ""
+
+#: templates/homepage.html:11
+msgid "Welcome to Biblnet.dk!"
+msgstr ""
+
+#: templates/homepage.html:14
+msgid "You last visited us"
+msgstr ""
+
+#: templates/homepage.html:14 templates/site_base.html:67
+#: templates/threadedcomments/comments.html:27 templates/tribes/topic.html:104
+#: templates/tribes/topic_item.html:24
+msgid "ago"
+msgstr ""
+
+#: templates/homepage.html:16
+msgid "New posts since your last login"
+msgstr ""
+
+#: templates/homepage.html:20 templates/site_base.html:84
+#: templates/site_base.html.py:92 templates/site_base.html:103
+#: templates/profiles/profile_right_panel.html:12
+#: templates/profiles/profile_right_panel.html:40
+#: templates/profiles/profile_right_panel.html:85
+#: templates/tribes/tribe_item.html:5 templates/tribes/your_tribes.html:18
+msgid "Tribe"
+msgstr ""
+
+#: templates/homepage.html:20
+msgid "New topics"
+msgstr ""
+
+#: templates/homepage.html:20
+msgid "New replies"
+msgstr ""
+
+#: templates/homepage.html:28
+msgid "No new posts since your last visit..."
+msgstr ""
+
+#: templates/homepage.html:36 templates/site_base.html:90
+#: templates/profiles/profile_right_panel.html:30
+#: templates/profiles/profile_right_panel.html:54
+#: templates/tribes/your_tribes.html:33
+#, python-format
+msgid "You are not yet a member of any <a href=\"%(tribe_url)s\">tribes</a>."
+msgstr ""
+
+#: templates/homepage.html:44
+#, python-format
+msgid ""
+"\n"
+"        \t<p>Biblnet is a forum for people with an interest in Library and "
+"Information Science.</p>\n"
+"        \t<p>All members can join in on the debates on the Message Boards "
+"and contribute to the creation of knowledge in the Wikis and in the "
+"Knowledge Bank.</p>\n"
+"            <h3><a href=\"%(login_url)s\">Log in</a> or <a href=\"%"
+"(signup_url)s\">Sign up</a> to get started.</h3>\n"
+"    \t"
+msgstr ""
+
+#: templates/site_base.html:30
+msgid "Index"
+msgstr ""
+
+#: templates/site_base.html:31
+msgid "Message board"
+msgstr ""
+
+#: templates/site_base.html:33
+msgid "Docs"
+msgstr ""
+
+#: templates/site_base.html:34 templates/site_base.html.py:122
+#: templates/schedule/base.html:37 templates/schedule/event_form_base.html:52
+#: templates/tags/index.html:23 templates/tribes/base.html:11
+#: templates/tribes/tribes.html:12 templates/tribes/tribes.html.py:14
+#: templates/tribes/tribes.html:19 templates/wiki/base.html:10
+msgid "Tribes"
+msgstr ""
+
+#: templates/site_base.html:42
+msgid "Group Admin"
+msgstr ""
+
+#: templates/site_base.html:47
+msgid "Admin"
+msgstr ""
+
+#: templates/site_base.html:57 templates/account/login.html:7
+msgid "Login"
+msgstr ""
+
+#: templates/site_base.html:66
+msgid "Logout"
+msgstr ""
+
+#: templates/site_base.html:67
+msgid "Your last login"
+msgstr ""
+
+#: templates/site_base.html:69
+msgid "You are not logged in..."
+msgstr ""
+
+#: templates/site_base.html:70
+msgid "Log in"
+msgstr ""
+
+#: templates/site_base.html:70
+msgid "Sign up"
+msgstr ""
+
+#: templates/site_base.html:78 templates/profiles/profile_right_panel.html:5
+#: templates/tribes/your_tribes.html:7 templates/tribes/your_tribes.html:11
+msgid "Your Tribes"
+msgstr ""
+
+#: templates/site_base.html:92 templates/tribes/tribes.html:23
+msgid "Start a new tribe"
+msgstr ""
+
+#: templates/site_base.html:100
+msgid "Navigation"
+msgstr ""
+
+#: templates/site_base.html:103
+msgid "All tribes"
+msgstr ""
+
+#: templates/site_base.html:104 templates/site_base.html.py:126
+#: templates/django_dms/list.html:14 templates/django_dms/list.html.py:17
+#: templates/django_dms/list.html:19 templates/schedule/base.html:29
+#: templates/tags/index.html:28 templates/tribes/base.html:9
+#: templates/tribes/topic.html:15 templates/tribes/tribes.html:57
+#: templates/tribes/tribes.html.py:60 templates/tribes/tribes.html:62
+#: templates/wiki/base.html:8
+msgid "Members"
+msgstr ""
+
+#: templates/site_base.html:104
+msgid "All members"
+msgstr ""
+
+#: templates/site_base.html:105
+msgid "Knowledge Bank"
+msgstr ""
+
+#: templates/site_base.html:123 templates/django_dms/list.html:42
+#: templates/django_dms/list.html.py:45 templates/django_dms/list.html:47
+#: templates/tags/index.html:29 templates/tags/index.html.py:42
+#: templates/tribes/tribes.html:68 templates/tribes/tribes.html.py:71
+#: templates/tribes/tribes.html:73
+msgid "Topics"
+msgstr ""
+
+#: templates/site_base.html:125 templates/tags/index.html:68
+#: templates/tribes/tribe.html:100
+msgid "Documents"
+msgstr ""
+
+#: templates/site_base.html:139 templates/messages/base.html:11
+#: templates/messages/inbox.html:7 templates/messages/outbox.html:9
+#: templates/messages/trash.html:9 templates/messages/view.html:7
+msgid "Inbox"
+msgstr ""
+
+#: templates/site_base.html:142
+msgid "Private messages"
+msgstr ""
+
+#: templates/site_base.html:143 templates/messages/base.html:14
+msgid "Notices"
+msgstr ""
+
+#: templates/site_base.html:152 templates/tribes/create.html:38
+msgid "Calendar"
+msgstr ""
+
+#: templates/site_base.html:156 templates/tribes/base.html:23
+#: templates/tribes/create.html:42 templates/tribes/tribes.html:100
+msgid "Next events for all your tribes"
+msgstr ""
+
+#: templates/site_base.html:166
+msgid "Site info"
+msgstr ""
+
+#: templates/site_base.html:169
+msgid "&copy; 2009 Sean P &amp; Luhr B"
+msgstr ""
+
+#: templates/site_base.html:170 templates/about/about.html:5
+#: templates/profiles/profile.html:72
+msgid "About"
+msgstr ""
+
+#: templates/site_base.html:171 templates/about/terms.html:5
+msgid "Terms of Service"
+msgstr ""
+
+#: templates/about/about.html:8
+msgid ""
+"\n"
+"        <p>Your <b>About Page</b> would normally go here...</p>\n"
+"    "
+msgstr ""
+
+#: templates/about/about.html:11
+msgid ""
+"\n"
+"        Pinax includes the <a href=\"http://www.famfamfam.com/lab/icons/silk/"
+"\">Silk icon set 1.3</a> by Mark James.\n"
+"    "
+msgstr ""
+
+#: templates/about/dmca.html:5
+msgid "Digital Millennium Copyright Act Notice"
+msgstr ""
+
+#: templates/about/dmca.html:8
+msgid ""
+"<p>Your <b>Digital Millennium Copyright Act Notice</b> would normally go "
+"here...</p>"
+msgstr ""
+
+#: templates/about/privacy.html:5
+msgid "Privacy Policy"
+msgstr ""
+
+#: templates/about/privacy.html:8
+msgid "<p>Your <b>Privacy Policy</b> would normally go here...</p>"
+msgstr ""
+
+#: templates/about/terms.html:8
+msgid ""
+"\n"
+"\n"
+"<h1>Ordensregler for Biblnet.dk</h1>\n"
+"<p>I forbindelse med at man opretter sin profil, skal man godkende disse "
+"betingelser for at blive medlem:</p>\n"
+"<p>Det er gratis at være medlem af Biblnet.dk. Du skal være eller have været "
+"studerende/underviser ved Danmarks Biblioteksskole eller ved "
+"bibliotekaruddannelsen på Syddansk Universitet for at være medlem eller på "
+"anden måde have tilknytning til BDI-faget. Du bør være opmærksom på, at dit "
+"navn bliver synligt for besøgende på Biblnet.dk. Du har selv ansvaret for de "
+"filer, du lægger ud på Biblnet.dk.</p>\n"
+"\n"
+"<strong>Du har ved din indmeldelse samtidigt godkendt følgende ordensregler/"
+"NETetikette:</strong>\n"
+"\n"
+"<h2>NETetikette</h2>\n"
+"\n"
+"<p>”NETetikette” omhandler ”de sociale færdselsregler” ved brugen af "
+"diskussionsfora.\n"
+"\n"
+"Vi vil generelt opfordre dig til at være høflig, vise \"god skik og brug\" "
+"og opføre dig, som du ville have gjort i en ansigt-til-ansigt-diskussion. "
+"Det handler om at respektere folk og deres meninger, uanset hvor uenige man "
+"måtte være med dem.</p>\n"
+"<ul>\n"
+"    <li>Undgå at SKRIVE MED STORE BOGSTAVER</li>\n"
+"    <li>Gengiv ikke Private Beskeder herinde</li>\n"
+"    <li>Ellers er ordet frit, så tøv ikke med at skrive!</li>\n"
+"</ul>\n"
+"\n"
+"<h3>Indlæggets overskrift</h3>\n"
+"<p>Sørg for at dit indlæg har en forklarende overskrift, så de andre "
+"deltagere alene derfra kan se, om emnet er relevant for dem.</p>\n"
+"\n"
+"<h3>Hold dig til emnet</h3>\n"
+"<p>Det er fornuftigt at holde sig til emnerne for diskussionerne. "
+"Diskussionerne skulle meget nødigt ende i personlige slagsmål. Det er "
+"ødelæggende for debatmiljøet og for mulighederne for at føre nogle "
+"ordentlige diskussioner.</p>\n"
+"\n"
+"<h3>Kort og præcist</h3>\n"
+"<p>Det er godt at kunne udtrykke sig kortfattet i sit indlæg! Lange, "
+"snørklede indlæg kan virke dræbende på koncentrationen, når man læser mange "
+"indlæg. Derfor skal man tilstræbe at være meget præcis, samtidig med at man "
+"udtaler sig så kort, som man synes det er muligt, uden at virke uhøflig.</"
+"p>\n"
+"\n"
+"<h3>Brug evt. e-mail til personlige opgør</h3>\n"
+"<p>Hvis du bliver stødt over noget, som nogen har skrevet om eller til dig i "
+"et diskussionsforum, kan du vælge at sende en e-mail direkte til "
+"vedkommende. Det er tit den bedste måde at udrede knuder og rette "
+"misforståelser på.</p>\n"
+"\n"
+"<h3>Sarkasme og ironi</h3>\n"
+"<p>Vær forsigtig med at bruge sarkasme og ironi i dine diskussions-indlæg. "
+"Hvis du er ironisk, så husk at markere det tydeligt, hvis du vil være sikker "
+"på ikke at blive misforstået.</p>\n"
+"\n"
+"<h3>Opfør dig korrekt!</h3>\n"
+"<p>Høflighed er gratis og letter omgangen betydeligt. Når du skriver et "
+"indlæg, læs det lige igennem, før du sender det, og spørg dig selv, hvordan "
+"du selv ville reagere på et sådant indlæg! Breve afsendt i et øjebliks "
+"ophidselse forværrer som regel blot situationen og fortrydes ofte senere!</"
+"p>\n"
+"\n"
+"<h3>Anonyme brugerprofiler</h3>\n"
+"<p>Anonyme brugerprofiler accepteres, så længe ophavsmandens identitet er "
+"kend af Biblnet.dk's administrationsgruppe. For anonyme brugerprofiler "
+"gælder samme retningslinier, som for alle andre.</p>\n"
+"\n"
+"<h2>Ved grove eller gentagne overtrædelser af disse regler, vil "
+"administratorerne kunne slette indlæg eller brugerprofil uden varsel.</h2>\n"
+"\n"
+msgstr ""
+
+#: templates/about/what_next.html:5 templates/about/what_next.html.py:8
+msgid "What Next?"
+msgstr ""
+
+#: templates/about/what_next.html:37
+#, python-format
+msgid ""
+"Start by <a href=\"%(signup_url)s\">signing up</a> and <a href=\"%(login_url)"
+"s\">logging in</a>."
+msgstr ""
+
+#: templates/account/base.html:7 templates/elsewhere/base.html:6
+#: templates/profiles/base.html:18 templates/profiles/profiles.html:12
+msgid "Profiles"
+msgstr ""
+
+#: templates/account/base.html:12
+msgid "E-Mail Addresses"
+msgstr ""
+
+#: templates/account/base.html:13
+msgid "OpenID Associations"
+msgstr ""
+
+#: templates/account/base.html:15 templates/account/password_change.html:5
+#: templates/account/password_change.html:8
+#: templates/account/password_reset_from_key.html:5
+#: templates/account/password_reset_from_key.html:8
+#: templates/profiles/profile.html:35
+msgid "Change Password"
+msgstr ""
+
+#: templates/account/base.html:17 templates/profiles/profile.html:37
+msgid "Set Password"
+msgstr ""
+
+#: templates/account/base.html:20
+msgid "Delete Password"
+msgstr ""
+
+#: templates/account/base.html:24 templates/avatar/change.html:6
+#: templates/avatar/change.html.py:9 templates/avatar/confirm_delete.html:5
+#: templates/avatar/confirm_delete.html:8
+msgid "Avatar"
+msgstr ""
+
+#: templates/account/base.html:25 templates/account/other_services.html:5
+#: templates/account/other_services.html:9
+msgid "Other Services"
+msgstr ""
+
+#: templates/account/email.html:6 templates/account/email.html.py:9
+msgid "Account"
+msgstr ""
+
+#: templates/account/email.html:11
+msgid "Email Addresses"
+msgstr ""
+
+#: templates/account/email.html:20
+msgid "verified"
+msgstr ""
+
+#: templates/account/email.html:22
+msgid "primary"
+msgstr ""
+
+#: templates/account/email.html:29
+msgid "make primary"
+msgstr ""
+
+#: templates/account/email.html:34
+msgid "unverified"
+msgstr ""
+
+#: templates/account/email.html:40
+msgid "re-send verification email"
+msgstr ""
+
+#: templates/account/email.html:50
+msgid "remove"
+msgstr ""
+
+#: templates/account/email.html:57
+msgid "None"
+msgstr ""
+
+#: templates/account/email.html:57
+msgid ""
+"You should really add one so you can receive notifications, reset your "
+"password if you forget it, etc."
+msgstr ""
+
+#: templates/account/email.html:60
+msgid "Add Email Address"
+msgstr ""
+
+#: templates/account/login.html:10 templates/account/signup.html:14
+msgid "Log In"
+msgstr ""
+
+#: templates/account/login.html:13 templates/account/password_reset.html:12
+#: templates/account/password_reset_done.html:11
+msgid "Note"
+msgstr ""
+
+#: templates/account/login.html:13 templates/account/password_reset.html:12
+#: templates/account/password_reset_done.html:11
+#, python-format
+msgid "you are already logged in as %(user)s."
+msgstr ""
+
+#: templates/account/login.html:17
+#, python-format
+msgid "Don't have an account? <a href=\"%(signup_url)s\">Sign up</a>!"
+msgstr ""
+
+#: templates/account/login.html:25 templates/account/login.html.py:51
+msgid "Log in &raquo;"
+msgstr ""
+
+#: templates/account/login.html:29
+msgid "Forgot password?"
+msgstr ""
+
+#: templates/account/login.html:32
+msgid "Or sign in with your OpenID"
+msgstr ""
+
+#: templates/account/login.html:57
+#, python-format
+msgid ""
+"If you have any trouble logging in to your account, contact us at <a href="
+"\"mailto:%(contact_email)s\">%(contact_email)s</a>."
+msgstr ""
+
+#: templates/account/other_services.html:10
+msgid "Twitter"
+msgstr ""
+
+#: templates/account/other_services.html:14
+msgid "You have already authorized a twitter account."
+msgstr ""
+
+#: templates/account/other_services.html:15
+msgid "Change your account with this form."
+msgstr ""
+
+#: templates/account/other_services.html:24
+msgid "save"
+msgstr ""
+
+#: templates/account/password_change.html:14
+msgid "Change password"
+msgstr ""
+
+#: templates/account/password_reset.html:6
+#: templates/account/password_reset.html:10
+#: templates/account/password_reset_done.html:5
+#: templates/account/password_reset_done.html:8
+msgid "Password Reset"
+msgstr ""
+
+#: templates/account/password_reset.html:15
+msgid ""
+"Forgotten your password? Enter your e-mail address below, and we'll reset "
+"your password and e-mail the new one to you."
+msgstr ""
+
+#: templates/account/password_reset.html:21
+msgid "Reset my password"
+msgstr ""
+
+#: templates/account/password_reset.html:26
+#, python-format
+msgid ""
+"If you have any trouble resetting your password, contact us at <a href="
+"\"mailto:%(contact_email)s\">%(contact_email)s</a>."
+msgstr ""
+
+#: templates/account/password_reset_done.html:14
+#, python-format
+msgid ""
+"We have sent you an e-mail to <b>%(email)s</b>. If you do not receive it "
+"within a few minutes, contact us at <a href=\"mailto:%(contact_email)s\">%"
+"(contact_email)s</a>."
+msgstr ""
+
+#: templates/account/password_reset_from_key.html:16
+msgid "change password"
+msgstr ""
+
+#: templates/account/signup.html:6
+msgid "Signup"
+msgstr ""
+
+#: templates/account/signup.html:9
+msgid "Sign Up"
+msgstr ""
+
+#: templates/account/signup.html:12
+msgid "You are already logged in."
+msgstr ""
+
+#: templates/account/signup.html:14
+msgid "Already have an account?"
+msgstr ""
+
+#: templates/account/signup.html:20
+msgid "Sign Up &raquo;"
+msgstr ""
+
+#: templates/account/signup.html:27
+#, python-format
+msgid ""
+"By clicking \"Sign Up\", you are indicating that you have read and agree to "
+"the <a href=\"%(terms_url)s\" target='_blank'>Terms of Use</a>."
+msgstr ""
+
+#: templates/account/signup.html:29
+#, python-format
+msgid ""
+"If you have any trouble creating your account, contact us at <a href="
+"\"mailto:%(contact_email)s\">%(contact_email)s</a>."
+msgstr ""
+
+#: templates/avatar/change.html:10
+msgid "Your current avatar:"
+msgstr ""
+
+#: templates/avatar/change.html:13
+msgid ""
+"Your avatar is currently the standard avatar, but you can upload a custom "
+"avatar simply by using the form below."
+msgstr ""
+
+#: templates/avatar/change.html:20
+msgid "Choose new Default"
+msgstr ""
+
+#: templates/avatar/change.html:23
+#, python-format
+msgid ""
+"Don't like these avatars? You can <a href=\"%(avatar_delete_url)s\">choose "
+"which ones to delete</a>."
+msgstr ""
+
+#: templates/avatar/change.html:25
+msgid "Upload an Avatar:"
+msgstr ""
+
+#: templates/avatar/change.html:27
+msgid "Avatar Image"
+msgstr ""
+
+#: templates/avatar/change.html:28
+msgid "Upload New Image"
+msgstr ""
+
+#: templates/django_dms/detail.html:8
+msgid "Upload user"
+msgstr ""
+
+#: templates/django_dms/detail.html:9 templates/messages/view.html:15
+#: templates/profiles/profiles.html:25 templates/tribes/tribe_members.html:107
+#: templates/wiki/history.html:22 templates/wiki/index.html:38
+msgid "Date"
+msgstr ""
+
+#: templates/django_dms/detail.html:9
+msgid "Upload date"
+msgstr ""
+
+#: templates/django_dms/detail.html:18 templates/django_dms/list.html:109
+#: templates/tribes/tribe.html:154
+msgid "Download"
+msgstr ""
+
+#: templates/django_dms/detail.html:18
+msgid "Download document"
+msgstr ""
+
+#: templates/django_dms/list.html:28 templates/django_dms/list.html.py:31
+#: templates/django_dms/list.html:33 templates/elsewhere/base.html:68
+#: templates/profiles/profile_right_panel.html:8
+#: templates/profiles/profile_right_panel.html:37
+#: templates/profiles/profile_right_panel.html:81
+#: templates/profiles/profiles.html:27 templates/tags/index.html:27
+#: templates/tribes/tribe_members.html:119 templates/tribes/tribes.html:46
+#: templates/tribes/tribes.html.py:49 templates/tribes/tribes.html:51
+#: templates/tribes/your_tribes.html:14 templates/wiki/index.html:26
+msgid "Name"
+msgstr ""
+
+#: templates/django_dms/list.html:39 templates/tags/index.html:70
+#: templates/tribes/tribe.html:111
+msgid "Author"
+msgstr ""
+
+#: templates/django_dms/list.html:53 templates/tribes/tribe.html:111
+msgid "Score"
+msgstr ""
+
+#: templates/django_dms/list.html:56 templates/django_dms/list.html.py:59
+#: templates/django_dms/list.html:61 templates/tags/index.html:30
+#: templates/tribes/tribes.html:79 templates/tribes/tribes.html.py:82
+#: templates/tribes/tribes.html:84
+msgid "Created"
+msgstr ""
+
+#: templates/django_dms/list.html:73 templates/django_dms/list.html.py:76
+#: templates/django_dms/list.html:79 templates/django_dms/list.html.py:82
+#: templates/django_dms/list.html:85 templates/django_dms/list.html.py:87
+#: templates/django_dms/list.html:95 templates/django_dms/list.html.py:98
+#: templates/django_dms/list.html:101 templates/django_dms/list.html.py:103
+#: templates/tags/index.html:76 templates/tags/index.html.py:78
+#: templates/tribes/tribe.html:118 templates/tribes/tribe.html.py:121
+#: templates/tribes/tribe.html:124 templates/tribes/tribe.html.py:127
+#: templates/tribes/tribe.html:130 templates/tribes/tribe.html.py:132
+#: templates/tribes/tribe.html:140 templates/tribes/tribe.html.py:143
+#: templates/tribes/tribe.html:146 templates/tribes/tribe.html.py:148
+msgid "Filetype"
+msgstr ""
+
+#: templates/django_dms/list.html:121
+msgid "There are no documents yet"
+msgstr ""
+
+#: templates/django_dms/list.html:121
+msgid "upload a document"
+msgstr ""
+
+#: templates/elsewhere/base.html:9
+msgid "Places to find you on the web"
+msgstr ""
+
+#: templates/elsewhere/base.html:10
+msgid "Social Networks"
+msgstr ""
+
+#: templates/elsewhere/base.html:12
+msgid "Social network"
+msgstr ""
+
+#: templates/elsewhere/base.html:12
+msgid "Username or id"
+msgstr ""
+
+#: templates/elsewhere/base.html:38
+msgid "Instant Messengers"
+msgstr ""
+
+#: templates/elsewhere/base.html:40
+msgid "Service"
+msgstr ""
+
+#: templates/elsewhere/base.html:66
+msgid "Websites & Blogs"
+msgstr ""
+
+#: templates/elsewhere/base.html:68
+msgid "Link"
+msgstr ""
+
+#: templates/friends_app/contacts.html:6 templates/friends_app/contacts.html:9
+#: templates/messages/base.html:16
+msgid "Contacts"
+msgstr ""
+
+#: templates/friends_app/contacts.html:22
+msgid "upload"
+msgstr ""
+
+#: templates/friends_app/contacts.html:31
+msgid "Import Google Contacts"
+msgstr ""
+
+#: templates/friends_app/contacts.html:47
+msgid "Import Yahoo Address Book"
+msgstr ""
+
+#: templates/friends_app/contacts.html:82
+msgid "No contacts."
+msgstr ""
+
+#: templates/friends_app/invitations.html:5
+#: templates/friends_app/invitations.html:8 templates/messages/base.html:15
+msgid "Invitations"
+msgstr ""
+
+#: templates/friends_app/invitations.html:11
+msgid "Invite someone new to join"
+msgstr ""
+
+#: templates/friends_app/invitations.html:14
+msgid ""
+"If you'd like to invite someone to join Pinax, you can enter their email "
+"address and a message for them below:"
+msgstr ""
+
+#: templates/friends_app/invitations.html:21
+msgid "Someone with this email address has already joined:"
+msgstr ""
+
+#: templates/friends_app/invitations.html:36
+msgid "invite"
+msgstr ""
+
+#: templates/friends_app/invitations.html:41
+msgid "Friendship Requests Received"
+msgstr ""
+
+#: templates/friends_app/invitations.html:55
+msgid "accept"
+msgstr ""
+
+#: templates/friends_app/invitations.html:69
+msgid "No friendship requests received."
+msgstr ""
+
+#: templates/friends_app/invitations.html:73
+msgid "Friendship Requests Sent"
+msgstr ""
+
+#: templates/friends_app/invitations.html:86
+msgid "No friendship requests sent."
+msgstr ""
+
+#: templates/friends_app/invitations.html:90
+msgid "Join Requests Sent"
+msgstr ""
+
+#: templates/friends_app/invitations.html:108
+msgid "No join requests sent."
+msgstr ""
+
+#: templates/messages/base.html:10
+msgid "Compose"
+msgstr ""
+
+#: templates/messages/base.html:12 templates/messages/outbox.html:16
+#: templates/messages/trash.html:16
+msgid "Sent"
+msgstr ""
+
+#: templates/messages/base.html:13
+msgid "Trash"
+msgstr ""
+
+#: templates/messages/inbox.html:9 templates/messages/outbox.html:7
+#: templates/messages/trash.html:10
+msgid "Sent Messages"
+msgstr ""
+
+#: templates/messages/inbox.html:10 templates/messages/outbox.html:10
+#: templates/messages/trash.html:7
+msgid "Deleted Messages"
+msgstr ""
+
+#: templates/messages/inbox.html:12 templates/messages/outbox.html:12
+#: templates/messages/trash.html:12
+msgid "Compose New Message"
+msgstr ""
+
+#: templates/messages/inbox.html:16 templates/messages/trash.html:16
+#: templates/messages/view.html:13
+msgid "Sender"
+msgstr ""
+
+#: templates/messages/inbox.html:16 templates/messages/outbox.html:16
+#: templates/messages/trash.html:16 templates/messages/view.html:16
+msgid "Subject"
+msgstr ""
+
+#: templates/messages/inbox.html:16
+msgid "Received"
+msgstr ""
+
+#: templates/messages/inbox.html:24
+msgid "New message"
+msgstr ""
+
+#: templates/messages/inbox.html:27
+msgid "Replied message"
+msgstr ""
+
+#: templates/messages/inbox.html:29
+msgid "Old message"
+msgstr ""
+
+#: templates/messages/inbox.html:40 templates/messages/outbox.html:28
+#: templates/messages/view.html:28
+msgid "Delete message"
+msgstr ""
+
+#: templates/messages/inbox.html:44
+msgid "There are no messages in your inbox..."
+msgstr ""
+
+#: templates/messages/outbox.html:16 templates/messages/view.html:14
+msgid "Recipient"
+msgstr ""
+
+#: templates/messages/outbox.html:22
+msgid "Sent message"
+msgstr ""
+
+#: templates/messages/outbox.html:32
+msgid "You have not sent any messages..."
+msgstr ""
+
+#: templates/messages/trash.html:16
+msgid "Undelete"
+msgstr ""
+
+#: templates/messages/trash.html:22
+msgid "Deleted message"
+msgstr ""
+
+#: templates/messages/trash.html:28
+msgid "Undelete message"
+msgstr ""
+
+#: templates/messages/trash.html:32
+msgid "You do not have any deleted messages..."
+msgstr ""
+
+#: templates/messages/trash.html:37
+msgid ""
+"Deleted Messages are removed from the trash at irregular intervals, don't "
+"rely on this feature for long-time storage."
+msgstr ""
+
+#: templates/messages/view.html:10
+msgid "View Message"
+msgstr ""
+
+#: templates/messages/view.html:24
+msgid "Reply"
+msgstr ""
+
+#: templates/notification/single.html:7 templates/notification/single.html:10
+msgid "Notice"
+msgstr ""
+
+#: templates/photos/base.html:10 templates/photos/latest.html:13
+#: templates/photos/latest.html.py:17 templates/photos/upload.html:6
+msgid "Latest Photos"
+msgstr ""
+
+#: templates/photos/base.html:11 templates/photos/memberphotos.html:13
+#: templates/photos/yourphotos.html:13 templates/photos/yourphotos.html:17
+msgid "Your Photos"
+msgstr ""
+
+#: templates/photos/base.html:12 templates/photos/friends_photos.html:13
+#: templates/photos/friends_photos.html:17
+msgid "Friends' Photos"
+msgstr ""
+
+#: templates/photos/base.html:13
+msgid "Upload a Photo"
+msgstr ""
+
+#: templates/photos/details.html:14 templates/photos/details.html.py:23
+#: templates/photos/edit.html:22
+msgid "Photo Details"
+msgstr ""
+
+#: templates/photos/details.html:37
+msgid "Flag as inappropriate"
+msgstr ""
+
+#: templates/photos/edit.html:14
+msgid "Editing Photo Details"
+msgstr ""
+
+#: templates/photos/edit.html:30
+msgid "Editing Photo"
+msgstr ""
+
+#: templates/photos/latest.html:27
+#, python-format
+msgid "Viewed %(view_count)s times"
+msgstr ""
+
+#: templates/photos/latest.html:33
+msgid "No photos were found."
+msgstr ""
+
+#: templates/photos/memberphotos.html:17
+msgid "Photos from "
+msgstr ""
+
+#: templates/photos/photo_right_panel.html:27
+msgid "Get Embed Code"
+msgstr ""
+
+#: templates/photos/photo_right_panel.html:39
+msgid "Delete Photo"
+msgstr ""
+
+#: templates/photos/upload.html:14 templates/small_dms/upload.html:12
+msgid "Upload"
+msgstr ""
+
+#: templates/photos/plugins/profiles/profile.html:5
+#: templates/tags/index.html:116
+msgid "Photos"
+msgstr ""
+
+#: templates/photos/plugins/profiles/profile.html:16
+msgid "No photos uploaded yet."
+msgstr ""
+
+#: templates/profiles/affiliation_list.html:5
+msgid "Affiliations"
+msgstr ""
+
+#: templates/profiles/base.html:10
+msgid "Your Profile"
+msgstr ""
+
+#: templates/profiles/base.html:11 templates/profiles/profiles.html:9
+msgid "All Profiles"
+msgstr ""
+
+#: templates/profiles/profile.html:8 templates/profiles/profile.html.py:25
+#, python-format
+msgid "Profile for %(other_user)s"
+msgstr ""
+
+#: templates/profiles/profile.html:33
+msgid "Change avatar"
+msgstr ""
+
+#: templates/profiles/profile.html:43
+msgid "Edit profile"
+msgstr ""
+
+#: templates/profiles/profile.html:53
+msgid "Followers"
+msgstr ""
+
+#: templates/profiles/profile.html:54
+msgid "Following"
+msgstr ""
+
+#: templates/profiles/profile.html:62
+msgid "unfollow"
+msgstr ""
+
+#: templates/profiles/profile.html:64
+msgid "follow tweets"
+msgstr ""
+
+#: templates/profiles/profile.html:86 templates/tribes/tribe_admin.html:28
+msgid "update"
+msgstr ""
+
+#: templates/profiles/profile.html:97
+#, python-format
+msgid ""
+"<a href=\"%(login_url)s?next=/profiles/%(other_user)s/\">Log in</a> to see "
+"this person's profile."
+msgstr ""
+
+#: templates/profiles/profile_info.html:21
+msgid "Phone"
+msgstr ""
+
+#: templates/profiles/profile_info.html:28
+msgid "Address"
+msgstr ""
+
+#: templates/profiles/profile_info.html:42
+msgid "Message"
+msgstr ""
+
+#: templates/profiles/profile_info.html:42
+msgid "Biblnet-message"
+msgstr ""
+
+#: templates/profiles/profile_info.html:43
+msgid "Send a Biblnet-message"
+msgstr ""
+
+#: templates/profiles/profile_info.html:48
+msgid "Places to find me online:"
+msgstr ""
+
+#: templates/profiles/profile_info.html:48
+msgid "edit"
+msgstr ""
+
+#: templates/profiles/profile_info.html:74
+msgid "Add places to find you online"
+msgstr ""
+
+#: templates/profiles/profile_info.html:79
+msgid "Music"
+msgstr ""
+
+#: templates/profiles/profile_info.html:86
+msgid "Book"
+msgstr ""
+
+#: templates/profiles/profile_right_panel.html:15
+msgid "Moderator"
+msgstr ""
+
+#: templates/profiles/profile_right_panel.html:18
+#: templates/profiles/profile_right_panel.html:45
+#: templates/tribes/tribe.html:35 templates/tribes/your_tribes.html:23
+msgid "leave tribe"
+msgstr ""
+
+#: templates/profiles/profile_right_panel.html:18
+#: templates/profiles/profile_right_panel.html:45
+#: templates/tribes/your_tribes.html:23
+msgid "Leave tribe"
+msgstr ""
+
+#: templates/profiles/profile_right_panel.html:34
+msgid "Your Documents"
+msgstr ""
+
+#: templates/profiles/profile_right_panel.html:43
+#: templates/profiles/profile_right_panel.html:88
+#: templates/tribes/your_tribes.html:21
+msgid "Administrator"
+msgstr ""
+
+#: templates/profiles/profile_right_panel.html:60
+msgid "Your Friends"
+msgstr ""
+
+#: templates/profiles/profile_right_panel.html:74
+msgid ""
+"None. You should look at the list of <a href=\"/profiles/\">profiles</a> and "
+"see if there's anyone you know."
+msgstr ""
+
+#: templates/profiles/profile_right_panel.html:78
+#, python-format
+msgid "%(other_user)s's Tribes"
+msgstr ""
+
+#: templates/profiles/profile_right_panel.html:96
+msgid "Not yet a member of any tribes."
+msgstr ""
+
+#: templates/profiles/profile_right_panel.html:101
+#, python-format
+msgid "%(other_user)s's Friends"
+msgstr ""
+
+#: templates/profiles/profiles.html:23 templates/tribes/tribe_members.html:107
+#: templates/tribes/tribe_members.html:119 templates/wiki/index.html:26
+#: templates/wiki/index.html.py:38
+msgid "Order by:"
+msgstr ""
+
+#: templates/profiles/profiles.html:34
+msgid "Profiles by username"
+msgstr ""
+
+#: templates/profiles/profiles.html:45
+msgid "Profiles by sign up-date"
+msgstr ""
+
+#: templates/profiles/profiles.html:47 templates/tribes/tribe_members.html:121
+#: templates/wiki/index.html:29
+msgid "MONTH_DAY_FORMAT"
+msgstr ""
+
+#: templates/schedule/_create_event_options.html:3
+#: templates/schedule/calendar_week.html:29
+msgid "Add Event"
+msgstr ""
+
+#: templates/schedule/_event_options.html:9
+#: templates/schedule/_event_options.html:13
+#: templates/schedule/_event_options.html:18
+msgid "Edit Event"
+msgstr ""
+
+#: templates/schedule/_event_options.html:29
+#: templates/schedule/_event_options.html:33
+#: templates/schedule/_event_options.html:38
+msgid "Delete Event"
+msgstr ""
+
+#: templates/schedule/_prevnext.html:6
+msgid "Previous"
+msgstr ""
+
+#: templates/schedule/_prevnext.html:10
+msgid "Next"
+msgstr ""
+
+#: templates/schedule/base.html:44 templates/schedule/base.html.py:50
+#: templates/schedule/event_form_base.html:57
+#: templates/schedule/event_form_base.html:63 templates/tribes/base.html:16
+#: templates/wiki/base.html:15
+msgid "Next events for"
+msgstr ""
+
+#: templates/schedule/base.html:46 templates/schedule/base.html.py:52
+#: templates/schedule/event_form_base.html:59
+#: templates/schedule/event_form_base.html:65 templates/tribes/base.html:18
+#: templates/wiki/base.html:17
+msgid "Add new event"
+msgstr ""
+
+#: templates/schedule/calendar_day.html:11
+msgid "Week"
+msgstr ""
+
+#: templates/schedule/calendar_day.html:12
+msgid "Month"
+msgstr ""
+
+#: templates/schedule/calendar_day.html:13
+msgid "Three Months"
+msgstr ""
+
+#: templates/schedule/calendar_day.html:14
+msgid "Year"
+msgstr ""
+
+#: templates/schedule/calendar_day.html:17
+msgid "Today"
+msgstr ""
+
+#: templates/schedule/calendar_month.html:11
+#: templates/schedule/calendar_week.html:13
+msgid "Three Month Calendar"
+msgstr ""
+
+#: templates/schedule/calendar_month.html:12
+#: templates/schedule/calendar_tri_month.html:11
+#: templates/schedule/calendar_week.html:14
+msgid "Full Year Calendar"
+msgstr ""
+
+#: templates/schedule/calendar_month.html:15
+#: templates/schedule/calendar_tri_month.html:15
+msgid "This month"
+msgstr ""
+
+#: templates/schedule/calendar_tri_month.html:10
+#: templates/schedule/calendar_week.html:12
+msgid "Monthly Calendar"
+msgstr ""
+
+#: templates/schedule/calendar_year.html:11
+msgid "Current Month Calendar"
+msgstr ""
+
+#: templates/schedule/calendar_year.html:12
+msgid "Current Year Calendar"
+msgstr ""
+
+#: templates/schedule/cancel_occurrence.html:8
+msgid "Delete occurrence"
+msgstr ""
+
+#: templates/schedule/cancel_occurrence.html:9
+msgid "Are you sure you want to cancel this occurrence?"
+msgstr ""
+
+#: templates/schedule/create_event.html:8
+msgid "Create or change event"
+msgstr ""
+
+#: templates/schedule/delete_event.html:8
+msgid "Delete event"
+msgstr ""
+
+#: templates/schedule/delete_event.html:9
+msgid "Are you sure you want to delete this event?"
+msgstr ""
+
+#: templates/schedule/edit_occurrence.html:8
+msgid "Create or change occurrence"
+msgstr ""
+
+#: templates/schedule/event.html:29 templates/schedule/occurrence.html:30
+msgid "Reoccurs"
+msgstr ""
+
+#: templates/schedule/event.html:31
+msgid "until"
+msgstr ""
+
+#: templates/schedule/event.html:37
+msgid "Created by"
+msgstr ""
+
+#: templates/schedule/event.html:49 templates/schedule/occurrence.html:40
+msgid "Description"
+msgstr ""
+
+#: templates/schedule/event.html:53 templates/schedule/occurrence.html:44
+msgid "There's no further description of this event..."
+msgstr ""
+
+#: templates/search/search.html:5 templates/search/search.html.py:8
+msgid "Search results"
+msgstr ""
+
+#: templates/sepow/get_tribe_calendar.html:11
+msgid "No events coming up..."
+msgstr ""
+
+#: templates/sepow/latest_updates.html:15
+#: templates/sepow/latest_updates.html:24
+msgid "in"
+msgstr ""
+
+#: templates/sepow/latest_updates.html:25
+msgid "replied to"
+msgstr ""
+
+#: templates/sepow/tagcloud.html:5 templates/sepow/tagcloud.html.py:8
+msgid "Tag cloud"
+msgstr ""
+
+#: templates/small_dms/dms_detail.html:11 templates/small_dms/dms_list.html:31
+#: templates/tribes/topics.html:47 templates/tribes/tribe.html:184
+#: templates/tribes/tribe_members.html:137 templates/wiki/index.html:51
+#: templates/wiki/view.html:65
+msgid "This is a private group!"
+msgstr ""
+
+#: templates/small_dms/dms_list.html:8
+#, python-format
+msgid "Docs for %(tribe)s"
+msgstr ""
+
+#: templates/small_dms/dms_list.html:12
+msgid "Docs for"
+msgstr ""
+
+#: templates/small_dms/dms_list.html:16
+msgid "Upload a new document"
+msgstr ""
+
+#: templates/small_dms/dms_list.html:20 templates/tribes/topics.html:23
+#: templates/tribes/tribe.html:38
+msgid "join tribe"
+msgstr ""
+
+#: templates/small_dms/dms_list.html:26
+#, python-format
+msgid ""
+"Please <a href=\"%(login_url)s?next=%(tribe_url)sdms\">log in</a> to upload "
+"or download documents."
+msgstr ""
+
+#: templates/small_dms/edit.html:11
+msgid "Update"
+msgstr ""
+
+#: templates/tags/index.html:17
+#, python-format
+msgid "Items tagged with \"%(tag)s\""
+msgstr ""
+
+#: templates/tags/index.html:20
+msgid "Tag:"
+msgstr ""
+
+#: templates/tags/index.html:44 templates/tribes/topic_item.html:8
+#: templates/tribes/topics.html:33 templates/tribes/tribe.html:67
+msgid "Topic"
+msgstr ""
+
+#: templates/tags/index.html:44 templates/tribes/topics.html:33
+#: templates/tribes/tribe.html:67
+msgid "Started by"
+msgstr ""
+
+#: templates/tags/index.html:44 templates/tribes/topics.html:33
+#: templates/tribes/tribe.html:67
+msgid "Views"
+msgstr ""
+
+#: templates/tags/index.html:44 templates/tribes/topics.html:33
+#: templates/tribes/tribe.html:67
+msgid "Replies"
+msgstr ""
+
+#: templates/tags/index.html:44 templates/tribes/topics.html:33
+#: templates/tribes/tribe.html:67
+msgid "Latest reply"
+msgstr ""
+
+#: templates/tags/index.html:55 templates/tribes/tribe.html:78
+#: templates/wiki/plugins/profiles/profile.html:4
+#: templates/wiki/profiles/profile.html:4
+msgid "Wiki Articles"
+msgstr ""
+
+#: templates/tags/index.html:57 templates/tribes/tribe.html:89
+#: templates/wiki/index.html:31 templates/wiki/index.html.py:40
+msgid "Latest editor"
+msgstr ""
+
+#: templates/tags/index.html:78
+msgid "Unknown filetype"
+msgstr ""
+
+#: templates/tags/index.html:93
+msgid "Bookmarks"
+msgstr ""
+
+#: templates/tags/index.html:131
+#, python-format
+msgid "No further items matching <i>%(tag)s</i>"
+msgstr ""
+
+#: templates/threadedcomments/comments.html:20
+#: templates/threadedcomments/comments.html:79
+#: templates/threadedcomments/preview_comment.html:24
+#: templates/threadedcomments/preview_comment.html:50
+#: templates/tribes/topic.html:98
+msgid "Tribe administrator"
+msgstr ""
+
+#: templates/threadedcomments/comments.html:38
+msgid "You can edit this post within 15 minutes of submission"
+msgstr ""
+
+#: templates/threadedcomments/comments.html:47
+msgid "Delete post"
+msgstr ""
+
+#: templates/threadedcomments/comments.html:59
+msgid "Are you sure you wish to delete this comment?"
+msgstr ""
+
+#: templates/threadedcomments/comments.html:86
+msgid "minutes ago"
+msgstr ""
+
+#: templates/threadedcomments/comments.html:101
+msgid "Submit Comment"
+msgstr ""
+
+#: templates/threadedcomments/comments.html:102
+msgid "Rich Text Formating"
+msgstr ""
+
+#: templates/threadedcomments/preview_comment.html:14
+#: templates/threadedcomments/preview_comment.html:17
+msgid "Preview of your post"
+msgstr ""
+
+#: templates/threadedcomments/preview_comment.html:31
+#: templates/threadedcomments/preview_comment.html:57
+msgid "0 minutes ago"
+msgstr ""
+
+#: templates/tribes/add_post.html:20
+msgid "Post Response"
+msgstr ""
+
+#: templates/tribes/base.html:20
+msgid "This calendar is private..."
+msgstr ""
+
+#: templates/tribes/create.html:11 templates/tribes/create.html.py:14
+msgid "Create Tribe"
+msgstr ""
+
+#: templates/tribes/create.html:16 templates/tribes/tribes.html:21
+msgid "A <b>tribe</b> is a group of people with some common interest."
+msgstr ""
+
+#: templates/tribes/create.html:23 templates/wiki/view.html:30
+msgid "Create"
+msgstr ""
+
+#: templates/tribes/create.html:30 templates/tribes/tribes.html:28
+#, python-format
+msgid ""
+"<a href=\"%(signup_url)s\">Sign up</a> and <a href=\"%(login_url)s\">log in "
+"</a> to create your own tribe or join an existing one."
+msgstr ""
+
+#: templates/tribes/create_topic.html:12
+msgid "New Topic in:"
+msgstr ""
+
+#: templates/tribes/create_topic.html:18
+msgid "Create New Topic"
+msgstr ""
+
+#: templates/tribes/topic.html:27
+msgid "unSticky topic"
+msgstr ""
+
+#: templates/tribes/topic.html:29 templates/tribes/topic.html.py:76
+#: templates/tribes/topic_item.html:8
+msgid "Sticky topic"
+msgstr ""
+
+#: templates/tribes/topic.html:37
+msgid "unSticky Topic"
+msgstr ""
+
+#: templates/tribes/topic.html:39
+msgid "Make Topic Sticky"
+msgstr ""
+
+#: templates/tribes/topic.html:47
+msgid "Reopen topic"
+msgstr ""
+
+#: templates/tribes/topic.html:49
+msgid "Close topic"
+msgstr ""
+
+#: templates/tribes/topic.html:57
+msgid "Reopen Topic"
+msgstr ""
+
+#: templates/tribes/topic.html:59
+msgid "Close Topic"
+msgstr ""
+
+#: templates/tribes/topic.html:76
+msgid ""
+"This is a sticky topic, which means that it will always appear at the top of "
+"the Message Board."
+msgstr ""
+
+#: templates/tribes/topic.html:80 templates/tribes/topic.html.py:150
+#: templates/tribes/topic_item.html:9
+msgid "Closed topic"
+msgstr ""
+
+#: templates/tribes/topic.html:80 templates/tribes/topic.html.py:150
+msgid ""
+"The topic has been closed. It can only be reopened by a moderator of this "
+"group."
+msgstr ""
+
+#: templates/tribes/topic.html:85
+msgid "Are you sure you wish to delete this topic? All posts will be lost..."
+msgstr ""
+
+#: templates/tribes/topic.html:91
+msgid "Posts"
+msgstr ""
+
+#: templates/tribes/topic.html:91
+msgid "Netiquette"
+msgstr ""
+
+#: templates/tribes/topic.html:112
+msgid "Edit post"
+msgstr ""
+
+#: templates/tribes/topic.html:115
+msgid "Delete Topic"
+msgstr ""
+
+#: templates/tribes/topic.html:146
+msgid "... This is a private group!"
+msgstr ""
+
+#: templates/tribes/topic.html:152
+msgid "You need to be a member of this group to reply."
+msgstr ""
+
+#: templates/tribes/topic.html:155
+msgid "Back to Topic List for"
+msgstr ""
+
+#: templates/tribes/topics.html:8
+#, python-format
+msgid "Message Board for %(tribe_name)s"
+msgstr ""
+
+#: templates/tribes/topics.html:16
+msgid "Message Board for"
+msgstr ""
+
+#: templates/tribes/topics.html:19 templates/tribes/tribe.html:58
+msgid "Start New Topic"
+msgstr ""
+
+#: templates/tribes/topics.html:29 templates/tribes/tribe.html:63
+#, python-format
+msgid ""
+"Please <a href=\"%(login_url)s?next=%(tribe_url)stopics\">log in</a> to "
+"start a topic."
+msgstr ""
+
+#: templates/tribes/topics.html:40
+msgid "There are no topics yet"
+msgstr ""
+
+#: templates/tribes/topics.html:40
+msgid "create a topic..."
+msgstr ""
+
+#: templates/tribes/tribe.html:26
+msgid "Creator:"
+msgstr ""
+
+#: templates/tribes/tribe.html:27
+msgid "Created:"
+msgstr ""
+
+#: templates/tribes/tribe.html:45
+#, python-format
+msgid "<a href=\"%(login_url)s?next=%(tribe_url)s\">Log in</a> to join tribe"
+msgstr ""
+
+#: templates/tribes/tribe.html:49
+msgid "Welcome to"
+msgstr ""
+
+#: templates/tribes/tribe.html:55
+msgid "Discussion Topics"
+msgstr ""
+
+#: templates/tribes/tribe.html:74
+msgid "There have been no new topics or replies since your last visit"
+msgstr ""
+
+#: templates/tribes/tribe.html:81
+msgid "Start New Article"
+msgstr ""
+
+#: templates/tribes/tribe.html:86
+#, python-format
+msgid ""
+"Please <a href=\"%(login_url)s?next=%(tribe_url)swiki\">log in</a> to create "
+"an article."
+msgstr ""
+
+#: templates/tribes/tribe.html:96
+msgid "There have been no changes to the wiki since your last visit"
+msgstr ""
+
+#: templates/tribes/tribe.html:103
+msgid "Upload New Document"
+msgstr ""
+
+#: templates/tribes/tribe.html:108
+#, python-format
+msgid ""
+"Please <a href=\"%(login_url)s?next=%(tribe_url)sdms\">log in</a> to upload "
+"a document."
+msgstr ""
+
+#: templates/tribes/tribe.html:167
+msgid "There have been no new documents added since your last visit"
+msgstr ""
+
+#: templates/tribes/tribe.html:172
+msgid "Tribe Photo Pool"
+msgstr ""
+
+#: templates/tribes/tribe.html:177
+#, python-format
+msgid "%(commentcount)s Comments "
+msgstr ""
+
+#: templates/tribes/tribe_admin.html:21
+msgid "Edit details"
+msgstr ""
+
+#: templates/tribes/tribe_admin.html:35
+msgid "Delete tribe"
+msgstr ""
+
+#: templates/tribes/tribe_admin.html:37
+msgid "Delete Tribe"
+msgstr ""
+
+#: templates/tribes/tribe_admin.html:41
+msgid "You are not the only member of the tribe so you can't delete the tribe."
+msgstr ""
+
+#: templates/tribes/tribe_members.html:24
+msgid "Members of "
+msgstr ""
+
+#: templates/tribes/tribe_members.html:30
+msgid "Find members of this tribe to kick or promote"
+msgstr ""
+
+#: templates/tribes/tribe_members.html:34
+#: templates/tribes/tribe_members.html:45
+msgid "Clear Search Terms"
+msgstr ""
+
+#: templates/tribes/tribe_members.html:41
+msgid "Find users to add to this tribe"
+msgstr ""
+
+#: templates/tribes/tribe_members.html:52
+msgid "Members to kick or promote"
+msgstr ""
+
+#: templates/tribes/tribe_members.html:54
+msgid "Change member status"
+msgstr ""
+
+#: templates/tribes/tribe_members.html:54
+#: templates/tribes/tribe_members.html:75
+msgid "Kick"
+msgstr ""
+
+#: templates/tribes/tribe_members.html:62
+msgid "Demote"
+msgstr ""
+
+#: templates/tribes/tribe_members.html:62
+msgid "Demote to normal member"
+msgstr ""
+
+#: templates/tribes/tribe_members.html:67
+msgid "Promote"
+msgstr ""
+
+#: templates/tribes/tribe_members.html:67
+msgid "Promote to moderator"
+msgstr ""
+
+#: templates/tribes/tribe_members.html:75
+msgid "Kick from tribe"
+msgstr ""
+
+#: templates/tribes/tribe_members.html:85
+msgid "Users to add"
+msgstr ""
+
+#: templates/tribes/tribe_members.html:93
+msgid "Invite"
+msgstr ""
+
+#: templates/tribes/tribe_members.html:93
+msgid "Add user to tribe"
+msgstr ""
+
+#: templates/tribes/tribe_members.html:95
+msgid "Invite as moderator?"
+msgstr ""
+
+#: templates/tribes/tribe_members.html:106
+msgid "All members ordered by username"
+msgstr ""
+
+#: templates/tribes/tribe_members.html:106
+msgid "Ordered by username"
+msgstr ""
+
+#: templates/tribes/tribe_members.html:118
+msgid "All members ordered by join date"
+msgstr ""
+
+#: templates/tribes/tribe_members.html:118
+msgid "Ordered by join date"
+msgstr ""
+
+#: templates/wiki/base.html:19
+msgid "This calendar is private"
+msgstr ""
+
+#: templates/wiki/changeset.html:29
+msgid "html."
+msgstr ""
+
+#: templates/wiki/edit.html:17
+msgid "Edit Article"
+msgstr ""
+
+#: templates/wiki/edit.html:23
+msgid "Save Article"
+msgstr ""
+
+#: templates/wiki/history.html:16
+msgid "History for article"
+msgstr ""
+
+#: templates/wiki/history.html:25
+msgid "Revert to..."
+msgstr ""
+
+#: templates/wiki/history.html:45
+msgid "Current Revision"
+msgstr ""
+
+#: templates/wiki/history.html:58
+msgid "No changes in this article"
+msgstr ""
+
+#: templates/wiki/index.html:10
+msgid "Wiki for"
+msgstr ""
+
+#: templates/wiki/index.html:19
+msgid "Start a new article"
+msgstr ""
+
+#: templates/wiki/index.html:23
+msgid "Articles"
+msgstr ""
+
+#: templates/wiki/index.html:47
+msgid "There are no articles yet"
+msgstr ""
+
+#: templates/wiki/index.html:47
+msgid "create an article..."
+msgstr ""
+
+#: templates/wiki/view.html:25
+msgid "History"
+msgstr ""
+
+#: templates/wiki/view.html:46
+msgid "Create it now?"
+msgstr ""
+
+#: templates/wiki/view.html:55
+msgid "Stop Observing Article"
+msgstr ""
+
+#: templates/wiki/view.html:59
+msgid "Observe Article"
+msgstr ""
+
+#: templates/wiki/plugins/profiles/profile.html:21
+#: templates/wiki/profiles/profile.html:21
+msgid "No wiki articles yet."
+msgstr ""

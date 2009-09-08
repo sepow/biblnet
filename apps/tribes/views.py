@@ -93,7 +93,7 @@ def create(request, form_class=TribeForm, template_name="tribes/create.html"):
                 # Calendar
                 tribe_cal = Calendar.objects.get_or_create_calendar_for_object(tribe, name = "%s" % tribe,)
                 tribe_cal.slug = tribe.slug
-                tribe_cal.save()       
+                tribe_cal.save()
                          
                 if notification:
                     # @@@ might be worth having a shortcut for sending to all users
@@ -435,7 +435,7 @@ def topic(request, id, edit=False, template_name="tribes/topic.html"):
         
         if is_moderator(topic.tribe, request.user):
                 text = request.POST["body"]
-                text += ugettext("<small><i>Topic editet by %s : %s</i></small>") % (request.user, datetime.now()) 
+                text += ugettext("<small><i>Topic editet by %(user)s : %(date)s</i></small>") % {'user' : request.user, 'date' : datetime.now()}
                 topic.body = sanitize_html(text)
                 topic.editet = datetime.now()
                 topic.save()
