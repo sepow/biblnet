@@ -112,5 +112,6 @@ def new_comment(sender, instance, **kwargs):
         topic.modified = datetime.now()
         topic.save()
         if notification:
-            notification.send([topic.creator], "tribes_topic_response", {"user": instance.user, "topic": topic})
+            if topic.creator != instance.user:
+                notification.send([topic.creator], "tribes_topic_response", {"user": instance.user, "topic": topic})
 models.signals.post_save.connect(new_comment, sender=ThreadedComment)
