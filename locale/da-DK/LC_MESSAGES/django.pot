@@ -1,0 +1,814 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-09-09 09:22+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: apps/account/forms.py:29 apps/account/forms.py:62 apps/account/forms.py:333
+msgid "Username"
+msgstr ""
+
+#: apps/account/forms.py:30 apps/account/forms.py:63 apps/account/forms.py:213
+#: apps/account/forms.py:334
+msgid "Password"
+msgstr ""
+
+#: apps/account/forms.py:31
+msgid "Remember Me"
+msgstr ""
+
+#: apps/account/forms.py:31
+msgid "If checked you will stay logged in for 3 weeks"
+msgstr ""
+
+#: apps/account/forms.py:43
+msgid "This account is currently inactive."
+msgstr ""
+
+#: apps/account/forms.py:45
+msgid "The username and/or password you specified are not correct."
+msgstr ""
+
+#: apps/account/forms.py:51
+#, python-format
+msgid "Successfully logged in as %(username)s."
+msgstr ""
+
+#: apps/account/forms.py:64 apps/account/forms.py:214
+msgid "Password (again)"
+msgstr ""
+
+#: apps/account/forms.py:65
+msgid "Email (optional)"
+msgstr ""
+
+#: apps/account/forms.py:70
+msgid "Usernames can only contain letters, numbers and underscores."
+msgstr ""
+
+#: apps/account/forms.py:75
+msgid "This username is already taken. Please choose another."
+msgstr ""
+
+#: apps/account/forms.py:80 apps/account/forms.py:202
+#: apps/account/forms.py:219 apps/account/forms.py:281
+msgid "You must type the same password each time."
+msgstr ""
+
+#: apps/account/forms.py:103
+msgid "Your email address has already been verified"
+msgstr ""
+
+#: apps/account/forms.py:110 apps/account/forms.py:116
+#: apps/account/forms.py:184
+#, python-format
+msgid "Confirmation email sent to %(email)s"
+msgstr ""
+
+#: apps/account/forms.py:174 apps/account/forms.py:229
+msgid "Email"
+msgstr ""
+
+#: apps/account/forms.py:181
+msgid "This email address already associated with this account."
+msgstr ""
+
+#: apps/account/forms.py:190
+msgid "Current Password"
+msgstr ""
+
+#: apps/account/forms.py:191 apps/account/forms.py:270
+msgid "New Password"
+msgstr ""
+
+#: apps/account/forms.py:192 apps/account/forms.py:271
+msgid "New Password (again)"
+msgstr ""
+
+#: apps/account/forms.py:196
+msgid "Please type your current password."
+msgstr ""
+
+#: apps/account/forms.py:208 apps/account/forms.py:292
+msgid "Password successfully changed."
+msgstr ""
+
+#: apps/account/forms.py:225
+msgid "Password successfully set."
+msgstr ""
+
+#: apps/account/forms.py:233
+msgid "Email address not verified for any user account"
+msgstr ""
+
+#: apps/account/forms.py:256
+msgid "Password reset email sent"
+msgstr ""
+
+#: apps/account/forms.py:269
+msgid "Temporary Password"
+msgstr ""
+
+#: apps/account/forms.py:275
+msgid "Please type your temporary password."
+msgstr ""
+
+#: apps/account/forms.py:303
+msgid "Timezone"
+msgstr ""
+
+#: apps/account/forms.py:312
+msgid "Timezone successfully updated."
+msgstr ""
+
+#: apps/account/forms.py:316
+msgid "Language"
+msgstr ""
+
+#: apps/account/forms.py:325
+msgid "Language successfully updated."
+msgstr ""
+
+#: apps/account/forms.py:347
+msgid "Successfully authenticated."
+msgstr ""
+
+#: apps/account/models.py:12 apps/account/models.py:25
+#: apps/account/models.py:80
+msgid "user"
+msgstr ""
+
+#: apps/account/models.py:14
+msgid "timezone"
+msgstr ""
+
+#: apps/account/models.py:15
+msgid "language"
+msgstr ""
+
+#: apps/account/models.py:26
+msgid "Other Service Info Key"
+msgstr ""
+
+#: apps/account/models.py:27
+msgid "Other Service Info Value"
+msgstr ""
+
+#: apps/account/models.py:82
+msgid "temp_key"
+msgstr ""
+
+#: apps/account/models.py:83
+msgid "timestamp"
+msgstr ""
+
+#: apps/account/models.py:84
+msgid "reset yet?"
+msgstr ""
+
+#: apps/account/views.py:57
+#, python-format
+msgid "Successfully logged in as %(username)s."
+msgstr ""
+
+#: apps/account/views.py:256
+msgid "Removed twitter account information successfully."
+msgstr ""
+
+#: apps/account/templatetags/openid_tags.py:27
+msgid "Logged in with OpenID"
+msgstr ""
+
+#: apps/avatar/models.py:37
+#, python-format
+msgid "Avatar for %s"
+msgstr ""
+
+#: apps/avatar/views.py:51
+msgid "Successfully uploaded a new avatar."
+msgstr ""
+
+#: apps/avatar/views.py:58
+msgid "Successfully updated your avatar."
+msgstr ""
+
+#: apps/avatar/views.py:85
+msgid "Successfully deleted the requested avatars."
+msgstr ""
+
+#: apps/avatar/templatetags/avatar_tags.py:48
+msgid "Default Avatar"
+msgstr ""
+
+#: apps/captcha/fields.py:34
+msgid "Play captcha as audio file"
+msgstr ""
+
+#: apps/captcha/fields.py:60
+msgid "Invalid CAPTCHA"
+msgstr ""
+
+#: apps/captcha/tests/__init__.py:64
+msgid "Invalid CAPTCHA"
+msgstr ""
+
+#: apps/django_dms/widgets.py:45
+msgid "Currently:"
+msgstr ""
+
+#: apps/django_dms/widgets.py:45
+msgid "Change:"
+msgstr ""
+
+#: apps/django_dms/apps/small_dms/models.py:17
+msgid "title"
+msgstr ""
+
+#: apps/django_dms/apps/small_dms/models.py:18
+msgid "slug"
+msgstr ""
+
+#: apps/django_dms/apps/small_dms/models.py:19
+msgid "abstract / summary"
+msgstr ""
+
+#: apps/django_dms/apps/small_dms/models.py:20
+msgid "created"
+msgstr ""
+
+#: apps/django_dms/apps/small_dms/models.py:21
+msgid "tribe"
+msgstr ""
+
+#: apps/django_dms/apps/small_dms/models.py:23
+msgid "uploader"
+msgstr ""
+
+#: apps/django_dms/apps/small_dms/models.py:33
+msgid "Passed"
+msgstr ""
+
+#: apps/django_dms/apps/small_dms/models.py:35
+msgid "grade"
+msgstr ""
+
+#: apps/django_extensions/admin/__init__.py:105
+msgid "and"
+msgstr ""
+
+#: apps/django_extensions/admin/__init__.py:107
+#, python-format
+msgid ""
+"Use the left field to do %(model_name)s lookups in the fields %(field_list)s."
+msgstr ""
+
+#: apps/django_extensions/db/models.py:15
+msgid "created"
+msgstr ""
+
+#: apps/django_extensions/db/models.py:16
+msgid "modified"
+msgstr ""
+
+#: apps/django_extensions/db/models.py:26
+msgid "title"
+msgstr ""
+
+#: apps/django_extensions/db/models.py:27
+msgid "slug"
+msgstr ""
+
+#: apps/django_extensions/db/models.py:28
+msgid "description"
+msgstr ""
+
+#: apps/django_extensions/templates/django_extensions/widgets/foreignkey_searchinput.html:4
+msgid "Lookup"
+msgstr ""
+
+#: apps/elsewhere/models.py:114
+msgid "date added"
+msgstr ""
+
+#: apps/elsewhere/models.py:115
+msgid "date verified"
+msgstr ""
+
+#: apps/friends_app/views.py:25
+#, python-format
+msgid "Accepted friendship request from %(from_user)s"
+msgstr ""
+
+#: apps/friends_app/views.py:70
+#, python-format
+msgid "%(total)s vCards found, %(imported)s contacts imported."
+msgstr ""
+
+#: apps/friends_app/views.py:79 apps/friends_app/views.py:85
+#, python-format
+msgid "%(total)s people with email found, %(imported)s contacts imported."
+msgstr ""
+
+#: apps/html5lib/constants.py:15
+msgid "Null character in input stream, replaced with U+FFFD."
+msgstr ""
+
+#: apps/html5lib/constants.py:17
+msgid "Invalid codepoint in stream."
+msgstr ""
+
+#: apps/html5lib/constants.py:19
+msgid "Solidus (/) incorrectly placed in tag."
+msgstr ""
+
+#: apps/html5lib/constants.py:21
+msgid "Incorrect CR newline entity, replaced with LF."
+msgstr ""
+
+#: apps/html5lib/constants.py:23
+msgid "Entity used with illegal number (windows-1252 reference)."
+msgstr ""
+
+#: apps/html5lib/constants.py:25
+#, python-format
+msgid ""
+"Numeric entity couldn't be converted to character (codepoint U+%(charAsInt)"
+"08x)."
+msgstr ""
+
+#: apps/html5lib/constants.py:28
+#, python-format
+msgid "Numeric entity represents an illegal codepoint: U+%(charAsInt)08x."
+msgstr ""
+
+#: apps/html5lib/constants.py:31
+msgid "Numeric entity didn't end with ';'."
+msgstr ""
+
+#: apps/html5lib/constants.py:33
+msgid "Numeric entity expected. Got end of file instead."
+msgstr ""
+
+#: apps/html5lib/constants.py:35
+msgid "Numeric entity expected but none found."
+msgstr ""
+
+#: apps/html5lib/constants.py:37
+msgid "Named entity didn't end with ';'."
+msgstr ""
+
+#: apps/html5lib/constants.py:39
+msgid "Named entity expected. Got none."
+msgstr ""
+
+#: apps/html5lib/constants.py:41
+msgid "End tag contains unexpected attributes."
+msgstr ""
+
+#: apps/html5lib/constants.py:43
+msgid "Expected tag name. Got '>' instead."
+msgstr ""
+
+#: apps/html5lib/constants.py:45
+msgid ""
+"Expected tag name. Got '?' instead. (HTML doesn't support processing "
+"instructions.)"
+msgstr ""
+
+#: apps/html5lib/constants.py:48
+msgid "Expected tag name. Got something else instead"
+msgstr ""
+
+#: apps/html5lib/constants.py:50
+msgid "Expected closing tag. Got '>' instead. Ignoring '</>'."
+msgstr ""
+
+#: apps/html5lib/constants.py:52
+msgid "Expected closing tag. Unexpected end of file."
+msgstr ""
+
+#: apps/html5lib/constants.py:54
+#, python-format
+msgid "Expected closing tag. Unexpected character '%(data)s' found."
+msgstr ""
+
+#: apps/html5lib/constants.py:56
+msgid "Unexpected end of file in the tag name."
+msgstr ""
+
+#: apps/html5lib/constants.py:58
+msgid "Unexpected end of file. Expected attribute name instead."
+msgstr ""
+
+#: apps/html5lib/constants.py:60
+msgid "Unexpected end of file in attribute name."
+msgstr ""
+
+#: apps/html5lib/constants.py:62
+msgid "Dropped duplicate attribute on tag."
+msgstr ""
+
+#: apps/html5lib/constants.py:64
+msgid "Unexpected end of file. Expected = or end of tag."
+msgstr ""
+
+#: apps/html5lib/constants.py:66
+msgid "Unexpected end of file. Expected attribute value."
+msgstr ""
+
+#: apps/html5lib/constants.py:68
+msgid "Unexpected end of file in attribute value (\")."
+msgstr ""
+
+#: apps/html5lib/constants.py:70
+msgid "Unexpected end of file in attribute value (')."
+msgstr ""
+
+#: apps/html5lib/constants.py:72
+msgid "Unexpected end of file in attribute value."
+msgstr ""
+
+#: apps/html5lib/constants.py:74
+msgid "Expected '--' or 'DOCTYPE'. Not found."
+msgstr ""
+
+#: apps/html5lib/constants.py:76
+msgid "Incorrect comment."
+msgstr ""
+
+#: apps/html5lib/constants.py:78
+msgid "Unexpected end of file in comment."
+msgstr ""
+
+#: apps/html5lib/constants.py:80
+msgid "Unexpected end of file in comment (-)"
+msgstr ""
+
+#: apps/html5lib/constants.py:82
+msgid "Unexpected '-' after '--' found in comment."
+msgstr ""
+
+#: apps/html5lib/constants.py:84
+msgid "Unexpected end of file in comment (--)."
+msgstr ""
+
+#: apps/html5lib/constants.py:86
+msgid "Unexpected character in comment found."
+msgstr ""
+
+#: apps/html5lib/constants.py:88
+msgid "No space after literal string 'DOCTYPE'."
+msgstr ""
+
+#: apps/html5lib/constants.py:90
+msgid "Unexpected > character. Expected DOCTYPE name."
+msgstr ""
+
+#: apps/html5lib/constants.py:92
+msgid "Unexpected end of file. Expected DOCTYPE name."
+msgstr ""
+
+#: apps/html5lib/constants.py:94
+msgid "Unexpected end of file in DOCTYPE name."
+msgstr ""
+
+#: apps/html5lib/constants.py:96
+msgid "Unexpected end of file in DOCTYPE."
+msgstr ""
+
+#: apps/html5lib/constants.py:98
+#, python-format
+msgid "Expected space or '>'. Got '%(data)s'"
+msgstr ""
+
+#: apps/html5lib/constants.py:100
+msgid "Unexpected end of DOCTYPE."
+msgstr ""
+
+#: apps/html5lib/constants.py:102
+msgid "Unexpected character in DOCTYPE."
+msgstr ""
+
+#: apps/html5lib/constants.py:104
+msgid "Unexpected end of file in bogus doctype."
+msgstr ""
+
+#: apps/html5lib/constants.py:106
+msgid "XXX innerHTML EOF"
+msgstr ""
+
+#: apps/html5lib/constants.py:108
+msgid "Unexpected DOCTYPE. Ignored."
+msgstr ""
+
+#: apps/html5lib/constants.py:110
+msgid "html needs to be the first start tag."
+msgstr ""
+
+#: apps/html5lib/constants.py:112
+msgid "Unexpected End of file. Expected DOCTYPE."
+msgstr ""
+
+#: apps/html5lib/constants.py:114
+msgid "Erroneous DOCTYPE."
+msgstr ""
+
+#: apps/html5lib/constants.py:116
+msgid "Unexpected non-space characters. Expected DOCTYPE."
+msgstr ""
+
+#: apps/html5lib/constants.py:118
+#, python-format
+msgid "Unexpected start tag (%(name)s). Expected DOCTYPE."
+msgstr ""
+
+#: apps/html5lib/constants.py:120
+#, python-format
+msgid "Unexpected end tag (%(name)s). Expected DOCTYPE."
+msgstr ""
+
+#: apps/html5lib/constants.py:122
+#, python-format
+msgid "Unexpected end tag (%(name)s) after the (implied) root element."
+msgstr ""
+
+#: apps/html5lib/constants.py:124
+#, python-format
+msgid "Unexpected end of file. Expected end tag (%(name)s)."
+msgstr ""
+
+#: apps/html5lib/constants.py:126
+msgid "Unexpected start tag head in existing head. Ignored."
+msgstr ""
+
+#: apps/html5lib/constants.py:128
+#, python-format
+msgid "Unexpected end tag (%(name)s). Ignored."
+msgstr ""
+
+#: apps/html5lib/constants.py:130
+#, python-format
+msgid "Unexpected start tag (%(name)s) that can be in head. Moved."
+msgstr ""
+
+#: apps/html5lib/constants.py:132
+#, python-format
+msgid "Unexpected start tag (%(name)s)."
+msgstr ""
+
+#: apps/html5lib/constants.py:134
+#, python-format
+msgid "Missing end tag (%(name)s)."
+msgstr ""
+
+#: apps/html5lib/constants.py:136
+#, python-format
+msgid "Missing end tags (%(name)s)."
+msgstr ""
+
+#: apps/html5lib/constants.py:138
+#, python-format
+msgid "Unexpected start tag (%(startName)s) implies end tag (%(endName)s)."
+msgstr ""
+
+#: apps/html5lib/constants.py:141
+#, python-format
+msgid "Unexpected start tag (%(originalName)s). Treated as %(newName)s."
+msgstr ""
+
+#: apps/html5lib/constants.py:143
+#, python-format
+msgid "Unexpected start tag %(name)s. Don't use it!"
+msgstr ""
+
+#: apps/html5lib/constants.py:145
+#, python-format
+msgid "Unexpected start tag %(name)s. Ignored."
+msgstr ""
+
+#: apps/html5lib/constants.py:147
+#, python-format
+msgid "Unexpected end tag (%(gotName)s). Missing end tag (%(expectedName)s)."
+msgstr ""
+
+#: apps/html5lib/constants.py:150
+#, python-format
+msgid "End tag (%(name)s) seen too early. Expected other end tag."
+msgstr ""
+
+#: apps/html5lib/constants.py:152
+#, python-format
+msgid "Unexpected end tag (%(gotName)s). Expected end tag (%(expectedName)s)."
+msgstr ""
+
+#: apps/html5lib/constants.py:154
+#, python-format
+msgid "End tag (%(name)s) seen too early. Ignored."
+msgstr ""
+
+#: apps/html5lib/constants.py:156
+#, python-format
+msgid ""
+"End tag (%(name)s) violates step 1, paragraph 1 of the adoption agency "
+"algorithm."
+msgstr ""
+
+#: apps/html5lib/constants.py:159
+#, python-format
+msgid ""
+"End tag (%(name)s) violates step 1, paragraph 2 of the adoption agency "
+"algorithm."
+msgstr ""
+
+#: apps/html5lib/constants.py:162
+#, python-format
+msgid ""
+"End tag (%(name)s) violates step 1, paragraph 3 of the adoption agency "
+"algorithm."
+msgstr ""
+
+#: apps/html5lib/constants.py:165
+#, python-format
+msgid "Unexpected end tag (%(originalName)s). Treated as %(newName)s."
+msgstr ""
+
+#: apps/html5lib/constants.py:167
+#, python-format
+msgid "This element (%(name)s) has no end tag."
+msgstr ""
+
+#: apps/html5lib/constants.py:169
+#, python-format
+msgid "Unexpected implied end tag (%(name)s) in the table phase."
+msgstr ""
+
+#: apps/html5lib/constants.py:171
+#, python-format
+msgid "Unexpected implied end tag (%(name)s) in the table body phase."
+msgstr ""
+
+#: apps/html5lib/constants.py:173
+msgid "Unexpected non-space characters in table context caused voodoo mode."
+msgstr ""
+
+#: apps/html5lib/constants.py:176
+msgid "Unexpected input with type hidden in table context."
+msgstr ""
+
+#: apps/html5lib/constants.py:178
+#, python-format
+msgid "Unexpected start tag (%(name)s) in table context caused voodoo mode."
+msgstr ""
+
+#: apps/html5lib/constants.py:181
+#, python-format
+msgid "Unexpected end tag (%(name)s) in table context caused voodoo mode."
+msgstr ""
+
+#: apps/html5lib/constants.py:184
+#, python-format
+msgid "Unexpected table cell start tag (%(name)s) in the table body phase."
+msgstr ""
+
+#: apps/html5lib/constants.py:187
+#, python-format
+msgid "Got table cell end tag (%(name)s) while required end tags are missing."
+msgstr ""
+
+#: apps/html5lib/constants.py:190
+#, python-format
+msgid "Unexpected end tag (%(name)s) in the table body phase. Ignored."
+msgstr ""
+
+#: apps/html5lib/constants.py:192
+#, python-format
+msgid "Unexpected implied end tag (%(name)s) in the table row phase."
+msgstr ""
+
+#: apps/html5lib/constants.py:194
+#, python-format
+msgid "Unexpected end tag (%(name)s) in the table row phase. Ignored."
+msgstr ""
+
+#: apps/html5lib/constants.py:196
+msgid ""
+"Unexpected select start tag in the select phase treated as select end tag."
+msgstr ""
+
+#: apps/html5lib/constants.py:199
+msgid "Unexpected input start tag in the select phase."
+msgstr ""
+
+#: apps/html5lib/constants.py:201
+#, python-format
+msgid "Unexpected start tag token (%(name)s in the select phase. Ignored."
+msgstr ""
+
+#: apps/html5lib/constants.py:204
+#, python-format
+msgid "Unexpected end tag (%(name)s) in the select phase. Ignored."
+msgstr ""
+
+#: apps/html5lib/constants.py:206
+#, python-format
+msgid ""
+"Unexpected table element start tag (%(name)s) in the select in table phase."
+msgstr ""
+
+#: apps/html5lib/constants.py:208
+#, python-format
+msgid ""
+"Unexpected table element end tag (%(name)s) in the select in table phase."
+msgstr ""
+
+#: apps/html5lib/constants.py:210
+msgid "Unexpected non-space characters in the after body phase."
+msgstr ""
+
+#: apps/html5lib/constants.py:212
+#, python-format
+msgid "Unexpected start tag token (%(name)s) in the after body phase."
+msgstr ""
+
+#: apps/html5lib/constants.py:215
+#, python-format
+msgid "Unexpected end tag token (%(name)s) in the after body phase."
+msgstr ""
+
+#: apps/html5lib/constants.py:218
+msgid "Unepxected characters in the frameset phase. Characters ignored."
+msgstr ""
+
+#: apps/html5lib/constants.py:220
+#, python-format
+msgid "Unexpected start tag token (%(name)s) in the frameset phase. Ignored."
+msgstr ""
+
+#: apps/html5lib/constants.py:223
+msgid "Unexpected end tag token (frameset) in the frameset phase (innerHTML)."
+msgstr ""
+
+#: apps/html5lib/constants.py:226
+#, python-format
+msgid "Unexpected end tag token (%(name)s) in the frameset phase. Ignored."
+msgstr ""
+
+#: apps/html5lib/constants.py:229
+msgid "Unexpected non-space characters in the after frameset phase. Ignored."
+msgstr ""
+
+#: apps/html5lib/constants.py:232
+#, python-format
+msgid "Unexpected start tag (%(name)s) in the after frameset phase. Ignored."
+msgstr ""
+
+#: apps/html5lib/constants.py:235
+#, python-format
+msgid "Unexpected end tag (%(name)s) in the after frameset phase. Ignored."
+msgstr ""
+
+#: apps/html5lib/constants.py:238
+msgid "Unexpected end tag after body(innerHtml)"
+msgstr ""
+
+#: apps/html5lib/constants.py:240
+msgid "Unexpected non-space characters. Expected end of file."
+msgstr ""
+
+#: apps/html5lib/constants.py:242
+#, python-format
+msgid "Unexpected start tag (%(name)s). Expected end of file."
+msgstr ""
+
+#: apps/html5lib/constants.py:245
+#, python-format
+msgid "Unexpected end tag (%(name)s). Expected end of file."
+msgstr ""
+
+#: apps/html5lib/constants.py:248
+msgid "Unexpected end of file. Expected table content."
+msgstr ""
+
+#: apps/html5lib/constants.py:250
+msgid "Unexpected end of file. Expected select content."
+msgstr ""
+
+#: apps/html5lib/constants.py:252
+msgid "Unexpected end of file. Expected frameset content."
+msgstr ""
+
+#: apps/html5lib/constants.py:254
+msgid "Undefined error (this sucks and should be fixed)"
+msgstr ""
