@@ -34,6 +34,13 @@
             {% block group %}<li class="members_tab"><a href="{% url tribe_list %}"><span>{% trans "Tribes" %}</span></a></li>{% endblock %}
         </ul>
         
+        <div id="language">
+            <form action="{% if request.user.is_authenticated %}{% url acct_language_change %}{% else %}/i18n/setlang/{% endif %}" method="post" id="locale_switcher">
+                {% for lang in LANGUAGES %}                    <input{% ifequal lang.0 LANGUAGE_CODE %} class="selected"{% endifequal %} name="language" value="{{ lang.0 }}" type="image" src="{{MEDIA_URL}}images/language/{{ lang.0 }}.png" alt="{{ lang.1 }}" title="{{ lang.1 }}" />
+                {% endfor %}
+            </form>
+        </div>
+
         {% block admin_tab %}
             {% if tribe or topic %}
                 {% if user.is_staff or are_moderator %}
@@ -52,6 +59,7 @@
         {% endblock %}
 	</div>
 {% endblock %}
+
 
 {% block login %}
     <div class="columntop"><p class="blocktitle">{% trans "Login" %}</p></div>

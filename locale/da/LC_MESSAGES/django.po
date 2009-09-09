@@ -2,19 +2,19 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-09-07 16:26+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2009-09-09 12:04\n"
+"Last-Translator: <luhr.dk@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Translated-Using: django-rosetta 0.4.5.svn\n"
 
 #: apps/account/forms.py:29 apps/account/forms.py:62 apps/account/forms.py:333
 #: apps/sepow/forms.py:33 apps/sepow/forms.py:122
@@ -24,284 +24,287 @@ msgstr ""
 #: templates/tribes/tribe_members.html:109
 #: templates/tribes/tribe_members.html:123
 msgid "Username"
-msgstr ""
+msgstr "Brugernavn"
 
 #: apps/account/forms.py:30 apps/account/forms.py:63 apps/account/forms.py:213
 #: apps/account/forms.py:334 apps/sepow/forms.py:36 apps/sepow/forms.py:123
 msgid "Password"
-msgstr ""
+msgstr "Adgangskode"
 
 #: apps/account/forms.py:31 apps/sepow/forms.py:124
 msgid "Remember Me"
-msgstr ""
+msgstr "Husk mig"
 
 #: apps/account/forms.py:31 apps/sepow/forms.py:124
 msgid "If checked you will stay logged in for 3 weeks"
-msgstr ""
+msgstr "Sætter du hak i boksen, vil du forblive logget ind i 3 uger"
 
 #: apps/account/forms.py:43 apps/sepow/forms.py:136
 msgid "This account is currently inactive."
-msgstr ""
+msgstr "Denne brugerprofil er for øjeblikket inaktiv."
 
 #: apps/account/forms.py:45 apps/sepow/forms.py:138
 msgid "The username and/or password you specified are not correct."
-msgstr ""
+msgstr "Det angivne brugernavn og/eller adgangskode er forkert."
 
 #: apps/account/forms.py:51 apps/account/views.py:57 apps/sepow/forms.py:144
 #, python-format
 msgid "Successfully logged in as %(username)s."
-msgstr ""
+msgstr "Du er nu logget ind som %(username)s."
 
 #: apps/account/forms.py:64 apps/account/forms.py:214 apps/sepow/forms.py:37
 msgid "Password (again)"
-msgstr ""
+msgstr "Adgangskode (igen)"
 
 #: apps/account/forms.py:65
 msgid "Email (optional)"
-msgstr ""
+msgstr "Email (valgfri at udfylde)"
 
 #: apps/account/forms.py:70 apps/sepow/forms.py:46
 msgid "Usernames can only contain letters, numbers and underscores."
-msgstr ""
+msgstr "Brugernavnet må kun bestå af bogstaver, tal og understregning (a-å, 0-9, _)"
 
 #: apps/account/forms.py:75 apps/sepow/forms.py:51
 msgid "This username is already taken. Please choose another."
-msgstr ""
+msgstr "Dette brugernavn er allerede i brug. Vælg venligst et andet."
 
 #: apps/account/forms.py:80 apps/account/forms.py:202
 #: apps/account/forms.py:219 apps/account/forms.py:281 apps/sepow/forms.py:56
 msgid "You must type the same password each time."
-msgstr ""
+msgstr "Du skal indtaste den samme adgangskode."
 
 #: apps/account/forms.py:103 apps/sepow/forms.py:83
 msgid "Your email address has already been verified"
-msgstr ""
+msgstr "Din email-adresse er allerede verificeret"
 
 #: apps/account/forms.py:110 apps/account/forms.py:116
 #: apps/account/forms.py:184 apps/sepow/forms.py:90 apps/sepow/forms.py:114
 #, python-format
 msgid "Confirmation email sent to %(email)s"
-msgstr ""
+msgstr "Bekræftelse sendt til %(email)s"
 
 #: apps/account/forms.py:174 apps/account/forms.py:229 apps/sepow/forms.py:35
 #: templates/profiles/profile_info.html:35
 msgid "Email"
-msgstr ""
+msgstr "Email"
 
 #: apps/account/forms.py:181
 msgid "This email address already associated with this account."
-msgstr ""
+msgstr "Email-adressen er allerede tilknyttet denne konto."
 
 #: apps/account/forms.py:190
 msgid "Current Password"
-msgstr ""
+msgstr "Nuværende adgangskode"
 
 #: apps/account/forms.py:191 apps/account/forms.py:270
 msgid "New Password"
-msgstr ""
+msgstr "Ny adgangskode"
 
 #: apps/account/forms.py:192 apps/account/forms.py:271
 msgid "New Password (again)"
-msgstr ""
+msgstr "Ny adgangskode (igen)"
 
 #: apps/account/forms.py:196
 msgid "Please type your current password."
-msgstr ""
+msgstr "Indtast venligst din nuværende adgangskode."
 
 #: apps/account/forms.py:208 apps/account/forms.py:292
 msgid "Password successfully changed."
-msgstr ""
+msgstr "Din adgangskode blev ændret korrekt."
 
 #: apps/account/forms.py:225
 msgid "Password successfully set."
-msgstr ""
+msgstr "Du har nu valgt din adgangskode."
 
 #: apps/account/forms.py:233
 msgid "Email address not verified for any user account"
-msgstr ""
+msgstr "Den angivne email-adresse er ikke verificeret af  at tilhøre en konto"
 
 #: apps/account/forms.py:256
 msgid "Password reset email sent"
-msgstr ""
+msgstr "Email til nulstilling af adgangskode er afsendt"
 
 #: apps/account/forms.py:269
 msgid "Temporary Password"
-msgstr ""
+msgstr "Midlertidig adgangskode"
 
 #: apps/account/forms.py:275
 msgid "Please type your temporary password."
-msgstr ""
+msgstr "Indtast venligst din midlertidige adgangskode."
 
 #: apps/account/forms.py:303 templates/account/base.html:23
 msgid "Timezone"
-msgstr ""
+msgstr "Tidszone"
 
 #: apps/account/forms.py:312
 msgid "Timezone successfully updated."
-msgstr ""
+msgstr "Tidszone opdateret korrekt."
 
 #: apps/account/forms.py:316 templates/account/base.html:22
 msgid "Language"
-msgstr ""
+msgstr "Sprog"
 
 #: apps/account/forms.py:325
 msgid "Language successfully updated."
-msgstr ""
+msgstr "Language successfully updated."
 
 #: apps/account/forms.py:347
 msgid "Successfully authenticated."
-msgstr ""
+msgstr "Godkendelse gennemført."
 
 #: apps/account/models.py:12 apps/account/models.py:25
 #: apps/account/models.py:80 apps/profiles/models.py:56
 #: apps/tribes/models.py:61
 msgid "user"
-msgstr ""
+msgstr "bruger"
 
 #: apps/account/models.py:14
 msgid "timezone"
-msgstr ""
+msgstr "tidszone"
 
 #: apps/account/models.py:15
 msgid "language"
-msgstr ""
+msgstr "sprog"
 
 #: apps/account/models.py:26
 msgid "Other Service Info Key"
-msgstr ""
+msgstr "Nøgle for information for anden service"
 
 #: apps/account/models.py:27
 msgid "Other Service Info Value"
-msgstr ""
+msgstr "Værdi for information for anden service"
 
 #: apps/account/models.py:82
 msgid "temp_key"
-msgstr ""
+msgstr "temp_key"
 
 #: apps/account/models.py:83
 msgid "timestamp"
-msgstr ""
+msgstr "timestamp"
 
 #: apps/account/models.py:84
 msgid "reset yet?"
-msgstr ""
+msgstr "nulstil nu?"
 
 #: apps/account/views.py:256
 msgid "Removed twitter account information successfully."
-msgstr ""
+msgstr "Twitter-konto fjernet korrekt."
 
 #: apps/account/templatetags/openid_tags.py:27
 msgid "Logged in with OpenID"
-msgstr ""
+msgstr "Logget ind med OpenID"
 
 #: apps/avatar/models.py:37
 #, python-format
 msgid "Avatar for %s"
-msgstr ""
+msgstr "Avatar for %s"
 
 #: apps/avatar/views.py:51
 msgid "Successfully uploaded a new avatar."
-msgstr ""
+msgstr "Ny avatar tilføjet."
 
 #: apps/avatar/views.py:58
 msgid "Successfully updated your avatar."
-msgstr ""
+msgstr "Din avatar blev opdateret korrekt."
 
 #: apps/avatar/views.py:85
 msgid "Successfully deleted the requested avatars."
-msgstr ""
+msgstr "Den valgte avatar blev slettet korrekt."
 
 #: apps/avatar/templatetags/avatar_tags.py:48
 msgid "Default Avatar"
-msgstr ""
+msgstr "Standard-avatar"
 
 #: apps/captcha/fields.py:34
 msgid "Play captcha as audio file"
-msgstr ""
+msgstr "Afspil Captcha som lydfil"
 
 #: apps/captcha/fields.py:60 apps/captcha/tests/__init__.py:64
 msgid "Invalid CAPTCHA"
-msgstr ""
+msgstr "Forkert Captcha"
 
 #: apps/django_dms/widgets.py:45
 msgid "Currently:"
-msgstr ""
+msgstr "Nuværende:"
 
 #: apps/django_dms/widgets.py:45
 msgid "Change:"
-msgstr ""
+msgstr "Skift:"
 
 #: apps/django_dms/apps/small_dms/models.py:17
 #: apps/django_extensions/db/models.py:26 apps/photos/models.py:38
 #: apps/schedule/models/events.py:27 apps/schedule/models/events.py:347
 #: apps/tribes/models.py:82
 msgid "title"
-msgstr ""
+msgstr "titel"
 
 #: apps/django_dms/apps/small_dms/models.py:18
 #: apps/django_extensions/db/models.py:27 apps/photos/models.py:39
 #: apps/schedule/models/calendars.py:133 apps/tribes/models.py:28
 msgid "slug"
-msgstr ""
+msgstr "slug"
 
 #: apps/django_dms/apps/small_dms/models.py:19
 msgid "abstract / summary"
-msgstr ""
+msgstr "abstrakt / beskrivelse"
 
 #: apps/django_dms/apps/small_dms/models.py:20
 #: apps/django_extensions/db/models.py:15 apps/tribes/models.py:30
 #: apps/tribes/models.py:84 templates/sepow/latest_updates.html:16
 msgid "created"
-msgstr ""
+msgstr "oprettet"
+
+#: templates/sepow/latest_updates.html:16
+msgid "created:"
+msgstr "oprettede:"
 
 #: apps/django_dms/apps/small_dms/models.py:21 apps/tribes/models.py:60
 #: apps/tribes/models.py:80
 msgid "tribe"
-msgstr ""
+msgstr "gruppe"
 
 #: apps/django_dms/apps/small_dms/models.py:23
 msgid "uploader"
-msgstr ""
+msgstr "lagt op af"
 
 #: apps/django_dms/apps/small_dms/models.py:33
 msgid "Passed"
-msgstr ""
+msgstr "Bestået"
 
 #: apps/django_dms/apps/small_dms/models.py:35
 msgid "grade"
-msgstr ""
+msgstr "bedømmelse"
 
 #: apps/django_extensions/admin/__init__.py:105
 msgid "and"
-msgstr ""
+msgstr "og"
 
 #: apps/django_extensions/admin/__init__.py:107
 #, python-format
-msgid ""
-"Use the left field to do %(model_name)s lookups in the fields %(field_list)s."
-msgstr ""
+msgid "Use the left field to do %(model_name)s lookups in the fields %(field_list)s."
+msgstr "Brug det venstre felt for at foretage opslag  i %(model_name)s i felterne %(field_list)s."
 
 #: apps/django_extensions/db/models.py:16 apps/tribes/models.py:85
 msgid "modified"
-msgstr ""
+msgstr "modificeret"
 
 #: apps/django_extensions/db/models.py:28 apps/photos/models.py:22
 #: apps/schedule/models/events.py:28 apps/schedule/models/events.py:348
 #: apps/schedule/models/rules.py:42 apps/tribes/models.py:31
 msgid "description"
-msgstr ""
+msgstr "beskrivelse"
 
 #: apps/django_extensions/templates/django_extensions/widgets/foreignkey_searchinput.html:4
 msgid "Lookup"
-msgstr ""
+msgstr "Opslag"
 
 #: apps/elsewhere/models.py:114 apps/photos/models.py:41
 msgid "date added"
-msgstr ""
+msgstr "dato tilføjet"
 
 #: apps/elsewhere/models.py:115
 msgid "date verified"
-msgstr ""
+msgstr "dato verificeret"
 
 #: apps/friends_app/views.py:25
 #, python-format
@@ -340,9 +343,7 @@ msgstr ""
 
 #: apps/html5lib/constants.py:25
 #, python-format
-msgid ""
-"Numeric entity couldn't be converted to character (codepoint U+%(charAsInt)"
-"08x)."
+msgid "Numeric entity couldn't be converted to character (codepoint U+%(charAsInt)08x)."
 msgstr ""
 
 #: apps/html5lib/constants.py:28
@@ -379,9 +380,7 @@ msgid "Expected tag name. Got '>' instead."
 msgstr ""
 
 #: apps/html5lib/constants.py:45
-msgid ""
-"Expected tag name. Got '?' instead. (HTML doesn't support processing "
-"instructions.)"
+msgid "Expected tag name. Got '?' instead. (HTML doesn't support processing instructions.)"
 msgstr ""
 
 #: apps/html5lib/constants.py:48
@@ -617,23 +616,17 @@ msgstr ""
 
 #: apps/html5lib/constants.py:156
 #, python-format
-msgid ""
-"End tag (%(name)s) violates step 1, paragraph 1 of the adoption agency "
-"algorithm."
+msgid "End tag (%(name)s) violates step 1, paragraph 1 of the adoption agency algorithm."
 msgstr ""
 
 #: apps/html5lib/constants.py:159
 #, python-format
-msgid ""
-"End tag (%(name)s) violates step 1, paragraph 2 of the adoption agency "
-"algorithm."
+msgid "End tag (%(name)s) violates step 1, paragraph 2 of the adoption agency algorithm."
 msgstr ""
 
 #: apps/html5lib/constants.py:162
 #, python-format
-msgid ""
-"End tag (%(name)s) violates step 1, paragraph 3 of the adoption agency "
-"algorithm."
+msgid "End tag (%(name)s) violates step 1, paragraph 3 of the adoption agency algorithm."
 msgstr ""
 
 #: apps/html5lib/constants.py:165
@@ -700,8 +693,7 @@ msgid "Unexpected end tag (%(name)s) in the table row phase. Ignored."
 msgstr ""
 
 #: apps/html5lib/constants.py:196
-msgid ""
-"Unexpected select start tag in the select phase treated as select end tag."
+msgid "Unexpected select start tag in the select phase treated as select end tag."
 msgstr ""
 
 #: apps/html5lib/constants.py:199
@@ -720,14 +712,12 @@ msgstr ""
 
 #: apps/html5lib/constants.py:206
 #, python-format
-msgid ""
-"Unexpected table element start tag (%(name)s) in the select in table phase."
+msgid "Unexpected table element start tag (%(name)s) in the select in table phase."
 msgstr ""
 
 #: apps/html5lib/constants.py:208
 #, python-format
-msgid ""
-"Unexpected table element end tag (%(name)s) in the select in table phase."
+msgid "Unexpected table element end tag (%(name)s) in the select in table phase."
 msgstr ""
 
 #: apps/html5lib/constants.py:210
@@ -904,35 +894,27 @@ msgstr ""
 
 #: apps/html5lib/filters/validator.py:40
 #, python-format
-msgid ""
-"The '%(attributeName)s' attribute is not allowed on <input type=%(inputType)"
-"s>."
+msgid "The '%(attributeName)s' attribute is not allowed on <input type=%(inputType)s>."
 msgstr ""
 
 #: apps/html5lib/filters/validator.py:42
 #, python-format
-msgid ""
-"This attribute is deprecated: '%(attributeName)s' attribute on <%(tagName)s>."
+msgid "This attribute is deprecated: '%(attributeName)s' attribute on <%(tagName)s>."
 msgstr ""
 
 #: apps/html5lib/filters/validator.py:44
 #, python-format
-msgid ""
-"Duplicate value in token list: '%(attributeValue)s' in '%(attributeName)s' "
-"attribute on <%(tagName)s>."
+msgid "Duplicate value in token list: '%(attributeValue)s' in '%(attributeName)s' attribute on <%(tagName)s>."
 msgstr ""
 
 #: apps/html5lib/filters/validator.py:46
 #, python-format
-msgid ""
-"Invalid attribute value: '%(attributeName)s' attribute on <%(tagName)s>."
+msgid "Invalid attribute value: '%(attributeName)s' attribute on <%(tagName)s>."
 msgstr ""
 
 #: apps/html5lib/filters/validator.py:48
 #, python-format
-msgid ""
-"Whitespace is not allowed here: '%(attributeName)s' attribute on <%(tagName)"
-"s>."
+msgid "Whitespace is not allowed here: '%(attributeName)s' attribute on <%(tagName)s>."
 msgstr ""
 
 #: apps/html5lib/filters/validator.py:50
@@ -942,26 +924,20 @@ msgstr ""
 
 #: apps/html5lib/filters/validator.py:52
 #, python-format
-msgid ""
-"This value can not be blank: '%(attributeName)s' attribute on <%(tagName)s>."
+msgid "This value can not be blank: '%(attributeName)s' attribute on <%(tagName)s>."
 msgstr ""
 
 #: apps/html5lib/filters/validator.py:54
 #, python-format
-msgid ""
-"This value refers to a non-existent ID: '%(attributeName)s' attribute on <%"
-"(tagName)s>."
+msgid "This value refers to a non-existent ID: '%(attributeName)s' attribute on <%(tagName)s>."
 msgstr ""
 
 #: apps/html5lib/filters/validator.py:56 apps/html5lib/filters/validator.py:58
-msgid ""
-"Value must be one of %(enumeratedValues)s: '%(attributeName)s' attribute on <"
-"%tagName)s>."
+msgid "Value must be one of %(enumeratedValues)s: '%(attributeName)s' attribute on <%tagName)s>."
 msgstr ""
 
 #: apps/html5lib/filters/validator.py:60
-msgid ""
-"The contextmenu attribute must point to an ID defined on a <menu> element."
+msgid "The contextmenu attribute must point to an ID defined on a <menu> element."
 msgstr ""
 
 #: apps/html5lib/filters/validator.py:62
@@ -970,8 +946,7 @@ msgid "Invalid language code: '%(attributeName)s' attibute on <%(tagName)s>."
 msgstr ""
 
 #: apps/html5lib/filters/validator.py:64
-msgid ""
-"Value must be an integer: '%(attributeName)s' attribute on <%tagName)s>."
+msgid "Value must be an integer: '%(attributeName)s' attribute on <%tagName)s>."
 msgstr ""
 
 #: apps/html5lib/filters/validator.py:66
@@ -980,9 +955,7 @@ msgstr ""
 
 #: apps/html5lib/filters/validator.py:68
 #, python-format
-msgid ""
-"Value must be one of ('_self', '_parent', '_top'), or a name that does not "
-"start with '_': '%(attributeName)s' attribute on <%(tagName)s>."
+msgid "Value must be one of ('_self', '_parent', '_top'), or a name that does not start with '_': '%(attributeName)s' attribute on <%(tagName)s>."
 msgstr ""
 
 #: apps/html5lib/filters/validator.py:70 apps/html5lib/filters/validator.py:78
@@ -998,21 +971,17 @@ msgstr ""
 
 #: apps/html5lib/filters/validator.py:74
 #, python-format
-msgid ""
-"Illegal character in URI: '%(attributeName)s' attribute on <%(tagName)s>."
+msgid "Illegal character in URI: '%(attributeName)s' attribute on <%(tagName)s>."
 msgstr ""
 
 #: apps/html5lib/filters/validator.py:76
 #, python-format
-msgid ""
-"Expected a URI but found an IRI: '%(attributeName)s' attribute on <%(tagName)"
-"s>."
+msgid "Expected a URI but found an IRI: '%(attributeName)s' attribute on <%(tagName)s>."
 msgstr ""
 
 #: apps/html5lib/filters/validator.py:82
 #, python-format
-msgid ""
-"Unregistered URI scheme: '%(attributeName)s' attribute on <%(tagName)s>."
+msgid "Unregistered URI scheme: '%(attributeName)s' attribute on <%(tagName)s>."
 msgstr ""
 
 #: apps/html5lib/filters/validator.py:84
@@ -1059,17 +1028,17 @@ msgstr ""
 
 #: apps/photos/models.py:13
 msgid "Public"
-msgstr ""
+msgstr "Offentlig"
 
 #: apps/photos/models.py:14
 msgid "Private"
-msgstr ""
+msgstr "Privat"
 
 #: apps/photos/models.py:21 apps/profiles/models.py:57
 #: apps/schedule/models/calendars.py:132 apps/schedule/models/rules.py:41
 #: apps/threadedcomments/models.py:260 apps/tribes/models.py:27
 msgid "name"
-msgstr ""
+msgstr "navn"
 
 #: apps/photos/models.py:23
 msgid "publish_type"
@@ -1177,73 +1146,73 @@ msgstr ""
 
 #: apps/profiles/forms.py:7 apps/sepow/forms.py:38
 msgid "(Pick your affiliation)"
-msgstr ""
+msgstr "(Vælg dit tilhørsforhold)"
 
 #: apps/profiles/forms.py:8 apps/sepow/forms.py:39
 msgid "(Pick your occupation)"
-msgstr ""
+msgstr "(Vælg din beskæftigelse)"
 
 #: apps/profiles/models.py:18 apps/profiles/models.py:32
 #: apps/profiles/models.py:62
 msgid "affiliation"
-msgstr ""
+msgstr "tilhørsforhold"
 
 #: apps/profiles/models.py:33
 msgid "affiliations"
-msgstr ""
+msgstr "tilhørsforhold"
 
 #: apps/profiles/models.py:42 apps/profiles/models.py:51
 #: apps/profiles/models.py:63
 msgid "occupation"
-msgstr ""
+msgstr "beskæftigelse"
 
 #: apps/profiles/models.py:52
 msgid "occupations"
-msgstr ""
+msgstr "beskæftigelser"
 
 #: apps/profiles/models.py:58
 msgid "nickname"
-msgstr ""
+msgstr "kaldenavn"
 
 #: apps/profiles/models.py:59
 msgid "about"
-msgstr ""
+msgstr "om dig"
 
 #: apps/profiles/models.py:60
 msgid "address"
-msgstr ""
+msgstr "adresse"
 
 #: apps/profiles/models.py:61
 msgid "phone number"
-msgstr ""
+msgstr "telefonnummer"
 
 #: apps/profiles/models.py:66 apps/tribes/models.py:66
 msgid "last visit"
-msgstr ""
+msgstr "sidste besøg"
 
 #: apps/profiles/models.py:67
 msgid "last visit (storage)"
-msgstr ""
+msgstr "seneste besøg (pt)"
 
 #: apps/profiles/models.py:69
 msgid "reading"
-msgstr ""
+msgstr "læser"
 
 #: apps/profiles/models.py:70
 msgid "listening to"
-msgstr ""
+msgstr "lytter til"
 
 #: apps/profiles/models.py:83
 msgid "profile"
-msgstr ""
+msgstr "profil"
 
 #: apps/profiles/models.py:84
 msgid "profiles"
-msgstr ""
+msgstr "profiler"
 
 #: apps/profiles/views.py:78 apps/profiles/views.py:94
 msgid "Let's be friends!"
-msgstr ""
+msgstr "Skal vi være venner?"
 
 #: apps/profiles/views.py:86
 #, python-format
@@ -1253,17 +1222,17 @@ msgstr ""
 #: apps/profiles/views.py:114 apps/tribes/views.py:229
 #, python-format
 msgid "You have left the tribe %s"
-msgstr ""
+msgstr "Du har meldt dig ud af gruppen %s"
 
 #: apps/rosetta/templates/rosetta/languages.html:3
 #: apps/rosetta/templates/rosetta/pofile.html:13
 msgid "Home"
-msgstr ""
+msgstr "Hjem"
 
 #: apps/rosetta/templates/rosetta/languages.html:3
 #: apps/rosetta/templates/rosetta/languages.html:4
 msgid "Language selection"
-msgstr ""
+msgstr "Valg af sprog"
 
 #: apps/rosetta/templates/rosetta/languages.html:14
 msgid "Application"
@@ -1300,16 +1269,12 @@ msgid "Nothing to translate!"
 msgstr ""
 
 #: apps/rosetta/templates/rosetta/languages.html:42
-msgid ""
-"You haven't specified any languages in your settings file, or haven't yet "
-"generated a batch of translation catalogs."
+msgid "You haven't specified any languages in your settings file, or haven't yet generated a batch of translation catalogs."
 msgstr ""
 
 #: apps/rosetta/templates/rosetta/languages.html:43
 #, python-format
-msgid ""
-"Please refer to <a href=\"%(i18n_doc_link)s\">Django's I18N documentation</"
-"a> for a guide on how to set up internationalization for your project."
+msgid "Please refer to <a href=\"%(i18n_doc_link)s\">Django's I18N documentation</a> for a guide on how to set up internationalization for your project."
 msgstr ""
 
 #: apps/rosetta/templates/rosetta/pofile.html:7
@@ -1363,7 +1328,7 @@ msgstr ""
 #: templates/site_base.html:114 templates/site_base.html.py:128
 #: templates/site_base.html:129 templates/wiki/searchbox.html:12
 msgid "Search"
-msgstr ""
+msgstr "Søg"
 
 #: apps/rosetta/templates/rosetta/pofile.html:36
 #: apps/wiki/templates/wiki/search_results.html:19
@@ -1410,39 +1375,39 @@ msgstr[1] ""
 
 #: apps/schedule/forms.py:11 apps/schedule/forms.py:15
 msgid "The end time must be later than start time."
-msgstr ""
+msgstr "Sluttidspunktet skal være senere end starttidspunktet."
 
 #: apps/schedule/forms.py:23 apps/schedule/models/events.py:32
 msgid "This date is ignored for one time only events."
-msgstr ""
+msgstr "Denne dato ignoreres for éngangsbegivenheder."
 
 #: apps/schedule/forms.py:31
 msgid "There must be an end date for recurring events"
-msgstr ""
+msgstr "Der skal angives en slutdato for tilbagevendende begivenheder"
 
 #: apps/schedule/periods.py:279 apps/schedule/periods.py:302
 #: apps/schedule/models/events.py:42
 msgid "DATE_FORMAT"
-msgstr ""
+msgstr "DATE_FORMAT"
 
 #: apps/schedule/periods.py:280
 #, python-format
 msgid "Week: %(start)s-%(end)s"
-msgstr ""
+msgstr "Uge: %(start)s-%(end)s"
 
 #: apps/schedule/periods.py:303
 #, python-format
 msgid "Day: %(start)s-%(end)s"
-msgstr ""
+msgstr "Dag: %(start)s-%(end)s"
 
 #: apps/schedule/conf/settings.py:8
 msgid "FIRST_DAY_OF_WEEK"
-msgstr ""
+msgstr "FIRST_DAY_OF_WEEK"
 
 #: apps/schedule/models/calendars.py:137 apps/schedule/models/calendars.py:138
 #: apps/schedule/models/calendars.py:221
 msgid "calendar"
-msgstr ""
+msgstr "kalender"
 
 #: apps/schedule/models/calendars.py:225 apps/schedule/models/events.py:330
 msgid "distinction"
@@ -1462,45 +1427,45 @@ msgstr ""
 
 #: apps/schedule/models/events.py:25 apps/schedule/models/events.py:349
 msgid "start"
-msgstr ""
+msgstr "start"
 
 #: apps/schedule/models/events.py:26 apps/schedule/models/events.py:350
 msgid "end"
-msgstr ""
+msgstr "slut"
 
 #: apps/schedule/models/events.py:26
 msgid "The end time must be later than the start time."
-msgstr ""
+msgstr "Sluttidspunktet skal være senere end starttidspunktet."
 
 #: apps/schedule/models/events.py:29 apps/tribes/models.py:29
 #: apps/tribes/models.py:83
 msgid "creator"
-msgstr ""
+msgstr "oprettet af"
 
 #: apps/schedule/models/events.py:30
 msgid "created on"
-msgstr ""
+msgstr "oprettet d."
 
 #: apps/schedule/models/events.py:31 apps/schedule/models/rules.py:47
 msgid "rule"
-msgstr ""
+msgstr "gentagelse"
 
 #: apps/schedule/models/events.py:31
 msgid "Select '----' for a one time only event."
-msgstr ""
+msgstr "Vælg '----' for éngangsbegivenheder."
 
 #: apps/schedule/models/events.py:32
 msgid "end recurring period"
-msgstr ""
+msgstr "slut på periode for gentagelse"
 
 #: apps/schedule/models/events.py:37 apps/schedule/models/events.py:326
 #: apps/schedule/models/events.py:346
 msgid "event"
-msgstr ""
+msgstr "begivenhed"
 
 #: apps/schedule/models/events.py:38
 msgid "events"
-msgstr ""
+msgstr "begivenheder"
 
 #: apps/schedule/models/events.py:43
 #, python-format
@@ -1517,60 +1482,60 @@ msgstr ""
 
 #: apps/schedule/models/events.py:351
 msgid "cancelled"
-msgstr ""
+msgstr "aflyst"
 
 #: apps/schedule/models/events.py:352
 msgid "original start"
-msgstr ""
+msgstr "original start"
 
 #: apps/schedule/models/events.py:353
 msgid "original end"
-msgstr ""
+msgstr "original slut"
 
 #: apps/schedule/models/events.py:356
 msgid "occurrence"
-msgstr ""
+msgstr "forekomst"
 
 #: apps/schedule/models/events.py:357
 msgid "occurrences"
-msgstr ""
+msgstr "forekomster"
 
 #: apps/schedule/models/events.py:428
 #, python-format
 msgid "%(start)s to %(end)s"
-msgstr ""
+msgstr "%(start)s til %(end)s"
 
 #: apps/schedule/models/rules.py:4
 msgid "Yearly"
-msgstr ""
+msgstr "Årlig"
 
 #: apps/schedule/models/rules.py:5
 msgid "Monthly"
-msgstr ""
+msgstr "Månedlig"
 
 #: apps/schedule/models/rules.py:6
 msgid "Weekly"
-msgstr ""
+msgstr "Ugelig"
 
 #: apps/schedule/models/rules.py:7
 msgid "Daily"
-msgstr ""
+msgstr "Daglig"
 
 #: apps/schedule/models/rules.py:8
 msgid "Hourly"
-msgstr ""
+msgstr "Hver time"
 
 #: apps/schedule/models/rules.py:9
 msgid "Minutely"
-msgstr ""
+msgstr "Hvert minut"
 
 #: apps/schedule/models/rules.py:10
 msgid "Secondly"
-msgstr ""
+msgstr "Hvert sekund"
 
 #: apps/schedule/models/rules.py:43
 msgid "frequency"
-msgstr ""
+msgstr "frekvens"
 
 #: apps/schedule/models/rules.py:44
 msgid "params"
@@ -1578,7 +1543,7 @@ msgstr ""
 
 #: apps/schedule/models/rules.py:48
 msgid "rules"
-msgstr ""
+msgstr "regler"
 
 #: apps/schedule/templates/schedule/_detail.html:7
 #: apps/schedule/templates/schedule/_detail.html:11
@@ -1602,7 +1567,7 @@ msgstr ""
 #: templates/schedule/occurrence.html:22 templates/schedule/occurrence.html:26
 #: templates/wiki/history.html:31
 msgid "DATETIME_FORMAT"
-msgstr ""
+msgstr "DATETIME_FORMAT"
 
 #: apps/schedule/templates/schedule/_detail.html:7
 #: apps/schedule/templates/schedule/event.html:38
@@ -1611,7 +1576,7 @@ msgstr ""
 #: templates/schedule/occurrence.html:22
 #, python-format
 msgid "%(start_date)s"
-msgstr ""
+msgstr "%(start_date)s"
 
 #: apps/schedule/templates/schedule/_detail.html:11
 #: apps/schedule/templates/schedule/_detail.html:21
@@ -1621,35 +1586,35 @@ msgstr ""
 #: templates/schedule/event.html:26 templates/schedule/occurrence.html:26
 #, python-format
 msgid "%(end_date)s"
-msgstr ""
+msgstr "%(end_date)s"
 
 #: apps/schedule/templates/schedule/calendar.html:5
 #: templates/account/email.html:67 templates/schedule/calendar.html:8
 #: templates/tribes/tribe_members.html:87
 msgid "Add"
-msgstr ""
+msgstr "Tilføj"
 
 #: apps/schedule/templates/schedule/calendar.html:8
 #: templates/schedule/calendar.html:11
 msgid "YEAR_MONTH_FORMAT"
-msgstr ""
+msgstr "YEAR_MONTH_FORMAT"
 
 #: apps/schedule/templates/schedule/calendar.html:34
 #: templates/schedule/calendar.html:37 templates/schedule/event.html:21
 #: templates/schedule/occurrence.html:21
 msgid "Starts"
-msgstr ""
+msgstr "Begynder"
 
 #: apps/schedule/templates/schedule/calendar.html:35
 #: templates/schedule/calendar.html:38
 msgid "Continues"
-msgstr ""
+msgstr "Fortsætter"
 
 #: apps/schedule/templates/schedule/calendar.html:36
 #: templates/schedule/calendar.html:39 templates/schedule/event.html:25
 #: templates/schedule/occurrence.html:25
 msgid "Ends"
-msgstr ""
+msgstr "Slutter"
 
 #: apps/schedule/templates/schedule/cancel_occurrence.html:5
 #: apps/schedule/templates/schedule/cancel_occurrence.html:12
@@ -1661,11 +1626,11 @@ msgstr ""
 #: templates/schedule/delete_event.html:14 templates/schedule/event.html:45
 #: templates/threadedcomments/comments.html:49
 msgid "Delete"
-msgstr ""
+msgstr "Slet"
 
 #: apps/schedule/templates/schedule/cancel_occurrence.html:6
 msgid "Are you sure that you really want to cancel this occurrence?"
-msgstr ""
+msgstr "Er du sikker på at du ønsker at slette denne forekomst af begivenheden?"
 
 #: apps/schedule/templates/schedule/cancel_occurrence.html:13
 #: apps/schedule/templates/schedule/create_event.html:13
@@ -1678,11 +1643,11 @@ msgstr ""
 #: templates/schedule/edit_occurrence.html:15
 #: templates/schedule/occurrence.html:37
 msgid "Cancel"
-msgstr ""
+msgstr "Fortryd"
 
 #: apps/schedule/templates/schedule/create_event.html:5
 msgid "Create or change event. All fields are required."
-msgstr ""
+msgstr "Opret eller rediger begivenhed. Alle felter skal udfyldes."
 
 #: apps/schedule/templates/schedule/create_event.html:12
 #: apps/schedule/templates/schedule/edit_occurrence.html:12
@@ -1690,37 +1655,37 @@ msgstr ""
 #: templates/schedule/create_event.html:14
 #: templates/schedule/edit_occurrence.html:14
 msgid "Save"
-msgstr ""
+msgstr "Gem"
 
 #: apps/schedule/templates/schedule/delete_event.html:6
 msgid "Are you sure that you really want to delete it?"
-msgstr ""
+msgstr "Er du sikker på at du ønsker at slette den?"
 
 #: apps/schedule/templates/schedule/edit_occurrence.html:5
 msgid "Create or change occurrence. All fields are required."
-msgstr ""
+msgstr "Opret eller rediger forekomst. Alle felter skal udfyldes."
 
 #: apps/schedule/templates/schedule/event.html:22
 #: apps/schedule/templates/schedule/occurrence.html:16
 msgid "Back"
-msgstr ""
+msgstr "Tilbage"
 
 #: apps/schedule/templates/schedule/event.html:27
 #: apps/schedule/templates/schedule/occurrence.html:18
 #: templates/schedule/event.html:44 templates/schedule/occurrence.html:36
 msgid "Change"
-msgstr ""
+msgstr "Rediger"
 
 #: apps/schedule/templates/schedule/event.html:47
 #: templates/schedule/event.html:31
 #, python-format
 msgid "%(end_recurring_date)s"
-msgstr ""
+msgstr "%(end_recurring_date)s"
 
 #: apps/schedule/templates/schedule/event.html:49
 #: templates/schedule/event.html:33
 msgid "Never. This is a 'one time only' event."
-msgstr ""
+msgstr "Aldrig. Dette er en éngangsbegivenhed."
 
 #: apps/sepow/forms.py:34 templates/profiles/profiles.html:36
 #: templates/profiles/profiles.html:49 templates/tribes/tribe_members.html:54
@@ -1728,15 +1693,15 @@ msgstr ""
 #: templates/tribes/tribe_members.html:109
 #: templates/tribes/tribe_members.html:123
 msgid "Full name"
-msgstr ""
+msgstr "Fulde navn"
 
 #: apps/tag_app/templates/tag_app/tag_list.html:6
 msgid "Tag"
-msgstr ""
+msgstr "Tag"
 
 #: apps/tag_app/templates/tag_app/tag_list.html:6 templates/site_base.html:106
 msgid "Tags"
-msgstr ""
+msgstr "Tags"
 
 #: apps/threadedcomments/admin.py:8 apps/threadedcomments/admin.py:20
 msgid "Parent"
@@ -1751,28 +1716,28 @@ msgstr ""
 #: templates/threadedcomments/preview_comment.html:17
 #: templates/tribes/topic.html:91
 msgid "Meta"
-msgstr ""
+msgstr "Meta"
 
 #: apps/threadedcomments/forms.py:15 apps/threadedcomments/forms.py:34
 #: apps/threadedcomments/models.py:162 apps/threadedcomments/models.py:270
 msgid "comment"
-msgstr ""
+msgstr "indlæg"
 
 #: apps/threadedcomments/models.py:20
 msgid "markdown"
-msgstr ""
+msgstr "markdown"
 
 #: apps/threadedcomments/models.py:21
 msgid "textile"
-msgstr ""
+msgstr "textile"
 
 #: apps/threadedcomments/models.py:22
 msgid "restructuredtext"
-msgstr ""
+msgstr "restructuredtext"
 
 #: apps/threadedcomments/models.py:24
 msgid "plaintext"
-msgstr ""
+msgstr "plaintext"
 
 #: apps/threadedcomments/models.py:147 apps/threadedcomments/models.py:253
 msgid "object ID"
@@ -1780,11 +1745,11 @@ msgstr ""
 
 #: apps/threadedcomments/models.py:157 apps/threadedcomments/models.py:265
 msgid "date/time submitted"
-msgstr ""
+msgstr "dato/tidspunkt for oprettelse"
 
 #: apps/threadedcomments/models.py:158 apps/threadedcomments/models.py:266
 msgid "date/time modified"
-msgstr ""
+msgstr "dato/tidspunkt for redigering"
 
 #: apps/threadedcomments/models.py:159 apps/threadedcomments/models.py:267
 msgid "date/time approved"
@@ -1812,7 +1777,7 @@ msgstr ""
 
 #: apps/threadedcomments/models.py:262
 msgid "e-mail address"
-msgstr ""
+msgstr "email-adresse"
 
 #: apps/threadedcomments/models.py:338
 msgid "Free Threaded Comment"
@@ -1824,42 +1789,40 @@ msgstr ""
 
 #: apps/tribes/forms.py:10
 msgid "Tags are seperated by a comma fx. 'three word tag, another tag' ."
-msgstr ""
+msgstr "Tags adskilles med kommaer fx 'et tag bestående af flere ord, et andet tag'."
 
 #: apps/tribes/forms.py:12
-msgid ""
-"A short version of the name consisting only of letters (a-z), numbers, "
-"underscores and hyphens."
-msgstr ""
+msgid "A short version of the name consisting only of letters (a-z), numbers, underscores and hyphens."
+msgstr "En kort version af navnet, der udelukkende består af bogstaver (a-z), cifre (0-9), understregninger (_) og bindestreger (-)"
 
 #: apps/tribes/forms.py:13
 msgid "This value must contain only letters, numbers, underscores and hyphens."
-msgstr ""
+msgstr "Denne værdi må kun indeholde bogstaver (a-z), cifre (0-9), understregninger (_) og bindestreger (-)"
 
 #: apps/tribes/forms.py:18
 msgid "The slug you've chosen is reserved for internal use."
-msgstr ""
+msgstr "Slug'en du har valgt er desværre reserveret af systemet."
 
 #: apps/tribes/forms.py:20
 msgid "A tribe already exists with that slug."
-msgstr ""
+msgstr "Der findes allerede en gruppe med denne slug."
 
 #: apps/tribes/forms.py:25 apps/tribes/forms.py:43
 msgid "A tribe already exists with that name."
-msgstr ""
+msgstr "Der findes allerede en gruppe med dette navn."
 
 #: apps/tribes/forms.py:68 apps/wiki/templates/wiki/history.html:20
 #: templates/django_dms/detail.html:8
 msgid "User"
-msgstr ""
+msgstr "Bruger"
 
 #: apps/tribes/forms.py:78
 msgid "There is no user with this username."
-msgstr ""
+msgstr "Der findes ikke nogen brugere med det brugernavn."
 
 #: apps/tribes/forms.py:81
 msgid "User is already a member of this tribe."
-msgstr ""
+msgstr "Brugeren er allerede medlem af denne gruppe."
 
 #: apps/tribes/management.py:9
 msgid "Friend Joined Tribe"
@@ -1919,112 +1882,103 @@ msgstr ""
 
 #: apps/tribes/models.py:32
 msgid "deleted"
-msgstr ""
+msgstr "slettet"
 
 #: apps/tribes/models.py:42
 msgid "private"
-msgstr ""
+msgstr "privat"
 
 #: apps/tribes/models.py:43 templates/profiles/affiliation_list.html:12
 msgid "members"
-msgstr ""
+msgstr "medlemmer"
 
 #: apps/tribes/models.py:62
 msgid "date_joined"
-msgstr ""
+msgstr "dato_indmeldt"
 
 #: apps/tribes/models.py:64
 msgid "moderator"
-msgstr ""
+msgstr "moderator"
 
 #: apps/tribes/models.py:86
 msgid "editet"
-msgstr ""
+msgstr "redigeret"
 
 #: apps/tribes/models.py:87
 msgid "body"
-msgstr ""
+msgstr "body"
 
 #: apps/tribes/models.py:88
 msgid "views"
-msgstr ""
+msgstr "visninger"
 
 #: apps/tribes/models.py:89
 msgid "sticky?"
-msgstr ""
+msgstr "sticky?"
 
 #: apps/tribes/models.py:90
 msgid "closed?"
-msgstr ""
+msgstr "låst?"
 
 #: apps/tribes/views.py:165
 #, python-format
 msgid "Tribe %s deleted."
-msgstr ""
+msgstr "Gruppen %s er nu slettet."
 
 #: apps/tribes/views.py:182
 #, python-format
 msgid "Tribe %s cannot be deleted. It is an Affiliation tribe"
-msgstr ""
+msgstr "Gruppen %s kan ikke slettes. Det er en af hoved-grupperne."
 
 #: apps/tribes/views.py:315 templates/tribes/tribe.html:30
 msgid "You are the creator of this tribe so can't leave (yet)."
-msgstr ""
+msgstr "Du er skaberen af denne gruppe, og kan derfor ikke forlade den (endnu)."
 
 #: apps/tribes/views.py:330
 #, python-format
 msgid "%s is already a member of this tribe"
-msgstr ""
+msgstr "%s er allerede medlem af denne gruppe"
 
 #: apps/tribes/views.py:402
 #, python-format
 msgid "You have started the topic %s"
-msgstr ""
+msgstr "Du har startet tråden %s"
 
 #: apps/tribes/views.py:408
 msgid "You are not a member and so cannot start a new topic"
-msgstr ""
+msgstr "Du er ikke medlem, og kan derfor ikke oprette nye tråde"
 
 #: apps/tribes/views.py:439
 #, python-format
 msgid "<small><i>Topic editet by %(user)s : %(date)s</i></small>"
-msgstr ""
+msgstr "<small><i>Indlæg redigeret af %(user)s : %(date)s</i></small>"
 
 #: apps/tribes/templates/notification/tribes_created_new_member/notice.html:2
 #: apps/tribes/templates/notification/tribes_friend_joined/notice.html:2
 #: apps/tribes/templates/notification/tribes_new_member/notice.html:2
 #, python-format
-msgid ""
-"<a href=\"%(user_url)s\">%(user)s</a> has joined the tribe <a href=\"%"
-"(tribe_url)s\">%(tribe)s</a>."
-msgstr ""
+msgid "<a href=\"%(user_url)s\">%(user)s</a> has joined the tribe <a href=\"%(tribe_url)s\">%(tribe)s</a>."
+msgstr "<a href=\"%(user_url)s\">%(user)s</a> har tilsluttet sig gruppen <a href=\"%(tribe_url)s\">%(tribe)s</a>."
 
 #: apps/tribes/templates/notification/tribes_friend_tribe/notice.html:2
 #, python-format
-msgid ""
-"<a href=\"%(user_url)s\">%(tribe_creator)s</a> has created a new tribe <a "
-"href=\"%(tribe_url)s\">%(tribe)s</a>."
-msgstr ""
+msgid "<a href=\"%(user_url)s\">%(tribe_creator)s</a> has created a new tribe <a href=\"%(tribe_url)s\">%(tribe)s</a>."
+msgstr "<a href=\"%(user_url)s\">%(tribe_creator)s</a> har oprettet en ny gruppe <a href=\"%(tribe_url)s\">%(tribe)s</a>."
 
 #: apps/tribes/templates/notification/tribes_new_topic/notice.html:2
 #, python-format
-msgid ""
-"<a href=\"%(user_url)s\">%(topic_creator)s</a> has started a topic '<a href="
-"\"%(topic_url)s\">%(topic)s</a>' in tribe <a href=\"%(tribe_url)s\">%"
-"(topic_tribe)s</a>."
-msgstr ""
+msgid "<a href=\"%(user_url)s\">%(topic_creator)s</a> has started a topic '<a href=\"%(topic_url)s\">%(topic)s</a>' in tribe <a href=\"%(tribe_url)s\">%(topic_tribe)s</a>."
+msgstr "<a href=\"%(user_url)s\">%(topic_creator)s</a> har startet tråden '<a href=\"%(topic_url)s\">%(topic)s</a>' i gruppen <a href=\"%(tribe_url)s\">%(topic_tribe)s</a>."
 
 #: apps/tribes/templates/notification/tribes_new_tribe/notice.html:2
 #, python-format
 msgid "A new tribe <a href=\"%(tribe_url)s\">%(tribe)s</a> has been created."
-msgstr ""
+msgstr "Der er blevet oprettet en ny gruppe ved navn <a href=\"%(tribe_url)s\">%(tribe)s</a>."
 
 #: apps/tribes/templates/notification/tribes_topic_response/notice.html:2
 #, python-format
-msgid ""
-"<a href=\"%(user_url)s\">%(user)s</a> has responded to your topic '<a href="
-"\"%(topic_url)s\">%(topic)s</a>'."
-msgstr ""
+msgid "<a href=\"%(user_url)s\">%(user)s</a> has responded to your topic '<a href=\"%(topic_url)s\">%(topic)s</a>'."
+msgstr "<a href=\"%(user_url)s\">%(user)s</a> har besvaret dit indlæg '<a href=\"%(topic_url)s\">%(topic)s</a>'."
 
 #: apps/tribes/templates/tribes/topic_item.html:19
 #, python-format
@@ -2033,26 +1987,28 @@ msgid ""
 "                (most recent: %(topic_modified)s)\n"
 "                "
 msgstr ""
+"\n"
+"(Seneste: %(topic_modified)s)"
 
 #: apps/tribes/templates/tribes/tribe_item.html:7
 msgid "Members:"
-msgstr ""
+msgstr "Medlemmer:"
 
 #: apps/tribes/templates/tribes/tribe_item.html:8
 msgid "Topics:"
-msgstr ""
+msgstr "Tråde:"
 
 #: apps/tribes/templates/tribes/tribe_item.html:9
 msgid "Wiki Pages:"
-msgstr ""
+msgstr "Wiki-sider:"
 
 #: apps/wiki/feeds.py:96 apps/wiki/feeds.py:202
 msgid "Anonimous"
-msgstr ""
+msgstr "Anonym"
 
 #: apps/wiki/forms.py:59
 msgid "An article with this title already exists."
-msgstr ""
+msgstr "Der findes allerede en artikel af dette navn."
 
 #: apps/wiki/management.py:10
 msgid "Article Edited"
@@ -2080,32 +2036,32 @@ msgstr ""
 
 #: apps/wiki/models.py:38
 msgid "Creole"
-msgstr ""
+msgstr "Creole"
 
 #: apps/wiki/models.py:39
 msgid "reStructuredText"
-msgstr ""
+msgstr "reStructuredText"
 
 #: apps/wiki/models.py:40
 msgid "Textile"
-msgstr ""
+msgstr "Textile"
 
 #: apps/wiki/models.py:41
 msgid "Markdown"
-msgstr ""
+msgstr "Markdown"
 
 #: apps/wiki/models.py:48 templates/django_dms/list.html:25
 #: templates/tags/index.html:57 templates/tags/index.html.py:70
 #: templates/tribes/tribe.html:89 templates/tribes/tribe.html.py:111
 #: templates/wiki/index.html:31 templates/wiki/index.html.py:40
 msgid "Title"
-msgstr ""
+msgstr "Titel"
 
 #: apps/wiki/models.py:51 templates/tags/index.html:57
 #: templates/tribes/tribe.html:89 templates/wiki/index.html:31
 #: templates/wiki/index.html.py:40
 msgid "Summary"
-msgstr ""
+msgstr "Resumé"
 
 #: apps/wiki/models.py:53
 msgid "Content Markup"
@@ -2122,15 +2078,15 @@ msgstr ""
 #: apps/wiki/models.py:70 templates/site_base.html:32
 #: templates/site_base.html.py:124 templates/wiki/article_teaser.html:6
 msgid "Wiki"
-msgstr ""
+msgstr "Wiki"
 
 #: apps/wiki/models.py:71
 msgid "Wikis"
-msgstr ""
+msgstr "Wikier"
 
 #: apps/wiki/models.py:145
 msgid "Article"
-msgstr ""
+msgstr "Artikel"
 
 #: apps/wiki/models.py:148 templates/wiki/history.html:23
 msgid "Editor"
@@ -2186,23 +2142,17 @@ msgstr ""
 
 #: apps/wiki/templates/notification/wiki_article_edited/notice.html:2
 #, python-format
-msgid ""
-"The wiki article <a href=\"%(article_url)s\">%(article)s</a> has been edited "
-"by <a href=\"%(user_url)s\">%(user)s</a>."
+msgid "The wiki article <a href=\"%(article_url)s\">%(article)s</a> has been edited by <a href=\"%(user_url)s\">%(user)s</a>."
 msgstr ""
 
 #: apps/wiki/templates/notification/wiki_observed_article_changed/notice.html:1
 #, python-format
-msgid ""
-"The wiki article <a href=\"%(article_url)s\">%(observed)s</a>, that you "
-"observe, has changed."
+msgid "The wiki article <a href=\"%(article_url)s\">%(observed)s</a>, that you observe, has changed."
 msgstr ""
 
 #: apps/wiki/templates/notification/wiki_revision_reverted/notice.html:2
 #, python-format
-msgid ""
-"Your revision <a href=\"%(revision_url)s\">%(revision)s</a> on <a href=\"%"
-"(article_url)s\">%(article)s</a> has been reverted."
+msgid "Your revision <a href=\"%(revision_url)s\">%(revision)s</a> on <a href=\"%(article_url)s\">%(article)s</a> has been reverted."
 msgstr ""
 
 #: apps/wiki/templates/wiki/base.html:20
@@ -2231,20 +2181,20 @@ msgstr ""
 
 #: apps/wiki/templates/wiki/edit.html:5
 msgid "Editing article"
-msgstr ""
+msgstr "Redigerer artikel"
 
 #: apps/wiki/templates/wiki/edit.html:9 templates/django_dms/detail.html:11
 #: templates/wiki/view.html:20
 msgid "Edit"
-msgstr ""
+msgstr "Rediger"
 
 #: apps/wiki/templates/wiki/history.html:6
 msgid "History for"
-msgstr ""
+msgstr "Historik for"
 
 #: apps/wiki/templates/wiki/history.html:14
 msgid "Article History"
-msgstr ""
+msgstr "Artikel historik"
 
 #: apps/wiki/templates/wiki/history.html:19
 msgid "At"
@@ -2313,10 +2263,12 @@ msgid ""
 "\n"
 "    <h1>Wiki for <a href=\"%(group_url)s\">%(group_name)s</a></h1>\n"
 msgstr ""
+"\n"
+"<h1>Wiki for <a href=\"%(group_url)s\">%(group_name)s</a></h1>\n"
 
 #: templates/403.html:5
 msgid "403"
-msgstr ""
+msgstr "403"
 
 #: templates/403.html:8
 msgid "Sorry, you don't have access to this part of the site."
@@ -2335,40 +2287,38 @@ msgid "Server Error"
 msgstr ""
 
 #: templates/500.html:8
-msgid ""
-"We're sorry but a server error has occurred. We've been notified and will "
-"look into it as soon as possible."
+msgid "We're sorry but a server error has occurred. We've been notified and will look into it as soon as possible."
 msgstr ""
 
 #: templates/base.html:33
 msgid "Hide announcement"
-msgstr ""
+msgstr "Skjul besked"
 
 #: templates/base.html:64
 msgid "clear"
-msgstr ""
+msgstr "fjern"
 
 #: templates/homepage.html:5
 msgid "Welcome"
-msgstr ""
+msgstr "Velkommen"
 
 #: templates/homepage.html:11
 msgid "Welcome to Biblnet.dk!"
-msgstr ""
+msgstr "Velkommen til Biblnet!"
 
 #: templates/homepage.html:14
 msgid "You last visited us"
-msgstr ""
+msgstr "Du besøgte os sidst for"
 
 #: templates/homepage.html:14 templates/site_base.html:67
 #: templates/threadedcomments/comments.html:27 templates/tribes/topic.html:104
 #: templates/tribes/topic_item.html:24
 msgid "ago"
-msgstr ""
+msgstr "siden"
 
 #: templates/homepage.html:16
 msgid "New posts since your last login"
-msgstr ""
+msgstr "Nye indlæg siden dit sidste login"
 
 #: templates/homepage.html:20 templates/site_base.html:84
 #: templates/site_base.html.py:92 templates/site_base.html:103
@@ -2377,19 +2327,19 @@ msgstr ""
 #: templates/profiles/profile_right_panel.html:85
 #: templates/tribes/tribe_item.html:5 templates/tribes/your_tribes.html:18
 msgid "Tribe"
-msgstr ""
+msgstr "Gruppe"
 
 #: templates/homepage.html:20
 msgid "New topics"
-msgstr ""
+msgstr "Nye tråde"
 
 #: templates/homepage.html:20
 msgid "New replies"
-msgstr ""
+msgstr "Nye svar"
 
 #: templates/homepage.html:28
 msgid "No new posts since your last visit..."
-msgstr ""
+msgstr "Ingen nye indlæg siden dit sidste besøg..."
 
 #: templates/homepage.html:36 templates/site_base.html:90
 #: templates/profiles/profile_right_panel.html:30
@@ -2397,33 +2347,33 @@ msgstr ""
 #: templates/tribes/your_tribes.html:33
 #, python-format
 msgid "You are not yet a member of any <a href=\"%(tribe_url)s\">tribes</a>."
-msgstr ""
+msgstr "Du er endnu ikke medlem af nogen <a href=\"%(tribe_url)s\">grupper</a>."
 
 #: templates/homepage.html:44
 #, python-format
 msgid ""
 "\n"
-"        \t<p>Biblnet is a forum for people with an interest in Library and "
-"Information Science.</p>\n"
-"        \t<p>All members can join in on the debates on the Message Boards "
-"and contribute to the creation of knowledge in the Wikis and in the "
-"Knowledge Bank.</p>\n"
-"            <h3><a href=\"%(login_url)s\">Log in</a> or <a href=\"%"
-"(signup_url)s\">Sign up</a> to get started.</h3>\n"
+"        \t<p>Biblnet is a forum for people with an interest in Library and Information Science.</p>\n"
+"        \t<p>All members can join in on the debates on the Message Boards and contribute to the creation of knowledge in the Wikis and in the Knowledge Bank.</p>\n"
+"            <h3><a href=\"%(login_url)s\">Log in</a> or <a href=\"%(signup_url)s\">Sign up</a> to get started.</h3>\n"
 "    \t"
 msgstr ""
+"\n"
+"<p>Biblnet er et forum for folk med en interesse i Biblioteks- og Informationsvidenskab.</p>\n"
+"<p>Alle medlemmer kan deltage i debatterne på opslagstavlerne og bidrage til vidensproduktionen i Wikierne og i Vidensbanken.</p>\n"
+"<h3><a href=\"%(login_url)s\">Log ind</a> eller <a href=\"%(signup_url)s\">Bliv medlem</a> for at komme i gang.</h3>"
 
 #: templates/site_base.html:30
 msgid "Index"
-msgstr ""
+msgstr "Index"
 
 #: templates/site_base.html:31
 msgid "Message board"
-msgstr ""
+msgstr "Opslagstavle"
 
 #: templates/site_base.html:33
 msgid "Docs"
-msgstr ""
+msgstr "Doks"
 
 #: templates/site_base.html:34 templates/site_base.html.py:122
 #: templates/schedule/base.html:37 templates/schedule/event_form_base.html:52
@@ -2431,56 +2381,56 @@ msgstr ""
 #: templates/tribes/tribes.html:12 templates/tribes/tribes.html.py:14
 #: templates/tribes/tribes.html:19 templates/wiki/base.html:10
 msgid "Tribes"
-msgstr ""
+msgstr "Grupper"
 
 #: templates/site_base.html:42
 msgid "Group Admin"
-msgstr ""
+msgstr "Gruppeadmin"
 
 #: templates/site_base.html:47
 msgid "Admin"
-msgstr ""
+msgstr "Admin"
 
 #: templates/site_base.html:57 templates/account/login.html:7
 msgid "Login"
-msgstr ""
+msgstr "Login"
 
 #: templates/site_base.html:66
 msgid "Logout"
-msgstr ""
+msgstr "Log ud"
 
 #: templates/site_base.html:67
 msgid "Your last login"
-msgstr ""
+msgstr "Dit sidste login"
 
 #: templates/site_base.html:69
 msgid "You are not logged in..."
-msgstr ""
+msgstr "Du er ikke logget ind..."
 
 #: templates/site_base.html:70
 msgid "Log in"
-msgstr ""
+msgstr "Log ind"
 
 #: templates/site_base.html:70
 msgid "Sign up"
-msgstr ""
+msgstr "Bliv medlem"
 
 #: templates/site_base.html:78 templates/profiles/profile_right_panel.html:5
 #: templates/tribes/your_tribes.html:7 templates/tribes/your_tribes.html:11
 msgid "Your Tribes"
-msgstr ""
+msgstr "Dine grupper"
 
 #: templates/site_base.html:92 templates/tribes/tribes.html:23
 msgid "Start a new tribe"
-msgstr ""
+msgstr "Start en ny gruppe"
 
 #: templates/site_base.html:100
 msgid "Navigation"
-msgstr ""
+msgstr "Navigation"
 
 #: templates/site_base.html:103
 msgid "All tribes"
-msgstr ""
+msgstr "Alle grupper"
 
 #: templates/site_base.html:104 templates/site_base.html.py:126
 #: templates/django_dms/list.html:14 templates/django_dms/list.html.py:17
@@ -2490,15 +2440,15 @@ msgstr ""
 #: templates/tribes/tribes.html.py:60 templates/tribes/tribes.html:62
 #: templates/wiki/base.html:8
 msgid "Members"
-msgstr ""
+msgstr "Medlemmer"
 
 #: templates/site_base.html:104
 msgid "All members"
-msgstr ""
+msgstr "Alle medlemmer"
 
 #: templates/site_base.html:105
 msgid "Knowledge Bank"
-msgstr ""
+msgstr "Vidensbank"
 
 #: templates/site_base.html:123 templates/django_dms/list.html:42
 #: templates/django_dms/list.html.py:45 templates/django_dms/list.html:47
@@ -2506,35 +2456,35 @@ msgstr ""
 #: templates/tribes/tribes.html:68 templates/tribes/tribes.html.py:71
 #: templates/tribes/tribes.html:73
 msgid "Topics"
-msgstr ""
+msgstr "Tråde"
 
 #: templates/site_base.html:125 templates/tags/index.html:68
 #: templates/tribes/tribe.html:100
 msgid "Documents"
-msgstr ""
+msgstr "Dokumenter"
 
 #: templates/site_base.html:139 templates/messages/base.html:11
 #: templates/messages/inbox.html:7 templates/messages/outbox.html:9
 #: templates/messages/trash.html:9 templates/messages/view.html:7
 msgid "Inbox"
-msgstr ""
+msgstr "Indbakke"
 
 #: templates/site_base.html:142
 msgid "Private messages"
-msgstr ""
+msgstr "Private beskeder"
 
 #: templates/site_base.html:143 templates/messages/base.html:14
 msgid "Notices"
-msgstr ""
+msgstr "Meddelelser"
 
 #: templates/site_base.html:152 templates/tribes/create.html:38
 msgid "Calendar"
-msgstr ""
+msgstr "Kalender"
 
 #: templates/site_base.html:156 templates/tribes/base.html:23
 #: templates/tribes/create.html:42 templates/tribes/tribes.html:100
 msgid "Next events for all your tribes"
-msgstr ""
+msgstr "Kommende begivenheder i alle dine grupper"
 
 #: templates/site_base.html:166
 msgid "Site info"
@@ -2551,7 +2501,7 @@ msgstr ""
 
 #: templates/site_base.html:171 templates/about/terms.html:5
 msgid "Terms of Service"
-msgstr ""
+msgstr "Betingelser"
 
 #: templates/about/about.html:8
 msgid ""
@@ -2563,8 +2513,7 @@ msgstr ""
 #: templates/about/about.html:11
 msgid ""
 "\n"
-"        Pinax includes the <a href=\"http://www.famfamfam.com/lab/icons/silk/"
-"\">Silk icon set 1.3</a> by Mark James.\n"
+"        Pinax includes the <a href=\"http://www.famfamfam.com/lab/icons/silk/\">Silk icon set 1.3</a> by Mark James.\n"
 "    "
 msgstr ""
 
@@ -2573,9 +2522,7 @@ msgid "Digital Millennium Copyright Act Notice"
 msgstr ""
 
 #: templates/about/dmca.html:8
-msgid ""
-"<p>Your <b>Digital Millennium Copyright Act Notice</b> would normally go "
-"here...</p>"
+msgid "<p>Your <b>Digital Millennium Copyright Act Notice</b> would normally go here...</p>"
 msgstr ""
 
 #: templates/about/privacy.html:5
@@ -2591,27 +2538,16 @@ msgid ""
 "\n"
 "\n"
 "<h1>Ordensregler for Biblnet.dk</h1>\n"
-"<p>I forbindelse med at man opretter sin profil, skal man godkende disse "
-"betingelser for at blive medlem:</p>\n"
-"<p>Det er gratis at være medlem af Biblnet.dk. Du skal være eller have været "
-"studerende/underviser ved Danmarks Biblioteksskole eller ved "
-"bibliotekaruddannelsen på Syddansk Universitet for at være medlem eller på "
-"anden måde have tilknytning til BDI-faget. Du bør være opmærksom på, at dit "
-"navn bliver synligt for besøgende på Biblnet.dk. Du har selv ansvaret for de "
-"filer, du lægger ud på Biblnet.dk.</p>\n"
+"<p>I forbindelse med at man opretter sin profil, skal man godkende disse betingelser for at blive medlem:</p>\n"
+"<p>Det er gratis at være medlem af Biblnet.dk. Du skal være eller have været studerende/underviser ved Danmarks Biblioteksskole eller ved bibliotekaruddannelsen på Syddansk Universitet for at være medlem eller på anden måde have tilknytning til BDI-faget. Du bør være opmærksom på, at dit navn bliver synligt for besøgende på Biblnet.dk. Du har selv ansvaret for de filer, du lægger ud på Biblnet.dk.</p>\n"
 "\n"
-"<strong>Du har ved din indmeldelse samtidigt godkendt følgende ordensregler/"
-"NETetikette:</strong>\n"
+"<strong>Du har ved din indmeldelse samtidigt godkendt følgende ordensregler/NETetikette:</strong>\n"
 "\n"
 "<h2>NETetikette</h2>\n"
 "\n"
-"<p>”NETetikette” omhandler ”de sociale færdselsregler” ved brugen af "
-"diskussionsfora.\n"
+"<p>”NETetikette” omhandler ”de sociale færdselsregler” ved brugen af diskussionsfora.\n"
 "\n"
-"Vi vil generelt opfordre dig til at være høflig, vise \"god skik og brug\" "
-"og opføre dig, som du ville have gjort i en ansigt-til-ansigt-diskussion. "
-"Det handler om at respektere folk og deres meninger, uanset hvor uenige man "
-"måtte være med dem.</p>\n"
+"Vi vil generelt opfordre dig til at være høflig, vise \"god skik og brug\" og opføre dig, som du ville have gjort i en ansigt-til-ansigt-diskussion. Det handler om at respektere folk og deres meninger, uanset hvor uenige man måtte være med dem.</p>\n"
 "<ul>\n"
 "    <li>Undgå at SKRIVE MED STORE BOGSTAVER</li>\n"
 "    <li>Gengiv ikke Private Beskeder herinde</li>\n"
@@ -2619,47 +2555,27 @@ msgid ""
 "</ul>\n"
 "\n"
 "<h3>Indlæggets overskrift</h3>\n"
-"<p>Sørg for at dit indlæg har en forklarende overskrift, så de andre "
-"deltagere alene derfra kan se, om emnet er relevant for dem.</p>\n"
+"<p>Sørg for at dit indlæg har en forklarende overskrift, så de andre deltagere alene derfra kan se, om emnet er relevant for dem.</p>\n"
 "\n"
 "<h3>Hold dig til emnet</h3>\n"
-"<p>Det er fornuftigt at holde sig til emnerne for diskussionerne. "
-"Diskussionerne skulle meget nødigt ende i personlige slagsmål. Det er "
-"ødelæggende for debatmiljøet og for mulighederne for at føre nogle "
-"ordentlige diskussioner.</p>\n"
+"<p>Det er fornuftigt at holde sig til emnerne for diskussionerne. Diskussionerne skulle meget nødigt ende i personlige slagsmål. Det er ødelæggende for debatmiljøet og for mulighederne for at føre nogle ordentlige diskussioner.</p>\n"
 "\n"
 "<h3>Kort og præcist</h3>\n"
-"<p>Det er godt at kunne udtrykke sig kortfattet i sit indlæg! Lange, "
-"snørklede indlæg kan virke dræbende på koncentrationen, når man læser mange "
-"indlæg. Derfor skal man tilstræbe at være meget præcis, samtidig med at man "
-"udtaler sig så kort, som man synes det er muligt, uden at virke uhøflig.</"
-"p>\n"
+"<p>Det er godt at kunne udtrykke sig kortfattet i sit indlæg! Lange, snørklede indlæg kan virke dræbende på koncentrationen, når man læser mange indlæg. Derfor skal man tilstræbe at være meget præcis, samtidig med at man udtaler sig så kort, som man synes det er muligt, uden at virke uhøflig.</p>\n"
 "\n"
 "<h3>Brug evt. e-mail til personlige opgør</h3>\n"
-"<p>Hvis du bliver stødt over noget, som nogen har skrevet om eller til dig i "
-"et diskussionsforum, kan du vælge at sende en e-mail direkte til "
-"vedkommende. Det er tit den bedste måde at udrede knuder og rette "
-"misforståelser på.</p>\n"
+"<p>Hvis du bliver stødt over noget, som nogen har skrevet om eller til dig i et diskussionsforum, kan du vælge at sende en e-mail direkte til vedkommende. Det er tit den bedste måde at udrede knuder og rette misforståelser på.</p>\n"
 "\n"
 "<h3>Sarkasme og ironi</h3>\n"
-"<p>Vær forsigtig med at bruge sarkasme og ironi i dine diskussions-indlæg. "
-"Hvis du er ironisk, så husk at markere det tydeligt, hvis du vil være sikker "
-"på ikke at blive misforstået.</p>\n"
+"<p>Vær forsigtig med at bruge sarkasme og ironi i dine diskussions-indlæg. Hvis du er ironisk, så husk at markere det tydeligt, hvis du vil være sikker på ikke at blive misforstået.</p>\n"
 "\n"
 "<h3>Opfør dig korrekt!</h3>\n"
-"<p>Høflighed er gratis og letter omgangen betydeligt. Når du skriver et "
-"indlæg, læs det lige igennem, før du sender det, og spørg dig selv, hvordan "
-"du selv ville reagere på et sådant indlæg! Breve afsendt i et øjebliks "
-"ophidselse forværrer som regel blot situationen og fortrydes ofte senere!</"
-"p>\n"
+"<p>Høflighed er gratis og letter omgangen betydeligt. Når du skriver et indlæg, læs det lige igennem, før du sender det, og spørg dig selv, hvordan du selv ville reagere på et sådant indlæg! Breve afsendt i et øjebliks ophidselse forværrer som regel blot situationen og fortrydes ofte senere!</p>\n"
 "\n"
 "<h3>Anonyme brugerprofiler</h3>\n"
-"<p>Anonyme brugerprofiler accepteres, så længe ophavsmandens identitet er "
-"kend af Biblnet.dk's administrationsgruppe. For anonyme brugerprofiler "
-"gælder samme retningslinier, som for alle andre.</p>\n"
+"<p>Anonyme brugerprofiler accepteres, så længe ophavsmandens identitet er kend af Biblnet.dk's administrationsgruppe. For anonyme brugerprofiler gælder samme retningslinier, som for alle andre.</p>\n"
 "\n"
-"<h2>Ved grove eller gentagne overtrædelser af disse regler, vil "
-"administratorerne kunne slette indlæg eller brugerprofil uden varsel.</h2>\n"
+"<h2>Ved grove eller gentagne overtrædelser af disse regler, vil administratorerne kunne slette indlæg eller brugerprofil uden varsel.</h2>\n"
 "\n"
 msgstr ""
 
@@ -2669,19 +2585,17 @@ msgstr ""
 
 #: templates/about/what_next.html:37
 #, python-format
-msgid ""
-"Start by <a href=\"%(signup_url)s\">signing up</a> and <a href=\"%(login_url)"
-"s\">logging in</a>."
+msgid "Start by <a href=\"%(signup_url)s\">signing up</a> and <a href=\"%(login_url)s\">logging in</a>."
 msgstr ""
 
 #: templates/account/base.html:7 templates/elsewhere/base.html:6
 #: templates/profiles/base.html:18 templates/profiles/profiles.html:12
 msgid "Profiles"
-msgstr ""
+msgstr "Profiler"
 
 #: templates/account/base.html:12
 msgid "E-Mail Addresses"
-msgstr ""
+msgstr "Email-adresser"
 
 #: templates/account/base.html:13
 msgid "OpenID Associations"
@@ -2693,7 +2607,7 @@ msgstr ""
 #: templates/account/password_reset_from_key.html:8
 #: templates/profiles/profile.html:35
 msgid "Change Password"
-msgstr ""
+msgstr "Skift adgangskode"
 
 #: templates/account/base.html:17 templates/profiles/profile.html:37
 msgid "Set Password"
@@ -2707,7 +2621,7 @@ msgstr ""
 #: templates/avatar/change.html.py:9 templates/avatar/confirm_delete.html:5
 #: templates/avatar/confirm_delete.html:8
 msgid "Avatar"
-msgstr ""
+msgstr "Avatar"
 
 #: templates/account/base.html:25 templates/account/other_services.html:5
 #: templates/account/other_services.html:9
@@ -2716,77 +2630,75 @@ msgstr ""
 
 #: templates/account/email.html:6 templates/account/email.html.py:9
 msgid "Account"
-msgstr ""
+msgstr "Konto"
 
 #: templates/account/email.html:11
 msgid "Email Addresses"
-msgstr ""
+msgstr "Email-adresser"
 
 #: templates/account/email.html:20
 msgid "verified"
-msgstr ""
+msgstr "verificeret"
 
 #: templates/account/email.html:22
 msgid "primary"
-msgstr ""
+msgstr "primær"
 
 #: templates/account/email.html:29
 msgid "make primary"
-msgstr ""
+msgstr "gør til den primære"
 
 #: templates/account/email.html:34
 msgid "unverified"
-msgstr ""
+msgstr "ikke verificeret"
 
 #: templates/account/email.html:40
 msgid "re-send verification email"
-msgstr ""
+msgstr "send en ny verifikations-email"
 
 #: templates/account/email.html:50
 msgid "remove"
-msgstr ""
+msgstr "fjern"
 
 #: templates/account/email.html:57
 msgid "None"
-msgstr ""
+msgstr "Ingen"
 
 #: templates/account/email.html:57
-msgid ""
-"You should really add one so you can receive notifications, reset your "
-"password if you forget it, etc."
-msgstr ""
+msgid "You should really add one so you can receive notifications, reset your password if you forget it, etc."
+msgstr "Du bør tilføje en email, så du kan modtage meddelelser og nulstille din adgangskode hvis du glemmer den, osv."
 
 #: templates/account/email.html:60
 msgid "Add Email Address"
-msgstr ""
+msgstr "Tilføj email-adresse"
 
 #: templates/account/login.html:10 templates/account/signup.html:14
 msgid "Log In"
-msgstr ""
+msgstr "Log ind"
 
 #: templates/account/login.html:13 templates/account/password_reset.html:12
 #: templates/account/password_reset_done.html:11
 msgid "Note"
-msgstr ""
+msgstr "Obs"
 
 #: templates/account/login.html:13 templates/account/password_reset.html:12
 #: templates/account/password_reset_done.html:11
 #, python-format
 msgid "you are already logged in as %(user)s."
-msgstr ""
+msgstr "du er allerede logget ind som %(user)s."
 
 #: templates/account/login.html:17
 #, python-format
 msgid "Don't have an account? <a href=\"%(signup_url)s\">Sign up</a>!"
-msgstr ""
+msgstr "Har du ikke en konto? <a href=\"%(signup_url)s\">Bliv medlem</a>!"
 
 #: templates/account/login.html:25 templates/account/login.html.py:51
 msgid "Log in &raquo;"
-msgstr ""
+msgstr "Log ind &raquo;"
 
 #: templates/account/login.html:29
 msgid "Forgot password?"
-msgstr ""
+msgstr "Glemt adgangskode?"
 
 #: templates/account/login.html:32
 msgid "Or sign in with your OpenID"
@@ -2794,14 +2706,12 @@ msgstr ""
 
 #: templates/account/login.html:57
 #, python-format
-msgid ""
-"If you have any trouble logging in to your account, contact us at <a href="
-"\"mailto:%(contact_email)s\">%(contact_email)s</a>."
-msgstr ""
+msgid "If you have any trouble logging in to your account, contact us at <a href=\"mailto:%(contact_email)s\">%(contact_email)s</a>."
+msgstr "Hvis du oplever problemer med at logge ind, så skriv til os på <a href=\"mailto:%(contact_email)s\">%(contact_email)s</a>."
 
 #: templates/account/other_services.html:10
 msgid "Twitter"
-msgstr ""
+msgstr "Twitter"
 
 #: templates/account/other_services.html:14
 msgid "You have already authorized a twitter account."
@@ -2817,102 +2727,87 @@ msgstr ""
 
 #: templates/account/password_change.html:14
 msgid "Change password"
-msgstr ""
+msgstr "Skift adgangskode"
 
 #: templates/account/password_reset.html:6
 #: templates/account/password_reset.html:10
 #: templates/account/password_reset_done.html:5
 #: templates/account/password_reset_done.html:8
 msgid "Password Reset"
-msgstr ""
+msgstr "Nulstil adgangskode"
 
 #: templates/account/password_reset.html:15
-msgid ""
-"Forgotten your password? Enter your e-mail address below, and we'll reset "
-"your password and e-mail the new one to you."
-msgstr ""
+msgid "Forgotten your password? Enter your e-mail address below, and we'll reset your password and e-mail the new one to you."
+msgstr "Har du glemt din adgangskode? Skriv din email-adresse i feltet nedenfor, og vi nulstiller adgangskoden og sender dig en ny."
 
 #: templates/account/password_reset.html:21
 msgid "Reset my password"
-msgstr ""
+msgstr "Nulstil min adgangskode"
 
 #: templates/account/password_reset.html:26
 #, python-format
-msgid ""
-"If you have any trouble resetting your password, contact us at <a href="
-"\"mailto:%(contact_email)s\">%(contact_email)s</a>."
-msgstr ""
+msgid "If you have any trouble resetting your password, contact us at <a href=\"mailto:%(contact_email)s\">%(contact_email)s</a>."
+msgstr "Hvis du oplever problemer med at nulstille din adgangskode, så skriv til os på <a href=\"mailto:%(contact_email)s\">%(contact_email)s</a>."
 
 #: templates/account/password_reset_done.html:14
 #, python-format
-msgid ""
-"We have sent you an e-mail to <b>%(email)s</b>. If you do not receive it "
-"within a few minutes, contact us at <a href=\"mailto:%(contact_email)s\">%"
-"(contact_email)s</a>."
-msgstr ""
+msgid "We have sent you an e-mail to <b>%(email)s</b>. If you do not receive it within a few minutes, contact us at <a href=\"mailto:%(contact_email)s\">%(contact_email)s</a>."
+msgstr "Vi har sendt dig en email på <b>%(email)s</b>. Hvis du ikke modtager den indenfor nogle få minutter, så skriv til os på <a href=\"mailto:%(contact_email)s\">%(contact_email)s</a>."
 
 #: templates/account/password_reset_from_key.html:16
 msgid "change password"
-msgstr ""
+msgstr "skift adgangskode"
 
 #: templates/account/signup.html:6
 msgid "Signup"
-msgstr ""
+msgstr "Oprettelse"
 
 #: templates/account/signup.html:9
 msgid "Sign Up"
-msgstr ""
+msgstr "Bliv medlem"
 
 #: templates/account/signup.html:12
 msgid "You are already logged in."
-msgstr ""
+msgstr "Du er allerede logget ind."
 
 #: templates/account/signup.html:14
 msgid "Already have an account?"
-msgstr ""
+msgstr "Er du allerede medlem?"
 
 #: templates/account/signup.html:20
 msgid "Sign Up &raquo;"
-msgstr ""
+msgstr "Bliv medlem &raquo;"
 
 #: templates/account/signup.html:27
 #, python-format
-msgid ""
-"By clicking \"Sign Up\", you are indicating that you have read and agree to "
-"the <a href=\"%(terms_url)s\" target='_blank'>Terms of Use</a>."
-msgstr ""
+msgid "By clicking \"Sign Up\", you are indicating that you have read and agree to the <a href=\"%(terms_url)s\" target='_blank'>Terms of Use</a>."
+msgstr "Ved at klikke \"Bliv medlem\", bekræfter du at have læst og accepteret <a href=\"%(terms_url)s\" target='_blank'>Betingelserne</a>."
 
 #: templates/account/signup.html:29
 #, python-format
-msgid ""
-"If you have any trouble creating your account, contact us at <a href="
-"\"mailto:%(contact_email)s\">%(contact_email)s</a>."
-msgstr ""
+msgid "If you have any trouble creating your account, contact us at <a href=\"mailto:%(contact_email)s\">%(contact_email)s</a>."
+msgstr "Hvis du oplever problemer i forbindelse med indmeldelsen, så skriv til os på <a href=\"mailto:%(contact_email)s\">%(contact_email)s</a>."
 
 #: templates/avatar/change.html:10
 msgid "Your current avatar:"
-msgstr ""
+msgstr "Din nuværende avatar:"
 
 #: templates/avatar/change.html:13
-msgid ""
-"Your avatar is currently the standard avatar, but you can upload a custom "
-"avatar simply by using the form below."
-msgstr ""
+msgid "Your avatar is currently the standard avatar, but you can upload a custom avatar simply by using the form below."
+msgstr "Din avatar er lige nu standard-avataren, men du kan tilføje din egen ved at benytte feltet nedenfor."
 
 #: templates/avatar/change.html:20
 msgid "Choose new Default"
-msgstr ""
+msgstr "Vælg ny standard"
 
 #: templates/avatar/change.html:23
 #, python-format
-msgid ""
-"Don't like these avatars? You can <a href=\"%(avatar_delete_url)s\">choose "
-"which ones to delete</a>."
-msgstr ""
+msgid "Don't like these avatars? You can <a href=\"%(avatar_delete_url)s\">choose which ones to delete</a>."
+msgstr "Vil du af med dine avatarer? Så kan du <a href=\"%(avatar_delete_url)s\">slette nogle af dem</a>."
 
 #: templates/avatar/change.html:25
 msgid "Upload an Avatar:"
-msgstr ""
+msgstr "Upload en avatar"
 
 #: templates/avatar/change.html:27
 msgid "Avatar Image"
@@ -2924,26 +2819,26 @@ msgstr ""
 
 #: templates/django_dms/detail.html:8
 msgid "Upload user"
-msgstr ""
+msgstr "Oprettet af bruger"
 
 #: templates/django_dms/detail.html:9 templates/messages/view.html:15
 #: templates/profiles/profiles.html:25 templates/tribes/tribe_members.html:107
 #: templates/wiki/history.html:22 templates/wiki/index.html:38
 msgid "Date"
-msgstr ""
+msgstr "Dato"
 
 #: templates/django_dms/detail.html:9
 msgid "Upload date"
-msgstr ""
+msgstr "Upload dato"
 
 #: templates/django_dms/detail.html:18 templates/django_dms/list.html:109
 #: templates/tribes/tribe.html:154
 msgid "Download"
-msgstr ""
+msgstr "Download"
 
 #: templates/django_dms/detail.html:18
 msgid "Download document"
-msgstr ""
+msgstr "Download dokument"
 
 #: templates/django_dms/list.html:28 templates/django_dms/list.html.py:31
 #: templates/django_dms/list.html:33 templates/elsewhere/base.html:68
@@ -2955,23 +2850,23 @@ msgstr ""
 #: templates/tribes/tribes.html.py:49 templates/tribes/tribes.html:51
 #: templates/tribes/your_tribes.html:14 templates/wiki/index.html:26
 msgid "Name"
-msgstr ""
+msgstr "Navn"
 
 #: templates/django_dms/list.html:39 templates/tags/index.html:70
 #: templates/tribes/tribe.html:111
 msgid "Author"
-msgstr ""
+msgstr "Ophav"
 
 #: templates/django_dms/list.html:53 templates/tribes/tribe.html:111
 msgid "Score"
-msgstr ""
+msgstr "Score"
 
 #: templates/django_dms/list.html:56 templates/django_dms/list.html.py:59
 #: templates/django_dms/list.html:61 templates/tags/index.html:30
 #: templates/tribes/tribes.html:79 templates/tribes/tribes.html.py:82
 #: templates/tribes/tribes.html:84
 msgid "Created"
-msgstr ""
+msgstr "Oprettet"
 
 #: templates/django_dms/list.html:73 templates/django_dms/list.html.py:76
 #: templates/django_dms/list.html:79 templates/django_dms/list.html.py:82
@@ -2985,31 +2880,31 @@ msgstr ""
 #: templates/tribes/tribe.html:140 templates/tribes/tribe.html.py:143
 #: templates/tribes/tribe.html:146 templates/tribes/tribe.html.py:148
 msgid "Filetype"
-msgstr ""
+msgstr "Filtype"
 
 #: templates/django_dms/list.html:121
 msgid "There are no documents yet"
-msgstr ""
+msgstr "Der er endnu ingen dokumenter"
 
 #: templates/django_dms/list.html:121
 msgid "upload a document"
-msgstr ""
+msgstr "Upload et dokument"
 
 #: templates/elsewhere/base.html:9
 msgid "Places to find you on the web"
-msgstr ""
+msgstr "Steder man kan finde dig på Nettet"
 
 #: templates/elsewhere/base.html:10
 msgid "Social Networks"
-msgstr ""
+msgstr "Sociale netværk"
 
 #: templates/elsewhere/base.html:12
 msgid "Social network"
-msgstr ""
+msgstr "Socialt netværk"
 
 #: templates/elsewhere/base.html:12
 msgid "Username or id"
-msgstr ""
+msgstr "Brugernavn eller ID"
 
 #: templates/elsewhere/base.html:38
 msgid "Instant Messengers"
@@ -3021,11 +2916,11 @@ msgstr ""
 
 #: templates/elsewhere/base.html:66
 msgid "Websites & Blogs"
-msgstr ""
+msgstr "Hjemmesider og Blogs"
 
 #: templates/elsewhere/base.html:68
 msgid "Link"
-msgstr ""
+msgstr "Link"
 
 #: templates/friends_app/contacts.html:6 templates/friends_app/contacts.html:9
 #: templates/messages/base.html:16
@@ -3058,9 +2953,7 @@ msgid "Invite someone new to join"
 msgstr ""
 
 #: templates/friends_app/invitations.html:14
-msgid ""
-"If you'd like to invite someone to join Pinax, you can enter their email "
-"address and a message for them below:"
+msgid "If you'd like to invite someone to join Pinax, you can enter their email address and a message for them below:"
 msgstr ""
 
 #: templates/friends_app/invitations.html:21
@@ -3101,26 +2994,26 @@ msgstr ""
 
 #: templates/messages/base.html:10
 msgid "Compose"
-msgstr ""
+msgstr "Skriv besked"
 
 #: templates/messages/base.html:12 templates/messages/outbox.html:16
 #: templates/messages/trash.html:16
 msgid "Sent"
-msgstr ""
+msgstr "Sendt"
 
 #: templates/messages/base.html:13
 msgid "Trash"
-msgstr ""
+msgstr "Papirkurv"
 
 #: templates/messages/inbox.html:9 templates/messages/outbox.html:7
 #: templates/messages/trash.html:10
 msgid "Sent Messages"
-msgstr ""
+msgstr "Sendte beskeder"
 
 #: templates/messages/inbox.html:10 templates/messages/outbox.html:10
 #: templates/messages/trash.html:7
 msgid "Deleted Messages"
-msgstr ""
+msgstr "Slettede beskeder"
 
 #: templates/messages/inbox.html:12 templates/messages/outbox.html:12
 #: templates/messages/trash.html:12
@@ -3130,79 +3023,77 @@ msgstr ""
 #: templates/messages/inbox.html:16 templates/messages/trash.html:16
 #: templates/messages/view.html:13
 msgid "Sender"
-msgstr ""
+msgstr "Afsender"
 
 #: templates/messages/inbox.html:16 templates/messages/outbox.html:16
 #: templates/messages/trash.html:16 templates/messages/view.html:16
 msgid "Subject"
-msgstr ""
+msgstr "Emne"
 
 #: templates/messages/inbox.html:16
 msgid "Received"
-msgstr ""
+msgstr "Modtaget"
 
 #: templates/messages/inbox.html:24
 msgid "New message"
-msgstr ""
+msgstr "Ny besked"
 
 #: templates/messages/inbox.html:27
 msgid "Replied message"
-msgstr ""
+msgstr "Besvaret besked"
 
 #: templates/messages/inbox.html:29
 msgid "Old message"
-msgstr ""
+msgstr "Læst besked"
 
 #: templates/messages/inbox.html:40 templates/messages/outbox.html:28
 #: templates/messages/view.html:28
 msgid "Delete message"
-msgstr ""
+msgstr "Slet besked"
 
 #: templates/messages/inbox.html:44
 msgid "There are no messages in your inbox..."
-msgstr ""
+msgstr "Der er ingen beskeder i din indbakke"
 
 #: templates/messages/outbox.html:16 templates/messages/view.html:14
 msgid "Recipient"
-msgstr ""
+msgstr "Modtager"
 
 #: templates/messages/outbox.html:22
 msgid "Sent message"
-msgstr ""
+msgstr "Sendt besked"
 
 #: templates/messages/outbox.html:32
 msgid "You have not sent any messages..."
-msgstr ""
+msgstr "Du har ikke sendt nogen beskeder..."
 
 #: templates/messages/trash.html:16
 msgid "Undelete"
-msgstr ""
+msgstr "Fortryd sletning"
 
 #: templates/messages/trash.html:22
 msgid "Deleted message"
-msgstr ""
+msgstr "Slettede beskeder"
 
 #: templates/messages/trash.html:28
 msgid "Undelete message"
-msgstr ""
+msgstr "Fortryd sletning"
 
 #: templates/messages/trash.html:32
 msgid "You do not have any deleted messages..."
-msgstr ""
+msgstr "Din papirkurv er tom..."
 
 #: templates/messages/trash.html:37
-msgid ""
-"Deleted Messages are removed from the trash at irregular intervals, don't "
-"rely on this feature for long-time storage."
-msgstr ""
+msgid "Deleted Messages are removed from the trash at irregular intervals, don't rely on this feature for long-time storage."
+msgstr "Papirkurven tømmes uden varsel. Brug derfor ikke papirkurven til at gemme gamle beskeder du gerne vil gemme."
 
 #: templates/messages/view.html:10
 msgid "View Message"
-msgstr ""
+msgstr "Vis Besked"
 
 #: templates/messages/view.html:24
 msgid "Reply"
-msgstr ""
+msgstr "Besvar"
 
 #: templates/notification/single.html:7 templates/notification/single.html:10
 msgid "Notice"
@@ -3267,7 +3158,7 @@ msgstr ""
 
 #: templates/photos/upload.html:14 templates/small_dms/upload.html:12
 msgid "Upload"
-msgstr ""
+msgstr "Upload"
 
 #: templates/photos/plugins/profiles/profile.html:5
 #: templates/tags/index.html:116
@@ -3280,28 +3171,28 @@ msgstr ""
 
 #: templates/profiles/affiliation_list.html:5
 msgid "Affiliations"
-msgstr ""
+msgstr "Tilhørsforhold"
 
 #: templates/profiles/base.html:10
 msgid "Your Profile"
-msgstr ""
+msgstr "Din Profil"
 
 #: templates/profiles/base.html:11 templates/profiles/profiles.html:9
 msgid "All Profiles"
-msgstr ""
+msgstr "Alle Profiler"
 
 #: templates/profiles/profile.html:8 templates/profiles/profile.html.py:25
 #, python-format
 msgid "Profile for %(other_user)s"
-msgstr ""
+msgstr "Profil for %(other_user)s"
 
 #: templates/profiles/profile.html:33
 msgid "Change avatar"
-msgstr ""
+msgstr "Skift avatar"
 
 #: templates/profiles/profile.html:43
 msgid "Edit profile"
-msgstr ""
+msgstr "Rediger profil"
 
 #: templates/profiles/profile.html:53
 msgid "Followers"
@@ -3321,46 +3212,44 @@ msgstr ""
 
 #: templates/profiles/profile.html:86 templates/tribes/tribe_admin.html:28
 msgid "update"
-msgstr ""
+msgstr "opdater"
 
 #: templates/profiles/profile.html:97
 #, python-format
-msgid ""
-"<a href=\"%(login_url)s?next=/profiles/%(other_user)s/\">Log in</a> to see "
-"this person's profile."
-msgstr ""
+msgid "<a href=\"%(login_url)s?next=/profiles/%(other_user)s/\">Log in</a> to see this person's profile."
+msgstr "<a href=\"%(login_url)s?next=/profiles/%(other_user)s/\">Log ind</a> for at se denne brugers profil."
 
 #: templates/profiles/profile_info.html:21
 msgid "Phone"
-msgstr ""
+msgstr "Telefon"
 
 #: templates/profiles/profile_info.html:28
 msgid "Address"
-msgstr ""
+msgstr "Adresse"
 
 #: templates/profiles/profile_info.html:42
 msgid "Message"
-msgstr ""
+msgstr "Besked"
 
 #: templates/profiles/profile_info.html:42
 msgid "Biblnet-message"
-msgstr ""
+msgstr "Biblnet-besked"
 
 #: templates/profiles/profile_info.html:43
 msgid "Send a Biblnet-message"
-msgstr ""
+msgstr "Send en privat besked"
 
 #: templates/profiles/profile_info.html:48
 msgid "Places to find me online:"
-msgstr ""
+msgstr "Steder at finde mig på Nettet:"
 
 #: templates/profiles/profile_info.html:48
 msgid "edit"
-msgstr ""
+msgstr "rediger"
 
 #: templates/profiles/profile_info.html:74
 msgid "Add places to find you online"
-msgstr ""
+msgstr "Tilføj steder man kan finde dig på Nettet"
 
 #: templates/profiles/profile_info.html:79
 msgid "Music"
@@ -3372,319 +3261,315 @@ msgstr ""
 
 #: templates/profiles/profile_right_panel.html:15
 msgid "Moderator"
-msgstr ""
+msgstr "Moderator"
 
 #: templates/profiles/profile_right_panel.html:18
 #: templates/profiles/profile_right_panel.html:45
 #: templates/tribes/tribe.html:35 templates/tribes/your_tribes.html:23
 msgid "leave tribe"
-msgstr ""
+msgstr "forlad gruppe"
 
 #: templates/profiles/profile_right_panel.html:18
 #: templates/profiles/profile_right_panel.html:45
 #: templates/tribes/your_tribes.html:23
 msgid "Leave tribe"
-msgstr ""
+msgstr "Forlad gruppe"
 
 #: templates/profiles/profile_right_panel.html:34
 msgid "Your Documents"
-msgstr ""
+msgstr "Dine dokumenter"
 
 #: templates/profiles/profile_right_panel.html:43
 #: templates/profiles/profile_right_panel.html:88
 #: templates/tribes/your_tribes.html:21
 msgid "Administrator"
-msgstr ""
+msgstr "Administrator"
 
 #: templates/profiles/profile_right_panel.html:60
 msgid "Your Friends"
-msgstr ""
+msgstr "Dine venner"
 
 #: templates/profiles/profile_right_panel.html:74
-msgid ""
-"None. You should look at the list of <a href=\"/profiles/\">profiles</a> and "
-"see if there's anyone you know."
-msgstr ""
+msgid "None. You should look at the list of <a href=\"/profiles/\">profiles</a> and see if there's anyone you know."
+msgstr "Ingen. Kig på listen over <a href=\"/profiles/\">profiler</a> og se om der er nogen du kender."
 
 #: templates/profiles/profile_right_panel.html:78
 #, python-format
 msgid "%(other_user)s's Tribes"
-msgstr ""
+msgstr "%(other_user)s's grupper"
 
 #: templates/profiles/profile_right_panel.html:96
 msgid "Not yet a member of any tribes."
-msgstr ""
+msgstr "Endnu ikke medlem af nogen grupper"
 
 #: templates/profiles/profile_right_panel.html:101
 #, python-format
 msgid "%(other_user)s's Friends"
-msgstr ""
+msgstr "%(other_user)s's venner"
 
 #: templates/profiles/profiles.html:23 templates/tribes/tribe_members.html:107
 #: templates/tribes/tribe_members.html:119 templates/wiki/index.html:26
 #: templates/wiki/index.html.py:38
 msgid "Order by:"
-msgstr ""
+msgstr "Sorter efter:"
 
 #: templates/profiles/profiles.html:34
 msgid "Profiles by username"
-msgstr ""
+msgstr "Profiler efter brugernavn"
 
 #: templates/profiles/profiles.html:45
 msgid "Profiles by sign up-date"
-msgstr ""
+msgstr "Profiler efter indmeldelsesdato"
 
 #: templates/profiles/profiles.html:47 templates/tribes/tribe_members.html:121
 #: templates/wiki/index.html:29
 msgid "MONTH_DAY_FORMAT"
-msgstr ""
+msgstr "MONTH_DAY_FORMAT"
 
 #: templates/schedule/_create_event_options.html:3
 #: templates/schedule/calendar_week.html:29
 msgid "Add Event"
-msgstr ""
+msgstr "Tilføj begivenhed"
 
 #: templates/schedule/_event_options.html:9
 #: templates/schedule/_event_options.html:13
 #: templates/schedule/_event_options.html:18
 msgid "Edit Event"
-msgstr ""
+msgstr "Rediger begivenhed"
 
 #: templates/schedule/_event_options.html:29
 #: templates/schedule/_event_options.html:33
 #: templates/schedule/_event_options.html:38
 msgid "Delete Event"
-msgstr ""
+msgstr "Slet begivenhed"
 
 #: templates/schedule/_prevnext.html:6
 msgid "Previous"
-msgstr ""
+msgstr "Tidligere"
 
 #: templates/schedule/_prevnext.html:10
 msgid "Next"
-msgstr ""
+msgstr "Senere"
 
 #: templates/schedule/base.html:44 templates/schedule/base.html.py:50
 #: templates/schedule/event_form_base.html:57
 #: templates/schedule/event_form_base.html:63 templates/tribes/base.html:16
 #: templates/wiki/base.html:15
 msgid "Next events for"
-msgstr ""
+msgstr "Kommende begivenheder i "
 
 #: templates/schedule/base.html:46 templates/schedule/base.html.py:52
 #: templates/schedule/event_form_base.html:59
 #: templates/schedule/event_form_base.html:65 templates/tribes/base.html:18
 #: templates/wiki/base.html:17
 msgid "Add new event"
-msgstr ""
+msgstr "Tilføj ny begivenhed"
 
 #: templates/schedule/calendar_day.html:11
 msgid "Week"
-msgstr ""
+msgstr "Uge"
 
 #: templates/schedule/calendar_day.html:12
 msgid "Month"
-msgstr ""
+msgstr "Måned"
 
 #: templates/schedule/calendar_day.html:13
 msgid "Three Months"
-msgstr ""
+msgstr "Tre måneder"
 
 #: templates/schedule/calendar_day.html:14
 msgid "Year"
-msgstr ""
+msgstr "År"
 
 #: templates/schedule/calendar_day.html:17
 msgid "Today"
-msgstr ""
+msgstr "I dag"
 
 #: templates/schedule/calendar_month.html:11
 #: templates/schedule/calendar_week.html:13
 msgid "Three Month Calendar"
-msgstr ""
+msgstr "Kvartalskalender"
 
 #: templates/schedule/calendar_month.html:12
 #: templates/schedule/calendar_tri_month.html:11
 #: templates/schedule/calendar_week.html:14
 msgid "Full Year Calendar"
-msgstr ""
+msgstr "Årskalender"
 
 #: templates/schedule/calendar_month.html:15
 #: templates/schedule/calendar_tri_month.html:15
 msgid "This month"
-msgstr ""
+msgstr "Denne måned"
 
 #: templates/schedule/calendar_tri_month.html:10
 #: templates/schedule/calendar_week.html:12
 msgid "Monthly Calendar"
-msgstr ""
+msgstr "Månedskalender"
 
 #: templates/schedule/calendar_year.html:11
 msgid "Current Month Calendar"
-msgstr ""
+msgstr "Denne måned's kalender"
 
 #: templates/schedule/calendar_year.html:12
 msgid "Current Year Calendar"
-msgstr ""
+msgstr "Dette år's kalender"
 
 #: templates/schedule/cancel_occurrence.html:8
 msgid "Delete occurrence"
-msgstr ""
+msgstr "Slet forekomst"
 
 #: templates/schedule/cancel_occurrence.html:9
 msgid "Are you sure you want to cancel this occurrence?"
-msgstr ""
+msgstr "Er du sikker på at du ønsker at slette denne forekomst?"
 
 #: templates/schedule/create_event.html:8
 msgid "Create or change event"
-msgstr ""
+msgstr "Opret eller rediger begivenhed"
 
 #: templates/schedule/delete_event.html:8
 msgid "Delete event"
-msgstr ""
+msgstr "Slet begivenhed"
 
 #: templates/schedule/delete_event.html:9
 msgid "Are you sure you want to delete this event?"
-msgstr ""
+msgstr "Er du sikker på at du ønsker at slette denne begivenhed?"
 
 #: templates/schedule/edit_occurrence.html:8
 msgid "Create or change occurrence"
-msgstr ""
+msgstr "Opret eller rediger forekomst"
 
 #: templates/schedule/event.html:29 templates/schedule/occurrence.html:30
 msgid "Reoccurs"
-msgstr ""
+msgstr "Gentages"
 
 #: templates/schedule/event.html:31
 msgid "until"
-msgstr ""
+msgstr "indtil"
 
 #: templates/schedule/event.html:37
 msgid "Created by"
-msgstr ""
+msgstr "Oprettet af"
 
 #: templates/schedule/event.html:49 templates/schedule/occurrence.html:40
 msgid "Description"
-msgstr ""
+msgstr "Beskrivelse"
 
 #: templates/schedule/event.html:53 templates/schedule/occurrence.html:44
 msgid "There's no further description of this event..."
-msgstr ""
+msgstr "Der er ikke nogen beskrivelse af denne begivenhed..."
 
 #: templates/search/search.html:5 templates/search/search.html.py:8
 msgid "Search results"
-msgstr ""
+msgstr "Søgeresultater"
 
 #: templates/sepow/get_tribe_calendar.html:11
 msgid "No events coming up..."
-msgstr ""
+msgstr "Ingen kommende begivenheder..."
 
 #: templates/sepow/latest_updates.html:15
 #: templates/sepow/latest_updates.html:24
 msgid "in"
-msgstr ""
+msgstr "i"
 
 #: templates/sepow/latest_updates.html:25
 msgid "replied to"
-msgstr ""
+msgstr "besvarede"
 
 #: templates/sepow/tagcloud.html:5 templates/sepow/tagcloud.html.py:8
 msgid "Tag cloud"
-msgstr ""
+msgstr "Tag cloud"
 
 #: templates/small_dms/dms_detail.html:11 templates/small_dms/dms_list.html:31
 #: templates/tribes/topics.html:47 templates/tribes/tribe.html:184
 #: templates/tribes/tribe_members.html:137 templates/wiki/index.html:51
 #: templates/wiki/view.html:65
 msgid "This is a private group!"
-msgstr ""
+msgstr "Dette er en privat gruppe!"
 
 #: templates/small_dms/dms_list.html:8
 #, python-format
 msgid "Docs for %(tribe)s"
-msgstr ""
+msgstr "Dokumentbank for %(tribe)s"
 
 #: templates/small_dms/dms_list.html:12
 msgid "Docs for"
-msgstr ""
+msgstr "Dokumentbank for"
 
 #: templates/small_dms/dms_list.html:16
 msgid "Upload a new document"
-msgstr ""
+msgstr "Upload et nyt dokument"
 
 #: templates/small_dms/dms_list.html:20 templates/tribes/topics.html:23
 #: templates/tribes/tribe.html:38
 msgid "join tribe"
-msgstr ""
+msgstr "Tilslut dig gruppen"
 
 #: templates/small_dms/dms_list.html:26
 #, python-format
-msgid ""
-"Please <a href=\"%(login_url)s?next=%(tribe_url)sdms\">log in</a> to upload "
-"or download documents."
-msgstr ""
+msgid "Please <a href=\"%(login_url)s?next=%(tribe_url)sdms\">log in</a> to upload or download documents."
+msgstr "Du skal <a href=\"%(login_url)s?next=%(tribe_url)sdms\">logge ind</a> for at kunne uploade og downloade dokumenter."
 
 #: templates/small_dms/edit.html:11
 msgid "Update"
-msgstr ""
+msgstr "Opdater"
 
 #: templates/tags/index.html:17
 #, python-format
 msgid "Items tagged with \"%(tag)s\""
-msgstr ""
+msgstr "Entiteter tagget med \"%(tag)s\""
 
 #: templates/tags/index.html:20
 msgid "Tag:"
-msgstr ""
+msgstr "Tag:"
 
 #: templates/tags/index.html:44 templates/tribes/topic_item.html:8
 #: templates/tribes/topics.html:33 templates/tribes/tribe.html:67
 msgid "Topic"
-msgstr ""
+msgstr "Tråd"
 
 #: templates/tags/index.html:44 templates/tribes/topics.html:33
 #: templates/tribes/tribe.html:67
 msgid "Started by"
-msgstr ""
+msgstr "Startet af"
 
 #: templates/tags/index.html:44 templates/tribes/topics.html:33
 #: templates/tribes/tribe.html:67
 msgid "Views"
-msgstr ""
+msgstr "Visninger"
 
 #: templates/tags/index.html:44 templates/tribes/topics.html:33
 #: templates/tribes/tribe.html:67
 msgid "Replies"
-msgstr ""
+msgstr "Svar"
 
 #: templates/tags/index.html:44 templates/tribes/topics.html:33
 #: templates/tribes/tribe.html:67
 msgid "Latest reply"
-msgstr ""
+msgstr "Seneste svar"
 
 #: templates/tags/index.html:55 templates/tribes/tribe.html:78
 #: templates/wiki/plugins/profiles/profile.html:4
 #: templates/wiki/profiles/profile.html:4
 msgid "Wiki Articles"
-msgstr ""
+msgstr "Wiki-artikler"
 
 #: templates/tags/index.html:57 templates/tribes/tribe.html:89
 #: templates/wiki/index.html:31 templates/wiki/index.html.py:40
 msgid "Latest editor"
-msgstr ""
+msgstr "Seneste redigeret af"
 
 #: templates/tags/index.html:78
 msgid "Unknown filetype"
-msgstr ""
+msgstr "Ukendt filtype"
 
 #: templates/tags/index.html:93
 msgid "Bookmarks"
-msgstr ""
+msgstr "Bogmærker"
 
 #: templates/tags/index.html:131
 #, python-format
 msgid "No further items matching <i>%(tag)s</i>"
-msgstr ""
+msgstr "Ingen yderligere entiteter matcher <i>%(tag)s</i>"
 
 #: templates/threadedcomments/comments.html:20
 #: templates/threadedcomments/comments.html:79
@@ -3692,352 +3577,340 @@ msgstr ""
 #: templates/threadedcomments/preview_comment.html:50
 #: templates/tribes/topic.html:98
 msgid "Tribe administrator"
-msgstr ""
+msgstr "Gruppeadministrator"
 
 #: templates/threadedcomments/comments.html:38
 msgid "You can edit this post within 15 minutes of submission"
-msgstr ""
+msgstr "Du kan redigere dit indlæg indtil 15 minutter efter oprettelsen"
 
 #: templates/threadedcomments/comments.html:47
 msgid "Delete post"
-msgstr ""
+msgstr "Slet indlæg"
 
 #: templates/threadedcomments/comments.html:59
 msgid "Are you sure you wish to delete this comment?"
-msgstr ""
+msgstr "Er du sikker på at du ønsker at slette dette indlæg?"
 
 #: templates/threadedcomments/comments.html:86
 msgid "minutes ago"
-msgstr ""
+msgstr "minutter siden"
 
 #: templates/threadedcomments/comments.html:101
 msgid "Submit Comment"
-msgstr ""
+msgstr "Send indlæg"
 
 #: templates/threadedcomments/comments.html:102
 msgid "Rich Text Formating"
-msgstr ""
+msgstr "Tekstværktøjer"
 
 #: templates/threadedcomments/preview_comment.html:14
 #: templates/threadedcomments/preview_comment.html:17
 msgid "Preview of your post"
-msgstr ""
+msgstr "Preview af dit indlæg"
 
 #: templates/threadedcomments/preview_comment.html:31
 #: templates/threadedcomments/preview_comment.html:57
 msgid "0 minutes ago"
-msgstr ""
+msgstr "0 minutter siden"
 
 #: templates/tribes/add_post.html:20
 msgid "Post Response"
-msgstr ""
+msgstr "Send svar"
 
 #: templates/tribes/base.html:20
 msgid "This calendar is private..."
-msgstr ""
+msgstr "Dette er en privat kalender..."
 
 #: templates/tribes/create.html:11 templates/tribes/create.html.py:14
 msgid "Create Tribe"
-msgstr ""
+msgstr "Opret gruppe"
 
 #: templates/tribes/create.html:16 templates/tribes/tribes.html:21
 msgid "A <b>tribe</b> is a group of people with some common interest."
-msgstr ""
+msgstr "En <b>gruppe</b> kan udspringe af en hvilken som helst form for interessefælleskab."
 
 #: templates/tribes/create.html:23 templates/wiki/view.html:30
 msgid "Create"
-msgstr ""
+msgstr "Opret"
 
 #: templates/tribes/create.html:30 templates/tribes/tribes.html:28
 #, python-format
-msgid ""
-"<a href=\"%(signup_url)s\">Sign up</a> and <a href=\"%(login_url)s\">log in "
-"</a> to create your own tribe or join an existing one."
-msgstr ""
+msgid "<a href=\"%(signup_url)s\">Sign up</a> and <a href=\"%(login_url)s\">log in </a> to create your own tribe or join an existing one."
+msgstr "<a href=\"%(signup_url)s\">Bliv medlem</a> og <a href=\"%(login_url)s\">log ind</a> for at oprette og tilslutte dig eksisterende grupper."
 
 #: templates/tribes/create_topic.html:12
 msgid "New Topic in:"
-msgstr ""
+msgstr "Ny tråd i:"
 
 #: templates/tribes/create_topic.html:18
 msgid "Create New Topic"
-msgstr ""
+msgstr "Opret ny tråd"
 
 #: templates/tribes/topic.html:27
 msgid "unSticky topic"
-msgstr ""
+msgstr "unSticky tråd"
 
 #: templates/tribes/topic.html:29 templates/tribes/topic.html.py:76
 #: templates/tribes/topic_item.html:8
 msgid "Sticky topic"
-msgstr ""
+msgstr "Sticky tråd"
 
 #: templates/tribes/topic.html:37
 msgid "unSticky Topic"
-msgstr ""
+msgstr "unSticky tråden"
 
 #: templates/tribes/topic.html:39
 msgid "Make Topic Sticky"
-msgstr ""
+msgstr "Gør tråden sticky"
 
 #: templates/tribes/topic.html:47
 msgid "Reopen topic"
-msgstr ""
+msgstr "Genåbn tråden"
 
 #: templates/tribes/topic.html:49
 msgid "Close topic"
-msgstr ""
+msgstr "Lås tråden"
 
 #: templates/tribes/topic.html:57
 msgid "Reopen Topic"
-msgstr ""
+msgstr "Genåbn tråden"
 
 #: templates/tribes/topic.html:59
 msgid "Close Topic"
-msgstr ""
+msgstr "Lås tråden"
 
 #: templates/tribes/topic.html:76
-msgid ""
-"This is a sticky topic, which means that it will always appear at the top of "
-"the Message Board."
-msgstr ""
+msgid "This is a sticky topic, which means that it will always appear at the top of the Message Board."
+msgstr "Denne tråd er Sticky. Det betyder at den altid vil optræde øverst på opslagstavlen."
 
 #: templates/tribes/topic.html:80 templates/tribes/topic.html.py:150
 #: templates/tribes/topic_item.html:9
 msgid "Closed topic"
-msgstr ""
+msgstr "Tråden er låst"
 
 #: templates/tribes/topic.html:80 templates/tribes/topic.html.py:150
-msgid ""
-"The topic has been closed. It can only be reopened by a moderator of this "
-"group."
-msgstr ""
+msgid "The topic has been closed. It can only be reopened by a moderator of this group."
+msgstr "Denne tråd er låst. Den kan kun genåbnes af en moderator i gruppen."
 
 #: templates/tribes/topic.html:85
 msgid "Are you sure you wish to delete this topic? All posts will be lost..."
-msgstr ""
+msgstr "Er du sikker på at du ønsker at slette denne tråd? Alle indlæg vil gå tabt..."
 
 #: templates/tribes/topic.html:91
 msgid "Posts"
-msgstr ""
+msgstr "Indlæg"
 
 #: templates/tribes/topic.html:91
 msgid "Netiquette"
-msgstr ""
+msgstr "Netikette"
 
 #: templates/tribes/topic.html:112
 msgid "Edit post"
-msgstr ""
+msgstr "Rediger indlæg"
 
 #: templates/tribes/topic.html:115
 msgid "Delete Topic"
-msgstr ""
+msgstr "Slet tråd"
 
 #: templates/tribes/topic.html:146
 msgid "... This is a private group!"
-msgstr ""
+msgstr "Dette er en privat gruppe!"
 
 #: templates/tribes/topic.html:152
 msgid "You need to be a member of this group to reply."
-msgstr ""
+msgstr "Du skal være medlem af gruppen for at kunne skrive indlæg."
 
 #: templates/tribes/topic.html:155
 msgid "Back to Topic List for"
-msgstr ""
+msgstr "Tilbage til opslagstavlen for"
 
 #: templates/tribes/topics.html:8
 #, python-format
 msgid "Message Board for %(tribe_name)s"
-msgstr ""
+msgstr "Opslagstavle for %(tribe_name)s"
 
 #: templates/tribes/topics.html:16
 msgid "Message Board for"
-msgstr ""
+msgstr "Opslagstavle for"
 
 #: templates/tribes/topics.html:19 templates/tribes/tribe.html:58
 msgid "Start New Topic"
-msgstr ""
+msgstr "Opret ny tråd"
 
 #: templates/tribes/topics.html:29 templates/tribes/tribe.html:63
 #, python-format
-msgid ""
-"Please <a href=\"%(login_url)s?next=%(tribe_url)stopics\">log in</a> to "
-"start a topic."
-msgstr ""
+msgid "Please <a href=\"%(login_url)s?next=%(tribe_url)stopics\">log in</a> to start a topic."
+msgstr "Du skal <a href=\"%(login_url)s?next=%(tribe_url)stopics\">logge ind</a> for at kunne oprette en tråd."
 
 #: templates/tribes/topics.html:40
 msgid "There are no topics yet"
-msgstr ""
+msgstr "Der er endnu ingen tråde"
 
 #: templates/tribes/topics.html:40
 msgid "create a topic..."
-msgstr ""
+msgstr "opret en tråd..."
 
 #: templates/tribes/tribe.html:26
 msgid "Creator:"
-msgstr ""
+msgstr "Oprettet af:"
 
 #: templates/tribes/tribe.html:27
 msgid "Created:"
-msgstr ""
+msgstr "Oprettet:"
 
 #: templates/tribes/tribe.html:45
 #, python-format
 msgid "<a href=\"%(login_url)s?next=%(tribe_url)s\">Log in</a> to join tribe"
-msgstr ""
+msgstr "<a href=\"%(login_url)s?next=%(tribe_url)s\">Log ind</a> for at tilslutte dig gruppen"
 
 #: templates/tribes/tribe.html:49
 msgid "Welcome to"
-msgstr ""
+msgstr "Velkommen til"
 
 #: templates/tribes/tribe.html:55
 msgid "Discussion Topics"
-msgstr ""
+msgstr "Tråde"
 
 #: templates/tribes/tribe.html:74
 msgid "There have been no new topics or replies since your last visit"
-msgstr ""
+msgstr "Der er ingen nye tråde eller indlæg siden dit sidste besøg"
 
 #: templates/tribes/tribe.html:81
 msgid "Start New Article"
-msgstr ""
+msgstr "Opret ny artikel"
 
 #: templates/tribes/tribe.html:86
 #, python-format
-msgid ""
-"Please <a href=\"%(login_url)s?next=%(tribe_url)swiki\">log in</a> to create "
-"an article."
-msgstr ""
+msgid "Please <a href=\"%(login_url)s?next=%(tribe_url)swiki\">log in</a> to create an article."
+msgstr "Du skal <a href=\"%(login_url)s?next=%(tribe_url)swiki\">logge ind</a> for at kunne oprette en artikel."
 
 #: templates/tribes/tribe.html:96
 msgid "There have been no changes to the wiki since your last visit"
-msgstr ""
+msgstr "Der er ingen ændringer i wikien siden dit sidste besøg"
 
 #: templates/tribes/tribe.html:103
 msgid "Upload New Document"
-msgstr ""
+msgstr "Upload nyt dokument"
 
 #: templates/tribes/tribe.html:108
 #, python-format
-msgid ""
-"Please <a href=\"%(login_url)s?next=%(tribe_url)sdms\">log in</a> to upload "
-"a document."
-msgstr ""
+msgid "Please <a href=\"%(login_url)s?next=%(tribe_url)sdms\">log in</a> to upload a document."
+msgstr "Du skal <a href=\"%(login_url)s?next=%(tribe_url)sdms\">logge ind</a> for at kunne uploade dokumenter."
 
 #: templates/tribes/tribe.html:167
 msgid "There have been no new documents added since your last visit"
-msgstr ""
+msgstr "Der er ingen nye dokumenter siden dit sidste besøg"
 
 #: templates/tribes/tribe.html:172
 msgid "Tribe Photo Pool"
-msgstr ""
+msgstr "Gruppens fotosamling"
 
 #: templates/tribes/tribe.html:177
 #, python-format
 msgid "%(commentcount)s Comments "
-msgstr ""
+msgstr "%(commentcount)s indlæg"
 
 #: templates/tribes/tribe_admin.html:21
 msgid "Edit details"
-msgstr ""
+msgstr "Rediger gruppe"
 
 #: templates/tribes/tribe_admin.html:35
 msgid "Delete tribe"
-msgstr ""
+msgstr "Slet gruppe"
 
 #: templates/tribes/tribe_admin.html:37
 msgid "Delete Tribe"
-msgstr ""
+msgstr "Slet gruppe"
 
 #: templates/tribes/tribe_admin.html:41
 msgid "You are not the only member of the tribe so you can't delete the tribe."
-msgstr ""
+msgstr "Der er stadig andre medlemmer, og du kan derfor ikke slette gruppen."
 
 #: templates/tribes/tribe_members.html:24
 msgid "Members of "
-msgstr ""
+msgstr "Medlemmer af"
 
 #: templates/tribes/tribe_members.html:30
 msgid "Find members of this tribe to kick or promote"
-msgstr ""
+msgstr "Find medlemmer af denne gruppe du vil smide ud eller forfremme"
 
 #: templates/tribes/tribe_members.html:34
 #: templates/tribes/tribe_members.html:45
 msgid "Clear Search Terms"
-msgstr ""
+msgstr "Rens søgefelterne"
 
 #: templates/tribes/tribe_members.html:41
 msgid "Find users to add to this tribe"
-msgstr ""
+msgstr "Find brugere du vil tilføje til gruppen"
 
 #: templates/tribes/tribe_members.html:52
 msgid "Members to kick or promote"
-msgstr ""
+msgstr "Medlemmer du kan smide ud eller forfremme"
 
 #: templates/tribes/tribe_members.html:54
 msgid "Change member status"
-msgstr ""
+msgstr "Skift medlemsstatus"
 
 #: templates/tribes/tribe_members.html:54
 #: templates/tribes/tribe_members.html:75
 msgid "Kick"
-msgstr ""
+msgstr "Smid ud"
 
 #: templates/tribes/tribe_members.html:62
 msgid "Demote"
-msgstr ""
+msgstr "Degradere"
 
 #: templates/tribes/tribe_members.html:62
 msgid "Demote to normal member"
-msgstr ""
+msgstr "Degradere til normalt medlem"
 
 #: templates/tribes/tribe_members.html:67
 msgid "Promote"
-msgstr ""
+msgstr "Forfremme"
 
 #: templates/tribes/tribe_members.html:67
 msgid "Promote to moderator"
-msgstr ""
+msgstr "Forfremme til moderator"
 
 #: templates/tribes/tribe_members.html:75
 msgid "Kick from tribe"
-msgstr ""
+msgstr "Smid ud af gruppen"
 
 #: templates/tribes/tribe_members.html:85
 msgid "Users to add"
-msgstr ""
+msgstr "Brugere at tilføje"
 
 #: templates/tribes/tribe_members.html:93
 msgid "Invite"
-msgstr ""
+msgstr "Inviter"
 
 #: templates/tribes/tribe_members.html:93
 msgid "Add user to tribe"
-msgstr ""
+msgstr "Tilføj bruger til gruppen"
 
 #: templates/tribes/tribe_members.html:95
 msgid "Invite as moderator?"
-msgstr ""
+msgstr "Tilføj som moderator?"
 
 #: templates/tribes/tribe_members.html:106
 msgid "All members ordered by username"
-msgstr ""
+msgstr "Alle medlemmer sorteret efter brugernavn"
 
 #: templates/tribes/tribe_members.html:106
 msgid "Ordered by username"
-msgstr ""
+msgstr "Sorteret efter brugernavn"
 
 #: templates/tribes/tribe_members.html:118
 msgid "All members ordered by join date"
-msgstr ""
+msgstr "Alle medlemmer sorteret efter dato for tilslutning"
 
 #: templates/tribes/tribe_members.html:118
 msgid "Ordered by join date"
-msgstr ""
+msgstr "Sorteret efter dato for tilslutning"
 
 #: templates/wiki/base.html:19
 msgid "This calendar is private"
-msgstr ""
+msgstr "Denne kalender er privat"
 
 #: templates/wiki/changeset.html:29
 msgid "html."
@@ -4045,65 +3918,65 @@ msgstr ""
 
 #: templates/wiki/edit.html:17
 msgid "Edit Article"
-msgstr ""
+msgstr "Rediger artikel"
 
 #: templates/wiki/edit.html:23
 msgid "Save Article"
-msgstr ""
+msgstr "Gem artikel"
 
 #: templates/wiki/history.html:16
 msgid "History for article"
-msgstr ""
+msgstr "Artikel historik"
 
 #: templates/wiki/history.html:25
 msgid "Revert to..."
-msgstr ""
+msgstr "Genskab tidligere artikel..."
 
 #: templates/wiki/history.html:45
 msgid "Current Revision"
-msgstr ""
+msgstr "Nuværende version"
 
 #: templates/wiki/history.html:58
 msgid "No changes in this article"
-msgstr ""
+msgstr "Ingen ændringer i denne artikel"
 
 #: templates/wiki/index.html:10
 msgid "Wiki for"
-msgstr ""
+msgstr "Wiki for"
 
 #: templates/wiki/index.html:19
 msgid "Start a new article"
-msgstr ""
+msgstr "Opret ny artikel"
 
 #: templates/wiki/index.html:23
 msgid "Articles"
-msgstr ""
+msgstr "Artikler"
 
 #: templates/wiki/index.html:47
 msgid "There are no articles yet"
-msgstr ""
+msgstr "Der er endnu ingen artikler"
 
 #: templates/wiki/index.html:47
 msgid "create an article..."
-msgstr ""
+msgstr "Opret en artikel..."
 
 #: templates/wiki/view.html:25
 msgid "History"
-msgstr ""
+msgstr "Historik"
 
 #: templates/wiki/view.html:46
 msgid "Create it now?"
-msgstr ""
+msgstr "Opret artiklen?"
 
 #: templates/wiki/view.html:55
 msgid "Stop Observing Article"
-msgstr ""
+msgstr "Stop med at overvåge artiklen"
 
 #: templates/wiki/view.html:59
 msgid "Observe Article"
-msgstr ""
+msgstr "Overvåg artiklen"
 
 #: templates/wiki/plugins/profiles/profile.html:21
 #: templates/wiki/profiles/profile.html:21
 msgid "No wiki articles yet."
-msgstr ""
+msgstr "Endnu ingen wiki-artikler."

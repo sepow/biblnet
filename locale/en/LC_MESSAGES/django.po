@@ -146,7 +146,7 @@ msgstr ""
 
 #: apps/account/forms.py:325
 msgid "Language successfully updated."
-msgstr ""
+msgstr "Sprog opdateret korrekt."
 
 #: apps/account/forms.py:347
 msgid "Successfully authenticated."
@@ -250,8 +250,12 @@ msgstr ""
 
 #: apps/django_dms/apps/small_dms/models.py:20
 #: apps/django_extensions/db/models.py:15 apps/tribes/models.py:30
-#: apps/tribes/models.py:84 templates/sepow/latest_updates.html:16
+#: apps/tribes/models.py:84
 msgid "created"
+msgstr ""
+
+#: templates/sepow/latest_updates.html:16
+msgid "created:"
 msgstr ""
 
 #: apps/django_dms/apps/small_dms/models.py:21 apps/tribes/models.py:60

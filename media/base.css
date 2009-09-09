@@ -245,9 +245,17 @@ p.blocktitle {
 #language {
     float: right;
     width: 200px;
-    background-color: #f00;
+    margin: 20px 0 0;
+    padding: 0;
+    text-align: center;
 }
-
+#language input {
+    border: 1px solid transparent;
+    margin: 0 5px;
+}
+#language input.selected {
+    border: 1px solid #0E3037;
+}
 #tabhead {
     position: relative;
     background: #035 url('/site_media/pinax/images/heading.png') left top repeat-x;
