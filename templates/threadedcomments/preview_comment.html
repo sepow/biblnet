@@ -5,6 +5,7 @@
 {% load avatar_tags %}
 {% load markup %}
 {% load oembed_tags %}
+{% load condition_tag %}
 {% load cache %}
 
 {% block boxtab_id %}id="board_tab"{% endblock %}
@@ -21,7 +22,13 @@
             <div class="usericons">
                 <img src="{{MEDIA_URL}}{{ user.get_profile.affiliation.icon }}"  alt="{{ user.get_profile.affiliation }}" title="{{ user.get_profile.affiliation }}" />
                 <img src="{{MEDIA_URL}}{{ user.get_profile.occupation.icon }}"  alt="{{ user.get_profile.occupation }}" title="{{ user.get_profile.occupation }}" />
-                {% if are_moderator %}<img src="/site_media/images/sitegraphics/award_star_gold_1.png"  alt="{% trans 'Tribe administrator' %}" title="{% trans 'Tribe administrator' %}" /><br />{% else %}<br/>{% endif %}
+                {% ifequal tribe.creator user %}
+                    <img src="/site_media/images/sitegraphics/award_star_gold_1.png" alt="{% trans 'Administrator' %}" title="{% trans 'Administrator' %}" />
+                {% else %}
+                    {% if_is_moderator tribe user %}
+                        <img src="/site_media/images/sitegraphics/award_star_silver_1.png" alt="{% trans 'Moderator' %}" title="{% trans 'Moderator' %}" />
+                    {% endif_is_moderator %}
+                {% endifequal %}
             </div>
             <div class="avatar">
                 {% avatar user 60 %}
@@ -30,7 +37,7 @@
                 {% now "N j, Y" %} - {% now "H:i" %}<br />
                 {% trans "0 minutes ago"%}<br />
                 <br />
-                {{ user }}
+                {{ user.get_profile.get_name }}
             </div>
         </div>
     </td>
@@ -47,7 +54,13 @@
             <div class="usericons">
                 <img src="{{MEDIA_URL}}{{ user.get_profile.affiliation.icon }}"  alt="{{ user.get_profile.affiliation }}" title="{{ user.get_profile.affiliation }}" />
                 <img src="{{MEDIA_URL}}{{ user.get_profile.occupation.icon }}"  alt="{{ user.get_profile.occupation }}" title="{{ user.get_profile.occupation }}" />
-                {% if are_moderator %}<img src="/site_media/images/sitegraphics/award_star_gold_1.png"  alt="{% trans 'Tribe administrator' %}" title="{% trans 'Tribe administrator' %}" /><br />{% else %}<br/>{% endif %}
+                {% ifequal tribe.creator user %}
+                    <img src="/site_media/images/sitegraphics/award_star_gold_1.png" alt="{% trans 'Administrator' %}" title="{% trans 'Administrator' %}" />
+                {% else %}
+                    {% if_is_moderator tribe user %}
+                        <img src="/site_media/images/sitegraphics/award_star_silver_1.png" alt="{% trans 'Moderator' %}" title="{% trans 'Moderator' %}" />
+                    {% endif_is_moderator %}
+                {% endifequal %}
             </div>
             <div class="avatar">
                 {% avatar user 60 %}
@@ -56,7 +69,7 @@
                 {% now "N j, Y" %} - {% now "H:i" %}<br />
                 {% trans "0 minutes ago"%}<br />
                 <br />
-                {{ user }}
+                {{ user.get_profile.get_name }}
             </div>
     </div>
 </td>

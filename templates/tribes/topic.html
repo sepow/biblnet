@@ -95,7 +95,13 @@
             <div class="usericons">
                 <img src="{{MEDIA_URL}}{{ topic.creator.get_profile.affiliation.icon }}" alt="{{ topic.creator.get_profile.affiliation }}" title="{{ topic.creator.get_profile.affiliation }}" />
                 <img src="{{MEDIA_URL}}{{ topic.creator.get_profile.occupation.icon }}"  alt="{{ topic.creator.get_profile.occupation }}" title="{{ topic.creator.get_profile.occupation }}" />
-                {% if_is_moderator topic.tribe topic.creator %}<img src="{{MEDIA_URL}}images/sitegraphics/award_star_gold_1.png"  alt="{% trans 'Tribe administrator' %}" title="{% trans 'Tribe administrator' %}" /><br />{% else %}<br/>{% endif_is_moderator %}
+                {% ifequal topic.tribe.creator topic.creator %}
+                    <img src="/site_media/images/sitegraphics/award_star_gold_1.png" alt="{% trans 'Administrator' %}" title="{% trans 'Administrator' %}" />
+                {% else %}
+                    {% if_is_moderator topic.tribe topic.creator %}
+                        <img src="/site_media/images/sitegraphics/award_star_silver_1.png" alt="{% trans 'Moderator' %}" title="{% trans 'Moderator' %}" />
+                    {% endif_is_moderator %}
+                {% endifequal %}
             </div>
             <div class="avatar">
                 <a href="{% url profile_detail topic.creator.username %}">{% avatar topic.creator 60 %}</a>

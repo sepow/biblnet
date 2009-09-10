@@ -64,7 +64,7 @@
                                         </form>
                                 {% else %}
                                     <form method="GET" action="">
-                                        <input type="image" src="{{ MEDIA_URL }}images/sitegraphics/award_star_gold_1.png" alt="{% trans 'Promote' %}" title="{% trans 'Promote to moderator' %}" />
+                                        <input type="image" src="{{ MEDIA_URL }}images/sitegraphics/award_star_add.png" alt="{% trans 'Promote' %}" title="{% trans 'Promote to moderator' %}" />
                                         <input type="hidden" name ="promote" value="{{ member.user.username }}" />
                                     </form>
                                 {% endif %}
