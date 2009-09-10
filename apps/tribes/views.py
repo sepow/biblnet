@@ -163,18 +163,17 @@ def delete(request, slug, redirect_url=None):
         if not Affiliation.objects.filter(tribe=tribe):
             try:
                 request.user.message_set.create(message=ugettext("Tribe %s deleted.") % tribe)
-                deleted = datetime.now().strftime("_deleted_%B-%Y-%s")
-                tribe.slug = u"%s%s" % (tribe.slug, deleted)
-                tribe.name = u"%s%s" % (tribe.name, deleted)
+                deleted = datetime.now().strftime("%s__")
+                tribe.slug = u"%s%s" % (deleted, tribe.slug)
+                tribe.name = u"%s%s" % (deleted, tribe.name)
                 tribe.deleted = True
-                calendar = Calendar.objects.get_calendar_for_object(tribe)
-                calendar.delete()
-                # comments
-                # topics
-                # wiki
-                # documents
-                # events?
                 tribe.save()
+                
+                calendar = Calendar.objects.get_calendar_for_object(tribe)
+                calendar.name = u"%s%s" % (deleted, calendar.name)
+                calendar.slug = u"%s%s" % (deleted, calendar.slug)
+                calendar.save()
+                
             except:
                 pass
             
@@ -219,7 +218,7 @@ def tribe(request, slug, form_class=TribeUpdateForm,
                 tmember.save()
                 request.user.message_set.create(message="You have joined the tribe %s" % tribe.name)
                 if notification:
-                    notification.send([tribe.creator], "tribes_created_new_member", {"user": request.user, "tribe": tribe})
+                    #notification.send([tribe.creator], "tribes_created_new_member", {"user": request.user, "tribe": tribe})
                     notification.send(tribe.member_users.all(), "tribes_new_member", {"user": request.user, "tribe": tribe})
                     if friends: # @@@ might be worth having a shortcut for sending to all friends
                         notification.send((x['friend'] for x in Friendship.objects.friends_for_user(request.user)), "tribes_friend_joined", {"user": request.user, "tribe": tribe})

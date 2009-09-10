@@ -235,8 +235,6 @@ class ResetPasswordForm(forms.Form):
 
     def save(self):
 
-        print User.objects.filter(email__iexact=self.cleaned_data["email"])
-        print self.cleaned_data["email"]
         for user in User.objects.filter(email__iexact=self.cleaned_data["email"]):
             
         

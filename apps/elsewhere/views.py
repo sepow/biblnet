@@ -11,7 +11,6 @@ def example(request):
     if request.method == 'POST':
 
         new_data = request.POST.copy()
-        print new_data
         sn = bool(new_data.get('sn-form') or new_data.get('sn-form.y'))
         im = bool(new_data.get('im-form') or new_data.get('im-form.y'))
         w = bool(new_data.get('w-form') or new_data.get('w-form.y'))
