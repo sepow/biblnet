@@ -1,5 +1,6 @@
 {% load i18n %}
 {% load avatar_tags %}
+{% load condition_tag %}
 
 {% if is_me %}
     <h2>{% trans "My Tribes" %}</h2>
@@ -11,7 +12,7 @@
                 <tr class="{% cycle 'odd' 'even' %}">
                     <td><img src="/site_media/images/sitegraphics/group.png" alt="{% trans 'Tribe' %}" /></td>
                     <td>
-                        {% ifequal tribe.creator user %}
+                        {% if_is_moderator tribe user %}
                             <img src="/site_media/images/sitegraphics/award_star_gold_1.png" alt="{% trans 'Moderator' %}" title="{% trans 'Moderator' %}" />
                         {% else %}
                             <form method="POST" action="">
@@ -19,7 +20,7 @@
                                 <input type="hidden" name="slug" value="{{ tribe.slug }}" />
                                 <input type="hidden" name="action" value="leave" />
                             </form>
-                        {% endifequal %}
+                        {% endif_is_moderator %}
                     </td>
                     <td><a href="{% url tribe_detail tribe.slug %}">{{ tribe.name }}</a></td>
                 </tr>
@@ -84,9 +85,9 @@
                     <tr class="{% cycle 'odd' 'even' %}">
                         <td><img src="/site_media/images/sitegraphics/group.png" alt="{% trans 'Tribe' %}" /></td>
                         <td>
-                            {% ifequal tribe.creator other_user %}
+                            {% if_is_moderator tribe other_user %}
                                 <img src="/site_media/images/sitegraphics/award_star_gold_1.png" alt="{% trans 'Administrator' %}" title="{% trans 'Administrator' %}" />
-                            {% endifequal %}
+                            {% endif_is_moderator %}
                         </td>
                         <td><a href="{% url tribe_detail tribe.slug %}">{{ tribe.name }}</a></td>
                     </tr>

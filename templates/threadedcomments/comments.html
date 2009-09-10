@@ -6,6 +6,7 @@
 {% load markup %}
 {% load condition_tag %}
 {% load oembed_tags %}
+
 {% get_threaded_comment_tree for object as responses %}
 {% autopaginate responses 40 %}
 
@@ -17,7 +18,7 @@
             <div class="usericons">
                 <img src="/site_media/{{ response.user.get_profile.affiliation.icon }}"  alt="{{ response.user.get_profile.affiliation }}" title="{{ response.user.get_profile.affiliation }}" />
                 <img src="/site_media/{{ response.user.get_profile.occupation.icon }}"  alt="{{ response.user.get_profile.occupation }}" title="{{ response.user.get_profile.occupation }}" />
-                {% if are_moderator %}<img src="/site_media/images/sitegraphics/award_star_gold_1.png"  alt="{% trans 'Tribe administrator' %}" title="{% trans 'Tribe administrator' %}" /><br />{% else %}<br/>{% endif %}
+                {% if_is_moderator tribe response.user %}<img src="/site_media/images/sitegraphics/award_star_gold_1.png"  alt="{% trans 'Tribe administrator' %}" title="{% trans 'Tribe administrator' %}" /><br />{% else %}<br/>{% endif_is_moderator %}
             </div>
             <div class="avatar">
                 <a href="{% url profile_detail response.user.username %}">{% avatar response.user 60 %}</a>

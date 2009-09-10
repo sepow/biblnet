@@ -7,6 +7,7 @@
 {% load security_tag %}
 {% load markup %}
 {% load oembed_tags %}
+{% load condition_tag %}
 
 {% block head_title %}{{ topic.title }}{% endblock %}
 
@@ -15,7 +16,6 @@
 {% block group %}<li class="members_tab"><a href="{{ topic.tribe.get_absolute_url }}members/"><span>{% trans "Members" %}</span></a></li>{% endblock %}
 
 {% block body %}
-{% load condition_tag %}
 
 {% if are_moderator %}
     <div class="right_panel">
@@ -95,7 +95,7 @@
             <div class="usericons">
                 <img src="{{MEDIA_URL}}{{ topic.creator.get_profile.affiliation.icon }}" alt="{{ topic.creator.get_profile.affiliation }}" title="{{ topic.creator.get_profile.affiliation }}" />
                 <img src="{{MEDIA_URL}}{{ topic.creator.get_profile.occupation.icon }}"  alt="{{ topic.creator.get_profile.occupation }}" title="{{ topic.creator.get_profile.occupation }}" />
-                {% if are_moderator %}<img src="{{MEDIA_URL}}images/sitegraphics/award_star_gold_1.png"  alt="{% trans 'Tribe administrator' %}" title="{% trans 'Tribe administrator' %}" /><br />{% else %}<br/>{% endif %}
+                {% if_is_moderator topic.tribe topic.creator %}<img src="{{MEDIA_URL}}images/sitegraphics/award_star_gold_1.png"  alt="{% trans 'Tribe administrator' %}" title="{% trans 'Tribe administrator' %}" /><br />{% else %}<br/>{% endif_is_moderator %}
             </div>
             <div class="avatar">
                 <a href="{% url profile_detail topic.creator.username %}">{% avatar topic.creator 60 %}</a>

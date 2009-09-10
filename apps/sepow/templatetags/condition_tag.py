@@ -113,6 +113,15 @@ def if_is_member(tribe, user='user'):
 register.tag('is_member', if_is_member)
 
 @condition_tag
+def if_is_moderator(tribe, user='user'):
+    if user.is_authenticated():
+        is_moderator = TribeMember.objects.filter(tribe=tribe, user=user)
+        if is_moderator:
+            return is_moderator[0].moderator
+    return False
+register.tag('if_is_moderator', if_is_moderator)
+
+@condition_tag
 def if_can_see(tribe, user='user'):
     try:
         if tribe.private and is_member(tribe, user):
