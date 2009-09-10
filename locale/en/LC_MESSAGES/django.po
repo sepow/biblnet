@@ -1734,6 +1734,14 @@ msgstr ""
 msgid "Full name"
 msgstr ""
 
+#: apps/sepow/forms.py:38
+msgid "Affiliation"
+msgstr ""
+
+#: apps/sepow/forms.py:39
+msgid "Occupation"
+msgstr ""
+
 #: apps/tag_app/templates/tag_app/tag_list.html:6
 msgid "Tag"
 msgstr ""
@@ -2449,7 +2457,7 @@ msgstr ""
 msgid "Login"
 msgstr ""
 
-#: templates/site_base.html:66
+#: templates/site_base.html:66 templates/account/logout.html:5
 msgid "Logout"
 msgstr ""
 
@@ -2549,7 +2557,6 @@ msgid "&copy; 2009 Sean P &amp; Luhr B"
 msgstr ""
 
 #: templates/site_base.html:170 templates/about/about.html:5
-#: templates/profiles/profile.html:72
 msgid "About"
 msgstr ""
 
@@ -3323,6 +3330,14 @@ msgstr ""
 msgid "follow tweets"
 msgstr ""
 
+#: templates/profiles/profile.html:72
+msgid "About me"
+msgstr ""
+
+#: templates/profiles/profile.html:82
+msgid "Edit your profile"
+msgstr ""
+
 #: templates/profiles/profile.html:86 templates/tribes/tribe_admin.html:28
 msgid "update"
 msgstr ""
@@ -3589,7 +3604,7 @@ msgid "in"
 msgstr ""
 
 #: templates/sepow/latest_updates.html:25
-msgid "replied to"
+msgid "replied to:"
 msgstr ""
 
 #: templates/sepow/tagcloud.html:5 templates/sepow/tagcloud.html.py:8
@@ -3618,7 +3633,7 @@ msgstr ""
 
 #: templates/small_dms/dms_list.html:20 templates/tribes/topics.html:23
 #: templates/tribes/tribe.html:38
-msgid "join tribe"
+msgid "Join tribe"
 msgstr ""
 
 #: templates/small_dms/dms_list.html:26
@@ -4111,3 +4126,7 @@ msgstr ""
 #: templates/wiki/profiles/profile.html:21
 msgid "No wiki articles yet."
 msgstr ""
+
+#: templates/account/logout.html:8
+msgid "You've been logged out."
+msgstr "Du er nu logget ud."

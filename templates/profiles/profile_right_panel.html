@@ -2,7 +2,7 @@
 {% load avatar_tags %}
 
 {% if is_me %}
-    <h2>{% trans "Your Tribes" %}</h2>
+    <h2>{% trans "My Tribes" %}</h2>
         <table class="tribes">
         {% if other_user.tribe_set.all %}
             <tr class="even"><th width="16px"></th><th width="16px"></th><th>{% trans "Name" %}</th></tr>

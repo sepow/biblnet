@@ -71,7 +71,7 @@
     {% endcomment %}
 
     {% if other_user.get_profile.about %}
-        <h2>{% trans "About" %}</h2>
+        <h2>{% trans "About me" %}</h2>
         <p>{{ other_user.get_profile.about|linebreaksbr }}</p>
     {% endif %}
 
@@ -79,7 +79,7 @@
 
             {% if is_me %}
                 <div class="form-toggle" id="edit-profile" style="display: none;">
-                <h2>Edit your profile</h2>
+                <h2>{% trans "Edit your profile" %}</h2>
                 <form class="uniForm" method="POST" action="">
                     <fieldset class="inlineLabels">  
                         {{ profile_form|as_uni_form }}
