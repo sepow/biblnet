@@ -162,7 +162,7 @@
         <div class="columnmid">
             <div class="calendar">
                 {% block calendarevents %}
-                    <div>{% trans "Next events for all your tribes" %}</div>
+                    <div>{% trans "All your tribes:" %}</div>
                     {% get_all_tribe_calendars request.user 5 %}
                 {% endblock %}
             </div>

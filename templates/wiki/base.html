@@ -12,7 +12,7 @@
 {% block calendarevents %}
     {% if group %}
         {% if_can_see group user %}
-            <div>{% trans "Next events for" %} <a href="{% url month_calendar group.slug %}">{{ group }}</a></div>
+            <div><a href="{% url month_calendar group.slug %}">{{ group }}:</a></div>
             {% get_tribe_calendar group request.user %}
             <p><a href="{% url calendar_create_event group.slug %}">{% trans "Add new event" %}</a></p>
         {% else %}
