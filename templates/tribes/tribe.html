@@ -74,7 +74,7 @@
                 {% url tribe_create_topic tribe.slug as new_topic_url %}
                 <tr class="odd"><td><img src="{{ MEDIA_URL }}images/sitegraphics/note.png" /></td><td colspan=5>{% trans "There have been no new topics or replies since your last visit" %}</td></tr>
             {% endif %}
-        </table>            
+        </table>
         
         <h2>{% trans "Wiki Articles" %}{% if total_articles %} ({{ total_articles }}){% endif %}</h2>
         {% if user.is_authenticated %}

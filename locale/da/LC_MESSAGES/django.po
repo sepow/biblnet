@@ -1388,7 +1388,7 @@ msgstr "Der skal angives en slutdato for tilbagevendende begivenheder"
 #: apps/schedule/periods.py:279 apps/schedule/periods.py:302
 #: apps/schedule/models/events.py:42
 msgid "DATE_FORMAT"
-msgstr "DATE_FORMAT"
+msgstr ""
 
 #: apps/schedule/periods.py:280
 #, python-format
@@ -1567,7 +1567,7 @@ msgstr "regler"
 #: templates/schedule/occurrence.html:22 templates/schedule/occurrence.html:26
 #: templates/wiki/history.html:31
 msgid "DATETIME_FORMAT"
-msgstr "DATETIME_FORMAT"
+msgstr ""
 
 #: apps/schedule/templates/schedule/_detail.html:7
 #: apps/schedule/templates/schedule/event.html:38
@@ -1597,7 +1597,7 @@ msgstr "Tilføj"
 #: apps/schedule/templates/schedule/calendar.html:8
 #: templates/schedule/calendar.html:11
 msgid "YEAR_MONTH_FORMAT"
-msgstr "YEAR_MONTH_FORMAT"
+msgstr ""
 
 #: apps/schedule/templates/schedule/calendar.html:34
 #: templates/schedule/calendar.html:37 templates/schedule/event.html:21
@@ -3339,7 +3339,7 @@ msgstr "Profiler efter indmeldelsesdato"
 #: templates/profiles/profiles.html:47 templates/tribes/tribe_members.html:121
 #: templates/wiki/index.html:29
 msgid "MONTH_DAY_FORMAT"
-msgstr "MONTH_DAY_FORMAT"
+msgstr ""
 
 #: templates/schedule/_create_event_options.html:3
 #: templates/schedule/calendar_week.html:29

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-09 09:22+0200\n"
+"POT-Creation-Date: 2009-09-11 09:16+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,12 +16,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: apps/account/forms.py:29 apps/account/forms.py:62 apps/account/forms.py:333
+#: apps/account/forms.py:29 apps/account/forms.py:62 apps/account/forms.py:331
 msgid "Username"
 msgstr ""
 
 #: apps/account/forms.py:30 apps/account/forms.py:63 apps/account/forms.py:213
-#: apps/account/forms.py:334
+#: apps/account/forms.py:332
 msgid "Password"
 msgstr ""
 
@@ -63,7 +63,7 @@ msgid "This username is already taken. Please choose another."
 msgstr ""
 
 #: apps/account/forms.py:80 apps/account/forms.py:202
-#: apps/account/forms.py:219 apps/account/forms.py:281
+#: apps/account/forms.py:219 apps/account/forms.py:279
 msgid "You must type the same password each time."
 msgstr ""
 
@@ -89,11 +89,11 @@ msgstr ""
 msgid "Current Password"
 msgstr ""
 
-#: apps/account/forms.py:191 apps/account/forms.py:270
+#: apps/account/forms.py:191 apps/account/forms.py:268
 msgid "New Password"
 msgstr ""
 
-#: apps/account/forms.py:192 apps/account/forms.py:271
+#: apps/account/forms.py:192 apps/account/forms.py:269
 msgid "New Password (again)"
 msgstr ""
 
@@ -101,7 +101,7 @@ msgstr ""
 msgid "Please type your current password."
 msgstr ""
 
-#: apps/account/forms.py:208 apps/account/forms.py:292
+#: apps/account/forms.py:208 apps/account/forms.py:290
 msgid "Password successfully changed."
 msgstr ""
 
@@ -113,35 +113,35 @@ msgstr ""
 msgid "Email address not verified for any user account"
 msgstr ""
 
-#: apps/account/forms.py:256
+#: apps/account/forms.py:254
 msgid "Password reset email sent"
 msgstr ""
 
-#: apps/account/forms.py:269
+#: apps/account/forms.py:267
 msgid "Temporary Password"
 msgstr ""
 
-#: apps/account/forms.py:275
+#: apps/account/forms.py:273
 msgid "Please type your temporary password."
 msgstr ""
 
-#: apps/account/forms.py:303
+#: apps/account/forms.py:301
 msgid "Timezone"
 msgstr ""
 
-#: apps/account/forms.py:312
+#: apps/account/forms.py:310
 msgid "Timezone successfully updated."
 msgstr ""
 
-#: apps/account/forms.py:316
+#: apps/account/forms.py:314
 msgid "Language"
 msgstr ""
 
-#: apps/account/forms.py:325
+#: apps/account/forms.py:323
 msgid "Language successfully updated."
 msgstr ""
 
-#: apps/account/forms.py:347
+#: apps/account/forms.py:345
 msgid "Successfully authenticated."
 msgstr ""
 

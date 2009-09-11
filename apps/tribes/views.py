@@ -277,15 +277,18 @@ def tribe_members(request, slug, tribe_form=AddMemberForm, template_name="tribes
     are_member = has_member(tribe, request.user)
     are_moderator = is_moderator(tribe, request.user)
     
+    users = None
     tribe_members = None
     search_terms= ""
-    order = request.GET.get('order')
-    if not order:
-        order = 'name'
-    
-    users = None
-    tribe_members_all = TribeMember.objects.filter(tribe=tribe)
     search_terms_all = ""
+    
+    tribe_members_all = TribeMember.objects.filter(tribe=tribe)
+
+    order = request.GET.get('order')
+    if order == 'date':
+        tribe_members_all = tribe_members_all.order_by('-date_joined')
+    else:
+        tribe_members_all = tribe_members_all.order_by('user')
 
     if tribe.private and not are_member:
         do_403_if_not_superuser(request)
