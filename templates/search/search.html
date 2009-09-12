@@ -23,7 +23,7 @@
 
         {% can_access result.object request.user%}
         
-        {% if has_access %}
+        {% if has_access and not tribe.deleted %}
             <hr/> 
             <a href="{{result.object.get_absolute_url}}"><strong>{{result.verbose_name}}</strong></a> i 
             {% if tribe %}<a href="{% url tribe_detail tribe.slug %}">{{tribe}}</a>{% endif %} ({{result.score}})
