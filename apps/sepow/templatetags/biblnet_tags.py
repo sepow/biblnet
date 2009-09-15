@@ -7,6 +7,9 @@ from tribes.models import Topic
 from django.contrib.auth.models import User
 from schedule.utils import EventListManager
 from schedule.models import Calendar, Event
+# from wiki.models import Article <- virker ikke! apps.wiki.models virker.. wtf
+from django_dms.apps.small_dms.models import Document
+
 register = template.Library()
 
 def has_member(tribe, user):
@@ -28,13 +31,16 @@ def new_since_last_visit(tribe, user):
         new_posts = 0        
         if modified_topics: 
             new_posts = ThreadedComment.objects.filter(object_id__in=modified_topics, date_modified__gte=since).count()
-
-    changed = bool(new_topics or new_posts)
+        new_wiki = 0
+        new_docs = Document.objects.filter(tribe=tribe).filter(date_added__gte=since).count()
+        
+    changed = bool(new_topics or new_posts or new_docs)
     return {
         'changed' : changed,
         'tribe' : tribe,
         'new_topics' : new_topics,
         'new_posts' : new_posts,
+        'new_docs' : new_docs,
     }
 register.inclusion_tag('sepow/new_since_last_visit.html')(new_since_last_visit)
 
