@@ -175,7 +175,7 @@ def delete(request, slug, redirect_url=None):
                 calendar.save()
                 
             except:
-                pass
+                request.user.message_set.create(message=ugettext("Something bad happend as we tried to delete your tribe, please contact your Admin)
             
         else:
             request.user.message_set.create(message=ugettext("Tribe %s cannot be deleted. It is an Affiliation tribe") % tribe)

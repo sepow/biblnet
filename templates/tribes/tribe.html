@@ -154,7 +154,7 @@
                         </td>
                         <td>{% if user.is_authenticated %}<a href="{{ tribe_url }}dms/{{ document.slug }}/download/"><img src="{{MEDIA_URL}}images/sitegraphics/arrow_down.png" alt="{% trans 'Download' %}" title="{% trans 'Download' %}"/></a>{% endif %}</td>
                         <td><a href="{{ document.get_absolute_url }}">{{ document|default:"Untitled" }}</a></td>
-                        <td><a href="{% url profile_detail document.uploader %}">{{ document.uploader }}</a></td>
+                        <td><a href="{% url profile_detail document.uploader %}">{{ document.uploader.get_profile.get_name }}</a></td>
                         <td class="comment_stats">
                             {% score_for_object document as score %}
                             <span id="document_{{document.slug}}_score">
