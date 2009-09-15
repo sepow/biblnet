@@ -127,7 +127,7 @@ class DocumentView(object):
             url(r'^([^\/]+)/detail/$',    self.detail, name="%s_document_detail" % self.name),
             url(r'^([^\/]+)/view/$',      self.view, name="%s_document_view" % self.name),
             url(r'^([^\/]+)/delete/$',    self.delete, name="%s_document_delete" % self.name),
-            url(r'^(?P<object_id>([^\/]+))/(?P<direction>up|down|clear)vote/?$', self.vote, name="%s_document_vote" % self.name),
+            url(r'^(?P<object_id>([^\/]+))/detail/(?P<direction>up|down|clear)vote/?$', self.vote, name="%s_document_vote" % self.name),
             )
     urls = property(get_urls)
 
