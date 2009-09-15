@@ -83,8 +83,7 @@ class CanAccessNode(template.Node):
             
             if tribe:
                 user_can_access = (has_member(tribe, actual_user) or not tribe.private)
-            # print "Tribe: ", tribe
-            # print "Can access?: ", user_can_access
+                
             context['tribe'] = tribe
             
             if isinstance(actual_obj, Profile):

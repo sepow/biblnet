@@ -1,18 +1,28 @@
 {% load i18n %}
 {% load avatar_tags %}
+{% load condition_tag %}
 
 {% if is_me %}
-    <h2>{% trans "Your Tribes" %}</h2>
+    <h2>{% trans "My Tribes" %}</h2>
         <table class="tribes">
         {% if other_user.tribe_set.all %}
-            <tr class="even"><th width="16px"></th><th width="16px"></th><th>{% trans "Name" %}</th></tr>
+            <tr class="even"><th width="16px"></th><th width="16px"></th><th>{% trans "Name" %}</th><th width="16px"></th></tr>
             {% for tribe in other_user.tribe_set.all %}
                 {% if not tribe.deleted %}
                 <tr class="{% cycle 'odd' 'even' %}">
                     <td><img src="/site_media/images/sitegraphics/group.png" alt="{% trans 'Tribe' %}" /></td>
                     <td>
                         {% ifequal tribe.creator user %}
-                            <img src="/site_media/images/sitegraphics/award_star_gold_1.png" alt="{% trans 'Moderator' %}" title="{% trans 'Moderator' %}" />
+                            <img src="/site_media/images/sitegraphics/award_star_gold_1.png" alt="{% trans 'Administrator' %}" title="{% trans 'Administrator' %}" />
+                        {% else %}
+                            {% if_is_moderator tribe user %}
+                                <img src="/site_media/images/sitegraphics/award_star_silver_1.png" alt="{% trans 'Moderator' %}" title="{% trans 'Moderator' %}" />
+                            {% endif_is_moderator %}
+                        {% endifequal %}
+                    </td>
+                    <td><a href="{% url tribe_detail tribe.slug %}">{{ tribe.name }}</a></td>
+                    <td>
+                        {% ifequal tribe.creator user %}
                         {% else %}
                             <form method="POST" action="">
                                 <input type="image" src="/site_media/images/sitegraphics/delete.png" value="{% trans 'leave tribe' %}" title="{% trans 'Leave tribe' %}" />
@@ -21,7 +31,6 @@
                             </form>
                         {% endifequal %}
                     </td>
-                    <td><a href="{% url tribe_detail tribe.slug %}">{{ tribe.name }}</a></td>
                 </tr>
                {% endif %}
             {% endfor %}
@@ -85,7 +94,11 @@
                         <td><img src="/site_media/images/sitegraphics/group.png" alt="{% trans 'Tribe' %}" /></td>
                         <td>
                             {% ifequal tribe.creator other_user %}
-                                <img src="/site_media/images/sitegraphics/award_star_gold_1.png" alt="{% trans 'Administrator' %}" title="{% trans 'Administrator' %}" />
+                                <img src="/site_media/images/sitegraphics/award_star_gold_1.png" alt="{% trans 'Creator' %}" title="{% trans 'Creator' %}" />
+                            {% else %}
+                                {% if_is_moderator tribe other_user %}
+                                    <img src="/site_media/images/sitegraphics/award_star_silver_1.png" alt="{% trans 'Moderator' %}" title="{% trans 'Moderator' %}" />
+                                {% endif_is_moderator %}
                             {% endifequal %}
                         </td>
                         <td><a href="{% url tribe_detail tribe.slug %}">{{ tribe.name }}</a></td>

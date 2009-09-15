@@ -35,8 +35,8 @@ class BiblnetSignupForm(forms.Form):
     email = forms.EmailField(label=_(u"Email"), required=True, widget=forms.TextInput())
     password1 = forms.CharField(label=_(u"Password"), widget=forms.PasswordInput(render_value=False))
     password2 = forms.CharField(label=_(u"Password (again)"), widget=forms.PasswordInput(render_value=False))
-    affiliation = forms.ModelChoiceField(queryset=Affiliation.objects.filter(tribe__private__exact=False).order_by('tribe__name'), empty_label=_("(Pick your affiliation)")) #TODO clean
-    occupation = forms.ModelChoiceField(queryset=Occupation.objects.all().order_by('occupation'), empty_label=_("(Pick your occupation)")) 
+    affiliation = forms.ModelChoiceField(label=_(u"Affiliation"), queryset=Affiliation.objects.filter(tribe__private__exact=False).order_by('tribe__name'), empty_label=_("(Pick your affiliation)")) #TODO clean
+    occupation = forms.ModelChoiceField(label=_(u"Occupation"), queryset=Occupation.objects.all().order_by('occupation'), empty_label=_("(Pick your occupation)")) 
     confirmation_key = forms.CharField(max_length=40, required=False, widget=forms.HiddenInput())
     
     accept_terms = forms.BooleanField(required=True) 

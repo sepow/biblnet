@@ -41,13 +41,13 @@
 {% block calendarevents %}
     {% if calendar %}
         {% can_access calendar request.user %}
-        <div>{% trans "Next events for" %} <a href="{% url month_calendar tribe.slug %}">{{ tribe }}</a></div>
+        <div><a href="{% url month_calendar tribe.slug %}">{{ tribe }}:</a></div>
         {% get_tribe_calendar tribe request.user %}
         <p><a href="{% url calendar_create_event tribe.slug %}">{% trans "Add new event" %}</a></p> 
     {% else %}
         {% if event %}
             {% can_access event request.user %}
-            <div>{% trans "Next events for" %} <a href="{% url month_calendar tribe.slug %}">{{ tribe }}</a></div>
+            <div><a href="{% url month_calendar tribe.slug %}">{{ tribe }}:</a></div>
             {% get_tribe_calendar tribe request.user %}
             <p><a href="{% url calendar_create_event tribe.slug %}">{% trans "Add new event" %}</a></p> 
         {% endif %}

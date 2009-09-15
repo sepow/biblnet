@@ -20,7 +20,7 @@
         {% else %}
             <form method="POST" action="{% url tribe_detail tribe.slug %}">
                 <input type="hidden" name="action" value="join" />
-                <input type="submit" value="{% trans 'join tribe' %}"/>
+                <input type="submit" value="{% trans 'Join tribe' %}"/>
             </form>
         {% endif %}
     {% else %}

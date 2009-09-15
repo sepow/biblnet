@@ -20,12 +20,11 @@
 
 {% block body %}
 
-
     {% if_can_see tribe user %}
         <div class="right_panel">
-            <p>{% trans "Creator:" %} <a href="{% url profile_detail tribe.creator.username %}">{{ tribe.creator }}</a><br />
-            {% trans "Created:" %} {{ tribe.created|date }}</p>
-            {% trans "This tribe is:" %} {% if tribe.private %} Private {%else %} Public {% endif%} 
+            <p><img src="{{ MEDIA_URL }}images/sitegraphics/award_star_gold_1.png" alt="{% trans 'Creator' %}" title="{% trans 'Creator' %}" /> <a href="{% url profile_detail tribe.creator.username %}">{{ tribe.creator }}</a><br />
+            <img src="{{ MEDIA_URL }}images/sitegraphics/date.png" alt="{% trans 'Created' %}" title="{% trans 'Created' %}" /> {{ tribe.created|date }}</p>
+            <p>{% trans "This tribe is:" %} {% if tribe.private %} {% trans "Private" %}{% else %} {% trans "Public" %}{% endif %}</p>
             {% if user.is_authenticated %}
                 {% ifequal user tribe.creator %}
                     <p>{% trans "You are the creator of this tribe so can't leave (yet)." %}</p>
@@ -33,10 +32,10 @@
                     <form method="POST" action="">
                         {% if are_member %}
                             <input type="hidden" name="action" value="leave" />
-                            <input type="submit" value="{% trans 'leave tribe' %}"/>
+                            <input type="submit" value="{% trans 'Leave tribe' %}"/>
                         {% else %}
                             <input type="hidden" name="action" value="join" />
-                            <input type="submit" value="{% trans 'join tribe' %}"/>
+                            <input type="submit" value="{% trans 'Join tribe' %}"/>
                         {% endif %}
                     </form>
                 {% endifequal %}
@@ -53,7 +52,7 @@
 
         <p>{{ tribe.description|linebreaks }}</p>
 
-        <h2>{% trans "Discussion Topics" %}{% if tribe.topics.all.count %} ({{ tribe.topics.all.count }}){% endif %}</h2>
+        <h2>{% trans "New Topics" %}{#% if tribe.topics.all.count %} ({{ tribe.topics.all.count }}){% endif %#}</h2>
         {% if user.is_authenticated %}
             {% if are_member %}
                 <a href="{% url tribe_create_topic tribe.slug %}">{% trans "Start New Topic" %}</a>
@@ -74,45 +73,42 @@
                 {% url tribe_create_topic tribe.slug as new_topic_url %}
                 <tr class="odd"><td><img src="{{ MEDIA_URL }}images/sitegraphics/note.png" /></td><td colspan=5>{% trans "There have been no new topics or replies since your last visit" %}</td></tr>
             {% endif %}
-        </table>            
-        
-        <h2>{% trans "Wiki Articles" %}{% if total_articles %} ({{ total_articles }}){% endif %}</h2>
-        {% if user.is_authenticated %}
-            {% if are_member %}
-                <a href="{{ tribe_url }}wiki">{% trans "Start New Article" %}</a>
-            {% endif %}
-        {% else %}
-            {% url acct_login as login_url %}
-            {% url tribe_detail tribe.slug as tribe_url %}
-            <h3>{% blocktrans %}Please <a href="{{ login_url }}?next={{ tribe_url }}wiki">log in</a> to create an article.{% endblocktrans %}</h3>
-        {% endif %}
-        <table class="topics">
-            <tr class="even"><th width="16px"></th><th width="20%">{% trans "Title" %}</th><th>{% trans "Summary" %}</th><th width="20%">{% trans "Latest editor" %}</th></tr>
-            {% if articles %}
-                    {% for article in articles %}
-                        {% show_teaser article %}
-                    {% endfor %}
-            {% else %}
-                {% wikiurl list tribe as wiki_url %}
-               <tr class="odd"><td><img src="{{ MEDIA_URL }}images/sitegraphics/wiki.png" /></td><td colspan=3>{% trans "There have been no changes to the wiki since your last visit" %}</td></tr>
-            {% endif %}
         </table>
-
-        <h2>{% trans "Documents" %}{% if tribe.documents.all.count %} ({{ tribe.documents.all.count }}){% endif %}</h2>
-        {% if user.is_authenticated %}
-            {% if are_member %}
-                <a href="{{ tribe_url }}dms/upload/">{% trans "Upload New Document" %}</a>
+        
+        {% if articles %}
+            <h2>{% trans "New Wiki Articles" %}{#% if total_articles %} ({{ total_articles }}){% endif %#}</h2>
+            {% if user.is_authenticated %}
+                {% if are_member %}
+                    <a href="{{ tribe_url }}wiki">{% trans "Start New Article" %}</a>
+                {% endif %}
+            {% else %}
+                {% url acct_login as login_url %}
+                {% url tribe_detail tribe.slug as tribe_url %}
+                <h3>{% blocktrans %}Please <a href="{{ login_url }}?next={{ tribe_url }}wiki">log in</a> to create an article.{% endblocktrans %}</h3>
             {% endif %}
-        {% else %}
-            {% url acct_login as login_url %}
-            {% url tribe_detail tribe.slug as tribe_url %}
-            <h3>{% blocktrans %}Please <a href="{{ login_url }}?next={{ tribe_url }}dms">log in</a> to upload a document.{% endblocktrans %}</h3>
+            <table class="topics">
+                <tr class="even"><th width="16px"></th><th width="20%">{% trans "Title" %}</th><th>{% trans "Summary" %}</th><th width="20%">{% trans "Latest editor" %}</th></tr>
+                {% for article in articles %}
+                    {% show_teaser article %}
+                {% endfor %}
+            </table>
         {% endif %}
-        <table class="topics">
-            <tr class="even"><th width="16px"></th><th width="16px"></th><th>{% trans "Title" %}</th><th width="20%">{% trans "Author" %}</th><th class="comment_stats" width="120px">{% trans "Score" %}</th></tr>
-            {% if documents %}
+
+        {% if documents %}
+            <h2>{% trans "New Documents" %}{#% if tribe.documents.all.count %} ({{ tribe.documents.all.count }}){% endif %#}</h2>
+            {% if user.is_authenticated %}
+                {% if are_member %}
+                    <a href="{{ tribe_url }}dms/upload/">{% trans "Upload New Document" %}</a>
+                {% endif %}
+            {% else %}
+                {% url acct_login as login_url %}
+                {% url tribe_detail tribe.slug as tribe_url %}
+                <h3>{% blocktrans %}Please <a href="{{ login_url }}?next={{ tribe_url }}dms">log in</a> to upload a document.{% endblocktrans %}</h3>
+            {% endif %}
+            <table class="topics">
+                <tr class="even"><th width="16px"></th><th width="16px"></th><th>{% trans "Title" %}</th><th width="20%">{% trans "Author" %}</th><th class="comment_stats" width="120px">{% trans "Score" %}</th></tr>
                 {% for document in documents %}
-                <tr class="{% cycle 'odd' 'even' %}">
+                    <tr class="{% cycle 'odd' 'even' %}">
                         <td>
                             {% if document.file_mimetype %}
                                 {% ifequal document.file_mimetype 'application/pdf' %}
@@ -161,13 +157,10 @@
                                 {{ score.score|default:0 }} point{{ score.score|default:0|pluralize }}
                             </span>
                         </td>
-                </tr>
-
+                    </tr>
                 {% endfor %}
-            {% else %}
-               <tr class="odd"><td><img src="{{ MEDIA_URL }}images/sitegraphics/report.png" /></td><td></td><td colspan=3>{% trans "There have been no new documents added since your last visit" %}</td></tr>
-            {% endif %}
-        </table>
+            </table>
+        {% endif %}
 
         {% if photos %}
             <h2>{% trans "Tribe Photo Pool" %}</h2>
