@@ -1,6 +1,6 @@
 {% load extra_tagging_tags %}
 
-{{ object.title }}<br/>
+<p><b>{{ object.title }}<b></p>
 
 {{ object.body|safe }}
 

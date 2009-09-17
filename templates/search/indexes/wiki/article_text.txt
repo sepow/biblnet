@@ -1,6 +1,6 @@
 {% load extra_tagging_tags %}
 
-Wiki: <a href="{{object.get_content_object.get_absolute_url}}">{{ object.title }}</a> <br/><br/>
+<p>{{ object.title }}</p>
 
 {{ object.content|safe }}
 <p>{% show_tags_for object %}</p>

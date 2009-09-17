@@ -54,10 +54,14 @@ class Tribe(models.Model):
     
     def get_absolute_url(self):
         return ("tribe_detail", [self.slug])
-
+    get_absolute_url = models.permalink(get_absolute_url)
+    
     class Meta:
         ordering = ('name',)
-    get_absolute_url = models.permalink(get_absolute_url)
+        verbose_name = _(u'Tribe')
+        verbose_name_plural = _(u'Tribes')
+    
+    
     
 class TribeMember(models.Model):
     tribe = models.ForeignKey(Tribe, related_name="members", verbose_name=_('tribe'))
@@ -103,8 +107,8 @@ class Topic(models.Model):
     
     class Meta:
         ordering = ('-sticky', '-modified')
-
-
+        verbose_name = _(u'Topic')
+        verbose_name_plural = _(u'Topics')
 
 def new_comment(sender, instance, **kwargs):
     if isinstance(instance.content_object, Topic):       
