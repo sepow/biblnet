@@ -103,13 +103,13 @@ def get_latest(users=8, topics=1, comments=2):
     '''  
     
     try:
-        latest_topic = Topic.objects.filter(tribe__private=False).order_by('-created')[:topics]
+        latest_topic = Topic.objects.filter(tribe__private=False).filter(tribe__deleted=False).order_by('-created')[:topics]
     except IndexError:
         latest_topic = None
 
     try:
         # find the lates topic that's been modified in a public tribe' TODO Cache this?
-        last_modified = Topic.objects.filter(tribe__private=False).order_by('-modified')
+        last_modified = Topic.objects.filter(tribe__private=False).filter(tribe__deleted=False).order_by('-modified')
         latest_post = ThreadedComment.objects.filter(object_id__in=last_modified).order_by('-date_modified')[:comments]
     except IndexError:
         latest_post = None

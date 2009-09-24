@@ -54,10 +54,11 @@ class Tribe(models.Model):
     
     def get_absolute_url(self):
         return ("tribe_detail", [self.slug])
-
+    get_absolute_url = models.permalink(get_absolute_url)
+    
     class Meta:
         ordering = ('name',)
-    get_absolute_url = models.permalink(get_absolute_url)
+
     
 class TribeMember(models.Model):
     tribe = models.ForeignKey(Tribe, related_name="members", verbose_name=_('tribe'))

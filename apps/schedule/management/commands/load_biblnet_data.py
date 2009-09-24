@@ -70,8 +70,8 @@ class Command(NoArgsCommand):
     def handle_noargs(self, **options):
 
         tribe = Tribe(name =u'Biblnet', slug =u'biblnet', 
-        creator = superuser, description = u'Everybodys favorite tribe',
-        private = False )
+            creator = superuser, description = u'Everybodys favorite tribe',
+            private = False )
         tribe.save()
         tm = TribeMember.objects.create(tribe=tribe, user=superuser, moderator=True)
         tm.save()        
