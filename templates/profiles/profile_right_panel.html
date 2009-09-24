@@ -94,7 +94,7 @@
                         <td><img src="/site_media/images/sitegraphics/group.png" alt="{% trans 'Tribe' %}" /></td>
                         <td>
                             {% ifequal tribe.creator other_user %}
-                                <img src="/site_media/images/sitegraphics/award_star_gold_1.png" alt="{% trans 'Creator' %}" title="{% trans 'Creator' %}" />
+                                <img src="/site_media/images/sitegraphics/award_star_gold_1.png" alt="{% trans 'Administrator' %}" title="{% trans 'Administrator' %}" />
                             {% else %}
                                 {% if_is_moderator tribe other_user %}
                                     <img src="/site_media/images/sitegraphics/award_star_silver_1.png" alt="{% trans 'Moderator' %}" title="{% trans 'Moderator' %}" />
