@@ -43,7 +43,7 @@
 {% block extra_body %}
 <script>
     function vote(document_id, direction) {
-        $.post(document_id + '/' + direction + 'vote/', function(data) {
+        $.post(direction + 'vote/', function(data) {
             var jsonResult = eval('(' + data + ')');
             var new_score = jsonResult.score.score;
             $('#document_' + document_id + '_score').text(new_score + ' point' + (new_score == 1 ? '': 's'));

@@ -58,8 +58,9 @@ class Tribe(models.Model):
     
     class Meta:
         ordering = ('name',)
+        verbose_name = _(u'Tribe')
+        verbose_name_plural = _(u'Tribes')
 
-    
 class TribeMember(models.Model):
     tribe = models.ForeignKey(Tribe, related_name="members", verbose_name=_('tribe'))
     user = models.ForeignKey(User, related_name="tribes", verbose_name=_('user'))
@@ -104,8 +105,8 @@ class Topic(models.Model):
     
     class Meta:
         ordering = ('-sticky', '-modified')
-
-
+        verbose_name = _(u'Topic')
+        verbose_name_plural = _(u'Topics')
 
 def new_comment(sender, instance, **kwargs):
     if isinstance(instance.content_object, Topic):       

@@ -6,6 +6,14 @@ from tagging.models import Tag
 from math import log
 # thanks to http://dburke.info/blog/logarithmic-tag-clouds/
 from django.views.decorators.cache import cache_page
+from django.http import HttpResponseRedirect
+from django.shortcuts import render_to_response, get_object_or_404
+from django.template import RequestContext
+from django.http import HttpResponseRedirect, HttpResponse, HttpResponseForbidden, Http404
+from tagging.models import Tag
+from math import log
+# thanks to http://dburke.info/blog/logarithmic-tag-clouds/
+from django.views.decorators.cache import cache_page
 def tagcloud(threshold=1, maxsize=2.75, minsize=.70):
     """usage: 
         -threshold: Tag usage less than the threshold is excluded from
