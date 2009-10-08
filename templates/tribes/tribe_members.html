@@ -21,7 +21,7 @@
 
 {% load condition_tag %}
 
-<h1>{% trans "Members of " %} <a href="{% url tribe_detail tribe.slug %}">{{ tribe.name }}</a></h2>
+<h1>{% trans "Members of " %} <a href="{% url tribe_detail tribe.slug %}">{{ tribe.name }}</a>: {{ tribe_members_all.count }}</h2>
 
     {% if_can_see tribe user %}
         {% if are_moderator %}
