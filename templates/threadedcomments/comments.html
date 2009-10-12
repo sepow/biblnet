@@ -43,6 +43,7 @@
             <div class="edit">
                 <form method="POST" action="{% url tc_comment_edit response.id %}">
                     <input type="image" src="/site_media/images/sitegraphics/page_white_edit.png" alt="{% trans 'Edit' %}" title="{% trans 'You can edit this post within 15 minutes of submission' %}" />
+                    <input type="hidden" name="tribe"/ value="{{ tribe.slug }}" />
                     <input type="hidden" value="{{ response.comment }}" name="comment" />
                     <input type="hidden" value="" name="preview" />
                     <input type="hidden" value="{{ request.path }}" name="next" />
