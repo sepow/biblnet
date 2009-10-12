@@ -184,8 +184,8 @@ class InstantMessengerForm(forms.ModelForm):
 
 class WebsiteProfile(models.Model):
     user = models.ForeignKey(User, db_index=True, related_name='website_profiles')
-    name = models.CharField(max_length=64, default='My website')
-    url = models.URLField(verify_exists=True, default='www.url-to-my-site.com')
+    name = models.CharField(max_length=64, default=_('My website'))
+    url = models.URLField(verify_exists=True, default=_('www.url-to-my-site.com'))
 
     def __unicode__(self):
         return self.url

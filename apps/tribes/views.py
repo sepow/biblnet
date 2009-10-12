@@ -264,6 +264,7 @@ def tribe(request, slug, form_class=TribeUpdateForm,
         "total_articles": total_articles,
         "are_member"    : are_member,
         "are_moderator" : is_moderator(tribe, request.user),
+        "tribe_members_count" : TribeMember.objects.filter(tribe=tribe).count(),
     }, context_instance=RequestContext(request))
 
 def tribe_members(request, slug, tribe_form=AddMemberForm, template_name="tribes/tribe_members.html"):
