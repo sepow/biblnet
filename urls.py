@@ -7,6 +7,8 @@ from account.openid_consumer import PinaxConsumer
 from profiles.models import Affiliation
 import os.path
 
+handler500 = 'sepow.views.server_error'
+
 
 from microblogging.feeds import TweetFeedAll, TweetFeedUser, TweetFeedUserWithFriends
 tweets_feed_dict = {"feed_dict": {
@@ -118,8 +120,8 @@ if 'rosetta' in settings.INSTALLED_APPS:
         url(r'^rosetta/', include('rosetta.urls')),
     )
 
-
 if settings.SERVE_MEDIA:
     urlpatterns += patterns('', 
-        (r'^site_media/(?P<path>.*)$', 'staticfiles.views.serve')
+        (r'^site_media/(?P<path>.*)$', 'staticfiles.views.serve'),
+        url(r'^test/$', 'sepow.views.testing'),
     )
