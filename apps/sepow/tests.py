@@ -38,7 +38,12 @@ class BiblnetTestCase(unittest.TestCase):
 
         tm = TribeMember.objects.create(tribe=self.tribe2, user=self.normaluser, moderator=True)
         tm.save()
-            
+    
+    def tearDown(self):
+        Tribe.objects.all().delete()
+        User.objects.all().delete()  
+        TribeMember.objects.all().delete()
+        
     def test_has_member(self):
         
         # ----- has_member ----- # 
