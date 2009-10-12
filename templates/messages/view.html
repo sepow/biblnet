@@ -14,9 +14,7 @@
         <tr class="even"><td class="view">{% trans "Recipient" %}:</td><td><a href="{% url profile_detail message.recipient %}">{{ message.recipient }}</a></td><td></td></tr>
         <tr class="even"><td class="view">{% trans "Date" %}:</td><td>{{ message.sent_at|localtime:account.timezone|date:_("DATETIME_FORMAT")}}</td><td></td></tr>
         <tr class="even"><td class="view">{% trans "Subject" %}:</td><td><strong>{{ message.subject }}</strong></td><td></td></tr>
-
-        <tr class="odd"><td></td><td>{% oembed %}{{ message.body|linebreaksbr }}{% endoembed %}</td><td></td></tr>
-
+        <tr class="odd"><td></td><td>{% oembed %}{{ message.body|urlize|linebreaksbr }}{% endoembed %}</td><td></td></tr>
         <tr class="even">
             <td></td>
             <td>
