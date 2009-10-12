@@ -10,6 +10,7 @@
 {% block boxtab_id %}id="board_tab"{% endblock %}
 
 {% block body %}
+{% autopaginate topics 30 %}
 {% load condition_tag %}
 
 {% if_can_see tribe user %}
