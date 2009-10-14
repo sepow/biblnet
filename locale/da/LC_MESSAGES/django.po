@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-09-15 12:01+0200\n"
-"PO-Revision-Date: 2009-09-24 17:56\n"
+"PO-Revision-Date: 2009-10-14 11:57\n"
 "Last-Translator: <luhr.dk@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -197,23 +197,23 @@ msgstr "Logget ind med OpenID"
 #: apps/avatar/models.py:37
 #, python-format
 msgid "Avatar for %s"
-msgstr "Avatar for %s"
+msgstr "Profilbillede for %s"
 
 #: apps/avatar/views.py:51
 msgid "Successfully uploaded a new avatar."
-msgstr "Ny avatar tilføjet."
+msgstr "Nyt profilbillede tilføjet."
 
 #: apps/avatar/views.py:58
 msgid "Successfully updated your avatar."
-msgstr "Din avatar blev opdateret korrekt."
+msgstr "Dit profilbillede blev opdateret korrekt."
 
 #: apps/avatar/views.py:85
 msgid "Successfully deleted the requested avatars."
-msgstr "Den valgte avatar blev slettet korrekt."
+msgstr "Det valgte profilbillede blev slettet korrekt."
 
 #: apps/avatar/templatetags/avatar_tags.py:48
 msgid "Default Avatar"
-msgstr "Standard-avatar"
+msgstr "Standard profilbillede"
 
 #: apps/captcha/fields.py:34
 msgid "Play captcha as audio file"
@@ -2417,7 +2417,7 @@ msgstr "Opslagstavle"
 
 #: templates/site_base.html:33
 msgid "Docs"
-msgstr "Doks"
+msgstr "Dokumenter"
 
 #: templates/site_base.html:34 templates/site_base.html.py:132
 #: templates/schedule/base.html:37 templates/schedule/event_form_base.html:52
@@ -2662,7 +2662,7 @@ msgstr "Slet adgangskode"
 #: templates/avatar/change.html.py:9 templates/avatar/confirm_delete.html:5
 #: templates/avatar/confirm_delete.html:8
 msgid "Avatar"
-msgstr "Avatar"
+msgstr "Profilbillede"
 
 #: templates/account/base.html:25 templates/account/other_services.html:5
 #: templates/account/other_services.html:9
@@ -2835,11 +2835,11 @@ msgstr "Hvis du oplever problemer i forbindelse med indmeldelsen, så skriv til 
 
 #: templates/avatar/change.html:10
 msgid "Your current avatar:"
-msgstr "Din nuværende avatar:"
+msgstr "Dit nuværende profilbillede:"
 
 #: templates/avatar/change.html:13
 msgid "Your avatar is currently the standard avatar, but you can upload a custom avatar simply by using the form below."
-msgstr "Din avatar er lige nu standard-avataren, men du kan tilføje din egen ved at benytte feltet nedenfor."
+msgstr "Lige nu benyttes et standardbillede på din profil, men du kan tilføje et personligt billede ved at benytte feltet nedenfor."
 
 #: templates/avatar/change.html:20
 msgid "Choose new Default"
@@ -2848,19 +2848,19 @@ msgstr "Vælg ny standard"
 #: templates/avatar/change.html:23
 #, python-format
 msgid "Don't like these avatars? You can <a href=\"%(avatar_delete_url)s\">choose which ones to delete</a>."
-msgstr "Vil du af med dine avatarer? Så kan du <a href=\"%(avatar_delete_url)s\">slette nogle af dem</a>."
+msgstr "Vil du af med dine profilbilleder? Så kan du <a href=\"%(avatar_delete_url)s\">slette nogle af dem</a>."
 
 #: templates/avatar/change.html:25
 msgid "Upload an Avatar:"
-msgstr "Upload en avatar"
+msgstr "Upload et profilbillede:"
 
 #: templates/avatar/change.html:27
 msgid "Avatar Image"
-msgstr ""
+msgstr "Profilbillede"
 
 #: templates/avatar/change.html:28
 msgid "Upload New Image"
-msgstr ""
+msgstr "Upload nyt billede"
 
 #: templates/django_dms/detail.html:8
 msgid "Upload user"
@@ -3233,7 +3233,7 @@ msgstr "Profil for %(other_user)s"
 
 #: templates/profiles/profile.html:35
 msgid "Change avatar"
-msgstr "Skift avatar"
+msgstr "Skift profilbillede"
 
 #: templates/profiles/profile.html:45
 msgid "Edit profile"
