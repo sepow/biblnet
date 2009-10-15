@@ -99,8 +99,6 @@ def create(request, form_class=TribeForm, template_name="tribes/create.html"):
                     # @@@ might be worth having a shortcut for sending to all users
                     if not tribe.private:
                         notification.send(User.objects.all(), "tribes_new_tribe", {"tribe": tribe}, queue=True)
-                        if friends: # @@@ might be worth having a shortcut for sending to all friends
-                            notification.send((x['friend'] for x in Friendship.objects.friends_for_user(tribe.creator)), "tribes_friend_tribe", {"tribe": tribe})
                 #return render_to_response("base.html", {
                 #}, context_instance=RequestContext(request))
                 return HttpResponseRedirect(tribe.get_absolute_url())
@@ -219,8 +217,6 @@ def tribe(request, slug, form_class=TribeUpdateForm,
                 if notification:
                     #notification.send([tribe.creator], "tribes_created_new_member", {"user": request.user, "tribe": tribe})
                     notification.send(tribe.member_users.all(), "tribes_new_member", {"user": request.user, "tribe": tribe})
-                    if friends: # @@@ might be worth having a shortcut for sending to all friends
-                        notification.send((x['friend'] for x in Friendship.objects.friends_for_user(request.user)), "tribes_friend_joined", {"user": request.user, "tribe": tribe})
         elif request.POST["action"] == "leave":
             TribeMember.objects.filter(tribe=tribe, user=request.user).delete()
 

@@ -7,9 +7,9 @@ from tribes.models import Topic
 from django.contrib.auth.models import User
 from schedule.utils import EventListManager
 from schedule.models import Calendar, Event
-# from wiki.models import Article <- virker ikke! apps.wiki.models virker.. wtf
-from django_dms.apps.small_dms.models import Document
 
+from django_dms.apps.small_dms.models import Document
+from apps.wiki.models import Article # from wiki.models import Article <- virker ikke! apps.wiki.models virker.. wtf
 register = template.Library()
 
 def has_member(tribe, user):
@@ -31,16 +31,17 @@ def new_since_last_visit(tribe, user):
         new_posts = 0        
         if modified_topics: 
             new_posts = ThreadedComment.objects.filter(object_id__in=modified_topics, date_modified__gte=since).count()
-        new_wiki = 0
+        new_wiki = tribe.wiki_articles().filter(created_at__gte=since).count()
         new_docs = Document.objects.filter(tribe=tribe).filter(date_added__gte=since).count()
         
-    changed = bool(new_topics or new_posts or new_docs)
+    changed = bool(new_topics or new_posts or new_docs or new_wiki)
     return {
         'changed' : changed,
         'tribe' : tribe,
         'new_topics' : new_topics,
         'new_posts' : new_posts,
         'new_docs' : new_docs,
+        'new_wiki' : new_wiki,
     }
 register.inclusion_tag('sepow/new_since_last_visit.html')(new_since_last_visit)
 
@@ -61,6 +62,30 @@ def visit_tribe(tribe, user):
     return ""
 register.simple_tag(visit_tribe)
 
+def profile_stats(user):
+    wiki = Article.objects.filter(creator=user).count()
+    documents = Document.objects.filter(uploader=user).count()
+    topics = Topic.objects.filter(creator=user).count()
+    comments = ThreadedComment.objects.filter(user=user).count()
+
+    latest_topic = None
+    latest_comment = None
+    if comments:
+        latest_comment = ThreadedComment.objects.filter(user=user).latest()
+    if topics:
+        latest_topic = Topic.objects.filter(creator=user).latest()
+    last_login = user.get_profile().last_visit_storage
+
+    return {'wiki' : wiki,
+            'documents' : documents,
+            'topics' : topics,
+            'comments' : comments,
+            'latest_comment' : latest_comment,
+            'last_login' : last_login,
+            'latest_topic' : latest_topic,
+           }
+    
+register.inclusion_tag('profiles/profile_stats.html')(profile_stats)
 import itertools 
 def get_tribe_calendar(tribe, user, event_slice=5):
     '''
@@ -129,7 +154,6 @@ def get_latest(users=8, topics=1, comments=2):
             'latest_topics' : latest_topic,
             'latest_posts'  : latest_post,
             }
-
 register.inclusion_tag('sepow/latest_updates.html')(get_latest)
 
 

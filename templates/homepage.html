@@ -19,7 +19,7 @@
 
         {% if user.tribe_set.all %}
             <table class="tribes">
-                <tr class="even"><th>{% trans "Tribe" %}</th><th class="comment_stats">{% trans "New topics" %}</th><th class="comment_stats">{% trans "New replies" %}</th><th class="comment_stats">{% trans "New docs" %}</th></tr>
+                <tr class="even"><th>{% trans "Tribe" %}</th><th class="comment_stats">{% trans "New topics" %}</th><th class="comment_stats">{% trans "New replies" %}</th><th class="comment_stats">{% trans "New docs" %}</th><th class="comment_stats">{% trans "New Wikis" %}</th></tr>
                 {% for tribe in user.tribe_set.all %}
                     {% if not tribe.deleted %}
                         {% new_since_last_visit tribe user %}

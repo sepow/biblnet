@@ -4,7 +4,7 @@
 {% load avatar_tags %}
 {% load app_plugins %}
 {% load uni_form %}
-
+{% load biblnet_tags %}
 {% block head_title %}{% blocktrans %}Profile for {{ other_user }}{% endblocktrans %}{% endblock %}
 
 {% block body %}
@@ -74,7 +74,9 @@
         <h2>{% trans "About me" %}</h2>
         <p>{{ other_user.get_profile.about|linebreaksbr }}</p>
     {% endif %}
-
+    
+    {% profile_stats other_user %}
+    
             {% include "profiles/profile_right_panel.html" %}
 
             {% if is_me %}

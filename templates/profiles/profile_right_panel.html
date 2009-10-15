@@ -3,12 +3,11 @@
 {% load condition_tag %}
 
 {% if is_me %}
+    <blink>template</blink> = profile/profile_right_panel.html<br/>
      {% if other_user.documents.all%}
         YOUR DOKUMENTS <br/>
         {% for doc in other_user.documents.all %}
-            {% if not doc.tribe.private %}
-                {{doc}}
-            {% endif %}
+            {{doc}}<br/>
         {% endfor %}
      {% endif %}
     <h2>{% trans "My Tribes" %}</h2>
@@ -93,11 +92,12 @@
         {% endif %}
     </div-->
 {% else %}
+     <blink>template</blink> = profile/profile_right_panel.html<br/>
      {% if other_user.documents.all%}
         {{other_user}}'s DOKUMENTS <br/>
         {% for doc in other_user.documents.all %}
             {% if not doc.tribe.private %}
-                {{doc}}
+                {{doc}}<br/>
             {% endif %}
         {% endfor %}
      {% endif %}

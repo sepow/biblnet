@@ -107,6 +107,7 @@ class Topic(models.Model):
         ordering = ('-sticky', '-modified')
         verbose_name = _(u'Topic')
         verbose_name_plural = _(u'Topics')
+        get_latest_by = "created"
 
 def new_comment(sender, instance, **kwargs):
     if isinstance(instance.content_object, Topic):       
