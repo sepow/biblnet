@@ -62,7 +62,7 @@ def visit_tribe(tribe, user):
     return ""
 register.simple_tag(visit_tribe)
 
-def profile_stats(user):
+def profile_stats(user): # I should cache this I guess
     wiki = Article.objects.filter(creator=user).count()
     documents = Document.objects.filter(uploader=user).count()
     topics = Topic.objects.filter(creator=user).count()
