@@ -3,6 +3,14 @@
 {% load condition_tag %}
 
 {% if is_me %}
+     {% if other_user.documents.all%}
+        YOUR DOKUMENTS <br/>
+        {% for doc in other_user.documents.all %}
+            {% if not doc.tribe.private %}
+                {{doc}}
+            {% endif %}
+        {% endfor %}
+     {% endif %}
     <h2>{% trans "My Tribes" %}</h2>
         <table class="tribes">
         {% if other_user.tribe_set.all %}
@@ -39,6 +47,7 @@
             <tr class="odd"><td></td><td></td><td>{% blocktrans %}You are not yet a member of any <a href="{{ tribe_url }}">tribes</a>.{% endblocktrans %}</td></tr>
         {% endif %}
         </table>
+
 
     <!--h2>{% trans "Your Documents" %}</h2>
         <table class="tribes">
@@ -84,6 +93,14 @@
         {% endif %}
     </div-->
 {% else %}
+     {% if other_user.documents.all%}
+        {{other_user}}'s DOKUMENTS <br/>
+        {% for doc in other_user.documents.all %}
+            {% if not doc.tribe.private %}
+                {{doc}}
+            {% endif %}
+        {% endfor %}
+     {% endif %}
     <h2>{% blocktrans %}{{ other_user }}'s Tribes{% endblocktrans %}</h2>
     <table class="tribes">
         {% if other_user.tribe_set.all %}
