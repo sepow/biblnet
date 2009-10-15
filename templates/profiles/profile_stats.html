@@ -1,0 +1,10 @@
+<p>
+<blink>template</blink> = profiles/profile_stats.html <br/><br/>
+wiki articles created: {{wiki}}<br/>
+dokumenter uploaded: {{documents}}<br/>
+antal kommentarer: {{comments}}<br/>
+seneste kommentarer: {% if not latest_comment.get_content_object.tribe.private %}{{latest_comment}} {% else %} Private {% endif %}<br/>
+antal tråde oprettet: {{topics}}<br/>
+seneste tråd: {% if not latest_topic.tribe.private%}{{latest_topic}}{% else %} Private {% endif %}<br/><br/>
+last_login: {{last_login}}
+</p>
