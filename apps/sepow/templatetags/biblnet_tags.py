@@ -44,6 +44,11 @@ def new_since_last_visit(tribe, user):
     }
 register.inclusion_tag('sepow/new_since_last_visit.html')(new_since_last_visit)
 
+def new_tribes_since_last_visit(user):
+    since = user.get_profile().last_visit
+    new_tribes = Tribe.objects.filter(created__gte=since, private=False).count()
+    return {'count' : new_tribes, }
+register.inclusion_tag('sepow/new_tribes_since_last_visit.html')(new_tribes_since_last_visit)
 
 def visit_tribe(tribe, user):
     if has_member(tribe, user): # if the user is a member, set the last visit to to now

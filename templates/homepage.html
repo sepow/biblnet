@@ -12,6 +12,8 @@
 
     {% if user.is_authenticated %}
         <p>{% trans "You last visited us" %} {{ user.get_profile.last_visit|timesince }} {% trans "ago" %}</p>
+        
+        {% new_tribes_since_last_visit request.user %}
 
         <h2>{% trans "New posts since your last login" %}</h2>
 
@@ -48,7 +50,7 @@
     	{% endblocktrans %}
         <br/>
     	{% blocktrans %}
-    	<p>Profiles from the 'old' biblnet haven't been transfered. You will need to sign up again to access this site.</p>
+    	<p>Profiles from the 'old' biblnet haven't been transferred. You will need to sign up again to access this site.</p>
     	{% endblocktrans %}
    {% endif %}
 
