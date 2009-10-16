@@ -30,7 +30,7 @@
     {% comment %}
     {% if not openid %}
         <p>{% trans "Or sign in with your OpenID" %}:</p>
-        {# @@@ why isn't this just does as a form object ? #}
+        {# @@@ why isnt this just does as a form object ? #}
         <form class="login uniForm" action="/openid/register/" method="POST">
             <fieldset class="inlineLabels">
                 {% if url_required %}

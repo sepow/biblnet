@@ -236,7 +236,7 @@ NOTIFICATION_LANGUAGE_MODULE = 'account.Account'
 
 EMAIL_CONFIRMATION_DAYS = 2
 EMAIL_DEBUG = DEBUG
-CONTACT_EMAIL = "BendtsenPowell@gmail.com"
+CONTACT_EMAIL = "admin@biblnet.dk"
 
 SITE_NAME = "Biblnet"
 LOGIN_URL = "/account/login"
