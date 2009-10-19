@@ -128,11 +128,11 @@
                     <input type="text" name="q" />
                     <select name="models">
                         <!--option value="">{% trans "All" %}</option-->
+                        <option value="profiles.profile">{% trans "Members" %}</option>
                         <option value="tribes.tribe">{% trans "Tribes" %}</option>
                         <option value="tribes.topic">{% trans "Topics" %}</option>
                         <option value="wiki.article">{% trans "Wiki" %}</option>
                         <option value="small_dms.document">{% trans "Documents" %}</option>
-                        <option value="profiles.profile">{% trans "Members" %}</option>
                     </select>
                     <!--button onclick="$('#search').submit(); return false"><span>{% trans 'Search' %}</span></button-->
                     <input type="submit" value="{% trans 'Search' %}" />

@@ -77,6 +77,7 @@ class TribeMember(models.Model):
         unique_together = (("tribe", "user"),) 
         
 from threadedcomments.models import ThreadedComment
+from django.contrib.contenttypes.models import ContentType
 class Topic(models.Model):
     """
     a discussion topic for the tribe.
@@ -95,10 +96,20 @@ class Topic(models.Model):
     closed = models.BooleanField(_("closed?"), blank=True, default=False) # ikke muligt at skrive indlæg til denne post
 
     tags = TagField()
-    
+
     def __unicode__(self):
         return self.title
-
+    
+    def get_latest_poster(self):
+        ctype = ContentType.objects.get_for_model(self) # er altid topic
+        comments = ThreadedComment.objects.filter(content_type=ctype, object_id=self.id)
+        
+        # ThreadedComment meta -> ordering = ('-date_submitted',), så det burde være [0] der er den nyeste
+        if comments:
+            return comments[0].user
+        else:
+            return self.creator
+        
     def get_absolute_url(self):
         return ("tribe_topic", [self.pk])
     get_absolute_url = models.permalink(get_absolute_url)
@@ -112,7 +123,7 @@ class Topic(models.Model):
 def new_comment(sender, instance, **kwargs):
     if isinstance(instance.content_object, Topic):       
         topic = instance.content_object
-        topic.modified = datetime.now()
+        topic.modified = instance.date_submitted
         topic.save()
         if notification:
             if topic.creator != instance.user:

@@ -9,7 +9,7 @@
     {% if topic.closed %}<img src="/site_media/images/sitegraphics/lock.png" alt="{% trans 'Closed topic' %}" />{% endif %}
 </td>
 <td><a href="{{ topic.get_absolute_url }}">{{ topic.title }}</a></td>
-<td><a href="{{ topic.creator.get_profile.get_absolute_url }}">{% firstof topic.creator.get_profile.nickname topic.creator.get_profile.name %}</a></td>
+<td><a href="{{ topic.creator.get_profile.get_absolute_url }}">{{ topic.creator.get_profile.get_name }}</a></td>
 <td class="comment_stats">
     {{ topic.views }}
 </td>
@@ -21,5 +21,13 @@
         -
     {% endif %}
 </td>
-<td>{{ topic.modified|timesince }} {% trans "ago" %}</td>
+<td>
+
+<div style="font-size:10px;">{{ topic.modified|timesince }} {% trans "ago" %}
+<br/>af {% with topic.get_latest_poster as latest_poster %}
+<a href="{{ latest_poster.get_profile.get_absolute_url }}">{{latest_poster.get_profile.get_name}}</a></td>
+{%endwith%}
+</div>
+
+{# cache m. tribename + modified, nok#}
 </tr>
