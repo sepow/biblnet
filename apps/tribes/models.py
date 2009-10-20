@@ -7,7 +7,6 @@ from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.contenttypes import generic
 from django.contrib.auth.models import User
-from sepow.html import sanitize_html
 from tagging.fields import TagField
 from photos.models import Pool
 
@@ -48,18 +47,15 @@ class Tribe(models.Model):
 
     class Meta:
         ordering = ('name',)
-    
+        verbose_name = _(u'Tribe')
+        verbose_name_plural = _(u'Tribes')
+        
     def __unicode__(self):
         return self.name
     
     def get_absolute_url(self):
         return ("tribe_detail", [self.slug])
     get_absolute_url = models.permalink(get_absolute_url)
-    
-    class Meta:
-        ordering = ('name',)
-        verbose_name = _(u'Tribe')
-        verbose_name_plural = _(u'Tribes')
 
 class TribeMember(models.Model):
     tribe = models.ForeignKey(Tribe, related_name="members", verbose_name=_('tribe'))

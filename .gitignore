@@ -5,3 +5,7 @@ local_settings.py
 /biblnet_index/*
 media/documents/*
 media/avatars/*
+.project
+.pydevproject
+.settings/
+

@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 from django import forms
 from django.utils.translation import ugettext_lazy as _
-from tribes.models import Tribe, Topic
+from tribes.models import Tribe, Topic, TribeMember
 from tagging.forms import TagField
 from sepow.widgets import AutoCompleteTagInput
-
+from django.contrib.auth.models import User
 
 class TribeForm(forms.ModelForm):
     tags = TagField(widget=AutoCompleteTagInput(cls=Tribe), required=False, help_text = _("Tags are seperated by a comma fx. 'three word tag, another tag' ."),)
@@ -53,8 +53,7 @@ class TopicForm(forms.ModelForm):
     class Meta:
         model = Topic
         fields = ('title', 'body', 'tags')
-from tribes.models import TribeMember, Tribe
-from django.contrib.auth.models import User
+
 
 class RemoveMemberForm(forms.Form):
     

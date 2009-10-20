@@ -1,5 +1,4 @@
 #-*- coding:utf-8 -*-
-from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.http import HttpResponseRedirect, HttpResponse, HttpResponseForbidden, Http404
@@ -10,7 +9,6 @@ from django.conf import settings
 from tribes.models import TribeMember
 from sepow.html import sanitize_html
 from datetime import datetime
-from django.contrib.auth.decorators import login_required
 from schedule.models import Calendar
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
@@ -41,7 +39,6 @@ except ImportError:
 
 from tribes.models import Tribe
 from tribes.forms import *
-from microblogging.models import TweetInstance
 
 TOPIC_COUNT_SQL = """
 SELECT COUNT(*)
@@ -415,7 +412,7 @@ def topics(request, slug, form_class=TopicForm,
         "tribe": tribe,
         "topic_form": topic_form,
         "are_member": has_member(tribe, request.user),
-        "are_moderator" : is_moderator(tribe, request.user),
+        "are_moderator" : are_moderator,
     }, context_instance=RequestContext(request))
 
 def topic(request, id, edit=False, template_name="tribes/topic.html"):
@@ -492,19 +489,12 @@ def topic_moderate(request, pk):
         if not request.user.is_superuser:
             do_403_if_not_superuser(request)
 
-        
     if request.method == "POST" and is_moderator(topic.tribe, request.user):
         if 'sticky' in request.POST:
-            if topic.sticky == True:
-                topic.sticky = False
-            else: 
-                topic.sticky = True
+            # topic.sticky = not topic.sticky <- ?
+            topic.sticky = not topic.sticky
             topic.save()
-            
         elif 'close' in request.POST:
-            if topic.closed == True:
-                topic.closed = False
-            else: 
-                topic.closed = True
-            topic.save()          
+            topic.closed = not topic.closed
+            topic.save()       
     return HttpResponseRedirect(request.POST["next"])
