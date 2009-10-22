@@ -9,7 +9,6 @@ from django.utils.translation import ugettext_noop
 from django.core.urlresolvers import reverse
 from django.core.exceptions import ImproperlyConfigured
 from django.db.models import get_app
-
 from messages.models import Message
 from messages.forms import ComposeForm
 from messages.utils import format_quote
@@ -75,12 +74,19 @@ def compose(request, recipient=None, form_class=ComposeForm,
         sender = request.user
         form = form_class(request.POST)
         if form.is_valid():
-            form.save(sender=request.user)
-            request.user.message_set.create(
-                message=_(u"Message successfully sent."))
-            if success_url is None:
-                success_url = reverse('messages_inbox')
-            return HttpResponseRedirect(success_url)
+            joined = request.user.date_joined
+            now = datetime.datetime.now()
+            time_since = now - joined
+            if time_since.seconds > 60*60*6:
+                form.save(sender=request.user)
+                request.user.message_set.create(
+                    message=_(u"Message successfully sent."))
+                if success_url is None:
+                    success_url = reverse('messages_inbox')
+                return HttpResponseRedirect(success_url)
+            else:
+                request.user.message_set.create(message=_(u"Yeah.. I'm not going to let you do that yet"))
+                return HttpResponseRedirect(success_url)
     else:
         form = form_class()
         if recipient is not None:
