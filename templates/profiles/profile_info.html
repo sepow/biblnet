@@ -1,6 +1,6 @@
 {% load i18n %}
 {% load avatar_tags %}
-
+{% load biblnet_tags %}
 <table>
     {% if other_user.get_profile.name %}
         <tr>
@@ -33,7 +33,7 @@
     {% if other_user.email %}
         <tr>
             <th class="icon"><img src="{{ MEDIA_URL }}images/sitegraphics/snabela.png" alt="{% trans 'Email' %}" title="{% trans 'Email' %}"/></td>
-            <td><a href="mailto:{{ other_user.email }}">{{ other_user.email }}</a></td>
+            <td><a href="mailto:{{ other_user.email }}">{{ other_user.email|mungify }}</a></td>
         </tr>
     {% endif %}
 
