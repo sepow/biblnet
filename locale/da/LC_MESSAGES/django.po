@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-09-15 12:01+0200\n"
-"PO-Revision-Date: 2009-10-14 11:57\n"
+"PO-Revision-Date: 2009-10-22 21:33\n"
 "Last-Translator: <luhr.dk@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -3368,7 +3368,7 @@ msgstr "%(other_user)s's grupper"
 #: templates/profiles/profile_right_panel.html:97
 #: templates/tribes/tribe.html:25
 msgid "Creator"
-msgstr "Oprettet af:"
+msgstr "Oprettet af"
 
 #: templates/profiles/profile_right_panel.html:109
 msgid "Not yet a member of any tribes."

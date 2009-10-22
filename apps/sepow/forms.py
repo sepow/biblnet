@@ -39,7 +39,7 @@ class BiblnetSignupForm(forms.Form):
     occupation = forms.ModelChoiceField(label=_(u"Occupation"), queryset=Occupation.objects.all().order_by('occupation'), empty_label=_("(Pick your occupation)")) 
     confirmation_key = forms.CharField(max_length=40, required=False, widget=forms.HiddenInput())
     
-    accept_terms = forms.BooleanField(required=True) 
+    accept_terms = forms.BooleanField(label=_(u"Accept Terms"), required=True)
 
     def clean_username(self):
         if not alnum_re.search(self.cleaned_data["username"]):
