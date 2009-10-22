@@ -231,13 +231,15 @@ p.blocktitle {
     width: 800px;
 }
 #site_wide_announcements {
-    background: yellow;
+    background: #aa0000;
+    margin-top: 10px;
     padding: 10px;
     text-align: center;
 }
 #site_wide_announcements ul {
     padding: 0;
     margin: 0;
+    list-style: none;
 }
 /*h1 {
     margin: 0;

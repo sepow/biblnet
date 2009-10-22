@@ -15,10 +15,10 @@
         
         {% new_tribes_since_last_visit request.user %}
 
-        <h2>{% trans "New posts since your last login" %}</h2>
+        <h2>{% trans "New content since your last login" %}</h2>
 
         {% if user.tribe_set.all %}
-            <table class="tribes">
+            <table class="topics">
                 <tr class="even"><th>{% trans "Tribe" %}</th><th class="comment_stats">{% trans "New topics" %}</th><th class="comment_stats">{% trans "New replies" %}</th><th class="comment_stats">{% trans "New docs" %}</th><th class="comment_stats">{% trans "New Wikis" %}</th></tr>
                 {% for tribe in user.tribe_set.all %}
                     {% if not tribe.deleted %}
@@ -27,7 +27,7 @@
                 {% endfor %}
 {% comment %} ### Vi skal have en metode til at afgøre om der er nyt fra nogle af brugerens grupper, så vi kan fortælle dem at der ikke er noget nyt hvis det er tilfældet
                 {% if changed %}
-                    <tr class="odd"><td colspan="3">{% trans "No new posts since your last visit..." %}</td></tr>
+                    <tr class="odd"><td colspan="3">{% trans "There is no new content since your last visit..." %}</td></tr>
                 {% endif %}
 {% endcomment %}
             </table>

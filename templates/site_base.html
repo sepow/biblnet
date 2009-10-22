@@ -72,8 +72,8 @@
                     <td><b><a href="{% url profile_detail user %}">{{ user }}</a></b></td>
                 </tr>
             </table>
-            <div style="float: right;"><a href="{% url acct_logout %}"><img src="{{ MEDIA_URL }}images/sitegraphics/door_in.png" alt="{% trans 'Logout' %}" title="{% trans 'Logout' %}"></a></div>
-            <div><img src="{{ MEDIA_URL }}images/sitegraphics/time.png" alt="{% trans 'Your last login' %}" title="{% trans 'Your last login' %}"> <small>{{ user.get_profile.last_visit|timesince }} {% trans "ago" %}</small></div>
+            <div style="float: right;"><a href="{% url acct_logout %}"><img src="{{ MEDIA_URL }}images/sitegraphics/door_in.png" alt="{% trans 'Logout' %}" title="{% trans 'Logout' %}"/></a></div>
+            <div><img src="{{ MEDIA_URL }}images/sitegraphics/time.png" alt="{% trans 'Your last login' %}" title="{% trans 'Your last login' %}"/> <small>{{ user.get_profile.last_visit|timesince }} {% trans "ago" %}</small></div>
         {% else %}
             <p style="text-align: center;">{% trans "You are not logged in..." %}</p>
             <p style="text-align: center;"><a href="{% url acct_login %}"><b>{% trans "Log in" %}</b></a> / <a href="{% url acct_signup %}"><b>{% trans "Sign up" %}</b></a></p>
@@ -149,7 +149,7 @@
 	    <div class="columnmid">
             <div class="messages">
                 <a href="{% url messages_inbox %}">{% trans "Private messages" %}{% if messages_inbox_count %} <b>({{ messages_inbox_count }})</b>{% endif %}</a><br />
-                <a href="{% url notification_notices %}">{% trans "Notices" %}{% if notice_unseen_count %} <b>({{ notice_unseen_count }})</b>{% endif %}</a><br />
+                <a href="{% url notification_notices %}">{% trans "Notices" %}{#% if notice_unseen_count %} <b>({{ notice_unseen_count }})</b>{% endif %#}</a><br />
             </div>
 	    </div>
 	    <div class="columnbottom">&nbsp;</div>

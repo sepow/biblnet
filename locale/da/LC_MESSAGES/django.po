@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-09-15 12:01+0200\n"
-"PO-Revision-Date: 2009-10-22 21:33\n"
+"PO-Revision-Date: 2009-10-22 21:47\n"
 "Last-Translator: <luhr.dk@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -2357,8 +2357,8 @@ msgid "ago"
 msgstr "siden"
 
 #: templates/homepage.html:16
-msgid "New posts since your last login"
-msgstr "Nye indlæg siden dit sidste login"
+msgid "New content since your last login"
+msgstr "Nyt indhold siden dit sidste login"
 
 #: templates/homepage.html:20 templates/site_base.html:94
 #: templates/site_base.html.py:102 templates/site_base.html:113

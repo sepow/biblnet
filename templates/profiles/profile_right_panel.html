@@ -3,15 +3,8 @@
 {% load condition_tag %}
 
 {% if is_me %}
-    <blink>template</blink> = profile/profile_right_panel.html<br/>
-     {% if other_user.documents.all%}
-        YOUR DOKUMENTS <br/>
-        {% for doc in other_user.documents.all %}
-            {{doc}}<br/>
-        {% endfor %}
-     {% endif %}
     <h2>{% trans "My Tribes" %}</h2>
-        <table class="tribes">
+    <table class="tribes">
         {% if other_user.tribe_set.all %}
             <tr class="even"><th width="16px"></th><th width="16px"></th><th>{% trans "Name" %}</th><th width="16px"></th></tr>
             {% for tribe in other_user.tribe_set.all %}
@@ -45,68 +38,29 @@
             {% url tribe_thing_list "" as tribe_url %}
             <tr class="odd"><td></td><td></td><td>{% blocktrans %}You are not yet a member of any <a href="{{ tribe_url }}">tribes</a>.{% endblocktrans %}</td></tr>
         {% endif %}
-        </table>
+    </table><br/>
 
-
-    <!--h2>{% trans "Your Documents" %}</h2>
+    {% if other_user.documents.all %}
+    <h2>{% trans "My Documents" %}</h2>
         <table class="tribes">
-        {% if other_user.tribe_set.all %} ### Her skal hentes alle dokumenter der tilhører brugeren... Nedenfor skal alt rettes til...
-            <tr class="even"><th width="16px"></th><th width="16px"></th><th>{% trans "Name" %}</th></tr>
-            {% for tribe in other_user.tribe_set.all %}
+            <tr class="even"><th width="16px"></th><th>{% trans "Title" %}</th></tr>
+            {% for document in other_user.documents.all %}
                 <tr class="{% cycle 'odd' 'even' %}">
-                    <td><img src="/site_media/images/sitegraphics/report.png" alt="{% trans 'Tribe' %}" /></td>
-                    <td>
-                        {% ifequal tribe.creator user %}
-                            <img src="/site_media/images/sitegraphics/crown.gif" alt="{% trans 'Administrator' %}" title="{% trans 'Administrator' %}" />
-                        {% else %}
-                            <input type="image" src="/site_media/images/sitegraphics/cancel.png" value="{% trans 'leave tribe' %}" title="{% trans 'Leave tribe' %}" />
-                            <input type="hidden" name="action" value="leave" />
-                        {% endifequal %}
-                    </td>
-                    <td><a href="{% url tribe_detail tribe.slug %}">{{ tribe.name }}</a></td>
+                    <td>{% include "django_dms/filetype.html" %}</td>
+                    <td>{{ document|default:"Untitled" }}</td>
+                    {# <td><a href="{% dms_url dms_site document_detail document %}">{{ document|default:"Untitled" }}</a></td> #}
                 </tr>
             {% endfor %}
-        {% else %}
-            {% url tribe_thing_list "" as tribe_url %}
-            <tr class="odd"><td></td><td></td><td>{% blocktrans %}You are not yet a member of any <a href="{{ tribe_url }}">tribes</a>.{% endblocktrans %}</td></tr>
-        {% endif %}
-        </table-->
-
-
-    <!--div class="friends">
-        <h2>{% trans "Your Friends" %}</h2>
-        {% if other_friends %}
-            <table width="100%">
-                {% for friendship in other_friends %}
-                {% if forloop.counter0|divisibleby:"3" %}<tr>{% endif %}
-                    <td>
-                        <div class="avatar">{% avatar friendship.friend 40 %}</div>
-                        <div class="details"><a href="{% url profile_detail friendship.friend.username %}" title="{{ friendship.friend.username }}">{{ friendship.friend.username }}</a></div>
-                    </td>
-                {% if forloop.counter0|add:"1"|divisibleby:"3" %}</tr>{% endif %}
-                {% endfor %}
-                {% if other_friends|length|divisibleby:"3" %}{% else %}</tr>{% endif %}
-            </table>
-        {% else %}
-            <p>{% blocktrans %}None. You should look at the list of <a href="/profiles/">profiles</a> and see if there's anyone you know.{% endblocktrans %}</p>
-        {% endif %}
-    </div-->
-{% else %}
-     <blink>template</blink> = profile/profile_right_panel.html<br/>
-     {% if other_user.documents.all%}
-        {{other_user}}'s DOKUMENTS <br/>
-        {% for doc in other_user.documents.all %}
-            {% if not doc.tribe.private %}
-                {{doc}}<br/>
-            {% endif %}
-        {% endfor %}
+        </table>
      {% endif %}
+
+{% else %}
     <h2>{% blocktrans %}{{ other_user }}'s Tribes{% endblocktrans %}</h2>
     <table class="tribes">
         {% if other_user.tribe_set.all %}
             <tr class="even"><th width="16px"></th><th width="16px"></th><th>{% trans "Name" %}</th>
             {% for tribe in other_user.tribe_set.all %}
-                {% if not tribe.private %}
+                {% if not tribe.private and not tribe.deleted %}
                     <tr class="{% cycle 'odd' 'even' %}">
                         <td><img src="/site_media/images/sitegraphics/group.png" alt="{% trans 'Tribe' %}" /></td>
                         <td>
@@ -125,20 +79,22 @@
         {% else %}
             <tr class="odd"><td></td><td></td><td>{% trans "Not yet a member of any tribes." %}</td></tr>
         {% endif %}
-    </table>
+    </table><br/>
 
-    <!--div class="friends">
-        <h2>{% blocktrans %}{{ other_user }}'s Friends{% endblocktrans %}</h2>
-        <table width="100%">
-            {% for friendship in other_friends %}
-                {% if forloop.counter0|divisibleby:"3" %}<tr>{% endif %}
-                <td>
-                    <div class="avatar">{% avatar friendship.friend 40 %}</div>
-                    <div class="details"><a href="{% url profile_detail friendship.friend.username %}" title="{{ friendship.friend.username }}">{{ friendship.friend.username }}</a></div>
-                </td>
-                {% if forloop.counter0|add:"1"|divisibleby:"3" %}</tr>{% endif %}
+    {% if other_user.documents.all %}
+    <h2>{% blocktrans %}{{ other_user }}'s Documents{% endblocktrans %}</h2>
+        <table class="tribes">
+            <tr class="even"><th width="16px"></th><th>{% trans "Title" %}</th></tr>
+            {% for document in other_user.documents.all %}
+                {% if not doc.tribe.private %}
+                    <tr class="{% cycle 'odd' 'even' %}">
+                        <td>{% include "django_dms/filetype.html" %}</td>
+                        <td>{{ document|default:"Untitled" }}</td>
+                        {# <td><a href="{% dms_url dms_site document_detail document %}">{{ document|default:"Untitled" }}</a></td> #}
+                    </tr>
+                {% endif %}
             {% endfor %}
-        {% if other_friends|length|divisibleby:"3" %}{% else %}</tr>{% endif %}
         </table>
-    </div-->
+     {% endif %}
+
 {% endif %}

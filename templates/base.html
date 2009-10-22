@@ -24,18 +24,6 @@
 </head>
 
 <body>
-{% if site_wide_announcements %}
-	<div id="site_wide_announcements">
-		<ul>
-			{% for announcement in site_wide_announcements %}
-				<li>
-					<a href="{{ announcement.get_absolute_url }}">{{ announcement }}</a> -
-					<a href="{% url announcement_hide announcement.pk %}?next={{ request.path }}">{% trans "Hide announcement" %}</a>
-				</li>
-			{% endfor %}
-		</ul>
-	</div>
-{% endif %}
 
 <div id="header">
 	<div class="logo" dir="ltr">{% block logo_link_image %}{% endblock %}</div>
@@ -43,6 +31,19 @@
 </div>
 
 <div id="colmask">
+    {% if site_wide_announcements %}
+	    <div id="site_wide_announcements">
+		    <ul>
+			    {% for announcement in site_wide_announcements %}
+				    <li>
+					    <a href="{{ announcement.get_absolute_url }}">{{ announcement }}</a> -
+					    <a href="{% url announcement_hide announcement.pk %}?next={{ request.path }}">{% trans "Hide announcement" %}</a>
+				    </li>
+			    {% endfor %}
+		    </ul>
+	    </div>
+    {% endif %}
+
     <div {% block boxtab_id %}{% endblock %}>{% block boxtab %}{% endblock %}</div>
 <div id="colmid">
 <div id="colright">

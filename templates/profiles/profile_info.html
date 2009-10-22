@@ -16,6 +16,13 @@
         </tr>
     {% endif %}
 
+    {% if other_user.last_login %}
+        <tr>
+            <th class="icon"><img src="/site_media/images/sitegraphics/time.png" alt="{% trans 'Login' %}" title="{% trans 'Last login' %}"/></td>
+            <td>{{ other_user.last_login|timesince }} {% trans "ago" %}</td>
+        </tr>
+    {% endif %}
+
     {% if other_user.get_profile.phone_number %}
         <tr>
             <th class="icon"><img src="{{ MEDIA_URL }}images/sitegraphics/phone.png" alt="{% trans 'Phone' %}" title="{% trans 'Phone' %}" /></td>

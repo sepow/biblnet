@@ -80,7 +80,7 @@
                 {% endfor %}
             {% else %}
                 {% url tribe_create_topic tribe.slug as new_topic_url %}
-                <tr class="odd"><td><img src="{{ MEDIA_URL }}images/sitegraphics/note.png" /></td><td colspan=5>{% trans "There have been no new topics or replies since your last visit" %}</td></tr>
+                <tr class="odd"><td><img src="{{ MEDIA_URL }}images/sitegraphics/note.png" alt="{% trans 'Note' %}" /></td><td colspan=5>{% trans "There have been no new topics or replies since your last visit" %}</td></tr>
             {% endif %}
         </table>
         
@@ -118,45 +118,7 @@
                 <tr class="even"><th width="16px"></th><th width="16px"></th><th>{% trans "Title" %}</th><th width="20%">{% trans "Author" %}</th><th class="comment_stats" width="120px">{% trans "Score" %}</th></tr>
                 {% for document in documents %}
                     <tr class="{% cycle 'odd' 'even' %}">
-                        <td>
-                            {% if document.file_mimetype %}
-                                {% ifequal document.file_mimetype 'application/pdf' %}
-                                    <img src="{{MEDIA_URL}}images/sitegraphics/page_white_acrobat.png" alt="{% trans 'Filetype' %}" title="PDF"/>
-                                {% else %}
-                                    {% ifequal document.file_mimetype 'application/msword' %}
-                                        <img src="{{MEDIA_URL}}images/sitegraphics/page_white_word.png" alt="{% trans 'Filetype' %}" title="Word"/>
-                                    {% else %}
-                                        {% ifequal document.file_mimetype 'application/vnd.ms-powerpoint' %}
-                                            <img src="{{MEDIA_URL}}images/sitegraphics/page_white_powerpoint.png" alt="{% trans 'Filetype' %}" title="PowerPoint"/>
-                                        {% else %}
-                                            {% ifequal document.file_mimetype 'image/jpeg' %}
-                                                <img src="{{MEDIA_URL}}images/sitegraphics/picture.png" alt="{% trans 'Filetype' %}" title="JPEG"/>
-                                            {% else %}
-                                                {% ifequal document.file_mimetype 'application/vnd.ms-excel' %}
-                                                    <img src="{{MEDIA_URL}}images/sitegraphics/page_white_excel.png" alt="{% trans 'Filetype' %}" title="Excel"/>
-                                                {% else %}
-                                                    <img src="{{MEDIA_URL}}images/sitegraphics/page_white.png" alt="{% trans 'Filetype' %}" title="{{ document.file_extension }}"/>
-                                                {% endifequal %}
-                                            {% endifequal %}
-                                        {% endifequal %}
-                                    {% endifequal %}
-                                {% endifequal %}
-                            {% else %}
-                                {% ifequal document.file_extension '.docx' %}
-                                    <img src="{{MEDIA_URL}}images/sitegraphics/page_word.png" alt="{% trans 'Filetype' %}" title="Word 2007"/>
-                                {% else %}
-                                    {% ifequal document.file_extension '.xlsx' %}
-                                        <img src="{{MEDIA_URL}}images/sitegraphics/page_excel.png" alt="{% trans 'Filetype' %}" title="Excel 2007"/>
-                                    {% else %}
-                                        {% ifequal document.file_extension '.pptx' %}
-                                            <img src="{{MEDIA_URL}}images/sitegraphics/page_white_powerpoint.png" alt="{% trans 'Filetype' %}" title="PowerPoint 2007"/>
-                                        {% else %}
-                                            <img src="{{MEDIA_URL}}images/sitegraphics/page_white.png" alt="{% trans 'Filetype' %}" title="{{ document.file_extension }}"/>
-                                        {% endifequal %}
-                                    {% endifequal %}
-                                {% endifequal %}
-                            {% endif %}
-                        </td>
+                        <td>{% include "django_dms/filetype.html" %}</td>
                         <td>{% if user.is_authenticated %}<a href="{{ tribe_url }}dms/{{ document.slug }}/download/"><img src="{{MEDIA_URL}}images/sitegraphics/arrow_down.png" alt="{% trans 'Download' %}" title="{% trans 'Download' %}"/></a>{% endif %}</td>
                         <td><a href="{{ document.get_absolute_url }}">{{ document|default:"Untitled" }}</a></td>
                         <td><a href="{% url profile_detail document.uploader %}">{{ document.uploader.get_profile.get_name }}</a></td>

@@ -1,4 +1,5 @@
 {% load i18n %}
+
 {% if count %}
-<p><a href="{% url tribe_list_date_newest %}">{{count}}</a> new tribe{{count|pluralize:"s"}} ha{{count|pluralize:"s,ve"}} been created since your last login<p>
+    <p><a href="{% url tribe_list_date_newest %}">{{count}} new tribe{{count|pluralize:"s"}}</a> ha{{count|pluralize:"s,ve"}} been created since your last login.</p>
 {% endif %}

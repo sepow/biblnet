@@ -9,21 +9,6 @@
 
 {% block body %}
 
-{% comment %}
-{% if is_me %}
-<div class="right_panel">
-    <form action="{% if request.user.is_authenticated %}{% url acct_language_change %}{% else %}/i18n/setlang/{% endif %}" method="post" id="locale_switcher">
-    <img src="{{ MEDIA_URL }}images/sitegraphics/world.png" alt="Language" title="Change language" />
-        <select name="language" onchange="$('#locale_switcher').submit()">
-        {% for lang in LANGUAGES %}
-            <option value="{{ lang.0 }}"{% ifequal lang.0 LANGUAGE_CODE %} selected="selected"{% endifequal %}>{{ lang.1 }}</option>
-        {% endfor %}
-        </select>
-    </form>
-</div>
-{% endif %}
-{% endcomment %}
-
 <h1>{% blocktrans %}Profile for {{ other_user }}{% endblocktrans %}</h1>
 
 {% if user.is_authenticated %}
@@ -50,56 +35,36 @@
         </tr>
     </table>
 
-    {% comment %}
-    <p>
-        <a href="{% url tweet_followers other_user %}">{% trans "Followers" %}</a>: {{ other_user.followers.count|default:"0" }}
-        <a href="{% url tweet_following other_user %}">{% trans "Following" %}</a>: {{ other_user.followed.count|default:"0" }}
-    </p>
-    
-    {% if not is_me %}
-        {# @@@ this could be done with ajax, or at the very least turned into an inclusion tag #}
-        <div>
-            <form method="POST" action="{% url toggle_follow other_user %}">
-                {% if is_following %}
-                    <input type="hidden" name="action" value="unfollow" /><input type="submit" value="{% trans 'unfollow' %}"/>
-                {% else %}
-                    <input type="hidden" name="action" value="follow" /><input type="submit" value="{% trans 'follow tweets' %}"/>
-                {% endif %}
-            </form>
-        </div>
-    {% endif %}
-    {% endcomment %}
+    {% profile_stats other_user %}
 
     {% if other_user.get_profile.about %}
         <h2>{% trans "About me" %}</h2>
         <p>{{ other_user.get_profile.about|linebreaksbr }}</p>
     {% endif %}
-    
-    {% profile_stats other_user %}
-    
-            {% include "profiles/profile_right_panel.html" %}
 
-            {% if is_me %}
-                <div class="form-toggle" id="edit-profile" style="display: none;">
-                <h2>{% trans "Edit your profile" %}</h2>
-                <form class="uniForm" method="POST" action="">
-                    <fieldset class="inlineLabels">  
-                        {{ profile_form|as_uni_form }}
-                        <div class="form_block">
-                        <input type="hidden" name="action" value="update" />
-                        <input type="submit" value="{% trans 'update' %}"/>
-                        </div>
-                    </fieldset>
-                </form>
+    {% include "profiles/profile_right_panel.html" %}
+
+    {% if is_me %}
+        <div class="form-toggle" id="edit-profile" style="display: none;">
+        <h2>{% trans "Edit your profile" %}</h2>
+        <form class="uniForm" method="POST" action="">
+            <fieldset class="inlineLabels">  
+                {{ profile_form|as_uni_form }}
+                <div class="form_block">
+                <input type="hidden" name="action" value="update" />
+                <input type="submit" value="{% trans 'update' %}"/>
                 </div>
-            {% endif %}
+            </fieldset>
+        </form>
+        </div>
+    {% endif %}
+    
+    {#% plugin_point "profiles.profile" user=other_user owner=other_user viewer=user %#}
             
-            {#% plugin_point "profiles.profile" user=other_user owner=other_user viewer=user %#}
-            
-        {% else %} {# not user.is_authenticated #}
-            {% url acct_login as login_url %}
-            <strong>{% blocktrans %}<a href="{{ login_url }}?next=/profiles/{{ other_user }}/">Log in</a> to see this person's profile.{% endblocktrans %}</strong>
-        {% endif %}
+{% else %} {# not user.is_authenticated #}
+    {% url acct_login as login_url %}
+    <strong>{% blocktrans %}<a href="{{ login_url }}?next=/profiles/{{ other_user }}/">Log in</a> to see this person's profile.{% endblocktrans %}</strong>
+{% endif %}
 
 {% endblock %}
 

@@ -1,0 +1,39 @@
+{% load i18n %}
+
+{% if document.file_mimetype %}
+    {% ifequal document.file_mimetype 'application/pdf' %}
+        <img src="{{MEDIA_URL}}images/sitegraphics/page_white_acrobat.png" alt="{% trans 'Filetype' %}" title="PDF"/>
+    {% else %}
+        {% ifequal document.file_mimetype 'application/msword' %}
+            <img src="{{MEDIA_URL}}images/sitegraphics/page_white_word.png" alt="{% trans 'Filetype' %}" title="Word"/>
+        {% else %}
+            {% ifequal document.file_mimetype 'application/vnd.ms-powerpoint' %}
+                <img src="{{MEDIA_URL}}images/sitegraphics/page_white_powerpoint.png" alt="{% trans 'Filetype' %}" title="PowerPoint"/>
+            {% else %}
+                {% ifequal document.file_mimetype 'image/jpeg' %}
+                    <img src="{{MEDIA_URL}}images/sitegraphics/picture.png" alt="{% trans 'Filetype' %}" title="JPEG"/>
+                {% else %}
+                    {% ifequal document.file_mimetype 'application/vnd.ms-excel' %}
+                        <img src="{{MEDIA_URL}}images/sitegraphics/page_white_excel.png" alt="{% trans 'Filetype' %}" title="Excel"/>
+                    {% else %}
+                        <img src="{{MEDIA_URL}}images/sitegraphics/page_white.png" alt="{% trans 'Filetype' %}" title="{{ document.file_extension }}"/>
+                    {% endifequal %}
+                {% endifequal %}
+            {% endifequal %}
+        {% endifequal %}
+    {% endifequal %}
+{% else %}
+    {% ifequal document.file_extension '.docx' %}
+        <img src="{{MEDIA_URL}}images/sitegraphics/page_word.png" alt="{% trans 'Filetype' %}" title="Word 2007"/>
+    {% else %}
+        {% ifequal document.file_extension '.xlsx' %}
+            <img src="{{MEDIA_URL}}images/sitegraphics/page_excel.png" alt="{% trans 'Filetype' %}" title="Excel 2007"/>
+        {% else %}
+            {% ifequal document.file_extension '.pptx' %}
+                <img src="{{MEDIA_URL}}images/sitegraphics/page_white_powerpoint.png" alt="{% trans 'Filetype' %}" title="PowerPoint 2007"/>
+            {% else %}
+                <img src="{{MEDIA_URL}}images/sitegraphics/page_white.png" alt="{% trans 'Filetype' %}" title="{{ document.file_extension }}"/>
+            {% endifequal %}
+        {% endifequal %}
+    {% endifequal %}
+{% endif %}
