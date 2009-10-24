@@ -89,8 +89,11 @@
 
 <table class="topic">
     <tr class="even"><th class="meta">{% trans "Meta" %}</th><th class="options"></th><th>{% trans "Posts" %} <a href="{% url terms %}" target="_blank"><img src="/site_media/images/sitegraphics/information.png" alt="{% trans 'Netiquette' %}" title="{% trans 'Netiquette' %}"/></a></th></tr>
-    <tr class="odd">
+    {% ifequal request.page 1 %}
+	<tr class="odd">
+    	
         <td>
+        	
         <div class="meta">
             <div class="usericons">
                 <img src="{{MEDIA_URL}}{{ topic.creator.get_profile.affiliation.icon }}" alt="{{ topic.creator.get_profile.affiliation }}" title="{{ topic.creator.get_profile.affiliation }}" />
@@ -145,6 +148,7 @@
         </div>
         </td>
     </tr>
+	{% endifequal %}
     {% if not edit %}{% comments topic %} {% endif %}
 </table>
 
