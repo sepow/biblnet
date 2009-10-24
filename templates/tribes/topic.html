@@ -7,7 +7,6 @@
 {% load security_tag %}
 {% load markup %}
 {% load oembed_tags %}
-{% load pagination_tags %}
 {% load condition_tag %}
 
 {% block head_title %}{{ topic.title }}{% endblock %}
@@ -158,7 +157,6 @@
 {% else %} {% if user.is_authenticated and not are_member %}
     <p>{% trans "You need to be a member of this group to reply."%}</p>
 {% endif %}
-{% paginate %}
 {% endif %} 
     <p><a href="{% url tribe_topics topic.tribe.slug %}">&larr; {% trans "Back to Topic List for" %} {{ topic.tribe }}</a></p>
 {% endblock %}
