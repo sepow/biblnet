@@ -8,8 +8,8 @@
 {% load oembed_tags %}
 
 {% get_threaded_comment_tree for object as responses %}
-{#% autopaginate responses 100 %#}
-
+{% autopaginate responses 100 %}
+{% paginate %}
 {% for response in responses %}
 
     <tr class="{% cycle 'even' 'odd' as rowcolors %}">
@@ -73,7 +73,7 @@
     </td>
     </tr>
 {% endfor %}
-{% paginate %}
+
 
 {% if not object.closed %}
 
@@ -119,3 +119,4 @@
     {% endif %}
     
 {% endif %}
+{% paginate %}

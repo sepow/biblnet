@@ -48,14 +48,12 @@ class Document(DocumentBase):
         " Arguments for URL patterns using this object. "
         return [self.tribe.slug, self.slug]
     
-    class Meta:
-        unique_together = ("tribe", "slug")
-
     def get_absolute_url(self):
         return ("document_view_document_detail", [self.tribe.slug, self.slug])
     get_absolute_url = models.permalink(get_absolute_url)
 
     class Meta: 
+        unique_together = ("tribe", "slug")
         verbose_name = _(u'Document')
         verbose_name_plural = _(u'Documents')        
 # Some automatic metadata handing, if the extractor library is available
