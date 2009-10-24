@@ -1,7 +1,7 @@
 {% load i18n %}
 {% load avatar_tags %}
 {% load condition_tag %}
-
+{% load voting_tags %}
 {% if is_me %}
     <h2>{% trans "My Tribes" %}</h2>
     <table class="tribes">
@@ -43,12 +43,13 @@
     {% if other_user.documents.all %}
     <h2>{% trans "My Documents" %}</h2>
         <table class="tribes">
-            <tr class="even"><th width="16px"></th><th>{% trans "Title" %}</th></tr>
+            <tr class="even"><th width="16px"></th><th>{% trans "Title" %}</th><th>{% trans "Points" %}</th></tr>
             {% for document in other_user.documents.all %}
+			     {% score_for_object document as score %}
                 <tr class="{% cycle 'odd' 'even' %}">
                     <td>{% include "django_dms/filetype.html" %}</td>
-                    <td>{{ document|default:"Untitled" }}</td>
-                    {# <td><a href="{% dms_url dms_site document_detail document %}">{{ document|default:"Untitled" }}</a></td> #}
+                    <td><a href="{{document.get_absolute_url}}">{{ document|default:"Untitled" }}</a></td>
+                    <td>{{score.score}}</td>
                 </tr>
             {% endfor %}
         </table>
@@ -84,13 +85,14 @@
     {% if other_user.documents.all %}
     <h2>{% blocktrans %}{{ other_user }}'s Documents{% endblocktrans %}</h2>
         <table class="tribes">
-            <tr class="even"><th width="16px"></th><th>{% trans "Title" %}</th></tr>
+            <tr class="even"><th width="16px"></th><th>{% trans "Title" %}</th><th>{% trans "Points" %}</th></tr>
             {% for document in other_user.documents.all %}
                 {% if not doc.tribe.private %}
+				   {% score_for_object document as score %}
                     <tr class="{% cycle 'odd' 'even' %}">
                         <td>{% include "django_dms/filetype.html" %}</td>
-                        <td>{{ document|default:"Untitled" }}</td>
-                        {# <td><a href="{% dms_url dms_site document_detail document %}">{{ document|default:"Untitled" }}</a></td> #}
+                         <td><a href="{{document.get_absolute_url}}">{{ document|default:"Untitled" }}</a></td>
+						 <td>{{score.score}}</td>
                     </tr>
                 {% endif %}
             {% endfor %}

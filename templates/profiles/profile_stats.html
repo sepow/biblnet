@@ -1,7 +1,15 @@
 {% load i18n %}
 
 <p>
-    <img src="/site_media/images/sitegraphics/note_add.png" alt="{% trans 'Topics' %}" title="{% trans 'Number of topics created' %}" /> {{ topics }} | {% trans "Latest topic" %}: {% if not latest_topic.tribe.private %}<a href="{% url tribe_topic latest_topic.id %}">{{ latest_topic|striptags }}</a>{% else %}{% trans "Private" %}{% endif %}<br/>
-    <img src="/site_media/images/sitegraphics/note.png" alt="{% trans 'Comments' %}" title="{% trans 'Number of comments' %}" /> {{ comments }} | {% trans "Latest comment" %}: {% if not latest_comment.get_content_object.tribe.private %}<a href="{% url tribe_topic latest_comment.get_content_object.id %}">{{ latest_comment|striptags }}</a>{% else %}{% trans "Private" %}{% endif %}<br/>
-    <!--img src="/site_media/images/sitegraphics/wiki.png" alt="{% trans 'Wiki'%}" title="{% trans 'Wiki articles created'%}" /--> {#{ wiki }#}
+    <img src="/site_media/images/sitegraphics/note_add.png" alt="{% trans 'Topics' %}" title="{% trans 'Number of topics created' %}" /> {{ topics }} 
+	{% if latest_topic%} 
+	   | {% trans "Latest topic" %}: {% if not latest_topic.tribe.private %}<a href="{% url tribe_topic latest_topic.id %}">{{ latest_topic|striptags }}</a>{% else %}{% trans "Private" %}{% endif %}
+	{% endif %}
+	<br/>
+    
+	<img src="/site_media/images/sitegraphics/note.png" alt="{% trans 'Comments' %}" title="{% trans 'Number of comments' %}" /> {{ comments }}
+	{% if latest_comment %} 
+	    | {% trans "Latest comment" %}: {% if not latest_comment.get_content_object.tribe.private %}<a href="{% url tribe_topic latest_comment.get_content_object.id %}">{{ latest_comment|striptags }}</a>{% else %}{% trans "Private" %}{% endif %}<br/>
+    {% endif %}
+	<!--img src="/site_media/images/sitegraphics/wiki.png" alt="{% trans 'Wiki'%}" title="{% trans 'Wiki articles created'%}" /--> {#{ wiki }#}
 </p>
