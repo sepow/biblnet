@@ -8,9 +8,6 @@
 {% load markup %}
 {% load oembed_tags %}
 {% load pagination_tags %}
-{% get_threaded_comment_tree for topic as responses %}
-{% autopaginate responses 100 %}
-{% load condition_tag %}
 
 {% block head_title %}{{ topic.title }}{% endblock %}
 
