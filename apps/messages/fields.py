@@ -32,14 +32,14 @@ class CommaSeparatedUserField(forms.Field):
             return value
         
         names = set(value.split(','))
-        names_set = set([name.strip().lower() for name in names])
-        
+        names_set = set([name.strip().lower() for name in names if name.strip()])
+
         if len(names_set) >= 30:
             raise forms.ValidationError(_(u"You can't message this many people at once."))
         
         users = []
         for u in names_set:
-            users += User.objects.filter(username__iexact=u)
+                users += User.objects.filter(username__iexact=u)
 
         unknown_names = names_set ^ set([user.username.lower() for user in users])
         if unknown_names:

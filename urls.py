@@ -123,5 +123,5 @@ if 'rosetta' in settings.INSTALLED_APPS:
 if settings.SERVE_MEDIA:
     urlpatterns += patterns('', 
         (r'^site_media/(?P<path>.*)$', 'staticfiles.views.serve'),
-        url(r'^test/$', 'sepow.views.testing'),
+        url(r'^test/$', 'sepow.views.testing', name="testing_stuff"),
     )
