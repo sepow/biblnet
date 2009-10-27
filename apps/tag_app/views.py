@@ -5,9 +5,6 @@ from django.template import RequestContext
 from tagging.models import Tag, TaggedItem
 from photos.models import Image
 from bookmarks.models import BookmarkInstance
-
-from projects.models import Topic as ProjectTopic
-
 from tribes.models import Tribe
 from tribes.models import Topic as TribeTopic
 from django_dms.apps.small_dms.models import Document 
@@ -44,6 +41,7 @@ def tagcloud(threshold=1, maxsize=2.75, minsize=.70):
             tagcloud.append({'tag': tag, 'count': count, 'size': round(size, 7)})
         return tagcloud
     return None
+
 @cache_page(60 * 60)
 def show_tag_cloud(request, template_name="sepow/tagcloud.html" ):
     return render_to_response(template_name, {
@@ -59,14 +57,11 @@ def tags(request, tag, template_name='tags/index.html'):
     
     phototags = TaggedItem.objects.get_by_model(Image, tag)
     bookmarktags = TaggedItem.objects.get_by_model(BookmarkInstance, tag)
-
+    
     tribe_tags = TaggedItem.objects.get_by_model(Tribe, tag).filter(deleted=False)
     tribe_topic_tags = TaggedItem.objects.get_by_model(TribeTopic, tag).filter(tribe__deleted=False)
-    
-    # @@@ TODO: tribe_wiki_article_tags and project_wiki_article_tags
     wiki_article_tags = TaggedItem.objects.get_by_model(WikiArticle, tag)
-    
-    document_tags = TaggedItem.objects.get_by_model(Document, tag).filter(tribe__deleted=False).filter(tribe__private=False)
+    document_tags = TaggedItem.objects.get_by_model(Document, tag).filter(tribe__deleted=False)
     
     return render_to_response(template_name, {
         'tag': tag,
