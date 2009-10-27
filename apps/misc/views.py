@@ -1,5 +1,4 @@
-from django.http import HttpResponse
-from django.conf import settings
+from django.http import HttpResponse, HttpResponseForbidden
 
 # @@@ these can be cleaned up a lot, made more generic and with better queries
 
@@ -32,14 +31,12 @@ def username_autocomplete_all(request):
 
 
 def username_autocomplete_friends(request):
-    from django.utils import simplejson
     from django.contrib.auth.models import User
     from avatar.templatetags.avatar_tags import avatar
     
     if request.user.is_authenticated():
         results = []
         q = request.GET['q']
-        query = q.split(",")
         
         def create_entry(user):
             return "%s,,%s,,%s" % ( avatar(user, 40), user.username, user.get_profile().name)
@@ -47,10 +44,9 @@ def username_autocomplete_friends(request):
         if len(q) > 1:
             users = User.objects.all().filter(is_active=True)
             model_results = users.filter(profile__name__icontains=q) | users.filter(profile__user__username__icontains=q)
-            # model_results = User.objects.filter(username__istartswith=q).filter(is_active=True)[:10]
-            results = [create_entry(x) for x in model_results ] 
+            results = [create_entry(x) for x in model_results] 
         
-        response = HttpResponse("\n".join(results))
+        response = HttpResponse("\n".join(results[:10]))
     else:
         response = HttpResponseForbidden()
     

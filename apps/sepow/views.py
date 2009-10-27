@@ -1,3 +1,4 @@
+#-*- coding:utf-8 -*-
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import HttpResponse, HttpResponseServerError
@@ -13,12 +14,14 @@ def server_error(request, template_name='500.html'):
         context_instance = RequestContext(request)
     )
 
-from django.core.serializers import serialize
-from django.contrib.auth.models import User 
-
+from django.db.models import Q
 def testing(request):
-    q = request.GET['q']
-    city_list = User.objects.filter(username__istartswith=q).order_by("username")[:10]
-    json = serialize("json", city_list)
-
-    return HttpResponse(json, mimetype="application/x-javascript")
+    
+    from tagging.models import Tag, TaggedItem
+    
+    tags = ["asd", "poop"]
+    query_tags = Tag.objects.filter(name__in=tags)
+    from tribes.models import Topic 
+    print TaggedItem.objects.get_intersection_by_model(Topic.objects.all(), query_tags)
+    # dette skal så gøres for alle modeller..
+    assert False

@@ -13,7 +13,7 @@
     {% if user.is_authenticated %}
         <p>{% trans "You last visited us" %} {{ user.get_profile.last_visit|timesince }} {% trans "ago" %}</p>
         
-        {% new_tribes_since_last_visit request.user %}
+        {#% new_tribes_since_last_visit request.user %#}
 
         <h2>{% trans "New content since your last login" %}</h2>
 
