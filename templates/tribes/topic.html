@@ -89,7 +89,7 @@
 
 <table class="topic">
     <tr class="even"><th class="meta">{% trans "Meta" %}</th><th class="options"></th><th>{% trans "Posts" %} <a href="{% url terms %}" target="_blank"><img src="/site_media/images/sitegraphics/information.png" alt="{% trans 'Netiquette' %}" title="{% trans 'Netiquette' %}"/></a></th></tr>
-    {% ifequal request.page 1 %}
+    {#% ifequal request.page 1 %#}
 	<tr class="odd">
     	
         <td>
@@ -148,7 +148,7 @@
         </div>
         </td>
     </tr>
-	{% endifequal %}
+	{#% endifequal %#}
     {% if not edit %}{% comments topic %} {% endif %}
 </table>
 
