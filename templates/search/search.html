@@ -26,7 +26,7 @@
             
             {% if has_access and not tribe.deleted %}
                 <tr class="{% cycle 'odd' 'even' %}">
-                    <td><img src="{{ MEDIA_URL }}images/sitegraphics/search_{{ result.verbose_name }}.png" alt="{{ result.verbose_name }}" title="{{ result.verbose_name }}" /></td>
+                    <td><img src="{{ MEDIA_URL }}images/sitegraphics/result_{{ result.verbose_name }}.png" alt="{{ result.verbose_name }}" title="{{ result.verbose_name }}" /></td>
 {{ comment }}
 <a href="{{result.object.get_absolute_url}}"><strong>{{ result.verbose_name }}</strong></a> {% trans "in" %} 
 {% if tribe %}<a href="{% url tribe_detail tribe.slug %}">{{ tribe }}</a>{% endif %} ({% trans "Result score:" %} {{ result.score }})
