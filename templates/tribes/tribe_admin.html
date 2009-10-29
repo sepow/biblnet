@@ -17,7 +17,7 @@
 
 {% block body %}
         {% if are_moderator or user.is_staff %}
-                {{ tribe_form.media}}
+                {{ tribe_form.media }}
                 <p><span id="edit-tribe-toggle">{% trans "Edit details" %}</span></p>
                 
                 <form class="uniForm" id="edit-tribe" method="POST" action="">
@@ -25,16 +25,16 @@
                         {{ tribe_form|as_uni_form }}
                         <div class="form_block">
                             <input type="hidden" name="action" value="update" />
-                            <input type="submit" value="{% trans "update" %}"/>
+                            <input type="submit" value="{% trans 'Save' %}"/>
                         </div>
                     </fieldset>
                 </form>
 
             
             {% ifequal tribe.members.all.count 1 %}
-                <p><img src="{{ MEDIA_URL }}pinax/images/silk/icons/delete.png" /> <a href="#" onclick="$('#delete_tribe_form').toggle(); return false;">{% trans "Delete tribe" %}</a><p>
+                <p><img src="{{ MEDIA_URL }}images/sitegraphics/delete.png" /> <a href="#" onclick="$('#delete_tribe_form').toggle(); return false;">{% trans "Delete tribe" %}</a><p>
                  <form class="delete_form" id="delete_tribe_form" action="{% url tribe_delete tribe.slug %}" method="POST" style="display: none;">
-                     <input type="submit" value="{% trans "Delete Tribe" %}" /> (all content will be removed)
+                     <input type="submit" value="{% trans 'Delete Tribe' %}" /> {% trans "All content will be removed" %}
                 </form>
             {% else %}
                 <br />

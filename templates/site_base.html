@@ -35,11 +35,13 @@
         </ul>
         
         <div id="language">
-            {% for lang in LANGUAGES %}                <form action="{% if request.user.is_authenticated %}{% url acct_language_change %}{% else %}/i18n/setlang/{% endif %}" method="post" id="locale_switcher">
-                    <input{% ifequal lang.0 LANGUAGE_CODE %} class="selected"{% endifequal %} type="image" src="{{MEDIA_URL}}images/language/{{ lang.0 }}.png" alt="{{ lang.1 }}" title="{{ lang.1 }}" />
-                    <input type="hidden" name="language" value="{{ lang.0 }}" />
-                </form>
-            {% endfor %}
+            <form action="{% if request.user.is_authenticated %}{% url acct_language_change %}{% else %}/i18n/setlang/{% endif %}" method="post" class="locale_switcher">
+                <div>
+                    {% for lang in LANGUAGES %}                        <input{% ifequal lang.0 LANGUAGE_CODE %} class="selected"{% endifequal %} type="image" src="{{MEDIA_URL}}images/language/{{ lang.0 }}.png" alt="{{ lang.1 }}" title="{{ lang.1 }}" />
+                        <input type="hidden" name="language" value="{{ lang.0 }}" />
+                    {% endfor %}
+                </div>
+            </form>
         </div>
 
         {% block admin_tab %}
@@ -179,7 +181,9 @@
               <a href="{% url about %}">{% trans "About" %}</a>
             - <a href="{% url terms %}">{% trans "Terms of Service" %}</a>
             <br/><br/>
-            <a href="http://www.bf.dk" target="_blank"><img src="{{MEDIA_URL}}images/sitegraphics/bf.png" alt="bf logo" /></a>
+            <a href="http://www.dbstud.dk/dsr" target="_blank"><img src="{{MEDIA_URL}}images/sitegraphics/dsr.png" alt="DSR" /></a>
+            &nbsp;&nbsp;&nbsp;
+            <a href="http://www.bf.dk" target="_blank"><img src="{{MEDIA_URL}}images/sitegraphics/bf.png" alt="Bf" /></a>
         </div>
     </div>
     <div class="columnbottom">&nbsp;</div>
