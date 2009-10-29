@@ -31,7 +31,7 @@
 <a href="{{result.object.get_absolute_url}}"><strong>{{ result.verbose_name }}</strong></a> {% trans "in" %} 
 {% if tribe %}<a href="{% url tribe_detail tribe.slug %}">{{ tribe }}</a>{% endif %} ({% trans "Result score:" %} {{ result.score }})
 {{ endcomment }}
-                    {{ result.text|safe|truncatewords_html:100 }}
+                    {{ result.text|truncatewords_html:100 }}
                 </tr>
             {% endif %}
 
