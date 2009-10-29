@@ -1,9 +1,8 @@
 {% load extra_tagging_tags %}
 
-<td><a href="{{ object.get_absolute_url }}"></a>
 <td>
-    {% if tribe %}<a href="{% url tribe_detail tribe.slug %}">{{ tribe }}</a><br/>{% endif %}
-    {{ object.comment|safe }}
-</td>
+    {% if tribe %}<a href="{% url tribe_detail tribe.slug %}">{{ tribe }}</a>:<br/>{% endif %}
+    <a href="{{ object.get_absolute_url }}"></a>
+<td>{{ object.comment|safe }}</td>
 
 <!--p>{% show_tags_for object %}</p-->
