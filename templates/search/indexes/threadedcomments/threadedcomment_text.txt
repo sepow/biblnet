@@ -1,4 +1,5 @@
 {% load extra_tagging_tags %}
+{% load i18n %}
 
 {% with object.get_content_object.tribe as tribe %}
 
