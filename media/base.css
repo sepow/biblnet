@@ -15,16 +15,15 @@ body {
 	color: #0E3037;
 }
 
-a:hover {
-	color: #369;
-/*	background: #369;*/
-	text-decoration: underline;
-}
 a, a:visited {
 	color: #0E3037;
 }
 .even a:visited {
     color: #DFDFDF;
+}
+a:hover {
+	color: #369;
+	text-decoration: underline;
 }
 
 h1, h2, h3 {

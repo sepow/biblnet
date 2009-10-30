@@ -43,12 +43,13 @@
     {% if other_user.documents.all %}
     <h2>{% trans "My Documents" %}</h2>
         <table class="tribes">
-            <tr class="even"><th width="16px"></th><th>{% trans "Title" %}</th><th class="comment_stats" width="50px">{% trans "Points" %}</th></tr>
+            <tr class="even"><th width="16px"></th><th>{% trans "Title" %}</th><th class="comment_stats" width="60px">{% trans "Grade" %}</th><th class="comment_stats" width="60px">{% trans "Score" %}</th></tr>
             {% for document in other_user.documents.all %}
 			     {% score_for_object document as score %}
                 <tr class="{% cycle 'odd' 'even' %}">
                     <td>{% include "django_dms/filetype.html" %}</td>
                     <td><a href="{{document.get_absolute_url}}">{{ document|default:"Untitled" }}</a></td>
+                    <td class="comment_stats">{% ifequal document.grade '99' %}{% trans "Passed" %}{% else %}{{ document.grade }}{% endifequal %}</td>
                     <td class="comment_stats">{{ score.score }}</td>
                 </tr>
             {% endfor %}
@@ -85,14 +86,15 @@
     {% if other_user.documents.all %}
     <h2>{% blocktrans %}{{ other_user }}'s Documents{% endblocktrans %}</h2>
         <table class="tribes">
-            <tr class="even"><th width="16px"></th><th>{% trans "Title" %}</th><th class="comment_stats" width="50px">{% trans "Points" %}</th></tr>
+            <tr class="even"><th width="16px"></th><th>{% trans "Title" %}</th><th class="comment_stats" width="60px">{% trans "Grade" %}</th><th class="comment_stats" width="60px">{% trans "Score" %}</th></tr>
             {% for document in other_user.documents.all %}
                 {% if not doc.tribe.private %}
 				   {% score_for_object document as score %}
                     <tr class="{% cycle 'odd' 'even' %}">
                         <td>{% include "django_dms/filetype.html" %}</td>
-                         <td><a href="{{document.get_absolute_url}}">{{ document|default:"Untitled" }}</a></td>
-						 <td class="comment_stats">{{ score.score }}</td>
+                        <td><a href="{{document.get_absolute_url}}">{{ document|default:"Untitled" }}</a></td>
+                        <td class="comment_stats">{% ifequal document.grade '99' %}{% trans "Passed" %}{% else %}{{ document.grade }}{% endifequal %}</td>
+						<td class="comment_stats">{{ score.score }}</td>
                     </tr>
                 {% endif %}
             {% endfor %}
