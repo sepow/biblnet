@@ -1,3 +1,4 @@
+{% load i18n %}
 {% load extra_tagging_tags %}
 
 {% with object.tribe as tribe %}
