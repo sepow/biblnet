@@ -35,13 +35,11 @@
         </ul>
         
         <div id="language">
-            <form action="{% if request.user.is_authenticated %}{% url acct_language_change %}{% else %}/i18n/setlang/{% endif %}" method="post" class="locale_switcher">
-                <div>
-                    {% for lang in LANGUAGES %}                        <input{% ifequal lang.0 LANGUAGE_CODE %} class="selected"{% endifequal %} type="image" src="{{MEDIA_URL}}images/language/{{ lang.0 }}.png" alt="{{ lang.1 }}" title="{{ lang.1 }}" />
-                        <input type="hidden" name="language" value="{{ lang.0 }}" />
-                    {% endfor %}
-                </div>
-            </form>
+            {% for lang in LANGUAGES %}                <form action="{% if request.user.is_authenticated %}{% url acct_language_change %}{% else %}/i18n/setlang/{% endif %}" method="post" class="locale_switcher">
+                    <input{% ifequal lang.0 LANGUAGE_CODE %} class="selected"{% endifequal %} type="image" src="{{MEDIA_URL}}images/language/{{ lang.0 }}.png" alt="{{ lang.1 }}" title="{{ lang.1 }}" />
+                    <input type="hidden" name="language" value="{{ lang.0 }}" />
+                </form>
+            {% endfor %}
         </div>
 
         {% block admin_tab %}
