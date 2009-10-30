@@ -2,7 +2,7 @@
 
 <td>
     {% if tribe %}<a href="{% url tribe_detail tribe.slug %}">{{ tribe }}</a>:<br/>{% endif %}
-    <a href="{{ object.get_absolute_url }}"></a>
+    <a href="{{ object.get_absolute_url }}">{{ object.get_content_object }}</a>
 <td>{{ object.comment|safe }}</td>
 
 <!--p>{% show_tags_for object %}</p-->
