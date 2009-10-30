@@ -1,6 +1,6 @@
-<td><a href="{{ object.get_absolute_url }}">{{ object.user}}</a></td>
 <td>
-{% if object.name %}{{ object.name }}{% endif %} <br/>
-{% if object.address %}{{ object.address }}{% endif %}<br/>
-{% if object.about %}{{ object.about }}{% endif %} 
+    <a href="{{ object.get_absolute_url }}">{{ object.user}}</a><br/>
+    {% if object.name %}{{ object.name }}<br/>{% endif %}
+    {% if object.address %}{{ object.address }}<br/>{% endif %}
+    {% if object.phone %}{{ object.phone }}{% endif %}
 </td>

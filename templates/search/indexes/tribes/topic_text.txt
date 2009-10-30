@@ -1,9 +1,11 @@
 {% load extra_tagging_tags %}
 
-<td>
-    {% if tribe %}<a href="{% url tribe_detail tribe.slug %}">{{ tribe }}</a>:<br/>{% endif %}
-    <a href="{{ object.get_absolute_url }}">{{ object.title }}</a>
-</td>
-<td>{{ object.body|safe }}</td>
+{% with object.tribe as tribe %}
 
-<!--p>{% show_tags_for object %}</p-->
+<td>
+    <a href="{{ object.get_absolute_url }}">{{ object.title }}</a>
+    {{ object.body|safe }}
+    {% if tribe %}<div><img src="/site_media/images/sitegraphics/group.png" alt="{% trans 'Tribe' %}" title="{% trans 'Tribe' %}" /> <a href="{{ tribe.get_absolute_url }}">{{ tribe }}</a></div>{% endif %}
+    <!--div>{% show_tags_for object %}</div-->
+</td>
+{% endwith %}

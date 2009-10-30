@@ -6,9 +6,7 @@
 <td>
     <div><a href="{{ object.get_absolute_url }}">{{ object.get_content_object }}</a></div>
     <div>{{ object.comment|safe }}</div>
-    {% if tribe %}<div><img src="/site_media/images/sitegraphics/group.png" alt="{% trans 'Tribe' %}" title="{% trans 'Tribe' %}" /> <a href="{{ tribe.get_absolute_url }}">{{ tribe }}</a></div>{% endif %}
+    {% if tribe %}<div><img src="{{ MEDIA_URL }}images/sitegraphics/group.png" alt="{% trans 'Tribe' %}" title="{% trans 'Tribe' %}" /> <a href="{{ tribe.get_absolute_url }}">{{ tribe }}</a></div>{% endif %}
     <!--div>{% show_tags_for object.get_content_object %}</div-->
 </td>
 {% endwith %}
-
-
