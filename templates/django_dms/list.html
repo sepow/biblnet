@@ -84,7 +84,7 @@
                     {% endwith %}
                 </tr>
             {% empty %}
-                <tr class="odd"><td></td><td></td><td colspan="3">{% trans "There are no documents yet" %}{% is_member tribe user %} - <a href="{% url document_view_document_upload tribe.slug %}">{% trans "upload a document" %}</a>{% endis_member %}</td></tr>
+                <tr class="odd"><td></td><td></td><td colspan="4">{% trans "There are no documents yet" %}{% is_member tribe user %} - <a href="{% url document_view_document_upload tribe.slug %}">{% trans "upload a document" %}</a>{% endis_member %}</td></tr>
             {% endfor %}
         </table>
 
