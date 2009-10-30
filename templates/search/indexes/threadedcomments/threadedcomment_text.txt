@@ -1,7 +1,7 @@
 {% load extra_tagging_tags %}
 
 <td>
-    {% if tribe %}<a href="{% url tribe_detail tribe.slug %}">{{ tribe }}</a>:<br/>{% endif %}
+    {% if object.get_content_object.tribe %}<a href="{% url tribe_detail tribe.slug %}">{{ object.get_content_object.tribe }}</a>:<br/>{% endif %}
     <a href="{{ object.get_absolute_url }}">{{ object.get_content_object }}</a>
 <td>{{ object.comment|safe }}</td>
 
