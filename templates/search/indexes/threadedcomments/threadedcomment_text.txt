@@ -3,9 +3,11 @@
 {% with object.get_content_object.tribe as tribe %}
 
 <td>
-    {% if tribe %}<a href="{{ tribe.get_absolute_url }}">{{ tribe }}</a>:<br/>{% endif %}
-    <a href="{{ object.get_absolute_url }}">{{ object.get_content_object }}</a>
-<td>{{ object.comment|safe }}</td>
+    <p><a href="{{ object.get_absolute_url }}">{{ object.get_content_object }}</a></p>
+    <div>{{ object.comment|safe }}</div>
+    {% if tribe %}<p><img src="{{ MEDIA_URL }}images/sitegraphics/group.png" alt="{% trans 'Tribe' %}" title="{% trans 'Tribe' %}" /> <a href="{{ tribe.get_absolute_url }}">{{ tribe }}</a></p>{% endif %}
+    <p>{% show_tags_for object %}</p>
+</td>
 {% endwith %}
 
-<!--p>{% show_tags_for object %}</p-->
+

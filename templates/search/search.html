@@ -19,8 +19,8 @@
         </table>
     </form>
 
-    <table class="topics">
-        <tr class="even"><th class="icon"></th><th width="35%">{% trans "Result" %}</th><th>{% trans "Description" %}</th></tr>
+    <table class="topic">
+        <tr class="even"><th class="icon"></th><th>{% trans "Result" %}</th></tr>
         {% for result in page.object_list %}
             {% can_access result.object request.user %}
             
@@ -32,7 +32,7 @@
             {% endif %}
 
         {% empty %}
-            <tr class="odd"><td></td><td colspan="2">{% trans "No results found." %}</td></tr>
+            <tr class="odd"><td></td><td>{% trans "No results found." %}</td></tr>
         {% endfor %}
     </table>
         
