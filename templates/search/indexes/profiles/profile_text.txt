@@ -1,6 +1,8 @@
 <td>
     <a href="{{ object.get_absolute_url }}">{{ object.user}}</a><br/>
+    {% if object.occupation %}<img src="/site_media/{{ object.get_profile.occupation.icon }}"  alt="{{ object.get_profile.occupation }}" title="{{ object.get_profile.occupation }}" /> {% endif %}
+    {% if object.affiliation %}<img src="/site_media/{{ object.get_profile.affiliation.icon }}"  alt="{{ object.get_profile.affiliation }}" title="{{ object.get_profile.affiliation }}" /> {% endif %}
     {% if object.name %}{{ object.name }}<br/>{% endif %}
     {% if object.address %}{{ object.address }}<br/>{% endif %}
-    {% if object.phone %}{{ object.phone }}{% endif %}
+    {% if object.phone_number %}{{ object.phone_number }}{% endif %}
 </td>
