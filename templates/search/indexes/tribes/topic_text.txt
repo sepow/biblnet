@@ -4,7 +4,7 @@
 {% with object.tribe as tribe %}
 
 <td>
-    <div><a href="{{ object.get_absolute_url }}">{{ object.title }}</a></div>
+    <p><a href="{{ object.get_absolute_url }}">{{ object.title }}</a></p>
     <div>{{ object.body|safe }}</div>
     {% if tribe %}<div><img src="/site_media/images/sitegraphics/group.png" alt="{% trans 'Tribe' %}" title="{% trans 'Tribe' %}" /> <a href="{{ tribe.get_absolute_url }}">{{ tribe }}</a></div>{% endif %}
     <!--div>{% show_tags_for object %}</div-->

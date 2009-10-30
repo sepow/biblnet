@@ -1,4 +1,4 @@
 <td>
-    <a href="{{ object.get_absolute_url }}">{{ object.name }}</a>
-    {{ object.description|safe }}
+    <p><a href="{{ object.get_absolute_url }}">{{ object.name }}</a></p>
+    <div>{{ object.description|safe }}</div>
 </td>
