@@ -1,7 +1,7 @@
 {% load i18n %}
 
 <td>
-    <p><a href="{{ object.get_absolute_url }}">{{ object.user}}</a></p>
+    <div><a href="{{ object.get_absolute_url }}">{{ object.user}}</a></div>
     {% if object.name %}{{ object.name }}<br/>{% endif %}
     {% if object.affiliation %}<img src="/site_media/{{ object.affiliation.icon }}"  alt="{{ object.affiliation }}" title="{{ object.affiliation }}" /> {{ object.affiliation }}<br/>{% endif %}
     {% if object.address %}<img src="/site_media/images/sitegraphics/house.png" alt="{% trans 'Address' %}" title="{% trans 'Address' %}"/> {{ object.address }}<br/>{% endif %}
