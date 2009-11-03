@@ -1,6 +1,6 @@
 {% if changed %}
     <tr class="{% cycle 'odd' 'even' %}">
-        <td><a href="{% url tribe_topics tribe.slug %}">{{ tribe }}</a></td>
+        <td><a href="{% url tribe_detail tribe.slug %}">{{ tribe }}</a></td>
         <td class="comment_stats">{{ new_topics }}</td>
         <td class="comment_stats">{{ new_posts }}</td>
         <td class="comment_stats">{{ new_docs }}</td>

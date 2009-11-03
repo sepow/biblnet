@@ -4,30 +4,28 @@
 {% load extra_tagging_tags %}
 
 <tr class="{% cycle 'odd' 'even' %}">
-<td>
-    {% if topic.sticky %}<img src="/site_media/images/sitegraphics/lightbulb.png" alt="{% trans 'Sticky topic' %}" />{% else %}<img src="/site_media/images/sitegraphics/note.png" alt="{% trans 'Topic' %}" />{% endif %}
-    {% if topic.closed %}<img src="/site_media/images/sitegraphics/lock.png" alt="{% trans 'Closed topic' %}" />{% endif %}
-</td>
-<td><a href="{{ topic.get_absolute_url }}">{{ topic.title }}</a></td>
-<td><a href="{{ topic.creator.get_profile.get_absolute_url }}">{{ topic.creator.get_profile.get_name }}</a></td>
-<td class="comment_stats">
-    {{ topic.views }}
-</td>
-<td class="comment_stats">
-    {% get_comment_count for topic as comment_count %}
-    {% if comment_count %}
-        {{ comment_count }}
-    {% else %}
-        -
-    {% endif %}
-</td>
-<td>
-
-<div style="font-size:10px;">{{ topic.modified|timesince }} {% trans "ago" %}
-<br/>af {% with topic.get_latest_poster as latest_poster %}
-<a href="{{ latest_poster.get_profile.get_absolute_url }}">{{latest_poster.get_profile.get_name}}</a></td>
-{%endwith%}
-</div>
-
+    <td>
+        {% if topic.sticky %}<img src="/site_media/images/sitegraphics/lightbulb.png" alt="{% trans 'Sticky topic' %}" />{% else %}<img src="/site_media/images/sitegraphics/note.png" alt="{% trans 'Topic' %}" />{% endif %}
+        {% if topic.closed %}<img src="/site_media/images/sitegraphics/lock.png" alt="{% trans 'Closed topic' %}" />{% endif %}
+    </td>
+    <td><a href="{{ topic.get_absolute_url }}">{{ topic.title }}</a></td>
+    <td><a href="{{ topic.creator.get_profile.get_absolute_url }}">{{ topic.creator.get_profile.get_name }}</a></td>
+    <td class="comment_stats">
+        {{ topic.views }}
+    </td>
+    <td class="comment_stats">
+        {% get_comment_count for topic as comment_count %}
+        {% if comment_count %}
+            {{ comment_count }}
+        {% else %}
+            -
+        {% endif %}
+    </td>
+    <td>
+        <div style="font-size:10px;">
+            {{ topic.modified|timesince }} {% trans "ago" %}<br/>
+            {% trans "by" %} {% with topic.get_latest_poster as latest_poster %}<a href="{{ latest_poster.get_profile.get_absolute_url }}">{{ latest_poster.get_profile.get_name }}</a>{% endwith %}
+        </div>
+    </td>
 {# cache m. tribename + modified, nok#}
 </tr>

@@ -83,14 +83,14 @@
 
     {% if other_user.get_profile.listening_now %}
         <tr>
-            <th class="icon"><img src="{{ MEDIA_URL }}images/sitegraphics/music.png" alt="{% trans 'Music' %}" /></td>
+            <th class="icon"><img src="{{ MEDIA_URL }}images/sitegraphics/music.png" alt="{% trans 'Music' %}" title="{% trans 'Listening to' %}" /></td>
             <td>{{ other_user.get_profile.listening_now }}</td>
         </tr>
     {% endif %}
 
     {% if other_user.get_profile.reading_now %}
         <tr>
-            <th class="icon"><img src="{{ MEDIA_URL }}images/sitegraphics/book_open.png" alt="{% trans 'Book' %}" /></td>
+            <th class="icon"><img src="{{ MEDIA_URL }}images/sitegraphics/book_open.png" alt="{% trans 'Book' %}" title="{% trans 'Reading' %}" /></td>
             <td>{{ other_user.get_profile.reading_now }}</td>
         </tr>
     {% endif %}

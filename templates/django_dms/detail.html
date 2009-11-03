@@ -5,10 +5,12 @@
 {% load i18n %}
 
 <div class="right_panel">
-    <div><img src="{{ MEDIA_URL }}images/sitegraphics/user.png" alt="{% trans 'User' %}" title="{% trans 'Upload user' %}" /> <a href="{% url profile_detail document.uploader %}">{{ document.uploader }}</a></div>
-    <div><img src="{{ MEDIA_URL }}images/sitegraphics/date.png" alt="{% trans 'Date' %}" title="{% trans 'Upload date' %}" /> {{ document.date_created|date }}</div>
-    
-    {% ifequal document.uploader request.user %}<br/><div><img src="{{ MEDIA_URL }}images/sitegraphics/page_white_edit.png" alt="{% trans 'Edit' %}" title="{% trans 'Edit' %}" /> <a href="{% url document_upload_document_edit document.tribe.slug document.slug %}">Edit</a></div>{% endifequal %}
+    <p>
+        <img src="{{ MEDIA_URL }}images/sitegraphics/user.png" alt="{% trans 'User' %}" title="{% trans 'Upload user' %}" /> <a href="{% url profile_detail document.uploader %}">{{ document.uploader }}</a><br/>
+        <img src="{{ MEDIA_URL }}images/sitegraphics/date.png" alt="{% trans 'Date' %}" title="{% trans 'Upload date' %}" /> {{ document.date_created|date }}
+    </p>
+    <p>{% include "django_dms/filetype.html" %} {{ document.file_extension }}</p>
+    {% ifequal document.uploader request.user %}<p><img src="{{ MEDIA_URL }}images/sitegraphics/page_white_edit.png" alt="{% trans 'Edit' %}" title="{% trans 'Edit' %}" /> <a href="{% url document_upload_document_edit document.tribe.slug document.slug %}">Edit</a></p>{% endifequal %}
 </div>
 
 <h1>{{ document.title|default:"Untitled" }}</h1>

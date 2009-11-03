@@ -49,7 +49,8 @@
                     {% endifequal %}
 {% endcomment %}
                 </th>
-                <th class="comment_stats" width="120px">
+                <th class="comment_stats" width="60px">{% trans "Grade" %}</th>
+                <th class="comment_stats" width="60px">
                     {% trans "Score" %}
 {% comment %}
                     {% ifequal order 'date_newest' %}
@@ -73,16 +74,17 @@
                         <td>{% if user.is_authenticated %}{% if list_links.download %}<a href="{% dms_url dms_site document_download document %}"><img src="{{MEDIA_URL}}images/sitegraphics/arrow_down.png" alt="{% trans 'Download' %}" title="{% trans 'Download' %}"/></a>{% endif %}{% endif %}</td>
                         <td><a href="{% dms_url dms_site document_detail document %}">{{ document|default:"Untitled" }}</a></td>
                         <td><a href="{% url profile_detail document.uploader %}">{{ document.uploader }}</a></td>
+                        <td class="comment_stats">{% ifequal document.grade '99' %}{% trans "Passed" %}{% else %}{{ document.grade }}{% endifequal %}</td>
                         <td class="comment_stats">
                             {% score_for_object document as score %}
                             <span id="document_{{document.slug}}_score">
-                                {{ score.score|default:0 }} point{{ score.score|default:0|pluralize }}
+                                {{ score.score|default:0 }}
                             </span>
                         </td>
                     {% endwith %}
                 </tr>
             {% empty %}
-                <tr class="odd"><td></td><td></td><td colspan="3">{% trans "There are no documents yet" %}{% is_member tribe user %} - <a href="{% url document_view_document_upload tribe.slug %}">{% trans "upload a document" %}</a>{% endis_member %}</td></tr>
+                <tr class="odd"><td></td><td></td><td colspan="4">{% trans "There are no documents yet" %}{% is_member tribe user %} - <a href="{% url document_view_document_upload tribe.slug %}">{% trans "upload a document" %}</a>{% endis_member %}</td></tr>
             {% endfor %}
         </table>
 

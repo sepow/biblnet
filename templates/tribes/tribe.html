@@ -32,7 +32,7 @@
             <p>
                 <img src="{{ MEDIA_URL }}images/sitegraphics/award_star_gold_1.png" alt="{% trans 'Creator' %}" title="{% trans 'Creator' %}" /> <a href="{% url profile_detail tribe.creator.username %}">{{ tribe.creator }}</a><br />
                 <img src="{{ MEDIA_URL }}images/sitegraphics/date.png" alt="{% trans 'Created' %}" title="{% trans 'Creation date' %}" /> {{ tribe.created|date }}<br />
-                <img src="{{ MEDIA_URL }}images/sitegraphics/user.png" alt="{% trans 'Users' %}" title="{% trans 'Number of users' %}" /> {{ tribe_members_count }}
+                <img src="{{ MEDIA_URL }}images/sitegraphics/user.png" alt="{% trans 'Users' %}" title="{% trans 'Number of members' %}" /> {{ tribe_members_count }}
             </p>
             {% if user.is_authenticated %}
                 {% ifequal user tribe.creator %}

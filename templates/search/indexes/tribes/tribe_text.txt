@@ -1,3 +1,4 @@
-Tribe: <a href="{{ object.get_absolute_url }}">{{ object.name }}</a> <br/><br/>
-
-{{ object.description|safe }}
+<td>
+    <div><a href="{{ object.get_absolute_url }}">{{ object.name }}</a></div>
+    <div>{{ object.description|safe }}</div>
+</td>

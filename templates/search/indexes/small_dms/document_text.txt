@@ -1,7 +1,12 @@
+{% load i18n %}
 {% load extra_tagging_tags %}
 
-{{ object.title }}
+{% with object.tribe as tribe %}
 
-{{ object.summary|safe }}
-
-<p>{% show_tags_for object %}</p>
+<td>
+    <div><a href="{{ object.get_absolute_url }}">{{ object.title }}</a></div>
+    <div>{{ object.summary|safe }}</div>
+    {% if tribe %}<div><img src="/site_media/images/sitegraphics/group.png" alt="{% trans 'Tribe' %}" title="{% trans 'Tribe' %}" /> <a href="{{ tribe.get_absolute_url }}">{{ tribe }}</a></div>{% endif %}
+    <!--div>{% show_tags_for object %}</div-->
+</td>
+{% endwith %}

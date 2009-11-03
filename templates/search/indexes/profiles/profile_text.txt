@@ -1,7 +1,9 @@
+{% load i18n %}
 
-<strong>Profile</strong>: <a href="{{ object.get_absolute_url }}">'{{ object.user}}' {% if object.name  %}aka. {{ object.name}}{% endif %}</a> <br/>
-<p>
-{% if object.name %}{{ object.name}}{% endif %} <br/>
-{% if object.address %}{{ object.address}}{% endif %}<br/>
-{% if object.about %}{{ object.about}}{% endif %} 
-</p>
+<td>
+    <div><a href="{{ object.get_absolute_url }}">{{ object.user}}</a></div>
+    {% if object.name %}{{ object.name }}<br/>{% endif %}
+    {% if object.affiliation %}<img src="/site_media/{{ object.affiliation.icon }}"  alt="{{ object.affiliation }}" title="{{ object.affiliation }}" /> {{ object.affiliation }}<br/>{% endif %}
+    {% if object.address %}<img src="/site_media/images/sitegraphics/house.png" alt="{% trans 'Address' %}" title="{% trans 'Address' %}"/> {{ object.address }}<br/>{% endif %}
+    {% if object.phone_number %}<img src="/site_media/images/sitegraphics/phone.png" alt="{% trans 'Phone' %}" title="{% trans 'Phone' %}" /> {{ object.phone_number }}{% endif %}
+</td>

@@ -19,19 +19,21 @@
         </table>
     </form>
 
-    {% for result in page.object_list %}
+    <table class="topic">
+        <tr class="even"><th class="icon"></th><th>{% trans "Result" %}</th></tr>
+        {% for result in page.object_list %}
+            {% can_access result.object request.user %}
+            
+            {% if has_access and not tribe.deleted %}
+                <tr class="{% cycle 'odd' 'even' %}">
+                    <td><img src="{{ MEDIA_URL }}images/sitegraphics/result_{{ result.model_name }}.png" alt="{{ result.verbose_name }}" title="{{ result.verbose_name }}" /></td>
+                    {{ result.text|safe|truncatewords_html:100 }}
+                </tr>
+            {% endif %}
 
-        {% can_access result.object request.user%}
-        
-        {% if has_access and not tribe.deleted %}
-            <hr/> 
-            <a href="{{result.object.get_absolute_url}}"><strong>{{result.verbose_name}}</strong></a> i 
-            {% if tribe %}<a href="{% url tribe_detail tribe.slug %}">{{tribe}}</a>{% endif %} ({{result.score}})
-            <p>{{ result.text|safe|truncatewords_html:100 }}</p>
-        {% endif %}
-
-    {% empty %}
-        <p>{% trans "No results found." %}</p>
-    {% endfor %}
+        {% empty %}
+            <tr class="odd"><td></td><td>{% trans "No results found." %}</td></tr>
+        {% endfor %}
+    </table>
         
 {% endblock %}

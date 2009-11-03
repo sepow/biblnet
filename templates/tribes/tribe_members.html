@@ -25,26 +25,26 @@
 
     {% if_can_see tribe user %}
         {% if are_moderator %}
+            <h3>{% trans "Find members of this tribe to kick or promote" %}</h3>
             <form method="GET" action="" >
-                <fieldset>
-                    <legend>{% trans "Find members of this tribe to kick or promote" %}</legend>
+                <p>
                     <input type="text" name="search_members" value="{{ search_terms }}" />
                     <input type="submit" value="Search" />
                     {% if search_terms %}
                         <a href="{% clear_search_url request %}">{% trans "Clear Search Terms" %}</a>
                     {% endif %}
-                </fieldset>
+                </p>
             </form>
 
+            <h3>{% trans "Find users to add to this tribe" %}</h3>
             <form method="GET" action="">
-                <fieldset>
-                    <legend>{% trans "Find users to add to this tribe" %}</legend>
+                <p>
                     <input type="text" name="search_all" value="{{ search_terms_all }}" />
                     <input type="submit" value="Search" />
                     {% if search_terms_all %}
                         <a href="{% clear_search_url request %}">{% trans "Clear Search Terms" %}</a>
                     {% endif %}
-            </fieldset>
+            </p>
             </form>
         {% endif %}
 
