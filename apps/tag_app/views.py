@@ -101,7 +101,7 @@ def combine_tags(request, template_name="tags/combine.html", form_class=CombineT
             if request.POST["bool"] == "AND":
                 if len(get_tag_list(tags)) == len(tags):
                     
-                    # If all of the userinput tags are valid tags, then there's a 
+                    # If all of the userinput tags are valid, then there's a 
                     # point in searching for objects that contain them all.
                     # Otherwise only the excisting tags would be used when 
                     # comparing.
