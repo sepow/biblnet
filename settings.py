@@ -283,7 +283,7 @@ FORCE_LOWERCASE_TAGS = True
 
 WIKI_REQUIRES_LOGIN = True
 
-AVATAR_DEFAULT_URL = MEDIA_URL + 'images/kristine.jpg'
+AVATAR_DEFAULT_URL = MEDIA_URL + 'images/noavatar.png'
 AVATAR_GRAVATAR_BACKUP = False
 
 # Schedule - calendar

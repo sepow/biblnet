@@ -17,11 +17,15 @@ def server_error(request, template_name='500.html'):
 from django.db.models import Q
 def testing(request):
     
-    from tagging.models import Tag, TaggedItem
+    print request.user.last_login
+    print request.user.get_profile().last_visit
+    print request.user.get_profile().last_visit_storage
     
-    tags = ["asd", "poop"]
-    query_tags = Tag.objects.filter(name__in=tags)
-    from tribes.models import Topic 
-    print TaggedItem.objects.get_intersection_by_model(Topic.objects.all(), query_tags)
+    #from tagging.models import Tag, TaggedItem
+    
+    #tags = ["asd", "poop"]
+    #query_tags = Tag.objects.filter(name__in=tags)
+    #from tribes.models import Topic 
+    #print TaggedItem.objects.get_intersection_by_model(Topic.objects.all(), query_tags)
     # dette skal så gøres for alle modeller..
     assert False
