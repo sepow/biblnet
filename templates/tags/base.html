@@ -1,0 +1,133 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+{% load threadedcommentstags %}
+
+{% load tribe_tags %}
+{% load avatar_tags %}
+{% load uni_form %}
+{% load wiki %}
+{% load voting_tags %} 
+{% load extra_voting_tags %}
+{% load condition_tag %}
+{% load in_filter %}
+{% load extra_tagging_tags %}
+
+
+{% block body %}
+
+{% block tagupper %}
+
+{% endblock tagupper %}
+
+    {% if tribe_tags %}
+        <h2>{% trans "Tribes" %}</h2>
+        <table class="topics">
+            <tr class="even">
+                <th width="16px"></th>
+                <th>{% trans "Name" %}</th>
+                <th class="comment_stats" width="10%">{% trans "Members" %}</th>
+                <th class="comment_stats" width="15%">{% trans "Topics" %}</th>
+                <th width="150px">{% trans "Created" %}</th>
+            </tr>
+            {% for tribe in tribe_tags %}
+                {% if_can_see tribe%}
+                    {% show_tribe tribe %}
+                {% endif_can_see %}
+            {% endfor %}
+        </table>
+    {% endif %}
+
+
+    {% if tribe_topic_tags %}
+        <h2>{% trans "Topics" %}</h2>
+        <table class="topics">
+        <tr class="even"><th width="36px"></th><th>{% trans "Topic" %}</th><th width="15%">{% trans "Started by" %}</th><th class="comment_stats" width="10%">{% trans "Views" %}</th><th class="comment_stats" width="15%">{% trans "Replies" %}</th><th width="150px">{% trans "Latest reply" %}</th></tr>
+        {% for topic in tribe_topic_tags %}
+            {% if_can_see topic.tribe%}
+                {% show_tribe_topic topic %}
+            {% endif_can_see %}
+        {% endfor %}
+        </table>
+    {% endif %}
+
+
+    {% if wiki_article_tags %}
+    <h2>{% trans "Wiki Articles" %}</h2>
+    <table class="topics">
+        <tr class="even"><th width="16px"></th><th width="20%">{% trans "Title" %}</th><th>{% trans "Summary" %}</th><th width="20%">{% trans "Latest editor" %}</th></tr>
+        {% for article in wiki_article_tags %}
+            {% if_can_see article.group %}
+                {% show_teaser article %}
+            {% endif_can_see %}
+        {% endfor %}
+    </table>
+    {% endif %}
+
+
+    {% if document_tags %}
+    <h2>{% trans "Documents" %}</h2>
+        <table class="topics">
+            <tr class="even"><th width="16px"></th><th>{% trans "Title" %}</th><th width="20%">{% trans "Author" %}</th></tr>
+        {% for document in document_tags %}
+            {% if_can_see document.tribe %}
+                <tr class="{% cycle 'odd' 'even' %}">
+                    <td>
+                        {% if document.file_mimetype %}
+                            <img src="{{MEDIA_URL}}images/sitegraphics/page_white.png" alt="{% trans 'Filetype' %}" title="{{ document.file_mimetype }}"/>
+                        {% else %}
+                            <img src="{{MEDIA_URL}}images/sitegraphics/page_white.png" alt="{% trans 'Filetype' %}" title="{% trans 'Unknown filetype' %}"/>
+                        {% endif %}
+                    </td>
+                    <td><a href="{% url document_view_document_detail document.tribe.slug document.slug %}">{{ document|default:"Untitled" }}</a></td>
+                    <td><a href="{% url profile_detail document.uploader %}">{{ document.uploader }}</a></td>
+                </tr>
+
+            {% endif_can_see %}
+        {% endfor %}
+        </table>
+    {% endif %}
+
+
+    {% if bookmarktags %}
+        {% scores_for_objects bookmarktags as score_dict %}
+        <h2>{% trans "Bookmarks" %}</h2>
+        <table class="bookmarks" width="100%">
+            {% for bookmark in bookmarktags %}
+                <tr class="{% cycle odd,even %}">
+                    <td class="meta">
+                        <div class="avatar">{% avatar bookmark.bookmark.adder 40 %}</div>
+                        <div class="details"><a href="{% url profile_detail bookmark.bookmark.adder.username %}">{{ bookmark.bookmark.adder }}</a></div>
+                        {{ bookmark.bookmark.added|date }}
+                    </td>
+                    
+                    <td>
+                        <h2><a href="{{ bookmark.bookmark.url }}">{{ bookmark.bookmark.description }}</a></h2>
+                        <div class="url">{% if bookmark.bookmark.get_favicon_url %}<img src="{{ bookmark.bookmark.get_favicon_url }}" width="16" height="16" /> {% endif %}{{ bookmark.bookmark.url }}</div>
+                        <div class="body">{{ bookmark.bookmark.note|linebreaks }}</div>
+                        <div class="tags">{% show_tag_counts bookmark.bookmark.all_tags_with_counts %}</div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+
+
+    {% if phototags %}
+        <h2>{% trans "Photos" %}</h2>
+        <div class="thumb-row clearfix">
+        {% for photo in phototags %}
+                <div class="gallery-photo-thumb">
+                    <a href="/photos/details/{{ photo.id }}/"><img src="{{ photo.get_thumbnail_url }}" alt="{{ photo.title }}"/></a><br />
+                    from <a href="{% url profile_detail photo.member.username %}">{{ photo.member.username }}</a><br />
+                    <img src="{{ MEDIA_URL }}pinax/images/silk/icons/comment.png" border="0" class="noborder" align="absmiddle" /><a href="/photos/details/{{ photo.id }}/">{% get_comment_count for photo as commentcount %} {{ commentcount }} Comments</a>
+                    <br />
+                    Viewed {{ photo.view_count }} Times
+                </div>
+        {% endfor %}
+        </div>
+    {% endif %}
+	
+{% block tagextra %}
+{% endblock tagextra %}
+{% endblock body %}
