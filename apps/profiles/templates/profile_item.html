@@ -9,6 +9,6 @@
         <img src="/site_media/{{ user.get_profile.affiliation.icon }}"  alt="{{ user.get_profile.affiliation }}" title="{{ user.get_profile.affiliation }}" />
         <img src="/site_media/{{ user.get_profile.occupation.icon }}"  alt="{{ user.get_profile.occupation }}" title="{{ user.get_profile.occupation }}" />
     </td>
-    <td><a href="{% url profile_detail user.username %}">{{ user }}</a></td>
-    <td>{{ user.get_profile.name }}</td>
+    <td><a href="{% url profile_detail user.username %}">{{ user.get_profile.name }}</a></td>
+    <td><a href="{% url profile_detail user.username %}">{{ user.username }}</a></td>
 

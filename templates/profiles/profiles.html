@@ -31,9 +31,9 @@
         {% autopaginate users %}
         
         {% ifequal order 'name'  %}
-            <h2>{% trans "Profiles by username" %}</h2>
+            <h2>{% trans "Profiles by full name" %}</h2>
             <table class="topics">
-                <tr class="even"><th width="40px"></th><th width="36px"></th><th width="174px">{% trans "Username" %}</th><th>{% trans "Full name" %}</th></tr>
+                <tr class="even"><th width="40px"></th><th width="36px"></th><th width="230px">{% trans "Full name" %}</th><th>{% trans "Username" %}</th></tr>
                 {% for user in users %}
                     <tr class="{% cycle 'odd' 'even' as rows %}">
                         {% show_profile user %}

@@ -1,3 +1,5 @@
+#-*- coding:utf-8 -*-
+
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.contrib.auth.models import User
@@ -16,10 +18,10 @@ from tribes.models import TribeMember
 from tribes.models import Tribe
 #from tribes.views import tribe
 
-from profiles.models import Profile
+
 from profiles.forms import ProfileForm
 
-from avatar.templatetags.avatar_tags import avatar
+
 #from gravatar.templatetags.gravatar import gravatar as avatar
 
 if "notification" in settings.INSTALLED_APPS:
@@ -28,7 +30,7 @@ else:
     notification = None
 
 def profiles(request, template_name="profiles/profiles.html"):
-    users = User.objects.all().order_by("username")
+    users = User.objects.all().order_by("profile__name")
     search_terms = request.GET.get('search', '')
     order = request.GET.get('order')
     if not order:
@@ -39,7 +41,9 @@ def profiles(request, template_name="profiles/profiles.html"):
     if order == 'date':
         users = users.order_by("-date_joined")
     elif order == 'name':
-        users = users.order_by("username")
+        users = users.order_by("profile__name")
+        # posgresql sortere rigigt. Men ellers kan det gøres på denne måde
+        #print Profile.objects.all().extra(select={'lower_name': 'lower(name)'}).order_by('lower_name')
     return render_to_response(template_name, {
         'users':users,
         'order' : order,

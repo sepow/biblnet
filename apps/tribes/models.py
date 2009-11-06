@@ -22,7 +22,6 @@ class Tribe(models.Model):
     a tribe is a group of users with a common interest
     """
     
-    
     name = models.CharField(_('name'), max_length=80, unique=True)
     slug = models.SlugField(_('slug'), max_length=80, unique=True)
     creator = models.ForeignKey(User, related_name="created_groups", verbose_name=_('creator'))

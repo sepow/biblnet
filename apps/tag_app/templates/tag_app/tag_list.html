@@ -5,6 +5,6 @@
 {% if tags %}
     <img src="{{ MEDIA_URL }}images/sitegraphics/tag_blue.png" alt="{% trans 'Tag' %}" title="{% trans 'Tags' %}" />
     {% for tag in tags %}
-        <a href="/tags/{{ tag }}">{{ tag }}</a>
+        <a href="{% url tag_results tag %}">{{ tag }}</a>
     {% endfor %}
 {% endif %}

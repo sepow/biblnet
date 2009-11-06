@@ -16,3 +16,21 @@
 {% endblock tagextra %}
 
 
+{% block extra_body %}
+    {{ block.super }}
+    <script type="text/javascript" src="{{ MEDIA_URL }}jquery.bgiframe.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}jquery.dimensions.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}jquery.ajaxQueue.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}jquery.autocomplete.js"></script>
+    <script type="text/javascript">
+        $().ready(function() {
+            $("#id_tags").autocomplete("{% url tag_autocomplete %}", {
+                multiple: true,
+                matchContains: true,
+            });
+            $("#id_tags").result(function() {
+                $("#id_tags").focus();
+            });
+            $("#id_tags").focus()
+        });    </script>
+{% endblock %}

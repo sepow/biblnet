@@ -17,6 +17,7 @@ from django.views.decorators.cache import cache_page
 from django.http import HttpResponseRedirect
 from tag_app.forms import CombineTagsForm
 from tagging.utils import get_tag_list
+
 def tagcloud(threshold=1, maxsize=2.75, minsize=.70):
     """usage: 
         -threshold: Tag usage less than the threshold is excluded from
@@ -125,3 +126,34 @@ def combine_tags(request, template_name="tags/combine.html", form_class=CombineT
         "form": combine_form,
         "tags": tags,
     }, context_instance=RequestContext(request))
+
+def tag_autocomplete(request):  
+    if not request.GET:
+        raise Http404
+    
+    if request.user.is_authenticated():
+        results = []
+        q = request.GET['q']
+        
+        """ Fjollet at vise tags med mindre end 1 hit, men hvordan filter
+        # @todo: Cache
+        def get_tags():
+            tags = Tag.objects.all()
+            tag_with_1 = []
+            if tags: 
+                for tag in tags:
+                    if tag.items.count() > 0:
+                        tag_with_1.append(tag)
+            return tag_with_1
+        """
+        
+        if len(q) > 1:
+            model_results = Tag.objects.all().filter(name__icontains=q)
+            results = ["\"" + x.name + "\"" for x in model_results] 
+        response = HttpResponse("\n".join(results[:10]))
+        
+    else:
+        response = HttpResponseForbidden()
+    
+    setattr(response, "djangologging.suppress_output", True)
+    return response
