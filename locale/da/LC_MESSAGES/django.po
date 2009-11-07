@@ -2868,7 +2868,7 @@ msgstr "Nye dokumenter"
 
 #: templates/homepage.html:22
 msgid "New Wikis"
-msgstr "Nye ikis"
+msgstr "Nye wikis"
 
 #: templates/homepage.html:30
 #, fuzzy
