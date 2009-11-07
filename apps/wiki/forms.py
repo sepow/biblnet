@@ -98,4 +98,4 @@ class ArticleForm(forms.ModelForm):
 
 
 class SearchForm(forms.Form):
-    search_term = forms.CharField(required=True)
+    search_term = forms.CharField(label=_(u"Search term "), required=True)

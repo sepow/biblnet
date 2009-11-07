@@ -7,8 +7,8 @@ import time
 
 class SpanForm(forms.ModelForm):
 
-    start = forms.DateTimeField(widget=forms.SplitDateTimeWidget)
-    end = forms.DateTimeField(widget=forms.SplitDateTimeWidget, help_text = _("The end time must be later than start time."))
+    start = forms.DateTimeField(widget=forms.SplitDateTimeWidget, label=_(u"Start"))
+    end = forms.DateTimeField(widget=forms.SplitDateTimeWidget, help_text = _("The end time must be later than start time."), label=_(u"End"))
 
     def clean_end(self):
         if self.cleaned_data['end'] <= self.cleaned_data['start']:
@@ -20,7 +20,7 @@ class EventForm(SpanForm):
     def __init__(self, hour24=False, *args, **kwargs):
         super(EventForm, self).__init__(*args, **kwargs)
     
-    end_recurring_period = forms.DateTimeField(help_text = _("This date is ignored for one time only events."), required=False)
+    end_recurring_period = forms.DateTimeField(label=_(u"End recurring period"), help_text = _("This date is ignored for one time only events."), required=False)
     
     class Meta:
         model = Event
