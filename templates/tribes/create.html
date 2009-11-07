@@ -9,7 +9,7 @@
 {% load tribe_tags %}
 
 {% block head_title %}{% blocktrans %}Create Tribe{% endblocktrans %}{% endblock %}
-
+{% block group %}<li class="members_tab"><a href="{% url tribe_list %}"><span>{% trans "Tribes" %}</span></a></li>{% endblock %}
 {% block body %}
     <h1>{% trans "Create Tribe" %}</h1>
     {{ tribe_form.media}}
