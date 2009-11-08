@@ -88,7 +88,7 @@
         <table class="tribes">
             <tr class="even"><th width="16px"></th><th>{% trans "Title" %}</th><th class="comment_stats" width="60px">{% trans "Grade" %}</th><th class="comment_stats" width="60px">{% trans "Score" %}</th></tr>
             {% for document in other_user.documents.all %}
-                {% if not doc.tribe.private %}
+                {% if not document.tribe.private %}
 				   {% score_for_object document as score %}
                     <tr class="{% cycle 'odd' 'even' %}">
                         <td>{% include "django_dms/filetype.html" %}</td>
