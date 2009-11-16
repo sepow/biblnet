@@ -31,7 +31,7 @@
     {% endif %}
 
     <table class="topics">
-        <tr class="even"><th width="36px"></th><th>{% trans "Topic" %}</th><th width="15%">{% trans "Started by" %}</th><th class="comment_stats" width="10%">{% trans "Views" %}</th><th class="comment_stats" width="15%">{% trans "Replies" %}</th><th width="150px">{% trans "Latest reply" %}</th></tr>
+        <tr class="even"><th width="36px"></th><th>{% trans "Topic" %}</th><th width="19%">{% trans "Started by" %}</th><th class="comment_stats" width="5%">{% trans "Views" %}</th><th class="comment_stats" width="10%">{% trans "Replies" %}</th><th width="130px">{% trans "Latest reply" %}</th></tr>
         {% if tribe.topics.all %}
             {% for topic in topics %}
                 {% show_tribe_topic topic %}

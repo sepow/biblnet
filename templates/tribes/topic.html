@@ -61,6 +61,18 @@
                 </td>
             </tr>
         </table>
+		
+		<style type="text/css">
+		  #id_tribes {width:80%;}
+		</style>
+		
+		
+		<form method="POST" action="{% url tribe_topic_moderate topic.id %}" >
+			<input type="image" src="{{MEDIA_URL}}images/sitegraphics/arrow_switch.png" alt="{% trans 'Move topic' %}" />
+			{{move_form.tribes}}
+			<input type="hidden" name="move" />
+			<input type="hidden" name="next" value="{% url tribe_topics topic.tribe.slug %}" />
+		</form>
     </div>
 {% endif %}
 

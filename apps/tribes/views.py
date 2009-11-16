@@ -455,6 +455,7 @@ def topic(request, id, edit=False, template_name="tribes/topic.html"):
         'tribe': topic.tribe,
         "are_member": are_member,
         "are_moderator" : is_moderator(topic.tribe, request.user),
+        "move_form" : MoveTribeForm(),
     }, context_instance=RequestContext(request))
 
 @login_required
@@ -489,13 +490,23 @@ def topic_moderate(request, pk):
     if topic.tribe.private and not are_member:
         if not request.user.is_superuser:
             do_403_if_not_superuser(request)
-
+    
     if request.method == "POST" and is_moderator(topic.tribe, request.user):
+        print request.POST
         if 'sticky' in request.POST:
-            # topic.sticky = not topic.sticky <- ?
             topic.sticky = not topic.sticky
             topic.save()
         elif 'close' in request.POST:
             topic.closed = not topic.closed
-            topic.save()       
+            topic.save()
+        elif 'move' in request.POST:
+            topic_form = MoveTribeForm(request.POST)
+            if topic_form.is_valid():
+                try:
+                    move_to = Tribe.objects.get(id=request.POST["tribes"])
+                    topic.tribe = move_to
+                    topic.save()
+                    request.user.message_set.create(message=ugettext("You have moved the topic to the group: %s") % move_to)
+                except Tribe.DoesNotExist:
+                    pass
     return HttpResponseRedirect(request.POST["next"])

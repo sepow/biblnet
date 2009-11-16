@@ -136,6 +136,8 @@ def tag_autocomplete(request):
         q = request.GET['q']
         
         """ Fjollet at vise tags med mindre end 1 hit, men hvordan filter
+            Ikke testet.. 
+            
         # @todo: Cache
         def get_tags():
             tags = Tag.objects.all()

@@ -92,3 +92,9 @@ class AddMemberForm(forms.Form):
             notification.send([new_member], "projects_added_as_member", {"adder": user, "project": project})
         user.message_set.create(message="added %s to project" % new_member)
         '''
+
+class MoveTribeForm(forms.Form):
+    tribes = forms.ModelChoiceField(Tribe.objects.filter(deleted=False), widget=forms.Select)
+    
+    def clean(self):
+        return self.cleaned_data
