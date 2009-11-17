@@ -3,7 +3,8 @@
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.contrib.auth.models import User
-from django.http import HttpResponse, HttpResponseForbidden
+from django.http import HttpResponse, HttpResponseForbidden,\
+    HttpResponseRedirect
 from django.conf import settings
 
 from django.utils.translation import ugettext_lazy as _
@@ -13,7 +14,7 @@ from friends.forms import InviteFriendForm
 from friends.models import FriendshipInvitation, Friendship
 
 from microblogging.models import Following
-
+from sepow.utils import do_403_if_not_superuser
 from tribes.models import TribeMember
 from tribes.models import Tribe
 #from tribes.views import tribe
@@ -30,7 +31,7 @@ else:
     notification = None
 
 def profiles(request, template_name="profiles/profiles.html"):
-    users = User.objects.all().order_by("profile__name")
+    users = User.objects.all().filter(is_active=True).order_by("profile__name")
     search_terms = request.GET.get('search', '')
     order = request.GET.get('order')
     if not order:
@@ -134,3 +135,19 @@ def profile(request, username, template_name="profiles/profile.html"):
         "previous_invitations_to": previous_invitations_to,
         "previous_invitations_from": previous_invitations_from,
     }, context_instance=RequestContext(request))
+
+def profile_deactivate(request, username):
+    
+    user = get_object_or_404(User, username=username)
+    if user == request.user:
+        is_user = True
+    else:
+        is_user = False
+    if not is_user:
+        access = do_403_if_not_superuser(request)
+        if access:
+            return access
+    
+    user.is_active = False
+    user.save()
+    return HttpResponseRedirect("/")   

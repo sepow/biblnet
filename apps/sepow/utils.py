@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from django.conf import settings
 from tribes.models import Tribe, TribeMember
+from django.shortcuts import render_to_response
+from django.template.context import RequestContext
 
 
 def admin_group_access(user):
@@ -25,3 +27,11 @@ def check_if_is_moderator(tribe, user):
         if is_in_group:
             return is_in_group[0].moderator
     return False
+
+def do_403_if_not_superuser(request):
+    if not admin_group_access(request.user):
+        resp = render_to_response('403.html', context_instance=RequestContext(request))
+        resp.status_code = 403
+        return resp
+    else:
+        return False

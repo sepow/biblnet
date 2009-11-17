@@ -189,7 +189,7 @@ def get_latest(users=8, topics=1, comments=2):
     except IndexError:
         latest_post = None
 
-    return {'latest_users' : User.objects.order_by('-profile__last_visit_storage')[:users],
+    return {'latest_users' : User.objects.all().filter(is_active=True).order_by('-profile__last_visit_storage')[:users],
             'latest_topics' : latest_topic,
             'latest_posts'  : latest_post,
             }

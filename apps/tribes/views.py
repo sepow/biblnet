@@ -13,7 +13,7 @@ from schedule.models import Calendar
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
 from django_dms.apps.small_dms.models import Document
-from sepow.utils import admin_group_access, check_if_is_moderator
+from sepow.utils import admin_group_access, check_if_is_moderator, do_403_if_not_superuser
 if "notification" in settings.INSTALLED_APPS:
     from notification import models as notification
 else:
@@ -51,13 +51,6 @@ SELECT COUNT(*)
 FROM tribes_tribemember
 WHERE tribes_tribemember.tribe_id = tribes_tribe.id
 """
-
-def do_403_if_not_superuser(request):
-    if not admin_group_access(request.user):
-        resp = render_to_response('403.html', context_instance=RequestContext(request))
-        resp.status_code = 403
-        return resp
-
 
 def has_member(tribe, user):
     if user.is_authenticated():
@@ -190,7 +183,9 @@ def tribe(request, slug, form_class=TribeUpdateForm,
     are_member = has_member(tribe, request.user)
     
     if tribe.private and not are_member:
-        do_403_if_not_superuser(request)
+        access = do_403_if_not_superuser(request)
+        if access: 
+            return access
         
     photos = tribe.photos.all()
     
@@ -239,10 +234,10 @@ def tribe(request, slug, form_class=TribeUpdateForm,
         total_articles  = None
         articles        = None
         documents       = None
-        topics    = None
-        articles  = None
-        total_articles = None
-        documents = None
+        topics          = None
+        articles        = None
+        total_articles  = None
+        documents       = None
         
     return render_to_response(template_name, {
         "tribe_form"    : tribe_form,
@@ -282,7 +277,9 @@ def tribe_members(request, slug, tribe_form=AddMemberForm, template_name="tribes
         
 
     if tribe.private and not are_member:
-        do_403_if_not_superuser(request)
+        access = do_403_if_not_superuser(request)
+        if access: 
+            return access
     
     if are_moderator:
 
@@ -376,7 +373,9 @@ def topics(request, slug, form_class=TopicForm,
     are_moderator =  is_moderator(tribe, request.user)
     
     if tribe.private and not are_member:
-        do_403_if_not_superuser(request)
+        access = do_403_if_not_superuser(request)
+        if access: 
+            return access
         
     else:
         topics = tribe.topics.all()
@@ -422,9 +421,10 @@ def topic(request, id, edit=False, template_name="tribes/topic.html"):
     are_member = has_member(topic.tribe, request.user)
     
     if topic.tribe.private and not are_member:
-        if not request.user.is_superuser:
-            do_403_if_not_superuser(request)
-             
+        access = do_403_if_not_superuser(request)
+        if access: 
+            return access
+                     
     if request.method == "POST" and edit == True:
         
         if is_moderator(topic.tribe, request.user):
@@ -465,7 +465,9 @@ def topic_delete(request, pk):
     are_member = has_member(topic.tribe, request.user)
     
     if topic.tribe.private and not are_member:
-        do_403_if_not_superuser(request)
+        access = do_403_if_not_superuser(request)
+        if access: 
+            return access
        
     if request.method == "POST" and (topic.creator == request.user or admin_group_access): 
         if forums:
@@ -493,7 +495,9 @@ def topic_moderate(request, pk):
     are_member = has_member(topic.tribe, request.user)
     
     if topic.tribe.private and not are_member:
-        do_403_if_not_superuser(request)
+        access = do_403_if_not_superuser(request)
+        if access: 
+            return access
     
     if request.method == "POST" and is_moderator(topic.tribe, request.user):
         print request.POST
