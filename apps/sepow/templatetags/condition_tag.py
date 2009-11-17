@@ -1,9 +1,11 @@
 from django import template
 from django.template import NodeList
 from functools import wraps
+from sepow.utils import admin_group_access
 import inspect
 from tribes.models import TribeMember
 from datetime import datetime
+from sepow.utils import check_if_is_moderator, admin_group_access
 register = template.Library()
 
 def condition_tag(func):
@@ -111,12 +113,13 @@ register.tag('is_member', if_is_member)
 
 @condition_tag
 def if_is_moderator(tribe, user='user'):
-    if user.is_authenticated():
-        is_moderator = TribeMember.objects.filter(tribe=tribe, user=user)
-        if is_moderator:
-            return is_moderator[0].moderator
-    return False
+    return check_if_is_moderator(tribe, user)
 register.tag('if_is_moderator', if_is_moderator)
+
+@condition_tag
+def if_in_admin_group(user='user'):
+    return admin_group_access(user)
+register.tag('if_admin_group_access', if_in_admin_group)
 
 @condition_tag
 def if_can_see(tribe, user='user'):
@@ -160,7 +163,7 @@ def if_can_edit_topic(topic='topic', user='user'):
         Other users have got 15 minutes from they posted the topic.
     '''
 
-    if topic.tribe.creator.id == user.id:
+    if topic.tribe.creator.id == user.id or admin_group_access(user):
         return True
     if topic.creator.id == user.id:
         created = topic.created

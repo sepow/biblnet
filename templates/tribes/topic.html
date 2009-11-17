@@ -61,11 +61,11 @@
                 </td>
             </tr>
         </table>
-		
+		{% if_admin_group_access request.user %}
 		<style type="text/css">
 		  #id_tribes {width:80%;}
 		</style>
-		
+				
 		
 		<form method="POST" action="{% url tribe_topic_moderate topic.id %}" >
 			<input type="image" src="{{MEDIA_URL}}images/sitegraphics/arrow_switch.png" alt="{% trans 'Move topic' %}" />
@@ -73,6 +73,7 @@
 			<input type="hidden" name="move" />
 			<input type="hidden" name="next" value="{% url tribe_topics topic.tribe.slug %}" />
 		</form>
+		{% endif_admin_group_access %}
     </div>
 {% endif %}
 
@@ -92,12 +93,12 @@
     <p><img src="{{MEDIA_URL}}images/sitegraphics/lock.png" alt="{% trans 'Closed topic' %}" /> {% trans "The topic has been closed. It can only be reopened by a moderator of this group." %}</p>
 {% endif %}
 
-{% ifequal user topic.tribe.creator %}
+{% if_admin_group_access user %}
     <form id="{{ topic.id }}" class="delete_topic_form delete_form" style="display: none;" method="POST" action="{% url tribe_topic_delete topic.id %}">
         <input type="submit" value="Delete Topic"/> {% trans "Are you sure you wish to delete this topic? All posts will be lost..." %}
         <input type="hidden" name="next" value="{% url tribe_topics topic.tribe.slug %}" />
     </form>
-{% endifequal %}
+{% endif_admin_group_access %}
 
 <table class="topic">
     <tr class="even"><th class="meta">{% trans "Meta" %}</th><th class="options"></th><th>{% trans "Posts" %} <a href="{% url terms %}" target="_blank"><img src="/site_media/images/sitegraphics/information.png" alt="{% trans 'Netiquette' %}" title="{% trans 'Netiquette' %}"/></a></th></tr>
@@ -132,9 +133,9 @@
             {% if_can_edit_topic %}
                 {% if not edit %}<a href="{{ request.path }}edit/"><img src="{{MEDIA_URL}}images/sitegraphics/page_white_edit.png" alt="{% trans 'Edit post' %}" title="{% trans 'Edit post' %}" /></a>{% endif %}
             {% endif_can_edit_topic %}
-            {% ifequal user topic.tribe.creator %}
+            {% if_admin_group_access user %}
                 <div class="delete"><a onclick="$('#{{ topic.id }}.delete_topic_form').toggle(); return false;" href="#"><img src="{{MEDIA_URL}}images/sitegraphics/bin.png" alt="{% trans 'Delete Topic' %}" title="{% trans 'Delete Topic' %}" /></a></div>
-            {% endifequal %}
+            {% endif_admin_group_access %}
         </td>
         <td>
         <div>

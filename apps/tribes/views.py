@@ -13,6 +13,7 @@ from schedule.models import Calendar
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
 from django_dms.apps.small_dms.models import Document
+from sepow.utils import admin_group_access, check_if_is_moderator
 if "notification" in settings.INSTALLED_APPS:
     from notification import models as notification
 else:
@@ -52,7 +53,7 @@ WHERE tribes_tribemember.tribe_id = tribes_tribe.id
 """
 
 def do_403_if_not_superuser(request):
-    if not request.user.is_superuser:
+    if not admin_group_access(request.user):
         resp = render_to_response('403.html', context_instance=RequestContext(request))
         resp.status_code = 403
         return resp
@@ -62,17 +63,13 @@ def has_member(tribe, user):
     if user.is_authenticated():
         if TribeMember.objects.filter(tribe=tribe, user=user).count() > 0:
             return True
+        elif admin_group_access(user):
+            return True
     return False
 
 
 def is_moderator(tribe, user):
-    if user.is_authenticated():
-        if user.is_superuser:
-            return True
-        is_in_group = TribeMember.objects.filter(tribe=tribe, user=user)
-        if is_in_group:
-            return is_in_group[0].moderator
-    return False
+    return check_if_is_moderator(tribe, user)
    
 @login_required
 def create(request, form_class=TribeForm, template_name="tribes/create.html"):
@@ -198,7 +195,7 @@ def tribe(request, slug, form_class=TribeUpdateForm,
     photos = tribe.photos.all()
     
     if request.user.is_authenticated() and request.method == "POST":
-        if request.POST["action"] == "update" and request.user == tribe.creator:
+        if request.POST["action"] == "update" and (request.user == tribe.creator or request.user.is_superuser):
             tribe_form = form_class(request.POST, instance=tribe)
             if tribe_form.is_valid():
                 tribe = tribe_form.save()
@@ -376,7 +373,7 @@ def topics(request, slug, form_class=TopicForm,
         raise Http404
     
     are_member = has_member(tribe, request.user),
-    are_moderator =  is_moderator(tribe, request.user),
+    are_moderator =  is_moderator(tribe, request.user)
     
     if tribe.private and not are_member:
         do_403_if_not_superuser(request)
@@ -468,15 +465,23 @@ def topic_delete(request, pk):
     are_member = has_member(topic.tribe, request.user)
     
     if topic.tribe.private and not are_member:
-        
-        if not request.user.is_superuser:
-            do_403_if_not_superuser(request)
+        do_403_if_not_superuser(request)
        
-    if request.method == "POST" and topic.creator == request.user: 
+    if request.method == "POST" and (topic.creator == request.user or admin_group_access): 
         if forums:
             ThreadedComment.objects.all_for_object(topic).delete()
+        send_to = topic.creator
         topic.delete()
-        
+        from messages.models import Message
+        msg = Message(
+            sender = request.user,
+            recipient = send_to,
+            subject = ugettext("A topic has been deleted."),
+            body = ugettext("Your topic '%(topic)s' in '%(tribe)s' has been deleted by %(user)s") % {'topic' : topic.title,
+                                                                             'user'  : request.user,
+                                                                             'tribe' : topic.tribe },
+        )
+        msg.save()
     return HttpResponseRedirect(request.POST["next"])
 
 @login_required
@@ -488,8 +493,7 @@ def topic_moderate(request, pk):
     are_member = has_member(topic.tribe, request.user)
     
     if topic.tribe.private and not are_member:
-        if not request.user.is_superuser:
-            do_403_if_not_superuser(request)
+        do_403_if_not_superuser(request)
     
     if request.method == "POST" and is_moderator(topic.tribe, request.user):
         print request.POST

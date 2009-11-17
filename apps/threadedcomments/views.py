@@ -10,6 +10,9 @@ from threadedcomments.models import ThreadedComment, FreeThreadedComment, DEFAUL
 from threadedcomments.utils import JSONResponse, XMLResponse
 from sepow.html import sanitize_html
 from tribes.models import Topic, Tribe
+from sepow.utils import admin_group_access
+from django.utils.translation import ugettext
+from messages.models import Message
 def _adjust_max_comment_length(form, field_name='comment'):
     """
     Sets the maximum comment length to that default specified in the settings.
@@ -160,7 +163,7 @@ def can_delete_comment(comment, user):
     Default callback function to determine wether the given user has the
     ability to delete the given comment.
     """
-    if user.is_staff or user.is_superuser:
+    if user.is_staff or admin_group_access(user):
         return True
     if hasattr(comment, 'user') and comment.user == user:
         return True
@@ -179,6 +182,18 @@ def comment_delete(request, object_id, model=ThreadedComment, extra_context = {}
         return HttpResponseRedirect("%s?next=%s" % (login_url, current_url))
     if request.method == "POST":
         tc.delete()
+        
+        
+        msg = Message(
+            sender = request.user,
+            recipient = tc.user,
+            subject = ugettext("A comment has been deleted."),
+            body = ugettext("A comment you made in the thread '%(thread)s' in '%(tribe)s' has been deleted by %(user)s") % {'thread' : tc.get_content_object().title,
+                                                                             'user'  : request.user,
+                                                                             'tribe' : tc.get_content_object().tribe },
+        )
+        msg.save()
+        
         return HttpResponseRedirect(_get_next(request))
     else:
         if model == ThreadedComment:

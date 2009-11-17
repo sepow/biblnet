@@ -78,7 +78,6 @@ def compose(request, recipient=None, form_class=ComposeForm,
             now = datetime.datetime.now()
             time_since = now - joined
             time_now = datetime.timedelta(0,60*60*6)
-            print time_since, time_now
             if time_since >= time_now:
                 form.save(sender=request.user)
                 request.user.message_set.create(

@@ -43,20 +43,19 @@
                 </form>
             {% endfor %}
         </div>
-
+               
+        {% if user.is_staff %}
+            <ul id="admin">
+                <li class="admin_tab" ><a href="/admin/"><span>{% trans "Admin" %}</span></a></li>
+            </ul>
+        {% endif %}
         {% block admin_tab %}
             {% if tribe or topic %}
-                {% if user.is_staff or are_moderator %}
+                {% if are_moderator %}
                     <ul id="admin">
                         <li class="admin_tab" ><a href="{% firstof tribe.get_absolute_url group.get_absolute_url topic.tribe.get_absolute_url %}admin/"><span>
                         {% trans "Group Admin" %}</span></a></li>
                     </ul>
-                {% else %}
-                    {% if user.is_staff %}
-                        <ul id="admin">
-                            <li class="admin_tab" ><a href="/admin/"><span>{% trans "Admin" %}</span></a></li>
-                        </ul>
-                    {% endif %}
                 {% endif %}
             {% endif %}
         {% endblock %}
