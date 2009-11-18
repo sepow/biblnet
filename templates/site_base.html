@@ -23,7 +23,16 @@
 
 {% block logo_link_image %}{% cache 3456000 biblnetbanner %}<a href="{% url home %}"><img src="{{ MEDIA_URL }}images/sitegraphics/biblnet.png" alt="biblnet"/></a>{% endcache %} {{ CAN_ADMIN }}{% endblock %}
 {% block dynamic_updates %}
+	<div id="dynamic_updates">
     {% get_latest 8 1 1 %}
+	</div>
+<script>
+ $(document).ready(function() {
+   var refreshId = setInterval(function() {
+      $("#dynamic_updates").load('/get_latest/?randval='+ Math.random());
+   }, 60000);
+});
+</script>
 {% endblock %}
 
 {% block boxtab %}
@@ -206,18 +215,19 @@
     <script src="{{ MEDIA_URL }}base.js" type="text/javascript"></script>
 	<script src="{{ MEDIA_URL }}js/dimensions_1.2/jquery.dimensions.min.js" type="text/javascript"></script>
     <script src="{{ MEDIA_URL }}js/jquery-tooltip/jquery.tooltip.min.js" type="text/javascript"></script>
+	{% endcache %}
 	<script type="text/javascript"> 
-	    $(".dynamic_avatars a img").attr("title",""); // gemmer titler på billeder
-	    $('.dynamic_avatars a').tooltip({ 
-	    track: true, 
-	    delay: 0, 
-	    showURL: false, 
-	    showBody: ": ", 
-	    fade: 50,
-		positionLeft: true,
-    });
-</script>
-    {% endcache %}
+		    $(".dynamic_avatars a img").attr("title",""); // gemmer titler på billeder
+		    $('.dynamic_avatars a').tooltip({ 
+		    track: true, 
+		    delay: 0, 
+		    showURL: false, 
+		    showBody: ": ", 
+		    fade: 50,
+			positionLeft: true,
+	    });
+	</script>
+    
     {% block extra_body %}{% endblock %}
     {% block visit %}{% endblock%}
 {% endblock %}

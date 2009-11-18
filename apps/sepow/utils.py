@@ -28,6 +28,7 @@ def check_if_is_moderator(tribe, user):
     return False
 
 def do_403_if_not_superuser(request):
+    # split den op til to funktioner.. 
     if not admin_group_access(request.user):
         resp = render_to_response('403.html', context_instance=RequestContext(request))
         resp.status_code = 403
