@@ -21,6 +21,7 @@ from tribes.models import Tribe
 
 
 from profiles.forms import ProfileForm
+from django.core.urlresolvers import reverse
 
 
 #from gravatar.templatetags.gravatar import gravatar as avatar
@@ -150,4 +151,4 @@ def profile_deactivate(request, username):
     
     user.is_active = False
     user.save()
-    return HttpResponseRedirect("/")   
+    return HttpResponseRedirect(reverse('acct_logout'))   
