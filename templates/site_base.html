@@ -26,13 +26,6 @@
 	<div id="dynamic_updates">
     {% get_latest 8 1 1 %}
 	</div>
-<script>
- $(document).ready(function() {
-   var refreshId = setInterval(function() {
-      $("#dynamic_updates").load('/get_latest/?randval='+ Math.random());
-   }, 60000);
-});
-</script>
 {% endblock %}
 
 {% block boxtab %}
@@ -226,6 +219,13 @@
 		    fade: 50,
 			positionLeft: true,
 	    });
+	</script>
+	<script>
+		 $(document).ready(function() {
+		   var refreshId = setInterval(function() {
+		      $("#dynamic_updates").load('/get_latest/?randval='+ Math.random());
+		   }, 60000);
+		});
 	</script>
     
     {% block extra_body %}{% endblock %}
