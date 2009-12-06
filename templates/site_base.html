@@ -13,10 +13,7 @@
     {% cache 3456000 cssnjs %}
     <link rel="stylesheet" href="{{ MEDIA_URL }}css/site_tabs.css" />
     <link rel="stylesheet" href="{{ MEDIA_URL }}pinax/css/topics.css" />
-
-
     <script type="text/javascript" src="{{ MEDIA_URL }}pinax/js/topics.js"></script>
-	
     {% endcache %}
     {% block extra_head %}{% endblock %}
 {% endblock %}
@@ -220,6 +217,7 @@
 			positionLeft: true,
 	    });
 	</script>
+{% if user.is_authenticated %}
 	<script>
 		 $(document).ready(function() {
 		   var refreshId = setInterval(function() {
@@ -227,7 +225,7 @@
 		   }, 60000);
 		});
 	</script>
-    
+{% endif %}
     {% block extra_body %}{% endblock %}
     {% block visit %}{% endblock%}
 {% endblock %}
