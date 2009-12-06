@@ -51,7 +51,7 @@
             <div class="delete">
                 <a onclick="$('#deactivate.delete_post_form').toggle(); return false;" href="#"><img src="/site_media/images/sitegraphics/bin.png" alt="{% trans 'Deactivate account' %}" title="{% trans 'Deactivate account' %}" /></a>
             </div>
-            <form id="deactivate" class="delete_post_form delete_form" style="display: none;" method="POST" action="{% url profile_deactivate user %}">
+            <form id="deactivate" class="delete_post_form delete_form" style="display: none;" method="POST" action="{% url profile_deactivate other_user %}">
                 <input type="submit" value= {% trans "Deactivate Profile" %} /> {% trans "Are you sure you wish to deactivate this profile? <br/> You will no longe be able to log in to the site,  and people will not be able to view your profile if you continue"%}
                 <input type="hidden" name="next" value="{{ request.path }}" />
             </form>

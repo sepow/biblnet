@@ -151,4 +151,7 @@ def profile_deactivate(request, username):
     
     user.is_active = False
     user.save()
-    return HttpResponseRedirect(reverse('acct_logout'))   
+    if not is_user:
+        return HttpResponseRedirect('/')   
+    else:
+        return HttpResponseRedirect(reverse('acct_logout'))   

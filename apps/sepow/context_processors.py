@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 from tribes.models import Tribe
+
+
 def affil_tribe(request):
     if request.user.is_authenticated():
         try: # try to find the tribe the user is affiliated with. 

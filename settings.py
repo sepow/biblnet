@@ -13,7 +13,7 @@ PINAX_THEME = 'default'
 TIME_FORMAT = 'H:i'
 DEFAULT_MAX_COMMENT_LENGTH = 15000
 DEFAULT_CHARSET = "utf-8"
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 # tells Pinax to serve media through django.views.static.serve.
@@ -94,7 +94,7 @@ MIDDLEWARE_CLASSES = (
     'misc.middleware.SortOrderMiddleware',
     'djangodblog.middleware.DBLogMiddleware',
     'django.middleware.transaction.TransactionMiddleware',
-    #'sepow.middleware.UserBasedExceptionMiddleware',
+    'sepow.middleware.CheckIfUserIsActive',
     #'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
