@@ -11,15 +11,18 @@ DEFAULT_AGE = None
 
 
 class Command(AppCommand):
-    help = "Reindex the given app(s)."
+    help = "Freshens the index for the given app(s)."
     option_list = AppCommand.option_list + (
         make_option('-a', '--age', action='store', dest='age',
             default=DEFAULT_AGE, type='int',
             help='Number of hours back to consider objects new.'
         ),
-        make_option('-b', '--batch-size', action='store', dest='batchsize', 
+        make_option('-b', '--batch-size', action='store', dest='batchsize',
             default=DEFAULT_BATCH_SIZE, type='int',
             help='Number of items to index at once.'
+        ),
+        make_option('-s', '--site', action='store', dest='site',
+            type='string', help='The site object to use when reindexing (like `search_sites.mysite`).'
         ),
     )
     
@@ -37,26 +40,35 @@ class Command(AppCommand):
                 help='Verbosity level; 0=minimal output, 1=normal output, 2=all output'
             ),
         )
-
+    
     def handle(self, *apps, **options):
         self.verbosity = int(options.get('verbosity', 1))
         self.batchsize = options.get('batchsize', DEFAULT_BATCH_SIZE)
         self.age = options.get('age', DEFAULT_AGE)
+        self.site = options.get('site')
         
         if not apps:
             self.handle_app(None, **options)
         else:
             return super(Command, self).handle(*apps, **options)
-
+    
     def handle_app(self, app, **options):
         # Cause the default site to load.
-        from haystack import handle_registrations
-        handle_registrations()
-        
-        from django.db.models import get_models
         from haystack import site
+        from django.db.models import get_models
         from haystack.exceptions import NotRegistered
-
+        
+        if self.site:
+            path_bits = self.site.split('.')
+            module_name = '.'.join(path_bits[:-1])
+            site_name = path_bits[-1]
+            
+            try:
+                module = __import__(module_name, {}, {}, [''])
+                site = getattr(module, site_name)
+            except (ImportError, NameError):
+                pass
+        
         for model in get_models(app):
             try:
                 index = site.get_index(model)
@@ -64,7 +76,7 @@ class Command(AppCommand):
                 if self.verbosity >= 2:
                     print "Skipping '%s' - no index." % model
                 continue
-
+                
             extra_lookup_kwargs = {}
             updated_field = index.get_updated_field()
             
@@ -75,14 +87,14 @@ class Command(AppCommand):
                     if self.verbosity >= 2:
                         print "No updated date field found for '%s' - not restricting by age." % model.__name__
             
-            # DRL_TODO: .select_related() seems like a good idea here but
-            #           can cause empty QuerySets. Why?
-            qs = index.get_query_set().filter(**extra_lookup_kwargs).order_by(model._meta.pk.name)
+            # `.select_related()` seems like a good idea here but can fail on
+            # nullable `ForeignKey` as well as what seems like other cases.
+            qs = index.get_queryset().filter(**extra_lookup_kwargs).order_by(model._meta.pk.name)
             total = qs.count()
-
+            
             if self.verbosity >= 1:
                 print "Indexing %d %s." % (total, smart_str(model._meta.verbose_name_plural))
-
+            
             for start in range(0, total, self.batchsize):
                 end = min(start + self.batchsize, total)
                 

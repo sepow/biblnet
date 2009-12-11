@@ -34,7 +34,7 @@ class CommaSeparatedUserField(forms.Field):
         names = set(value.split(','))
         names_set = set([name.strip().lower() for name in names if name.strip()])
 
-        if len(names_set) >= 30:
+        if len(names_set) >= 8:
             raise forms.ValidationError(_(u"You can't message this many people at once."))
         
         users = []

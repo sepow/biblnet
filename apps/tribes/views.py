@@ -322,9 +322,7 @@ def tribe_members(request, slug, tribe_form=AddMemberForm, template_name="tribes
             elif 'promote' in request.GET:
                 try:
                     promoted_user_slug = request.GET['promote'] # lav til en form
-                    
                     user = User.objects.get(username=promoted_user_slug)
-                    
                     tm = TribeMember.objects.get(tribe=tribe, user=user)
                     tm.moderator=True
                     tm.save()

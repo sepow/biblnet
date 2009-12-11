@@ -21,8 +21,17 @@
 
 {% load condition_tag %}
 
-<h1>{% trans "Members of " %} <a href="{% url tribe_detail tribe.slug %}">{{ tribe.name }}</a>: {{ tribe_members_all.count }}</h2>
-
+<h1>{% trans "Members of " %} <a href="{% url tribe_detail tribe.slug %}">{{ tribe.name }}</a>: {{ tribe_members_all.count }}</h1>
+<script>
+    $(document).ready(function(){
+	   $("#member_admin").hide()
+	   $("#member_admin_toggle").click(function() {
+	       $("#member_admin").toggle()
+        }
+	)})
+</script>
+{% if are_moderator %}<div id="member_admin_toggle"><a href="#">{% trans "Members admin" %}</a></div> {% endif %}
+<div id="member_admin">
     {% if_can_see tribe user %}
         {% if are_moderator %}
             <h3>{% trans "Find members of this tribe to kick or promote" %}</h3>
@@ -99,7 +108,7 @@
             {% endfor %}
         </table>
         {% endif %}
-
+</div>
         {% autopaginate tribe_members_all %}
         
         {% ifequal order 'date'  %}
