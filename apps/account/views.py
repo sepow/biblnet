@@ -9,7 +9,7 @@ from django.utils.translation import ugettext, ugettext_lazy as _
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 from django.db import models
-
+from django.utils.encoding import iri_to_uri
 from account.utils import get_default_redirect
 from account.models import OtherServiceInfo
 from account.forms import SignupForm, AddEmailForm, LoginForm, \
@@ -35,7 +35,7 @@ def login(request, form_class=LoginForm,
                         user=form.user, openid=openid.openid
                     )
                 success_url = openid_success_url or success_url
-            return HttpResponseRedirect(success_url)
+            return HttpResponseRedirect(iri_to_uri(success_url))
     else:
         form = form_class()
     return render_to_response(template_name, {
