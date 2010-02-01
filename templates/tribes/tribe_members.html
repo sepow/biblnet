@@ -24,14 +24,15 @@
 <h1>{% trans "Members of " %} <a href="{% url tribe_detail tribe.slug %}">{{ tribe.name }}</a>: {{ tribe_members_all.count }}</h1>
 <script>
     $(document).ready(function(){
-	   $("#member_admin").hide()
+	   $("#member-search").hide()
 	   $("#member_admin_toggle").click(function() {
-	       $("#member_admin").toggle()
+	       $("#member-search").toggle()
         }
 	)})
 </script>
 {% if are_moderator %}<div id="member_admin_toggle"><a href="#">{% trans "Members admin" %}</a></div> {% endif %}
 <div id="member_admin">
+	<div id="member-search">
     {% if_can_see tribe user %}
         {% if are_moderator %}
             <h3>{% trans "Find members of this tribe to kick or promote" %}</h3>
@@ -56,7 +57,7 @@
             </p>
             </form>
         {% endif %}
-
+    </div>
         {% if tribe_members %}
         <h2>{% trans "Members to kick or promote" %}</h2>
         <table class="topics">

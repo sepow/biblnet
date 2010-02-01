@@ -7,8 +7,8 @@ class CombineTagsForm(forms.Form):
     
     CHOICES = (("AND", "AND"),("OR", "OR"))
     
-    tags = forms.CharField(label=_("Tags"))
-    bool = forms.ChoiceField(choices=CHOICES, initial="AND", help_text="Insert your shit here")
+    tags = forms.CharField(label=_("Tags"),)
+    bool = forms.ChoiceField(choices=CHOICES, initial="AND")
     
     def clean_tags(self):
         return parse_tag_input(self.cleaned_data["tags"])

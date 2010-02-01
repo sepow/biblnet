@@ -96,6 +96,7 @@ MIDDLEWARE_CLASSES = (
     'djangodblog.middleware.DBLogMiddleware',
     'django.middleware.transaction.TransactionMiddleware',
     'sepow.middleware.CheckIfUserIsActive',
+    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
     #'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
@@ -145,6 +146,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.humanize',
     'django.contrib.markup',
+    'django.contrib.flatpages',
     
     # external
     'notification', # must be first

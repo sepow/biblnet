@@ -2,11 +2,20 @@
 {% load i18n %}
 
 {% block tagupper %}
-<form class="uniForm" id="search" action="." method="post">
+<style>
+.tagcombine #id_tags {
+    
+}
+.tagcombine #id_bool {
+    width: 70px;
+}
+</style>
+<form class="tagcombine" id="search" action="." method="post">
     <fieldset class="inlineLabels">
-        {{form.tags}}
+        {{form.tags.name}}: {{form.tags}}
         {{form.bool}}
         <input type="submit" value="{% trans 'Search' %}" />
+		
     </fieldset>
 </form>
 {% endblock tagupper %}

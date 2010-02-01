@@ -14,6 +14,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
 from django_dms.apps.small_dms.models import Document
 from sepow.utils import admin_group_access, check_if_is_moderator, do_403_if_not_superuser
+from messages.models import Message
 if "notification" in settings.INSTALLED_APPS:
     from notification import models as notification
 else:
@@ -472,7 +473,7 @@ def topic_delete(request, pk):
             ThreadedComment.objects.all_for_object(topic).delete()
         send_to = topic.creator
         topic.delete()
-        from messages.models import Message
+        
         msg = Message(
             sender = request.user,
             recipient = send_to,
@@ -510,9 +511,21 @@ def topic_moderate(request, pk):
             if topic_form.is_valid():
                 try:
                     move_to = Tribe.objects.get(id=request.POST["tribes"])
+                    from_tribe = topic.tribe
                     topic.tribe = move_to
                     topic.save()
                     request.user.message_set.create(message=ugettext("You have moved the topic to the group: %s") % move_to)
+                    
+                    dd = {'topic' : topic.title, 'user'  : request.user, 'tribe' : from_tribe,
+                          'to' : move_to }
+
+                    msg = Message(
+                        sender = request.user,
+                        recipient = topic.creator,
+                        subject = ugettext("A topic has been Moved."),
+                        body = ugettext("Your topic '%(topic)s' in '%(tribe)s' has been moved to %(to)s by %(user)s") % dd,
+                    )
+                    msg.save()
                 except Tribe.DoesNotExist:
                     pass
     return HttpResponseRedirect(request.POST["next"])
