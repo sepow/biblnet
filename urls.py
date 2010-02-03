@@ -66,6 +66,7 @@ urlpatterns = patterns('',
     (r'^feeds/posts/(.*)/$', 'django.contrib.syndication.views.feed', blogs_feed_dict),
     (r'^feeds/bookmarks/(.*)/?$', 'django.contrib.syndication.views.feed', bookmarks_feed_dict),
     (r'^elsewhere/', include('elsewhere.urls')),
+    url(r'^documents/$', 'sepow.views.list_documents', name="global_list_documents"),
     url(r'^get_latest/$', direct_to_template, {"template": "get_latest.html"}, name="get_latest"),
     url(r'^get_stuff_since_last/$', direct_to_template, {"template": "stuff_since_last.html"}, name="stuff_since_last"),
 

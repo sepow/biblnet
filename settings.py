@@ -85,6 +85,7 @@ TEMPLATE_LOADERS = (
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
+    'sepow.middleware.debugging.UserBasedExceptionMiddleware',
     'django.contrib.csrf.middleware.CsrfMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -95,7 +96,7 @@ MIDDLEWARE_CLASSES = (
     'misc.middleware.SortOrderMiddleware',
     'djangodblog.middleware.DBLogMiddleware',
     'django.middleware.transaction.TransactionMiddleware',
-    'sepow.middleware.CheckIfUserIsActive',
+    'sepow.middleware.user.CheckIfUserIsActive',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
     #'debug_toolbar.middleware.DebugToolbarMiddleware',
 )

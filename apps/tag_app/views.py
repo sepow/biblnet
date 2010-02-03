@@ -45,7 +45,7 @@ def tagcloud(threshold=1, maxsize=2.75, minsize=.70):
     return None
 
 @cache_page(60 * 60)
-def show_tag_cloud(request, template_name="sepow/tagcloud.html" ):
+def show_tag_cloud(request, template_name="tags/tagcloud.html" ):
     return render_to_response(template_name, {
     'tag_cloud' : tagcloud()
     }, context_instance=RequestContext(request)

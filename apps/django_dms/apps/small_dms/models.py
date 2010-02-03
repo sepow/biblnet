@@ -51,6 +51,10 @@ class Document(DocumentBase):
     def get_absolute_url(self):
         return ("document_view_document_detail", [self.tribe.slug, self.slug])
     get_absolute_url = models.permalink(get_absolute_url)
+    
+    def get_download_url(self):
+        return ("document_view_document_download", [self.tribe.slug, self.slug])
+    get_download_url = models.permalink(get_download_url)
 
     class Meta: 
         unique_together = ("tribe", "slug")

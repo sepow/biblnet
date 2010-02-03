@@ -111,8 +111,8 @@
         	<div class="navigation">
                     <img src="{{ MEDIA_URL }}images/sitegraphics/group.png" alt="{% trans 'Tribe' %}" /> <a href="{% url tribe_list %}">{% trans "All tribes" %}</a><br/>
                     <img src="{{ MEDIA_URL }}images/sitegraphics/user.png" alt="{% trans 'Members' %}" /> <a href="/profiles/">{% trans "All members" %}</a><br/>
-                    <img src="{{ MEDIA_URL }}images/sitegraphics/report.png" alt="{% trans 'Knowledge Bank' %}" /> <a href="{{affil_tribe}}dms/">{% trans "Knowledge Bank" %}</a><br/>
-                    <img src="{{ MEDIA_URL }}images/sitegraphics/tag_blue.png" alt="{% trans 'Tags' %}" /> <a href="/tags/">{% trans "Tags" %}</a>
+                    <img src="{{ MEDIA_URL }}images/sitegraphics/report.png" alt="{% trans 'Knowledge Bank' %}" /> <a href="{% url global_list_documents%}">{% trans "Knowledge Bank" %}</a><br/>
+                    <img src="{{ MEDIA_URL }}images/sitegraphics/tag_blue.png" alt="{% trans 'Tags' %}" /> <a href="/tags/">{% trans "Tags" %}</a> / <a href="/tags/c/">Combine</a>
             </div>
         </div>
         <div class="columnbottom">&nbsp;</div>

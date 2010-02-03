@@ -12,16 +12,16 @@
 </style>
 <form class="tagcombine" id="search" action="." method="post">
     <fieldset class="inlineLabels">
-        {{form.tags.name}}: {{form.tags}}
+    	<legend>Combine tags</legend>
+        {{form.tags.label}}: {{form.tags}}
         {{form.bool}}
         <input type="submit" value="{% trans 'Search' %}" />
-		
     </fieldset>
 </form>
 {% endblock tagupper %}
 
 {% block tagextra %}
-<p>{% blocktrans %}No further items matching <i>{{ tags }}</i>{% endblocktrans %}</p>
+<p>{% blocktrans %}No further items matching your search<i>{{ tags }}</i>{% endblocktrans %}</p>
 {% endblock tagextra %}
 
 
