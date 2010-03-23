@@ -1,0 +1,31 @@
+9
+
+dir
+19
+http://django-app-plugins.googlecode.com/svn/trunk/app_plugins/templates
+http://django-app-plugins.googlecode.com/svn
+
+
+
+2008-06-13T04:15:58.436252Z
+4
+doug.napoleone
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+eb06085c-f74e-0410-8ae8-c9c8b944c5f3
+
+app_plugins
+dir
+

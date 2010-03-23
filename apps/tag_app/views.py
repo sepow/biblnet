@@ -72,7 +72,7 @@ def tags(request, tag, template_name='tags/index.html'):
         'document_tags' : document_tags,
     }, context_instance=RequestContext(request))
     
-def combine_tags(request, template_name="tags/combine.html", form_class=CombineTagsForm):
+def combine_tags(request, template_name="tags/tagcloud.html", form_class=CombineTagsForm):
     
     def get_not_deleted_tribe_wikies():
         deleted_tribes = Tribe.objects.filter(deleted=True)
@@ -116,6 +116,7 @@ def combine_tags(request, template_name="tags/combine.html", form_class=CombineT
             return_dict.update({
                 "form": combine_form,
                 "tags": tags,
+                'tag_cloud' : tagcloud(),
             })
             
             return render_to_response(template_name, return_dict, context_instance=RequestContext(request))            
@@ -125,6 +126,7 @@ def combine_tags(request, template_name="tags/combine.html", form_class=CombineT
     return render_to_response(template_name, {
         "form": combine_form,
         "tags": tags,
+        'tag_cloud' : tagcloud(),
     }, context_instance=RequestContext(request))
 
 def tag_autocomplete(request):  

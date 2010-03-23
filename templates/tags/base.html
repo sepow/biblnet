@@ -15,7 +15,22 @@
 
 
 {% block body %}
-
+<style>
+.tagcombine #id_tags {
+    
+}
+.tagcombine #id_bool {
+    width: 70px;
+}
+</style>
+<form class="tagcombine" id="search" action="." method="post">
+    <fieldset class="inlineLabels">
+    	<legend>Combine tags</legend>
+        {{form.tags.label}}: {{form.tags}}
+        {{form.bool}}
+        <input type="submit" value="{% trans 'Search' %}" />
+    </fieldset>
+</form>
 {% block tagupper %}
 
 {% endblock tagupper %}
@@ -128,6 +143,22 @@
         </div>
     {% endif %}
 	
-{% block tagextra %}
-{% endblock tagextra %}
+{% block extra_body %}
+    {{ block.super }}
+    <script type="text/javascript" src="{{ MEDIA_URL }}jquery.bgiframe.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}jquery.dimensions.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}jquery.ajaxQueue.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}jquery.autocomplete.js"></script>
+    <script type="text/javascript">
+        $().ready(function() {
+            $("#id_tags").autocomplete("{% url tag_autocomplete %}", {
+                multiple: true,
+                matchContains: true,
+            });
+            $("#id_tags").result(function() {
+                $("#id_tags").focus();
+            });
+            $("#id_tags").focus()
+        });    </script>
+{% endblock %}
 {% endblock body %}

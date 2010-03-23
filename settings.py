@@ -24,6 +24,7 @@ AUTHENTICATION_BACKENDS = (
 )
 
 
+
 ADMINS = (
     ('Sean Bendtsen Powell', 'BendtsenPowell@gmail.com'),
 )
@@ -63,7 +64,8 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 # Example: "/home/media/media.lawrence.com/"
 
 MEDIA_ROOT = os.path.join(os.path.dirname(__file__), "media")
-
+STATIC_ROOT = MEDIA_ROOT
+MARKUP_CHOICES = None
 # URL that handles the media served from MEDIA_ROOT.
 # Example: "http://media.lawrence.com"
 MEDIA_URL = '/site_media/'
