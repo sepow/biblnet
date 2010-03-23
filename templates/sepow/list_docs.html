@@ -9,18 +9,11 @@
                 <th width="16px"></th>
                 <th width="16px">
                 </th>
-                <th>
-                    {% trans "Title" %}
-
-                </th>
-                <th width="20%">
-                    {% trans "Author" %}
-
-                </th>
+                <th>{% trans "Title" %}</th>
+                <th width="20%"">{% trans "Tribe" %}</th>
+                <th width="20%">{% trans "Author" %}</th>
                 <th class="comment_stats" width="80px">{% trans "Grade" %}</th>
-                <th class="comment_stats" width="80px">
-                    {% trans "Score" %}
-                </th>
+                <th class="comment_stats" width="80px">{% trans "Score" %}</th>
             </tr>
             {% for document in documents %}
                 <tr class="{% cycle 'odd' 'even' %}">
@@ -35,7 +28,8 @@
 							{% endif %}
 						</td>
                         <td><a href="{{document.get_absolute_url}}">{{ document|default:"Untitled" }}</a></td>
-                        <td><a href="{% url profile_detail document.uploader %}">{{ document.uploader }}</a></td>
+                        <td><a href="{{document.tribe.get_absolute_url}}">{{ document.tribe }}</a></td>
+                        <td><a href="{% url profile_detail document.uploader %}">{{ document.uploader.get_profile.get_name }}</a></td>
                         <td class="comment_stats">{% ifequal document.grade '99' %}{% trans "Passed" %}{% else %}{{ document.grade }}{% endifequal %}</td>
                         <td class="comment_stats">
                             {% score_for_object document as score %}

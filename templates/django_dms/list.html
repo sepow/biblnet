@@ -73,7 +73,7 @@
                         </td>
                         <td>{% if user.is_authenticated %}{% if list_links.download %}<a href="{% dms_url dms_site document_download document %}"><img src="{{MEDIA_URL}}images/sitegraphics/arrow_down.png" alt="{% trans 'Download' %}" title="{% trans 'Download' %}"/></a>{% endif %}{% endif %}</td>
                         <td><a href="{% dms_url dms_site document_detail document %}">{{ document|default:"Untitled" }}</a></td>
-                        <td><a href="{% url profile_detail document.uploader %}">{{ document.uploader }}</a></td>
+                        <td><a href="{% url profile_detail document.uploader %}">{{ document.uploader.get_profile.get_name }}</a></td>
                         <td class="comment_stats">{% ifequal document.grade '99' %}{% trans "Passed" %}{% else %}{{ document.grade }}{% endifequal %}</td>
                         <td class="comment_stats">
                             {% score_for_object document as score %}
