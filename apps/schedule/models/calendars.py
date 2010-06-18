@@ -233,4 +233,4 @@ class CalendarRelation(models.Model):
         app_label = 'schedule'
 
     def __unicode__(self):
-        return '%s - %s' %(self.calendar, self.content_object)
+        return u'%s - %s' %(self.calendar, self.content_object)
